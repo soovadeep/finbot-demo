@@ -5,6 +5,7 @@
 \usepackage[preprint]{acl}
 \usepackage{times}
 \usepackage{latexsym}
+\usepackage{amsmath}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
@@ -14,7 +15,7 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
 
 \title{Clarify, then Verify: A Payment-Support Assistant That Asks\\Which Record You Mean Before It Answers}
 
@@ -36,8 +37,9 @@ confirmed record only through a gate that checks every amount, status and cause 
 record, with one repair, then an answer built from the record, then refusal. An inspector shows
 beliefs, question scores, evidence and every rejected draft. On 224 real Banking77 questions
 with the reference removed, answered by simulated customers played by two model families,
-one Bayesian question lifts the share of episodes whose most likely record is the right one
-from 13\% to 69--74\% among eight records, while fixed-order questions reach 19\%. Requiring
+one question chosen by expected decision value lifts the share of episodes whose most likely
+record is the right one from 13\% to 69--74\% among eight records, while a fixed-order question
+reaches 19\%. Requiring
 confirmation keeps wrong-record selections at 2--4\%, against 21--26\% if the system acted on
 its top guess. Showing all eight records at once still resolves more episodes, which marks where
 clarification helps: voice and small screens, where a long list does not fit.
@@ -74,9 +76,8 @@ Our contributions are:
   and accessibility checks. It needs no human participants or paid annotation.
 \end{itemize}
 The demonstration is meant for people who build assistants over customers' account data, and
-for researchers studying clarification and grounded generation. A hosted copy runs at \url{https://finbot-demo-20852907589.us-central1.run.app/study}. The
-system also runs locally with no model account: \texttt{python -m finbot.demo}, then open
-\texttt{/study}. The code, data, results and a 2.5-minute video are at
+for researchers studying clarification and grounded generation. A hosted copy runs at \url{https://finbot-demo-20852907589.us-central1.run.app}. The
+system also runs locally with no model account: \texttt{python -m finbot.demo} serves the same pages. The code, data, results and a 2.5-minute video are at
 \url{https://github.com/soovadeep/finbot-demo} (MIT license).
 
 \begin{figure*}[t]
@@ -102,21 +103,36 @@ kind (card payment or bank transfer), merchant or payee, date and amount. The be
 uniform over up to eight candidates.
 
 \paragraph{Questions and replies.}
-Each question asks for one attribute and offers the values that distinguish the remaining
-candidates, plus ``I'm not sure''. A reply updates the belief by Bayes' rule under a simple
-response model: a definite reply is right with probability $a$ (0.8 to 0.9 by attribute), a
-wrong reply is spread evenly over the other options, and ``not sure'' carries no information.
-These probabilities are design settings, not measured human accuracy, and Section~\ref{sec:safety}
-tests what happens when they are wrong.
+Each question $q$ asks for one attribute $k$ and offers the values $O_q$ that distinguish the
+remaining candidates, plus ``I'm not sure'' ($?$). Let $h_k$ be candidate $h$'s value. A reply $r$
+has likelihood
+\[
+P(r \mid h, q) = \begin{cases}
+u_k & r = {?}\\
+(1-u_k)\,a_k & r = h_k\\
+(1-u_k)\,\frac{1-a_k}{|O_q|-1} & \text{otherwise,}
+\end{cases}
+\]
+and the belief updates by Bayes' rule, $b'(h) \propto b(h)\,P(r \mid h, q)$, so ``not sure''
+carries no information. The settings $(a_k, u_k)$ are $(0.9, 0.1)$ for the kind of payment,
+$(0.85, 0.15)$ for the date and $(0.8, 0.2)$ for the payee and the amount. A detail volunteered
+in free text enters the same way, with $a = 0.65$ if it is hedged (``I think it was a
+transfer''). These are design settings, not measured human accuracy;
+Section~\ref{sec:safety} tests what happens when they are wrong.
 
 \paragraph{Choosing the next question.}
 Three selectors are implemented. \emph{Fixed} asks attributes in a set order.
-\emph{Information gain} asks the question whose reply is expected to reduce the entropy of the
-belief most. \emph{Decision value} asks the question that most reduces the expected chance of
-picking the wrong record, minus a small cost per question, and stops when no question is
-worth its cost. All selectors stop after the budget (two by default) or once one record holds
-95\% of the belief. The live demonstration ranks by information gain; the evaluation compares
-all three.
+\emph{Information gain} maximizes $\mathrm{IG}(q) = H(b) - \sum_r P(r)\,H(b_r)$, where $b_r$ is
+the belief after reply $r$ and $P(r) = \sum_h b(h)\,P(r \mid h, q)$. With
+$e(b) = 1 - \max_h b(h)$, the chance of picking the wrong record, \emph{decision value}
+maximizes its expected drop minus a cost $c = 0.02$ per question:
+\[
+\mathrm{DV}(q) = e(b) - \textstyle\sum_r P(r)\, e(b_r) - c,
+\]
+and stops when no question has $\mathrm{DV}(q) > 0$. All selectors stop after the budget (two by
+default) or once one record holds 95\% of the belief. The live demonstration asks by decision
+value, the selector that does best in Section~\ref{sec:eval}, and its inspector shows both
+scores.
 
 \paragraph{Confirmation and corrections.}
 The customer then sees the most likely records, most likely first, and picks one or says none
@@ -133,8 +149,18 @@ status, cause and reason code in the draft with the record and with the policy t
 check that the returned record carries the requested ID. A failing draft gets one repair; if
 that fails too, code builds an answer from the record and checks it; refusal comes last. Fields
 written by third parties, such as merchant descriptors, are shown to the model but cannot vouch
-for a stated fact. The checks, their design and their evaluation are described in a companion
-paper; here they are a component the inspector exposes.
+for a stated fact.
+
+The checks are deterministic extractors, not a model. Regular expressions and small phrase
+tables pull out of the draft every money amount and currency, date, card's last four digits,
+reason code and URL, and every status or cause stated in words (``it was declined because the
+card was reported lost''), with negation and hedges handled. Each extracted value must occur in
+the tool results for the confirmed record and the session's tenant, and a cause in words must
+map to the recorded reason code; otherwise the draft is rejected with a reason such as
+\texttt{ungrounded\_amount:12.34}. A policy statement must reproduce a sentence of the help page
+it cites. A companion paper evaluates these checks at scale and is not needed here: this paper
+contributes the clarification step, the confirmation that joins it to the checks, and the
+inspector that shows both.
 
 \subsection{What the inspector shows}
 
@@ -147,9 +173,13 @@ parsed with small visible rules and enter the belief as weaker evidence. After c
 of how the answer was checked: which records were fetched, each rejected draft with its reasons
 in plain words and the rejected text, and whether the final answer is the model's own, a repair
 or built by code. A ``scripted model behaviour'' menu injects a wrong status, a wrong amount once,
-a wrong amount every time, or no fault, so a reviewer can watch each recovery path. The demo
-uses a scripted writer and synthetic records, so it runs offline; the full application has
-adapters for hosted models.
+a wrong amount every time, or no fault, so a reviewer can watch each recovery path.
+
+The hosted page and \texttt{python -m finbot.demo} use a scripted writer and synthetic records, so
+reviewers need no key and every run is reproducible; clarification itself uses no language model.
+The same checks run around a live model in the command-line assistant:
+\texttt{FINBOT\_LLM\_PROVIDER=openai FINBOT\_MODEL=qwen2.5:7b python -m finbot.app} uses a local
+Ollama model, and \texttt{anthropic} or \texttt{bedrock} select hosted Claude models.
 
 \section{Demonstration walkthrough}
 
@@ -157,8 +187,9 @@ adapters for hosted models.
 \centering
 \includegraphics[width=\textwidth]{conversation.png}
 \caption{The walkthrough in the hosted demo, with the fault menu set to ``wrong amount every
-time''. Left: two questions narrow four \$200 payments to one, which the customer confirms.
-Right: what Finbot has recognized, then the check of the answer: the record is fetched again,
+time''. (a)~Two questions narrow four \$200 payments to one, which the customer confirms.
+(b)~The belief inspector at the first question: four records at 25\% each, and each question's
+decision value and information gain. (c)~The check of the answer: the record is fetched again,
 the draft and its repair are rejected for stating a fee the record does not contain, and code
 builds the answer from the record.}
 \label{fig:screenshot}
@@ -168,7 +199,8 @@ builds the answer from the record.}
 Figure~\ref{fig:screenshot} shows this conversation. The demonstration account holds four \$200 payments: a card payment and a bank transfer to each
 of two payees, on November 15 and 16. The customer writes ``My \$200 payment hasn't arrived.''
 The amount rules nothing out, so the inspector scores three questions: payment type (0.48 bits),
-date (0.33) and payee (0.22). The customer answers that it was a bank transfer; asked for the
+date (0.33) and payee (0.22). Each splits the four records in half, so the scores differ only
+through the reliabilities in Section~\ref{sec:system}; decision value ranks them the same way. The customer answers that it was a bank transfer; asked for the
 date, they reply ``Willow Repairs'' instead, which the parser takes as the payee. One record now
 holds 72\% of the belief and is the only one matching what the customer said, so it is offered
 for confirmation, with the others still listed. After confirmation, with the fault menu set to
@@ -218,28 +250,35 @@ when the customer confirms the target, \emph{wrong} when they confirm another re
 \toprule
  & Strategy & Qs & Top-1 & Correct & Wrong \\
 \midrule
-\multirow{6}{*}{\rotatebox{90}{Haiku 5.5}}
+\multirow{9}{*}{\rotatebox{90}{Haiku 5.5}}
  & No questions & 0 & 13 & 17 & 3.1 \\
  & Fixed order, 1 & 1 & 19 & 24 & 2.2 \\
  & Info.\ gain, 1 & 1 & 65 & 44 & 2.2 \\
  & Decision value, 1 & 1 & 69 & 47 & 2.2 \\
+ & Fixed order, 2 & 1.95 & 72 & 48 & 1.8 \\
+ & Info.\ gain, 2 & 1.95 & 73 & 46 & 1.8 \\
  & Decision value, 2 & 1.36 & 74 & 49 & 2.2 \\
- & Show all 8 & 0 & -- & 60 & 1.8 \\
+ & \quad then all 8 & 1.36 & --- & 66 & 3.1 \\
+ & Show all 8 & 0 & --- & 60 & 1.8 \\
 \midrule
-\multirow{6}{*}{\rotatebox{90}{Llama 3.3 70B}}
+\multirow{9}{*}{\rotatebox{90}{Llama 3.3 70B}}
  & No questions & 0 & 13 & 21 & 5.4 \\
  & Fixed order, 1 & 1 & 19 & 30 & 5.8 \\
  & Info.\ gain, 1 & 1 & 70 & 59 & 4.0 \\
  & Decision value, 1 & 1 & 74 & 63 & 4.0 \\
+ & Fixed order, 2 & 1.95 & 77 & 66 & 4.0 \\
+ & Info.\ gain, 2 & 1.95 & 78 & 66 & 4.0 \\
  & Decision value, 2 & 1.31 & 79 & 66 & 4.0 \\
- & Show all 8 & 0 & -- & 81 & 3.6 \\
+ & \quad then all 8 & 1.31 & --- & 81 & 4.9 \\
+ & Show all 8 & 0 & --- & 81 & 3.6 \\
 \bottomrule
 \end{tabular}
 \caption{Eight candidate records, 224 episodes, mixed personas. The number after a selector is
 its question budget. Qs: mean questions asked. Top-1: \% of episodes whose most likely record
 after the questions is the target. Correct and Wrong: \% of episodes in which the customer
-confirmed the target or another record from the two-record short list (or, for the last row,
-from all eight). Correct-rate intervals are about $\pm$6 points.}
+confirmed the target or another record from the two-record short list (or from all eight).
+``then all 8'' shows the full list only to customers who reject the short list. Correct-rate
+intervals are about $\pm$6 points.}
 \label{tab:main}
 \end{table}
 
@@ -253,13 +292,22 @@ fixed-order rate under both simulators. With a budget of two, fixed order catche
 many questions as fixed order. On the smaller set (two to five records), the selectors differ
 little: one question in any order already puts the target first in 64--70\% of episodes.
 
-Showing every record resolves the most episodes (60\% and 81\%). We report this plainly. A
-list of eight is a single turn for a customer who can read it, and the simulated customers are
-good at scanning lists. Clarification is for the channels where that list cannot be shown,
-such as voice, or where it would be long: the questions reach about 80\% of the full-list
-success while showing two records instead of eight. Most unresolved episodes come from
-\emph{vague} and \emph{misremembering} customers, who decline a short list that does not
-contain a record matching their memory; the system then has the full list to fall back on.
+Showing every record at once resolves more episodes than the short list alone (60\% and 81\%).
+A list of eight is a single turn for a customer who can read it, and the simulated customers are
+good at scanning lists. The two combine well: when the customer rejects the short list, the
+system shows the full list. Decision value followed by this fallback confirms the target in
+66\% (Haiku) and 81\% (Llama) of episodes, matching or beating the full list, while only 49\%
+and 30\% of customers ever see eight records; wrong selections rise slightly, to 3.1\% and
+4.9\%, because a customer gets two chances to choose. We compute this from the cached replies,
+pairing each episode's short-list outcome with its reply to the full list. Where a long list
+cannot be shown at all, as in voice, the questions alone reach about 80\% of the full-list
+success.
+
+The two simulators differ mainly on \emph{vague} customers. Haiku leaves 54\% of them
+unresolved even when shown all eight records, against 1\% for Llama: it declines to pick when
+its note does not settle the choice, as its prompt asks. With complete receipts, both resolve
+most episodes (80\% and 96\% correct with decision value), and both fail on customers who
+misremember (8\% and 13\%), who reject short lists that do not match their memory.
 
 \subsection{Safety under wrong assumptions}
 \label{sec:safety}
@@ -317,8 +365,9 @@ synthetic, Banking77 questions were not written about these records, and in some
 question's topic (an ATM decline, say) does not fit the record it is paired with, which lowers
 every strategy's success. The response model's reliabilities are chosen, not fitted. The
 benchmark caps candidates at eight, the session limit; larger accounts need a first filter by
-date or kind. The answer checks are English rules over a fixed set of claim types. Human
-evaluation of the interface is not yet done.
+date or kind. The answer checks are English rules over a fixed set of claim types. The simulated customers
+answer only through the offered options, so the free-text parser and corrections are tested
+only by scripted interface checks. Human evaluation of the interface is not yet done.
 
 \section*{Ethics and broader impact}
 

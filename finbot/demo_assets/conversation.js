@@ -74,7 +74,7 @@ function render(data) {
     row.append(bar); $("conversation-beliefs").append(row);
   });
   $("conversation-scores").replaceChildren(node("p", `${data.questions_asked}/2 questions asked. Scores consider records matching explicit details.`));
-  data.ranking.forEach(q => $("conversation-scores").append(node("p", `${q.text} — ${q.information_gain_bits.toFixed(3)} bits expected gain; wrong-record risk cut by ${(100 * q.error_reduction).toFixed(1)} points`)));
+  data.ranking.forEach(q => $("conversation-scores").append(node("p", `${q.text} — wrong-record risk cut by ${(100 * q.error_reduction).toFixed(1)} points, value ${q.decision_value.toFixed(3)} after the question cost; ${q.information_gain_bits.toFixed(3)} bits expected gain`)));
   $("confirmation").hidden = !data.messages.length || Boolean(data.pending) || data.unresolved;
   $("leave-unresolved").hidden = !data.messages.length || data.unresolved;
   $("confirmation-title").textContent = data.selected_id ? "Change the selected record" : matches.length === 1 ? "Is this the payment?" : "Can you identify the payment?";

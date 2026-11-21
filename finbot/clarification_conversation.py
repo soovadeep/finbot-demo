@@ -203,9 +203,9 @@ class Conversation:
         ranked = [score_question(pool, weights, q, ASSUMED[q.template]) for q in questions(pool)
                   if q.template not in self.details and q.template not in self.unknown
                   and q.template not in self.asked]
-        ranked.sort(key=lambda s: s.information_gain_bits, reverse=True)
+        ranked.sort(key=lambda s: s.decision_value, reverse=True)  # the selector the evaluation favours
         self.ranking = [score_dict(s) for s in ranked]
-        if ranked and ranked[0].information_gain_bits > 1e-12:
+        if ranked and ranked[0].decision_value > 1e-12:
             self.pending = ranked[0].question
             self.asked.append(self.pending.template)
             self.trace.append({"event": "question", "selected": self.pending.template,
