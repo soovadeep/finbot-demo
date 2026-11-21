@@ -1,0 +1,779 @@
+{
+ "method": "Every passing answer (fault none) was compared with its stored record: a script matched each stated field value against the record, and each answer's remaining sentences (statuses, causes, guidance, settlement, refunds, disputes) were read against the record and the policy table by the authors with AI assistance.",
+ "answers": 125,
+ "supported": 115,
+ "minor_issue": 10,
+ "wrong_amount_status_code_cause_or_advice": 0,
+ "rows": [
+  {
+   "row": 0,
+   "record_id": "txn_KTWB8MN4F3",
+   "verdict": "minor issue",
+   "issues": [
+    "omits the record's refund"
+   ]
+  },
+  {
+   "row": 1,
+   "record_id": "txn_QL9F5GUJJV",
+   "verdict": "minor issue",
+   "issues": [
+    "states the expected settlement date as the date it settled (the record gives only an expected date and status 'settled')"
+   ]
+  },
+  {
+   "row": 2,
+   "record_id": "txn_B3MF56FR73",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 3,
+   "record_id": "txn_LPCUR3B2R3",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 4,
+   "record_id": "txn_QP4PJ6KZZC",
+   "verdict": "minor issue",
+   "issues": [
+    "states the expected settlement date as the date it settled (the record gives only an expected date and status 'settled')"
+   ]
+  },
+  {
+   "row": 5,
+   "record_id": "txn_C4FFRFJ6HQ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 6,
+   "record_id": "txn_7GRYC72M7N",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 7,
+   "record_id": "txn_DBZ2VU68JD",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 8,
+   "record_id": "txn_Q4LCDBE859",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 9,
+   "record_id": "txn_YWNKH97BDE",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 10,
+   "record_id": "txn_DNVUHSE4Z4",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 11,
+   "record_id": "txn_ELWHHQEFE4",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 12,
+   "record_id": "txn_564K7QJSDS",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 13,
+   "record_id": "txn_G7KMB7DHE8",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 14,
+   "record_id": "txn_3NE3TUCL8L",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 15,
+   "record_id": "txn_4KJ6QT89VW",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 16,
+   "record_id": "txn_YF9F22MFSP",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 17,
+   "record_id": "txn_HC8QFRCF9U",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 18,
+   "record_id": "txn_8U2R46STSQ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 19,
+   "record_id": "txn_UAMYPAFRK8",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 20,
+   "record_id": "txn_YTJLKZY3NW",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 21,
+   "record_id": "txn_UU29MRXUGF",
+   "verdict": "minor issue",
+   "issues": [
+    "states the expected settlement date as the date it settled (the record gives only an expected date and status 'settled')"
+   ]
+  },
+  {
+   "row": 22,
+   "record_id": "txn_HNY7KKV6QJ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 23,
+   "record_id": "txn_NYMLWTRU4L",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 24,
+   "record_id": "txn_NWZDN3BV5E",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 25,
+   "record_id": "txn_ZEDRZCA6BB",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 26,
+   "record_id": "txn_6JZU2T8CDL",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 27,
+   "record_id": "txn_UVVRCYZURU",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 28,
+   "record_id": "txn_PXVU3KFQAC",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 29,
+   "record_id": "txn_DP8UFEEJ3C",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 31,
+   "record_id": "txn_PH326LE8X9",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 32,
+   "record_id": "txn_GJHG6AC664",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 33,
+   "record_id": "txn_H7CJWNPJR5",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 34,
+   "record_id": "txn_CZ6VGGEQSU",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 35,
+   "record_id": "txn_G6VZFTGHDX",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 36,
+   "record_id": "txn_WZK9ZBJ2WP",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 37,
+   "record_id": "txn_65SBH3J9H4",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 38,
+   "record_id": "txn_H9QHKMV4VQ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 39,
+   "record_id": "txn_CKE9RQ56LM",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 40,
+   "record_id": "txn_JE4SK4RMM8",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 41,
+   "record_id": "txn_4TUYHC67NT",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 42,
+   "record_id": "txn_EVTCUXKVNH",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 43,
+   "record_id": "txn_V8MRG7HK35",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 44,
+   "record_id": "txn_UQGYJSGA4M",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 45,
+   "record_id": "txn_WCHU5JWUJB",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 46,
+   "record_id": "txn_NYY9VA55RB",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 47,
+   "record_id": "txn_AFWBCH524G",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 48,
+   "record_id": "txn_C4L46DWSS3",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 49,
+   "record_id": "txn_M42WCUZM85",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 50,
+   "record_id": "txn_XSQT2EMQ49",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 52,
+   "record_id": "txn_MX8GWJ67R6",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 53,
+   "record_id": "txn_6CVXR663KZ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 54,
+   "record_id": "txn_DQMRGPMXHG",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 55,
+   "record_id": "txn_B3MF56FR73",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 56,
+   "record_id": "txn_UHVMGYKDAZ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 57,
+   "record_id": "txn_PB8YCNUJFP",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 58,
+   "record_id": "txn_PA24KQ8RGN",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 59,
+   "record_id": "txn_YYY3FMRC59",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 60,
+   "record_id": "txn_3DC3H9PHEE",
+   "verdict": "minor issue",
+   "issues": [
+    "states the expected settlement date as the date it settled (the record gives only an expected date and status 'settled')"
+   ]
+  },
+  {
+   "row": 61,
+   "record_id": "txn_95EGD3WGD3",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 62,
+   "record_id": "txn_HNY7KKV6QJ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 63,
+   "record_id": "txn_K28GUB3QAB",
+   "verdict": "minor issue",
+   "issues": [
+    "states the expected settlement date as the date it settled (the record gives only an expected date and status 'settled')"
+   ]
+  },
+  {
+   "row": 64,
+   "record_id": "txn_ZTTFBCESSG",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 65,
+   "record_id": "txn_R2MBN4S2DC",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 66,
+   "record_id": "txn_B3MF56FR73",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 67,
+   "record_id": "txn_5KVWGL2NRJ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 68,
+   "record_id": "txn_XAQSE47XG7",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 69,
+   "record_id": "txn_4NW7SHJ6NC",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 70,
+   "record_id": "txn_QL9F5GUJJV",
+   "verdict": "minor issue",
+   "issues": [
+    "states the expected settlement date as the date it settled (the record gives only an expected date and status 'settled')"
+   ]
+  },
+  {
+   "row": 71,
+   "record_id": "txn_8BC2HEX8UR",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 72,
+   "record_id": "txn_9B7K4GB5LN",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 73,
+   "record_id": "txn_P24UPWA9HE",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 74,
+   "record_id": "txn_GGTBDAKRZJ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 75,
+   "record_id": "txn_BRPNZQZW79",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 76,
+   "record_id": "txn_45SW2YD4MK",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 77,
+   "record_id": "txn_QL9F5GUJJV",
+   "verdict": "minor issue",
+   "issues": [
+    "states the expected settlement date as the date it settled (the record gives only an expected date and status 'settled')"
+   ]
+  },
+  {
+   "row": 78,
+   "record_id": "txn_FUSPWZV7PV",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 79,
+   "record_id": "txn_8HR6D8RYAW",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 80,
+   "record_id": "txn_M576YUGTJQ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 81,
+   "record_id": "txn_ZCBMFSDN53",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 82,
+   "record_id": "txn_AQBR6VD2E6",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 83,
+   "record_id": "txn_WCHU5JWUJB",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 84,
+   "record_id": "txn_4NW7SHJ6NC",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 85,
+   "record_id": "txn_WQA23VKC4R",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 86,
+   "record_id": "txn_UYEWHA9KQA",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 87,
+   "record_id": "txn_ML69ZD5BAH",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 88,
+   "record_id": "txn_M2BQZRUFB3",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 89,
+   "record_id": "txn_F3X5JY9JWP",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 90,
+   "record_id": "txn_DQMRGPMXHG",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 91,
+   "record_id": "txn_JTGN8UW5QN",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 92,
+   "record_id": "txn_H7CJWNPJR5",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 93,
+   "record_id": "txn_HVW6J6A5N3",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 94,
+   "record_id": "txn_W65JUTX628",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 95,
+   "record_id": "txn_YJB4CDY93P",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 96,
+   "record_id": "txn_J5B3JTNEZA",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 97,
+   "record_id": "txn_YTC7LU86LL",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 98,
+   "record_id": "txn_KXB3KBQGZT",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 99,
+   "record_id": "txn_WZK9ZBJ2WP",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 100,
+   "record_id": "txn_ED8N6PJMTM",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 101,
+   "record_id": "txn_GPX3DPR5PB",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 102,
+   "record_id": "txn_LLYRLJE5T3",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 103,
+   "record_id": "txn_G58ABX5UGP",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 104,
+   "record_id": "txn_AXC4VLWSXJ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 105,
+   "record_id": "txn_HCTLKAVFB9",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 107,
+   "record_id": "txn_FVRC98EB4U",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 108,
+   "record_id": "txn_NWC6M8ENSB",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 109,
+   "record_id": "txn_89KMQFBPVX",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 110,
+   "record_id": "txn_XML8SGZ5LH",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 111,
+   "record_id": "txn_VA4Z5LEGH5",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 112,
+   "record_id": "txn_PC2EBG8ETU",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 113,
+   "record_id": "txn_M5ADAM4DNQ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 114,
+   "record_id": "txn_UYEWHA9KQA",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 115,
+   "record_id": "txn_MX8GWJ67R6",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 116,
+   "record_id": "txn_M42WCUZM85",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 117,
+   "record_id": "txn_8BSWRPBH55",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 118,
+   "record_id": "txn_2CTRVK5LJY",
+   "verdict": "minor issue",
+   "issues": [
+    "states the expected settlement date as the date it settled (the record gives only an expected date and status 'settled')"
+   ]
+  },
+  {
+   "row": 119,
+   "record_id": "txn_XSQT2EMQ49",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 120,
+   "record_id": "txn_TDUPU63DJM",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 121,
+   "record_id": "txn_45SW2YD4MK",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 122,
+   "record_id": "txn_UHVMGYKDAZ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 123,
+   "record_id": "txn_GGTBDAKRZJ",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 124,
+   "record_id": "txn_UJCB6J3SSE",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 125,
+   "record_id": "txn_YQNKY2WJXE",
+   "verdict": "supported",
+   "issues": []
+  },
+  {
+   "row": 126,
+   "record_id": "txn_AH6G3USB7D",
+   "verdict": "minor issue",
+   "issues": [
+    "states the expected settlement date as the date it settled (the record gives only an expected date and status 'settled')"
+   ]
+  },
+  {
+   "row": 127,
+   "record_id": "txn_2KP58UGL69",
+   "verdict": "supported",
+   "issues": []
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+# gcloud builds submit --config deploy/demo/cloudbuild.yaml --substitutions _REGION=us-central1 .
+substitutions:
+  _REGION: us-central1
+steps:
+- name: gcr.io/cloud-builders/docker
+  args: [build, -f, deploy/demo/Dockerfile, -t, '${_REGION}-docker.pkg.dev/$PROJECT_ID/demo/finbot-demo', .]
+images: ['${_REGION}-docker.pkg.dev/$PROJECT_ID/demo/finbot-demo']

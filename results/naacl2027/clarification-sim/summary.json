@@ -1,0 +1,4973 @@
+{
+  "schema_version": 1,
+  "scope": "simulated customers (language models), not human participants",
+  "max_proposals": 2,
+  "assumed_reply_models": {
+    "kind": {
+      "accuracy": 0.9,
+      "unknown": 0.1
+    },
+    "merchant": {
+      "accuracy": 0.8,
+      "unknown": 0.2
+    },
+    "date": {
+      "accuracy": 0.85,
+      "unknown": 0.15
+    },
+    "amount": {
+      "accuracy": 0.8,
+      "unknown": 0.2
+    }
+  },
+  "overconfident_reply_models": {
+    "kind": {
+      "accuracy": 0.99,
+      "unknown": 0.01
+    },
+    "merchant": {
+      "accuracy": 0.99,
+      "unknown": 0.01
+    },
+    "date": {
+      "accuracy": 0.99,
+      "unknown": 0.01
+    },
+    "amount": {
+      "accuracy": 0.99,
+      "unknown": 0.01
+    }
+  },
+  "personas": {
+    "receipt": 0.4,
+    "vague": 0.35,
+    "misremembers": 0.25
+  },
+  "simulators": {
+    "haiku": "claude-haiku-5-5",
+    "llama": "meta-llama/llama-3.3-70b-instruct"
+  },
+  "usage": {
+    "haiku": {
+      "model": "claude-haiku-5-5",
+      "calls": 4464,
+      "input_tokens": 1483047,
+      "output_tokens": 50191
+    },
+    "llama": {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "calls": 4150,
+      "input_tokens": 1046402,
+      "output_tokens": 33465
+    }
+  },
+  "source_sha256": {
+    "finbot/clarification.py": "904cbafd88d9a6e8c6df6018a411463f4e8d387ed37e9434879d528cf9cb902e",
+    "scripts/naacl2027/simulate_customers.py": "2a14012fda6ec2e8d9634562270f679158a48e11eea73e53654027d1f3aa19ba",
+    "scripts/naacl2027/build_ambiguity_set.py": "4c23fbdfe0c8b89bdd8901859d042a5aa3a2fa78829759be16775847f08d3b50",
+    "data/naacl2027/ambiguity.jsonl": "9beaf1659b387b8bf0aa227cfba98b4786baeca92706b9f88365f0625aa2a3ee",
+    "data/naacl2027/ambiguity-8.jsonl": "490e559fcf6375099f2bd891b7f4f602d539e2673a89acd4e8b0c4659234cb35"
+  },
+  "summary": [
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1518,
+      "wrong_record_ci95": [
+        0.1107,
+        0.2046
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.848,
+      "mean_turns": 2.848,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1518,
+      "wrong_record_ci95": [
+        0.1107,
+        0.2046
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.848,
+      "mean_turns": 2.848,
+      "top_guess_correct_rate": 0.2812,
+      "wrong_if_no_confirmation": 0.7188
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1518,
+      "wrong_record_ci95": [
+        0.1107,
+        0.2046
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.848,
+      "mean_turns": 2.848,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1518,
+      "wrong_record_ci95": [
+        0.1107,
+        0.2046
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 0.0,
+      "mean_records_shown": 1.906,
+      "mean_turns": 1.906,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1518,
+      "wrong_record_ci95": [
+        0.1107,
+        0.2046
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.848,
+      "mean_turns": 2.848,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1518,
+      "wrong_record_ci95": [
+        0.1107,
+        0.2046
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 1.549,
+      "mean_records_shown": 1.848,
+      "mean_turns": 3.397,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1518,
+      "wrong_record_ci95": [
+        0.1107,
+        0.2046
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 1.549,
+      "mean_records_shown": 1.848,
+      "mean_turns": 3.397,
+      "top_guess_correct_rate": 0.3259,
+      "wrong_if_no_confirmation": 0.6741
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1518,
+      "wrong_record_ci95": [
+        0.1107,
+        0.2046
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 0.0,
+      "mean_records_shown": 1.906,
+      "mean_turns": 1.906,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1518,
+      "wrong_record_ci95": [
+        0.1107,
+        0.2046
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.848,
+      "mean_turns": 2.848,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1518,
+      "wrong_record_ci95": [
+        0.1107,
+        0.2046
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 1.83,
+      "mean_records_shown": 1.848,
+      "mean_turns": 3.679,
+      "top_guess_correct_rate": 0.4464,
+      "wrong_if_no_confirmation": 0.5536
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1518,
+      "wrong_record_ci95": [
+        0.1107,
+        0.2046
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 1.812,
+      "mean_records_shown": 1.848,
+      "mean_turns": 3.661,
+      "top_guess_correct_rate": 0.442,
+      "wrong_if_no_confirmation": 0.558
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1518,
+      "wrong_record_ci95": [
+        0.1107,
+        0.2046
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 0.0,
+      "mean_records_shown": 1.906,
+      "mean_turns": 1.906,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.2902,
+      "correct_ci95": [
+        0.2347,
+        0.3528
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.6562,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.656,
+      "mean_turns": 2.656,
+      "top_guess_correct_rate": 0.6652,
+      "wrong_if_no_confirmation": 0.3348
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.2857,
+      "correct_ci95": [
+        0.2306,
+        0.3481
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.6607,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.67,
+      "mean_turns": 2.67,
+      "top_guess_correct_rate": 0.6429,
+      "wrong_if_no_confirmation": 0.3571
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.2902,
+      "correct_ci95": [
+        0.2347,
+        0.3528
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.6562,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.656,
+      "mean_turns": 2.656,
+      "top_guess_correct_rate": 0.6652,
+      "wrong_if_no_confirmation": 0.3348
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1741,
+      "correct_ci95": [
+        0.1301,
+        0.2291
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.7723,
+      "mean_questions": 0.0,
+      "mean_records_shown": 1.862,
+      "mean_turns": 1.862,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.2902,
+      "correct_ci95": [
+        0.2347,
+        0.3528
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.6562,
+      "mean_questions": 1.112,
+      "mean_records_shown": 1.656,
+      "mean_turns": 2.768,
+      "top_guess_correct_rate": 0.7054,
+      "wrong_if_no_confirmation": 0.2946
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.2902,
+      "correct_ci95": [
+        0.2347,
+        0.3528
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.6562,
+      "mean_questions": 1.549,
+      "mean_records_shown": 1.656,
+      "mean_turns": 3.205,
+      "top_guess_correct_rate": 0.7098,
+      "wrong_if_no_confirmation": 0.2902
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.2902,
+      "correct_ci95": [
+        0.2347,
+        0.3528
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.6562,
+      "mean_questions": 1.549,
+      "mean_records_shown": 1.656,
+      "mean_turns": 3.205,
+      "top_guess_correct_rate": 0.7009,
+      "wrong_if_no_confirmation": 0.2991
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1741,
+      "correct_ci95": [
+        0.1301,
+        0.2291
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.7723,
+      "mean_questions": 0.0,
+      "mean_records_shown": 1.862,
+      "mean_turns": 1.862,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.2902,
+      "correct_ci95": [
+        0.2347,
+        0.3528
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.6562,
+      "mean_questions": 1.112,
+      "mean_records_shown": 1.656,
+      "mean_turns": 2.768,
+      "top_guess_correct_rate": 0.7054,
+      "wrong_if_no_confirmation": 0.2946
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.2902,
+      "correct_ci95": [
+        0.2347,
+        0.3528
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.6562,
+      "mean_questions": 1.763,
+      "mean_records_shown": 1.656,
+      "mean_turns": 3.42,
+      "top_guess_correct_rate": 0.7143,
+      "wrong_if_no_confirmation": 0.2857
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.2902,
+      "correct_ci95": [
+        0.2347,
+        0.3528
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.6562,
+      "mean_questions": 1.723,
+      "mean_records_shown": 1.656,
+      "mean_turns": 3.379,
+      "top_guess_correct_rate": 0.7098,
+      "wrong_if_no_confirmation": 0.2902
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1741,
+      "correct_ci95": [
+        0.1301,
+        0.2291
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.7723,
+      "mean_questions": 0.0,
+      "mean_records_shown": 1.862,
+      "mean_turns": 1.862,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.835,
+      "mean_turns": 2.835,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.835,
+      "mean_turns": 2.835,
+      "top_guess_correct_rate": 0.2812,
+      "wrong_if_no_confirmation": 0.7188
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.835,
+      "mean_turns": 2.835,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 0.0,
+      "mean_records_shown": 1.888,
+      "mean_turns": 1.888,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 1.004,
+      "mean_records_shown": 1.835,
+      "mean_turns": 2.839,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 1.549,
+      "mean_records_shown": 1.835,
+      "mean_turns": 3.384,
+      "top_guess_correct_rate": 0.3393,
+      "wrong_if_no_confirmation": 0.6607
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 1.549,
+      "mean_records_shown": 1.835,
+      "mean_turns": 3.384,
+      "top_guess_correct_rate": 0.3259,
+      "wrong_if_no_confirmation": 0.6741
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 0.0,
+      "mean_records_shown": 1.888,
+      "mean_turns": 1.888,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 1.009,
+      "mean_records_shown": 1.835,
+      "mean_turns": 2.844,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 1.83,
+      "mean_records_shown": 1.835,
+      "mean_turns": 3.665,
+      "top_guess_correct_rate": 0.442,
+      "wrong_if_no_confirmation": 0.558
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 1.817,
+      "mean_records_shown": 1.835,
+      "mean_turns": 3.652,
+      "top_guess_correct_rate": 0.4375,
+      "wrong_if_no_confirmation": 0.5625
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0,
+      "correct_ci95": [
+        0.0,
+        0.0169
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 0.0,
+      "mean_records_shown": 1.888,
+      "mean_turns": 1.888,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.3348,
+      "correct_ci95": [
+        0.2763,
+        0.3989
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.6161,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.616,
+      "mean_turns": 2.616,
+      "top_guess_correct_rate": 0.7009,
+      "wrong_if_no_confirmation": 0.2991
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.3304,
+      "correct_ci95": [
+        0.2721,
+        0.3944
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.6205,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.629,
+      "mean_turns": 2.629,
+      "top_guess_correct_rate": 0.6696,
+      "wrong_if_no_confirmation": 0.3304
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.3348,
+      "correct_ci95": [
+        0.2763,
+        0.3989
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.6161,
+      "mean_questions": 1.0,
+      "mean_records_shown": 1.616,
+      "mean_turns": 2.616,
+      "top_guess_correct_rate": 0.7009,
+      "wrong_if_no_confirmation": 0.2991
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.2054,
+      "correct_ci95": [
+        0.1576,
+        0.263
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.7455,
+      "mean_questions": 0.0,
+      "mean_records_shown": 1.835,
+      "mean_turns": 1.835,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.3348,
+      "correct_ci95": [
+        0.2763,
+        0.3989
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.6161,
+      "mean_questions": 1.112,
+      "mean_records_shown": 1.616,
+      "mean_turns": 2.728,
+      "top_guess_correct_rate": 0.7411,
+      "wrong_if_no_confirmation": 0.2589
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.3348,
+      "correct_ci95": [
+        0.2763,
+        0.3989
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.6161,
+      "mean_questions": 1.549,
+      "mean_records_shown": 1.616,
+      "mean_turns": 3.165,
+      "top_guess_correct_rate": 0.7455,
+      "wrong_if_no_confirmation": 0.2545
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.3348,
+      "correct_ci95": [
+        0.2763,
+        0.3989
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.6161,
+      "mean_questions": 1.549,
+      "mean_records_shown": 1.616,
+      "mean_turns": 3.165,
+      "top_guess_correct_rate": 0.7366,
+      "wrong_if_no_confirmation": 0.2634
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.2054,
+      "correct_ci95": [
+        0.1576,
+        0.263
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.7455,
+      "mean_questions": 0.0,
+      "mean_records_shown": 1.835,
+      "mean_turns": 1.835,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.3348,
+      "correct_ci95": [
+        0.2763,
+        0.3989
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.6161,
+      "mean_questions": 1.116,
+      "mean_records_shown": 1.616,
+      "mean_turns": 2.732,
+      "top_guess_correct_rate": 0.7411,
+      "wrong_if_no_confirmation": 0.2589
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.3348,
+      "correct_ci95": [
+        0.2763,
+        0.3989
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.6161,
+      "mean_questions": 1.763,
+      "mean_records_shown": 1.616,
+      "mean_turns": 3.379,
+      "top_guess_correct_rate": 0.75,
+      "wrong_if_no_confirmation": 0.25
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.3348,
+      "correct_ci95": [
+        0.2763,
+        0.3989
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.6161,
+      "mean_questions": 1.723,
+      "mean_records_shown": 1.616,
+      "mean_turns": 3.339,
+      "top_guess_correct_rate": 0.7455,
+      "wrong_if_no_confirmation": 0.2545
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "sequential",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.2054,
+      "correct_ci95": [
+        0.1576,
+        0.263
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.7455,
+      "mean_questions": 0.0,
+      "mean_records_shown": 1.835,
+      "mean_turns": 1.835,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.058,
+      "correct_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "wrong_record_rate": 0.1786,
+      "wrong_record_ci95": [
+        0.134,
+        0.234
+      ],
+      "unresolved_rate": 0.7634,
+      "mean_questions": 0.0,
+      "mean_records_shown": 3.558,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.067,
+      "correct_ci95": [
+        0.041,
+        0.1075
+      ],
+      "wrong_record_rate": 0.1429,
+      "wrong_record_ci95": [
+        0.103,
+        0.1947
+      ],
+      "unresolved_rate": 0.7902,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0982,
+      "correct_ci95": [
+        0.0658,
+        0.1442
+      ],
+      "wrong_record_rate": 0.1429,
+      "wrong_record_ci95": [
+        0.103,
+        0.1947
+      ],
+      "unresolved_rate": 0.7589,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.2812,
+      "wrong_if_no_confirmation": 0.7188
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.067,
+      "correct_ci95": [
+        0.041,
+        0.1075
+      ],
+      "wrong_record_rate": 0.1429,
+      "wrong_record_ci95": [
+        0.103,
+        0.1947
+      ],
+      "unresolved_rate": 0.7902,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.058,
+      "correct_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "wrong_record_rate": 0.1786,
+      "wrong_record_ci95": [
+        0.134,
+        0.234
+      ],
+      "unresolved_rate": 0.7634,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.067,
+      "correct_ci95": [
+        0.041,
+        0.1075
+      ],
+      "wrong_record_rate": 0.1429,
+      "wrong_record_ci95": [
+        0.103,
+        0.1947
+      ],
+      "unresolved_rate": 0.7902,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0848,
+      "correct_ci95": [
+        0.055,
+        0.1287
+      ],
+      "wrong_record_rate": 0.1384,
+      "wrong_record_ci95": [
+        0.0992,
+        0.1897
+      ],
+      "unresolved_rate": 0.7768,
+      "mean_questions": 1.549,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.549,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.0893,
+      "correct_ci95": [
+        0.0585,
+        0.1339
+      ],
+      "wrong_record_rate": 0.1339,
+      "wrong_record_ci95": [
+        0.0954,
+        0.1848
+      ],
+      "unresolved_rate": 0.7768,
+      "mean_questions": 1.549,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.549,
+      "top_guess_correct_rate": 0.3259,
+      "wrong_if_no_confirmation": 0.6741
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.058,
+      "correct_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "wrong_record_rate": 0.1786,
+      "wrong_record_ci95": [
+        0.134,
+        0.234
+      ],
+      "unresolved_rate": 0.7634,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.067,
+      "correct_ci95": [
+        0.041,
+        0.1075
+      ],
+      "wrong_record_rate": 0.1429,
+      "wrong_record_ci95": [
+        0.103,
+        0.1947
+      ],
+      "unresolved_rate": 0.7902,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0357,
+      "correct_ci95": [
+        0.0182,
+        0.0689
+      ],
+      "wrong_record_rate": 0.1384,
+      "wrong_record_ci95": [
+        0.0992,
+        0.1897
+      ],
+      "unresolved_rate": 0.8259,
+      "mean_questions": 1.83,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.83,
+      "top_guess_correct_rate": 0.4464,
+      "wrong_if_no_confirmation": 0.5536
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.0357,
+      "correct_ci95": [
+        0.0182,
+        0.0689
+      ],
+      "wrong_record_rate": 0.1339,
+      "wrong_record_ci95": [
+        0.0954,
+        0.1848
+      ],
+      "unresolved_rate": 0.8304,
+      "mean_questions": 1.812,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.812,
+      "top_guess_correct_rate": 0.442,
+      "wrong_if_no_confirmation": 0.558
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.058,
+      "correct_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "wrong_record_rate": 0.1786,
+      "wrong_record_ci95": [
+        0.134,
+        0.234
+      ],
+      "unresolved_rate": 0.7634,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.558,
+      "correct_ci95": [
+        0.4926,
+        0.6216
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.3929,
+      "mean_questions": 0.0,
+      "mean_records_shown": 3.558,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.4688,
+      "correct_ci95": [
+        0.4045,
+        0.5341
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4821,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.6652,
+      "wrong_if_no_confirmation": 0.3348
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.4866,
+      "correct_ci95": [
+        0.4219,
+        0.5517
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4643,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.6429,
+      "wrong_if_no_confirmation": 0.3571
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.4688,
+      "correct_ci95": [
+        0.4045,
+        0.5341
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4821,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.6652,
+      "wrong_if_no_confirmation": 0.3348
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.3527,
+      "correct_ci95": [
+        0.2931,
+        0.4173
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.5938,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.4866,
+      "correct_ci95": [
+        0.4219,
+        0.5517
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4643,
+      "mean_questions": 1.112,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.112,
+      "top_guess_correct_rate": 0.7054,
+      "wrong_if_no_confirmation": 0.2946
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.4777,
+      "correct_ci95": [
+        0.4132,
+        0.5429
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4732,
+      "mean_questions": 1.549,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.549,
+      "top_guess_correct_rate": 0.7098,
+      "wrong_if_no_confirmation": 0.2902
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.4821,
+      "correct_ci95": [
+        0.4176,
+        0.5473
+      ],
+      "wrong_record_rate": 0.0446,
+      "wrong_record_ci95": [
+        0.0244,
+        0.0802
+      ],
+      "unresolved_rate": 0.4732,
+      "mean_questions": 1.549,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.549,
+      "top_guess_correct_rate": 0.7009,
+      "wrong_if_no_confirmation": 0.2991
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.3527,
+      "correct_ci95": [
+        0.2931,
+        0.4173
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.5938,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.4866,
+      "correct_ci95": [
+        0.4219,
+        0.5517
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4643,
+      "mean_questions": 1.112,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.112,
+      "top_guess_correct_rate": 0.7054,
+      "wrong_if_no_confirmation": 0.2946
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.4732,
+      "correct_ci95": [
+        0.4088,
+        0.5385
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4777,
+      "mean_questions": 1.763,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.763,
+      "top_guess_correct_rate": 0.7143,
+      "wrong_if_no_confirmation": 0.2857
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.4732,
+      "correct_ci95": [
+        0.4088,
+        0.5385
+      ],
+      "wrong_record_rate": 0.0446,
+      "wrong_record_ci95": [
+        0.0244,
+        0.0802
+      ],
+      "unresolved_rate": 0.4821,
+      "mean_questions": 1.723,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.723,
+      "top_guess_correct_rate": 0.7098,
+      "wrong_if_no_confirmation": 0.2902
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.3527,
+      "correct_ci95": [
+        0.2931,
+        0.4173
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.5938,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.558,
+      "correct_ci95": [
+        0.4926,
+        0.6216
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.3929,
+      "mean_questions": 0.0,
+      "mean_records_shown": 3.558,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.4911,
+      "correct_ci95": [
+        0.4263,
+        0.5561
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4598,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.683,
+      "wrong_if_no_confirmation": 0.317
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.4866,
+      "correct_ci95": [
+        0.4219,
+        0.5517
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4643,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.6429,
+      "wrong_if_no_confirmation": 0.3571
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.4911,
+      "correct_ci95": [
+        0.4263,
+        0.5561
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4598,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.683,
+      "wrong_if_no_confirmation": 0.317
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.3527,
+      "correct_ci95": [
+        0.2931,
+        0.4173
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.5938,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.4911,
+      "correct_ci95": [
+        0.4263,
+        0.5561
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4598,
+      "mean_questions": 1.036,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.036,
+      "top_guess_correct_rate": 0.683,
+      "wrong_if_no_confirmation": 0.317
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.4911,
+      "correct_ci95": [
+        0.4263,
+        0.5561
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4598,
+      "mean_questions": 1.089,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.089,
+      "top_guess_correct_rate": 0.6652,
+      "wrong_if_no_confirmation": 0.3348
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.4911,
+      "correct_ci95": [
+        0.4263,
+        0.5561
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4598,
+      "mean_questions": 1.036,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.036,
+      "top_guess_correct_rate": 0.683,
+      "wrong_if_no_confirmation": 0.317
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.3527,
+      "correct_ci95": [
+        0.2931,
+        0.4173
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.5938,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.4911,
+      "correct_ci95": [
+        0.4263,
+        0.5561
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4598,
+      "mean_questions": 1.036,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.036,
+      "top_guess_correct_rate": 0.683,
+      "wrong_if_no_confirmation": 0.317
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.4911,
+      "correct_ci95": [
+        0.4263,
+        0.5561
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4598,
+      "mean_questions": 1.089,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.089,
+      "top_guess_correct_rate": 0.6652,
+      "wrong_if_no_confirmation": 0.3348
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.4911,
+      "correct_ci95": [
+        0.4263,
+        0.5561
+      ],
+      "wrong_record_rate": 0.0491,
+      "wrong_record_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "unresolved_rate": 0.4598,
+      "mean_questions": 1.036,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.036,
+      "top_guess_correct_rate": 0.683,
+      "wrong_if_no_confirmation": 0.317
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "overconfident",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.3527,
+      "correct_ci95": [
+        0.2931,
+        0.4173
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.5938,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.1384,
+      "correct_ci95": [
+        0.0992,
+        0.1897
+      ],
+      "wrong_record_rate": 0.183,
+      "wrong_record_ci95": [
+        0.1379,
+        0.2389
+      ],
+      "unresolved_rate": 0.6786,
+      "mean_questions": 0.0,
+      "mean_records_shown": 3.558,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.067,
+      "correct_ci95": [
+        0.041,
+        0.1075
+      ],
+      "wrong_record_rate": 0.1696,
+      "wrong_record_ci95": [
+        0.1262,
+        0.2243
+      ],
+      "unresolved_rate": 0.7634,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0893,
+      "correct_ci95": [
+        0.0585,
+        0.1339
+      ],
+      "wrong_record_rate": 0.1652,
+      "wrong_record_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "unresolved_rate": 0.7455,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.2812,
+      "wrong_if_no_confirmation": 0.7188
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.067,
+      "correct_ci95": [
+        0.041,
+        0.1075
+      ],
+      "wrong_record_rate": 0.1696,
+      "wrong_record_ci95": [
+        0.1262,
+        0.2243
+      ],
+      "unresolved_rate": 0.7634,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0491,
+      "correct_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "wrong_record_rate": 0.1741,
+      "wrong_record_ci95": [
+        0.1301,
+        0.2291
+      ],
+      "unresolved_rate": 0.7768,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.067,
+      "correct_ci95": [
+        0.041,
+        0.1075
+      ],
+      "wrong_record_rate": 0.1696,
+      "wrong_record_ci95": [
+        0.1262,
+        0.2243
+      ],
+      "unresolved_rate": 0.7634,
+      "mean_questions": 1.004,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.004,
+      "top_guess_correct_rate": 0.3482,
+      "wrong_if_no_confirmation": 0.6518
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0759,
+      "correct_ci95": [
+        0.0479,
+        0.1182
+      ],
+      "wrong_record_rate": 0.1607,
+      "wrong_record_ci95": [
+        0.1184,
+        0.2145
+      ],
+      "unresolved_rate": 0.7634,
+      "mean_questions": 1.549,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.549,
+      "top_guess_correct_rate": 0.3393,
+      "wrong_if_no_confirmation": 0.6607
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.0714,
+      "correct_ci95": [
+        0.0444,
+        0.1129
+      ],
+      "wrong_record_rate": 0.1607,
+      "wrong_record_ci95": [
+        0.1184,
+        0.2145
+      ],
+      "unresolved_rate": 0.7679,
+      "mean_questions": 1.549,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.549,
+      "top_guess_correct_rate": 0.3259,
+      "wrong_if_no_confirmation": 0.6741
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0491,
+      "correct_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "wrong_record_rate": 0.1741,
+      "wrong_record_ci95": [
+        0.1301,
+        0.2291
+      ],
+      "unresolved_rate": 0.7768,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.067,
+      "correct_ci95": [
+        0.041,
+        0.1075
+      ],
+      "wrong_record_rate": 0.1696,
+      "wrong_record_ci95": [
+        0.1262,
+        0.2243
+      ],
+      "unresolved_rate": 0.7634,
+      "mean_questions": 1.009,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.009,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.067,
+      "correct_ci95": [
+        0.041,
+        0.1075
+      ],
+      "wrong_record_rate": 0.1607,
+      "wrong_record_ci95": [
+        0.1184,
+        0.2145
+      ],
+      "unresolved_rate": 0.7723,
+      "mean_questions": 1.83,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.83,
+      "top_guess_correct_rate": 0.442,
+      "wrong_if_no_confirmation": 0.558
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.0625,
+      "correct_ci95": [
+        0.0376,
+        0.1022
+      ],
+      "wrong_record_rate": 0.1607,
+      "wrong_record_ci95": [
+        0.1184,
+        0.2145
+      ],
+      "unresolved_rate": 0.7768,
+      "mean_questions": 1.817,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.817,
+      "top_guess_correct_rate": 0.4375,
+      "wrong_if_no_confirmation": 0.5625
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0491,
+      "correct_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "wrong_record_rate": 0.1741,
+      "wrong_record_ci95": [
+        0.1301,
+        0.2291
+      ],
+      "unresolved_rate": 0.7768,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.7188,
+      "correct_ci95": [
+        0.6566,
+        0.7736
+      ],
+      "wrong_record_rate": 0.0625,
+      "wrong_record_ci95": [
+        0.0376,
+        0.1022
+      ],
+      "unresolved_rate": 0.2188,
+      "mean_questions": 0.0,
+      "mean_records_shown": 3.558,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.6429,
+      "correct_ci95": [
+        0.5782,
+        0.7027
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2991,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.7009,
+      "wrong_if_no_confirmation": 0.2991
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.6696,
+      "correct_ci95": [
+        0.6056,
+        0.7279
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2723,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.6696,
+      "wrong_if_no_confirmation": 0.3304
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.6429,
+      "correct_ci95": [
+        0.5782,
+        0.7027
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2991,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.7009,
+      "wrong_if_no_confirmation": 0.2991
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.4643,
+      "correct_ci95": [
+        0.4001,
+        0.5296
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.4777,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.6696,
+      "correct_ci95": [
+        0.6056,
+        0.7279
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2723,
+      "mean_questions": 1.112,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.112,
+      "top_guess_correct_rate": 0.7411,
+      "wrong_if_no_confirmation": 0.2589
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.6696,
+      "correct_ci95": [
+        0.6056,
+        0.7279
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2723,
+      "mean_questions": 1.549,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.549,
+      "top_guess_correct_rate": 0.7455,
+      "wrong_if_no_confirmation": 0.2545
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.6696,
+      "correct_ci95": [
+        0.6056,
+        0.7279
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2723,
+      "mean_questions": 1.549,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.549,
+      "top_guess_correct_rate": 0.7366,
+      "wrong_if_no_confirmation": 0.2634
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.4643,
+      "correct_ci95": [
+        0.4001,
+        0.5296
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.4777,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.6696,
+      "correct_ci95": [
+        0.6056,
+        0.7279
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2723,
+      "mean_questions": 1.116,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.116,
+      "top_guess_correct_rate": 0.7411,
+      "wrong_if_no_confirmation": 0.2589
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.6652,
+      "correct_ci95": [
+        0.6011,
+        0.7237
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2768,
+      "mean_questions": 1.763,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.763,
+      "top_guess_correct_rate": 0.75,
+      "wrong_if_no_confirmation": 0.25
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.6652,
+      "correct_ci95": [
+        0.6011,
+        0.7237
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2768,
+      "mean_questions": 1.723,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.723,
+      "top_guess_correct_rate": 0.7455,
+      "wrong_if_no_confirmation": 0.2545
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.4643,
+      "correct_ci95": [
+        0.4001,
+        0.5296
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.4777,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.7188,
+      "correct_ci95": [
+        0.6566,
+        0.7736
+      ],
+      "wrong_record_rate": 0.0625,
+      "wrong_record_ci95": [
+        0.0376,
+        0.1022
+      ],
+      "unresolved_rate": 0.2188,
+      "mean_questions": 0.0,
+      "mean_records_shown": 3.558,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.6652,
+      "correct_ci95": [
+        0.6011,
+        0.7237
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2768,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.7188,
+      "wrong_if_no_confirmation": 0.2812
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.6696,
+      "correct_ci95": [
+        0.6056,
+        0.7279
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2723,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.6696,
+      "wrong_if_no_confirmation": 0.3304
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.6652,
+      "correct_ci95": [
+        0.6011,
+        0.7237
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2768,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.7188,
+      "wrong_if_no_confirmation": 0.2812
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.4643,
+      "correct_ci95": [
+        0.4001,
+        0.5296
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.4777,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.6652,
+      "correct_ci95": [
+        0.6011,
+        0.7237
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2768,
+      "mean_questions": 1.036,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.036,
+      "top_guess_correct_rate": 0.7188,
+      "wrong_if_no_confirmation": 0.2812
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.6741,
+      "correct_ci95": [
+        0.6102,
+        0.7321
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2679,
+      "mean_questions": 1.094,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.094,
+      "top_guess_correct_rate": 0.7009,
+      "wrong_if_no_confirmation": 0.2991
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.6652,
+      "correct_ci95": [
+        0.6011,
+        0.7237
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2768,
+      "mean_questions": 1.036,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.036,
+      "top_guess_correct_rate": 0.7188,
+      "wrong_if_no_confirmation": 0.2812
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.4643,
+      "correct_ci95": [
+        0.4001,
+        0.5296
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.4777,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.6652,
+      "correct_ci95": [
+        0.6011,
+        0.7237
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2768,
+      "mean_questions": 1.04,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.04,
+      "top_guess_correct_rate": 0.7188,
+      "wrong_if_no_confirmation": 0.2812
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.6741,
+      "correct_ci95": [
+        0.6102,
+        0.7321
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2679,
+      "mean_questions": 1.098,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.098,
+      "top_guess_correct_rate": 0.7009,
+      "wrong_if_no_confirmation": 0.2991
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.6652,
+      "correct_ci95": [
+        0.6011,
+        0.7237
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.2768,
+      "mean_questions": 1.04,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.04,
+      "top_guess_correct_rate": 0.7188,
+      "wrong_if_no_confirmation": 0.2812
+    },
+    {
+      "bench": "ambiguity",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "overconfident",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.4643,
+      "correct_ci95": [
+        0.4001,
+        0.5296
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.4777,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.3438,
+      "wrong_if_no_confirmation": 0.6562
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.2679,
+      "correct_ci95": [
+        0.2141,
+        0.3294
+      ],
+      "wrong_record_rate": 0.0446,
+      "wrong_record_ci95": [
+        0.0244,
+        0.0802
+      ],
+      "unresolved_rate": 0.6875,
+      "mean_questions": 0.0,
+      "mean_records_shown": 8.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.0982,
+      "correct_ci95": [
+        0.0658,
+        0.1442
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.5804,
+      "wrong_if_no_confirmation": 0.4196
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0491,
+      "correct_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "wrong_record_rate": 0.0446,
+      "wrong_record_ci95": [
+        0.0244,
+        0.0802
+      ],
+      "unresolved_rate": 0.9062,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.1518,
+      "wrong_if_no_confirmation": 0.8482
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.1071,
+      "correct_ci95": [
+        0.0731,
+        0.1545
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.8393,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.558,
+      "wrong_if_no_confirmation": 0.442
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0491,
+      "correct_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "wrong_record_rate": 0.0625,
+      "wrong_record_ci95": [
+        0.0376,
+        0.1022
+      ],
+      "unresolved_rate": 0.8884,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.1116,
+      "correct_ci95": [
+        0.0767,
+        0.1596
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.8348,
+      "mean_questions": 1.156,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.156,
+      "top_guess_correct_rate": 0.5759,
+      "wrong_if_no_confirmation": 0.4241
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0893,
+      "correct_ci95": [
+        0.0585,
+        0.1339
+      ],
+      "wrong_record_rate": 0.0402,
+      "wrong_record_ci95": [
+        0.0213,
+        0.0746
+      ],
+      "unresolved_rate": 0.8705,
+      "mean_questions": 1.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.951,
+      "top_guess_correct_rate": 0.558,
+      "wrong_if_no_confirmation": 0.442
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.1205,
+      "correct_ci95": [
+        0.0842,
+        0.1697
+      ],
+      "wrong_record_rate": 0.0402,
+      "wrong_record_ci95": [
+        0.0213,
+        0.0746
+      ],
+      "unresolved_rate": 0.8393,
+      "mean_questions": 1.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.951,
+      "top_guess_correct_rate": 0.5848,
+      "wrong_if_no_confirmation": 0.4152
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0491,
+      "correct_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "wrong_record_rate": 0.0625,
+      "wrong_record_ci95": [
+        0.0376,
+        0.1022
+      ],
+      "unresolved_rate": 0.8884,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.1027,
+      "correct_ci95": [
+        0.0694,
+        0.1494
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.8438,
+      "mean_questions": 1.237,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.237,
+      "top_guess_correct_rate": 0.6205,
+      "wrong_if_no_confirmation": 0.3795
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.1071,
+      "correct_ci95": [
+        0.0731,
+        0.1545
+      ],
+      "wrong_record_rate": 0.0446,
+      "wrong_record_ci95": [
+        0.0244,
+        0.0802
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 2.379,
+      "mean_records_shown": 2.0,
+      "mean_turns": 3.379,
+      "top_guess_correct_rate": 0.5714,
+      "wrong_if_no_confirmation": 0.4286
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.1071,
+      "correct_ci95": [
+        0.0731,
+        0.1545
+      ],
+      "wrong_record_rate": 0.0446,
+      "wrong_record_ci95": [
+        0.0244,
+        0.0802
+      ],
+      "unresolved_rate": 0.8482,
+      "mean_questions": 2.179,
+      "mean_records_shown": 2.0,
+      "mean_turns": 3.179,
+      "top_guess_correct_rate": 0.6875,
+      "wrong_if_no_confirmation": 0.3125
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0491,
+      "correct_ci95": [
+        0.0276,
+        0.0858
+      ],
+      "wrong_record_rate": 0.0625,
+      "wrong_record_ci95": [
+        0.0376,
+        0.1022
+      ],
+      "unresolved_rate": 0.8884,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.6027,
+      "correct_ci95": [
+        0.5374,
+        0.6645
+      ],
+      "wrong_record_rate": 0.0179,
+      "wrong_record_ci95": [
+        0.007,
+        0.045
+      ],
+      "unresolved_rate": 0.3795,
+      "mean_questions": 0.0,
+      "mean_records_shown": 8.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.4688,
+      "correct_ci95": [
+        0.4045,
+        0.5341
+      ],
+      "wrong_record_rate": 0.0223,
+      "wrong_record_ci95": [
+        0.0096,
+        0.0512
+      ],
+      "unresolved_rate": 0.5089,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.692,
+      "wrong_if_no_confirmation": 0.308
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.2411,
+      "correct_ci95": [
+        0.1897,
+        0.3011
+      ],
+      "wrong_record_rate": 0.0223,
+      "wrong_record_ci95": [
+        0.0096,
+        0.0512
+      ],
+      "unresolved_rate": 0.7366,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.1875,
+      "wrong_if_no_confirmation": 0.8125
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.4375,
+      "correct_ci95": [
+        0.3741,
+        0.503
+      ],
+      "wrong_record_rate": 0.0223,
+      "wrong_record_ci95": [
+        0.0096,
+        0.0512
+      ],
+      "unresolved_rate": 0.5402,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.6473,
+      "wrong_if_no_confirmation": 0.3527
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1741,
+      "correct_ci95": [
+        0.1301,
+        0.2291
+      ],
+      "wrong_record_rate": 0.0312,
+      "wrong_record_ci95": [
+        0.0152,
+        0.0631
+      ],
+      "unresolved_rate": 0.7946,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.4866,
+      "correct_ci95": [
+        0.4219,
+        0.5517
+      ],
+      "wrong_record_rate": 0.0223,
+      "wrong_record_ci95": [
+        0.0096,
+        0.0512
+      ],
+      "unresolved_rate": 0.4911,
+      "mean_questions": 1.362,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.362,
+      "top_guess_correct_rate": 0.7366,
+      "wrong_if_no_confirmation": 0.2634
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.4777,
+      "correct_ci95": [
+        0.4132,
+        0.5429
+      ],
+      "wrong_record_rate": 0.0179,
+      "wrong_record_ci95": [
+        0.007,
+        0.045
+      ],
+      "unresolved_rate": 0.5045,
+      "mean_questions": 1.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.951,
+      "top_guess_correct_rate": 0.7188,
+      "wrong_if_no_confirmation": 0.2812
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.4643,
+      "correct_ci95": [
+        0.4001,
+        0.5296
+      ],
+      "wrong_record_rate": 0.0179,
+      "wrong_record_ci95": [
+        0.007,
+        0.045
+      ],
+      "unresolved_rate": 0.5179,
+      "mean_questions": 1.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.951,
+      "top_guess_correct_rate": 0.7277,
+      "wrong_if_no_confirmation": 0.2723
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1741,
+      "correct_ci95": [
+        0.1301,
+        0.2291
+      ],
+      "wrong_record_rate": 0.0312,
+      "wrong_record_ci95": [
+        0.0152,
+        0.0631
+      ],
+      "unresolved_rate": 0.7946,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.4866,
+      "correct_ci95": [
+        0.4219,
+        0.5517
+      ],
+      "wrong_record_rate": 0.0223,
+      "wrong_record_ci95": [
+        0.0096,
+        0.0512
+      ],
+      "unresolved_rate": 0.4911,
+      "mean_questions": 1.384,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.384,
+      "top_guess_correct_rate": 0.7455,
+      "wrong_if_no_confirmation": 0.2545
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.4688,
+      "correct_ci95": [
+        0.4045,
+        0.5341
+      ],
+      "wrong_record_rate": 0.0223,
+      "wrong_record_ci95": [
+        0.0096,
+        0.0512
+      ],
+      "unresolved_rate": 0.5089,
+      "mean_questions": 2.379,
+      "mean_records_shown": 2.0,
+      "mean_turns": 3.379,
+      "top_guess_correct_rate": 0.7277,
+      "wrong_if_no_confirmation": 0.2723
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.4643,
+      "correct_ci95": [
+        0.4001,
+        0.5296
+      ],
+      "wrong_record_rate": 0.0223,
+      "wrong_record_ci95": [
+        0.0096,
+        0.0512
+      ],
+      "unresolved_rate": 0.5134,
+      "mean_questions": 2.161,
+      "mean_records_shown": 2.0,
+      "mean_turns": 3.161,
+      "top_guess_correct_rate": 0.7545,
+      "wrong_if_no_confirmation": 0.2455
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1741,
+      "correct_ci95": [
+        0.1301,
+        0.2291
+      ],
+      "wrong_record_rate": 0.0312,
+      "wrong_record_ci95": [
+        0.0152,
+        0.0631
+      ],
+      "unresolved_rate": 0.7946,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.4643,
+      "correct_ci95": [
+        0.4001,
+        0.5296
+      ],
+      "wrong_record_rate": 0.0759,
+      "wrong_record_ci95": [
+        0.0479,
+        0.1182
+      ],
+      "unresolved_rate": 0.4598,
+      "mean_questions": 0.0,
+      "mean_records_shown": 8.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.1562,
+      "correct_ci95": [
+        0.1145,
+        0.2095
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.7857,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.5804,
+      "wrong_if_no_confirmation": 0.4196
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.0357,
+      "correct_ci95": [
+        0.0182,
+        0.0689
+      ],
+      "wrong_record_rate": 0.0714,
+      "wrong_record_ci95": [
+        0.0444,
+        0.1129
+      ],
+      "unresolved_rate": 0.8929,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.1518,
+      "wrong_if_no_confirmation": 0.8482
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.1652,
+      "correct_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.7768,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.558,
+      "wrong_if_no_confirmation": 0.442
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0625,
+      "correct_ci95": [
+        0.0376,
+        0.1022
+      ],
+      "wrong_record_rate": 0.0804,
+      "wrong_record_ci95": [
+        0.0514,
+        0.1234
+      ],
+      "unresolved_rate": 0.8571,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.1652,
+      "correct_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.7768,
+      "mean_questions": 1.156,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.156,
+      "top_guess_correct_rate": 0.5759,
+      "wrong_if_no_confirmation": 0.4241
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.1607,
+      "correct_ci95": [
+        0.1184,
+        0.2145
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.7812,
+      "mean_questions": 1.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.951,
+      "top_guess_correct_rate": 0.5625,
+      "wrong_if_no_confirmation": 0.4375
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.1652,
+      "correct_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.7768,
+      "mean_questions": 1.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.951,
+      "top_guess_correct_rate": 0.5848,
+      "wrong_if_no_confirmation": 0.4152
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0625,
+      "correct_ci95": [
+        0.0376,
+        0.1022
+      ],
+      "wrong_record_rate": 0.0804,
+      "wrong_record_ci95": [
+        0.0514,
+        0.1234
+      ],
+      "unresolved_rate": 0.8571,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.1607,
+      "correct_ci95": [
+        0.1184,
+        0.2145
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.7812,
+      "mean_questions": 1.241,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.241,
+      "top_guess_correct_rate": 0.6205,
+      "wrong_if_no_confirmation": 0.3795
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.1652,
+      "correct_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.7768,
+      "mean_questions": 2.379,
+      "mean_records_shown": 2.0,
+      "mean_turns": 3.379,
+      "top_guess_correct_rate": 0.5714,
+      "wrong_if_no_confirmation": 0.4286
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.1607,
+      "correct_ci95": [
+        0.1184,
+        0.2145
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.7812,
+      "mean_questions": 2.174,
+      "mean_records_shown": 2.0,
+      "mean_turns": 3.174,
+      "top_guess_correct_rate": 0.6875,
+      "wrong_if_no_confirmation": 0.3125
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "all_misremember",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.0625,
+      "correct_ci95": [
+        0.0376,
+        0.1022
+      ],
+      "wrong_record_rate": 0.0804,
+      "wrong_record_ci95": [
+        0.0514,
+        0.1234
+      ],
+      "unresolved_rate": 0.8571,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.8125,
+      "correct_ci95": [
+        0.7563,
+        0.8582
+      ],
+      "wrong_record_rate": 0.0357,
+      "wrong_record_ci95": [
+        0.0182,
+        0.0689
+      ],
+      "unresolved_rate": 0.1518,
+      "mean_questions": 0.0,
+      "mean_records_shown": 8.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.625,
+      "correct_ci95": [
+        0.56,
+        0.6858
+      ],
+      "wrong_record_rate": 0.0402,
+      "wrong_record_ci95": [
+        0.0213,
+        0.0746
+      ],
+      "unresolved_rate": 0.3348,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.7411,
+      "wrong_if_no_confirmation": 0.2589
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.3036,
+      "correct_ci95": [
+        0.2471,
+        0.3667
+      ],
+      "wrong_record_rate": 0.058,
+      "wrong_record_ci95": [
+        0.0342,
+        0.0967
+      ],
+      "unresolved_rate": 0.6384,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.192,
+      "wrong_if_no_confirmation": 0.808
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.5893,
+      "correct_ci95": [
+        0.5239,
+        0.6517
+      ],
+      "wrong_record_rate": 0.0402,
+      "wrong_record_ci95": [
+        0.0213,
+        0.0746
+      ],
+      "unresolved_rate": 0.3705,
+      "mean_questions": 1.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.0,
+      "top_guess_correct_rate": 0.6964,
+      "wrong_if_no_confirmation": 0.3036
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.2143,
+      "correct_ci95": [
+        0.1656,
+        0.2726
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.7321,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.6607,
+      "correct_ci95": [
+        0.5965,
+        0.7195
+      ],
+      "wrong_record_rate": 0.0402,
+      "wrong_record_ci95": [
+        0.0213,
+        0.0746
+      ],
+      "unresolved_rate": 0.2991,
+      "mean_questions": 1.312,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.312,
+      "top_guess_correct_rate": 0.7857,
+      "wrong_if_no_confirmation": 0.2143
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.6562,
+      "correct_ci95": [
+        0.5919,
+        0.7153
+      ],
+      "wrong_record_rate": 0.0402,
+      "wrong_record_ci95": [
+        0.0213,
+        0.0746
+      ],
+      "unresolved_rate": 0.3036,
+      "mean_questions": 1.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.951,
+      "top_guess_correct_rate": 0.7723,
+      "wrong_if_no_confirmation": 0.2277
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.6562,
+      "correct_ci95": [
+        0.5919,
+        0.7153
+      ],
+      "wrong_record_rate": 0.0402,
+      "wrong_record_ci95": [
+        0.0213,
+        0.0746
+      ],
+      "unresolved_rate": 0.3036,
+      "mean_questions": 1.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.951,
+      "top_guess_correct_rate": 0.7768,
+      "wrong_if_no_confirmation": 0.2232
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.2143,
+      "correct_ci95": [
+        0.1656,
+        0.2726
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.7321,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.6607,
+      "correct_ci95": [
+        0.5965,
+        0.7195
+      ],
+      "wrong_record_rate": 0.0402,
+      "wrong_record_ci95": [
+        0.0213,
+        0.0746
+      ],
+      "unresolved_rate": 0.2991,
+      "mean_questions": 1.335,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.335,
+      "top_guess_correct_rate": 0.7946,
+      "wrong_if_no_confirmation": 0.2054
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.6607,
+      "correct_ci95": [
+        0.5965,
+        0.7195
+      ],
+      "wrong_record_rate": 0.0402,
+      "wrong_record_ci95": [
+        0.0213,
+        0.0746
+      ],
+      "unresolved_rate": 0.2991,
+      "mean_questions": 2.379,
+      "mean_records_shown": 2.0,
+      "mean_turns": 3.379,
+      "top_guess_correct_rate": 0.7768,
+      "wrong_if_no_confirmation": 0.2232
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.6562,
+      "correct_ci95": [
+        0.5919,
+        0.7153
+      ],
+      "wrong_record_rate": 0.0402,
+      "wrong_record_ci95": [
+        0.0213,
+        0.0746
+      ],
+      "unresolved_rate": 0.3036,
+      "mean_questions": 2.147,
+      "mean_records_shown": 2.0,
+      "mean_turns": 3.147,
+      "top_guess_correct_rate": 0.8036,
+      "wrong_if_no_confirmation": 0.1964
+    },
+    {
+      "bench": "ambiguity-8",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 3,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.2143,
+      "correct_ci95": [
+        0.1656,
+        0.2726
+      ],
+      "wrong_record_rate": 0.0536,
+      "wrong_record_ci95": [
+        0.0309,
+        0.0913
+      ],
+      "unresolved_rate": 0.7321,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.3527,
+      "correct_ci95": [
+        0.2931,
+        0.4173
+      ],
+      "wrong_record_rate": 0.067,
+      "wrong_record_ci95": [
+        0.041,
+        0.1075
+      ],
+      "unresolved_rate": 0.5804,
+      "mean_questions": 0.0,
+      "mean_records_shown": 8.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.2991,
+      "correct_ci95": [
+        0.2429,
+        0.362
+      ],
+      "wrong_record_rate": 0.0759,
+      "wrong_record_ci95": [
+        0.0479,
+        0.1182
+      ],
+      "unresolved_rate": 0.625,
+      "mean_questions": 0.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.951,
+      "top_guess_correct_rate": 0.4554,
+      "wrong_if_no_confirmation": 0.5446
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.1384,
+      "correct_ci95": [
+        0.0992,
+        0.1897
+      ],
+      "wrong_record_rate": 0.0804,
+      "wrong_record_ci95": [
+        0.0514,
+        0.1234
+      ],
+      "unresolved_rate": 0.7812,
+      "mean_questions": 0.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.951,
+      "top_guess_correct_rate": 0.1607,
+      "wrong_if_no_confirmation": 0.8393
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.2768,
+      "correct_ci95": [
+        0.2223,
+        0.3388
+      ],
+      "wrong_record_rate": 0.0759,
+      "wrong_record_ci95": [
+        0.0479,
+        0.1182
+      ],
+      "unresolved_rate": 0.6473,
+      "mean_questions": 0.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.951,
+      "top_guess_correct_rate": 0.3929,
+      "wrong_if_no_confirmation": 0.6071
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1205,
+      "correct_ci95": [
+        0.0842,
+        0.1697
+      ],
+      "wrong_record_rate": 0.1473,
+      "wrong_record_ci95": [
+        0.1069,
+        0.1997
+      ],
+      "unresolved_rate": 0.7321,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.3304,
+      "correct_ci95": [
+        0.2721,
+        0.3944
+      ],
+      "wrong_record_rate": 0.0804,
+      "wrong_record_ci95": [
+        0.0514,
+        0.1234
+      ],
+      "unresolved_rate": 0.5893,
+      "mean_questions": 1.156,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.156,
+      "top_guess_correct_rate": 0.4732,
+      "wrong_if_no_confirmation": 0.5268
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.308,
+      "correct_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "wrong_record_rate": 0.0804,
+      "wrong_record_ci95": [
+        0.0514,
+        0.1234
+      ],
+      "unresolved_rate": 0.6116,
+      "mean_questions": 1.379,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.379,
+      "top_guess_correct_rate": 0.4911,
+      "wrong_if_no_confirmation": 0.5089
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.3348,
+      "correct_ci95": [
+        0.2763,
+        0.3989
+      ],
+      "wrong_record_rate": 0.0804,
+      "wrong_record_ci95": [
+        0.0514,
+        0.1234
+      ],
+      "unresolved_rate": 0.5848,
+      "mean_questions": 1.379,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.379,
+      "top_guess_correct_rate": 0.4598,
+      "wrong_if_no_confirmation": 0.5402
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1205,
+      "correct_ci95": [
+        0.0842,
+        0.1697
+      ],
+      "wrong_record_rate": 0.1473,
+      "wrong_record_ci95": [
+        0.1069,
+        0.1997
+      ],
+      "unresolved_rate": 0.7321,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.4955,
+      "correct_ci95": [
+        0.4307,
+        0.5605
+      ],
+      "wrong_record_rate": 0.317,
+      "wrong_record_ci95": [
+        0.2596,
+        0.3805
+      ],
+      "unresolved_rate": 0.1875,
+      "mean_questions": 0.0,
+      "mean_records_shown": 8.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.433,
+      "correct_ci95": [
+        0.3698,
+        0.4985
+      ],
+      "wrong_record_rate": 0.308,
+      "wrong_record_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "unresolved_rate": 0.2589,
+      "mean_questions": 0.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.951,
+      "top_guess_correct_rate": 0.4554,
+      "wrong_if_no_confirmation": 0.5446
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.2188,
+      "correct_ci95": [
+        0.1696,
+        0.2774
+      ],
+      "wrong_record_rate": 0.308,
+      "wrong_record_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "unresolved_rate": 0.4732,
+      "mean_questions": 0.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.951,
+      "top_guess_correct_rate": 0.1607,
+      "wrong_if_no_confirmation": 0.8393
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.3929,
+      "correct_ci95": [
+        0.3312,
+        0.4581
+      ],
+      "wrong_record_rate": 0.308,
+      "wrong_record_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "unresolved_rate": 0.2991,
+      "mean_questions": 0.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.951,
+      "top_guess_correct_rate": 0.3929,
+      "wrong_if_no_confirmation": 0.6071
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1652,
+      "correct_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "wrong_record_rate": 0.2902,
+      "wrong_record_ci95": [
+        0.2347,
+        0.3528
+      ],
+      "unresolved_rate": 0.5446,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.4688,
+      "correct_ci95": [
+        0.4045,
+        0.5341
+      ],
+      "wrong_record_rate": 0.308,
+      "wrong_record_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "unresolved_rate": 0.2232,
+      "mean_questions": 1.156,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.156,
+      "top_guess_correct_rate": 0.4732,
+      "wrong_if_no_confirmation": 0.5268
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.4688,
+      "correct_ci95": [
+        0.4045,
+        0.5341
+      ],
+      "wrong_record_rate": 0.308,
+      "wrong_record_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "unresolved_rate": 0.2232,
+      "mean_questions": 1.379,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.379,
+      "top_guess_correct_rate": 0.4955,
+      "wrong_if_no_confirmation": 0.5045
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.4732,
+      "correct_ci95": [
+        0.4088,
+        0.5385
+      ],
+      "wrong_record_rate": 0.308,
+      "wrong_record_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "unresolved_rate": 0.2188,
+      "mean_questions": 1.379,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.379,
+      "top_guess_correct_rate": 0.4598,
+      "wrong_if_no_confirmation": 0.5402
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1652,
+      "correct_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "wrong_record_rate": 0.2902,
+      "wrong_record_ci95": [
+        0.2347,
+        0.3528
+      ],
+      "unresolved_rate": 0.5446,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    }
+  ]
+}

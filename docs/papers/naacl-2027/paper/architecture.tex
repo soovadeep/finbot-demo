@@ -1,0 +1,61 @@
+% Original vector diagram; no external image or font asset is required.
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  box/.style={draw=black!55, rounded corners=3pt, align=center, font=\small,
+              minimum height=11mm, text width=26mm, fill=white, line width=0.6pt},
+  cbox/.style={box, fill=green!7, draw=green!45!black},
+  vbox/.style={box, fill=blue!6, draw=blue!50!black},
+  kbox/.style={box, fill=orange!8, draw=orange!60!black},
+  end/.style={box, fill=black!4},
+  bad/.style={box, fill=red!6, draw=red!50!black},
+  lab/.style={font=\scriptsize, inner sep=1.5pt, fill=white},
+  arr/.style={-{Stealth[length=2.2mm]}, line width=0.7pt, black!70},
+  obs/.style={-{Stealth[length=1.8mm]}, dashed, line width=0.5pt, black!45},
+  lane/.style={rounded corners=6pt, line width=0.4pt}]
+% Columns (cm): 0, 4.6, 9.2, 13.8, 18.4. Rows: clarify 0; verify -3.4 and -5.4.
+% ---- Clarify lane
+\node[end]  (msg)    at (0,0)    {Customer message\\(no reference)};
+\node[cbox] (belief) at (4.6,0)  {Belief over the\\customer's records};
+\node[cbox] (ask)    at (9.2,0)  {Ask the question\\with highest DV};
+\node[kbox] (list)   at (13.8,0) {Short list; customer\\picks one or none};
+\draw[arr] (msg) -- (belief);
+\draw[arr] ([yshift=2mm]belief.east) -- node[lab, above=1.5mm]{at most 2} ([yshift=2mm]ask.west);
+\draw[arr] ([yshift=-2mm]ask.west) -- node[lab, below=1.5mm]{reply: Bayes update} ([yshift=-2mm]belief.east);
+\draw[arr] (ask) -- node[lab, above]{stop} (list);
+% ---- Verify lane
+\node[vbox] (fetch)  at (0,-3.4)    {Fetch the record again\\(tenant-scoped)};
+\node[vbox] (draft)  at (4.6,-3.4)  {Model drafts\\the answer};
+\node[vbox] (check)  at (9.2,-3.4)  {Deterministic\\checks vs.\ record};
+\node[end]  (answer) at (13.8,-3.4) {Answer shown};
+\node[box, fill=blue!3] (repair) at (4.6,-5.4) {One repair,\\given the reasons};
+\node[box, fill=blue!3] (build)  at (9.2,-5.4) {Answer built\\from the record};
+\node[bad] (refuse) at (13.8,-5.4) {Refuse\\(``I won't guess'')};
+\draw[arr] (list.south) -- (13.8,-1.7) -- node[lab, above, pos=0.5]{confirmed record ID only} (0,-1.7) -- (fetch.north);
+\draw[arr] (fetch) -- (draft);
+\draw[arr] ([yshift=2mm]draft.east) -- node[lab, above]{draft} ([yshift=2mm]check.west);
+\draw[arr] ([yshift=-2mm]check.west) -- node[lab, below, pos=0.35]{fail} ++(-8mm,0) |- (repair.east);
+\draw[arr] (repair.north) -- (draft.south);
+\draw[arr] (check) -- node[lab, above]{pass} (answer);
+\draw[arr] (check.south) -- node[lab, right]{repair fails too} (build.north);
+\draw[arr] (build.east) -- node[lab, above]{fails} (refuse.west);
+\draw[arr] (build.north east) -- node[lab, sloped, above]{passes} (answer.south west);
+% ---- Inspector
+\node[draw=black!45, dashed, rounded corners=3pt, font=\small, align=center, text width=24mm,
+      minimum height=30mm, fill=yellow!7] (insp) at (18.4,-1.7)
+  {\textbf{Inspector}\\observes all three steps: beliefs, question scores, the confirmed record, drafts, check results};
+\draw[obs] (ask.north) -- ++(0,1.15) -| ([xshift=-4mm]insp.north);
+\draw[obs] (list.east) -- (insp.north west);
+\draw[obs] (answer.east) -- (insp.south west);
+% ---- Lanes
+\begin{scope}[on background layer]
+  \node[lane, fill=green!2, draw=green!35!black!45, fit=(msg)(belief)(ask), inner xsep=5mm,
+        inner ysep=6mm] (cl) {};
+  \node[font=\footnotesize\bfseries, text=green!35!black, anchor=north west] at (cl.north west) {1 Clarify};
+  \node[lane, fill=orange!3, draw=orange!50!black!45, fit=(list), inner xsep=5mm, inner ysep=6mm] (co) {};
+  \node[font=\footnotesize\bfseries, text=orange!50!black, anchor=north west] at (co.north west) {2 Confirm};
+  \node[lane, fill=blue!2, draw=blue!35!black!45, fit=(fetch)(draft)(check)(answer)(repair)(build)(refuse),
+        inner xsep=5mm, inner ysep=6mm] (ve) {};
+  \node[font=\footnotesize\bfseries, text=blue!40!black, anchor=north west] at (ve.north west) {3 Verify};
+\end{scope}
+\end{tikzpicture}%
+}
