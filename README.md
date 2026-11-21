@@ -6,7 +6,8 @@ Apurba Bose, Aishwarya Bose and Soovadeep Bakshi.
 
 **Quickest way to review:** open the hosted demo at <https://finbot-demo-20852907589.us-central1.run.app/>.
 Nothing to install. The [reviewer walkthrough](docs/papers/naacl-2027/reviewer-guide.md) lists
-every scenario and what to look for.
+every scenario and what to look for. The 2.5-minute demo video is
+[docs/papers/naacl-2027/video/finbot-naacl2027-demo.mp4](docs/papers/naacl-2027/video/finbot-naacl2027-demo.mp4).
 
 Customers rarely quote a transaction ID, and "my $200 payment hasn't arrived" can match several
 payments. Finbot does two things in one conversation:
