@@ -1,0 +1,344 @@
+{
+  "scenario": {
+    "id": "refusal",
+    "title": "When recovery is unavailable",
+    "fault": "amount_always",
+    "question": "What are the surcharge rules?",
+    "description": "Repair fails on a policy answer. With no transaction record to summarize, the turn is refused."
+  },
+  "trace": {
+    "schema_version": 2,
+    "mode": "offline_scripted",
+    "synthetic_data": true,
+    "question": "What are the surcharge rules?",
+    "policy_verification": "extractive",
+    "fault": "amount_always",
+    "injections": [
+      {
+        "stage": "draft",
+        "fault": "amount_always",
+        "marker": "12.34"
+      },
+      {
+        "stage": "repair",
+        "fault": "amount_always",
+        "marker": "12.34"
+      }
+    ],
+    "outcome": "blocked",
+    "steps": [
+      {
+        "stage": "draft",
+        "attempt": 0,
+        "answer": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (source: https://wiki.example.com/surcharge) A processing fee of 12.34 was also charged.",
+        "action": "block",
+        "reasons": [
+          "ungrounded_amount:12.34",
+          "policy_unsupported:statement_3"
+        ],
+        "focus": null,
+        "evidence": [
+          {
+            "name": "search_knowledge_base",
+            "input": {
+              "query": "What are the surcharge rules?"
+            },
+            "result": {
+              "status": "found",
+              "source": "knowledge_base",
+              "data": [
+                {
+                  "chunk_id": "102:v5:0",
+                  "title": "Surcharging",
+                  "section": "Surcharging > Surcharge request",
+                  "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+                  "source_url": "https://wiki.example.com/surcharge",
+                  "version": 5,
+                  "updated": "2026-09-15",
+                  "score": 1.895
+                }
+              ]
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "search_knowledge_base",
+            "input": {
+              "query": "What are the surcharge rules?"
+            },
+            "result": {
+              "status": "found",
+              "source": "knowledge_base",
+              "data": [
+                {
+                  "chunk_id": "102:v5:0",
+                  "title": "Surcharging",
+                  "section": "Surcharging > Surcharge request",
+                  "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+                  "source_url": "https://wiki.example.com/surcharge",
+                  "version": 5,
+                  "updated": "2026-09-15",
+                  "score": 1.895
+                }
+              ]
+            }
+          }
+        ],
+        "checks": [
+          {
+            "id": 0,
+            "text": "Send surcharge_amount in minor units with the authorization request",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Send surcharge_amount in minor units with the authorization request",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 1,
+            "text": "Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "text": "Debit and prepaid cards cannot be surcharged",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Debit and prepaid cards cannot be surcharged",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "text": "A processing fee of 12.34 was also charged",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "unsupported",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "stage": "repair",
+        "attempt": 1,
+        "answer": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (source: https://wiki.example.com/surcharge) A processing fee of 12.34 was also charged.",
+        "action": "block",
+        "reasons": [
+          "ungrounded_amount:12.34",
+          "policy_unsupported:statement_3"
+        ],
+        "focus": null,
+        "evidence": [
+          {
+            "name": "search_knowledge_base",
+            "input": {
+              "query": "What are the surcharge rules?"
+            },
+            "result": {
+              "status": "found",
+              "source": "knowledge_base",
+              "data": [
+                {
+                  "chunk_id": "102:v5:0",
+                  "title": "Surcharging",
+                  "section": "Surcharging > Surcharge request",
+                  "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+                  "source_url": "https://wiki.example.com/surcharge",
+                  "version": 5,
+                  "updated": "2026-09-15",
+                  "score": 1.895
+                }
+              ]
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "search_knowledge_base",
+            "input": {
+              "query": "What are the surcharge rules?"
+            },
+            "result": {
+              "status": "found",
+              "source": "knowledge_base",
+              "data": [
+                {
+                  "chunk_id": "102:v5:0",
+                  "title": "Surcharging",
+                  "section": "Surcharging > Surcharge request",
+                  "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+                  "source_url": "https://wiki.example.com/surcharge",
+                  "version": 5,
+                  "updated": "2026-09-15",
+                  "score": 1.895
+                }
+              ]
+            }
+          }
+        ],
+        "checks": [
+          {
+            "id": 0,
+            "text": "Send surcharge_amount in minor units with the authorization request",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Send surcharge_amount in minor units with the authorization request",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 1,
+            "text": "Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "text": "Debit and prepaid cards cannot be surcharged",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Debit and prepaid cards cannot be surcharged",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "text": "A processing fee of 12.34 was also charged",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "unsupported",
+            "evidence": []
+          }
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "name": "search_knowledge_base",
+        "input": {
+          "query": "What are the surcharge rules?"
+        },
+        "result": {
+          "status": "found",
+          "source": "knowledge_base",
+          "data": [
+            {
+              "chunk_id": "102:v5:0",
+              "title": "Surcharging",
+              "section": "Surcharging > Surcharge request",
+              "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+              "source_url": "https://wiki.example.com/surcharge",
+              "version": 5,
+              "updated": "2026-09-15",
+              "score": 1.895
+            }
+          ]
+        }
+      },
+      {
+        "name": "search_knowledge_base",
+        "input": {
+          "query": "What are the surcharge rules?"
+        },
+        "result": {
+          "status": "found",
+          "source": "knowledge_base",
+          "data": [
+            {
+              "chunk_id": "102:v5:0",
+              "title": "Surcharging",
+              "section": "Surcharging > Surcharge request",
+              "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+              "source_url": "https://wiki.example.com/surcharge",
+              "version": 5,
+              "updated": "2026-09-15",
+              "score": 1.895
+            }
+          ]
+        }
+      }
+    ],
+    "final": {
+      "answer": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+      "blocked_by": "evidence_guard",
+      "reasons": [
+        "ungrounded_amount:12.34",
+        "policy_unsupported:statement_3"
+      ],
+      "repaired": false,
+      "escalated": false
+    },
+    "metrics": {
+      "latency_ms": 1,
+      "model_calls": 4,
+      "tool_calls": 2
+    },
+    "limits": "Scripted model and synthetic fixtures. Passing these checks is not a proof of factuality. No live-model accuracy, latency or cost has been measured."
+  }
+}

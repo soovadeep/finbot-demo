@@ -1,0 +1,25 @@
+{
+  "status": "materials only; no participant responses",
+  "seed": 20261119,
+  "human_participants": 0,
+  "assignment_slots": 16,
+  "tasks_per_slot": 8,
+  "sha256": {
+    "assignments.csv": "c8951190b529a821e74366911c8f27e816ae05b4d92a1a63e9010064a2e417c9",
+    "facilitator-policy-key.json": "2e165d80bf08291c458c24f7236120bf496389baae9341e50004a852ee76df61",
+    "policy-annotation.csv": "3e6210bfee2b93e5ae091191dc44cd4e5c31a704a06846eb40209a2043b9ae7e",
+    "responses-template.csv": "ce3f5b4bbdf13fad0b3a82c788bd40117b1265f1fcf8f8dae9e4837c78fbe2d5",
+    "task-prompts.json": "b9869e6af36e256e12d1cbbc39955b599a8a9869112cf2ccf9617642f16e076a",
+    "trace-binding.json": "1007e387997aa66a692b28f5294140357d8ec65af04c433b1f4a2541f6414183",
+    "trace-correct.json": "f6b111ba41641f7ddc2313a2c113d7cb00a50e0aa4b6f75666d932f854ed9199",
+    "trace-fallback.json": "24ec6b1adc9217391aaf258477ebd12da3eeb0f6a353f7bcc062b243f8d124f2",
+    "trace-pair.json": "8e64552e8840160707aadb7fbe5e3a215c4ed9f2fedfc1257ab2c4f287f7a8f1",
+    "trace-policy.json": "ab2c21991ca5187c9253dd9837f92a3c2aea183c6bd62d32d36f9b69e544e9aa",
+    "trace-refusal.json": "9c46ad585b845986ba52a1564301991b20fe52d8c5e98e3f7397edf41bb75e64",
+    "trace-repair.json": "f572d90914fbef16ee56d8db577393b5adb6e6be2a9badeaf4dfd51128bee80a",
+    "trace-timeout.json": "a958afd5c86560b8267a224145e4e081d2719da26bba37fce26e231a315fd18f"
+  },
+  "source_script_sha256": "76c6a643008b362f0004388d96cbeaa4c3167fcff50ef32d5925edb986a5f4e6",
+  "trace_input_sha256": "12042aaa801d169223344d106f6a2eefe3371962e3690ec950e2f73ef8a3bf5f",
+  "policy_corpus_sha256": "7973f56a96cf6d496e841968df97a79df38704a7bb21c872ac3304a85f990d1a"
+}

@@ -1,0 +1,740 @@
+{
+  "scope": "authored component regression; no live model or independent annotation; not held out",
+  "cases": 24,
+  "sha256": {
+    "cases": "3f726d3f265e95dfcf33395841020486060add5c86778d517b7552ffdabceb12",
+    "finbot/policy_documents.py": "5a0d5398b7d6699fae813689e9d989ac94816f95c64cb49beceb64b8ff455881",
+    "finbot/provenance.py": "d0725a627c778d144f6e202ace1443f075cd7ae490b58957d431bee4eb9c9208",
+    "finbot/recordanswer.py": "3e07a0db44de417e7dd7e97d11224910f4343a039784d0b7890645357af3a1fb",
+    "scripts/evaluate_policy_checks.py": "4d1b1a753809f5bfc018c168aac821f9c234c020a968a8fef6a11e208f4c5b08"
+  },
+  "summary": {
+    "off": {
+      "supported_allowed": 7,
+      "supported_rejected": 0,
+      "unsupported_allowed": 17,
+      "unsupported_rejected": 0
+    },
+    "extractive": {
+      "supported_allowed": 6,
+      "supported_rejected": 1,
+      "unsupported_allowed": 10,
+      "unsupported_rejected": 7
+    },
+    "strict": {
+      "supported_allowed": 5,
+      "supported_rejected": 2,
+      "unsupported_allowed": 0,
+      "unsupported_rejected": 17
+    }
+  },
+  "rows": [
+    {
+      "case": "context-complete",
+      "category": "complete_context",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "context-omitted",
+      "category": "context_omission",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "context-new-conclusion",
+      "category": "unsupported_conclusion",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "context-negated",
+      "category": "contradiction",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "paraphrase-meaning",
+      "category": "supported_paraphrase",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "paraphrase-order",
+      "category": "supported_paraphrase",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "missing-lookup",
+      "category": "missing_evidence",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "empty-retrieval",
+      "category": "missing_evidence",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "missing-citation",
+      "category": "citation",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "foreign-citation",
+      "category": "citation",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "claim-in-link",
+      "category": "citation",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "citation-other-paragraph",
+      "category": "citation",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "current-source",
+      "category": "metadata",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "undated-source",
+      "category": "metadata",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "stale-source",
+      "category": "metadata",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "future-source",
+      "category": "metadata",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "malformed-date",
+      "category": "metadata",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "missing-version",
+      "category": "metadata",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "superseded-source",
+      "category": "version",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "latest-source",
+      "category": "version",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "history-omitted",
+      "category": "context_omission",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "history-complete",
+      "category": "complete_context",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "abstention",
+      "category": "abstention",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "abstention-extra-claim",
+      "category": "missing_evidence",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "context-complete",
+      "category": "complete_context",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "context-omitted",
+      "category": "context_omission",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "context-new-conclusion",
+      "category": "unsupported_conclusion",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_2"
+      ],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "context-negated",
+      "category": "contradiction",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_1"
+      ],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "paraphrase-meaning",
+      "category": "supported_paraphrase",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "paraphrase-order",
+      "category": "supported_paraphrase",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "missing-lookup",
+      "category": "missing_evidence",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "empty-retrieval",
+      "category": "missing_evidence",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_0",
+        "policy_unsupported:statement_1"
+      ],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "missing-citation",
+      "category": "citation",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_0",
+        "policy_unsupported:statement_1"
+      ],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "foreign-citation",
+      "category": "citation",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_0",
+        "policy_unsupported:statement_1"
+      ],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "claim-in-link",
+      "category": "citation",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_2"
+      ],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "citation-other-paragraph",
+      "category": "citation",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_0",
+        "policy_unsupported:statement_1"
+      ],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "current-source",
+      "category": "metadata",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "undated-source",
+      "category": "metadata",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "stale-source",
+      "category": "metadata",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "future-source",
+      "category": "metadata",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "malformed-date",
+      "category": "metadata",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "missing-version",
+      "category": "metadata",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "superseded-source",
+      "category": "version",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "latest-source",
+      "category": "version",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "history-omitted",
+      "category": "context_omission",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "history-complete",
+      "category": "complete_context",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "abstention",
+      "category": "abstention",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "abstention-extra-claim",
+      "category": "missing_evidence",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": null
+    },
+    {
+      "case": "context-complete",
+      "category": "complete_context",
+      "mode": "strict",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "context-omitted",
+      "category": "context_omission",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_complete_passage_required:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "context-new-conclusion",
+      "category": "unsupported_conclusion",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_complete_passage_required:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "context-negated",
+      "category": "contradiction",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_complete_passage_required:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "paraphrase-meaning",
+      "category": "supported_paraphrase",
+      "mode": "strict",
+      "expected_supported": true,
+      "action": "block",
+      "reasons": [
+        "policy_complete_passage_required:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "paraphrase-order",
+      "category": "supported_paraphrase",
+      "mode": "strict",
+      "expected_supported": true,
+      "action": "block",
+      "reasons": [
+        "policy_complete_passage_required:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "missing-lookup",
+      "category": "missing_evidence",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_missing_evidence:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "empty-retrieval",
+      "category": "missing_evidence",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_unretrieved_citation:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "missing-citation",
+      "category": "citation",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_missing_citation:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "foreign-citation",
+      "category": "citation",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_unretrieved_citation:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "claim-in-link",
+      "category": "citation",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_complete_passage_required:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "citation-other-paragraph",
+      "category": "citation",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_missing_citation:paragraph_0",
+        "policy_empty_answer:paragraph_1"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "current-source",
+      "category": "metadata",
+      "mode": "strict",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "undated-source",
+      "category": "metadata",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_invalid_source_metadata:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "stale-source",
+      "category": "metadata",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_stale_source:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "future-source",
+      "category": "metadata",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_future_source:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "malformed-date",
+      "category": "metadata",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_invalid_source_metadata:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "missing-version",
+      "category": "metadata",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_invalid_source_metadata:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "superseded-source",
+      "category": "version",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_superseded_source:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "latest-source",
+      "category": "version",
+      "mode": "strict",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "history-omitted",
+      "category": "context_omission",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_complete_passage_required:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "history-complete",
+      "category": "complete_context",
+      "mode": "strict",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "abstention",
+      "category": "abstention",
+      "mode": "strict",
+      "expected_supported": true,
+      "action": "allow",
+      "reasons": [],
+      "strict_regression_pass": true
+    },
+    {
+      "case": "abstention-extra-claim",
+      "category": "missing_evidence",
+      "mode": "strict",
+      "expected_supported": false,
+      "action": "block",
+      "reasons": [
+        "policy_missing_evidence:paragraph_0"
+      ],
+      "strict_regression_pass": true
+    }
+  ]
+}

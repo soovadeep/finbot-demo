@@ -1,0 +1,130 @@
+[
+  {
+    "item": 1,
+    "case": "retry-contradiction"
+  },
+  {
+    "item": 2,
+    "case": "settlement-paraphrase"
+  },
+  {
+    "item": 3,
+    "case": "fee-exact"
+  },
+  {
+    "item": 4,
+    "case": "fee-paraphrase"
+  },
+  {
+    "item": 5,
+    "case": "dispute-contradiction"
+  },
+  {
+    "item": 6,
+    "case": "citation-foreign"
+  },
+  {
+    "item": 7,
+    "case": "timeout-exact"
+  },
+  {
+    "item": 8,
+    "case": "surcharge-exact"
+  },
+  {
+    "item": 9,
+    "case": "payout-contradiction"
+  },
+  {
+    "item": 10,
+    "case": "surcharge-paraphrase"
+  },
+  {
+    "item": 11,
+    "case": "context-stale"
+  },
+  {
+    "item": 12,
+    "case": "context-exception"
+  },
+  {
+    "item": 13,
+    "case": "refund-paraphrase"
+  },
+  {
+    "item": 14,
+    "case": "dispute-exact"
+  },
+  {
+    "item": 15,
+    "case": "citation-label"
+  },
+  {
+    "item": 16,
+    "case": "settlement-exact"
+  },
+  {
+    "item": 17,
+    "case": "surcharge-contradiction"
+  },
+  {
+    "item": 18,
+    "case": "citation-paragraph"
+  },
+  {
+    "item": 19,
+    "case": "timeout-contradiction"
+  },
+  {
+    "item": 20,
+    "case": "retry-paraphrase"
+  },
+  {
+    "item": 21,
+    "case": "settlement-contradiction"
+  },
+  {
+    "item": 22,
+    "case": "fee-contradiction"
+  },
+  {
+    "item": 23,
+    "case": "payout-exact"
+  },
+  {
+    "item": 24,
+    "case": "refund-contradiction"
+  },
+  {
+    "item": 25,
+    "case": "retry-exact"
+  },
+  {
+    "item": 26,
+    "case": "refund-exact"
+  },
+  {
+    "item": 27,
+    "case": "payout-paraphrase"
+  },
+  {
+    "item": 28,
+    "case": "citation-absent"
+  },
+  {
+    "item": 29,
+    "case": "trigger-record"
+  },
+  {
+    "item": 30,
+    "case": "dispute-paraphrase"
+  },
+  {
+    "item": 31,
+    "case": "timeout-paraphrase"
+  },
+  {
+    "item": 32,
+    "case": "trigger-missing"
+  }
+]

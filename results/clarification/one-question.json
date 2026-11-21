@@ -1,0 +1,6278 @@
+{
+  "schema_version": 1,
+  "scope": "exact synthetic development simulation; no human/live-model results",
+  "families": 24,
+  "comparison_rows": 600,
+  "question_budget": 1,
+  "threshold": 0.95,
+  "question_cost_error_units": 0.02,
+  "seed": null,
+  "method": "Exact enumeration under specified prior and reply channels; equal weight per family.",
+  "limitations": [
+    "All examples are development fixtures, not held out.",
+    "Targets are always in the candidate catalogue; missing-target errors are not measured.",
+    "MAP and confidence-threshold predictions are experimental metrics, not release rules.",
+    "Runtime financial answers require explicit confirmation and verification.",
+    "Provided-intent control assumes a correct supplied intent, not a fallible user reply.",
+    "No final-answer accuracy, human usefulness, wall-clock latency or API cost is measured.",
+    "No statistical confidence intervals: results are exact under synthetic assumptions."
+  ],
+  "source_sha256": {
+    "finbot/clarification.py": "a64ad5cdfe5caee8cb485badfd9fa4f927cc5562357f3459b64e8a9a48501807",
+    "scripts/evaluate_clarification.py": "273108afdfb57003e8022484495e077f9b9843fddbf5a03e6cc468e304a421be"
+  },
+  "summary": [
+    {
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.48888888883333337,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.98885214,
+      "error_given_threshold": null
+    },
+    {
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.6508055555,
+      "expected_questions": 0.875,
+      "threshold_coverage": 0.0525,
+      "threshold_wrong_mass": 0.001875,
+      "target_log_loss_nats": 0.729093770625,
+      "error_given_threshold": 0.03571428571428571
+    },
+    {
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.68402777775,
+      "expected_questions": 0.875,
+      "threshold_coverage": 0.0525,
+      "threshold_wrong_mass": 0.001875,
+      "target_log_loss_nats": 0.6964823340416667,
+      "error_given_threshold": 0.03571428571428571
+    },
+    {
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.68402777775,
+      "expected_questions": 0.875,
+      "threshold_coverage": 0.0525,
+      "threshold_wrong_mass": 0.001875,
+      "target_log_loss_nats": 0.6964823340416667,
+      "error_given_threshold": 0.03571428571428571
+    },
+    {
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0,
+      "error_given_threshold": 0.0
+    },
+    {
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.48888888883333337,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.98885214,
+      "error_given_threshold": null
+    },
+    {
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5030555555416667,
+      "expected_questions": 0.875,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.9689739764166667,
+      "error_given_threshold": null
+    },
+    {
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5216666666666666,
+      "expected_questions": 0.875,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.9423025962083332,
+      "error_given_threshold": null
+    },
+    {
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.52,
+      "expected_questions": 0.4583333333333333,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.9541058427916665,
+      "error_given_threshold": null
+    },
+    {
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0,
+      "error_given_threshold": 0.0
+    },
+    {
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.48888888883333337,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.98885214,
+      "error_given_threshold": null
+    },
+    {
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.48888888883333337,
+      "expected_questions": 0.875,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.98885214,
+      "error_given_threshold": null
+    },
+    {
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.48888888883333337,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.98885214,
+      "error_given_threshold": null
+    },
+    {
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.48888888883333337,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.98885214,
+      "error_given_threshold": null
+    },
+    {
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0,
+      "error_given_threshold": 0.0
+    },
+    {
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.48888888883333337,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.98885214,
+      "error_given_threshold": null
+    },
+    {
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.45349999995833334,
+      "expected_questions": 0.875,
+      "threshold_coverage": 0.034999999999999996,
+      "threshold_wrong_mass": 0.0075,
+      "target_log_loss_nats": 1.1832709923333333,
+      "error_given_threshold": 0.2142857142857143
+    },
+    {
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.48833333333333334,
+      "expected_questions": 0.875,
+      "threshold_coverage": 0.034999999999999996,
+      "threshold_wrong_mass": 0.0075,
+      "target_log_loss_nats": 1.1144638125,
+      "error_given_threshold": 0.2142857142857143
+    },
+    {
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.48833333333333334,
+      "expected_questions": 0.875,
+      "threshold_coverage": 0.034999999999999996,
+      "threshold_wrong_mass": 0.0075,
+      "target_log_loss_nats": 1.1144638125,
+      "error_given_threshold": 0.2142857142857143
+    },
+    {
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0,
+      "error_given_threshold": 0.0
+    },
+    {
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.48888888883333337,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.98885214,
+      "error_given_threshold": null
+    },
+    {
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.6125138888333334,
+      "expected_questions": 0.875,
+      "threshold_coverage": 0.048749999999999995,
+      "threshold_wrong_mass": 0.00375,
+      "target_log_loss_nats": 0.8162226230833333,
+      "error_given_threshold": 0.07692307692307693
+    },
+    {
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.6695138888333334,
+      "expected_questions": 0.875,
+      "threshold_coverage": 0.048749999999999995,
+      "threshold_wrong_mass": 0.00375,
+      "target_log_loss_nats": 0.7357142132916666,
+      "error_given_threshold": 0.07692307692307693
+    },
+    {
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.6695138888333334,
+      "expected_questions": 0.875,
+      "threshold_coverage": 0.048749999999999995,
+      "threshold_wrong_mass": 0.00375,
+      "target_log_loss_nats": 0.7357142132916666,
+      "error_given_threshold": 0.07692307692307693
+    },
+    {
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0,
+      "error_given_threshold": 0.0
+    }
+  ],
+  "rows": [
+    {
+      "family": "family_00",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.79,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.444699772
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.79,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.444699772
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.79,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.444699772
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559328868
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559328868
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_00",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_00",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_00",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.660054724
+    },
+    {
+      "family": "family_00",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.660054724
+    },
+    {
+      "family": "family_00",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.660054724
+    },
+    {
+      "family": "family_00",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_00",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_00",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.795,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.429995351
+    },
+    {
+      "family": "family_00",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.795,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.429995351
+    },
+    {
+      "family": "family_00",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.795,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.429995351
+    },
+    {
+      "family": "family_00",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.573333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.799744979
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.573333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.799744979
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.573333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.799744979
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.095050122
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.095050122
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.095050122
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_01",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_01",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_01",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.397164594
+    },
+    {
+      "family": "family_01",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.397164594
+    },
+    {
+      "family": "family_01",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.397164594
+    },
+    {
+      "family": "family_01",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_01",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_01",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.513333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.882058028
+    },
+    {
+      "family": "family_01",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.513333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.882058028
+    },
+    {
+      "family": "family_01",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.513333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.882058028
+    },
+    {
+      "family": "family_01",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.943586016
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.74,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.773130247
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.74,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.773130247
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.238891158
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.099229098
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.099229098
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_02",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_02",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_02",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.393333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.54100563
+    },
+    {
+      "family": "family_02",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.214755023
+    },
+    {
+      "family": "family_02",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.214755023
+    },
+    {
+      "family": "family_02",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_02",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_02",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.53,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.124939916
+    },
+    {
+      "family": "family_02",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.714464862
+    },
+    {
+      "family": "family_02",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.714464862
+    },
+    {
+      "family": "family_02",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.86,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.361889394
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.86,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.361889394
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.86,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.361889394
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.689140487
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.689140487
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.689140487
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_03",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_03",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_03",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.013918696
+    },
+    {
+      "family": "family_03",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.013918696
+    },
+    {
+      "family": "family_03",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.013918696
+    },
+    {
+      "family": "family_03",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_03",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_03",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559639606
+    },
+    {
+      "family": "family_03",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559639606
+    },
+    {
+      "family": "family_03",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559639606
+    },
+    {
+      "family": "family_03",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.76,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.641449936
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.76,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.641449936
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.76,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.641449936
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.884460683
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.884460683
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_04",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_04",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_04",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.56,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.995483053
+    },
+    {
+      "family": "family_04",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.56,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.995483053
+    },
+    {
+      "family": "family_04",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.56,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.995483053
+    },
+    {
+      "family": "family_04",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_04",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_04",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.78,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.602847361
+    },
+    {
+      "family": "family_04",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.78,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.602847361
+    },
+    {
+      "family": "family_04",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.78,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.602847361
+    },
+    {
+      "family": "family_04",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.43,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.055036575
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.43,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.055036575
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.43,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.055036575
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.27,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.382287668
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.27,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.382287668
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_05",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_05",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_05",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.27,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.707065877
+    },
+    {
+      "family": "family_05",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.27,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.707065877
+    },
+    {
+      "family": "family_05",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.27,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.707065877
+    },
+    {
+      "family": "family_05",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_05",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_05",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.385,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.252786787
+    },
+    {
+      "family": "family_05",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.385,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.252786787
+    },
+    {
+      "family": "family_05",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.385,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.252786787
+    },
+    {
+      "family": "family_05",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.885,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.63,
+      "threshold_wrong_mass": 0.0225,
+      "target_log_loss_nats": 0.305131949
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.885,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.63,
+      "threshold_wrong_mass": 0.0225,
+      "target_log_loss_nats": 0.305131949
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.885,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.63,
+      "threshold_wrong_mass": 0.0225,
+      "target_log_loss_nats": 0.305131949
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559328868
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559328868
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_06",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_06",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_06",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.42,
+      "threshold_wrong_mass": 0.09,
+      "target_log_loss_nats": 0.830311263
+    },
+    {
+      "family": "family_06",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.42,
+      "threshold_wrong_mass": 0.09,
+      "target_log_loss_nats": 0.830311263
+    },
+    {
+      "family": "family_06",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.42,
+      "threshold_wrong_mass": 0.09,
+      "target_log_loss_nats": 0.830311263
+    },
+    {
+      "family": "family_06",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_06",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_06",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.795,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.585,
+      "threshold_wrong_mass": 0.045,
+      "target_log_loss_nats": 0.464753757
+    },
+    {
+      "family": "family_06",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.795,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.585,
+      "threshold_wrong_mass": 0.045,
+      "target_log_loss_nats": 0.464753757
+    },
+    {
+      "family": "family_06",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.795,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.585,
+      "threshold_wrong_mass": 0.045,
+      "target_log_loss_nats": 0.464753757
+    },
+    {
+      "family": "family_06",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_07",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_07",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_07",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.74,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.773130247
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.74,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.773130247
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.74,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.773130247
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.099229098
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.099229098
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.099229098
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_08",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_08",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_08",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.214755023
+    },
+    {
+      "family": "family_08",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.214755023
+    },
+    {
+      "family": "family_08",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.214755023
+    },
+    {
+      "family": "family_08",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_08",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_08",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.714464862
+    },
+    {
+      "family": "family_08",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.714464862
+    },
+    {
+      "family": "family_08",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.714464862
+    },
+    {
+      "family": "family_08",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.86,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.361889394
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.86,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.361889394
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.86,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.361889394
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.689140487
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.689140487
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.689140487
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_09",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_09",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_09",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.013918696
+    },
+    {
+      "family": "family_09",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.013918696
+    },
+    {
+      "family": "family_09",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.013918696
+    },
+    {
+      "family": "family_09",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_09",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_09",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559639606
+    },
+    {
+      "family": "family_09",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559639606
+    },
+    {
+      "family": "family_09",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559639606
+    },
+    {
+      "family": "family_09",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.708,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.72709399
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.76,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.641449936
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.76,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.641449936
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.947704711
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.884460683
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_10",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_10",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_10",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.472,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.191391549
+    },
+    {
+      "family": "family_10",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.56,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.995483053
+    },
+    {
+      "family": "family_10",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.56,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.995483053
+    },
+    {
+      "family": "family_10",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_10",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_10",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.636,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.826916683
+    },
+    {
+      "family": "family_10",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.78,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.602847361
+    },
+    {
+      "family": "family_10",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.78,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.602847361
+    },
+    {
+      "family": "family_10",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.43,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.055036575
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.69,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.853358777
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.69,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.853358777
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.27,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.382287668
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.49,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.223270347
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.49,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.223270347
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_11",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_11",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_11",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.27,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.707065877
+    },
+    {
+      "family": "family_11",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.49,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.350340107
+    },
+    {
+      "family": "family_11",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.49,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.350340107
+    },
+    {
+      "family": "family_11",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_11",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_11",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.385,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.252786787
+    },
+    {
+      "family": "family_11",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.745,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.786741829
+    },
+    {
+      "family": "family_11",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.745,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.786741829
+    },
+    {
+      "family": "family_11",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.79,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.444699772
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.79,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.444699772
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.79,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.444699772
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559328868
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559328868
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_12",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_12",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_12",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.660054724
+    },
+    {
+      "family": "family_12",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.660054724
+    },
+    {
+      "family": "family_12",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.660054724
+    },
+    {
+      "family": "family_12",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_12",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_12",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.795,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.429995351
+    },
+    {
+      "family": "family_12",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.795,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.429995351
+    },
+    {
+      "family": "family_12",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.795,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.429995351
+    },
+    {
+      "family": "family_12",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.573333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.799744979
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.573333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.799744979
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.573333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.799744979
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.095050122
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.095050122
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.095050122
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_13",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_13",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_13",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.397164594
+    },
+    {
+      "family": "family_13",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.397164594
+    },
+    {
+      "family": "family_13",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.397164594
+    },
+    {
+      "family": "family_13",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_13",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_13",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.513333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.882058028
+    },
+    {
+      "family": "family_13",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.513333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.882058028
+    },
+    {
+      "family": "family_13",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.513333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.882058028
+    },
+    {
+      "family": "family_13",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.943586016
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.74,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.773130247
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.74,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.773130247
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.238891158
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.099229098
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.099229098
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_14",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_14",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_14",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.393333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.54100563
+    },
+    {
+      "family": "family_14",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.214755023
+    },
+    {
+      "family": "family_14",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.214755023
+    },
+    {
+      "family": "family_14",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_14",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_14",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.53,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.124939916
+    },
+    {
+      "family": "family_14",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.714464862
+    },
+    {
+      "family": "family_14",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.714464862
+    },
+    {
+      "family": "family_14",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_15",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_15",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_15",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.76,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.641449936
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.76,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.641449936
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.76,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.641449936
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.884460683
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.884460683
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_16",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_16",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_16",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.56,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.995483053
+    },
+    {
+      "family": "family_16",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.56,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.995483053
+    },
+    {
+      "family": "family_16",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.56,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.995483053
+    },
+    {
+      "family": "family_16",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_16",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_16",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.78,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.602847361
+    },
+    {
+      "family": "family_16",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.78,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.602847361
+    },
+    {
+      "family": "family_16",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.78,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.602847361
+    },
+    {
+      "family": "family_16",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.43,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.055036575
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.43,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.055036575
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.43,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.055036575
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.27,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.382287668
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.27,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.382287668
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_17",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_17",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_17",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.27,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.707065877
+    },
+    {
+      "family": "family_17",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.27,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.707065877
+    },
+    {
+      "family": "family_17",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.27,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.707065877
+    },
+    {
+      "family": "family_17",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_17",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_17",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.385,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.252786787
+    },
+    {
+      "family": "family_17",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.385,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.252786787
+    },
+    {
+      "family": "family_17",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.385,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.252786787
+    },
+    {
+      "family": "family_17",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.885,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.63,
+      "threshold_wrong_mass": 0.0225,
+      "target_log_loss_nats": 0.305131949
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.885,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.63,
+      "threshold_wrong_mass": 0.0225,
+      "target_log_loss_nats": 0.305131949
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.885,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.63,
+      "threshold_wrong_mass": 0.0225,
+      "target_log_loss_nats": 0.305131949
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559328868
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559328868
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_18",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_18",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_18",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.42,
+      "threshold_wrong_mass": 0.09,
+      "target_log_loss_nats": 0.830311263
+    },
+    {
+      "family": "family_18",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.42,
+      "threshold_wrong_mass": 0.09,
+      "target_log_loss_nats": 0.830311263
+    },
+    {
+      "family": "family_18",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.59,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.42,
+      "threshold_wrong_mass": 0.09,
+      "target_log_loss_nats": 0.830311263
+    },
+    {
+      "family": "family_18",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_18",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.75,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.562335145
+    },
+    {
+      "family": "family_18",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.795,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.585,
+      "threshold_wrong_mass": 0.045,
+      "target_log_loss_nats": 0.464753757
+    },
+    {
+      "family": "family_18",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.795,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.585,
+      "threshold_wrong_mass": 0.045,
+      "target_log_loss_nats": 0.464753757
+    },
+    {
+      "family": "family_18",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.795,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.585,
+      "threshold_wrong_mass": 0.045,
+      "target_log_loss_nats": 0.464753757
+    },
+    {
+      "family": "family_18",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.573333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.799744979
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.706666667,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.730947945
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.706666667,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.730947945
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.095050122
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.506666667,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.019766494
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.506666667,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.019766494
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_19",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_19",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_19",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.36,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.397164594
+    },
+    {
+      "family": "family_19",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.506666667,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.146836254
+    },
+    {
+      "family": "family_19",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.506666667,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.146836254
+    },
+    {
+      "family": "family_19",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_19",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.333333333,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.098612289
+    },
+    {
+      "family": "family_19",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.513333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.882058028
+    },
+    {
+      "family": "family_19",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.753333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.684989903
+    },
+    {
+      "family": "family_19",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.753333333,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.684989903
+    },
+    {
+      "family": "family_19",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.74,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.773130247
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.74,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.773130247
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.74,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.773130247
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.099229098
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.099229098
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.099229098
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_20",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_20",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_20",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.214755023
+    },
+    {
+      "family": "family_20",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.214755023
+    },
+    {
+      "family": "family_20",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.214755023
+    },
+    {
+      "family": "family_20",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_20",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.242453325
+    },
+    {
+      "family": "family_20",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.714464862
+    },
+    {
+      "family": "family_20",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.714464862
+    },
+    {
+      "family": "family_20",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.714464862
+    },
+    {
+      "family": "family_20",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.86,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.361889394
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.86,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.361889394
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.86,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.361889394
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.689140487
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.689140487
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.689140487
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_21",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_21",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_21",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.013918696
+    },
+    {
+      "family": "family_21",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.013918696
+    },
+    {
+      "family": "family_21",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.54,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.013918696
+    },
+    {
+      "family": "family_21",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_21",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.5,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.693147181
+    },
+    {
+      "family": "family_21",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559639606
+    },
+    {
+      "family": "family_21",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559639606
+    },
+    {
+      "family": "family_21",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.77,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.559639606
+    },
+    {
+      "family": "family_21",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.708,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.72709399
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.76,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.641449936
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.76,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.641449936
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.947704711
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.884460683
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_22",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_22",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_22",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.472,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.191391549
+    },
+    {
+      "family": "family_22",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.56,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.995483053
+    },
+    {
+      "family": "family_22",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.56,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.995483053
+    },
+    {
+      "family": "family_22",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_22",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.6,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.950270539
+    },
+    {
+      "family": "family_22",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.636,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.826916683
+    },
+    {
+      "family": "family_22",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.78,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.602847361
+    },
+    {
+      "family": "family_22",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.78,
+      "expected_questions": 1.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.602847361
+    },
+    {
+      "family": "family_22",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_reliable",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_reliable",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_reliable",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_reliable",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_reliable",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_noisy",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_noisy",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_noisy",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_noisy",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_noisy",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_uninformative",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_uninformative",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_uninformative",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_uninformative",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "matched_uninformative",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_23",
+      "regime": "misspecified",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "misspecified",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "misspecified",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "misspecified",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "misspecified",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    },
+    {
+      "family": "family_23",
+      "regime": "correlated_errors",
+      "strategy": "none",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "correlated_errors",
+      "strategy": "fixed",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "correlated_errors",
+      "strategy": "information_gain",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "correlated_errors",
+      "strategy": "decision_value",
+      "map_record_accuracy": 0.25,
+      "expected_questions": 0.0,
+      "threshold_coverage": 0.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 1.386294361
+    },
+    {
+      "family": "family_23",
+      "regime": "correlated_errors",
+      "strategy": "provided_intent",
+      "map_record_accuracy": 1.0,
+      "expected_questions": 0.0,
+      "threshold_coverage": 1.0,
+      "threshold_wrong_mass": 0.0,
+      "target_log_loss_nats": 0.0
+    }
+  ]
+}

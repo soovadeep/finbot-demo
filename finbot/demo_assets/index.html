@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finbot · Evidence inspector</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="/inspector">finbot<span> / evidence inspector</span></a><span class="badge">RESEARCH PREVIEW</span></header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">PAYMENT SUPPORT · INSPECT THE DECISION</p><h1>Evidence before answers.</h1>
+        <p class="lede">See the retrieved facts, inspect a draft, and follow what happens when a claim fails a check.</p>
+        <p><a href="/clarification">Explore clarification experiments →</a></p></div>
+      <div class="mode" role="note" aria-label="Demo mode"><span class="dot"></span><strong>Offline · scripted model</strong>
+        <p>Synthetic records. Real verification pipeline.<br>No live model or payment system is connected.</p></div>
+    </section>
+
+    <form id="run-form" class="controls">
+      <div class="scenario-control"><label for="scenario">01 / Choose a scenario</label><select id="scenario" disabled></select>
+        <p id="scenario-description"></p></div>
+      <div class="question-control"><label for="question">02 / Ask or edit the question</label>
+        <textarea id="question" rows="3" maxlength="2000" required spellcheck="false"></textarea>
+        <p>Each run starts a fresh session for the synthetic support account <code>m_100</code>.</p></div>
+      <div class="run-control"><label for="fault">03 / Fault injection</label><select id="fault" disabled></select>
+        <button id="run" type="submit" disabled>Run inspection <span aria-hidden="true">↗</span></button>
+        <p>Faults are deliberately inserted before verification. They are not observed model errors.</p></div>
+    </form>
+
+    <div class="run-status"><p id="status" role="status" aria-live="polite">Loading scenarios…</p>
+      <button id="download" type="button" class="secondary" disabled>Export trace ↓</button></div>
+    <p id="result-context" class="result-context" hidden></p>
+    <section id="workspace" class="workspace" aria-label="Inspection results" aria-busy="false">
+      <article class="panel evidence-panel"><div class="panel-title"><span class="number">01</span><h2>Retrieved evidence</h2></div>
+        <p class="hint" id="evidence-caption">The selected stage's exact tool results appear here.</p>
+        <div id="evidence"><p class="empty">Run a scenario to inspect transaction records and policy guidance.</p></div>
+      </article>
+      <article class="panel draft-panel"><div class="panel-title"><span class="number">02</span><h2>Draft &amp; verification</h2></div>
+        <p class="hint">Diagnostic drafts may contain false claims. These are not customer answers.</p>
+        <p id="policy-mode" class="check-note">Policy checking uses source-sentence reuse (extractive).
+          Valid paraphrases may be rejected; a copied sentence can omit context.
+          Policy review runs only after a knowledge-base lookup.</p>
+        <nav id="stages" aria-label="Verification stages"></nav>
+        <div id="draft"><p class="empty">Follow the initial draft, the repair attempt, and any record-built fallback.</p></div>
+      </article>
+      <article class="panel answer-panel"><div class="panel-title"><span class="number">03</span><h2>Customer answer</h2></div>
+        <p class="hint">The final response after the full turn pipeline.</p>
+        <div id="answer"><p class="empty">Only the final response is shown to the customer.</p></div>
+        <dl id="metrics"></dl>
+      </article>
+    </section>
+    <footer>Passing the implemented checks is not a proof of factuality. This preview demonstrates control flow;
+      live-model reliability, usefulness, latency and cost still require evaluation.</footer>
+  </main>
+</body>
+</html>

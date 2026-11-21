@@ -1,0 +1,1182 @@
+{
+  "scope": "PolicyDocumentVerifier component only; no financial gate, retrieval, repair or generation.",
+  "labels": "Assistant-authored before running; independent human adjudication pending.",
+  "sampling": "32 purposive synthetic fixtures; no population confidence interval is justified.",
+  "model_mode": "not measured: no live reviewer configured; mocks are not accuracy evidence",
+  "summary": [
+    {
+      "mode": "off",
+      "cases": 32,
+      "supported_allowed": 16,
+      "supported_total": 16,
+      "supported_rejected": 0,
+      "unsupported_allowed": 16,
+      "unsupported_total": 16,
+      "by_category": {
+        "citation": {
+          "correct": 0,
+          "n": 4
+        },
+        "context_omission": {
+          "correct": 0,
+          "n": 2
+        },
+        "contradiction": {
+          "correct": 0,
+          "n": 8
+        },
+        "exact": {
+          "correct": 8,
+          "n": 8
+        },
+        "missing_lookup": {
+          "correct": 0,
+          "n": 2
+        },
+        "paraphrase": {
+          "correct": 8,
+          "n": 8
+        }
+      }
+    },
+    {
+      "mode": "extractive",
+      "cases": 32,
+      "supported_allowed": 8,
+      "supported_total": 16,
+      "supported_rejected": 8,
+      "unsupported_allowed": 4,
+      "unsupported_total": 16,
+      "by_category": {
+        "citation": {
+          "correct": 4,
+          "n": 4
+        },
+        "context_omission": {
+          "correct": 0,
+          "n": 2
+        },
+        "contradiction": {
+          "correct": 8,
+          "n": 8
+        },
+        "exact": {
+          "correct": 8,
+          "n": 8
+        },
+        "missing_lookup": {
+          "correct": 0,
+          "n": 2
+        },
+        "paraphrase": {
+          "correct": 0,
+          "n": 8
+        }
+      }
+    }
+  ],
+  "rows": [
+    {
+      "case": "retry-exact",
+      "category": "exact",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "retry-paraphrase",
+      "category": "paraphrase",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "retry-contradiction",
+      "category": "contradiction",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "surcharge-exact",
+      "category": "exact",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "surcharge-paraphrase",
+      "category": "paraphrase",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "surcharge-contradiction",
+      "category": "contradiction",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "refund-exact",
+      "category": "exact",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "refund-paraphrase",
+      "category": "paraphrase",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "refund-contradiction",
+      "category": "contradiction",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "settlement-exact",
+      "category": "exact",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "settlement-paraphrase",
+      "category": "paraphrase",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "settlement-contradiction",
+      "category": "contradiction",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "fee-exact",
+      "category": "exact",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "fee-paraphrase",
+      "category": "paraphrase",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "fee-contradiction",
+      "category": "contradiction",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "dispute-exact",
+      "category": "exact",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "dispute-paraphrase",
+      "category": "paraphrase",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "dispute-contradiction",
+      "category": "contradiction",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "payout-exact",
+      "category": "exact",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "payout-paraphrase",
+      "category": "paraphrase",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "payout-contradiction",
+      "category": "contradiction",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "timeout-exact",
+      "category": "exact",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "timeout-paraphrase",
+      "category": "paraphrase",
+      "mode": "off",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "timeout-contradiction",
+      "category": "contradiction",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "citation-absent",
+      "category": "citation",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "citation-foreign",
+      "category": "citation",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "citation-paragraph",
+      "category": "citation",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "citation-label",
+      "category": "citation",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "context-exception",
+      "category": "context_omission",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "context-stale",
+      "category": "context_omission",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "trigger-missing",
+      "category": "missing_lookup",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "trigger-record",
+      "category": "missing_lookup",
+      "mode": "off",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "retry-exact",
+      "category": "exact",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Retry only after confirming the original payment was not processed",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "source_id": "doc:0",
+              "quote": "Retry only after confirming the original payment was not processed",
+              "source_url": "https://policy.example.com/retry",
+              "chunk_id": "retry-exact:v1:0",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "retry-paraphrase",
+      "category": "paraphrase",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "block",
+      "correct": false,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Confirm the original payment was not processed before retrying",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "retry-contradiction",
+      "category": "contradiction",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "correct": true,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Retry before checking whether the original payment was processed",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "surcharge-exact",
+      "category": "exact",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Debit and prepaid cards cannot be surcharged",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "source_id": "doc:0",
+              "quote": "Debit and prepaid cards cannot be surcharged",
+              "source_url": "https://policy.example.com/surcharge",
+              "chunk_id": "surcharge-exact:v1:0",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "surcharge-paraphrase",
+      "category": "paraphrase",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "block",
+      "correct": false,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Surcharges are not allowed on debit or prepaid cards",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "surcharge-contradiction",
+      "category": "contradiction",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "correct": true,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Debit and prepaid cards can be surcharged",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "refund-exact",
+      "category": "exact",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Refund requests are accepted within 30 days of purchase",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "source_id": "doc:0",
+              "quote": "Refund requests are accepted within 30 days of purchase",
+              "source_url": "https://policy.example.com/refund",
+              "chunk_id": "refund-exact:v1:0",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "refund-paraphrase",
+      "category": "paraphrase",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "block",
+      "correct": false,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "You can request a refund within 30 days after purchase",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "refund-contradiction",
+      "category": "contradiction",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "correct": true,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Refund requests are accepted within 90 days of purchase",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "settlement-exact",
+      "category": "exact",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Settlement takes two business days after capture",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "source_id": "doc:0",
+              "quote": "Settlement takes two business days after capture",
+              "source_url": "https://policy.example.com/settlement",
+              "chunk_id": "settlement-exact:v1:0",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "settlement-paraphrase",
+      "category": "paraphrase",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "block",
+      "correct": false,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Funds settle two business days after the payment is captured",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "settlement-contradiction",
+      "category": "contradiction",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "correct": true,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Settlement takes two calendar days after capture",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "fee-exact",
+      "category": "exact",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Standard transfers have no processing fee",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "source_id": "doc:0",
+              "quote": "Standard transfers have no processing fee",
+              "source_url": "https://policy.example.com/fee",
+              "chunk_id": "fee-exact:v1:0",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "fee-paraphrase",
+      "category": "paraphrase",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "block",
+      "correct": false,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "There is no processing fee for a standard transfer",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "fee-contradiction",
+      "category": "contradiction",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "correct": true,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Standard transfers have a processing fee",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "dispute-exact",
+      "category": "exact",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Disputes must be filed within 60 days of the statement date",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "source_id": "doc:0",
+              "quote": "Disputes must be filed within 60 days of the statement date",
+              "source_url": "https://policy.example.com/dispute",
+              "chunk_id": "dispute-exact:v1:0",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "dispute-paraphrase",
+      "category": "paraphrase",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "block",
+      "correct": false,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "File a dispute no later than 60 days after the statement date",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "dispute-contradiction",
+      "category": "contradiction",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "correct": true,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Disputes must be filed within 60 days of the purchase date",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "payout-exact",
+      "category": "exact",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Only verified merchants may request an instant payout",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "source_id": "doc:0",
+              "quote": "Only verified merchants may request an instant payout",
+              "source_url": "https://policy.example.com/payout",
+              "chunk_id": "payout-exact:v1:0",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "payout-paraphrase",
+      "category": "paraphrase",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "block",
+      "correct": false,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "An instant payout can be requested only by verified merchants",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "payout-contradiction",
+      "category": "contradiction",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "correct": true,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "All merchants may request an instant payout",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "timeout-exact",
+      "category": "exact",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "allow",
+      "correct": true,
+      "reasons": [],
+      "checks": [
+        {
+          "id": 0,
+          "text": "A processor timeout does not confirm that a payment failed",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "source_id": "doc:0",
+              "quote": "A processor timeout does not confirm that a payment failed",
+              "source_url": "https://policy.example.com/timeout",
+              "chunk_id": "timeout-exact:v1:0",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "timeout-paraphrase",
+      "category": "paraphrase",
+      "mode": "extractive",
+      "expected_supported": true,
+      "action": "block",
+      "correct": false,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "A processor timeout is not confirmation of a failed payment",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "timeout-contradiction",
+      "category": "contradiction",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "correct": true,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "A processor timeout confirms that a payment failed",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "citation-absent",
+      "category": "citation",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "correct": true,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Retry only after confirming the original payment was not processed",
+          "source_ids": [],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "citation-foreign",
+      "category": "citation",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "correct": true,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Retry only after confirming the original payment was not processed",
+          "source_ids": [],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "citation-paragraph",
+      "category": "citation",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "correct": true,
+      "reasons": [
+        "policy_unsupported:statement_0"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Retry only after confirming the original payment was not processed",
+          "source_ids": [],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "citation-label",
+      "category": "citation",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "block",
+      "correct": true,
+      "reasons": [
+        "policy_unsupported:statement_1"
+      ],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Retry only after confirming the original payment was not processed",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "source_id": "doc:0",
+              "quote": "Retry only after confirming the original payment was not processed",
+              "source_url": "https://policy.example.com/retry",
+              "chunk_id": "citation-label:v1:0",
+              "version": 1
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "text": "Refunds are guaranteed",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "unsupported",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "case": "context-exception",
+      "category": "context_omission",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Standard transfers have no processing fee",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "source_id": "doc:0",
+              "quote": "Standard transfers have no processing fee",
+              "source_url": "https://policy.example.com/context",
+              "chunk_id": "context-exception:v1:0",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "context-stale",
+      "category": "context_omission",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": [
+        {
+          "id": 0,
+          "text": "Refund requests are accepted within 90 days of purchase",
+          "source_ids": [
+            "doc:0"
+          ],
+          "method": "extractive",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "source_id": "doc:0",
+              "quote": "Refund requests are accepted within 90 days of purchase",
+              "source_url": "https://policy.example.com/context",
+              "chunk_id": "context-stale:v1:0",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "trigger-missing",
+      "category": "missing_lookup",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    },
+    {
+      "case": "trigger-record",
+      "category": "missing_lookup",
+      "mode": "extractive",
+      "expected_supported": false,
+      "action": "allow",
+      "correct": false,
+      "reasons": [],
+      "checks": []
+    }
+  ]
+}

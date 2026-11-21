@@ -1,0 +1,42 @@
+[
+  {
+    "task": "T1",
+    "preset": "correct",
+    "prompt": "Which record supports this answer, and what can a passing check establish?"
+  },
+  {
+    "task": "T2",
+    "preset": "repair",
+    "prompt": "What was wrong in the first draft, and how did the final answer change?"
+  },
+  {
+    "task": "T3",
+    "preset": "fallback",
+    "prompt": "Why was fallback used, and who constructed the final answer?"
+  },
+  {
+    "task": "T4",
+    "preset": "timeout",
+    "prompt": "Is this payment known to have failed, and what should happen before retry?"
+  },
+  {
+    "task": "T5",
+    "preset": "pair",
+    "prompt": "Associate each amount and status with its transaction."
+  },
+  {
+    "task": "T6",
+    "preset": "binding",
+    "prompt": "Why was the draft rejected when both amounts existed?"
+  },
+  {
+    "task": "T7",
+    "preset": "refusal",
+    "prompt": "Why was the answer withheld, and why was no record fallback shown?"
+  },
+  {
+    "task": "T8",
+    "preset": "policy",
+    "prompt": "Why did the citation fail to justify the draft? Give the supporting source sentence."
+  }
+]

@@ -1,0 +1,2942 @@
+{
+  "correct": {
+    "schema_version": 2,
+    "mode": "offline_scripted",
+    "synthetic_data": true,
+    "question": "Why was txn_A1B2C3D4 declined?",
+    "policy_verification": "extractive",
+    "fault": "none",
+    "injections": [],
+    "outcome": "passed",
+    "steps": [
+      {
+        "stage": "draft",
+        "attempt": 0,
+        "answer": "Transaction txn_A1B2C3D4 was declined for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details..",
+        "action": "allow",
+        "reasons": [],
+        "focus": "txn_A1B2C3D4",
+        "evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "Do not honor"
+                }
+              ]
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "[third-party text]"
+                }
+              ]
+            }
+          }
+        ],
+        "checks": []
+      }
+    ],
+    "evidence": [
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_A1B2C3D4"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_A1B2C3D4",
+            "status": "declined",
+            "amount": "129.00",
+            "currency": "USD",
+            "decline_code": "05",
+            "processor_response": "Do not honor",
+            "created_at": "2026-11-12T14:03:11Z",
+            "card_brand": "visa",
+            "last4": "4242",
+            "guidance": {
+              "reason_key": "05",
+              "retryable": false,
+              "retry_rule": "Do not retry with the same card details.",
+              "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+              "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+              "retry_only_if": [
+                "another card",
+                "different card",
+                "new card",
+                "other card",
+                "updated card",
+                "another payment method",
+                "different payment method",
+                "re-enter",
+                "reenter",
+                "correct"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name": "search_transaction_logs",
+        "input": {
+          "txn_id": "txn_A1B2C3D4",
+          "limit": 10
+        },
+        "result": {
+          "status": "found",
+          "source": "log_search",
+          "data": [
+            {
+              "txn_id": "txn_A1B2C3D4",
+              "tenant_id": "m_100",
+              "ts": "2026-11-12T14:03:10Z",
+              "event": "fraud_check",
+              "result": "pass",
+              "score": 12
+            },
+            {
+              "txn_id": "txn_A1B2C3D4",
+              "tenant_id": "m_100",
+              "ts": "2026-11-12T14:03:11Z",
+              "event": "issuer_response",
+              "code": "05",
+              "message": "Do not honor"
+            }
+          ]
+        }
+      }
+    ],
+    "final": {
+      "answer": "Transaction txn_A1B2C3D4 was declined for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details..",
+      "blocked_by": null,
+      "reasons": [],
+      "repaired": false,
+      "escalated": false
+    },
+    "metrics": {
+      "latency_ms": 5,
+      "model_calls": 2,
+      "tool_calls": 2
+    },
+    "limits": "Scripted model and synthetic fixtures. Passing these checks is not a proof of factuality. No live-model accuracy, latency or cost has been measured."
+  },
+  "repair": {
+    "schema_version": 2,
+    "mode": "offline_scripted",
+    "synthetic_data": true,
+    "question": "Why was txn_A1B2C3D4 declined?",
+    "policy_verification": "extractive",
+    "fault": "status_once",
+    "injections": [
+      {
+        "stage": "draft",
+        "fault": "status_once",
+        "marker": "was approved"
+      }
+    ],
+    "outcome": "repaired",
+    "steps": [
+      {
+        "stage": "draft",
+        "attempt": 0,
+        "answer": "Transaction txn_A1B2C3D4 was approved for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details..",
+        "action": "block",
+        "reasons": [
+          "status_mismatch:record=declined"
+        ],
+        "focus": "txn_A1B2C3D4",
+        "evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "Do not honor"
+                }
+              ]
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "[third-party text]"
+                }
+              ]
+            }
+          }
+        ],
+        "checks": []
+      },
+      {
+        "stage": "repair",
+        "attempt": 1,
+        "answer": "Transaction txn_A1B2C3D4 was declined for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details..",
+        "action": "allow",
+        "reasons": [],
+        "focus": "txn_A1B2C3D4",
+        "evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "Do not honor"
+                }
+              ]
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "[third-party text]"
+                }
+              ]
+            }
+          }
+        ],
+        "checks": []
+      }
+    ],
+    "evidence": [
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_A1B2C3D4"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_A1B2C3D4",
+            "status": "declined",
+            "amount": "129.00",
+            "currency": "USD",
+            "decline_code": "05",
+            "processor_response": "Do not honor",
+            "created_at": "2026-11-12T14:03:11Z",
+            "card_brand": "visa",
+            "last4": "4242",
+            "guidance": {
+              "reason_key": "05",
+              "retryable": false,
+              "retry_rule": "Do not retry with the same card details.",
+              "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+              "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+              "retry_only_if": [
+                "another card",
+                "different card",
+                "new card",
+                "other card",
+                "updated card",
+                "another payment method",
+                "different payment method",
+                "re-enter",
+                "reenter",
+                "correct"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name": "search_transaction_logs",
+        "input": {
+          "txn_id": "txn_A1B2C3D4",
+          "limit": 10
+        },
+        "result": {
+          "status": "found",
+          "source": "log_search",
+          "data": [
+            {
+              "txn_id": "txn_A1B2C3D4",
+              "tenant_id": "m_100",
+              "ts": "2026-11-12T14:03:10Z",
+              "event": "fraud_check",
+              "result": "pass",
+              "score": 12
+            },
+            {
+              "txn_id": "txn_A1B2C3D4",
+              "tenant_id": "m_100",
+              "ts": "2026-11-12T14:03:11Z",
+              "event": "issuer_response",
+              "code": "05",
+              "message": "Do not honor"
+            }
+          ]
+        }
+      },
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_A1B2C3D4"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_A1B2C3D4",
+            "status": "declined",
+            "amount": "129.00",
+            "currency": "USD",
+            "decline_code": "05",
+            "processor_response": "Do not honor",
+            "created_at": "2026-11-12T14:03:11Z",
+            "card_brand": "visa",
+            "last4": "4242",
+            "guidance": {
+              "reason_key": "05",
+              "retryable": false,
+              "retry_rule": "Do not retry with the same card details.",
+              "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+              "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+              "retry_only_if": [
+                "another card",
+                "different card",
+                "new card",
+                "other card",
+                "updated card",
+                "another payment method",
+                "different payment method",
+                "re-enter",
+                "reenter",
+                "correct"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name": "search_transaction_logs",
+        "input": {
+          "txn_id": "txn_A1B2C3D4",
+          "limit": 10
+        },
+        "result": {
+          "status": "found",
+          "source": "log_search",
+          "data": [
+            {
+              "txn_id": "txn_A1B2C3D4",
+              "tenant_id": "m_100",
+              "ts": "2026-11-12T14:03:10Z",
+              "event": "fraud_check",
+              "result": "pass",
+              "score": 12
+            },
+            {
+              "txn_id": "txn_A1B2C3D4",
+              "tenant_id": "m_100",
+              "ts": "2026-11-12T14:03:11Z",
+              "event": "issuer_response",
+              "code": "05",
+              "message": "Do not honor"
+            }
+          ]
+        }
+      }
+    ],
+    "final": {
+      "answer": "Transaction txn_A1B2C3D4 was declined for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details..",
+      "blocked_by": null,
+      "reasons": [
+        "repaired:status_mismatch:record=declined"
+      ],
+      "repaired": true,
+      "escalated": false
+    },
+    "metrics": {
+      "latency_ms": 2,
+      "model_calls": 4,
+      "tool_calls": 4
+    },
+    "limits": "Scripted model and synthetic fixtures. Passing these checks is not a proof of factuality. No live-model accuracy, latency or cost has been measured."
+  },
+  "fallback": {
+    "schema_version": 2,
+    "mode": "offline_scripted",
+    "synthetic_data": true,
+    "question": "Why was txn_A1B2C3D4 declined?",
+    "policy_verification": "extractive",
+    "fault": "amount_always",
+    "injections": [
+      {
+        "stage": "draft",
+        "fault": "amount_always",
+        "marker": "12.34"
+      },
+      {
+        "stage": "repair",
+        "fault": "amount_always",
+        "marker": "12.34"
+      }
+    ],
+    "outcome": "record_fallback",
+    "steps": [
+      {
+        "stage": "draft",
+        "attempt": 0,
+        "answer": "Transaction txn_A1B2C3D4 was declined for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.. A processing fee of 12.34 was also charged.",
+        "action": "block",
+        "reasons": [
+          "ungrounded_amount:12.34"
+        ],
+        "focus": "txn_A1B2C3D4",
+        "evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "Do not honor"
+                }
+              ]
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "[third-party text]"
+                }
+              ]
+            }
+          }
+        ],
+        "checks": []
+      },
+      {
+        "stage": "repair",
+        "attempt": 1,
+        "answer": "Transaction txn_A1B2C3D4 was declined for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.. A processing fee of 12.34 was also charged.",
+        "action": "block",
+        "reasons": [
+          "ungrounded_amount:12.34"
+        ],
+        "focus": "txn_A1B2C3D4",
+        "evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "Do not honor"
+                }
+              ]
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "[third-party text]"
+                }
+              ]
+            }
+          }
+        ],
+        "checks": []
+      },
+      {
+        "stage": "fallback",
+        "attempt": 0,
+        "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_A1B2C3D4 was declined for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
+        "action": "allow",
+        "reasons": [],
+        "focus": "txn_A1B2C3D4",
+        "evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "Do not honor"
+                }
+              ]
+            }
+          },
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "Do not honor"
+                }
+              ]
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "[third-party text]"
+                }
+              ]
+            }
+          },
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_A1B2C3D4",
+              "limit": 10
+            },
+            "result": {
+              "status": "found",
+              "source": "log_search",
+              "data": [
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:10Z",
+                  "event": "fraud_check",
+                  "result": "pass",
+                  "score": 12
+                },
+                {
+                  "txn_id": "txn_A1B2C3D4",
+                  "tenant_id": "m_100",
+                  "ts": "2026-11-12T14:03:11Z",
+                  "event": "issuer_response",
+                  "code": "05",
+                  "message": "[third-party text]"
+                }
+              ]
+            }
+          }
+        ],
+        "checks": []
+      }
+    ],
+    "evidence": [
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_A1B2C3D4"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_A1B2C3D4",
+            "status": "declined",
+            "amount": "129.00",
+            "currency": "USD",
+            "decline_code": "05",
+            "processor_response": "Do not honor",
+            "created_at": "2026-11-12T14:03:11Z",
+            "card_brand": "visa",
+            "last4": "4242",
+            "guidance": {
+              "reason_key": "05",
+              "retryable": false,
+              "retry_rule": "Do not retry with the same card details.",
+              "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+              "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+              "retry_only_if": [
+                "another card",
+                "different card",
+                "new card",
+                "other card",
+                "updated card",
+                "another payment method",
+                "different payment method",
+                "re-enter",
+                "reenter",
+                "correct"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name": "search_transaction_logs",
+        "input": {
+          "txn_id": "txn_A1B2C3D4",
+          "limit": 10
+        },
+        "result": {
+          "status": "found",
+          "source": "log_search",
+          "data": [
+            {
+              "txn_id": "txn_A1B2C3D4",
+              "tenant_id": "m_100",
+              "ts": "2026-11-12T14:03:10Z",
+              "event": "fraud_check",
+              "result": "pass",
+              "score": 12
+            },
+            {
+              "txn_id": "txn_A1B2C3D4",
+              "tenant_id": "m_100",
+              "ts": "2026-11-12T14:03:11Z",
+              "event": "issuer_response",
+              "code": "05",
+              "message": "Do not honor"
+            }
+          ]
+        }
+      },
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_A1B2C3D4"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_A1B2C3D4",
+            "status": "declined",
+            "amount": "129.00",
+            "currency": "USD",
+            "decline_code": "05",
+            "processor_response": "Do not honor",
+            "created_at": "2026-11-12T14:03:11Z",
+            "card_brand": "visa",
+            "last4": "4242",
+            "guidance": {
+              "reason_key": "05",
+              "retryable": false,
+              "retry_rule": "Do not retry with the same card details.",
+              "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+              "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+              "retry_only_if": [
+                "another card",
+                "different card",
+                "new card",
+                "other card",
+                "updated card",
+                "another payment method",
+                "different payment method",
+                "re-enter",
+                "reenter",
+                "correct"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name": "search_transaction_logs",
+        "input": {
+          "txn_id": "txn_A1B2C3D4",
+          "limit": 10
+        },
+        "result": {
+          "status": "found",
+          "source": "log_search",
+          "data": [
+            {
+              "txn_id": "txn_A1B2C3D4",
+              "tenant_id": "m_100",
+              "ts": "2026-11-12T14:03:10Z",
+              "event": "fraud_check",
+              "result": "pass",
+              "score": 12
+            },
+            {
+              "txn_id": "txn_A1B2C3D4",
+              "tenant_id": "m_100",
+              "ts": "2026-11-12T14:03:11Z",
+              "event": "issuer_response",
+              "code": "05",
+              "message": "Do not honor"
+            }
+          ]
+        }
+      }
+    ],
+    "final": {
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_A1B2C3D4 was declined for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
+      "blocked_by": null,
+      "reasons": [
+        "records_only:ungrounded_amount:12.34"
+      ],
+      "repaired": false,
+      "escalated": false
+    },
+    "metrics": {
+      "latency_ms": 3,
+      "model_calls": 4,
+      "tool_calls": 4
+    },
+    "limits": "Scripted model and synthetic fixtures. Passing these checks is not a proof of factuality. No live-model accuracy, latency or cost has been measured."
+  },
+  "timeout": {
+    "schema_version": 2,
+    "mode": "offline_scripted",
+    "synthetic_data": true,
+    "question": "What is the status of txn_TIMEOUT01?",
+    "policy_verification": "extractive",
+    "fault": "none",
+    "injections": [],
+    "outcome": "passed",
+    "steps": [
+      {
+        "stage": "draft",
+        "attempt": 0,
+        "answer": "Transaction txn_TIMEOUT01 was unknown for 80.00 USD with gateway error PROCESSOR_TIMEOUT. Next step: Outcome unknown. Confirm the status with the processor before any retry. Retry policy: Do NOT retry yet: check the transaction status first. If it never reached the processor, retry with the SAME idempotency key..",
+        "action": "allow",
+        "reasons": [],
+        "focus": "txn_TIMEOUT01",
+        "evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_TIMEOUT01"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_TIMEOUT01",
+                "status": "unknown",
+                "amount": "80.00",
+                "currency": "USD",
+                "error": "PROCESSOR_TIMEOUT",
+                "created_at": "2026-11-12T16:15:00Z",
+                "guidance": {
+                  "reason_key": "PROCESSOR_TIMEOUT",
+                  "retryable": false,
+                  "retry_rule": "Do NOT retry yet: check the transaction status first. If it never reached the processor, retry with the SAME idempotency key.",
+                  "next_step": "Outcome unknown. Confirm the status with the processor before any retry.",
+                  "tell_the_cardholder": "Wait before paying again; you might otherwise be charged twice.",
+                  "retry_only_if": [
+                    "status",
+                    "idempotency"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_TIMEOUT01",
+              "limit": 10
+            },
+            "result": {
+              "status": "not_found",
+              "source": "log_search",
+              "data": null,
+              "note": "No log events found for this transaction."
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_TIMEOUT01"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_TIMEOUT01",
+                "status": "unknown",
+                "amount": "80.00",
+                "currency": "USD",
+                "error": "PROCESSOR_TIMEOUT",
+                "created_at": "2026-11-12T16:15:00Z",
+                "guidance": {
+                  "reason_key": "PROCESSOR_TIMEOUT",
+                  "retryable": false,
+                  "retry_rule": "Do NOT retry yet: check the transaction status first. If it never reached the processor, retry with the SAME idempotency key.",
+                  "next_step": "Outcome unknown. Confirm the status with the processor before any retry.",
+                  "tell_the_cardholder": "Wait before paying again; you might otherwise be charged twice.",
+                  "retry_only_if": [
+                    "status",
+                    "idempotency"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_TIMEOUT01",
+              "limit": 10
+            },
+            "result": {
+              "status": "not_found",
+              "source": "log_search",
+              "data": null,
+              "note": "No log events found for this transaction."
+            }
+          }
+        ],
+        "checks": []
+      }
+    ],
+    "evidence": [
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_TIMEOUT01"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_TIMEOUT01",
+            "status": "unknown",
+            "amount": "80.00",
+            "currency": "USD",
+            "error": "PROCESSOR_TIMEOUT",
+            "created_at": "2026-11-12T16:15:00Z",
+            "guidance": {
+              "reason_key": "PROCESSOR_TIMEOUT",
+              "retryable": false,
+              "retry_rule": "Do NOT retry yet: check the transaction status first. If it never reached the processor, retry with the SAME idempotency key.",
+              "next_step": "Outcome unknown. Confirm the status with the processor before any retry.",
+              "tell_the_cardholder": "Wait before paying again; you might otherwise be charged twice.",
+              "retry_only_if": [
+                "status",
+                "idempotency"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name": "search_transaction_logs",
+        "input": {
+          "txn_id": "txn_TIMEOUT01",
+          "limit": 10
+        },
+        "result": {
+          "status": "not_found",
+          "source": "log_search",
+          "data": null,
+          "note": "No log events found for this transaction."
+        }
+      }
+    ],
+    "final": {
+      "answer": "Transaction txn_TIMEOUT01 was unknown for 80.00 USD with gateway error PROCESSOR_TIMEOUT. Next step: Outcome unknown. Confirm the status with the processor before any retry. Retry policy: Do NOT retry yet: check the transaction status first. If it never reached the processor, retry with the SAME idempotency key..",
+      "blocked_by": null,
+      "reasons": [],
+      "repaired": false,
+      "escalated": false
+    },
+    "metrics": {
+      "latency_ms": 1,
+      "model_calls": 2,
+      "tool_calls": 2
+    },
+    "limits": "Scripted model and synthetic fixtures. Passing these checks is not a proof of factuality. No live-model accuracy, latency or cost has been measured."
+  },
+  "pair": {
+    "schema_version": 2,
+    "mode": "offline_scripted",
+    "synthetic_data": true,
+    "question": "Compare txn_A1B2C3D4 and txn_E5F6G7H8: what are their amounts and statuses?",
+    "policy_verification": "extractive",
+    "fault": "none",
+    "injections": [],
+    "outcome": "passed",
+    "steps": [
+      {
+        "stage": "draft",
+        "attempt": 0,
+        "answer": "Transaction txn_A1B2C3D4 was declined for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.. Transaction txn_E5F6G7H8 was approved for 54.20 USD.",
+        "action": "allow",
+        "reasons": [],
+        "focus": "txn_E5F6G7H8",
+        "evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_E5F6G7H8"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_E5F6G7H8",
+                "status": "approved",
+                "amount": "54.20",
+                "currency": "USD",
+                "surcharge": "1.62",
+                "created_at": "2026-11-12T15:40:02Z",
+                "card_brand": "mastercard",
+                "last4": "4444"
+              }
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_E5F6G7H8"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_E5F6G7H8",
+                "status": "approved",
+                "amount": "54.20",
+                "currency": "USD",
+                "surcharge": "1.62",
+                "created_at": "2026-11-12T15:40:02Z",
+                "card_brand": "mastercard",
+                "last4": "4444"
+              }
+            }
+          }
+        ],
+        "checks": []
+      }
+    ],
+    "evidence": [
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_A1B2C3D4"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_A1B2C3D4",
+            "status": "declined",
+            "amount": "129.00",
+            "currency": "USD",
+            "decline_code": "05",
+            "processor_response": "Do not honor",
+            "created_at": "2026-11-12T14:03:11Z",
+            "card_brand": "visa",
+            "last4": "4242",
+            "guidance": {
+              "reason_key": "05",
+              "retryable": false,
+              "retry_rule": "Do not retry with the same card details.",
+              "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+              "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+              "retry_only_if": [
+                "another card",
+                "different card",
+                "new card",
+                "other card",
+                "updated card",
+                "another payment method",
+                "different payment method",
+                "re-enter",
+                "reenter",
+                "correct"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_E5F6G7H8"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_E5F6G7H8",
+            "status": "approved",
+            "amount": "54.20",
+            "currency": "USD",
+            "surcharge": "1.62",
+            "created_at": "2026-11-12T15:40:02Z",
+            "card_brand": "mastercard",
+            "last4": "4444"
+          }
+        }
+      }
+    ],
+    "final": {
+      "answer": "Transaction txn_A1B2C3D4 was declined for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.. Transaction txn_E5F6G7H8 was approved for 54.20 USD.",
+      "blocked_by": null,
+      "reasons": [],
+      "repaired": false,
+      "escalated": false
+    },
+    "metrics": {
+      "latency_ms": 1,
+      "model_calls": 2,
+      "tool_calls": 2
+    },
+    "limits": "Scripted model and synthetic fixtures. Passing these checks is not a proof of factuality. No live-model accuracy, latency or cost has been measured."
+  },
+  "binding": {
+    "schema_version": 2,
+    "mode": "offline_scripted",
+    "synthetic_data": true,
+    "question": "Compare txn_A1B2C3D4 and txn_E5F6G7H8: what are their amounts and statuses?",
+    "policy_verification": "extractive",
+    "fault": "swap_once",
+    "injections": [
+      {
+        "stage": "draft",
+        "fault": "swap_once",
+        "marker": "amounts exchanged between records"
+      }
+    ],
+    "outcome": "repaired",
+    "steps": [
+      {
+        "stage": "draft",
+        "attempt": 0,
+        "answer": "Transaction txn_A1B2C3D4 was declined for 54.20 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.. Transaction txn_E5F6G7H8 was approved for 129.00 USD.",
+        "action": "block",
+        "reasons": [
+          "value_from_other_record:amount:txn_A1B2C3D4<-txn_E5F6G7H8",
+          "value_from_other_record:amount:txn_E5F6G7H8<-txn_A1B2C3D4"
+        ],
+        "focus": "txn_E5F6G7H8",
+        "evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_E5F6G7H8"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_E5F6G7H8",
+                "status": "approved",
+                "amount": "54.20",
+                "currency": "USD",
+                "surcharge": "1.62",
+                "created_at": "2026-11-12T15:40:02Z",
+                "card_brand": "mastercard",
+                "last4": "4444"
+              }
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_E5F6G7H8"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_E5F6G7H8",
+                "status": "approved",
+                "amount": "54.20",
+                "currency": "USD",
+                "surcharge": "1.62",
+                "created_at": "2026-11-12T15:40:02Z",
+                "card_brand": "mastercard",
+                "last4": "4444"
+              }
+            }
+          }
+        ],
+        "checks": []
+      },
+      {
+        "stage": "repair",
+        "attempt": 1,
+        "answer": "Transaction txn_A1B2C3D4 was declined for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.. Transaction txn_E5F6G7H8 was approved for 54.20 USD.",
+        "action": "allow",
+        "reasons": [],
+        "focus": "txn_E5F6G7H8",
+        "evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_E5F6G7H8"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_E5F6G7H8",
+                "status": "approved",
+                "amount": "54.20",
+                "currency": "USD",
+                "surcharge": "1.62",
+                "created_at": "2026-11-12T15:40:02Z",
+                "card_brand": "mastercard",
+                "last4": "4444"
+              }
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_A1B2C3D4"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_A1B2C3D4",
+                "status": "declined",
+                "amount": "129.00",
+                "currency": "USD",
+                "decline_code": "05",
+                "processor_response": "Do not honor",
+                "created_at": "2026-11-12T14:03:11Z",
+                "card_brand": "visa",
+                "last4": "4242",
+                "guidance": {
+                  "reason_key": "05",
+                  "retryable": false,
+                  "retry_rule": "Do not retry with the same card details.",
+                  "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+                  "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+                  "retry_only_if": [
+                    "another card",
+                    "different card",
+                    "new card",
+                    "other card",
+                    "updated card",
+                    "another payment method",
+                    "different payment method",
+                    "re-enter",
+                    "reenter",
+                    "correct"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_E5F6G7H8"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_E5F6G7H8",
+                "status": "approved",
+                "amount": "54.20",
+                "currency": "USD",
+                "surcharge": "1.62",
+                "created_at": "2026-11-12T15:40:02Z",
+                "card_brand": "mastercard",
+                "last4": "4444"
+              }
+            }
+          }
+        ],
+        "checks": []
+      }
+    ],
+    "evidence": [
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_A1B2C3D4"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_A1B2C3D4",
+            "status": "declined",
+            "amount": "129.00",
+            "currency": "USD",
+            "decline_code": "05",
+            "processor_response": "Do not honor",
+            "created_at": "2026-11-12T14:03:11Z",
+            "card_brand": "visa",
+            "last4": "4242",
+            "guidance": {
+              "reason_key": "05",
+              "retryable": false,
+              "retry_rule": "Do not retry with the same card details.",
+              "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+              "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+              "retry_only_if": [
+                "another card",
+                "different card",
+                "new card",
+                "other card",
+                "updated card",
+                "another payment method",
+                "different payment method",
+                "re-enter",
+                "reenter",
+                "correct"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_E5F6G7H8"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_E5F6G7H8",
+            "status": "approved",
+            "amount": "54.20",
+            "currency": "USD",
+            "surcharge": "1.62",
+            "created_at": "2026-11-12T15:40:02Z",
+            "card_brand": "mastercard",
+            "last4": "4444"
+          }
+        }
+      },
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_A1B2C3D4"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_A1B2C3D4",
+            "status": "declined",
+            "amount": "129.00",
+            "currency": "USD",
+            "decline_code": "05",
+            "processor_response": "Do not honor",
+            "created_at": "2026-11-12T14:03:11Z",
+            "card_brand": "visa",
+            "last4": "4242",
+            "guidance": {
+              "reason_key": "05",
+              "retryable": false,
+              "retry_rule": "Do not retry with the same card details.",
+              "next_step": "Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry.",
+              "tell_the_cardholder": "Contact the card's issuing bank, or pay with another card.",
+              "retry_only_if": [
+                "another card",
+                "different card",
+                "new card",
+                "other card",
+                "updated card",
+                "another payment method",
+                "different payment method",
+                "re-enter",
+                "reenter",
+                "correct"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_E5F6G7H8"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_E5F6G7H8",
+            "status": "approved",
+            "amount": "54.20",
+            "currency": "USD",
+            "surcharge": "1.62",
+            "created_at": "2026-11-12T15:40:02Z",
+            "card_brand": "mastercard",
+            "last4": "4444"
+          }
+        }
+      }
+    ],
+    "final": {
+      "answer": "Transaction txn_A1B2C3D4 was declined for 129.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.. Transaction txn_E5F6G7H8 was approved for 54.20 USD.",
+      "blocked_by": null,
+      "reasons": [
+        "repaired:value_from_other_record:amount:txn_A1B2C3D4<-txn_E5F6G7H8",
+        "repaired:value_from_other_record:amount:txn_E5F6G7H8<-txn_A1B2C3D4"
+      ],
+      "repaired": true,
+      "escalated": false
+    },
+    "metrics": {
+      "latency_ms": 2,
+      "model_calls": 4,
+      "tool_calls": 4
+    },
+    "limits": "Scripted model and synthetic fixtures. Passing these checks is not a proof of factuality. No live-model accuracy, latency or cost has been measured."
+  },
+  "refusal": {
+    "schema_version": 2,
+    "mode": "offline_scripted",
+    "synthetic_data": true,
+    "question": "What are the surcharge rules?",
+    "policy_verification": "extractive",
+    "fault": "amount_always",
+    "injections": [
+      {
+        "stage": "draft",
+        "fault": "amount_always",
+        "marker": "12.34"
+      },
+      {
+        "stage": "repair",
+        "fault": "amount_always",
+        "marker": "12.34"
+      }
+    ],
+    "outcome": "blocked",
+    "steps": [
+      {
+        "stage": "draft",
+        "attempt": 0,
+        "answer": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (source: https://wiki.example.com/surcharge) A processing fee of 12.34 was also charged.",
+        "action": "block",
+        "reasons": [
+          "ungrounded_amount:12.34",
+          "policy_unsupported:statement_3"
+        ],
+        "focus": null,
+        "evidence": [
+          {
+            "name": "search_knowledge_base",
+            "input": {
+              "query": "What are the surcharge rules?"
+            },
+            "result": {
+              "status": "found",
+              "source": "knowledge_base",
+              "data": [
+                {
+                  "chunk_id": "102:v5:0",
+                  "title": "Surcharging",
+                  "section": "Surcharging > Surcharge request",
+                  "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+                  "source_url": "https://wiki.example.com/surcharge",
+                  "version": 5,
+                  "updated": "2026-09-15",
+                  "score": 1.895
+                }
+              ]
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "search_knowledge_base",
+            "input": {
+              "query": "What are the surcharge rules?"
+            },
+            "result": {
+              "status": "found",
+              "source": "knowledge_base",
+              "data": [
+                {
+                  "chunk_id": "102:v5:0",
+                  "title": "Surcharging",
+                  "section": "Surcharging > Surcharge request",
+                  "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+                  "source_url": "https://wiki.example.com/surcharge",
+                  "version": 5,
+                  "updated": "2026-09-15",
+                  "score": 1.895
+                }
+              ]
+            }
+          }
+        ],
+        "checks": [
+          {
+            "id": 0,
+            "text": "Send surcharge_amount in minor units with the authorization request",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Send surcharge_amount in minor units with the authorization request",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 1,
+            "text": "Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "text": "Debit and prepaid cards cannot be surcharged",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Debit and prepaid cards cannot be surcharged",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "text": "A processing fee of 12.34 was also charged",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "unsupported",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "stage": "repair",
+        "attempt": 1,
+        "answer": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (source: https://wiki.example.com/surcharge) A processing fee of 12.34 was also charged.",
+        "action": "block",
+        "reasons": [
+          "ungrounded_amount:12.34",
+          "policy_unsupported:statement_3"
+        ],
+        "focus": null,
+        "evidence": [
+          {
+            "name": "search_knowledge_base",
+            "input": {
+              "query": "What are the surcharge rules?"
+            },
+            "result": {
+              "status": "found",
+              "source": "knowledge_base",
+              "data": [
+                {
+                  "chunk_id": "102:v5:0",
+                  "title": "Surcharging",
+                  "section": "Surcharging > Surcharge request",
+                  "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+                  "source_url": "https://wiki.example.com/surcharge",
+                  "version": 5,
+                  "updated": "2026-09-15",
+                  "score": 1.895
+                }
+              ]
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "search_knowledge_base",
+            "input": {
+              "query": "What are the surcharge rules?"
+            },
+            "result": {
+              "status": "found",
+              "source": "knowledge_base",
+              "data": [
+                {
+                  "chunk_id": "102:v5:0",
+                  "title": "Surcharging",
+                  "section": "Surcharging > Surcharge request",
+                  "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+                  "source_url": "https://wiki.example.com/surcharge",
+                  "version": 5,
+                  "updated": "2026-09-15",
+                  "score": 1.895
+                }
+              ]
+            }
+          }
+        ],
+        "checks": [
+          {
+            "id": 0,
+            "text": "Send surcharge_amount in minor units with the authorization request",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Send surcharge_amount in minor units with the authorization request",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 1,
+            "text": "Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "text": "Debit and prepaid cards cannot be surcharged",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Debit and prepaid cards cannot be surcharged",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "text": "A processing fee of 12.34 was also charged",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "unsupported",
+            "evidence": []
+          }
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "name": "search_knowledge_base",
+        "input": {
+          "query": "What are the surcharge rules?"
+        },
+        "result": {
+          "status": "found",
+          "source": "knowledge_base",
+          "data": [
+            {
+              "chunk_id": "102:v5:0",
+              "title": "Surcharging",
+              "section": "Surcharging > Surcharge request",
+              "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+              "source_url": "https://wiki.example.com/surcharge",
+              "version": 5,
+              "updated": "2026-09-15",
+              "score": 1.895
+            }
+          ]
+        }
+      },
+      {
+        "name": "search_knowledge_base",
+        "input": {
+          "query": "What are the surcharge rules?"
+        },
+        "result": {
+          "status": "found",
+          "source": "knowledge_base",
+          "data": [
+            {
+              "chunk_id": "102:v5:0",
+              "title": "Surcharging",
+              "section": "Surcharging > Surcharge request",
+              "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+              "source_url": "https://wiki.example.com/surcharge",
+              "version": 5,
+              "updated": "2026-09-15",
+              "score": 1.895
+            }
+          ]
+        }
+      }
+    ],
+    "final": {
+      "answer": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+      "blocked_by": "evidence_guard",
+      "reasons": [
+        "ungrounded_amount:12.34",
+        "policy_unsupported:statement_3"
+      ],
+      "repaired": false,
+      "escalated": false
+    },
+    "metrics": {
+      "latency_ms": 1,
+      "model_calls": 4,
+      "tool_calls": 2
+    },
+    "limits": "Scripted model and synthetic fixtures. Passing these checks is not a proof of factuality. No live-model accuracy, latency or cost has been measured."
+  },
+  "policy": {
+    "schema_version": 2,
+    "mode": "offline_scripted",
+    "synthetic_data": true,
+    "question": "What are the surcharge rules?",
+    "policy_verification": "extractive",
+    "fault": "policy_once",
+    "injections": [
+      {
+        "stage": "draft",
+        "fault": "policy_once",
+        "marker": "policy condition reversed; original citation retained"
+      }
+    ],
+    "outcome": "repaired",
+    "steps": [
+      {
+        "stage": "draft",
+        "attempt": 0,
+        "answer": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards can be surcharged. (source: https://wiki.example.com/surcharge)",
+        "action": "block",
+        "reasons": [
+          "policy_unsupported:statement_2"
+        ],
+        "focus": null,
+        "evidence": [
+          {
+            "name": "search_knowledge_base",
+            "input": {
+              "query": "What are the surcharge rules?"
+            },
+            "result": {
+              "status": "found",
+              "source": "knowledge_base",
+              "data": [
+                {
+                  "chunk_id": "102:v5:0",
+                  "title": "Surcharging",
+                  "section": "Surcharging > Surcharge request",
+                  "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+                  "source_url": "https://wiki.example.com/surcharge",
+                  "version": 5,
+                  "updated": "2026-09-15",
+                  "score": 1.895
+                }
+              ]
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "search_knowledge_base",
+            "input": {
+              "query": "What are the surcharge rules?"
+            },
+            "result": {
+              "status": "found",
+              "source": "knowledge_base",
+              "data": [
+                {
+                  "chunk_id": "102:v5:0",
+                  "title": "Surcharging",
+                  "section": "Surcharging > Surcharge request",
+                  "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+                  "source_url": "https://wiki.example.com/surcharge",
+                  "version": 5,
+                  "updated": "2026-09-15",
+                  "score": 1.895
+                }
+              ]
+            }
+          }
+        ],
+        "checks": [
+          {
+            "id": 0,
+            "text": "Send surcharge_amount in minor units with the authorization request",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Send surcharge_amount in minor units with the authorization request",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 1,
+            "text": "Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "text": "Debit and prepaid cards can be surcharged",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "unsupported",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "stage": "repair",
+        "attempt": 1,
+        "answer": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (source: https://wiki.example.com/surcharge)",
+        "action": "allow",
+        "reasons": [],
+        "focus": null,
+        "evidence": [
+          {
+            "name": "search_knowledge_base",
+            "input": {
+              "query": "What are the surcharge rules?"
+            },
+            "result": {
+              "status": "found",
+              "source": "knowledge_base",
+              "data": [
+                {
+                  "chunk_id": "102:v5:0",
+                  "title": "Surcharging",
+                  "section": "Surcharging > Surcharge request",
+                  "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+                  "source_url": "https://wiki.example.com/surcharge",
+                  "version": 5,
+                  "updated": "2026-09-15",
+                  "score": 1.895
+                }
+              ]
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "search_knowledge_base",
+            "input": {
+              "query": "What are the surcharge rules?"
+            },
+            "result": {
+              "status": "found",
+              "source": "knowledge_base",
+              "data": [
+                {
+                  "chunk_id": "102:v5:0",
+                  "title": "Surcharging",
+                  "section": "Surcharging > Surcharge request",
+                  "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+                  "source_url": "https://wiki.example.com/surcharge",
+                  "version": 5,
+                  "updated": "2026-09-15",
+                  "score": 1.895
+                }
+              ]
+            }
+          }
+        ],
+        "checks": [
+          {
+            "id": 0,
+            "text": "Send surcharge_amount in minor units with the authorization request",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Send surcharge_amount in minor units with the authorization request",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 1,
+            "text": "Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "text": "Debit and prepaid cards cannot be surcharged",
+            "source_ids": [
+              "doc:0"
+            ],
+            "method": "extractive",
+            "verdict": "supported",
+            "evidence": [
+              {
+                "source_id": "doc:0",
+                "quote": "Debit and prepaid cards cannot be surcharged",
+                "source_url": "https://wiki.example.com/surcharge",
+                "chunk_id": "102:v5:0",
+                "version": 5
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "name": "search_knowledge_base",
+        "input": {
+          "query": "What are the surcharge rules?"
+        },
+        "result": {
+          "status": "found",
+          "source": "knowledge_base",
+          "data": [
+            {
+              "chunk_id": "102:v5:0",
+              "title": "Surcharging",
+              "section": "Surcharging > Surcharge request",
+              "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+              "source_url": "https://wiki.example.com/surcharge",
+              "version": 5,
+              "updated": "2026-09-15",
+              "score": 1.895
+            }
+          ]
+        }
+      },
+      {
+        "name": "search_knowledge_base",
+        "input": {
+          "query": "What are the surcharge rules?"
+        },
+        "result": {
+          "status": "found",
+          "source": "knowledge_base",
+          "data": [
+            {
+              "chunk_id": "102:v5:0",
+              "title": "Surcharging",
+              "section": "Surcharging > Surcharge request",
+              "text": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged.",
+              "source_url": "https://wiki.example.com/surcharge",
+              "version": 5,
+              "updated": "2026-09-15",
+              "score": 1.895
+            }
+          ]
+        }
+      }
+    ],
+    "final": {
+      "answer": "Send surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (source: https://wiki.example.com/surcharge)",
+      "blocked_by": null,
+      "reasons": [
+        "repaired:policy_unsupported:statement_2"
+      ],
+      "repaired": true,
+      "escalated": false
+    },
+    "metrics": {
+      "latency_ms": 1,
+      "model_calls": 4,
+      "tool_calls": 2
+    },
+    "limits": "Scripted model and synthetic fixtures. Passing these checks is not a proof of factuality. No live-model accuracy, latency or cost has been measured."
+  }
+}

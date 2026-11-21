@@ -1,0 +1,286 @@
+{
+  "created_utc": "2026-11-21T00:31:15.716Z",
+  "phase": "after",
+  "mode": "automated_browser_engineering_evaluation",
+  "source_revision": "844770257866083d0156b311832502f5d2835367",
+  "source_sha256": {
+    "finbot/demo.py": "bfba4c419ba1214840db21db49ab8711d71f4fa1663a53c791439c08450f7527",
+    "finbot/demo_assets/index.html": "f468cec5174aa531c180701f41c086a4e683bb55bcd599665f3f758789fddb6a",
+    "finbot/demo_assets/app.js": "2b42a8d6aa4c0dd713e7772c7aeda4284cb651d6eb56d8114c135fc973dad661",
+    "finbot/demo_assets/style.css": "c5f437e38c63e68b0134adac60f2b679dee6c415fa3b730a5bc8582006a0270d",
+    "scripts/naacl2027/interface.cjs": "dea0cea828a0d7f03b0f9b2c43d61a3aeedf8ca4deceaac62102fd685df51a23"
+  },
+  "browser": "153.0.8010.12",
+  "playwright": "1.62.1",
+  "axe": "4.10.3",
+  "human_participants": 0,
+  "limitations": [
+    "Not a usability study or proof of WCAG conformance.",
+    "Axe incomplete checks need manual review; assistive-technology testing remains pending.",
+    "Chromium only; no Safari, Firefox or real mobile-device evaluation."
+  ],
+  "checks": [
+    {
+      "name": "preset-correct",
+      "passed": true
+    },
+    {
+      "name": "preset-repair",
+      "passed": true
+    },
+    {
+      "name": "preset-fallback",
+      "passed": true
+    },
+    {
+      "name": "preset-timeout",
+      "passed": true
+    },
+    {
+      "name": "preset-pair",
+      "passed": true
+    },
+    {
+      "name": "preset-binding",
+      "passed": true
+    },
+    {
+      "name": "preset-refusal",
+      "passed": true
+    },
+    {
+      "name": "preset-policy",
+      "passed": true
+    },
+    {
+      "name": "policy-source-and-keyboard-stage-selection",
+      "passed": true
+    },
+    {
+      "name": "plain-language-binding-rejection",
+      "passed": true
+    },
+    {
+      "name": "policy-mode-and-coverage-limits-visible",
+      "passed": true
+    },
+    {
+      "name": "completed-question-remains-visible-after-edit",
+      "passed": true
+    },
+    {
+      "name": "fallback-completeness-warning",
+      "passed": true
+    },
+    {
+      "name": "busy-error-and-recovery",
+      "passed": true
+    },
+    {
+      "name": "blank-input-does-not-submit",
+      "passed": true
+    },
+    {
+      "name": "responsive-320-390-768-1440",
+      "passed": true
+    },
+    {
+      "name": "accessibility-scan-no-violations",
+      "passed": true
+    },
+    {
+      "name": "no-javascript-errors-or-external-requests",
+      "passed": true
+    }
+  ],
+  "accessibility": [
+    {
+      "state": "initial-desktop",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "#question"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ],
+      "passed_rules": 38
+    },
+    {
+      "state": "correct-desktop",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "#question"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ],
+      "passed_rules": 40
+    },
+    {
+      "state": "repair-desktop",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "#question"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ],
+      "passed_rules": 42
+    },
+    {
+      "state": "fallback-desktop",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "#question"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ],
+      "passed_rules": 42
+    },
+    {
+      "state": "timeout-desktop",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "#question"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ],
+      "passed_rules": 40
+    },
+    {
+      "state": "pair-desktop",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "#question"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ],
+      "passed_rules": 40
+    },
+    {
+      "state": "binding-desktop",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "#question"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ],
+      "passed_rules": 42
+    },
+    {
+      "state": "refusal-desktop",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "#question"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ],
+      "passed_rules": 42
+    },
+    {
+      "state": "policy-desktop",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "#question"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ],
+      "passed_rules": 42
+    },
+    {
+      "state": "fallback-mobile",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "#question"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ],
+      "passed_rules": 41
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "summary": {
+    "passed": 18,
+    "total": 18,
+    "axe_states": 10,
+    "axe_violations": 0
+  }
+}

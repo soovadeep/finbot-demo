@@ -1,0 +1,40 @@
+% Original vector diagram; no external image or font asset is required.
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners=2pt, align=center, minimum height=1.05cm,
+              text width=2.55cm, font=\small, fill=gray!5},
+  lab/.style={font=\footnotesize, fill=white, inner sep=1pt},
+  arr/.style={-{Latex[length=2mm]}, thick},
+  obs/.style={arr, dashed, gray!75}]
+% Clarification row
+\node[box] (message) at (0,3.3) {Customer message\\(no reference)};
+\node[box,fill=green!8,text width=3.6cm,minimum height=1.25cm] (clarify) at (4.6,3.3)
+  {Bayesian clarification:\\belief over authorized\\records, best question};
+\node[box,text width=2.9cm] (confirm) at (9.4,3.3) {Customer confirms\\or corrects a record};
+\draw[arr] (message) -- (clarify);
+\draw[arr] (clarify) -- node[above,lab]{short list} (confirm);
+\draw[arr] ([xshift=-0.5cm]clarify.north) -- ++(0,0.45) -- node[above,lab]{question and reply, at most 2} ++(1,0) -- ++(0,-0.45);
+% Answering row
+\node[box] (question) at (0,0) {Question about the\\confirmed record};
+\node[box] (writer) at (3.4,0) {Writer\\tool loop};
+\node[box,fill=blue!8] (gate) at (6.8,0) {Financial checks\\+ policy checks};
+\node[box] (output) at (10.2,0) {Final output\\checks};
+\node[box] (answer) at (13.6,0) {Customer\\answer};
+\node[box] (evidence) at (3.4,-2.3) {Tool gateway\\authorized evidence};
+\node[box] (fallback) at (6.8,-2.3) {Verify record summary\\or abstain};
+\node[box,fill=blue!8,text width=5.6cm] (inspector) at (11.9,-2.3)
+  {Local evidence inspector\\stage snapshots, findings and JSON export};
+\draw[arr] (confirm.south) -- ++(0,-0.55) -| node[pos=0.25,above,lab]{record ID only} (question.north);
+\draw[arr] (question) -- (writer);
+\draw[arr] (writer) -- node[above,lab]{draft} (gate);
+\draw[arr] (gate) -- node[above,lab]{pass} (output);
+\draw[arr] (output) -- (answer);
+\draw[arr] (gate.north) -- ++(0,0.75) -| node[pos=0.25,above,lab]{failure: one repair} (writer.north);
+\draw[arr] (writer.south west) -- node[left,lab]{request} (evidence.north west);
+\draw[arr] (evidence.north east) -- node[right,lab]{results} (writer.south east);
+\draw[arr] (gate) -- node[right,lab,align=left]{repair\\exhausted} (fallback);
+\draw[arr] (fallback.south) -- ++(0,-0.7) -| (15.4,-1.1) -| (output.south east);
+\draw[obs] (gate.south east) -- (inspector.north west);
+\draw[obs] (output.south) -- (inspector.north);
+\end{tikzpicture}%
+}

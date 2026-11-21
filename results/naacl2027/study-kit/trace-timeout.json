@@ -1,0 +1,175 @@
+{
+  "scenario": {
+    "id": "timeout",
+    "title": "An unknown outcome",
+    "fault": "none",
+    "question": "What is the status of txn_TIMEOUT01?",
+    "description": "A timeout does not establish approval or decline. Policy requires checking the status."
+  },
+  "trace": {
+    "schema_version": 2,
+    "mode": "offline_scripted",
+    "synthetic_data": true,
+    "question": "What is the status of txn_TIMEOUT01?",
+    "policy_verification": "extractive",
+    "fault": "none",
+    "injections": [],
+    "outcome": "passed",
+    "steps": [
+      {
+        "stage": "draft",
+        "attempt": 0,
+        "answer": "Transaction txn_TIMEOUT01 was unknown for 80.00 USD with gateway error PROCESSOR_TIMEOUT. Next step: Outcome unknown. Confirm the status with the processor before any retry. Retry policy: Do NOT retry yet: check the transaction status first. If it never reached the processor, retry with the SAME idempotency key..",
+        "action": "allow",
+        "reasons": [],
+        "focus": "txn_TIMEOUT01",
+        "evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_TIMEOUT01"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_TIMEOUT01",
+                "status": "unknown",
+                "amount": "80.00",
+                "currency": "USD",
+                "error": "PROCESSOR_TIMEOUT",
+                "created_at": "2026-11-12T16:15:00Z",
+                "guidance": {
+                  "reason_key": "PROCESSOR_TIMEOUT",
+                  "retryable": false,
+                  "retry_rule": "Do NOT retry yet: check the transaction status first. If it never reached the processor, retry with the SAME idempotency key.",
+                  "next_step": "Outcome unknown. Confirm the status with the processor before any retry.",
+                  "tell_the_cardholder": "Wait before paying again; you might otherwise be charged twice.",
+                  "retry_only_if": [
+                    "status",
+                    "idempotency"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_TIMEOUT01",
+              "limit": 10
+            },
+            "result": {
+              "status": "not_found",
+              "source": "log_search",
+              "data": null,
+              "note": "No log events found for this transaction."
+            }
+          }
+        ],
+        "trusted_evidence": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_TIMEOUT01"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_TIMEOUT01",
+                "status": "unknown",
+                "amount": "80.00",
+                "currency": "USD",
+                "error": "PROCESSOR_TIMEOUT",
+                "created_at": "2026-11-12T16:15:00Z",
+                "guidance": {
+                  "reason_key": "PROCESSOR_TIMEOUT",
+                  "retryable": false,
+                  "retry_rule": "Do NOT retry yet: check the transaction status first. If it never reached the processor, retry with the SAME idempotency key.",
+                  "next_step": "Outcome unknown. Confirm the status with the processor before any retry.",
+                  "tell_the_cardholder": "Wait before paying again; you might otherwise be charged twice.",
+                  "retry_only_if": [
+                    "status",
+                    "idempotency"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_TIMEOUT01",
+              "limit": 10
+            },
+            "result": {
+              "status": "not_found",
+              "source": "log_search",
+              "data": null,
+              "note": "No log events found for this transaction."
+            }
+          }
+        ],
+        "checks": []
+      }
+    ],
+    "evidence": [
+      {
+        "name": "get_transaction",
+        "input": {
+          "txn_id": "txn_TIMEOUT01"
+        },
+        "result": {
+          "status": "found",
+          "source": "txn_db",
+          "data": {
+            "txn_id": "txn_TIMEOUT01",
+            "status": "unknown",
+            "amount": "80.00",
+            "currency": "USD",
+            "error": "PROCESSOR_TIMEOUT",
+            "created_at": "2026-11-12T16:15:00Z",
+            "guidance": {
+              "reason_key": "PROCESSOR_TIMEOUT",
+              "retryable": false,
+              "retry_rule": "Do NOT retry yet: check the transaction status first. If it never reached the processor, retry with the SAME idempotency key.",
+              "next_step": "Outcome unknown. Confirm the status with the processor before any retry.",
+              "tell_the_cardholder": "Wait before paying again; you might otherwise be charged twice.",
+              "retry_only_if": [
+                "status",
+                "idempotency"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name": "search_transaction_logs",
+        "input": {
+          "txn_id": "txn_TIMEOUT01",
+          "limit": 10
+        },
+        "result": {
+          "status": "not_found",
+          "source": "log_search",
+          "data": null,
+          "note": "No log events found for this transaction."
+        }
+      }
+    ],
+    "final": {
+      "answer": "Transaction txn_TIMEOUT01 was unknown for 80.00 USD with gateway error PROCESSOR_TIMEOUT. Next step: Outcome unknown. Confirm the status with the processor before any retry. Retry policy: Do NOT retry yet: check the transaction status first. If it never reached the processor, retry with the SAME idempotency key..",
+      "blocked_by": null,
+      "reasons": [],
+      "repaired": false,
+      "escalated": false
+    },
+    "metrics": {
+      "latency_ms": 1,
+      "model_calls": 2,
+      "tool_calls": 2
+    },
+    "limits": "Scripted model and synthetic fixtures. Passing these checks is not a proof of factuality. No live-model accuracy, latency or cost has been measured."
+  }
+}

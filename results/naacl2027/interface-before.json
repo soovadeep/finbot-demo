@@ -1,0 +1,361 @@
+{
+  "created_utc": "2026-11-19T18:56:26.674Z",
+  "phase": "before",
+  "mode": "automated_browser_engineering_evaluation",
+  "source_revision": "afef182187c0541b84c0d271aff4dc14be25c544",
+  "source_sha256": {
+    "finbot/demo.py": "755691df5a4a4986338240e9d7396c5d37f2c230f2830f0141c7a934fb569e49",
+    "finbot/demo_assets/index.html": "429a009287e614a42549980c026b604fdcdd98e6a60b91f3ecabaf6ff96b2c11",
+    "finbot/demo_assets/app.js": "34560f0a03bba545cfda82a17430e08f6540de61babfaccabe134ab26ab28805",
+    "finbot/demo_assets/style.css": "0ff4b8406b64915704343231155dd25ac3d6536984eb206e9811db98469fe5b5",
+    "scripts/naacl2027/interface.cjs": "370767effe00461c70161d019341bea90d5256552665bf0069835eecdc168705"
+  },
+  "browser": "157.0.8103.79",
+  "playwright": "1.62.1",
+  "axe": "4.10.3",
+  "human_participants": 0,
+  "limitations": [
+    "Not a usability study or proof of WCAG conformance.",
+    "Axe incomplete checks need manual review; assistive-technology testing remains pending.",
+    "Chromium only; no Safari, Firefox or real mobile-device evaluation."
+  ],
+  "checks": [
+    {
+      "name": "preset-correct",
+      "passed": true
+    },
+    {
+      "name": "preset-repair",
+      "passed": true
+    },
+    {
+      "name": "preset-fallback",
+      "passed": true
+    },
+    {
+      "name": "preset-timeout",
+      "passed": true
+    },
+    {
+      "name": "preset-pair",
+      "passed": true
+    },
+    {
+      "name": "preset-binding",
+      "passed": true
+    },
+    {
+      "name": "preset-refusal",
+      "passed": true
+    },
+    {
+      "name": "preset-policy",
+      "passed": true
+    },
+    {
+      "name": "policy-source-and-keyboard-stage-selection",
+      "passed": true
+    },
+    {
+      "name": "plain-language-binding-rejection",
+      "passed": false,
+      "error": "The input did not match the regular expression /belongs to a different record/. Input:\n\n'Rejected by checksInjected fault: amounts exchanged between records.Transaction txn_A1B2C3D4 was declined for 54.20 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.. Transaction txn_E5F6G7H8 was approved for 129.00 USD.value_from_other_record:amount:txn_A1B2C3D4<-txn_E5F6G7H8value_from_other_record:amount:txn_E5F6G7H8<-txn_A1B2C3D4'\n"
+    },
+    {
+      "name": "policy-mode-and-coverage-limits-visible",
+      "passed": false,
+      "error": "locator.textContent: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#policy-mode')\u001b[22m\n"
+    },
+    {
+      "name": "completed-question-remains-visible-after-edit",
+      "passed": false,
+      "error": "locator.textContent: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#result-context')\u001b[22m\n"
+    },
+    {
+      "name": "fallback-completeness-warning",
+      "passed": false,
+      "error": "The input did not match the regular expression /may not cover every record/. Input:\n\n\"Built from the recordI couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_E5F6G7H8 was approved for 54.20 USD.\"\n"
+    },
+    {
+      "name": "busy-error-and-recovery",
+      "passed": true
+    },
+    {
+      "name": "blank-input-does-not-submit",
+      "passed": true
+    },
+    {
+      "name": "responsive-320-390-768-1440",
+      "passed": true
+    },
+    {
+      "name": "accessibility-scan-no-violations",
+      "passed": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   'initial-desktop:landmark-complementary-is-top-level',\n+   'correct-desktop:landmark-complementary-is-top-level',\n+   'repair-desktop:landmark-complementary-is-top-level',\n+   'fallback-desktop:landmark-complementary-is-top-level',\n+   'timeout-desktop:landmark-complementary-is-top-level',\n+   'pair-desktop:landmark-complementary-is-top-level',\n+   'binding-desktop:landmark-complementary-is-top-level',\n+   'refusal-desktop:landmark-complementary-is-top-level',\n+   'policy-desktop:landmark-complementary-is-top-level',\n+   'fallback-mobile:landmark-complementary-is-top-level'\n+ ]\n- []\n"
+    },
+    {
+      "name": "no-javascript-errors-or-external-requests",
+      "passed": true
+    }
+  ],
+  "accessibility": [
+    {
+      "state": "initial-desktop",
+      "violations": [
+        {
+          "id": "landmark-complementary-is-top-level",
+          "impact": "moderate",
+          "description": "Ensure the complementary landmark or aside is at top level",
+          "nodes": [
+            {
+              "target": [
+                "aside"
+              ],
+              "summary": "Fix any of the following:\n  The null landmark is contained in another landmark."
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ],
+      "passed_rules": 38
+    },
+    {
+      "state": "correct-desktop",
+      "violations": [
+        {
+          "id": "landmark-complementary-is-top-level",
+          "impact": "moderate",
+          "description": "Ensure the complementary landmark or aside is at top level",
+          "nodes": [
+            {
+              "target": [
+                "aside"
+              ],
+              "summary": "Fix any of the following:\n  The null landmark is contained in another landmark."
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ],
+      "passed_rules": 40
+    },
+    {
+      "state": "repair-desktop",
+      "violations": [
+        {
+          "id": "landmark-complementary-is-top-level",
+          "impact": "moderate",
+          "description": "Ensure the complementary landmark or aside is at top level",
+          "nodes": [
+            {
+              "target": [
+                "aside"
+              ],
+              "summary": "Fix any of the following:\n  The null landmark is contained in another landmark."
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ],
+      "passed_rules": 42
+    },
+    {
+      "state": "fallback-desktop",
+      "violations": [
+        {
+          "id": "landmark-complementary-is-top-level",
+          "impact": "moderate",
+          "description": "Ensure the complementary landmark or aside is at top level",
+          "nodes": [
+            {
+              "target": [
+                "aside"
+              ],
+              "summary": "Fix any of the following:\n  The null landmark is contained in another landmark."
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ],
+      "passed_rules": 42
+    },
+    {
+      "state": "timeout-desktop",
+      "violations": [
+        {
+          "id": "landmark-complementary-is-top-level",
+          "impact": "moderate",
+          "description": "Ensure the complementary landmark or aside is at top level",
+          "nodes": [
+            {
+              "target": [
+                "aside"
+              ],
+              "summary": "Fix any of the following:\n  The null landmark is contained in another landmark."
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ],
+      "passed_rules": 40
+    },
+    {
+      "state": "pair-desktop",
+      "violations": [
+        {
+          "id": "landmark-complementary-is-top-level",
+          "impact": "moderate",
+          "description": "Ensure the complementary landmark or aside is at top level",
+          "nodes": [
+            {
+              "target": [
+                "aside"
+              ],
+              "summary": "Fix any of the following:\n  The null landmark is contained in another landmark."
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ],
+      "passed_rules": 40
+    },
+    {
+      "state": "binding-desktop",
+      "violations": [
+        {
+          "id": "landmark-complementary-is-top-level",
+          "impact": "moderate",
+          "description": "Ensure the complementary landmark or aside is at top level",
+          "nodes": [
+            {
+              "target": [
+                "aside"
+              ],
+              "summary": "Fix any of the following:\n  The null landmark is contained in another landmark."
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ],
+      "passed_rules": 42
+    },
+    {
+      "state": "refusal-desktop",
+      "violations": [
+        {
+          "id": "landmark-complementary-is-top-level",
+          "impact": "moderate",
+          "description": "Ensure the complementary landmark or aside is at top level",
+          "nodes": [
+            {
+              "target": [
+                "aside"
+              ],
+              "summary": "Fix any of the following:\n  The null landmark is contained in another landmark."
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ],
+      "passed_rules": 42
+    },
+    {
+      "state": "policy-desktop",
+      "violations": [
+        {
+          "id": "landmark-complementary-is-top-level",
+          "impact": "moderate",
+          "description": "Ensure the complementary landmark or aside is at top level",
+          "nodes": [
+            {
+              "target": [
+                "aside"
+              ],
+              "summary": "Fix any of the following:\n  The null landmark is contained in another landmark."
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ],
+      "passed_rules": 42
+    },
+    {
+      "state": "fallback-mobile",
+      "violations": [
+        {
+          "id": "landmark-complementary-is-top-level",
+          "impact": "moderate",
+          "description": "Ensure the complementary landmark or aside is at top level",
+          "nodes": [
+            {
+              "target": [
+                "aside"
+              ],
+              "summary": "Fix any of the following:\n  The null landmark is contained in another landmark."
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ],
+      "passed_rules": 40
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "summary": {
+    "passed": 13,
+    "total": 18,
+    "axe_states": 10,
+    "axe_violations": 10
+  }
+}
