@@ -39,7 +39,7 @@ class DemoServerConnections(unittest.TestCase):
                     client.request("GET", "/study")
                     response = client.getresponse()
                     self.assertEqual(response.status, 200)
-                    self.assertIn(b"Find the payment you mean", response.read())
+                    self.assertIn(b"Which payment did you mean?", response.read())
                     client.request("GET", "/api/study")
                     response = client.getresponse()
                     self.assertEqual(response.status, 200)

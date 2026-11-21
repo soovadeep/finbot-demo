@@ -57,7 +57,14 @@ def scenario_catalogue() -> dict:
 RECORD_FAULTS = ("none", "status_once", "amount_once", "amount_always")
 
 
-def extract_details(text: str, pending: Question | None) -> tuple[dict, set[str], list[str]]:
+MONTHS = ("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec")
+# A month name, full or abbreviated, as the start of a date ("Nov 15", "October 3rd").
+MONTH = r"\b(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sept?(?:ember)?|" \
+        r"oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\b"
+
+
+def extract_details(text: str, pending: Question | None,
+                    candidates: tuple[Candidate, ...] = CANDIDATES) -> tuple[dict, set[str], list[str]]:
     """Conservative matching of supported fields with simple clause-scoped hedges.
 
     Negation and alternatives are not silently converted into positive assertions.
@@ -70,9 +77,9 @@ def extract_details(text: str, pending: Question | None) -> tuple[dict, set[str]
 
     def certainty_for(key: str, value: str) -> str:
         patterns = {"kind": r"\b(?:transfer|card)\b", "merchant": re.escape(value.casefold()),
-                    "date": r"\b(?:\d{4}-\d{2}-\d{2}|nov(?:ember)?)\b",
+                    "date": rf"\b(?:\d{{4}}-\d{{2}}-\d{{2}}|{MONTH})",
                     "reference": re.escape(value.casefold()),
-                    "amount": r"\$|\b\d[\d,.]*\s*(?:usd|eur|gbp)\b", "currency": r"\$|\b(?:usd|eur|gbp)\b"}
+                    "amount": r"\$|\b\d[\d,.]*\s*(?:usd|eur|gbp|cad)\b", "currency": r"\$|\b(?:usd|eur|gbp|cad)\b"}
         relevant = [clause for clause in clauses if re.search(patterns[key], clause)]
         blanket_caveat = bool(re.fullmatch(r"\s*(?:i'm |i am )?(?:not sure|unsure|not certain)[.!? ]*", clauses[-1]))
         return "tentative" if blanket_caveat or any(re.search(hedge, c) for c in relevant) else "supplied"
@@ -91,13 +98,13 @@ def extract_details(text: str, pending: Question | None) -> tuple[dict, set[str]
     values: dict[str, list[str]] = {"kind": [], "merchant": [], "date": [], "reference": [],
                                   "amount": [], "currency": []}
     amounts = re.findall(r"\$([\d,]+(?:\.\d+)?)", text)
-    amounts += re.findall(r"\b([\d,]+(?:\.\d+)?)\s*(?:USD|EUR|GBP)\b", text, re.IGNORECASE)
+    amounts += re.findall(r"\b([\d,]+(?:\.\d+)?)\s*(?:USD|EUR|GBP|CAD)\b", text, re.IGNORECASE)
     for amount in amounts:
         try:
             values["amount"].append(str(Decimal(amount.replace(",", "")).quantize(Decimal(".01"))))
         except InvalidOperation:
             issues.append("I couldn't interpret the amount.")
-    values["currency"] = re.findall(r"\b(?:USD|EUR|GBP)\b", text.upper())
+    values["currency"] = re.findall(r"\b(?:USD|EUR|GBP|CAD)\b", text.upper())
     if "$" in text:
         values["currency"].append("USD")
     for pattern, value in [(r"\b(?:bank )?transfer\b", "Bank transfer"),
@@ -105,7 +112,7 @@ def extract_details(text: str, pending: Question | None) -> tuple[dict, set[str]
         if re.search(pattern, lowered):
             values["kind"].append(value)
     # Known names are also recognized when supplied alone as a reply.
-    for merchant in {c.attributes["merchant"] for c in CANDIDATES}:
+    for merchant in {c.attributes["merchant"] for c in candidates}:
         if re.search(rf"\b{re.escape(merchant.casefold())}\b", lowered):
             values["merchant"].append(merchant)
     # An unfamiliar recipient must remain a mismatch, not be discarded in favour of a known one.
@@ -114,8 +121,9 @@ def extract_details(text: str, pending: Question | None) -> tuple[dict, set[str]
         if merchant not in {v.casefold() for v in values["merchant"]}:
             values["merchant"].append(merchant.title())
     iso_dates = re.findall(r"\b\d{4}-\d{2}-\d{2}\b", lowered)
-    for match in re.finditer(r"\bnov(?:ember)?\.?\s+(\d{1,2})(?:st|nd|rd|th)?(?:,?\s+(\d{4}))?\b", lowered):
-        iso_dates.append(f"{match.group(2) or '2026'}-11-{int(match.group(1)):02d}")
+    for match in re.finditer(MONTH + r"\.?\s+(\d{1,2})(?:st|nd|rd|th)?(?:,?\s+(\d{4}))?\b", lowered):
+        month = MONTHS.index(match.group(1)[:3]) + 1
+        iso_dates.append(f"{match.group(3) or '2026'}-{month:02d}-{int(match.group(2)):02d}")
     for value in dict.fromkeys(iso_dates):
         try:
             date.fromisoformat(value)

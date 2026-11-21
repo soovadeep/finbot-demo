@@ -4754,3 +4754,385 @@
 {"key": "l|amb_b77f_transfer_not_received_by_recipient_3|misremembers|merchant|xfer_LTJRKR9N|xfer_PDVWEY3E|xfer_PU12NAJY|xfer_YH9YYZJZ|xfer_TBEXAGPW|txn_JYANP5DGQH|xfer_RW4D5MMD|xfer_XG6P898E", "value": {"record_id": null, "raw": "{\"number\": 0}"}}
 {"key": "l|amb_b77f_transfer_not_received_by_recipient_5|misremembers|kind|txn_JYANP5DGQH|xfer_LTJRKR9N|xfer_PU12NAJY|xfer_PDVWEY3E|xfer_TBEXAGPW|xfer_XG6P898E|xfer_YH9YYZJZ|xfer_RW4D5MMD", "value": {"record_id": "xfer_PDVWEY3E", "raw": "{\"number\": 4}"}}
 {"key": "l|amb_b77f_transfer_timing_2|misremembers|amount|xfer_SVFSR512|xfer_GG6C4BJT|xfer_EM1R9141|xfer_CAAN7510|xfer_HY9Q4ZQ7|xfer_FEHMTF60|txn_VBUDXBRLQY|xfer_VTVYRMEC", "value": {"record_id": "xfer_GG6C4BJT", "raw": "{\"number\": 2}"}}
+{"key": "l|amb_b77_transfer_timing_3|misremembers|date|txn_JYANP5DGQH|xfer_TBEXAGPW", "value": {"record_id": "xfer_TBEXAGPW", "raw": "{\"number\": 2}"}}
+{"key": "q|amb_b77_failed_transfer_1|receipt||amount|26561.12||2413.85||943.53||2740.38||804.80||857.04||899.47||9550.47||I'm not sure", "value": {"choice": "2413.85", "raw": "{\"choice\": \"2413.85\"}"}}
+{"key": "q|amb_b77_declined_transfer_0|receipt||amount|1305.74||21873.47||4828.79||17116.00||187.08||1840.66||1926.65||250.97||I'm not sure", "value": {"choice": "21873.47", "raw": "{\"choice\": \"21873.47\"}"}}
+{"key": "q|amb_b77_failed_transfer_4|receipt||amount|2487.15||1591.41||25291.27||2375.76||1199.64||1125.56||510.20||7831.99||I'm not sure", "value": {"choice": "25291.27", "raw": "{\"choice\": \"25291.27\"}"}}
+{"key": "q|amb_b77_failed_transfer_5|receipt||amount|4385.53||26118.30||159.58||2331.15||16134.50||2076.95||1410.37||1237.35||I'm not sure", "value": {"choice": "26118.30", "raw": "{\"choice\": \"26118.30\"}"}}
+{"key": "q|amb_b77_declined_transfer_5|misremembers|kind|amount|1305.74||4828.79||21873.47||17116.00||391.06||1926.65||187.08||1840.66||I'm not sure", "value": {"choice": "21873.47", "raw": "{\"choice\": \"21873.47\"}"}}
+{"key": "q|amb_b77_declined_transfer_1|receipt||amount|9550.47||899.47||2740.38||804.80||1825.86||2413.85||26561.12||943.53||I'm not sure", "value": {"choice": "26561.12", "raw": "{\"choice\": \"26561.12\"}"}}
+{"key": "q|amb_b77_declined_transfer_6|receipt||amount|8.41||24679.32||777.23||6160.56||2365.32||2787.72||1897.40||7103.84||I'm not sure", "value": {"choice": "24679.32", "raw": "{\"choice\": \"24679.32\"}"}}
+{"key": "q|amb_b77_failed_transfer_0|receipt||amount|899.47||804.80||2413.85||26561.12||275.45||9550.47||2740.38||943.53||I'm not sure", "value": {"choice": "26561.12", "raw": "{\"choice\": \"26561.12\"}"}}
+{"key": "q|amb_b77_failed_transfer_7|receipt||amount|4385.53||159.58||199.44||2331.15||16134.50||2076.95||26118.30||1410.37||I'm not sure", "value": {"choice": "26118.30", "raw": "{\"choice\": \"26118.30\"}"}}
+{"key": "q|amb_b77_pending_transfer_0|receipt||amount|16134.50||159.58||26118.30||2331.15||1237.35||4385.53||2076.95||1410.37||I'm not sure", "value": {"choice": "16134.50", "raw": "{\"choice\": \"16134.50\"}"}}
+{"key": "q|amb_b77_failed_transfer_6|misremembers|kind|amount|1897.40||2787.72||777.23||7103.84||24679.32||2365.32||999.53||6160.56||I'm not sure", "value": {"choice": "24679.32", "raw": "{\"choice\": \"24679.32\"}"}}
+{"key": "q|amb_b77_transfer_timing_0|receipt||amount|777.23||6160.56||7103.84||8.41||24679.32||2787.72||1897.40||2365.32||I'm not sure", "value": {"choice": "2365.32", "raw": "{\"choice\": \"2365.32\"}"}}
+{"key": "q|amb_b77_pending_transfer_4|receipt||amount|1840.66||17116.00||21873.47||1305.74||1926.65||187.08||4828.79||297.35||I'm not sure", "value": {"choice": "1305.74", "raw": "{\"choice\": \"1305.74\"}"}}
+{"key": "q|amb_b77_pending_transfer_3|receipt||amount|943.53||2413.85||857.04||26561.12||9550.47||899.47||2740.38||804.80||I'm not sure", "value": {"choice": "2740.38", "raw": "{\"choice\": \"2740.38\"}"}}
+{"key": "q|amb_b77_transfer_timing_1|receipt||amount|1975.84||13000.94||17931.44||1895.90||2389.05||26.85||3172.03||86.44||I'm not sure", "value": {"choice": "1895.90", "raw": "{\"choice\": \"1895.90\"}"}}
+{"key": "q|amb_b77_pending_transfer_5|receipt||amount|187.08||1926.65||1840.66||17116.00||565.09||1305.74||4828.79||21873.47||I'm not sure", "value": {"choice": "17116.00", "raw": "{\"choice\": \"17116.00\"}"}}
+{"key": "q|amb_b77_transfer_timing_4|misremembers|amount|amount|1897.40||7103.84||2365.32||999.53||2787.72||6160.56||777.23||24679.32||I'm not sure", "value": {"choice": "1897.40", "raw": "{\"choice\": \"1897.40\"}"}}
+{"key": "q|amb_b77_transfer_timing_6|misremembers|kind|amount|17116.00||4828.79||1840.66||21873.47||1926.65||187.08||250.97||1305.74||I'm not sure", "value": {"choice": "1840.66", "raw": "{\"choice\": \"1840.66\"}"}}
+{"key": "q|amb_b77_transfer_timing_7|receipt||amount|26118.30||16134.50||4385.53||1410.37||2076.95||1237.35||2331.15||159.58||I'm not sure", "value": {"choice": "1410.37", "raw": "{\"choice\": \"1410.37\"}"}}
+{"key": "q|amb_b77f_cancel_transfer_0|receipt||amount|1410.37||26118.30||159.58||4385.53||16134.50||199.44||2076.95||2331.15||I'm not sure", "value": {"choice": "16134.50", "raw": "{\"choice\": \"16134.50\"}"}}
+{"key": "q|amb_b77f_cancel_transfer_1|misremembers|kind|amount|159.58||16134.50||2331.15||1410.37||2076.95||199.44||26118.30||4385.53||I'm not sure", "value": {"choice": "2331.15", "raw": "{\"choice\": \"2331.15\"}"}}
+{"key": "q|amb_b77_transfer_timing_5|receipt||amount|1975.84||30.73||26.85||13000.94||1895.90||17931.44||2389.05||3172.03||I'm not sure", "value": {"choice": "1895.90", "raw": "{\"choice\": \"1895.90\"}"}}
+{"key": "q|amb_b77f_cancel_transfer_5|misremembers|kind|amount|275.45||2413.85||804.80||26561.12||943.53||899.47||2740.38||9550.47||I'm not sure", "value": {"choice": "2740.38", "raw": "{\"choice\": \"2740.38\"}"}}
+{"key": "q|amb_b77f_declined_transfer_0|misremembers|amount|amount|7831.99||2487.15||25291.27||1199.64||1591.41||1908.31||2375.76||510.20||I'm not sure", "value": {"choice": "7831.99", "raw": "{\"choice\": \"7831.99\"}"}}
+{"key": "q|amb_b77f_declined_transfer_3|receipt||amount|1410.37||16134.50||2076.95||4385.53||2331.15||159.58||26118.30||1237.35||I'm not sure", "value": {"choice": "26118.30", "raw": "{\"choice\": \"26118.30\"}"}}
+{"key": "l|amb_b77f_declined_transfer_5|misremembers|merchant|xfer_4L57QY6F|xfer_R1505W5T", "value": {"record_id": null, "raw": "{\"number\": 0}"}}
+{"key": "q|amb_b77f_declined_transfer_6|receipt||amount|7831.99||2375.76||1199.64||25291.27||1591.41||510.20||7.66||2487.15||I'm not sure", "value": {"choice": "25291.27", "raw": "{\"choice\": \"25291.27\"}"}}
+{"key": "q|amb_b77f_cancel_transfer_4|receipt||amount|1825.86||943.53||2413.85||899.47||9550.47||804.80||2740.38||26561.12||I'm not sure", "value": {"choice": "899.47", "raw": "{\"choice\": \"899.47\"}"}}
+{"key": "q|amb_b77f_cancel_transfer_6|receipt||amount|2076.95||1410.37||16134.50||26118.30||33.60||4385.53||2331.15||159.58||I'm not sure", "value": {"choice": "4385.53", "raw": "{\"choice\": \"4385.53\"}"}}
+{"key": "q|amb_b77f_failed_transfer_0|receipt||amount|2787.72||999.53||24679.32||2365.32||7103.84||777.23||6160.56||1897.40||I'm not sure", "value": {"choice": "24679.32", "raw": "{\"choice\": \"24679.32\"}"}}
+{"key": "q|amb_b77f_failed_transfer_6|receipt||amount|26561.12||943.53||804.80||2413.85||1825.86||2740.38||899.47||9550.47||I'm not sure", "value": {"choice": "26561.12", "raw": "{\"choice\": \"26561.12\"}"}}
+{"key": "q|amb_b77f_pending_transfer_1|receipt||amount|3172.03||2389.05||26.85||86.44||1975.84||13000.94||17931.44||1895.90||I'm not sure", "value": {"choice": "3172.03", "raw": "{\"choice\": \"3172.03\"}"}}
+{"key": "q|amb_b77f_pending_transfer_5|receipt||amount|24.98||17116.00||1840.66||1926.65||21873.47||1305.74||4828.79||187.08||I'm not sure", "value": {"choice": "4828.79", "raw": "{\"choice\": \"4828.79\"}"}}
+{"key": "q|amb_b77f_pending_transfer_7|receipt||amount|5195.18||1599.82||3465.74||15457.98||607.70||589.96||1909.92||1017.68||I'm not sure", "value": {"choice": "1017.68", "raw": "{\"choice\": \"1017.68\"}"}}
+{"key": "q|amb_b77f_transfer_not_received_by_recipient_0|receipt||amount|187.08||1926.65||297.35||4828.79||21873.47||1840.66||1305.74||17116.00||I'm not sure", "value": {"choice": "1926.65", "raw": "{\"choice\": \"1926.65\"}"}}
+{"key": "q|amb_b77f_transfer_not_received_by_recipient_6|misremembers|kind|amount|1926.65||1305.74||17116.00||297.35||21873.47||1840.66||187.08||4828.79||I'm not sure", "value": {"choice": "187.08", "raw": "{\"choice\": \"187.08\"}"}}
+{"key": "q|amb_b77f_transfer_timing_0|receipt||amount|6499.48||4657.24||1889.59||2235.38||408.04||26.05||838.09||22402.75||I'm not sure", "value": {"choice": "838.09", "raw": "{\"choice\": \"838.09\"}"}}
+{"key": "q|amb_b77f_pending_transfer_3|receipt||amount|17116.00||24.98||1305.74||187.08||1840.66||4828.79||21873.47||1926.65||I'm not sure", "value": {"choice": "1305.74", "raw": "{\"choice\": \"1305.74\"}"}}
+{"key": "q|amb_b77f_transfer_timing_7|receipt||amount|2413.85||26561.12||9550.47||943.53||2740.38||804.80||899.47||857.04||I'm not sure", "value": {"choice": "899.47", "raw": "{\"choice\": \"899.47\"}"}}
+{"key": "q|amb_b77f_transfer_timing_2|receipt||amount|1840.66||4828.79||1305.74||21873.47||187.08||1926.65||1819.33||17116.00||I'm not sure", "value": {"choice": "4828.79", "raw": "{\"choice\": \"4828.79\"}"}}
+{"key": "q|amb_b77f_transfer_timing_6|receipt||amount|2235.38||1889.59||22402.75||408.04||4657.24||838.09||6499.48||26.05||I'm not sure", "value": {"choice": "4657.24", "raw": "{\"choice\": \"4657.24\"}"}}
+{"key": "q|amb_b77f_transfer_not_received_by_recipient_1|receipt||amount|1017.68||162.81||589.96||15457.98||5195.18||607.70||3465.74||1599.82||I'm not sure", "value": {"choice": "3465.74", "raw": "{\"choice\": \"3465.74\"}"}}
+{"key": "l|amb_b77f_declined_cash_withdrawal_7|misremembers|date|txn_LV4CF83YJY|txn_G58ABX5UGP", "value": {"record_id": "txn_G58ABX5UGP", "raw": "{\"number\": 2}"}}
+{"key": "l|amb_b77_card_payment_fee_charged_2|misremembers|date|txn_RZ66UJXLZE|txn_DNVUHSE4Z4", "value": {"record_id": "txn_DNVUHSE4Z4", "raw": "{\"number\": 2}"}}
+{"key": "q|amb_b77f_transfer_timing_3|misremembers|amount|amount|275.45||943.53||2740.38||804.80||26561.12||899.47||2413.85||9550.47||I'm not sure", "value": {"choice": "275.45", "raw": "{\"choice\": \"275.45\"}"}}
+{"key": "l|amb_b77f_pending_card_payment_1|misremembers|date|txn_ZTTFBCESSG|txn_HCTLKAVFB9", "value": {"record_id": null, "raw": "{\"number\": 0}"}}
+{"key": "l|amb_b77_reverted_card_payment_1|misremembers|date|txn_558P5V8B8D|txn_M42WCUZM85", "value": {"record_id": "txn_M42WCUZM85", "raw": "{\"number\": 2}"}}
+{"key": "q|amb_b77f_failed_transfer_7|receipt||amount|2491.25||1305.74||17116.00||1840.66||4828.79||21873.47||187.08||1926.65||I'm not sure", "value": {"choice": "1926.65", "raw": "{\"choice\": \"1926.65\"}"}}
+{"key": "l|amb_b77_card_payment_fee_charged_0|misremembers|date|txn_FPMYKEP433|txn_Q4LCDBE859", "value": {"record_id": "txn_Q4LCDBE859", "raw": "{\"number\": 2}"}}
+{"key": "f|amb_b77_Refund_not_showing_up_2|receipt||amount", "value": {"reply": "It was 544.78 EUR.", "raw": "{\"reply\": \"It was 544.78 EUR.\"}"}}
+{"key": "f|amb_b77_Refund_not_showing_up_4|misremembers|date|amount", "value": {"reply": "It was $4.87 to Peak Yoga Studio.", "raw": "{\"reply\": \"It was $4.87 to Peak Yoga Studio.\"}"}}
+{"key": "f|amb_b77_Refund_not_showing_up_1|vague||amount", "value": {"reply": "It was around 40 dollars.", "raw": "{\"reply\": \"It was around 40 dollars.\"}"}}
+{"key": "f|amb_b77_Refund_not_showing_up_3|misremembers|amount|amount", "value": {"reply": "It was $73.63 to Pixelforge Computers.", "raw": "{\"reply\": \"It was $73.63 to Pixelforge Computers.\"}"}}
+{"key": "f|amb_b77_Refund_not_showing_up_7|receipt||amount", "value": {"reply": "It was $180.93 to Harbor Lights Market.", "raw": "{\"reply\": \"It was $180.93 to Harbor Lights Market.\"}"}}
+{"key": "f|amb_b77_Refund_not_showing_up_5|vague||amount", "value": {"reply": "It was around 13 USD, but I'm not sure of the exact amount", "raw": "{\"reply\": \"It was around 13 USD, but I'm not sure of the exact amount\"}"}}
+{"key": "f|amb_b77_Refund_not_showing_up_0|receipt||amount", "value": {"reply": "It was $1756.77", "raw": "{\"reply\": \"It was $1756.77\"}"}}
+{"key": "f|amb_b77_Refund_not_showing_up_6|vague||amount", "value": {"reply": "It was roughly 210 dollars.", "raw": "{\"reply\": \"It was roughly 210 dollars.\"}"}}
+{"key": "f|amb_b77_cancel_transfer_1|misremembers|merchant|merchant", "value": {"reply": "It was a payment to Peak Yoga Studio", "raw": "{\"reply\": \"It was a payment to Peak Yoga Studio\"}"}}
+{"key": "f|amb_b77_cancel_transfer_0|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_cancel_transfer_2|vague||date", "value": {"reply": "I'm not sure, it was sometime in October 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in October 2026\"}"}}
+{"key": "f|amb_b77_Refund_not_showing_up_1|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_cancel_transfer_3|misremembers|amount|merchant", "value": {"reply": "The one I sent to account ending 7998", "raw": "{\"reply\": \"The one I sent to account ending 7998\"}"}}
+{"key": "f|amb_b77_Refund_not_showing_up_5|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77_cancel_transfer_5|receipt||merchant", "value": {"reply": "It's a transfer to an account ending 0756.", "raw": "{\"reply\": \"It's a transfer to an account ending 0756.\"}"}}
+{"key": "f|amb_b77_Refund_not_showing_up_6|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_cancel_transfer_0|vague||merchant", "value": {"reply": "It was a transfer to an account ending in 6811, I don't recall the name.", "raw": "{\"reply\": \"It was a transfer to an account ending in 6811, I don't recall the name.\"}"}}
+{"key": "f|amb_b77_cancel_transfer_4|vague||merchant", "value": {"reply": "It was a bank transfer to an account ending in 5074", "raw": "{\"reply\": \"It was a bank transfer to an account ending in 5074\"}"}}
+{"key": "f|amb_b77_cancel_transfer_7|vague||merchant", "value": {"reply": "It was a bank transfer to an account ending in 0640", "raw": "{\"reply\": \"It was a bank transfer to an account ending in 0640\"}"}}
+{"key": "f|amb_b77_cancel_transfer_2|vague||merchant", "value": {"reply": "It was a transfer to an account ending in 7145, not a merchant.", "raw": "{\"reply\": \"It was a transfer to an account ending in 7145, not a merchant.\"}"}}
+{"key": "f|amb_b77_card_payment_fee_charged_0|misremembers|date|amount", "value": {"reply": "It was 26.17 GBP to Juniper Noodle Bar.", "raw": "{\"reply\": \"It was 26.17 GBP to Juniper Noodle Bar.\"}"}}
+{"key": "f|amb_b77_card_payment_fee_charged_1|vague||amount", "value": {"reply": "It was around 60 dollars.", "raw": "{\"reply\": \"It was around 60 dollars.\"}"}}
+{"key": "f|amb_b77_card_payment_fee_charged_3|misremembers|date|amount", "value": {"reply": "It was $77.11 to Pixelforge Computers.", "raw": "{\"reply\": \"It was $77.11 to Pixelforge Computers.\"}"}}
+{"key": "f|amb_b77_cancel_transfer_6|vague||merchant", "value": {"reply": "It was a bank transfer to an account ending in 2666, not a merchant.", "raw": "{\"reply\": \"It was a bank transfer to an account ending in 2666, not a merchant.\"}"}}
+{"key": "f|amb_b77_card_payment_fee_charged_2|misremembers|date|amount", "value": {"reply": "It was $1004.73 to Saffron Street Deli.", "raw": "{\"reply\": \"It was $1004.73 to Saffron Street Deli.\"}"}}
+{"key": "f|amb_b77_card_payment_fee_charged_4|misremembers|amount|amount", "value": {"reply": "It was $140.17 to Saffron Street Deli.", "raw": "{\"reply\": \"It was $140.17 to Saffron Street Deli.\"}"}}
+{"key": "f|amb_b77_cancel_transfer_4|vague||amount", "value": {"reply": "It was around 3170 USD, but I'm not sure of the exact amount.", "raw": "{\"reply\": \"It was around 3170 USD, but I'm not sure of the exact amount.\"}"}}
+{"key": "f|amb_b77_card_payment_fee_charged_5|vague||amount", "value": {"reply": "It was roughly 30 pounds.", "raw": "{\"reply\": \"It was roughly 30 pounds.\"}"}}
+{"key": "f|amb_b77_card_payment_fee_charged_1|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77_card_payment_fee_charged_6|receipt||amount", "value": {"reply": "It was $1425.93 to Juniper Noodle Bar.", "raw": "{\"reply\": \"It was $1425.93 to Juniper Noodle Bar.\"}"}}
+{"key": "f|amb_b77_cancel_transfer_6|vague||amount", "value": {"reply": "It was roughly 2330.0 USD, I don't remember the exact amount.", "raw": "{\"reply\": \"It was roughly 2330.0 USD, I don't remember the exact amount.\"}"}}
+{"key": "f|amb_b77_card_payment_fee_charged_7|vague||amount", "value": {"reply": "It was roughly 1910.0 CAD", "raw": "{\"reply\": \"It was roughly 1910.0 CAD\"}"}}
+{"key": "f|amb_b77_cancel_transfer_7|vague||amount", "value": {"reply": "It was roughly 16130 USD", "raw": "{\"reply\": \"It was roughly 16130 USD\"}"}}
+{"key": "f|amb_b77_card_payment_fee_charged_5|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77_card_payment_not_recognised_1|vague||amount", "value": {"reply": "It was around 2140 USD, but I'm not sure of the exact amount.", "raw": "{\"reply\": \"It was around 2140 USD, but I'm not sure of the exact amount.\"}"}}
+{"key": "f|amb_b77_card_payment_not_recognised_2|vague||amount", "value": {"reply": "It was around 70 dollars.", "raw": "{\"reply\": \"It was around 70 dollars.\"}"}}
+{"key": "f|amb_b77_card_payment_not_recognised_5|misremembers|date|amount", "value": {"reply": "It was for 1209.57 GBP.", "raw": "{\"reply\": \"It was for 1209.57 GBP.\"}"}}
+{"key": "f|amb_b77_card_payment_not_recognised_6|vague||amount", "value": {"reply": "It was around 20 dollars, but I'm not sure of the exact amount", "raw": "{\"reply\": \"It was around 20 dollars, but I'm not sure of the exact amount\"}"}}
+{"key": "f|amb_b77_card_payment_not_recognised_7|misremembers|amount|amount", "value": {"reply": "It was $1740.09 CAD.", "raw": "{\"reply\": \"It was $1740.09 CAD.\"}"}}
+{"key": "f|amb_b77_card_payment_not_recognised_3|misremembers|amount|amount", "value": {"reply": "it was 38.29 CAD", "raw": "{\"reply\": \"it was 38.29 CAD\"}"}}
+{"key": "f|amb_b77_card_payment_not_recognised_4|misremembers|amount|amount", "value": {"reply": "It was $180.93", "raw": "{\"reply\": \"It was $180.93\"}"}}
+{"key": "f|amb_b77_card_payment_not_recognised_0|receipt||amount", "value": {"reply": "It was $286.47", "raw": "{\"reply\": \"It was $286.47\"}"}}
+{"key": "f|amb_b77_card_payment_not_recognised_1|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_declined_card_payment_0|receipt||amount", "value": {"reply": "It was $8.46 to Inkwell Stationers.", "raw": "{\"reply\": \"It was $8.46 to Inkwell Stationers.\"}"}}
+{"key": "f|amb_b77_declined_card_payment_4|vague||amount", "value": {"reply": "It was around 50 dollars.", "raw": "{\"reply\": \"It was around 50 dollars.\"}"}}
+{"key": "f|amb_b77_declined_card_payment_3|misremembers|amount|amount", "value": {"reply": "It was $1740.09 to Nimbus Audio.", "raw": "{\"reply\": \"It was $1740.09 to Nimbus Audio.\"}"}}
+{"key": "f|amb_b77_declined_card_payment_1|vague||amount", "value": {"reply": "It was around 30 euros.", "raw": "{\"reply\": \"It was around 30 euros.\"}"}}
+{"key": "f|amb_b77_card_payment_not_recognised_2|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_declined_card_payment_5|receipt||amount", "value": {"reply": "It was $20.60 at Saffron Street Deli.", "raw": "{\"reply\": \"It was $20.60 at Saffron Street Deli.\"}"}}
+{"key": "f|amb_b77_declined_card_payment_6|receipt||amount", "value": {"reply": "It was $22.11 to Harbor Lights Market.", "raw": "{\"reply\": \"It was $22.11 to Harbor Lights Market.\"}"}}
+{"key": "f|amb_b77_declined_card_payment_4|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_declined_cash_withdrawal_1|receipt||amount", "value": {"reply": "It was $1322.95 to Harbor Lights Market.", "raw": "{\"reply\": \"It was $1322.95 to Harbor Lights Market.\"}"}}
+{"key": "f|amb_b77_declined_card_payment_1|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_declined_cash_withdrawal_4|receipt||amount", "value": {"reply": "It was $775.43 to Harbor Lights Market.", "raw": "{\"reply\": \"It was $775.43 to Harbor Lights Market.\"}"}}
+{"key": "f|amb_b77_declined_card_payment_7|receipt||amount", "value": {"reply": "It was $39.95 at Harbor Lights Market.", "raw": "{\"reply\": \"It was $39.95 at Harbor Lights Market.\"}"}}
+{"key": "f|amb_b77_declined_cash_withdrawal_0|misremembers|date|amount", "value": {"reply": "It was 148.71 USD, for a payment to Juniper Noodle Bar.", "raw": "{\"reply\": \"It was 148.71 USD, for a payment to Juniper Noodle Bar.\"}"}}
+{"key": "f|amb_b77_declined_cash_withdrawal_6|receipt||amount", "value": {"reply": "It was 238.73 GBP to Pixelforge Computers.", "raw": "{\"reply\": \"It was 238.73 GBP to Pixelforge Computers.\"}"}}
+{"key": "f|amb_b77_declined_cash_withdrawal_7|vague||amount", "value": {"reply": "It was roughly 350 euros.", "raw": "{\"reply\": \"It was roughly 350 euros.\"}"}}
+{"key": "f|amb_b77_declined_cash_withdrawal_3|misremembers|amount|amount", "value": {"reply": "It was 465.16 EUR to Nimbus Audio.", "raw": "{\"reply\": \"It was 465.16 EUR to Nimbus Audio.\"}"}}
+{"key": "f|amb_b77_declined_card_payment_2|vague||amount", "value": {"reply": "It was around 260 dollars, but I'm not sure of the exact amount.", "raw": "{\"reply\": \"It was around 260 dollars, but I'm not sure of the exact amount.\"}"}}
+{"key": "f|amb_b77_declined_cash_withdrawal_7|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_declined_transfer_3|receipt||merchant", "value": {"reply": "The recipient is the one with account ending 5610.", "raw": "{\"reply\": \"The recipient is the one with account ending 5610.\"}"}}
+{"key": "f|amb_b77_declined_transfer_0|receipt||date", "value": {"reply": "The transfer was supposed to be made on October 27, 2026.", "raw": "{\"reply\": \"The transfer was supposed to be made on October 27, 2026.\"}"}}
+{"key": "f|amb_b77_declined_transfer_1|receipt||merchant", "value": {"reply": "It was a transfer to an account ending in 5929, not a merchant.", "raw": "{\"reply\": \"It was a transfer to an account ending in 5929, not a merchant.\"}"}}
+{"key": "f|amb_b77_declined_transfer_2|receipt||merchant", "value": {"reply": "I was trying to buy something online, but I don't remember the merchant's name.", "raw": "{\"reply\": \"I was trying to buy something online, but I don't remember the merchant's name.\"}"}}
+{"key": "f|amb_b77_declined_cash_withdrawal_5|vague||amount", "value": {"reply": "It was roughly 150 dollars.", "raw": "{\"reply\": \"It was roughly 150 dollars.\"}"}}
+{"key": "f|amb_b77_declined_transfer_5|misremembers|kind|date", "value": {"reply": "The payment was on 2026-10-27.", "raw": "{\"reply\": \"The payment was on 2026-10-27.\"}"}}
+{"key": "f|amb_b77_declined_card_payment_2|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_declined_transfer_1|receipt||amount", "value": {"reply": "It was $26561.12", "raw": "{\"reply\": \"It was $26561.12\"}"}}
+{"key": "f|amb_b77_declined_transfer_6|receipt||date", "value": {"reply": "The transfer was supposed to happen on November 6, 2026.", "raw": "{\"reply\": \"The transfer was supposed to happen on November 6, 2026.\"}"}}
+{"key": "f|amb_b77_declined_cash_withdrawal_2|receipt||amount", "value": {"reply": "It was $33.14 to Juniper Noodle Bar", "raw": "{\"reply\": \"It was $33.14 to Juniper Noodle Bar\"}"}}
+{"key": "f|amb_b77_declined_transfer_2|receipt||amount", "value": {"reply": "It was for 2389.05 USD.", "raw": "{\"reply\": \"It was for 2389.05 USD.\"}"}}
+{"key": "f|amb_b77_declined_transfer_4|vague||merchant", "value": {"reply": "It was a transfer to my own account, the one that ends in 0018.", "raw": "{\"reply\": \"It was a transfer to my own account, the one that ends in 0018.\"}"}}
+{"key": "f|amb_b77_declined_cash_withdrawal_5|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77_failed_transfer_0|receipt||merchant", "value": {"reply": "It's a personal account, the one I'm trying to transfer to ends in 5929", "raw": "{\"reply\": \"It's a personal account, the one I'm trying to transfer to ends in 5929\"}"}}
+{"key": "f|amb_b77_failed_transfer_2|vague||merchant", "value": {"reply": "It was a transfer to a personal account, the one that ends in 0018.", "raw": "{\"reply\": \"It was a transfer to a personal account, the one that ends in 0018.\"}"}}
+{"key": "f|amb_b77_failed_transfer_4|receipt||merchant", "value": {"reply": "It was a transfer to an account ending in 6551", "raw": "{\"reply\": \"It was a transfer to an account ending in 6551\"}"}}
+{"key": "f|amb_b77_declined_transfer_7|vague||merchant", "value": {"reply": "It was a transfer to an account ending in 5929", "raw": "{\"reply\": \"It was a transfer to an account ending in 5929\"}"}}
+{"key": "f|amb_b77_failed_transfer_0|receipt||amount", "value": {"reply": "It was $26561.12", "raw": "{\"reply\": \"It was $26561.12\"}"}}
+{"key": "f|amb_b77_declined_transfer_4|vague||amount", "value": {"reply": "It was roughly 800.0 USD.", "raw": "{\"reply\": \"It was roughly 800.0 USD.\"}"}}
+{"key": "f|amb_b77_failed_transfer_1|receipt||merchant", "value": {"reply": "It was a transfer to an account ending in 4442, not a merchant.", "raw": "{\"reply\": \"It was a transfer to an account ending in 4442, not a merchant.\"}"}}
+{"key": "f|amb_b77_failed_transfer_4|receipt||amount", "value": {"reply": "It was 25291.27 GBP", "raw": "{\"reply\": \"It was 25291.27 GBP\"}"}}
+{"key": "f|amb_b77_failed_transfer_2|vague||amount", "value": {"reply": "It was around 800 dollars, but I'm not sure of the exact amount.", "raw": "{\"reply\": \"It was around 800 dollars, but I'm not sure of the exact amount.\"}"}}
+{"key": "f|amb_b77_failed_transfer_3|receipt||merchant", "value": {"reply": "It was a transfer to an account ending in 5521.", "raw": "{\"reply\": \"It was a transfer to an account ending in 5521.\"}"}}
+{"key": "f|amb_b77_failed_transfer_1|receipt||amount", "value": {"reply": "It was $2413.85", "raw": "{\"reply\": \"It was $2413.85\"}"}}
+{"key": "f|amb_b77_failed_transfer_5|receipt||merchant", "value": {"reply": "It was a transfer to an account ending in 2880.", "raw": "{\"reply\": \"It was a transfer to an account ending in 2880.\"}"}}
+{"key": "f|amb_b77_pending_card_payment_0|vague||amount", "value": {"reply": "It was around 20 dollars.", "raw": "{\"reply\": \"It was around 20 dollars.\"}"}}
+{"key": "f|amb_b77_failed_transfer_6|misremembers|kind|date", "value": {"reply": "The payment was made on November 6, 2026.", "raw": "{\"reply\": \"The payment was made on November 6, 2026.\"}"}}
+{"key": "f|amb_b77_failed_transfer_7|receipt||merchant", "value": {"reply": "It was a transfer to an account ending in 2880, not a merchant.", "raw": "{\"reply\": \"It was a transfer to an account ending in 2880, not a merchant.\"}"}}
+{"key": "f|amb_b77_pending_card_payment_2|misremembers|amount|amount", "value": {"reply": "It was $129.77", "raw": "{\"reply\": \"It was $129.77\"}"}}
+{"key": "f|amb_b77_failed_transfer_5|receipt||amount", "value": {"reply": "It was $26118.30", "raw": "{\"reply\": \"It was $26118.30\"}"}}
+{"key": "f|amb_b77_failed_transfer_3|receipt||amount", "value": {"reply": "It was 2389.05 USD.", "raw": "{\"reply\": \"It was 2389.05 USD.\"}"}}
+{"key": "f|amb_b77_pending_card_payment_0|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77_failed_transfer_7|receipt||amount", "value": {"reply": "It was $26118.30", "raw": "{\"reply\": \"It was $26118.30\"}"}}
+{"key": "f|amb_b77_pending_card_payment_1|receipt||amount", "value": {"reply": "It was $728.87 to Juniper Noodle Bar.", "raw": "{\"reply\": \"It was $728.87 to Juniper Noodle Bar.\"}"}}
+{"key": "f|amb_b77_pending_card_payment_4|receipt||amount", "value": {"reply": "It was $35.97", "raw": "{\"reply\": \"It was $35.97\"}"}}
+{"key": "f|amb_b77_pending_card_payment_3|vague||amount", "value": {"reply": "It was around 1590 dollars, but I'm not sure of the exact amount.", "raw": "{\"reply\": \"It was around 1590 dollars, but I'm not sure of the exact amount.\"}"}}
+{"key": "f|amb_b77_pending_card_payment_6|vague||amount", "value": {"reply": "It was around 40 dollars.", "raw": "{\"reply\": \"It was around 40 dollars.\"}"}}
+{"key": "f|amb_b77_declined_transfer_7|vague||amount", "value": {"reply": "It was roughly 26560 USD", "raw": "{\"reply\": \"It was roughly 26560 USD\"}"}}
+{"key": "f|amb_b77_pending_card_payment_5|misremembers|date|amount", "value": {"reply": "It was $34.45", "raw": "{\"reply\": \"It was $34.45\"}"}}
+{"key": "f|amb_b77_pending_transfer_0|receipt||merchant", "value": {"reply": "It's a transfer to an account ending in 0640", "raw": "{\"reply\": \"It's a transfer to an account ending in 0640\"}"}}
+{"key": "f|amb_b77_pending_transfer_2|misremembers|merchant|date", "value": {"reply": "The payment was made on October 23, 2026.", "raw": "{\"reply\": \"The payment was made on October 23, 2026.\"}"}}
+{"key": "f|amb_b77_pending_card_payment_6|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77_pending_transfer_4|receipt||date", "value": {"reply": "The payment was made on October 23, 2026.", "raw": "{\"reply\": \"The payment was made on October 23, 2026.\"}"}}
+{"key": "f|amb_b77_pending_transfer_3|receipt||merchant", "value": {"reply": "It's a transfer to my own account, the one ending in 9654.", "raw": "{\"reply\": \"It's a transfer to my own account, the one ending in 9654.\"}"}}
+{"key": "f|amb_b77_pending_transfer_1|misremembers|date|merchant", "value": {"reply": "It's a transfer to an account ending in 3804, not a merchant.", "raw": "{\"reply\": \"It's a transfer to an account ending in 3804, not a merchant.\"}"}}
+{"key": "f|amb_b77_pending_card_payment_3|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_pending_transfer_5|receipt||date", "value": {"reply": "The payment was made on 2026-11-05.", "raw": "{\"reply\": \"The payment was made on 2026-11-05.\"}"}}
+{"key": "f|amb_b77_pending_transfer_0|receipt||amount", "value": {"reply": "It was for $16134.50", "raw": "{\"reply\": \"It was for $16134.50\"}"}}
+{"key": "f|amb_b77_pending_card_payment_7|misremembers|date|amount", "value": {"reply": "It was $157.77", "raw": "{\"reply\": \"It was $157.77\"}"}}
+{"key": "f|amb_b77_pending_transfer_3|receipt||amount", "value": {"reply": "It was $2740.38", "raw": "{\"reply\": \"It was $2740.38\"}"}}
+{"key": "f|amb_b77_pending_transfer_6|misremembers|date|merchant", "value": {"reply": "It's a personal transfer to an account ending in 9654, not a merchant.", "raw": "{\"reply\": \"It's a personal transfer to an account ending in 9654, not a merchant.\"}"}}
+{"key": "f|amb_b77_pending_transfer_7|vague||merchant", "value": {"reply": "It was a transfer to my own account, the one that ends in 9654.", "raw": "{\"reply\": \"It was a transfer to my own account, the one that ends in 9654.\"}"}}
+{"key": "f|amb_b77_reverted_card_payment_2|vague||amount", "value": {"reply": "It was around 130 dollars.", "raw": "{\"reply\": \"It was around 130 dollars.\"}"}}
+{"key": "f|amb_b77_pending_transfer_6|misremembers|date|amount", "value": {"reply": "It was $2740.38", "raw": "{\"reply\": \"It was $2740.38\"}"}}
+{"key": "f|amb_b77_reverted_card_payment_4|misremembers|amount|amount", "value": {"reply": "It was 1490.73 GBP.", "raw": "{\"reply\": \"It was 1490.73 GBP.\"}"}}
+{"key": "f|amb_b77_reverted_card_payment_0|vague||amount", "value": {"reply": "It was around 1220 dollars.", "raw": "{\"reply\": \"It was around 1220 dollars.\"}"}}
+{"key": "f|amb_b77_pending_transfer_1|misremembers|date|amount", "value": {"reply": "It was 1895.90 USD", "raw": "{\"reply\": \"It was 1895.90 USD\"}"}}
+{"key": "f|amb_b77_pending_transfer_7|vague||amount", "value": {"reply": "It was around 2740 USD, but I'm not sure of the exact amount.", "raw": "{\"reply\": \"It was around 2740 USD, but I'm not sure of the exact amount.\"}"}}
+{"key": "f|amb_b77_reverted_card_payment_3|misremembers|amount|amount", "value": {"reply": "It was $179.04", "raw": "{\"reply\": \"It was $179.04\"}"}}
+{"key": "f|amb_b77_reverted_card_payment_2|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_reverted_card_payment_5|misremembers|date|amount", "value": {"reply": "It was 1695.08 USD.", "raw": "{\"reply\": \"It was 1695.08 USD.\"}"}}
+{"key": "f|amb_b77_reverted_card_payment_7|vague||amount", "value": {"reply": "It was roughly 540 euros.", "raw": "{\"reply\": \"It was roughly 540 euros.\"}"}}
+{"key": "f|amb_b77_reverted_card_payment_6|receipt||amount", "value": {"reply": "It was $275.85", "raw": "{\"reply\": \"It was $275.85\"}"}}
+{"key": "f|amb_b77_reverted_card_payment_1|misremembers|date|amount", "value": {"reply": "It was $359.31 to Harbor Lights Market.", "raw": "{\"reply\": \"It was $359.31 to Harbor Lights Market.\"}"}}
+{"key": "f|amb_b77_transaction_charged_twice_2|vague||amount", "value": {"reply": "It was roughly 30 pounds.", "raw": "{\"reply\": \"It was roughly 30 pounds.\"}"}}
+{"key": "f|amb_b77_transaction_charged_twice_0|receipt||amount", "value": {"reply": "One of the payments was to Saffron Street Deli for $225.26.", "raw": "{\"reply\": \"One of the payments was to Saffron Street Deli for $225.26.\"}"}}
+{"key": "f|amb_b77_transaction_charged_twice_3|vague||amount", "value": {"reply": "It was roughly 170 euros.", "raw": "{\"reply\": \"It was roughly 170 euros.\"}"}}
+{"key": "f|amb_b77_transaction_charged_twice_1|misremembers|date|amount", "value": {"reply": "It was $16.61", "raw": "{\"reply\": \"It was $16.61\"}"}}
+{"key": "f|amb_b77_reverted_card_payment_0|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_transaction_charged_twice_4|vague||amount", "value": {"reply": "It was roughly 920.0 USD", "raw": "{\"reply\": \"It was roughly 920.0 USD\"}"}}
+{"key": "f|amb_b77_reverted_card_payment_7|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_transaction_charged_twice_5|receipt||amount", "value": {"reply": "It was $26.05 to Pixelforge Computers.", "raw": "{\"reply\": \"It was $26.05 to Pixelforge Computers.\"}"}}
+{"key": "f|amb_b77_transaction_charged_twice_2|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_transaction_charged_twice_6|receipt||amount", "value": {"reply": "It was $24.98 to Saffron Street Deli.", "raw": "{\"reply\": \"It was $24.98 to Saffron Street Deli.\"}"}}
+{"key": "f|amb_b77_transaction_charged_twice_3|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_0|misremembers|merchant|merchant", "value": {"reply": "It was a transfer to my own account, the one ending in 3610.", "raw": "{\"reply\": \"It was a transfer to my own account, the one ending in 3610.\"}"}}
+{"key": "f|amb_b77_transaction_charged_twice_4|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_transaction_charged_twice_7|vague||amount", "value": {"reply": "It was roughly 30 pounds.", "raw": "{\"reply\": \"It was roughly 30 pounds.\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_2|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_4|receipt||merchant", "value": {"reply": "It was a transfer to a friend, account ending 0756.", "raw": "{\"reply\": \"It was a transfer to a friend, account ending 0756.\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_1|vague||merchant", "value": {"reply": "It was a transfer to an account ending in 5929, not a merchant.", "raw": "{\"reply\": \"It was a transfer to an account ending in 5929, not a merchant.\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_5|vague||merchant", "value": {"reply": "It was a transfer to a friend's account, the one that ends in 0018", "raw": "{\"reply\": \"It was a transfer to a friend's account, the one that ends in 0018\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_0|misremembers|merchant|amount", "value": {"reply": "It was 9550.47 USD.", "raw": "{\"reply\": \"It was 9550.47 USD.\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_6|vague||date", "value": {"reply": "I'm not sure, it was sometime in October 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in October 2026\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_3|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_2|vague||merchant", "value": {"reply": "It was a bank transfer to an account ending in 6811", "raw": "{\"reply\": \"It was a bank transfer to an account ending in 6811\"}"}}
+{"key": "f|amb_b77_transaction_charged_twice_7|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_5|vague||amount", "value": {"reply": "It was around 800 dollars.", "raw": "{\"reply\": \"It was around 800 dollars.\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_1|vague||amount", "value": {"reply": "It was roughly 26560 USD.", "raw": "{\"reply\": \"It was roughly 26560 USD.\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_4|receipt||amount", "value": {"reply": "It was 7831.99 GBP", "raw": "{\"reply\": \"It was 7831.99 GBP\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_6|vague||merchant", "value": {"reply": "It was a transfer to an account ending in 6205", "raw": "{\"reply\": \"It was a transfer to an account ending in 6205\"}"}}
+{"key": "f|amb_b77_transfer_timing_0|receipt||date", "value": {"reply": "The transfer was made on October 18, 2026.", "raw": "{\"reply\": \"The transfer was made on October 18, 2026.\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_7|vague||merchant", "value": {"reply": "It was a personal transfer to someone's bank account, the one that ends in 5929.", "raw": "{\"reply\": \"It was a personal transfer to someone's bank account, the one that ends in 5929.\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_3|vague||merchant", "value": {"reply": "It was a transfer to someone's bank account, the account number ended in 6811.", "raw": "{\"reply\": \"It was a transfer to someone's bank account, the account number ended in 6811.\"}"}}
+{"key": "f|amb_b77_transfer_timing_3|misremembers|date|merchant", "value": {"reply": "I'm asking about the transfer I made to account ending 6168", "raw": "{\"reply\": \"I'm asking about the transfer I made to account ending 6168\"}"}}
+{"key": "f|amb_b77_transfer_timing_4|misremembers|amount|date", "value": {"reply": "The transfer was made on October 21, 2026.", "raw": "{\"reply\": \"The transfer was made on October 21, 2026.\"}"}}
+{"key": "f|amb_b77_transfer_timing_2|vague||merchant", "value": {"reply": "It was a transfer to my own account, not a merchant or recipient, the account ends in 6168.", "raw": "{\"reply\": \"It was a transfer to my own account, not a merchant or recipient, the account ends in 6168.\"}"}}
+{"key": "f|amb_b77_transfer_timing_6|misremembers|kind|date", "value": {"reply": "It was on 2026-11-02.", "raw": "{\"reply\": \"It was on 2026-11-02.\"}"}}
+{"key": "f|amb_b77_transfer_timing_1|receipt||merchant", "value": {"reply": "I made a transfer to an account ending in 3804", "raw": "{\"reply\": \"I made a transfer to an account ending in 3804\"}"}}
+{"key": "f|amb_b77_transfer_timing_7|receipt||merchant", "value": {"reply": "I'm talking about the transfer to my own account, the one ending in 6094", "raw": "{\"reply\": \"I'm talking about the transfer to my own account, the one ending in 6094\"}"}}
+{"key": "f|amb_b77f_Refund_not_showing_up_1|receipt||amount", "value": {"reply": "It was 240.90 USD", "raw": "{\"reply\": \"It was 240.90 USD\"}"}}
+{"key": "f|amb_b77f_Refund_not_showing_up_2|vague||amount", "value": {"reply": "It was roughly 540 euros.", "raw": "{\"reply\": \"It was roughly 540 euros.\"}"}}
+{"key": "f|amb_b77_transfer_timing_7|receipt||amount", "value": {"reply": "It was 1410.37 USD", "raw": "{\"reply\": \"It was 1410.37 USD\"}"}}
+{"key": "f|amb_b77_transfer_timing_1|receipt||amount", "value": {"reply": "It was 1895.90 USD", "raw": "{\"reply\": \"It was 1895.90 USD\"}"}}
+{"key": "f|amb_b77_transfer_not_received_by_recipient_7|vague||amount", "value": {"reply": "It was roughly 26560 USD.", "raw": "{\"reply\": \"It was roughly 26560 USD.\"}"}}
+{"key": "f|amb_b77f_Refund_not_showing_up_3|receipt||amount", "value": {"reply": "It was $255.79", "raw": "{\"reply\": \"It was $255.79\"}"}}
+{"key": "f|amb_b77_transfer_timing_2|vague||amount", "value": {"reply": "It was roughly 1590 pounds.", "raw": "{\"reply\": \"It was roughly 1590 pounds.\"}"}}
+{"key": "f|amb_b77f_Refund_not_showing_up_5|receipt||amount", "value": {"reply": "It was $1723.17", "raw": "{\"reply\": \"It was $1723.17\"}"}}
+{"key": "f|amb_b77f_Refund_not_showing_up_6|misremembers|amount|amount", "value": {"reply": "It was $836.30", "raw": "{\"reply\": \"It was $836.30\"}"}}
+{"key": "f|amb_b77f_Refund_not_showing_up_7|receipt||amount", "value": {"reply": "It was 7.83 USD for a payment to Peak Yoga Studio.", "raw": "{\"reply\": \"It was 7.83 USD for a payment to Peak Yoga Studio.\"}"}}
+{"key": "f|amb_b77f_Refund_not_showing_up_4|vague||amount", "value": {"reply": "It was roughly 40 pounds.", "raw": "{\"reply\": \"It was roughly 40 pounds.\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_0|receipt||merchant", "value": {"reply": "The recipient is the one with account number ending 0640.", "raw": "{\"reply\": \"The recipient is the one with account number ending 0640.\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_1|misremembers|kind|merchant", "value": {"reply": "It was a transfer to an account ending in 2666, not a merchant.", "raw": "{\"reply\": \"It was a transfer to an account ending in 2666, not a merchant.\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_3|vague||date", "value": {"reply": "I'm not sure, it was sometime in October 2026.", "raw": "{\"reply\": \"I'm not sure, it was sometime in October 2026.\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_1|misremembers|kind|amount", "value": {"reply": "It was 2331.15 USD.", "raw": "{\"reply\": \"It was 2331.15 USD.\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_0|receipt||amount", "value": {"reply": "It was for $16134.50", "raw": "{\"reply\": \"It was for $16134.50\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_3|vague||merchant", "value": {"reply": "It was a transfer to an account ending in 1322, not a merchant.", "raw": "{\"reply\": \"It was a transfer to an account ending in 1322, not a merchant.\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_4|receipt||merchant", "value": {"reply": "The recipient is the one with account ending 3610.", "raw": "{\"reply\": \"The recipient is the one with account ending 3610.\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_5|misremembers|kind|merchant", "value": {"reply": "It was a payment to an account ending in 9654, not a merchant", "raw": "{\"reply\": \"It was a payment to an account ending in 9654, not a merchant\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_6|receipt||merchant", "value": {"reply": "The transfer was to an account ending in 3040.", "raw": "{\"reply\": \"The transfer was to an account ending in 3040.\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_4|receipt||date", "value": {"reply": "The payment was on November 11, 2026.", "raw": "{\"reply\": \"The payment was on November 11, 2026.\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_6|receipt||amount", "value": {"reply": "It was for $4385.53", "raw": "{\"reply\": \"It was for $4385.53\"}"}}
+{"key": "f|amb_b77f_card_payment_fee_charged_0|vague||amount", "value": {"reply": "It was roughly 40 pounds.", "raw": "{\"reply\": \"It was roughly 40 pounds.\"}"}}
+{"key": "f|amb_b77f_card_payment_fee_charged_1|misremembers|amount|amount", "value": {"reply": "It was $1693.67", "raw": "{\"reply\": \"It was $1693.67\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_5|misremembers|kind|amount", "value": {"reply": "It was 2740.38 USD", "raw": "{\"reply\": \"It was 2740.38 USD\"}"}}
+{"key": "f|amb_b77f_card_payment_fee_charged_2|misremembers|amount|amount", "value": {"reply": "It was $255.10 to Peak Yoga Studio.", "raw": "{\"reply\": \"It was $255.10 to Peak Yoga Studio.\"}"}}
+{"key": "f|amb_b77f_card_payment_fee_charged_3|vague||amount", "value": {"reply": "It was roughly 2180 USD", "raw": "{\"reply\": \"It was roughly 2180 USD\"}"}}
+{"key": "f|amb_b77f_card_payment_fee_charged_4|receipt||amount", "value": {"reply": "It was $39.51 to Inkwell Stationers.", "raw": "{\"reply\": \"It was $39.51 to Inkwell Stationers.\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_7|misremembers|date|merchant", "value": {"reply": "It was a bank transfer to an account ending in 3040.", "raw": "{\"reply\": \"It was a bank transfer to an account ending in 3040.\"}"}}
+{"key": "f|amb_b77f_card_payment_fee_charged_5|vague||amount", "value": {"reply": "It was around 40 dollars.", "raw": "{\"reply\": \"It was around 40 dollars.\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_7|misremembers|date|amount", "value": {"reply": "It was for $4385.53.", "raw": "{\"reply\": \"It was for $4385.53.\"}"}}
+{"key": "f|amb_b77f_card_payment_fee_charged_5|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77f_card_payment_fee_charged_6|receipt||amount", "value": {"reply": "It was $221.50 to Nimbus Audio.", "raw": "{\"reply\": \"It was $221.50 to Nimbus Audio.\"}"}}
+{"key": "f|amb_b77f_card_payment_not_recognised_0|receipt||amount", "value": {"reply": "It was $192.99", "raw": "{\"reply\": \"It was $192.99\"}"}}
+{"key": "f|amb_b77f_card_payment_fee_charged_7|receipt||amount", "value": {"reply": "It was 263.67 CAD to Harbor Lights Market.", "raw": "{\"reply\": \"It was 263.67 CAD to Harbor Lights Market.\"}"}}
+{"key": "f|amb_b77f_card_payment_fee_charged_3|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77f_card_payment_not_recognised_2|vague||amount", "value": {"reply": "It was roughly 40 euros.", "raw": "{\"reply\": \"It was roughly 40 euros.\"}"}}
+{"key": "f|amb_b77f_card_payment_not_recognised_1|misremembers|date|amount", "value": {"reply": "It says here $6.61 to Metro Cab Co.", "raw": "{\"reply\": \"It says here $6.61 to Metro Cab Co.\"}"}}
+{"key": "f|amb_b77_transfer_timing_5|receipt||merchant", "value": {"reply": "the one for account ending 3804", "raw": "{\"reply\": \"the one for account ending 3804\"}"}}
+{"key": "f|amb_b77f_card_payment_not_recognised_3|vague||amount", "value": {"reply": "It was around 30 dollars, but I'm not sure of the exact amount.", "raw": "{\"reply\": \"It was around 30 dollars, but I'm not sure of the exact amount.\"}"}}
+{"key": "f|amb_b77f_Refund_not_showing_up_0|vague||amount", "value": {"reply": "It was around 2050.0 CAD", "raw": "{\"reply\": \"It was around 2050.0 CAD\"}"}}
+{"key": "f|amb_b77f_card_payment_not_recognised_4|receipt||amount", "value": {"reply": "It was for $1723.17", "raw": "{\"reply\": \"It was for $1723.17\"}"}}
+{"key": "f|amb_b77f_card_payment_not_recognised_5|receipt||amount", "value": {"reply": "It was $282.71", "raw": "{\"reply\": \"It was $282.71\"}"}}
+{"key": "f|amb_b77f_card_payment_not_recognised_3|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77f_Refund_not_showing_up_0|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77f_card_payment_not_recognised_6|vague||amount", "value": {"reply": "It was around 1070 dollars, but I'm not sure of the exact amount", "raw": "{\"reply\": \"It was around 1070 dollars, but I'm not sure of the exact amount\"}"}}
+{"key": "f|amb_b77f_Refund_not_showing_up_2|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77f_declined_card_payment_0|receipt||amount", "value": {"reply": "It was $3.15", "raw": "{\"reply\": \"It was $3.15\"}"}}
+{"key": "f|amb_b77f_card_payment_not_recognised_7|misremembers|amount|amount", "value": {"reply": "It was $184.72", "raw": "{\"reply\": \"It was $184.72\"}"}}
+{"key": "f|amb_b77f_declined_card_payment_1|receipt||amount", "value": {"reply": "It was $229.01 to Pixelforge Computers.", "raw": "{\"reply\": \"It was $229.01 to Pixelforge Computers.\"}"}}
+{"key": "f|amb_b77f_declined_card_payment_2|receipt||amount", "value": {"reply": "It was $275.85", "raw": "{\"reply\": \"It was $275.85\"}"}}
+{"key": "f|amb_b77f_card_payment_not_recognised_6|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77f_Refund_not_showing_up_4|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_2|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in October 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in October 2026.\"}"}}
+{"key": "f|amb_b77f_card_payment_not_recognised_2|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77f_declined_card_payment_4|receipt||amount", "value": {"reply": "It was $1322.95", "raw": "{\"reply\": \"It was $1322.95\"}"}}
+{"key": "f|amb_b77f_declined_card_payment_3|misremembers|date|amount", "value": {"reply": "Actually, the declined payments were for gas, but I do see I had a successful payment of $184.72 to Nimbus Audio on November 26.", "raw": "{\"reply\": \"Actually, the declined payments were for gas, but I do see I had a successful payment of $184.72 to Nimbus Audio on November 26.\"}"}}
+{"key": "f|amb_b77f_cancel_transfer_2|vague||merchant", "value": {"reply": "It was a transfer to an account ending in 9089, I don't recall the name.", "raw": "{\"reply\": \"It was a transfer to an account ending in 9089, I don't recall the name.\"}"}}
+{"key": "f|amb_b77f_declined_cash_withdrawal_1|receipt||amount", "value": {"reply": "It was 65.14 USD to Inkwell Stationers.", "raw": "{\"reply\": \"It was 65.14 USD to Inkwell Stationers.\"}"}}
+{"key": "f|amb_b77f_declined_cash_withdrawal_2|misremembers|amount|amount", "value": {"reply": "It was 250.97 EUR to Saffron Street Deli.", "raw": "{\"reply\": \"It was 250.97 EUR to Saffron Street Deli.\"}"}}
+{"key": "f|amb_b77f_declined_card_payment_5|misremembers|date|amount", "value": {"reply": "It was 284.85 pounds.", "raw": "{\"reply\": \"It was 284.85 pounds.\"}"}}
+{"key": "f|amb_b77f_declined_card_payment_7|misremembers|amount|amount", "value": {"reply": "It was $2478.45 at Juniper Noodle Bar.", "raw": "{\"reply\": \"It was $2478.45 at Juniper Noodle Bar.\"}"}}
+{"key": "f|amb_b77f_declined_cash_withdrawal_3|receipt||amount", "value": {"reply": "It was 775.43 CAD to Harbor Lights Market.", "raw": "{\"reply\": \"It was 775.43 CAD to Harbor Lights Market.\"}"}}
+{"key": "f|amb_b77f_declined_cash_withdrawal_0|receipt||amount", "value": {"reply": "It was 32.14 CAD to Inkwell Stationers.", "raw": "{\"reply\": \"It was 32.14 CAD to Inkwell Stationers.\"}"}}
+{"key": "f|amb_b77f_declined_cash_withdrawal_4|receipt||amount", "value": {"reply": "It was 74.64 USD to Peak Yoga Studio.", "raw": "{\"reply\": \"It was 74.64 USD to Peak Yoga Studio.\"}"}}
+{"key": "f|amb_b77f_declined_cash_withdrawal_5|receipt||amount", "value": {"reply": "It was 836.30 USD to Saffron Street Deli.", "raw": "{\"reply\": \"It was 836.30 USD to Saffron Street Deli.\"}"}}
+{"key": "f|amb_b77f_declined_cash_withdrawal_6|vague||amount", "value": {"reply": "It was around 850 dollars, but I'm not sure of the exact amount.", "raw": "{\"reply\": \"It was around 850 dollars, but I'm not sure of the exact amount.\"}"}}
+{"key": "f|amb_b77f_declined_cash_withdrawal_7|misremembers|date|amount", "value": {"reply": "It was 867.67 EUR to Saffron Street Deli.", "raw": "{\"reply\": \"It was 867.67 EUR to Saffron Street Deli.\"}"}}
+{"key": "f|amb_b77f_declined_card_payment_5|misremembers|date|date", "value": {"reply": "It was on the 24th of November 2026.", "raw": "{\"reply\": \"It was on the 24th of November 2026.\"}"}}
+{"key": "f|amb_b77f_declined_transfer_0|misremembers|amount|merchant", "value": {"reply": "It was a transfer to an account ending in 2706, not a merchant.", "raw": "{\"reply\": \"It was a transfer to an account ending in 2706, not a merchant.\"}"}}
+{"key": "f|amb_b77f_declined_transfer_1|vague||merchant", "value": {"reply": "It was a bank transfer to an account ending in 2706, not a merchant.", "raw": "{\"reply\": \"It was a bank transfer to an account ending in 2706, not a merchant.\"}"}}
+{"key": "f|amb_b77f_declined_transfer_2|vague||merchant", "value": {"reply": "It was a transfer to an account ending in 4785, not a merchant.", "raw": "{\"reply\": \"It was a transfer to an account ending in 4785, not a merchant.\"}"}}
+{"key": "f|amb_b77f_declined_transfer_3|receipt||merchant", "value": {"reply": "It's not a merchant, I was trying to transfer to my own account ending in 2880.", "raw": "{\"reply\": \"It's not a merchant, I was trying to transfer to my own account ending in 2880.\"}"}}
+{"key": "f|amb_b77f_declined_cash_withdrawal_6|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77f_declined_transfer_4|vague||merchant", "value": {"reply": "It was a transfer to an account ending in 4785, not a merchant.", "raw": "{\"reply\": \"It was a transfer to an account ending in 4785, not a merchant.\"}"}}
+{"key": "f|amb_b77f_declined_transfer_1|vague||amount", "value": {"reply": "It was roughly 2490 pounds.", "raw": "{\"reply\": \"It was roughly 2490 pounds.\"}"}}
+{"key": "f|amb_b77f_declined_transfer_0|misremembers|amount|amount", "value": {"reply": "It was for \u00a37831.99", "raw": "{\"reply\": \"It was for \u00a37831.99\"}"}}
+{"key": "f|amb_b77f_declined_transfer_2|vague||amount", "value": {"reply": "It was around 1890 dollars, but I'm not sure of the exact amount.", "raw": "{\"reply\": \"It was around 1890 dollars, but I'm not sure of the exact amount.\"}"}}
+{"key": "f|amb_b77f_declined_transfer_6|receipt||merchant", "value": {"reply": "It's a transfer to an account ending in 6551, not a merchant.", "raw": "{\"reply\": \"It's a transfer to an account ending in 6551, not a merchant.\"}"}}
+{"key": "f|amb_b77f_declined_transfer_5|misremembers|merchant|merchant", "value": {"reply": "It was a transfer to an account ending in 4333", "raw": "{\"reply\": \"It was a transfer to an account ending in 4333\"}"}}
+{"key": "f|amb_b77f_declined_transfer_7|vague||merchant", "value": {"reply": "It was a transfer to a personal account, the one that ends in 3249.", "raw": "{\"reply\": \"It was a transfer to a personal account, the one that ends in 3249.\"}"}}
+{"key": "f|amb_b77f_declined_transfer_4|vague||amount", "value": {"reply": "It was around 1890 dollars.", "raw": "{\"reply\": \"It was around 1890 dollars.\"}"}}
+{"key": "f|amb_b77f_declined_transfer_7|vague||amount", "value": {"reply": "It was roughly 2080.0 USD", "raw": "{\"reply\": \"It was roughly 2080.0 USD\"}"}}
+{"key": "f|amb_b77f_failed_transfer_1|misremembers|date|merchant", "value": {"reply": "It was a transfer to an account ending in 6551.", "raw": "{\"reply\": \"It was a transfer to an account ending in 6551.\"}"}}
+{"key": "f|amb_b77f_failed_transfer_2|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026.", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026.\"}"}}
+{"key": "f|amb_b77f_declined_transfer_5|misremembers|merchant|amount", "value": {"reply": "It was $1889.59", "raw": "{\"reply\": \"It was $1889.59\"}"}}
+{"key": "f|amb_b77f_failed_transfer_1|misremembers|date|amount", "value": {"reply": "It was for 25291.27 GBP.", "raw": "{\"reply\": \"It was for 25291.27 GBP.\"}"}}
+{"key": "f|amb_b77f_failed_transfer_3|misremembers|merchant|merchant", "value": {"reply": "It's not a merchant, just a personal transfer to an account ending in 4442", "raw": "{\"reply\": \"It's not a merchant, just a personal transfer to an account ending in 4442\"}"}}
+{"key": "f|amb_b77f_failed_transfer_4|vague||date", "value": {"reply": "I'm not sure, it was sometime in October 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in October 2026\"}"}}
+{"key": "f|amb_b77f_failed_transfer_2|vague||merchant", "value": {"reply": "It was a personal account, not a merchant, and it's an account that ends in 0340.", "raw": "{\"reply\": \"It was a personal account, not a merchant, and it's an account that ends in 0340.\"}"}}
+{"key": "f|amb_b77f_failed_transfer_4|vague||merchant", "value": {"reply": "It was a transfer to a personal account, the one that ends in 6860.", "raw": "{\"reply\": \"It was a transfer to a personal account, the one that ends in 6860.\"}"}}
+{"key": "f|amb_b77f_failed_transfer_6|receipt||merchant", "value": {"reply": "It was a transfer to an account ending in 5929, not a merchant.", "raw": "{\"reply\": \"It was a transfer to an account ending in 5929, not a merchant.\"}"}}
+{"key": "f|amb_b77f_failed_transfer_6|receipt||amount", "value": {"reply": "It was $26561.12", "raw": "{\"reply\": \"It was $26561.12\"}"}}
+{"key": "f|amb_b77f_failed_transfer_7|receipt||date", "value": {"reply": "It was on November 6, 2026.", "raw": "{\"reply\": \"It was on November 6, 2026.\"}"}}
+{"key": "f|amb_b77f_pending_card_payment_0|receipt||amount", "value": {"reply": "It was $29.61", "raw": "{\"reply\": \"It was $29.61\"}"}}
+{"key": "f|amb_b77f_pending_card_payment_2|receipt||amount", "value": {"reply": "It was 191.70 USD.", "raw": "{\"reply\": \"It was 191.70 USD.\"}"}}
+{"key": "f|amb_b77f_pending_card_payment_3|misremembers|date|amount", "value": {"reply": "It was $7.55 to Nimbus Audio.", "raw": "{\"reply\": \"It was $7.55 to Nimbus Audio.\"}"}}
+{"key": "f|amb_b77f_declined_card_payment_6|receipt||amount", "value": {"reply": "It was $222.04", "raw": "{\"reply\": \"It was $222.04\"}"}}
+{"key": "f|amb_b77f_pending_card_payment_1|misremembers|date|amount", "value": {"reply": "It was $857.04", "raw": "{\"reply\": \"It was $857.04\"}"}}
+{"key": "f|amb_b77f_pending_card_payment_4|vague||amount", "value": {"reply": "It was roughly 230.0 USD", "raw": "{\"reply\": \"It was roughly 230.0 USD\"}"}}
+{"key": "f|amb_b77f_failed_transfer_5|vague||merchant", "value": {"reply": "It was a transfer to my own account, the one that ends in 0018.", "raw": "{\"reply\": \"It was a transfer to my own account, the one that ends in 0018.\"}"}}
+{"key": "f|amb_b77f_pending_card_payment_5|vague||amount", "value": {"reply": "It was around 10 USD, but I'm not sure of the exact amount.", "raw": "{\"reply\": \"It was around 10 USD, but I'm not sure of the exact amount.\"}"}}
+{"key": "f|amb_b77f_pending_card_payment_4|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77f_pending_card_payment_5|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77f_failed_transfer_5|vague||amount", "value": {"reply": "It was around 800 dollars.", "raw": "{\"reply\": \"It was around 800 dollars.\"}"}}
+{"key": "f|amb_b77f_pending_card_payment_7|misremembers|date|amount", "value": {"reply": "It was $158.62 to Saffron Street Deli.", "raw": "{\"reply\": \"It was $158.62 to Saffron Street Deli.\"}"}}
+{"key": "f|amb_b77f_pending_card_payment_6|receipt||amount", "value": {"reply": "It was $18.31 to Juniper Noodle Bar.", "raw": "{\"reply\": \"It was $18.31 to Juniper Noodle Bar.\"}"}}
+{"key": "f|amb_b77f_pending_transfer_2|vague||merchant", "value": {"reply": "It was a transfer to an account ending in 1087, not a merchant.", "raw": "{\"reply\": \"It was a transfer to an account ending in 1087, not a merchant.\"}"}}
+{"key": "f|amb_b77f_pending_transfer_2|vague||amount", "value": {"reply": "It was around 13000 USD.", "raw": "{\"reply\": \"It was around 13000 USD.\"}"}}
+{"key": "f|amb_b77f_pending_transfer_3|receipt||date", "value": {"reply": "It was on October 23, 2026.", "raw": "{\"reply\": \"It was on October 23, 2026.\"}"}}
+{"key": "f|amb_b77f_pending_transfer_0|receipt||merchant", "value": {"reply": "The recipient's account number ends in 7957, that's all I know.", "raw": "{\"reply\": \"The recipient's account number ends in 7957, that's all I know.\"}"}}
+{"key": "f|amb_b77f_pending_transfer_4|vague||merchant", "value": {"reply": "The one I sent money to, their account ended in 9373", "raw": "{\"reply\": \"The one I sent money to, their account ended in 9373\"}"}}
+{"key": "f|amb_b77f_pending_transfer_5|receipt||date", "value": {"reply": "it was on november 11, 2026", "raw": "{\"reply\": \"it was on november 11, 2026\"}"}}
+{"key": "f|amb_b77f_pending_transfer_0|receipt||amount", "value": {"reply": "It was 408.04 USD", "raw": "{\"reply\": \"It was 408.04 USD\"}"}}
+{"key": "f|amb_b77f_pending_transfer_4|vague||amount", "value": {"reply": "It was roughly 4660 USD.", "raw": "{\"reply\": \"It was roughly 4660 USD.\"}"}}
+{"key": "f|amb_b77f_pending_transfer_6|misremembers|merchant|merchant", "value": {"reply": "It's a personal transfer to an account ending in 9507, not a merchant.", "raw": "{\"reply\": \"It's a personal transfer to an account ending in 9507, not a merchant.\"}"}}
+{"key": "f|amb_b77f_pending_transfer_7|receipt||date", "value": {"reply": "The payment was made on October 23, 2026.", "raw": "{\"reply\": \"The payment was made on October 23, 2026.\"}"}}
+{"key": "f|amb_b77f_pending_transfer_6|misremembers|merchant|amount", "value": {"reply": "It was $899.47", "raw": "{\"reply\": \"It was $899.47\"}"}}
+{"key": "f|amb_b77f_reverted_card_payment_1|misremembers|date|amount", "value": {"reply": "It was $39.59", "raw": "{\"reply\": \"It was $39.59\"}"}}
+{"key": "f|amb_b77f_declined_transfer_6|receipt||amount", "value": {"reply": "It was for 25291.27 GBP.", "raw": "{\"reply\": \"It was for 25291.27 GBP.\"}"}}
+{"key": "f|amb_b77f_declined_transfer_3|receipt||amount", "value": {"reply": "It was $26118.30.", "raw": "{\"reply\": \"It was $26118.30.\"}"}}
+{"key": "f|amb_b77f_pending_transfer_1|receipt||merchant", "value": {"reply": "It's a transfer to my own account, the one ending in 5074.", "raw": "{\"reply\": \"It's a transfer to my own account, the one ending in 5074.\"}"}}
+{"key": "f|amb_b77f_reverted_card_payment_0|receipt||amount", "value": {"reply": "It was 24.10 USD.", "raw": "{\"reply\": \"It was 24.10 USD.\"}"}}
+{"key": "f|amb_b77f_reverted_card_payment_2|receipt||amount", "value": {"reply": "The payment was for 1072.97 USD.", "raw": "{\"reply\": \"The payment was for 1072.97 USD.\"}"}}
+{"key": "f|amb_b77f_reverted_card_payment_3|misremembers|amount|amount", "value": {"reply": "It was 23.27 GBP to Peak Yoga Studio.", "raw": "{\"reply\": \"It was 23.27 GBP to Peak Yoga Studio.\"}"}}
+{"key": "f|amb_b77f_pending_transfer_1|receipt||amount", "value": {"reply": "It was for $3172.03.", "raw": "{\"reply\": \"It was for $3172.03.\"}"}}
+{"key": "f|amb_b77f_reverted_card_payment_5|vague||amount", "value": {"reply": "It was around 19 USD, but I'm not sure of the exact amount.", "raw": "{\"reply\": \"It was around 19 USD, but I'm not sure of the exact amount.\"}"}}
+{"key": "f|amb_b77f_reverted_card_payment_6|misremembers|amount|amount", "value": {"reply": "It was 101.91 USD.", "raw": "{\"reply\": \"It was 101.91 USD.\"}"}}
+{"key": "f|amb_b77f_transaction_charged_twice_0|misremembers|amount|amount", "value": {"reply": "It was $2237.08 to Juniper Noodle Bar.", "raw": "{\"reply\": \"It was $2237.08 to Juniper Noodle Bar.\"}"}}
+{"key": "f|amb_b77f_transaction_charged_twice_1|vague||amount", "value": {"reply": "It was around 40 dollars.", "raw": "{\"reply\": \"It was around 40 dollars.\"}"}}
+{"key": "f|amb_b77f_reverted_card_payment_5|vague||date", "value": {"reply": "I'm not sure of the exact date, but it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure of the exact date, but it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77f_reverted_card_payment_7|misremembers|date|amount", "value": {"reply": "It was $128.11", "raw": "{\"reply\": \"It was $128.11\"}"}}
+{"key": "f|amb_b77f_failed_transfer_3|misremembers|merchant|amount", "value": {"reply": "It was $26561.12", "raw": "{\"reply\": \"It was $26561.12\"}"}}
+{"key": "f|amb_b77f_reverted_card_payment_4|receipt||amount", "value": {"reply": "It was $359.31 to Harbor Lights Market.", "raw": "{\"reply\": \"It was $359.31 to Harbor Lights Market.\"}"}}
+{"key": "f|amb_b77f_transaction_charged_twice_2|receipt||amount", "value": {"reply": "It was $225.26", "raw": "{\"reply\": \"It was $225.26\"}"}}
+{"key": "f|amb_b77f_transaction_charged_twice_3|misremembers|amount|amount", "value": {"reply": "It was $352.40 to Peak Yoga Studio.", "raw": "{\"reply\": \"It was $352.40 to Peak Yoga Studio.\"}"}}
+{"key": "f|amb_b77f_transaction_charged_twice_1|vague||date", "value": {"reply": "I'm not sure, it was sometime in November 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in November 2026\"}"}}
+{"key": "f|amb_b77f_transaction_charged_twice_4|misremembers|amount|amount", "value": {"reply": "It was $1593.72", "raw": "{\"reply\": \"It was $1593.72\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_0|receipt||date", "value": {"reply": "The payment was made on November 6, 2026.", "raw": "{\"reply\": \"The payment was made on November 6, 2026.\"}"}}
+{"key": "f|amb_b77f_transaction_charged_twice_7|misremembers|amount|amount", "value": {"reply": "One of the payments was $256.11 to Metro Cab Co.", "raw": "{\"reply\": \"One of the payments was $256.11 to Metro Cab Co.\"}"}}
+{"key": "f|amb_b77f_transaction_charged_twice_5|receipt||amount", "value": {"reply": "I think it was around 4.56 USD, but I'm looking at a different transaction, not the restaurant one I mentioned earlier.", "raw": "{\"reply\": \"I think it was around 4.56 USD, but I'm looking at a different transaction, not the restaurant one I mentioned earlier.\"}"}}
+{"key": "f|amb_b77f_transaction_charged_twice_6|receipt||amount", "value": {"reply": "It was 59.94 GBP.", "raw": "{\"reply\": \"It was 59.94 GBP.\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_3|vague||merchant", "value": {"reply": "It was a bank transfer to an account ending in 0756.", "raw": "{\"reply\": \"It was a bank transfer to an account ending in 0756.\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_4|vague||date", "value": {"reply": "I'm not sure, it was sometime in October 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in October 2026\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_1|receipt||date", "value": {"reply": "It was on November 4th, 2026.", "raw": "{\"reply\": \"It was on November 4th, 2026.\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_5|vague||merchant", "value": {"reply": "It was a bank transfer to my landlord's account, which ends in 3843.", "raw": "{\"reply\": \"It was a bank transfer to my landlord's account, which ends in 3843.\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_6|misremembers|kind|date", "value": {"reply": "It was supposed to be paid on the 10th of November, I think.", "raw": "{\"reply\": \"It was supposed to be paid on the 10th of November, I think.\"}"}}
+{"key": "f|amb_b77f_failed_transfer_0|receipt||date", "value": {"reply": "It was on November 6, 2026.", "raw": "{\"reply\": \"It was on November 6, 2026.\"}"}}
+{"key": "f|amb_b77f_transaction_charged_twice_5|receipt||date", "value": {"reply": "I think it was November 22, 2026, but I'm not sure if that's the one that's duplicated.", "raw": "{\"reply\": \"I think it was November 22, 2026, but I'm not sure if that's the one that's duplicated.\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_2|vague||merchant", "value": {"reply": "It was a transfer to my own account, the one that ends with 5074.", "raw": "{\"reply\": \"It was a transfer to my own account, the one that ends with 5074.\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_7|vague||date", "value": {"reply": "I'm not sure, it was sometime in October 2026", "raw": "{\"reply\": \"I'm not sure, it was sometime in October 2026\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_3|vague||amount", "value": {"reply": "It was roughly 7830 pounds, but I'm not sure of the exact amount.", "raw": "{\"reply\": \"It was roughly 7830 pounds, but I'm not sure of the exact amount.\"}"}}
+{"key": "f|amb_b77f_transfer_timing_0|receipt||merchant", "value": {"reply": "The recipient is the account ending in 4333.", "raw": "{\"reply\": \"The recipient is the account ending in 4333.\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_6|misremembers|kind|merchant", "value": {"reply": "My new landlord, the one I set up the transfer to, her account ends in 0340.", "raw": "{\"reply\": \"My new landlord, the one I set up the transfer to, her account ends in 0340.\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_5|vague||amount", "value": {"reply": "It was roughly 2380 pounds, but I don't remember the exact amount.", "raw": "{\"reply\": \"It was roughly 2380 pounds, but I don't remember the exact amount.\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_7|vague||merchant", "value": {"reply": "It was a transfer to an account ending in 7145", "raw": "{\"reply\": \"It was a transfer to an account ending in 7145\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_2|vague||amount", "value": {"reply": "It was roughly 3170.0 USD, but I don't remember the exact amount.", "raw": "{\"reply\": \"It was roughly 3170.0 USD, but I don't remember the exact amount.\"}"}}
+{"key": "f|amb_b77f_transfer_timing_0|receipt||amount", "value": {"reply": "It was 838.09 USD.", "raw": "{\"reply\": \"It was 838.09 USD.\"}"}}
+{"key": "f|amb_b77f_transfer_not_received_by_recipient_4|vague||merchant", "value": {"reply": "It was a bank transfer to an account ending in 1322", "raw": "{\"reply\": \"It was a bank transfer to an account ending in 1322\"}"}}
+{"key": "f|amb_b77f_transfer_timing_1|receipt||merchant", "value": {"reply": "I'm asking about the transfer I made to account ending 8258.", "raw": "{\"reply\": \"I'm asking about the transfer I made to account ending 8258.\"}"}}
+{"key": "f|amb_b77f_transfer_timing_3|misremembers|amount|merchant", "value": {"reply": "It's to my own account, the one ending in 9507.", "raw": "{\"reply\": \"It's to my own account, the one ending in 9507.\"}"}}
+{"key": "f|amb_b77f_transfer_timing_4|vague||merchant", "value": {"reply": "It was to my own account, I think, the one ending in 0756", "raw": "{\"reply\": \"It was to my own account, I think, the one ending in 0756\"}"}}
+{"key": "f|amb_b77f_transfer_timing_2|receipt||date", "value": {"reply": "It was on 2026-11-11", "raw": "{\"reply\": \"It was on 2026-11-11\"}"}}
+{"key": "f|amb_b77f_transfer_timing_6|receipt||merchant", "value": {"reply": "It's to my own account, the one ending in 9373", "raw": "{\"reply\": \"It's to my own account, the one ending in 9373\"}"}}
+{"key": "f|amb_b77f_transfer_timing_4|vague||amount", "value": {"reply": "It was roughly 7830 pounds", "raw": "{\"reply\": \"It was roughly 7830 pounds\"}"}}
+{"key": "f|amb_b77f_transfer_timing_6|receipt||amount", "value": {"reply": "It was 4657.24 USD", "raw": "{\"reply\": \"It was 4657.24 USD\"}"}}
+{"key": "f|amb_b77f_transfer_timing_3|misremembers|amount|amount", "value": {"reply": "It was $275.45", "raw": "{\"reply\": \"It was $275.45\"}"}}
+{"key": "f|amb_b77f_transfer_timing_7|receipt||merchant", "value": {"reply": "The recipient is the one with account number ending 3610", "raw": "{\"reply\": \"The recipient is the one with account number ending 3610\"}"}}
+{"key": "f|amb_b77f_transfer_timing_5|vague||merchant", "value": {"reply": "It was a transfer to my own account, the one that ends in 3610.", "raw": "{\"reply\": \"It was a transfer to my own account, the one that ends in 3610.\"}"}}
+{"key": "f|amb_b77f_transfer_timing_7|receipt||amount", "value": {"reply": "It was 899.47 USD", "raw": "{\"reply\": \"It was 899.47 USD\"}"}}
+{"key": "f|amb_b77f_transfer_timing_5|vague||amount", "value": {"reply": "It was around 900 dollars.", "raw": "{\"reply\": \"It was around 900 dollars.\"}"}}

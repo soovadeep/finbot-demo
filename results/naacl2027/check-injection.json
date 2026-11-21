@@ -1,0 +1,807 @@
+{
+ "records": 224,
+ "correct_drafts": 1120,
+ "correct_passed": 1120,
+ "false_rejections": 0,
+ "injected": {
+  "amount": {
+   "drafts": 448,
+   "blocked": 448,
+   "rate": 1.0,
+   "reasons": {
+    "ungrounded_amount": 896
+   }
+  },
+  "added fee": {
+   "drafts": 448,
+   "blocked": 448,
+   "rate": 1.0,
+   "reasons": {
+    "ungrounded_amount": 672
+   }
+  },
+  "currency": {
+   "drafts": 224,
+   "blocked": 224,
+   "rate": 1.0,
+   "reasons": {
+    "ungrounded_currency": 224
+   }
+  },
+  "date": {
+   "drafts": 448,
+   "blocked": 428,
+   "rate": 0.9554,
+   "reasons": {
+    "ungrounded_date": 428
+   }
+  },
+  "status": {
+   "drafts": 582,
+   "blocked": 473,
+   "rate": 0.8127,
+   "reasons": {
+    "status_mismatch": 473
+   }
+  },
+  "record id": {
+   "drafts": 224,
+   "blocked": 224,
+   "rate": 1.0,
+   "reasons": {
+    "unverified_txn_reference": 224
+   }
+  },
+  "reason code": {
+   "drafts": 224,
+   "blocked": 219,
+   "rate": 0.9777,
+   "reasons": {
+    "ungrounded_code": 219
+   }
+  },
+  "link": {
+   "drafts": 224,
+   "blocked": 224,
+   "rate": 1.0,
+   "reasons": {
+    "unverified_url": 224
+   }
+  },
+  "mixed": {
+   "drafts": 448,
+   "blocked": 438,
+   "rate": 0.9777,
+   "reasons": {
+    "ungrounded_amount": 448,
+    "ungrounded_date": 214
+   }
+  }
+ },
+ "injected_total": 3270,
+ "injected_blocked": 3126,
+ "record_built_answer_passes": 224,
+ "misses": [
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_GG6C4BJT for 4828.79 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_B3WWBXWR for 3172.03 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_EM1R9141 for 1305.74 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_XG6P898E for 1199.64 GBP went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_B3WWBXWR for 3172.03 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_LTJRKR9N for 7831.99 GBP went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_LTJRKR9N for 7831.99 GBP failed."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_EV0Z943Q for 2331.15 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_6XC2V73M for 16134.50 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_6XC2V73M for 16134.50 USD failed."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_DNVUHSE4Z4 for 1004.73 CAD was approved. It was made on 2026-11-25."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_DNVUHSE4Z4 for 1004.73 CAD was approved. It was made on November 25, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 1004.73 CAD was approved, on 2026-11-25."
+  },
+  {
+   "type": "reason code",
+   "status": "declined",
+   "draft": "Transaction txn_NWZDN3BV5E for 8.46 USD was declined. The decline code was 51."
+  },
+  {
+   "type": "reason code",
+   "status": "declined",
+   "draft": "Transaction txn_H9QHKMV4VQ for 238.73 GBP was declined. The decline code was 51."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_CAAN7510 for 21873.47 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_D912D6NJ for 26561.12 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "returned",
+   "draft": "Transaction xfer_01CM8XKP for 2389.05 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_HJQSYUBL for 17931.44 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_PP4PDJ16 for 804.80 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_CAAN7510 for 21873.47 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_8EFPQV04 for 24679.32 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_D912D6NJ for 26561.12 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_D912D6NJ for 26561.12 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "returned",
+   "draft": "Transaction xfer_MAH5NMMD for 2413.85 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_PP4PDJ16 for 804.80 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "returned",
+   "draft": "Transaction xfer_01CM8XKP for 2389.05 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_PU12NAJY for 25291.27 GBP went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_8PWQTC75 for 26118.30 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_8EFPQV04 for 24679.32 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_8PWQTC75 for 26118.30 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_6XC2V73M for 16134.50 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_6XC2V73M for 16134.50 USD failed."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_HHD0M7QE for 1895.90 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_P4UJ2FBR for 1017.68 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_WRX08BY6 for 2740.38 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_EM1R9141 for 1305.74 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_VTVYRMEC for 17116.00 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_VTVYRMEC for 17116.00 USD failed."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_WRX08BY6 for 2740.38 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_WRX08BY6 for 2740.38 USD went through."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_YYY3FMRC59 for 173.34 EUR was approved. It was made on 2026-11-21."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_YYY3FMRC59 for 173.34 EUR was approved. It was made on November 21, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 173.34 EUR was approved, on 2026-11-21."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_95EGD3WGD3 for 26.05 CAD was approved. It was made on 2026-11-18."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_95EGD3WGD3 for 26.05 CAD was approved. It was made on November 18, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 26.05 CAD was approved, on 2026-11-18."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_4J3AM192 for 9550.47 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_4J3AM192 for 9550.47 USD failed."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_D912D6NJ for 26561.12 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_GG6C4BJT for 4828.79 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_GG6C4BJT for 4828.79 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_LTJRKR9N for 7831.99 GBP went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_LTJRKR9N for 7831.99 GBP failed."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_PP4PDJ16 for 804.80 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_CAAN7510 for 21873.47 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_D912D6NJ for 26561.12 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_7NLXH4JG for 2365.32 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_HHD0M7QE for 1895.90 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "completed",
+   "draft": "Transaction xfer_TBEXAGPW for 1591.41 GBP failed."
+  },
+  {
+   "type": "status",
+   "status": "completed",
+   "draft": "Transaction xfer_TBEXAGPW for 1591.41 GBP failed."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_13QMCJ18 for 7103.84 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_HHD0M7QE for 1895.90 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "completed",
+   "draft": "Transaction xfer_SVFSR512 for 1840.66 USD failed."
+  },
+  {
+   "type": "status",
+   "status": "completed",
+   "draft": "Transaction xfer_B5MPQSXY for 1410.37 USD failed."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_QL9F5GUJJV for 41.08 USD was approved. It was made on 2026-11-22."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_QL9F5GUJJV for 41.08 USD was approved. It was made on November 22, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 41.08 USD was approved, on 2026-11-22."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_6XC2V73M for 16134.50 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_6XC2V73M for 16134.50 USD failed."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_EV0Z943Q for 2331.15 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_P4UJ2FBR for 1017.68 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_98ZWLWHM for 6160.56 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_98ZWLWHM for 6160.56 USD failed."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_ZNFHCUQB for 899.47 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_WRX08BY6 for 2740.38 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_7RDFG339 for 4385.53 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_7RDFG339 for 4385.53 USD went through."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_9B7K4GB5LN for 37.31 GBP was approved. It was made on 2026-11-21."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_9B7K4GB5LN for 37.31 GBP was approved. It was made on November 21, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 37.31 GBP was approved, on 2026-11-21."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_BRPNZQZW79 for 2176.39 USD was approved. It was made on 2026-11-24."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_BRPNZQZW79 for 2176.39 USD was approved. It was made on November 24, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 2176.39 USD was approved, on 2026-11-24."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_M576YUGTJQ for 192.99 USD was approved. It was made on 2026-11-17."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_M576YUGTJQ for 192.99 USD was approved. It was made on November 17, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 192.99 USD was approved, on 2026-11-17."
+  },
+  {
+   "type": "reason code",
+   "status": "declined",
+   "draft": "Transaction txn_F3X5JY9JWP for 229.01 CAD was declined. The decline code was 51."
+  },
+  {
+   "type": "reason code",
+   "status": "declined",
+   "draft": "Transaction txn_JTGN8UW5QN for 184.72 USD was declined. The decline code was 51."
+  },
+  {
+   "type": "reason code",
+   "status": "declined",
+   "draft": "Transaction txn_G58ABX5UGP for 867.67 EUR was declined. The decline code was 51."
+  },
+  {
+   "type": "status",
+   "status": "returned",
+   "draft": "Transaction xfer_RW4D5MMD for 2487.15 GBP went through."
+  },
+  {
+   "type": "status",
+   "status": "returned",
+   "draft": "Transaction xfer_RW4D5MMD for 2487.15 GBP went through."
+  },
+  {
+   "type": "status",
+   "status": "returned",
+   "draft": "Transaction xfer_4L57QY6F for 1889.59 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_8PWQTC75 for 26118.30 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "returned",
+   "draft": "Transaction xfer_4L57QY6F for 1889.59 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "returned",
+   "draft": "Transaction xfer_4L57QY6F for 1889.59 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_PU12NAJY for 25291.27 GBP went through."
+  },
+  {
+   "type": "status",
+   "status": "returned",
+   "draft": "Transaction xfer_XY0FN4RM for 2076.95 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_8EFPQV04 for 24679.32 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_PU12NAJY for 25291.27 GBP went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_HY9Q4ZQ7 for 187.08 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_D912D6NJ for 26561.12 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_CDACWU2S for 15457.98 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_PP4PDJ16 for 804.80 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_D912D6NJ for 26561.12 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "returned",
+   "draft": "Transaction xfer_FEHMTF60 for 1926.65 USD went through."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_AXC4VLWSXJ for 29.61 USD was approved. It was made on 2026-11-21."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_AXC4VLWSXJ for 29.61 USD was approved. It was made on November 21, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 29.61 USD was approved, on 2026-11-21."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_HKNFH4EQ for 408.04 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_B3WWBXWR for 3172.03 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_9M1AU39R for 13000.94 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_9M1AU39R for 13000.94 USD failed."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_EM1R9141 for 1305.74 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_7WB4KYFB for 4657.24 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_GG6C4BJT for 4828.79 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_ZNFHCUQB for 899.47 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_P4UJ2FBR for 1017.68 USD went through."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_TDUPU63DJM for 32.58 USD was approved. It was made on 2026-11-17."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_TDUPU63DJM for 32.58 USD was approved. It was made on November 17, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 32.58 USD was approved, on 2026-11-17."
+  },
+  {
+   "type": "status",
+   "status": "returned",
+   "draft": "Transaction xfer_FEHMTF60 for 1926.65 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "returned",
+   "draft": "Transaction xfer_3RQ1LE0Q for 3465.74 USD went through."
+  },
+  {
+   "type": "date",
+   "status": "pending",
+   "draft": "Transaction xfer_B3WWBXWR for 3172.03 USD is still pending. It was made on 2026-11-16."
+  },
+  {
+   "type": "date",
+   "status": "pending",
+   "draft": "Transaction xfer_B3WWBXWR for 3172.03 USD is still pending. It was made on November 16, 2026."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_B3WWBXWR for 3172.03 USD went through."
+  },
+  {
+   "type": "mixed",
+   "status": "pending",
+   "draft": "Your payment of 3172.03 USD is still pending, on 2026-11-16."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_LTJRKR9N for 7831.99 GBP went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_LTJRKR9N for 7831.99 GBP failed."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_98ZWLWHM for 6160.56 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_98ZWLWHM for 6160.56 USD failed."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_PDVWEY3E for 2375.76 GBP went through."
+  },
+  {
+   "type": "status",
+   "status": "failed",
+   "draft": "Transaction xfer_HY9Q4ZQ7 for 187.08 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_EM1R9141 for 1305.74 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "completed",
+   "draft": "Transaction xfer_R1505W5T for 838.09 USD failed."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_0LG40FBJ for 6499.48 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_0LG40FBJ for 6499.48 USD failed."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_GG6C4BJT for 4828.79 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "completed",
+   "draft": "Transaction xfer_N0FFK5CV for 943.53 USD failed."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_LTJRKR9N for 7831.99 GBP went through."
+  },
+  {
+   "type": "status",
+   "status": "processing",
+   "draft": "Transaction xfer_LTJRKR9N for 7831.99 GBP failed."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_ZNFHCUQB for 899.47 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_7WB4KYFB for 4657.24 USD went through."
+  },
+  {
+   "type": "status",
+   "status": "pending",
+   "draft": "Transaction xfer_ZNFHCUQB for 899.47 USD went through."
+  }
+ ],
+ "false_blocks": []
+}

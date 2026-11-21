@@ -183,7 +183,7 @@ class DemoHttp(unittest.TestCase):
         self.assertNotIn("Strict-Transport-Security", self.request()[1])
 
     def test_root_serves_conversation_and_inspector_moves(self):
-        for path, marker in (("/", b"Find the payment you mean"), ("/study", b"Find the payment you mean"),
+        for path, marker in (("/", b"Which payment did you mean?"), ("/study", b"Which payment did you mean?"),
                              ("/inspector", b"evidence inspector")):
             status, headers, data = self.request(path, method="GET")
             self.assertEqual(status, "200 OK", path)

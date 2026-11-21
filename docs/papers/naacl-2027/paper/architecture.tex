@@ -5,6 +5,7 @@
               minimum height=11mm, text width=26mm, fill=white, line width=0.6pt},
   cbox/.style={box, fill=green!7, draw=green!45!black},
   vbox/.style={box, fill=blue!6, draw=blue!50!black},
+  kbox/.style={box, fill=orange!8, draw=orange!60!black},
   end/.style={box, fill=black!4},
   bad/.style={box, fill=red!6, draw=red!50!black},
   lab/.style={font=\scriptsize, inner sep=1.5pt, fill=white},
@@ -16,7 +17,7 @@
 \node[end]  (msg)    at (0,0)    {Customer message\\(no reference)};
 \node[cbox] (belief) at (4.6,0)  {Belief over the\\customer's records};
 \node[cbox] (ask)    at (9.2,0)  {Ask the question\\with highest DV};
-\node[cbox] (list)   at (13.8,0) {Short list;\\customer confirms};
+\node[kbox] (list)   at (13.8,0) {Short list; customer\\picks one or none};
 \draw[arr] (msg) -- (belief);
 \draw[arr] ([yshift=2mm]belief.east) -- node[lab, above=1.5mm]{at most 2} ([yshift=2mm]ask.west);
 \draw[arr] ([yshift=-2mm]ask.west) -- node[lab, below=1.5mm]{reply: Bayes update} ([yshift=-2mm]belief.east);
@@ -40,18 +41,21 @@
 \draw[arr] (build.north east) -- node[lab, sloped, above]{passes} (answer.south west);
 % ---- Inspector
 \node[draw=black!45, dashed, rounded corners=3pt, font=\small, align=center, text width=24mm,
-      minimum height=20mm, fill=yellow!7] (insp) at (18.4,-1.7)
-  {\textbf{Inspector}\\beliefs, question scores, drafts, check results};
+      minimum height=30mm, fill=yellow!7] (insp) at (18.4,-1.7)
+  {\textbf{Inspector}\\observes all three steps: beliefs, question scores, the confirmed record, drafts, check results};
+\draw[obs] (ask.north) -- ++(0,1.15) -| ([xshift=-4mm]insp.north);
 \draw[obs] (list.east) -- (insp.north west);
 \draw[obs] (answer.east) -- (insp.south west);
 % ---- Lanes
 \begin{scope}[on background layer]
-  \node[lane, fill=green!2, draw=green!35!black!45, fit=(msg)(belief)(ask)(list), inner xsep=5mm,
+  \node[lane, fill=green!2, draw=green!35!black!45, fit=(msg)(belief)(ask), inner xsep=5mm,
         inner ysep=6mm] (cl) {};
-  \node[font=\footnotesize\bfseries, text=green!35!black, anchor=north west] at (cl.north west) {Clarify};
+  \node[font=\footnotesize\bfseries, text=green!35!black, anchor=north west] at (cl.north west) {1 Clarify};
+  \node[lane, fill=orange!3, draw=orange!50!black!45, fit=(list), inner xsep=5mm, inner ysep=6mm] (co) {};
+  \node[font=\footnotesize\bfseries, text=orange!50!black, anchor=north west] at (co.north west) {2 Confirm};
   \node[lane, fill=blue!2, draw=blue!35!black!45, fit=(fetch)(draft)(check)(answer)(repair)(build)(refuse),
         inner xsep=5mm, inner ysep=6mm] (ve) {};
-  \node[font=\footnotesize\bfseries, text=blue!40!black, anchor=north west] at (ve.north west) {Verify};
+  \node[font=\footnotesize\bfseries, text=blue!40!black, anchor=north west] at (ve.north west) {3 Verify};
 \end{scope}
 \end{tikzpicture}%
 }

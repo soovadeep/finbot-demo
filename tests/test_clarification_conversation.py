@@ -210,3 +210,23 @@ class ConversationFaultTests(unittest.TestCase):
 
     def test_catalogue_lists_record_faults_only(self):
         self.assertEqual(list(scenario_catalogue()["faults"]), ["none", "status_once", "amount_once", "amount_always"])
+
+
+class ExtractDetailsOtherRecords(unittest.TestCase):
+    """The free-text rules also read records outside the demo catalogue (review studies)."""
+
+    def test_other_months_currencies_and_payees(self):
+        from finbot.clarification import Candidate
+        from finbot.clarification_conversation import extract_details
+        cands = (Candidate("txn_A", "m_1", {"kind": "Card payment", "merchant": "Nimbus Audio",
+                                            "date": "2026-10-03", "amount": "32.14"}),
+                 Candidate("txn_B", "m_1", {"kind": "Bank transfer", "merchant": "account ending 6811",
+                                            "date": "2026-11-17", "amount": "184.72"}))
+        fields, _, _ = extract_details("It was a card payment to Nimbus Audio on October 3rd for 32.14 CAD.",
+                                       None, cands)
+        self.assertEqual(fields["date"]["value"], "2026-10-03")
+        self.assertEqual(fields["merchant"]["value"], "Nimbus Audio")
+        self.assertEqual(fields["amount"]["value"], "32.14")
+        self.assertEqual(fields["currency"]["value"], "CAD")
+        fields, _, _ = extract_details("I think it was on Nov 17.", None, cands)
+        self.assertEqual(fields["date"], {"value": "2026-11-17", "certainty": "tentative"})
