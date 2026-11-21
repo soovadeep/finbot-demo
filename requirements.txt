@@ -1,9 +1,9 @@
-anthropic>=1.0
-boto3>=1.35
-cryptography>=43          # encryption at rest (finbot/crypto.py); FINBOT_ENCRYPTION=local|kms
-gunicorn>=23              # API pods serve finbot/http_api.py
-pyjwt[crypto]>=2.8         # FINBOT_AUTH=jwks (reference deployment)
-opensearch-py>=2.6         # vector store opensearch: (reference deployment)
+anthropic>=2.10.0
+boto3>=1.44.5
+cryptography>=50.0.2          # encryption at rest (finbot/crypto.py); FINBOT_ENCRYPTION=local|kms
+gunicorn>=27.0.1              # API pods serve finbot/http_api.py
+pyjwt[crypto]>=2.15.1         # FINBOT_AUTH=jwks (reference deployment)
+opensearch-py>=3.2.0         # vector store opensearch: (reference deployment)
 # Optional adapters:
 # psycopg[binary]>=3.2      vector store pgvector:
 # chromadb>=0.5             vector store chroma:
