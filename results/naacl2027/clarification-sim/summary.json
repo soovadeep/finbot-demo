@@ -50,20 +50,20 @@
   "usage": {
     "haiku": {
       "model": "claude-haiku-5-5",
-      "calls": 3745,
-      "input_tokens": 1207758,
-      "output_tokens": 43325
+      "calls": 4464,
+      "input_tokens": 1483047,
+      "output_tokens": 50191
     },
     "llama": {
       "model": "meta-llama/llama-3.3-70b-instruct",
-      "calls": 3430,
-      "input_tokens": 841280,
-      "output_tokens": 28212
+      "calls": 4150,
+      "input_tokens": 1046402,
+      "output_tokens": 33465
     }
   },
   "source_sha256": {
     "finbot/clarification.py": "904cbafd88d9a6e8c6df6018a411463f4e8d387ed37e9434879d528cf9cb902e",
-    "scripts/naacl2027/simulate_customers.py": "72b7df8496d3ea1f6a508e2b39d317a832a12754bcbcd31afef6b931588a33d1",
+    "scripts/naacl2027/simulate_customers.py": "2a14012fda6ec2e8d9634562270f679158a48e11eea73e53654027d1f3aa19ba",
     "scripts/naacl2027/build_ambiguity_set.py": "4c23fbdfe0c8b89bdd8901859d042a5aa3a2fa78829759be16775847f08d3b50",
     "data/naacl2027/ambiguity.jsonl": "9beaf1659b387b8bf0aa227cfba98b4786baeca92706b9f88365f0625aa2a3ee",
     "data/naacl2027/ambiguity-8.jsonl": "490e559fcf6375099f2bd891b7f4f602d539e2673a89acd4e8b0c4659234cb35"
@@ -4513,6 +4513,456 @@
         0.0913
       ],
       "unresolved_rate": 0.7321,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.3527,
+      "correct_ci95": [
+        0.2931,
+        0.4173
+      ],
+      "wrong_record_rate": 0.067,
+      "wrong_record_ci95": [
+        0.041,
+        0.1075
+      ],
+      "unresolved_rate": 0.5804,
+      "mean_questions": 0.0,
+      "mean_records_shown": 8.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.2991,
+      "correct_ci95": [
+        0.2429,
+        0.362
+      ],
+      "wrong_record_rate": 0.0759,
+      "wrong_record_ci95": [
+        0.0479,
+        0.1182
+      ],
+      "unresolved_rate": 0.625,
+      "mean_questions": 0.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.951,
+      "top_guess_correct_rate": 0.4554,
+      "wrong_if_no_confirmation": 0.5446
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.1384,
+      "correct_ci95": [
+        0.0992,
+        0.1897
+      ],
+      "wrong_record_rate": 0.0804,
+      "wrong_record_ci95": [
+        0.0514,
+        0.1234
+      ],
+      "unresolved_rate": 0.7812,
+      "mean_questions": 0.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.951,
+      "top_guess_correct_rate": 0.1607,
+      "wrong_if_no_confirmation": 0.8393
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.2768,
+      "correct_ci95": [
+        0.2223,
+        0.3388
+      ],
+      "wrong_record_rate": 0.0759,
+      "wrong_record_ci95": [
+        0.0479,
+        0.1182
+      ],
+      "unresolved_rate": 0.6473,
+      "mean_questions": 0.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.951,
+      "top_guess_correct_rate": 0.3929,
+      "wrong_if_no_confirmation": 0.6071
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1205,
+      "correct_ci95": [
+        0.0842,
+        0.1697
+      ],
+      "wrong_record_rate": 0.1473,
+      "wrong_record_ci95": [
+        0.1069,
+        0.1997
+      ],
+      "unresolved_rate": 0.7321,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.3304,
+      "correct_ci95": [
+        0.2721,
+        0.3944
+      ],
+      "wrong_record_rate": 0.0804,
+      "wrong_record_ci95": [
+        0.0514,
+        0.1234
+      ],
+      "unresolved_rate": 0.5893,
+      "mean_questions": 1.156,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.156,
+      "top_guess_correct_rate": 0.4732,
+      "wrong_if_no_confirmation": 0.5268
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.308,
+      "correct_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "wrong_record_rate": 0.0804,
+      "wrong_record_ci95": [
+        0.0514,
+        0.1234
+      ],
+      "unresolved_rate": 0.6116,
+      "mean_questions": 1.379,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.379,
+      "top_guess_correct_rate": 0.4911,
+      "wrong_if_no_confirmation": 0.5089
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.3348,
+      "correct_ci95": [
+        0.2763,
+        0.3989
+      ],
+      "wrong_record_rate": 0.0804,
+      "wrong_record_ci95": [
+        0.0514,
+        0.1234
+      ],
+      "unresolved_rate": 0.5848,
+      "mean_questions": 1.379,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.379,
+      "top_guess_correct_rate": 0.4598,
+      "wrong_if_no_confirmation": 0.5402
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "haiku",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1205,
+      "correct_ci95": [
+        0.0842,
+        0.1697
+      ],
+      "wrong_record_rate": 0.1473,
+      "wrong_record_ci95": [
+        0.1069,
+        0.1997
+      ],
+      "unresolved_rate": 0.7321,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 0,
+      "selector": "show_list",
+      "episodes": 224,
+      "correct_rate": 0.4955,
+      "correct_ci95": [
+        0.4307,
+        0.5605
+      ],
+      "wrong_record_rate": 0.317,
+      "wrong_record_ci95": [
+        0.2596,
+        0.3805
+      ],
+      "unresolved_rate": 0.1875,
+      "mean_questions": 0.0,
+      "mean_records_shown": 8.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": null,
+      "wrong_if_no_confirmation": null
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.433,
+      "correct_ci95": [
+        0.3698,
+        0.4985
+      ],
+      "wrong_record_rate": 0.308,
+      "wrong_record_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "unresolved_rate": 0.2589,
+      "mean_questions": 0.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.951,
+      "top_guess_correct_rate": 0.4554,
+      "wrong_if_no_confirmation": 0.5446
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.2188,
+      "correct_ci95": [
+        0.1696,
+        0.2774
+      ],
+      "wrong_record_rate": 0.308,
+      "wrong_record_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "unresolved_rate": 0.4732,
+      "mean_questions": 0.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.951,
+      "top_guess_correct_rate": 0.1607,
+      "wrong_if_no_confirmation": 0.8393
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.3929,
+      "correct_ci95": [
+        0.3312,
+        0.4581
+      ],
+      "wrong_record_rate": 0.308,
+      "wrong_record_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "unresolved_rate": 0.2991,
+      "mean_questions": 0.951,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.951,
+      "top_guess_correct_rate": 0.3929,
+      "wrong_if_no_confirmation": 0.6071
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 1,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1652,
+      "correct_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "wrong_record_rate": 0.2902,
+      "wrong_record_ci95": [
+        0.2347,
+        0.3528
+      ],
+      "unresolved_rate": 0.5446,
+      "mean_questions": 0.0,
+      "mean_records_shown": 2.0,
+      "mean_turns": 1.0,
+      "top_guess_correct_rate": 0.1339,
+      "wrong_if_no_confirmation": 0.8661
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "decision_value",
+      "episodes": 224,
+      "correct_rate": 0.4688,
+      "correct_ci95": [
+        0.4045,
+        0.5341
+      ],
+      "wrong_record_rate": 0.308,
+      "wrong_record_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "unresolved_rate": 0.2232,
+      "mean_questions": 1.156,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.156,
+      "top_guess_correct_rate": 0.4732,
+      "wrong_if_no_confirmation": 0.5268
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "fixed",
+      "episodes": 224,
+      "correct_rate": 0.4688,
+      "correct_ci95": [
+        0.4045,
+        0.5341
+      ],
+      "wrong_record_rate": 0.308,
+      "wrong_record_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "unresolved_rate": 0.2232,
+      "mean_questions": 1.379,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.379,
+      "top_guess_correct_rate": 0.4955,
+      "wrong_if_no_confirmation": 0.5045
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "information_gain",
+      "episodes": 224,
+      "correct_rate": 0.4732,
+      "correct_ci95": [
+        0.4088,
+        0.5385
+      ],
+      "wrong_record_rate": 0.308,
+      "wrong_record_ci95": [
+        0.2512,
+        0.3713
+      ],
+      "unresolved_rate": 0.2188,
+      "mean_questions": 1.379,
+      "mean_records_shown": 2.0,
+      "mean_turns": 2.379,
+      "top_guess_correct_rate": 0.4598,
+      "wrong_if_no_confirmation": 0.5402
+    },
+    {
+      "bench": "ambiguity-8-same-amount",
+      "confirm": "shortlist",
+      "simulator": "llama",
+      "condition": "mixed",
+      "budget": 2,
+      "selector": "none",
+      "episodes": 224,
+      "correct_rate": 0.1652,
+      "correct_ci95": [
+        0.1223,
+        0.2194
+      ],
+      "wrong_record_rate": 0.2902,
+      "wrong_record_ci95": [
+        0.2347,
+        0.3528
+      ],
+      "unresolved_rate": 0.5446,
       "mean_questions": 0.0,
       "mean_records_shown": 2.0,
       "mean_turns": 1.0,

@@ -23,8 +23,15 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 from finbot.recordanswer import record_answer  # noqa: E402
-from finbot.verification import (BindingVerifier, DomainVerifier, EvidenceVerifier,  # noqa: E402
-                                  LanguageVerifier, ReasonVerifier, RecordIdentityVerifier, VerifierChain)
+from finbot.verification import (  # noqa: E402
+    BindingVerifier,
+    DomainVerifier,
+    EvidenceVerifier,
+    LanguageVerifier,
+    ReasonVerifier,
+    RecordIdentityVerifier,
+    VerifierChain,
+)
 
 CHAIN = VerifierChain([RecordIdentityVerifier(), EvidenceVerifier(), ReasonVerifier(), DomainVerifier(),
                        BindingVerifier(), LanguageVerifier()])   # the production chain's record checks
@@ -57,6 +64,31 @@ NOT = {  # a negated status the record makes true: correct, and must not be read
     "approved": "was not declined", "completed": "was not returned", "declined": "was not approved",
     "failed": "was not completed", "returned": "was not completed", "pending": "has not been completed yet",
     "processing": "has not been completed yet",
+}
+# Held-out wordings, written after the checks were fixed on the set above and before running the
+# checks on them; the checks were not changed after seeing these results.
+HELD_SAID = {
+    "approved": ["has been approved", "was successful"],
+    "completed": ["has completed", "succeeded"],
+    "declined": ["was not approved", "got declined"],
+    "failed": ["was unsuccessful", "did not succeed"],
+    "returned": ["came back to you", "has been returned"],
+    "pending": ["has not settled yet", "is awaiting completion"],
+    "processing": ["is in progress", "is still in progress"],
+}
+HELD_WRONG = {
+    "approved": ["got declined", "has been rejected"],
+    "completed": ["bounced", "was cancelled"],
+    "declined": ["has cleared", "was paid"],
+    "failed": ["succeeded", "has gone through", "was settled"],
+    "returned": ["has cleared", "succeeded"],
+    "pending": ["has cleared", "bounced", "has been completed"],
+    "processing": ["succeeded", "has been cancelled", "was rejected"],
+}
+HELD_NOT = {
+    "approved": "was not rejected", "completed": "did not fail", "declined": "did not succeed",
+    "failed": "was not successful", "returned": "did not clear", "pending": "has not cleared yet",
+    "processing": "is not finished yet",
 }
 MONTHS = "January February March April May June July August September October November December".split()
 
@@ -99,6 +131,41 @@ def correct_drafts(r: dict, rng: random.Random) -> list[str]:
             f"Transaction {i} for {a} {c} {NOT[r['status']]}; it {s1}."]
 
 
+def held_correct(r: dict, rng: random.Random) -> list[str]:
+    s1, s2 = HELD_SAID[r["status"]]
+    a, c, i, k = r["amount"], r["currency"], r["record_id"], r["kind"].lower()
+    return [f"According to our records, payment {i} ({a} {c}) {s1}.",
+            f"{i}: {a} {c} to {r['merchant']}, which {s2}.",
+            f"The {a} {c} {k} you made on {word_date(r['date'])} {s1}.",
+            f"Looking at {i}, your {k} with {r['merchant']} {s2}.",
+            f"Payment {i} {HELD_NOT[r['status']]}; it {s1}."]
+
+
+def held_injected(r: dict, other: dict, rng: random.Random) -> dict[str, list[str]]:
+    s1 = HELD_SAID[r["status"]][0]
+    a, c, i = r["amount"], r["currency"], r["record_id"]
+    base = f"According to our records, payment {i} ({a} {c}) {s1}."
+    wrong_amt = f"{float(a) + rng.choice([2, 7, 15, 40]):.2f}"
+    fee = f"{rng.randint(1, 40)}.{rng.randint(0, 99):02d}"
+    wrong_cur = next(x for x in ("GBP", "CAD", "EUR", "USD") if x != c)
+    d = date.fromisoformat(r["date"]) + timedelta(days=rng.choice([-4, -1, 1, 4]))
+    return {
+        "amount": [f"The payment of {wrong_amt} {c} for {i} {s1}.",
+                   f"You paid {r['merchant']} {c} {wrong_amt}, and it {s1}."],
+        "added fee": [f"{base} There was a {fee} {c} charge on top.",
+                      f"{base} A service charge of {fee} {c} applied."],
+        "currency": [f"{i} was a payment of {a} {wrong_cur} that {s1}."],
+        "date": [f"{base} The date on it is {d.day} {MONTHS[d.month - 1]} {d.year}.",
+                 f"{base} You made it on {d.strftime('%m/%d/%Y')}."],
+        "status": [f"According to our records, payment {i} ({a} {c}) {w}." for w in HELD_WRONG[r["status"]]],
+        "record id": [f"{base} This relates to {other['record_id']}."],
+        "reason code": [f"{base} The reason code on it is R01."],
+        "link": [f"{base} More at www.example.com/help."],
+        "mixed": [f"Payment {i} of {wrong_amt} {c} {s1}.",
+                  f"{i} ({a} {c}) {s1} on {word_date(d.isoformat())}."],
+    }
+
+
 def injected(r: dict, other: dict, rng: random.Random) -> dict[str, list[str]]:
     s1 = SAID[r["status"]][0]
     a, c, i = r["amount"], r["currency"], r["record_id"]
@@ -123,10 +190,7 @@ def injected(r: dict, other: dict, rng: random.Random) -> dict[str, list[str]]:
     }
 
 
-def main() -> None:
-    rng = random.Random(2027)
-    RAW.update(raw_records())
-    episodes = [json.loads(line) for line in open(ROOT / "data/naacl2027/ambiguity-8.jsonl")]
+def run(episodes: list[dict], make_correct, make_injected, rng: random.Random) -> dict:
     caught, total, reasons = defaultdict(int), defaultdict(int), defaultdict(lambda: defaultdict(int))
     passed = clean = fallback_ok = 0
     misses: list[dict] = []
@@ -135,14 +199,14 @@ def main() -> None:
         r = next(x for x in e["candidates"] if x["record_id"] == e["target_id"])
         other = next(x for x in e["candidates"] if x["record_id"] != e["target_id"])
         log = tool_log(r)
-        for draft in correct_drafts(r, rng):
+        for draft in make_correct(r, rng):
             clean += 1
             g = evidence_check(draft, log, r["record_id"])
             if g.action == "allow":
                 passed += 1
             else:
                 false_blocks.append({"draft": draft, "status": r["status"], "reasons": g.reasons})
-        for kind, drafts in injected(r, other, rng).items():
+        for kind, drafts in make_injected(r, other, rng).items():
             for draft in drafts:
                 total[kind] += 1
                 g = evidence_check(draft, log, r["record_id"])
@@ -155,7 +219,7 @@ def main() -> None:
         built = record_answer(log, r["record_id"])
         if built and evidence_check(built, log, r["record_id"]).action == "allow":
             fallback_ok += 1
-    result = {
+    return {
         "records": len(episodes),
         "correct_drafts": clean, "correct_passed": passed, "false_rejections": clean - passed,
         "injected": {k: {"drafts": total[k], "blocked": caught[k], "rate": round(caught[k] / total[k], 4),
@@ -164,12 +228,22 @@ def main() -> None:
         "record_built_answer_passes": fallback_ok,
         "misses": misses, "false_blocks": false_blocks[:50],
     }
+
+
+def main() -> None:
+    RAW.update(raw_records())
+    episodes = [json.loads(line) for line in (ROOT / "data/naacl2027/ambiguity-8.jsonl").read_text().splitlines()]
+    result = run(episodes, correct_drafts, injected, random.Random(2027))
+    result["held_out"] = run(episodes, held_correct, held_injected, random.Random(2028))
     OUT.write_text(json.dumps(result, indent=1) + "\n")
-    print(f"correct drafts: {passed}/{clean} pass ({clean - passed} false rejections)")
-    for k in total:
-        print(f"{k:12s} {caught[k]:4d}/{total[k]:4d} blocked")
-    print(f"all injected: {sum(caught.values())}/{sum(total.values())}; record-built answer passes "
-          f"{fallback_ok}/{len(episodes)}")
+    for name, res in (("development wordings", result), ("held-out wordings", result["held_out"])):
+        print(f"== {name}")
+        print(f"correct drafts: {res['correct_passed']}/{res['correct_drafts']} pass "
+              f"({res['false_rejections']} false rejections)")
+        for k, v in res["injected"].items():
+            print(f"{k:12s} {v['blocked']:4d}/{v['drafts']:4d} blocked")
+        print(f"all injected: {res['injected_blocked']}/{res['injected_total']}; record-built answer passes "
+              f"{res['record_built_answer_passes']}/{res['records']}")
 
 
 if __name__ == "__main__":

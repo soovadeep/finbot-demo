@@ -43,9 +43,11 @@ record is the right one from 13\% to 69--74\% among eight records, while a fixed
 reaches 19\%. Requiring
 confirmation keeps wrong-record selections at 2--4\%, against 21--26\% if the system acted on
 its top guess. Falling back to the full list only when a customer rejects the short list
-resolves as many episodes as showing all eight at once (66\% and 81\%), while 51--70\% of
-customers never have to scan eight records. In a test with errors injected into 3,270 drafts,
-the answer checks reject 96\% of them and none of 1,120 correct drafts.
+resolves as many episodes as showing all eight at once, while 51--70\% of customers never scan
+eight records. When every candidate has the same amount, one question still puts the right record
+first in 46\% of episodes, against 16\% in fixed order. On held-out template drafts the answer
+checks reject 82\% of injected errors; with a live Llama 3.3 70B writer, one repair removes an
+injected fee in 127 of 128 answers.
 \end{abstract}
 
 \section{Introduction}
@@ -78,9 +80,9 @@ clarification step to the answering step. Our contributions are:
   corrections with record-grounded answer verification and an evidence inspector.
 \item An ambiguity benchmark of 224 real customer questions with their references removed, each
   paired with two to eight similar records, and a simulated-customer protocol with three personas.
-\item An evaluation with two simulator families, safety stress tests, a sensitivity analysis, a
-  language-model baseline for choosing questions, free-text replies, an injected-error test of the
-  answer checks, and automated interface and accessibility checks. It needs no human participants.
+\item An evaluation with two simulator families, safety stress tests, a same-amount slice,
+  sensitivity, a language-model question chooser, free-text replies, held-out tests of the answer
+  checks and a live-writer run. It needs no human participants.
 \end{itemize}
 The demonstration is meant for people who build assistants over customers' account data, and
 for researchers studying clarification and grounded generation. A hosted copy runs at \url{https://finbot-demo-20852907589.us-central1.run.app}. The
@@ -162,12 +164,12 @@ written by third parties, such as merchant descriptors, are shown to the model b
 for a stated fact.
 
 \paragraph{Security boundaries.} The customer's tenant comes from the authenticated session, and
-the tool schemas have no tenant field, so the model cannot widen its scope; a record of another
-tenant comes back as ``not found''. The confirmed ID is held by code, not by the model: the model
-may look up other records of the same customer, but a draft is checked against the records
-actually fetched in that turn, a lookup that returns a record other than the one requested is
-rejected, and an ID in the draft that was not looked up is rejected. Third-party text and log
-messages are never evidence.
+the tool schemas have no tenant field, so the model cannot widen its scope. The confirmed ID is
+held by code, not by the model, and the confirmed record is the only one the answering step can
+read: a lookup of any other ID, including the customer's other candidates, returns ``not found'',
+so no other record can become evidence. A lookup that returns a record other than the one requested
+is rejected, as is an ID in the draft that was not looked up. Third-party text and log messages are
+never evidence.
 
 The checks are deterministic extractors, not a model. Regular expressions and small phrase
 tables pull out of the draft every money amount and currency, date, card's last four digits,
@@ -190,35 +192,18 @@ customer volunteers in free text, including hedged ones (``I think it was a tran
 parsed with small visible rules and enter the belief as weaker evidence. After confirmation it shows the retrieved record and a numbered account
 of how the answer was checked: which records were fetched, each rejected draft with its reasons
 in plain words and the rejected text, and whether the final answer is the model's own, a repair
-or built by code. A ``scripted model behaviour'' menu injects a wrong status, a wrong amount once,
+or built by code. An ``injected model fault'' menu adds a wrong status, a wrong amount once,
 a wrong amount every time, or no fault, so a reviewer can watch each recovery path.
 
-\begin{table}[t]
-\centering\small
-\setlength{\tabcolsep}{3pt}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}lll@{}}
-\toprule
-Component & Hosted demo & Command line \\
-\midrule
-Clarification, confirmation & Yes (no model) & No: give an ID \\
-Free-text detail rules & Yes & No \\
-Answer drafts & Scripted writer & Live model \\
-Checks, repair, built answer & Yes & Yes \\
-Fault injection & Menu & Model's own errors \\
-Inspector & Yes & No \\
-\bottomrule
-\end{tabular}}
-\caption{What the hosted demonstration and the command-line assistant run.}
-\label{tab:modes}
-\end{table}
-
-Table~\ref{tab:modes} lists what each way of running Finbot includes. The hosted page and
-\texttt{python -m finbot.demo} use a scripted writer and synthetic records, so reviewers need no
-key and every run is reproducible; clarification itself uses no language model. The same checks
-run around a live model in the command-line assistant, which today expects the customer to give
-a reference: \texttt{FINBOT\_LLM\_PROVIDER=openai FINBOT\_MODEL=qwen2.5:7b python -m finbot.app}
-uses a local Ollama model, and \texttt{anthropic} or \texttt{bedrock} select hosted Claude models.
+\paragraph{Writers.} By default the hosted page and \texttt{python -m finbot.demo} draft answers
+with a scripted writer over synthetic records, so reviewers need no key and every run is
+reproducible; clarification itself uses no language model. A switch on the hosted page has a live
+model (Llama 3.3 70B through OpenRouter) write the answer about the confirmed record instead, inside
+the same conversation and behind the same checks, repair and fallback; the fault menu applies to
+either writer. Live answers are capped per visitor and per day, and the scripted writer answers
+when the cap is reached or the provider fails. The command-line assistant
+(\texttt{python -m finbot.app}) runs the same checks around any configured model, including local
+Ollama models, but expects a reference.
 
 \section{Demonstration walkthrough}
 
@@ -235,19 +220,47 @@ builds the answer from the record.}
 \end{figure*}
 
 
-Figure~\ref{fig:screenshot} shows this conversation. The demonstration account holds four \$200 payments: a card payment and a bank transfer to each
-of two payees, on November 15 and 16. The customer writes ``My \$200 payment hasn't arrived.''
-The amount rules nothing out, so the inspector scores three questions: payment type (0.48 bits),
-date (0.33) and payee (0.22). Each splits the four records in half, so the scores differ only
-through the reliabilities in Section~\ref{sec:system}; decision value ranks them the same way. The customer answers that it was a bank transfer; asked for the
-date, they reply ``Willow Repairs'' instead, which the parser takes as the payee. One record now
-holds 72\% of the belief and is the only one matching what the customer said, so it is offered
-for confirmation, with the others still listed. After confirmation, with the fault menu set to
-``wrong amount every time'', the first draft adds a 12.34 processing fee and is rejected
-(\texttt{ungrounded\_amount:12.34}); the repair repeats the fee and is rejected again; the
-customer sees an answer built by code from the record: the transfer of 200.00 USD is pending.
-In the correction scenario, the customer later writes ``Actually, it was a card payment on
-November 16''; the earlier answer is discarded and the matching card record is offered instead.
+Figure~\ref{fig:screenshot} shows this conversation. The account holds four \$200 payments: a
+card payment and a bank transfer to each of two payees, on November 15 and 16. The customer writes
+``My \$200 payment hasn't arrived.'' The amount rules nothing out, and each remaining question
+splits the records in half, so payment type (0.48 bits), date (0.33) and payee (0.22) differ only
+through their reliabilities. The customer says it was a bank transfer and, asked for the date,
+replies ``Willow Repairs'', which the parser takes as the payee. One record now holds 72\% of the
+belief and is offered for confirmation, with the others still listed. With the fault menu at
+``wrong amount every time'', the draft and its repair both add a 12.34 fee and are rejected
+(\texttt{ungrounded\_amount:12.34}), and the customer sees an answer built from the record: the
+200.00 USD transfer is pending. If the customer then writes ``Actually, it was a card payment on
+November 16'', that answer is discarded and the matching card record is offered.
+
+\begin{table}[t]
+\centering\small
+\footnotesize
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabular}{@{}lcccc@{\hspace{5pt}}ccc@{}}
+\toprule
+ & & \multicolumn{3}{c}{Haiku 5.5} & \multicolumn{3}{c}{Llama 3.3 70B} \\
+\cmidrule(lr){3-5}\cmidrule(l){6-8}
+Strategy & Qs & Top-1 & Corr. & Wr. & Top-1 & Corr. & Wr. \\
+\midrule
+None & 0 & 13 & 17 & 3.1 & 13 & 21 & 5.4 \\
+Fixed, 1 & 1 & 19 & 24 & 2.2 & 19 & 30 & 5.8 \\
+IG, 1 & 1 & 65 & 44 & 2.2 & 70 & 59 & 4.0 \\
+DV, 1 & 1 & 69 & 47 & 2.2 & 74 & 63 & 4.0 \\
+Fixed, 2 & 1.95 & 72 & 48 & 1.8 & 77 & 66 & 4.0 \\
+IG, 2 & 1.95 & 73 & 46 & 1.8 & 78 & 66 & 4.0 \\
+DV, 2 & 1.36 & 74 & 49 & 2.2 & 79 & 66 & 4.0 \\
+\quad + fallback & 1.36 & n/a & 66 & 3.1 & n/a & 81 & 4.9 \\
+Show all 8 & 0 & n/a & 60 & 1.8 & n/a & 81 & 3.6 \\
+\bottomrule
+\end{tabular}
+\caption{Eight candidate records, 224 episodes, mixed personas (\%). Fixed: fixed order; IG: information gain; DV: decision value; the number is the question
+budget; None shows the first two records. Qs: mean questions asked with Haiku customers (Llama: 1.31 for DV, 2). Top-1: episodes whose most likely record
+after the questions is the target. Corr.\ and Wr.: episodes in which the customer
+confirmed the target or another record from the two-record short list (or from all eight).
+``+ fallback'' shows all eight only to customers who reject the short list. Correct-rate
+intervals are about $\pm$6 points.}
+\label{tab:main}
+\end{table}
 
 \section{Evaluation}
 \label{sec:eval}
@@ -266,9 +279,10 @@ October and November 2026, and no two records in an episode share an amount. The
 eight candidates per episode; a target shares its kind with 6.6 of the seven others on average,
 its payee with 4.0 and its date with 2.2. A second set draws two to five (mean 3.6). In 153 of the
 224 episodes a distractor has the same kind and date as the target. In 192 episodes the question
-fits its record naturally; the other 32 ask about an ATM decline or a pending payment and are
-paired with a card payment or a record that is not pending. Results on the 192 differ from those
-on all 224 by at most three points (Appendix~\ref{app:bench}).
+is \emph{naturally fitting}: what it asks about is consistent with its record (criteria in
+Appendix~\ref{app:bench}). Results on these 192 differ from those on all 224 by at most three
+points. Because amounts are unique, an answer about the amount identifies a record outright;
+Section~\ref{sec:same} removes this shortcut.
 
 \subsection{Simulated customers}
 
@@ -289,44 +303,7 @@ and the reference baseline of showing every candidate at once. An episode is \em
 when the customer confirms the target, \emph{wrong} when they confirm another record, and
 \emph{unresolved} when they pick none. All intervals are 95\% Wilson intervals.
 
-\begin{table}[t]
-\centering\small
-\setlength{\tabcolsep}{3.2pt}
-\begin{tabular}{@{}llcccc@{}}
-\toprule
- & Strategy & Qs & Top-1 & Correct & Wrong \\
-\midrule
-\multirow{9}{*}{\rotatebox{90}{Haiku 5.5}}
- & No questions & 0 & 13 & 17 & 3.1 \\
- & Fixed order, 1 & 1 & 19 & 24 & 2.2 \\
- & Info.\ gain, 1 & 1 & 65 & 44 & 2.2 \\
- & Decision value, 1 & 1 & 69 & 47 & 2.2 \\
- & Fixed order, 2 & 1.95 & 72 & 48 & 1.8 \\
- & Info.\ gain, 2 & 1.95 & 73 & 46 & 1.8 \\
- & Decision value, 2 & 1.36 & 74 & 49 & 2.2 \\
- & \quad + fallback to all 8 & 1.36 & --- & 66 & 3.1 \\
- & Show all 8 & 0 & --- & 60 & 1.8 \\
-\midrule
-\multirow{9}{*}{\rotatebox{90}{Llama 3.3 70B}}
- & No questions & 0 & 13 & 21 & 5.4 \\
- & Fixed order, 1 & 1 & 19 & 30 & 5.8 \\
- & Info.\ gain, 1 & 1 & 70 & 59 & 4.0 \\
- & Decision value, 1 & 1 & 74 & 63 & 4.0 \\
- & Fixed order, 2 & 1.95 & 77 & 66 & 4.0 \\
- & Info.\ gain, 2 & 1.95 & 78 & 66 & 4.0 \\
- & Decision value, 2 & 1.31 & 79 & 66 & 4.0 \\
- & \quad + fallback to all 8 & 1.31 & --- & 81 & 4.9 \\
- & Show all 8 & 0 & --- & 81 & 3.6 \\
-\bottomrule
-\end{tabular}
-\caption{Eight candidate records, 224 episodes, mixed personas. The number after a selector is
-its question budget. Qs: mean questions asked. Top-1: \% of episodes whose most likely record
-after the questions is the target. Correct and Wrong: \% of episodes in which the customer
-confirmed the target or another record from the two-record short list (or from all eight).
-``+ fallback to all 8'' shows the full list only to customers who reject the short list. Correct-rate
-intervals are about $\pm$6 points.}
-\label{tab:main}
-\end{table}
+
 
 \paragraph{Results.}
 Table~\ref{tab:main} gives the main results. Among eight records, one Bayesian question puts
@@ -334,8 +311,7 @@ the target first in 65--74\% of episodes, against 19\% for a question asked in f
 13\% for none; the customer then confirms the target in 44--63\% of episodes, about twice the
 fixed-order rate under both simulators. With a budget of two, fixed order catches up (48\% and
 66\% correct) but asks 1.95 questions; decision value reaches the same rates with 1.31 to
-1.36, because it stops when another question is not worth asking. Information gain asks as
-many questions as fixed order. On the smaller set (two to five records), the selectors differ
+1.36, because it stops when another question is not worth asking. On the smaller set (two to five records), the selectors differ
 little: one question in any order already puts the target first in 64--70\% of episodes.
 
 Showing every record at once resolves more episodes than the short list alone (60\% and 81\%):
@@ -343,74 +319,64 @@ the simulated customers are good at scanning lists. The two combine well: when t
 rejects the short list, the system shows the full list. Decision value followed by this fallback confirms the target in
 66\% (Haiku) and 81\% (Llama) of episodes, matching or beating the full list, while only 49\%
 and 30\% of customers ever see eight records; wrong selections rise slightly, to 3.1\% and
-4.9\%, because a customer gets two chances to choose. We compute this from the cached replies,
-pairing each episode's short-list outcome with its reply to the full list. Where a long list
+4.9\%, because a customer gets two chances to choose. Where a long list
 cannot be shown at all, as in voice, the questions alone reach about 80\% of the full-list
-success.
+success. The simulators differ mainly on vague customers, whom Haiku often leaves unresolved,
+as its prompt asks (Appendix~\ref{app:bench}).
 
-The simulators differ mainly on vague customers, whom Haiku often leaves unresolved, as its
-prompt asks (Appendix~\ref{app:bench}).
+\paragraph{Without unique amounts.}
+\label{sec:same}
+Decision value asks for the amount first in 128 of 224 episodes (fixed order: 11). A second copy
+of the set gives every candidate the target's amount and currency; only 99 targets then differ
+from all others in kind, payee or date. One decision-value question puts the target first in 46\%
+of episodes (fixed order 16\%, none 13\%) and in 85\% of the 99 (fixed order 18\%). On those 99,
+decision value with two questions confirms the target in 68\% (Haiku) and 85\% (Llama) with
+2--3\% wrong, against 73\% and 88\% for the full list. In the other 125 the target has a twin that
+no question or list can separate, and wrong picks match the full list's (Appendix~\ref{app:same}).
 
 \subsection{Sensitivity, baseline and free text}
 \label{sec:more}
 
-All three studies use the eight-record set, mixed personas and a budget of two, and reuse the
-cached replies; Appendix~\ref{app:studies} has the full tables.
-
-\paragraph{Reliabilities and question cost.} One common reliability for all attributes, from 0.6
-to 0.99, changes no question or outcome. In 20 draws with each attribute's reliability between 0.6
-and 0.99, correct confirmations stay within 40--50\% (Haiku) and 63--67\% (Llama), against 49\% and
-66\% by default, and wrong selections within 2.2--2.7\% and 4.0--4.9\%. A question cost from 0 to
-0.1 cuts mean questions from about 1.5 to 1.1 and moves correct rates by at most one point.
-
-\paragraph{A language model chooses the question.} Given the message, the candidates and the
-same questions, Claude Sonnet 5.5 asks a question or stops; the belief update and short list are
-unchanged. It reaches 43\% (Haiku) and 63\% (Llama) correct, against 49\% and 66\% for decision
-value, with equal wrong rates. It mostly asks for the amount, which identifies a record exactly
-but is what vague customers remember least.
-
-\paragraph{Free-text replies.} When the simulated customer answers in its own words, the
-demonstration's rules misread 1 of 670 replies but recover nothing from 175 that had a definite
-option answer, mostly payees given as account digits, day-first dates and approximate amounts.
-Correct confirmations fall to 42\% and 51\%; wrong selections stay at 2.2\% and 4.9\%.
+Three further studies reuse the cached replies (eight records, budget two;
+Appendix~\ref{app:studies}). Within this benchmark, one reliability for every attribute, from 0.6
+to 0.99, changes no question: the amount question then always scores highest, and after its
+answer no single question can change the most likely record, so decision value stops. Twenty
+random draws of the four reliabilities move correct confirmations by at most nine points. Claude
+Sonnet 5.5 choosing the questions reaches 43\% and 63\% correct, against 49\% and 66\%. With
+free-text replies, the rules read 63\% of definite answers with one wrong read in 670 replies, and
+correct confirmations fall to 42\% and 51\%.
 
 \subsection{Safety under wrong assumptions}
 \label{sec:safety}
 
-\paragraph{Confirmation.}
-If the system acted on its top guess after the questions, it would pick the wrong record in
-26\% (Haiku) and 21\% (Llama) of episodes among eight records. With confirmation, wrong
-selections fall to 2.2\% (0.9--5.1\%) and 4.0\% (2.1--7.5\%), no higher than showing the whole
-list (1.8\% and 3.6\%).
+Acting on the top guess after the questions would pick the wrong record in 26\% (Haiku) and
+21\% (Llama) of episodes; with confirmation, wrong selections are 2.2\% (0.9--5.1\%) and 4.0\%
+(2.1--7.5\%), no higher than showing the whole list (1.8\% and 3.6\%). When every customer is
+confident about one wrong detail, acting on the top guess would be wrong in 42\% of episodes, while
+confirmation keeps wrong selections at 5.4\% and 5.8\%, in line with the full list (4.5\% and
+7.6\%); the rest confirm the record their mistaken memory matches. If the system assumes every
+reply is right 99\% of the time, it stops sooner on the smaller set and wrong selections are
+unchanged (4.9\% and 5.8\%): a wrong belief only reorders the short list.
 
-\paragraph{Every customer misremembers.}
-When every simulated customer is confident about one wrong detail, the questions push the belief
-toward the wrong record, and acting on the top guess would be wrong in 42\% of episodes. With
-confirmation, wrong selections are 5.4\% and 5.8\%, again in line with showing every record
-(4.5\% and 7.6\%). The rest are customers confirming the record their mistaken memory
-matches, which no question can catch.
-
-\paragraph{An overconfident response model.}
-If the system assumes every reply is right 99\% of the time, on the smaller set it stops sooner
-and wrong selections are unchanged (4.9\% and 5.8\%): a wrong belief only reorders the short list.
-
-\subsection{Injected errors in answers}
+\subsection{Answer checks}
 \label{sec:inject}
 
-For each of the 224 target records we write five correct drafts (one with a negated status) and
-14 or 15 drafts with one injected error, and run the demonstration's record checks with the stored
-record as the only evidence; no model is involved. No correct draft is rejected. Of 3,270 errors,
-96\% are rejected: all wrong or added amounts, currencies, record IDs and links, 96--98\% of wrong
-dates, reason codes and mixed drafts, but only 81\% of wrong statuses
-(Appendix~\ref{app:inject}). The misses are status paraphrases the rules lack (``went through'' for
-a pending transfer) and dates or codes found elsewhere in the record. The record-built answer passes
-for all 224 records; repair success depends on the model and is not measured here.
+\paragraph{Template tests.} In controlled claim-level tests (no model), we write for each of the
+224 target records five correct drafts and 14 or 15 drafts with one injected error, and check each
+with the stored record as the only evidence. A first run caught 96\% of 3,270 errors but 81\% of
+wrong statuses; after we added the missing paraphrases (``went through'', a bare ``failed''), the
+same drafts give 98.9\%. Because that number is tuned, a held-out set with new frames and wordings
+was run once, unchanged: the checks reject 82\% of 3,240 errors (all amounts, fees, currencies and
+IDs and 92\% of statuses, but few numeric dates, letter-prefixed codes and bare \texttt{www}
+links) and 10\% of 1,120 correct drafts, all ``has not settled yet'' about a pending transfer,
+which the gate then answers from the record (Appendix~\ref{app:inject}).
 
-\subsection{Interface checks}
-
-All 18 automated acceptance checks of the inspector pass, a second script exercises the
-conversation page, and axe-core finds no WCAG 2.1 A or AA violations in 14 interface states
-(Appendix~\ref{app:iface}). These are feature checks, not measures of user comprehension.
+\paragraph{A live writer.} With Llama 3.3 70B answering about each of the 128 card-payment
+targets, 125 first drafts pass; the other three are false rejections (``American Express'' for
+\texttt{amex}, a channel value read as an ID), recovered by repair or the record-built answer. One
+repair removes a fee injected into the first draft in 127 of 128 answers; injected into the repair
+too, all 128 end in the record-built answer. Passing drafts were not checked by hand. Interface and
+accessibility checks are in Appendix~\ref{app:iface}.
 
 \section{Related work}
 
@@ -426,21 +392,17 @@ one. Post-hoc revision against evidence \citep{gao-etal-2023-rarr}, programmable
 
 \section{Limitations}
 
-The customers are language models, not people; they read lists well, follow persona notes more
-consistently than people do, and may share blind spots across the two families. The results
-therefore describe the simulated setting and do not establish how well real customers are
-served, and the personas' shares are chosen, not measured. The benchmark does not hold naturally
-occurring question--record pairs: the records are synthetic, Banking77 questions were not written
-about them, and 32 of 224 questions do not fit the record they are paired with. The response model's reliabilities are chosen, not fitted. The
-benchmark caps candidates at eight, the session limit; larger accounts need a first filter by
-date or kind. The answer checks are English rules over a fixed set of claim types; a claim outside their
-vocabulary, such as an unlisted status paraphrase, passes unchecked. The free-text rules miss
-common ways of naming payees and dates, and corrections are tested only by scripted interface
-checks. The short list is a trade-off between turns, screen space and resolution rate, not a
-measured improvement in customer experience, and no voice interface was evaluated. Human
-evaluation of the interface is not yet done. Finbot is a research demonstration, not a system
-validated for production financial support; a deployment would need further safeguards, such as
-stronger confirmation before actions with financial consequences.
+The customers are language models, not people: they read lists well, follow persona notes more
+consistently than people do, and may share blind spots across the two families, so the results
+describe the simulated setting, and the personas' shares are chosen. The records are synthetic, the
+Banking77 questions were not written about them (32 are not naturally fitting), the reliabilities
+are chosen, not fitted, and the main set's unique amounts favour the amount question. Candidates
+are capped at eight; larger accounts need a first filter. The answer checks are English rules over
+a fixed set of claim types, and claims outside their vocabulary pass, as 18\% of held-out injected
+errors did; the live-writer run covers one model, and no passing draft was checked by hand. The
+free-text rules miss common ways of naming payees and dates, and corrections are tested only by
+scripted checks. No human or voice evaluation has been done. Finbot is a research demonstration,
+not a system validated for production financial support.
 
 \section*{Ethics and broader impact}
 
@@ -462,6 +424,7 @@ results.
 \bibliography{references}
 
 \appendix
+\raggedbottom
 
 \section{Reproducibility}
 \label{app:repro}
@@ -470,7 +433,9 @@ results.
 (default sampling, at most 200 output tokens, no extended thinking) and
 \texttt{meta-llama/llama-3.3-70b-instruct} through OpenRouter (temperature 0, at most 80 output
 tokens). Question chooser (Section~\ref{sec:more}): \texttt{claude-sonnet-5-5} (default sampling,
-no extended thinking). The clarification step itself and the answer checks use no model.
+no extended thinking). Live writer (Section~\ref{sec:inject} and the hosted switch): the same Llama
+model through OpenRouter (default sampling, at most 400 output tokens). The clarification step
+itself and the answer checks use no model.
 
 \paragraph{Seeds and caches.} The benchmark is built with seed 2027
 (\url{scripts/naacl2027/build_ambiguity_set.py}); each episode's persona and misremembered
@@ -481,9 +446,10 @@ simulator reply is cached on disk with the prompt that produced it
 \url{results/naacl2027/review-studies/}), so the tables can be recomputed without model calls.
 
 \paragraph{Scripts.} \texttt{simulate\_customers.py} (main study), \texttt{review\_studies.py}
-(Section~\ref{sec:more}) and \texttt{check\_injection.py} (Section~\ref{sec:inject}), all in
+(Section~\ref{sec:more}), \texttt{build\_same\_amount\_set.py} (Section~\ref{sec:same}),
+\texttt{check\_injection.py} and \texttt{live\_writer\_run.py} (Section~\ref{sec:inject}), all in
 \texttt{scripts/naacl2027/}. Intervals are 95\% Wilson score intervals ($z = 1.96$). The
-follow-up studies made about 1,200 further model calls and cost under US\$5.
+follow-up studies made about 3,500 further model calls and cost under US\$5.
 
 \section{Simulator prompts}
 \label{app:prompts}
@@ -511,11 +477,20 @@ questions so far with their answers, and the remaining questions with their opti
 \section{Benchmark fit and personas}
 \label{app:bench}
 
-The two simulators differ mainly on \emph{vague} customers. Haiku leaves 54\% of them
+\paragraph{Naturally fitting.} A question is naturally fitting when nothing it says contradicts its
+record: 32 questions fail this, those whose Banking77 intent concerns an ATM withdrawal or cash
+(paired with a card payment) or a pending payment (paired with a record that is not pending). All
+other intents (card declines, refunds, transfers, charges and so on) fit any record of the matching
+kind. Table~\ref{tab:fit} compares the two sets.
+
+\paragraph{Personas.} The two simulators differ mainly on \emph{vague} customers. Haiku leaves 54\% of them
 unresolved even when shown all eight records, against 1\% for Llama: it declines to pick when
 its note does not settle the choice, as its prompt asks. With complete receipts, both resolve
 most episodes (80\% and 96\% correct with decision value), and both fail on customers who
-misremember (8\% and 13\%), who reject short lists that do not match their memory.
+misremember (8\% and 13\%), who reject short lists that do not match their memory. Vague Haiku
+customers resolve more with the fallback than with the full list at once (57\% against 46\%): after
+the questions the short list holds fewer records that fit their note, and Haiku declines to choose
+among several that do.
 
 \begin{table}[H]
 \centering\small
@@ -523,8 +498,9 @@ misremember (8\% and 13\%), who reject short lists that do not match their memor
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}lcccc@{}}
 \toprule
- & \multicolumn{2}{c}{Haiku 5.5} & \multicolumn{2}{c}{Llama 3.3} \\
- & All 224 & Fit 192 & All 224 & Fit 192 \\
+ & \multicolumn{2}{c}{Haiku 5.5} & \multicolumn{2}{c}{Llama 3.3 70B} \\
+\cmidrule(lr){2-3}\cmidrule(l){4-5}
+Strategy, measure & All 224 & Fitting 192 & All 224 & Fitting 192 \\
 \midrule
 No questions, top-1 & 13.4 & 14.1 & 13.4 & 14.1 \\
 Fixed order 1, top-1 & 18.8 & 18.2 & 19.2 & 18.8 \\
@@ -533,7 +509,8 @@ Decision value 2, correct & 48.7 & 51.6 & 66.1 & 67.7 \\
 Show all 8, correct & 60.3 & 63.0 & 81.2 & 83.3 \\
 \bottomrule
 \end{tabular}}
-\caption{All episodes against the 192 whose question fits its record (\%).}
+\caption{Each row is one strategy and measure; columns give all 224 episodes and the 192
+naturally fitting ones, per simulator (\%).}
 \label{tab:fit}
 \end{table}
 
@@ -543,24 +520,47 @@ Show all 8, correct & 60.3 & 63.0 & 81.2 & 83.3 \\
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}llcccc@{}}
 \toprule
- & Persona ($n$) & DV1 top-1 & DV2 corr. & + fallback & All 8 \\
+ & Persona ($n$) & DV1 top-1 & DV2 correct & + fallback C/W/U & All 8 C/W/U \\
 \midrule
-\multirow{3}{*}{\rotatebox{90}{Haiku}} & Receipt (89) & 99 & 80 & 98/1/1 & 96/1/3 \\
+\multicolumn{6}{@{}l}{\emph{Haiku 5.5 customers}} \\
+ & Receipt (89) & 99 & 80 & 98/1/1 & 96/1/3 \\
  & Vague (72) & 43 & 46 & 57/0/43 & 46/0/54 \\
  & Misremembers (63) & 57 & 8 & 30/10/60 & 27/5/68 \\
 \midrule
-\multirow{3}{*}{\rotatebox{90}{Llama}} & Receipt (89) & 99 & 96 & 100/0/0 & 98/0/2 \\
+\multicolumn{6}{@{}l}{\emph{Llama 3.3 70B customers}} \\
+ & Receipt (89) & 99 & 96 & 100/0/0 & 98/0/2 \\
  & Vague (72) & 58 & 76 & 93/6/1 & 97/1/1 \\
  & Misremembers (63) & 57 & 13 & 40/11/49 & 40/11/49 \\
 \bottomrule
 \end{tabular}}
-\caption{Results by persona, eight records (\%). The last two columns give correct, wrong and
-unresolved.}
+\caption{Results by persona, eight records (\%). C/W/U: correct, wrong and unresolved.}
 \label{tab:persona}
 \end{table}
 
 \section{Sensitivity, chooser and free text}
 \label{app:studies}
+
+\paragraph{Reliabilities and question cost.} Within this benchmark, one common reliability for
+all attributes, from 0.6 to 0.99, changes no question or outcome. With equal reliabilities the
+amount question, whose options split every candidate, scores highest whenever it is offered, and
+once it is answered no single further question can change the most likely record, so the one-step
+decision value is zero and the selector stops. In 20 draws with each attribute's reliability between 0.6
+and 0.99, correct confirmations stay within 40--50\% (Haiku) and 63--67\% (Llama), against 49\% and
+66\% by default, and wrong selections within 2.2--2.7\% and 4.0--4.9\%. A question cost from 0 to
+0.1 cuts mean questions from about 1.5 to 1.1 and moves correct rates by at most one point.
+
+\paragraph{A language model chooses the question.} Given the message, the candidates and the
+same questions, Claude Sonnet 5.5 asks a question or stops; the belief update and short list are
+unchanged. It reaches 43\% (Haiku) and 63\% (Llama) correct, against 49\% and 66\% for decision
+value, with equal wrong rates. It mostly asks for the amount, which identifies a record exactly
+but is what vague customers remember least.
+
+\paragraph{Free-text replies.} When the simulated customer answers in its own words, the
+demonstration's rules read 300 of the 475 replies whose option answer was definite (63\% coverage)
+and none wrongly; they abstain on the other 175, mostly payees given as account digits, day-first
+dates and approximate amounts. Of 195 replies whose option answer was ``not sure'', they read a
+value from one (1 wrong read in 670).
+Correct confirmations fall to 42\% and 51\%; wrong selections stay at 2.2\% and 4.9\%.
 
 \begin{table}[H]
 \centering\small
@@ -568,20 +568,20 @@ unresolved.}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}llcccc@{}}
 \toprule
-Sim. & Setting & Qs & Top-1 & Correct & Wrong \\
+& Setting & Qs & Top-1 & Correct & Wrong \\
 \midrule
-\multirow{7}{*}{\rotatebox{90}{Haiku 5.5}}
+\multicolumn{6}{@{}l}{\emph{Haiku 5.5 customers}} \\
  & Default ($c = 0.02$) & 1.36 & 73.7 & 48.7 & 2.2 \\
  & One reliability, 0.6--0.99 & 1.21 & 73.2 & 49.6 & 2.2 \\
- & 20 random draws & 1.17--1.75 & --- & 40--50 & 2.2--2.7 \\
+ & 20 random draws & 1.17--1.75 & n/a & 40--50 & 2.2--2.7 \\
  & $c = 0$ / $c = 0.1$ & 1.50 / 1.17 & 72.8 / 73.2 & 49.1 / 49.6 & 2.7 / 2.2 \\
  & Sonnet 5.5 chooses & 1.29 & 62.9 & 42.9 & 2.2 \\
  & Free-text replies & 1.51 & 62.1 & 42.0 & 2.2 \\
 \midrule
-\multirow{7}{*}{\rotatebox{90}{Llama 3.3 70B}}
+\multicolumn{6}{@{}l}{\emph{Llama 3.3 70B customers}} \\
  & Default ($c = 0.02$) & 1.31 & 78.6 & 66.1 & 4.0 \\
  & One reliability, 0.6--0.99 & 1.16 & 78.1 & 66.1 & 4.0 \\
- & 20 random draws & 1.11--1.75 & --- & 63--67 & 4.0--4.9 \\
+ & 20 random draws & 1.11--1.75 & n/a & 63--67 & 4.0--4.9 \\
  & $c = 0$ / $c = 0.1$ & 1.45 / 1.12 & 77.7 / 78.1 & 66.1 / 66.1 & 4.0 / 4.0 \\
  & Sonnet 5.5 chooses & 1.18 & 74.1 & 62.9 & 4.0 \\
  & Free-text replies & 1.48 & 61.6 & 50.9 & 4.9 \\
@@ -605,32 +605,69 @@ inspector, four of the conversation, including a fault-injected answer), with co
 left for manual review where it could not be computed. No page made an external request or
 raised a script error. These are feature checks, not measures of user comprehension.
 
-\section{Injected errors by claim type}
+\section{Same-amount slice}
+\label{app:same}
+
+\begin{table}[H]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Top-1} & \multicolumn{2}{c}{Haiku C/W} & \multicolumn{2}{c}{Llama C/W} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(l){6-7}
+Strategy & All & Ident. & All & Ident. & All & Ident. \\
+\midrule
+No questions & 13.4 & 16.2 & 12/15 & 20/2 & 17/29 & 24/2 \\
+Fixed order, 1 & 16.1 & 18.2 & 14/8 & 24/3 & 22/31 & 28/2 \\
+Info.\ gain, 1 & 39.3 & 70.7 & 28/8 & 56/2 & 39/31 & 68/2 \\
+Decision value, 1 & 45.5 & 84.8 & 30/8 & 61/2 & 43/31 & 77/2 \\
+Fixed order, 2 & 49.1 & 92.9 & 31/8 & 63/3 & 47/31 & 85/2 \\
+Decision value, 2 & 47.3 & 88.9 & 33/8 & 68/3 & 47/31 & 85/2 \\
+Show all 8 & n/a & n/a & 35/7 & 73/0 & 50/32 & 88/2 \\
+\bottomrule
+\end{tabular}}
+\caption{Eight records that all share the target's amount and currency (\%). All: 224 episodes.
+Ident.: the 99 whose target differs from every other candidate in kind, payee or date. Top-1 is
+from Haiku's replies (Llama's differ by at most one point). C/W: correct and wrong confirmations.
+Decision value asks the date first in 147 episodes and the payee in 66; fixed order asks the date
+in 117 and the kind in 96.}
+\label{tab:same}
+\end{table}
+
+\section{Answer checks by claim type}
 \label{app:inject}
 
 \begin{table}[H]
 \centering\small
-\begin{tabular}{@{}lrrr@{}}
+\setlength{\tabcolsep}{4pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lrrrr@{}}
 \toprule
-Injected error & Drafts & Rejected & \% \\
+ & \multicolumn{2}{c}{Development} & \multicolumn{2}{c}{Held-out} \\
+\cmidrule(lr){2-3}\cmidrule(l){4-5}
+Injected error & Drafts & Rejected & Drafts & Rejected \\
 \midrule
-Wrong amount & 448 & 448 & 100 \\
-Added fee & 448 & 448 & 100 \\
-Wrong currency & 224 & 224 & 100 \\
-Unknown record ID & 224 & 224 & 100 \\
-Unlisted link & 224 & 224 & 100 \\
-Wrong reason code & 224 & 219 & 97.8 \\
-Right and wrong claim mixed & 448 & 438 & 97.8 \\
-Wrong date & 448 & 428 & 95.5 \\
-Wrong status & 582 & 473 & 81.3 \\
+Wrong amount & 448 & 100 & 448 & 100 \\
+Added fee & 448 & 100 & 448 & 100 \\
+Wrong currency & 224 & 100 & 224 & 100 \\
+Unknown record ID & 224 & 100 & 224 & 100 \\
+Wrong status & 582 & 100 & 552 & 92.0 \\
+Right and wrong mixed & 448 & 97.8 & 448 & 96.9 \\
+Wrong date & 448 & 95.5 & 448 & 55.4 \\
+Wrong reason code & 224 & 97.8 & 224 & 42.9 \\
+Unlisted link & 224 & 100 & 224 & 17.0 \\
 \midrule
-All injected & 3,270 & 3,126 & 95.6 \\
-Correct drafts (rejected) & 1,120 & 0 & 0.0 \\
+All injected & 3,270 & 98.9 & 3,240 & 82.3 \\
+Correct drafts & 1,120 & 0.0 & 1,120 & 10.2 \\
 \bottomrule
-\end{tabular}
-\caption{The demonstration's record checks on template drafts about the 224 target records.
-Of the 109 missed statuses, 90 say ``went through'' about a pending, failed, processing or returned
-transfer, and 19 say ``failed'' about a processing or completed transfer.}
+\end{tabular}}
+\caption{The demonstration's record checks on template drafts about the 224 target records
+(rejected, \%). Development: the drafts the status paraphrases were added for; before that change
+wrong statuses were rejected in 81.3\% and all errors in 95.6\%. Held-out: new frames and wordings
+written after that change and run once. Held-out misses: dates as 11/12/2026, the code R01, a bare
+\texttt{www} link, ``was paid'' (declined) and ``has gone through'' (failed). All 114 false
+rejections are ``has not settled yet'' about a pending transfer.}
 \label{tab:inject}
 \end{table}
 

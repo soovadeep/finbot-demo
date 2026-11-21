@@ -230,3 +230,34 @@ class ExtractDetailsOtherRecords(unittest.TestCase):
         self.assertEqual(fields["currency"]["value"], "CAD")
         fields, _, _ = extract_details("I think it was on Nov 17.", None, cands)
         self.assertEqual(fields["date"], {"value": "2026-11-17", "certainty": "tentative"})
+
+
+class ConfirmedRecordOnly(unittest.TestCase):
+    """The answering step can reach only the confirmed record; other candidates are not found."""
+
+    def test_only_confirmed_record_reaches_answering(self):
+        from finbot import demo
+        from finbot.clarification_conversation import CANDIDATES
+        seen = {}
+        real = demo.run_demo
+
+        def spy(question, fault="none", *, records=None, **kw):
+            seen["ids"] = [r["txn_id"] for r in records]
+            return real(question, fault, records=records, **kw)
+        c = Conversation()
+        c.messages.append({"role": "user", "text": "My $200 payment hasn't arrived."})
+        with patch.object(demo, "run_demo", spy):
+            c.confirm(CANDIDATES[1].record_id)
+        self.assertEqual(seen["ids"], [CANDIDATES[1].record_id])
+        other = CANDIDATES[0].record_id
+        row = {"txn_id": CANDIDATES[1].record_id, "tenant_id": "m_100", "amount": "200.00", "currency": "USD",
+               "status": "pending", "created_at": "2026-11-15T12:00:00Z"}
+        out = real(f"What is the status of {other}?", records=[row])
+        self.assertIn("could not find", out["final"]["answer"])
+
+    def test_scripted_writer_is_the_default(self):
+        from finbot.demo import writer
+        with patch.dict("os.environ", {}, clear=False):
+            import os
+            os.environ.pop("FINBOT_DEMO_WRITER", None)
+            self.assertEqual(writer()["mode"], "offline_scripted")

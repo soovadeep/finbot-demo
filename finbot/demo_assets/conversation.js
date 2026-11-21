@@ -86,7 +86,8 @@ function render(data) {
   });
   $("other-records").hidden = matches.length === data.candidates.length;
   $("answer-check").hidden = !data.financial;
-  $("answer-result").textContent = data.financial ? `${outcomes[data.financial.outcome] || data.financial.outcome}. ${data.financial.final.answer}` : "";
+  $("answer-result").textContent = data.financial ? `${outcomes[data.financial.outcome] || data.financial.outcome}. ${data.financial.final.answer}` +
+    ` (Writer: ${data.financial.writer || "Scripted writer"}.${data.financial.writer_note ? " " + data.financial.writer_note : ""})` : "";
   renderSteps(data.financial);
   $("answer-evidence").textContent = data.financial ? JSON.stringify(data.financial, null, 2) : "";
   $("scenario-reference").hidden = !data.selected_id && !data.unresolved;
@@ -109,7 +110,8 @@ async function send(nextEvents, inspect = false) {
   });
   try {
     const response = await fetch("/api/conversation", {method: "POST", headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({scenario: scenario().id, events: nextEvents, inspect, fault: $("conversation-fault").value || "none"})});
+      body: JSON.stringify({scenario: scenario().id, events: nextEvents, inspect, fault: $("conversation-fault").value || "none",
+        live: !$("live-toggle").hidden && $("conversation-live").checked})});
     const data = await response.json();
     if (!response.ok) throw new Error("The conversation could not be updated. Keep messages under 500 characters and use at most 12 actions; start over for a longer conversation.");
     events = nextEvents; render(data);
@@ -150,6 +152,10 @@ $("conversation-export").addEventListener("click", () => {
     if (!response.ok) throw new Error("Could not load conversation scenarios.");
     const catalogue = await response.json();
     scenarios = catalogue.scenarios;
+    if (catalogue.live_writer) {
+      $("live-toggle").hidden = false;
+      $("live-label").textContent = `${catalogue.live_writer} writes answers (limited daily)`;
+    }
     Object.entries(catalogue.faults || {none: "No injected fault"}).forEach(([key, title]) => {
       const option = node("option", title); option.value = key; $("conversation-fault").append(option);
     });

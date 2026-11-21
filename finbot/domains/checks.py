@@ -63,6 +63,16 @@ GENERIC_FINAL = ("approved", "succeeded", "successful", "completed", "declined",
                  "cancelled", "refunded", "settled", "paid")
 
 
+# Outcomes stated with a verb instead of "was <status>": "the transfer failed", "it went
+# through", "it bounced". Found by the NAACL injected-error test (scripts/naacl2027/check_injection.py).
+_OUTCOME_VERBS = {"failed": "failed", "succeeded": "succeeded", "went through": "succeeded",
+                  "gone through": "succeeded", "cleared": "succeeded", "bounced": "returned"}
+_VERB = _SUBJECT + r"(?:(?:has|have)\s+)?(?:(?:now|already|successfully)\s+)?({words})\b"
+_NEGATED = re.compile(r"\b(not|never|no)\b|n't", re.I)
+# Records whose status means the money moved: saying it "succeeded" or "went through" is true.
+SUCCESS = frozenset({"completed", "approved", "paid", "paid_off", "accepted", "settled", "succeeded", "successful"})
+
+
 def _claimed(domain: Domain, sentence: str) -> set[str]:
     vocab = {**{w: w for w in GENERIC_FINAL}, **domain.statuses}
 
@@ -82,6 +92,13 @@ def _claimed(domain: Domain, sentence: str) -> set[str]:
                     not _affirmed(pattern, sentence[max(0, m.start() - 40):m.end()]):
                 continue
             out.add(vocab[next(g for g in m.groups() if g).lower()])
+    verbs = "|".join(sorted((re.escape(w).replace(r"\ ", r"\s+") for w in _OUTCOME_VERBS), key=len, reverse=True))
+    pattern = re.compile(_VERB.format(words=verbs, prefix=domain.prefix, noun=re.escape(domain.noun)), re.I)
+    for m in pattern.finditer(sentence):
+        if _NEGATED.search(m.group(0)) or _CONDITION.search(sentence[:m.start()]) or \
+                not _affirmed(pattern, sentence[max(0, m.start() - 40):m.end()]):
+            continue
+        out.add(_OUTCOME_VERBS[re.sub(r"\s+", " ", m.group(1).lower())])
     return out
 
 
@@ -175,6 +192,8 @@ def domain_check(answer: str, tool_log: list[dict]) -> list[str]:
     for domain, data, rid in with_ids:
         actual = str(data.get("status", "")).lower()
         allowed = {actual} | domain.implied.get(actual, frozenset())
+        if actual in SUCCESS:
+            allowed |= {"succeeded", "successful"}
         for s, subject in clauses:
             if subject is not None and subject != rid:
                 continue

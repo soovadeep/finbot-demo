@@ -200,7 +200,7 @@ def answer_question(sim, cache, episode, name, memory, question) -> str:
 
 
 def answer_confirmation(sim, cache, episode, name, memory, record: dict) -> str:
-    key = f"c|{episode['id']}|{name}|{memory.get('slip', '')}|{record['record_id']}"
+    key = f"c|{episode['id']}{episode.get('slice', '')}|{name}|{memory.get('slip', '')}|{record['record_id']}"
 
     def compute():
         shown = (f"{record['kind']} to {record['merchant']} on {record['date']} for "
@@ -222,7 +222,8 @@ def pick_from_list(sim, cache, episode, name, memory, records: list[dict] | None
     With every candidate this is the show-the-list baseline; with the top records after the
     questions it is the shortlist confirmation that the demo shows."""
     records = records or episode["candidates"]
-    key = f"l|{episode['id']}|{name}|{memory.get('slip', '')}|{'|'.join(r['record_id'] for r in records)}"
+    ids = "|".join(r["record_id"] for r in records)
+    key = f"l|{episode['id']}{episode.get('slice', '')}|{name}|{memory.get('slip', '')}|{ids}"
 
     def compute():
         lines = "\n".join(f"{i + 1}. {r['kind']} to {r['merchant']} on {r['date']} for {r['amount']} "

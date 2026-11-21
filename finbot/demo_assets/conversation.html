@@ -17,8 +17,9 @@
       <aside class="mode"><strong>Offline · fictional account</strong><p>Rule-based message interpretation.<br>Scripted writer; real Finbot verification.</p></aside></section>
     <div class="scenario-bar"><div><label for="conversation-scenario">Starting situation</label>
       <select id="conversation-scenario" disabled></select></div>
-      <div><label for="conversation-fault">Scripted model behaviour</label>
+      <div><label for="conversation-fault">Injected model fault</label>
       <select id="conversation-fault" disabled></select></div>
+      <label id="live-toggle" class="live-toggle" hidden><input type="checkbox" id="conversation-live"> <span id="live-label">Live model</span></label>
       <button id="conversation-reset" class="secondary" disabled>Start over</button>
       <span>Try the sample message or write your own.</span></div>
     <details id="private-notes"><summary>Optional role-play notes · for you, not sent to Finbot</summary>

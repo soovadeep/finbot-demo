@@ -10,6 +10,8 @@ import copy
 import json
 import os
 import threading
+import time
+from collections import OrderedDict
 from dataclasses import asdict
 from pathlib import Path
 from socketserver import ThreadingMixIn
@@ -86,11 +88,66 @@ class ScriptedPayments(FakeLLM):
         return super().create(system, messages, tools)
 
 
-class DemoModel:
-    """Fault injection happens after a scripted answer, before the actual verifier chain."""
+def writer() -> dict:
+    """Who drafts the answers: the scripted writer (default, no key, reproducible) or, with
+    FINBOT_DEMO_WRITER=live, the model that FINBOT_LLM_PROVIDER and FINBOT_MODEL select, as in
+    the command-line assistant. Clarification and the checks are the same either way."""
+    if os.environ.get("FINBOT_DEMO_WRITER", "scripted") != "live":
+        return {"mode": "offline_scripted", "label": "Scripted writer"}
+    provider = os.environ.get("FINBOT_LLM_PROVIDER", "openai")
+    model = os.environ.get("FINBOT_MODEL", "qwen2.5:7b")
+    name = os.environ.get("FINBOT_DEMO_LIVE_NAME") or model.split("/")[-1]
+    return {"mode": "live_model", "label": f"Live model ({name})", "provider": provider, "model": model}
 
-    def __init__(self, fault: str):
-        self.base = ScriptedPayments()
+
+class LiveBudget:
+    """Caps live-model answers so a public page cannot run up the owner's bill.
+
+    FINBOT_DEMO_LIVE_DAILY      live answers per UTC day, per server instance (default 100)
+    FINBOT_DEMO_LIVE_PER_CLIENT live answers per visitor per hour (default 5)
+    Replays of the same answer come from a cache and cost nothing. When a cap is reached the
+    scripted writer answers instead and the page says so. The hard ceiling belongs on the
+    provider key itself (a credit limit), which no code path can exceed."""
+
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.day, self.used = "", 0
+        self.clients: dict[str, list[float]] = {}
+
+    def allow(self, client: str) -> bool:
+        daily = int(os.environ.get("FINBOT_DEMO_LIVE_DAILY", "100"))
+        hourly = int(os.environ.get("FINBOT_DEMO_LIVE_PER_CLIENT", "5"))
+        now = time.time()
+        today = time.strftime("%Y-%m-%d", time.gmtime(now))
+        with self.lock:
+            if today != self.day:
+                self.day, self.used, self.clients = today, 0, {}
+            recent = [t for t in self.clients.get(client, []) if now - t < 3600]
+            if self.used >= daily or len(recent) >= hourly:
+                self.clients[client] = recent
+                return False
+            self.used += 1
+            self.clients[client] = [*recent, now]
+            return True
+
+
+LIVE_BUDGET = LiveBudget()
+LIVE_CACHE: OrderedDict[str, dict] = OrderedDict()
+LIVE_MAX_TOKENS = 400
+
+
+class DemoModel:
+    """Fault injection happens after the writer's answer, before the actual verifier chain."""
+
+    def __init__(self, fault: str, live: bool = False):
+        w = writer()
+        if live and w["mode"] == "live_model":
+            from .llm import make_client
+            self.base = make_client(w["provider"], w["model"])
+            if hasattr(self.base, "max_tokens"):
+                self.base.max_tokens = LIVE_MAX_TOKENS
+        else:
+            self.base = ScriptedPayments()
         self.fault = fault
         self.injections: list[dict] = []
 
@@ -125,7 +182,36 @@ class DemoModel:
         return NS(stop_reason="end_turn", content=[NS(type="text", text=after)])
 
 
-def run_demo(question: str, fault: str = "none", *, records: list[dict] | None = None) -> dict:
+def run_demo(question: str, fault: str = "none", *, records: list[dict] | None = None,
+             live: bool = False, client: str = "") -> dict:
+    """live=True asks for the live writer; it is used only when the server enables it
+    (FINBOT_DEMO_WRITER=live) and the caps allow, otherwise the scripted writer answers."""
+    note = None
+    if live and writer()["mode"] == "live_model":
+        key = json.dumps([question, fault, records], sort_keys=True, default=str)
+        if key in LIVE_CACHE:
+            LIVE_CACHE.move_to_end(key)
+            return copy.deepcopy(LIVE_CACHE[key])
+        if LIVE_BUDGET.allow(client):
+            try:
+                result = _run_demo(question, fault, records=records, live=True)
+            except Exception:  # noqa: BLE001 - a provider outage must not break the page
+                note = "The live model did not answer; the scripted writer answered instead."
+            else:
+                LIVE_CACHE[key] = copy.deepcopy(result)
+                while len(LIVE_CACHE) > 256:
+                    LIVE_CACHE.popitem(last=False)
+                return result
+        else:
+            note = "The live-model limit for now is reached; the scripted writer answered instead."
+    result = _run_demo(question, fault, records=records, live=False)
+    if note:
+        result["writer_note"] = note
+    return result
+
+
+def _run_demo(question: str, fault: str = "none", *, records: list[dict] | None = None,
+              live: bool = False) -> dict:
     if not isinstance(question, str) or not question.strip() or len(question) > 2000:
         raise ValueError("Enter a question of 1–2000 characters.")
     if not isinstance(fault, str) or fault not in FAULTS:
@@ -137,7 +223,7 @@ def run_demo(question: str, fault: str = "none", *, records: list[dict] | None =
         kb.upsert_page(copy.deepcopy(page))
     rows: list[dict] = copy.deepcopy(records if records is not None else [*DEMO_TXNS, TIMEOUT])
     toolbox = ToolBox(InMemoryTxns(rows), InMemoryLogs(copy.deepcopy(DEMO_LOGS)), kb, domains=["payments"])
-    model = DemoModel(fault)
+    model = DemoModel(fault, live)
     settings = Settings(llm_provider="fake", guardrail_provider="local", store_provider="sqlite",
                         auth_mode="hmac", repair_attempts=1, record_fallback=True, routing="single",
                         policy_verification="extractive",
@@ -157,7 +243,9 @@ def run_demo(question: str, fault: str = "none", *, records: list[dict] | None =
     else:
         outcome = "handled_by_code"
     return mask_value({
-        "schema_version": 2, "mode": "offline_scripted", "synthetic_data": True, "question": turn.question,
+        "schema_version": 2, "mode": "live_model" if live else "offline_scripted",
+        "writer": writer()["label"] if live else "Scripted writer", "synthetic_data": True,
+        "question": turn.question,
         "policy_verification": "extractive",
         "fault": fault, "injections": model.injections, "outcome": outcome,
         "steps": [asdict(step) for step in steps], "evidence": turn.tools_called,
@@ -165,8 +253,9 @@ def run_demo(question: str, fault: str = "none", *, records: list[dict] | None =
                   "repaired": turn.repaired, "escalated": turn.escalated},
         "metrics": {"latency_ms": turn.latency_ms, "model_calls": len(turn.models_used),
                     "tool_calls": len(turn.tools_called)},
-        "limits": "Scripted model and synthetic fixtures. Passing these checks is not a proof of factuality. "
-                  "No live-model accuracy, latency or cost has been measured.",
+        "limits": ("Live model" if live else "Scripted model") +
+                  " and synthetic fixtures. Passing these checks is not a proof of factuality. "
+                  "No live-model accuracy, latency or cost has been measured here.",
     })
 
 
@@ -249,7 +338,10 @@ class DemoApp:
                         request = json.loads(environ["wsgi.input"].read(size))
                         if environ["PATH_INFO"] == "/api/conversation":
                             from .clarification_conversation import run_conversation
-                            payload = run_conversation(request)
+                            # The host's front end appends the caller's address last; earlier
+                            # entries come from the caller and could be forged to dodge the cap.
+                            forwarded = environ.get("HTTP_X_FORWARDED_FOR", "").split(",")[-1].strip()
+                            payload = run_conversation(request, client=forwarded or environ.get("REMOTE_ADDR", ""))
                         elif environ["PATH_INFO"] == "/api/study":
                             from .clarification_study import run_study
                             payload = run_study(request, self.study_model)

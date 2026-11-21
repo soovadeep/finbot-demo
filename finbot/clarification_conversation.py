@@ -47,10 +47,11 @@ SCENARIOS: list[dict] = [
 
 
 def scenario_catalogue() -> dict:
-    from .demo import FAULTS
+    from .demo import FAULTS, writer
     return {"protocol": PROTOCOL, "scenarios": [{k: v for k, v in s.items() if k not in {"target", "expected"}}
                                                for s in SCENARIOS],
-            "faults": {k: FAULTS[k] for k in RECORD_FAULTS}}
+            "faults": {k: FAULTS[k] for k in RECORD_FAULTS},
+            "live_writer": writer()["label"] if writer()["mode"] == "live_model" else None}
 
 
 # Faults that act on a single confirmed record; policy and two-record faults stay in the inspector.
@@ -146,11 +147,13 @@ def extract_details(text: str, pending: Question | None,
 class Conversation:
     """No scenario ID, task brief or evaluator target enters this engine."""
 
-    def __init__(self, candidates: tuple[Candidate, ...] = CANDIDATES, fault: str = "none"):
+    def __init__(self, candidates: tuple[Candidate, ...] = CANDIDATES, fault: str = "none",
+                 live: bool = False, client: str = ""):
         from .demo import FAULTS
         if fault not in FAULTS:
             raise ValueError("Choose a listed fault mode.")
         self.fault = fault
+        self.live, self.client = live, client
         if not candidates or any(c.tenant_id != TENANT for c in candidates):
             raise ValueError("Use the authorized synthetic catalogue.")
         self.candidates = candidates
@@ -268,8 +271,11 @@ class Conversation:
                  "payment_type": c.attributes["kind"],
                  **({"decline_code": "05", "processor_response": "Do not honor"}
                     if c.attributes["kind"] == "Card payment" else {})} for c in self.candidates]
+        # Only the confirmed record reaches the answering step: the model can ask for another ID,
+        # but the gateway answers "not found", so no other record can become evidence.
         self.financial = run_demo(f"What are the recorded status and details of {record_id}?", self.fault,
-                                  records=rows)
+                                  records=[r for r in rows if r["txn_id"] == record_id],
+                                  live=self.live, client=self.client)
         self.messages.append({"role": "user", "text": f"Yes, use {record_id}."})
         self.messages.append({"role": "assistant", "text": self.financial["final"]["answer"], "record_id": record_id})
         self.trace.append({"event": "confirm", "record_id": record_id})
@@ -297,8 +303,8 @@ class Conversation:
                 "unresolved": self.unresolved, "financial": self.financial, "trace": self.trace}
 
 
-def run_conversation(request: dict) -> dict:
-    if not isinstance(request, dict) or set(request) - {"scenario", "events", "inspect", "fault"}:
+def run_conversation(request: dict, client: str = "") -> dict:
+    if not isinstance(request, dict) or set(request) - {"scenario", "events", "inspect", "fault", "live"}:
         raise ValueError("Invalid conversation fields.")
     scenario = next((s for s in SCENARIOS if s["id"] == request.get("scenario", "vague")), None)
     events, inspect = request.get("events", []), request.get("inspect", False)
@@ -307,7 +313,10 @@ def run_conversation(request: dict) -> dict:
         raise ValueError("Choose a listed fault mode.")
     if scenario is None or not isinstance(events, list) or len(events) > 12 or type(inspect) is not bool:
         raise ValueError("Choose a scenario and at most twelve events.")
-    engine = Conversation(fault=fault)
+    live = request.get("live", False)
+    if type(live) is not bool:
+        raise ValueError("live must be true or false.")
+    engine = Conversation(fault=fault, live=live, client=client)
     for event in events:
         if not isinstance(event, dict):
             raise ValueError("Invalid event.")

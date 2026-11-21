@@ -1,5 +1,6 @@
 # Public, read-only copy of the NAACL demo (/study and the evidence inspector at /).
-# Standard library only: no model, no keys, no network calls, synthetic data only.
+# Standard library only, synthetic data only. No model or key unless the optional live writer is
+# configured (see deploy/demo/README.md).
 # Build from the repository root:
 #   docker build -f deploy/demo/Dockerfile -t finbot-demo .
 FROM python:3.12-slim

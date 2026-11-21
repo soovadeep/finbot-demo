@@ -1,6 +1,7 @@
 # Hosting the NAACL demo
 
-The demo is a standard-library Python server with no model, keys, database or outbound calls.
+The demo is a standard-library Python server with no database. By default it calls no model and
+needs no key; an optional, capped live writer is described below.
 Every request replays at most twelve events, so it keeps no state between requests and any
 number of copies can run side by side. It serves the conversation at `/` (also `/study`) and the
 evidence inspector at `/inspector`.
@@ -34,6 +35,33 @@ gcloud run services update finbot-demo --region $REGION \
 ```
 
 Cloud Run gives a service two addresses (`...-<project number>.<region>.run.app` and `...-<hash>-uc.a.run.app`); to accept both, pass them comma-separated, quoting the value as `^;^FINBOT_DEMO_PUBLIC_HOST=host1,host2` because gcloud splits on commas. Then open `https://<that host>/study`. `--max-instances 3` caps cost if the link is shared widely.
+
+## Optional live writer (capped)
+
+By default the demo uses a scripted writer and calls no model. To let visitors switch on a live
+model for the answer about the confirmed record, give the service an OpenAI-compatible endpoint
+and key. Use a separate key with its own spending limit (for OpenRouter: Settings, API Keys,
+Create Key, set a credit limit), so the provider stops it at that limit whatever the server does.
+Store the key in Secret Manager rather than as a plain variable:
+
+```bash
+printf '%s' 'sk-or-...' | gcloud secrets create finbot-demo-openrouter --data-file=-   # once
+PROJECT_NUMBER=$(gcloud projects describe $PROJECT --format='value(projectNumber)')
+gcloud secrets add-iam-policy-binding finbot-demo-openrouter \
+  --member serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com \
+  --role roles/secretmanager.secretAccessor
+gcloud run services update finbot-demo --region $REGION \
+  --update-secrets FINBOT_OPENAI_API_KEY=finbot-demo-openrouter:latest \
+  --update-env-vars FINBOT_DEMO_WRITER=live,FINBOT_LLM_PROVIDER=openai,FINBOT_MODEL=meta-llama/llama-3.3-70b-instruct,FINBOT_OPENAI_BASE_URL=https://openrouter.ai/api/v1,FINBOT_DEMO_LIVE_NAME=Llama\ 3.3\ 70B,FINBOT_DEMO_LIVE_DAILY=100,FINBOT_DEMO_LIVE_PER_CLIENT=5
+```
+
+The server also caps live answers itself: `FINBOT_DEMO_LIVE_DAILY` per UTC day per instance
+(default 100; with `--max-instances 3` at most three times that) and `FINBOT_DEMO_LIVE_PER_CLIENT`
+per visitor per hour (default 5), with at most 400 output tokens per call and repeated requests
+served from a cache. These counts live in memory and restart with an instance, so the key's
+credit limit is the hard ceiling. When a cap is reached or the provider fails, the scripted writer answers and
+the page says so. To turn the live writer off again:
+`gcloud run services update finbot-demo --region $REGION --update-env-vars FINBOT_DEMO_WRITER=scripted`.
 
 ## Any other container host
 

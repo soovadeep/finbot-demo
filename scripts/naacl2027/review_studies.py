@@ -48,7 +48,8 @@ DRAWS = 20
 
 
 def candidates_of(episode: dict) -> tuple[Candidate, ...]:
-    return tuple(Candidate(c["record_id"], episode["tenant_id"], {k: c[k] for k in ("kind", "merchant", "date", "amount")})
+    keys = ("kind", "merchant", "date", "amount")
+    return tuple(Candidate(c["record_id"], episode["tenant_id"], {k: c[k] for k in keys})
                  for c in episode["candidates"])
 
 
@@ -118,8 +119,10 @@ def run_llm_question(sim, cache, chooser_cache, chooser, episode) -> dict:
         available = [q for q in questions(session.candidates) if q.template not in session.asked]
         if not available:
             break
-        key = f"choose|{episode['id']}|{name}|{memory.get('slip', '')}|{json.dumps(history)}"
-        raw = chooser_cache.get_or(key, lambda: {"raw": chooser.choose(chooser_prompt(episode, available, history))})["raw"]
+        key = (f"choose|{episode['id']}{episode.get('slice', '')}|{name}|{memory.get('slip', '')}|"
+               f"{json.dumps(history)}")
+        prompt = chooser_prompt(episode, available, history)
+        raw = chooser_cache.get_or(key, lambda p=prompt: {"raw": chooser.choose(p)})["raw"]
         pick = str(sim_mod.parse_json(raw).get("ask", "")).strip()
         q = next((x for x in available if x.template == pick), None)
         if q is None:
@@ -189,6 +192,7 @@ def main() -> None:
     ap.add_argument("study", choices=["sensitivity", "llm_question", "free_text", "report"])
     ap.add_argument("--simulator", choices=sorted(sim_mod.SIMULATORS), default="llama")
     ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--bench", default="ambiguity-8", help="benchmark file stem in data/naacl2027/")
     args = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     if args.study == "report":
@@ -205,7 +209,7 @@ def main() -> None:
                 print(f"{study:24} {setting:22} q={s['questions']:.2f} top1={s['top1']:5} correct={s['correct']:5} "
                       f"wrong={s['wrong']:4} unres={s['unresolved']:5}")
         return
-    episodes = [json.loads(x) for x in BENCH.read_text().splitlines()]
+    episodes = [json.loads(x) for x in BENCH.with_name(f"{args.bench}.jsonl").read_text().splitlines()]
     sim = sim_mod.Simulator(args.simulator)
     cache = sim_mod.Cache(sim_mod.OUT / f"cache-{args.simulator}.jsonl")
     jobs = []
@@ -218,7 +222,7 @@ def main() -> None:
         # attributes' reliabilities changes too (a uniform level only rescales the belief).
         import random
         rng = random.Random(2027)
-        for draw in range(DRAWS):
+        for _ in range(DRAWS):
             models = {k: ResponseModel(round(rng.uniform(0.6, 0.99), 2), v.unknown) for k, v in sim_mod.ASSUMED.items()}
             label = "draw=" + ",".join(f"{k}:{m.accuracy}" for k, m in models.items())
             jobs += [(e, lambda e, m=models, lb=label: run_bayes(sim, cache, e, m, 0.02, {"setting": lb}))
@@ -234,7 +238,8 @@ def main() -> None:
         jobs = [(e, lambda e: {"setting": "free_text", **run_free_text(sim, cache, e)}) for e in episodes]
     with ThreadPoolExecutor(args.workers) as pool:
         rows = list(pool.map(lambda j: {"simulator": args.simulator, **j[1](j[0])}, jobs))
-    (OUT / f"rows-{args.study}-{args.simulator}.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+    tag = "" if args.bench == "ambiguity-8" else f"-{args.bench}"
+    (OUT / f"rows-{args.study}-{args.simulator}{tag}.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
     usage = {"simulator_calls": sim.calls, "simulator_tokens": [sim.input_tokens, sim.output_tokens]}
     if args.study == "llm_question":
         usage.update(chooser=CHOOSER, chooser_calls=chooser.calls,
