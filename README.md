@@ -38,7 +38,7 @@ the evidence inspector. The demo uses synthetic records and a clearly labelled s
 | Ambiguity benchmark (224 Banking77 questions, 2 to 8 candidate records) | `python scripts/naacl2027/build_ambiguity_set.py` (and `--size 8`) | `data/naacl2027/` |
 | Simulated customers, two model families, safety conditions | `python scripts/naacl2027/simulate_customers.py --simulator haiku` (and `llama`), then `--report` | `results/naacl2027/clarification-sim/` |
 | Interface checks and accessibility scans | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |
-| Unit tests | `python -m unittest discover -s tests` | |
+| Demo tests (no installs) | `python -m unittest discover -s tests -p "test_demo*.py"` | |
 
 The simulations call model APIs; their saved outputs are in `results/` so nothing needs to be rerun.
 
