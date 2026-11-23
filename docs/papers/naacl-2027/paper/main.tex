@@ -43,29 +43,30 @@ claiming human usability gains or complete financial correctness.
 
 \section{Introduction}
 
-Payment support spans declines, transfers, comparisons and policy questions. Answering
-``Why was my card declined?'' or ``Can this card be surcharged?'' requires establishing context,
-keeping values attached to records, distinguishing unknown outcomes, and grounding explanations
-in recorded reasons or policy sources. Customer corrections can change that context.
+Payment support spans declines, transfers, comparisons and policy questions. It requires
+resolving incomplete descriptions, preserving record identity through corrections, and grounding
+explanations in record or policy evidence.
 
-These requirements span the workflow. Clarification addresses uncertain context
-\citep{rao-daume-iii-2018-learning}; Bayesian question selection provides one implementation
-\citep{lindley1956measure}. Grounding and revision address unsupported statements
-\citep{gao-etal-2023-rarr}. Neither alone prevents a supported answer about the wrong payment,
-a swapped amount across records, an expected date presented as actual, or an unsupported cited policy.
+Bayesian question selection \citep{lindley1956measure} and evidence-based revision
+\citep{gao-etal-2023-rarr} address parts of this problem; financial agents already use
+confirmation and guardrails \citep{chua-etal-2025-banking}.
 
-Finbot exposes these decisions through a conversation interface and complementary inspector
-(Figure~\ref{fig:architecture}). They connect clarification and confirmation with scoped retrieval,
-record and policy checks, corrections and recovery. The system uses synthetic records and policies
-and executes no payments, refunds or disputes. Our contribution integrates established techniques:
+Finbot's central systems contribution is an inspectable software architecture integrating
+Bayesian belief updating and decision-value question selection with explicit conversation state,
+confirmation, scoped retrieval and evidence verification (Figure~\ref{fig:architecture}).
+Beliefs guide questions; state transitions govern record access, correction handling and answer
+release. This connects probabilistic reasoning to auditable software controls throughout the
+support workflow. We contribute:
 \begin{itemize}\itemsep0pt
-\item A conversational support workflow and evidence inspector covering clarification, corrections,
-  payment explanations, record comparisons and cited policy answers.
-\item Inspectable record-and-role binding: recognized claims carry a record, financial role and
-  source field through verification and bounded recovery.
-\item Reproducible simulations, controller replays and value-preserving fault ablations that
-  distinguish record ownership from financial meaning and expose remaining failures.
+\item A controller linking belief updates and question scores to clarification; explicit
+  confirmation and conflict resolution govern retrieval for explanation.
+\item Inspectable verification and bounded recovery, exposing drafts, source fields and rejection
+  reasons for record explanations, comparisons and cited policies.
+\item Reproducible simulations, controller replays and value-preserving ablations that distinguish
+  record ownership from financial meaning, including payment/refund amounts and expected/actual
+  settlement dates. These diagnostics do not establish customer accuracy.
 \end{itemize}
+The demo uses synthetic records and policies and executes no payments, refunds or disputes.
 The hosted demo is at \url{https://finbot-demo-20852907589.us-central1.run.app}.
 Run \texttt{python -m finbot.demo} locally without a model account. Code, data, results and a 2.5-minute video are at
 \url{https://github.com/soovadeep/finbot-demo} (MIT license).
