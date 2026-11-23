@@ -44,6 +44,12 @@ audit concerns saved Llama answers about card payments. Neither measures full cu
 Report false rejections alongside corrupted-draft rejections. Do not use a passing gate as its own
 independent factuality label.
 
+Run `python scripts/naacl2027/paired_verification.py` for the post-hoc matched-control analysis
+of the existing held-out mutations. The raw 82.3% corrupted-draft rejection includes 570 pairs
+whose clean controls already fail. Mutation-triggered rejection is 2,098/2,670 accepted controls
+(78.6%); bare links trigger zero new rejections. Keep both denominators and the original clean-draft
+false rejection rate. The verifier and historical raw result file are unchanged.
+
 ## Planned human pilot
 
 `http://127.0.0.1:8765/pilot` provides an export-only comparison of the current four-record

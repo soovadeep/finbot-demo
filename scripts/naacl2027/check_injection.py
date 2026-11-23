@@ -17,6 +17,7 @@ import random
 import sys
 from collections import defaultdict
 from datetime import date, timedelta
+from dataclasses import dataclass
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -141,7 +142,18 @@ def held_correct(r: dict, rng: random.Random) -> list[str]:
             f"Payment {i} {HELD_NOT[r['status']]}; it {s1}."]
 
 
-def held_injected(r: dict, other: dict, rng: random.Random) -> dict[str, list[str]]:
+@dataclass(frozen=True)
+class DraftPair:
+    clean: str
+    corrupted: str
+
+
+def held_pairs(r: dict, other: dict, rng: random.Random) -> dict[str, list[DraftPair]]:
+    """Matched controls for the legacy held-out mutations, preserving the original corrupt texts.
+
+Added unsupported claims are paired with their removal; substitutions keep all other wording.
+This is a post-hoc diagnostic of the previously inspected holdout, not a new held-out set.
+"""
     s1 = HELD_SAID[r["status"]][0]
     a, c, i = r["amount"], r["currency"], r["record_id"]
     base = f"According to our records, payment {i} ({a} {c}) {s1}."
@@ -150,20 +162,32 @@ def held_injected(r: dict, other: dict, rng: random.Random) -> dict[str, list[st
     wrong_cur = next(x for x in ("GBP", "CAD", "EUR", "USD") if x != c)
     d = date.fromisoformat(r["date"]) + timedelta(days=rng.choice([-4, -1, 1, 4]))
     return {
-        "amount": [f"The payment of {wrong_amt} {c} for {i} {s1}.",
-                   f"You paid {r['merchant']} {c} {wrong_amt}, and it {s1}."],
-        "added fee": [f"{base} There was a {fee} {c} charge on top.",
-                      f"{base} A service charge of {fee} {c} applied."],
-        "currency": [f"{i} was a payment of {a} {wrong_cur} that {s1}."],
-        "date": [f"{base} The date on it is {d.day} {MONTHS[d.month - 1]} {d.year}.",
-                 f"{base} You made it on {d.strftime('%m/%d/%Y')}."],
-        "status": [f"According to our records, payment {i} ({a} {c}) {w}." for w in HELD_WRONG[r["status"]]],
-        "record id": [f"{base} This relates to {other['record_id']}."],
-        "reason code": [f"{base} The reason code on it is R01."],
-        "link": [f"{base} More at www.example.com/help."],
-        "mixed": [f"Payment {i} of {wrong_amt} {c} {s1}.",
-                  f"{i} ({a} {c}) {s1} on {word_date(d.isoformat())}."],
+        "amount": [DraftPair(f"The payment of {a} {c} for {i} {s1}.",
+                             f"The payment of {wrong_amt} {c} for {i} {s1}."),
+                   DraftPair(f"You paid {r['merchant']} {c} {a}, and it {s1}.",
+                             f"You paid {r['merchant']} {c} {wrong_amt}, and it {s1}.")],
+        "added fee": [DraftPair(base, f"{base} There was a {fee} {c} charge on top."),
+                      DraftPair(base, f"{base} A service charge of {fee} {c} applied.")],
+        "currency": [DraftPair(f"{i} was a payment of {a} {c} that {s1}.",
+                               f"{i} was a payment of {a} {wrong_cur} that {s1}.")],
+        "date": [DraftPair(f"{base} The date on it is {date.fromisoformat(r['date']).day} "
+                           f"{MONTHS[date.fromisoformat(r['date']).month - 1]} {date.fromisoformat(r['date']).year}.",
+                           f"{base} The date on it is {d.day} {MONTHS[d.month - 1]} {d.year}."),
+                 DraftPair(f"{base} You made it on {date.fromisoformat(r['date']).strftime('%m/%d/%Y')}.",
+                           f"{base} You made it on {d.strftime('%m/%d/%Y')}.")],
+        "status": [DraftPair(base, f"According to our records, payment {i} ({a} {c}) {w}.")
+                   for w in HELD_WRONG[r["status"]]],
+        "record id": [DraftPair(f"{base} This relates to {i}.", f"{base} This relates to {other['record_id']}.")],
+        "reason code": [DraftPair(base, f"{base} The reason code on it is R01.")],
+        "link": [DraftPair(base, f"{base} More at www.example.com/help.")],
+        "mixed": [DraftPair(f"Payment {i} of {a} {c} {s1}.", f"Payment {i} of {wrong_amt} {c} {s1}."),
+                  DraftPair(f"{i} ({a} {c}) {s1} on {word_date(r['date'])}.",
+                            f"{i} ({a} {c}) {s1} on {word_date(d.isoformat())}.")],
     }
+
+
+def held_injected(r: dict, other: dict, rng: random.Random) -> dict[str, list[str]]:
+    return {kind: [pair.corrupted for pair in pairs] for kind, pairs in held_pairs(r, other, rng).items()}
 
 
 def injected(r: dict, other: dict, rng: random.Random) -> dict[str, list[str]]:

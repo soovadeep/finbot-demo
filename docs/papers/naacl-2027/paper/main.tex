@@ -368,16 +368,16 @@ unchanged (4.9\% and 5.8\%): a wrong belief only reorders the short list.
 \subsection{Answer checks}
 \label{sec:inject}
 
-\paragraph{Template tests.} In controlled claim-level tests (no model), we write for each of the
-224 target records five correct drafts and 14 or 15 drafts with one injected error, and check each
-with the stored record as the only evidence. After a first run (96\% of 3,270 errors caught, 81\% of wrong
-statuses) we added missing status paraphrases, so the 98.9\% now caught is tuned; a held-out set
-with new frames and wordings was run once, unchanged. On canonical structured values the checks stay exact: every wrong
-amount, fee, currency and record ID is rejected. On free wording and unusual formats they are not:
-92\% of wrong statuses, 55\% of dates, 43\% of letter-prefixed codes and 17\% of bare \texttt{www}
-links are rejected, 82\% of 3,240 errors overall, and 10\% of 1,120 correct drafts are rejected,
-all ``has not settled yet'' about a pending transfer, which the gate then answers from the record
-(Appendix~\ref{app:inject}).
+\paragraph{Template tests and matched controls.} The original 224-record test reports
+98.9\% rejection on development mutations after tuning status rules, and 82.3\%
+(2,668/3,240) on held-out wordings. Rejection alone does not show which error was caught.
+A post-hoc analysis pairs each existing mutation with the same wording before that change:
+570 clean controls already fail and their corrupted counterparts also fail. Among the 2,670
+accepted controls, a mutation causes 2,098 rejections (78.6\%); none of 186 accepted controls
+is rejected after adding a bare \texttt{www} link. Appendix~\ref{app:inject} reports all
+claim types. These are diagnostics of the previously inspected holdout, not new held-out
+results. The separate original clean-draft set still has 114/1,120 false rejections (10.2\%).
+The verifier rules were not changed for this analysis.
 
 \paragraph{A live writer.} Llama 3.3 70B answered about each of the 128 targets that are card
 payments. 125 first drafts pass; the other three are false rejections (``American Express'' for \texttt{amex}, a channel value read as an ID),
@@ -561,41 +561,43 @@ correct and wrong confirmations.}
 \label{tab:same}
 \end{table}
 
-\section{Answer checks by claim type}
+\section{Answer checks with matched controls}
 \label{app:inject}
 
 \begin{table}[H]
 \centering\small
-\setlength{\tabcolsep}{4pt}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}lrrrr@{}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrr@{}}
 \toprule
- & \multicolumn{2}{c}{Development} & \multicolumn{2}{c}{Held-out} \\
-\cmidrule(lr){2-3}\cmidrule(l){4-5}
-Injected error & Drafts & Rejected & Drafts & Rejected \\
+Mutation & Pairs & Clean blocked & New rejection \\
 \midrule
-Wrong amount & 448 & 100 & 448 & 100 \\
-Added fee & 448 & 100 & 448 & 100 \\
-Wrong currency & 224 & 100 & 224 & 100 \\
-Unknown record ID & 224 & 100 & 224 & 100 \\
-Wrong status & 582 & 100 & 552 & 92.0 \\
-Right and wrong mixed & 448 & 97.8 & 448 & 96.9 \\
-Wrong date & 448 & 95.5 & 448 & 55.4 \\
-Wrong reason code & 224 & 97.8 & 224 & 42.9 \\
-Unlisted link & 224 & 100 & 224 & 17.0 \\
+Amount & 448 & 76 & 372/372 \\
+Added fee & 448 & 76 & 372/372 \\
+Currency & 224 & 38 & 186/186 \\
+Record ID & 224 & 38 & 186/186 \\
+Status & 552 & 114 & 394/438 \\
+Date & 448 & 76 & 172/372 \\
+Reason code & 224 & 38 & 58/186 \\
+Bare link & 224 & 38 & 0/186 \\
+Mixed wording & 448 & 76 & 358/372 \\
 \midrule
-All injected & 3,270 & 98.9 & 3,240 & 82.3 \\
-Correct drafts & 1,120 & 0.0 & 1,120 & 10.2 \\
+Total & 3,240 & 570 & 2,098/2,670 \\
 \bottomrule
-\end{tabular}}
-\caption{The demonstration's record checks on template drafts about the 224 target records
-(rejected, \%). Development: the drafts the status paraphrases were added for; before that change
-wrong statuses were rejected in 81.3\% and all errors in 95.6\%. Held-out: new frames and wordings
-written after that change and run once. Held-out misses: dates as 11/12/2026, the code R01, a bare
-\texttt{www} link, ``was paid'' (declined) and ``has gone through'' (failed). All 114 false
-rejections are ``has not settled yet'' about a pending transfer.}
+\end{tabular}
+\caption{Post-hoc paired analysis of the existing held-out wordings. New rejection: corrupted
+blocked / clean accepted, conditional on an accepted control. All 570 rejected controls remain
+rejected after mutation. Thus raw corrupted-draft rejection is 2,668/3,240 (82.3\%), while
+mutation-triggered rejection among accepted controls is 78.6\%. Controls repeat across mutation
+families; these are not independent samples. The separate 1,120-draft clean set has 114 false
+rejections, all from ``has not settled yet'' about pending transfers.}
 \label{tab:inject}
 \end{table}
+
+The released paired report retains both texts, verdicts, reasons and transitions. No bare-link
+mutation changes an accepted control's verdict; the 38 raw link rejections come entirely from
+the pre-existing settlement-phrase failure. Report conditional mutation sensitivity together
+with control rejection: filtering to accepted controls alone would hide false positives.
+Neither value matching nor these template tests establish semantic completeness.
 
 \section{Interface checks}
 \label{app:ui}
