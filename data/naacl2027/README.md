@@ -13,3 +13,11 @@ Banking77 text (CC-BY-4.0); the records are synthetic.
 `data/test/` holds the synthetic records and Banking77-derived questions the benchmark draws on.
 Banking77 (Casanueva et al., 2020) is used under CC-BY-4.0; question wording is unchanged except
 that transaction references are removed.
+
+## Authored support-policy fixtures
+
+`support-policies.json` contains six newly authored fictional policies, task questions,
+supported paraphrases and intentionally corrupted/incomplete answers. It is separate from
+the Banking77-derived ambiguity data and uses the repository's MIT license. The comparison
+records are generated in `scripts/naacl2027/evaluate_support.py`. See the
+[protocol and observed failures](../../docs/papers/naacl-2027/evaluation/varied-support.md).

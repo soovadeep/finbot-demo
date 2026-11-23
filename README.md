@@ -54,6 +54,7 @@ an earlier answer. These are repeated test conditions, not independent customer 
 | Ambiguity benchmark (224 Banking77 questions, 2 to 8 candidate records) | `python scripts/naacl2027/build_ambiguity_set.py` (and `--size 8`) | `data/naacl2027/` |
 | Simulated customers, two model families, safety conditions | `python scripts/naacl2027/simulate_customers.py --simulator haiku` (and `llama`), then `--report` | `results/naacl2027/clarification-sim/` |
 | Contradiction controls, keyboard/mobile behavior and accessibility | `node scripts/naacl2027/contradiction_interface.cjs` | `results/naacl2027/contradiction-interface.json` |
+| Varied policy/comparison workflows and matched component probes | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support.json` |
 | Interface checks and accessibility scans | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |
 | Answer checks on injected errors | `python scripts/naacl2027/check_injection.py` | `results/naacl2027/check-injection.json` |
 | Tests (no installs) | `python -m unittest discover -s tests` | |
@@ -67,6 +68,12 @@ showing all records remains a strong baseline. No human usability benefit has be
 Run `python scripts/naacl2027/paired_verification.py` for matched clean/corrupted checks.
 The raw 82.3% rejection rate includes pre-existing failures; mutations trigger 2,098/2,670
 rejections among accepted controls (78.6%), including zero for added bare links.
+
+The [varied support evaluation](docs/papers/naacl-2027/evaluation/varied-support.md) adds 40
+scripted inspector runs and 74 actual matched mutations, plus unchanged-swap and paraphrase
+controls. Comparison workflows pass 28/28 narrow checks; policy workflows pass 10/12.
+The component probes expose missed currency bindings and omissions. These are authored
+diagnostics with independent fixture expectations, not new live-model or customer results.
 
 The submission's evaluation uses cached simulations, controller replays and verification diagnostics;
 reproducing those results requires no participant recruitment. The local `/pilot` page and

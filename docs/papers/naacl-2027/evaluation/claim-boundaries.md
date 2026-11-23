@@ -25,7 +25,10 @@ Tentative/unknown details do not block selection. Previous answers are supersede
 A customer can still confirm a wrong record consistent with their stated details, or explicitly accept
 the wrong correction; the verifier cannot independently recover hidden intent. The 60 controller
 replays test these boundaries but do not measure customer error reduction. Policy answering and record
-comparison still have prepared preset/unit/browser checks, not broad natural-query evaluations.
+comparison now also have [40 scripted inspector runs and matched component probes](varied-support.md).
+The 74 actual mutations expose missed currency bindings and required omissions; one policy query
+fails retrieval under both fault settings. All six supported paraphrases fail extractive checking.
+These authored diagnostics extend coverage but do not establish broad natural-query performance.
 See the capability-to-evidence table in [evaluation scope](README.md).
 The observed wrong-selection rates of 2.2%/4.0% for the two-question DV component
 are numerically above 1.8%/3.6% for the full list. Neither overlapping intervals nor a small observed

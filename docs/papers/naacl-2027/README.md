@@ -25,6 +25,7 @@ the added baseline comparison is cache-only and reports missing coverage explici
 | Result | Command | Output |
 |---|---|---|
 | Actual conversation controller: 60 authored regressions | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |
+| Varied support: 40 inspector runs and 74 matched mutations | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support.json` |
 | Amount-first and most-distinct baselines, cached replies only | `python scripts/naacl2027/compare_baselines.py` (also `--bench ambiguity-8-same-amount`) | `results/naacl2027/strong-baselines/` |
 | Matched clean/corrupted verification | `python scripts/naacl2027/paired_verification.py` | `results/naacl2027/paired-verification/` |
 | Ambiguity benchmark (224 episodes; 2 to 5 and 8 candidates) | `python scripts/naacl2027/build_ambiguity_set.py` and `--size 8` | `data/naacl2027/ambiguity*.jsonl` |
@@ -34,7 +35,8 @@ the added baseline comparison is cache-only and reports missing coverage explici
 | New contradiction flow: browser and axe checks | `node scripts/naacl2027/contradiction_interface.cjs` | `results/naacl2027/contradiction-interface.json` |
 | Conversation page axe scan | `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/conversation-axe.json` |
 
-See [evaluation scope](evaluation/README.md) and
+See [varied support results and failure examples](evaluation/varied-support.md),
+[evaluation scope](evaluation/README.md) and
 [the simulation README](../../../results/naacl2027/clarification-sim/README.md) for what each file holds.
 The submission relies on the existing simulations, automated controller checks and verification
 diagnostics; participant recruitment is not part of this revision. The

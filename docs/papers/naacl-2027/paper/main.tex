@@ -35,7 +35,7 @@ complementary inspector covers declines, unknown outcomes, record comparisons an
 Reviewers inspect evidence and verification traces, then inject faults to observe repair,
 record-built fallback or refusal. A scripted writer makes demonstrations reproducible, while
 the conversation optionally uses a live model. Evaluation separates 224-scenario component
-simulations, 60 scripted controller runs and paired verification tests. These reveal strong
+simulations, 60 conversation and 40 inspector runs, and paired verification tests. These reveal strong
 simple baselines and residual semantic errors. We release code, traces, cached responses and
 evaluation scripts to characterize the system's capabilities and limits; the results do not
 establish human usability gains or complete financial correctness.
@@ -177,32 +177,23 @@ provider failure. Clarification itself uses no language model.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{conversation.png}
-\caption{The walkthrough in the hosted demo, with the fault menu set to ``wrong amount every
-time''. (a)~Two questions narrow four \$200 payments to one, which the customer confirms.
-(b)~The belief inspector at the first question: four records at 25\% each, and each question's
-decision value and information gain. (c)~The check of the answer: the record is fetched again,
-the draft and its repair are rejected for stating a fee the record does not contain, and code
-builds the answer from the record.}
+\caption{Conversation walkthrough with ``wrong amount every time''. (a)~Two questions narrow
+four \$200 payments before confirmation. (b)~Beliefs and question scores at the first question.
+(c)~Both drafts invent a fee; the gate rejects them and checks a record-built fallback.}
 \label{fig:screenshot}
 \end{figure*}
 
 
-In Figure~\ref{fig:screenshot}, four \$200 payments differ in type, payee and date. The customer
-writes ``My \$200 payment hasn't arrived'', then supplies ``bank transfer'' and ``Willow Repairs''.
-One record has 72\% belief and is offered for confirmation. With ``wrong amount every time'',
-both drafts add an unsupported 12.34 fee and are rejected; code reports the 200.00 USD transfer
-as pending. ``Actually, it was a card payment on November 16'' supersedes that answer and offers
-the matching card record for confirmation.
-Alternatively, selecting a transfer after stating ``card'' pauses for explicit correction or
-reselection, without answering about the conflicting record.
+In Figure~\ref{fig:screenshot}, the customer writes ``My \$200 payment hasn't arrived'', then
+``bank transfer'' and ``Willow Repairs''. One record reaches 72\% belief and is offered for
+confirmation. After both drafts invent a 12.34 fee, code reports the 200.00 USD transfer as
+pending. ``Actually, it was a card payment on November 16'' supersedes that answer and requires
+fresh confirmation. Selecting a transfer after stating ``card'' instead pauses for conflict resolution.
 
-\paragraph{Additional support scenarios.} In \texttt{/inspector}, a reviewer can explain a decline
-from its recorded reason and retry policy, or inspect a processor timeout that remains unknown.
-A comparison preset keeps a 129.00 USD decline separate from a 54.20 USD approval; swapping their
-amounts triggers rejection even though both values occur in the evidence. A policy preset reverses
-``cannot be surcharged'' to ``can be surcharged'' while retaining a valid citation; the source
-sentence check rejects it. If repair fails on a policy-only request, no transaction summary is
-available and the system refuses. These presets use fictional policy material.
+\paragraph{Additional scenarios.} Inspector presets explain declines and unknown timeouts,
+reject amounts swapped between two records, and reject ``can be surcharged'' when the cited
+source says ``cannot''. Failed policy-only repairs produce refusal because no record summary
+is available. All policies are fictional.
 
 
 
@@ -240,8 +231,7 @@ exploratory cached comparisons. Correct-rate intervals are approximately $\pm$6 
 \label{tab:main}
 \end{table}
 
-Table~\ref{tab:capabilities} maps capabilities to evidence. Policy answering and comparisons
-have authored checks, not broad task benchmarks; the clarification study does not validate them.
+Table~\ref{tab:capabilities} distinguishes component experiments from authored workflow checks.
 
 \begin{table}[t]
 \centering\small
@@ -253,13 +243,13 @@ Capability / demo & Evidence and boundary \\
 Clarification / conversation & 224 scenarios, two simulators and stronger baselines; component policy differs. \\
 Confirmation, corrections / conversation & 60 controller replays; unit and browser checks include conflicts. Not customer accuracy. \\
 Explanations, recovery / both views & Paired mutations and live-writer audit (\S\ref{sec:inject}); semantic errors remain. \\
-Record comparison / inspector & Pair and swapped-amount presets; unit/browser checks only. \\
-Policy, refusal / inspector & Cited-source and failed-repair presets; unit/browser checks only. \\
+Record comparison / inspector & 28 workflow runs; 38 mutations expose currency and omission gaps. \\
+Policy, refusal / inspector & 12 workflow runs; 36 mutations expose omitted exceptions. \\
 Trace inspection / both views & Browser and accessibility checks (Appendix~\ref{app:ui}); no comprehension study. \\
 \bottomrule
 \end{tabularx}
-\caption{Capability-to-evidence map. Inspector presets are prepared examples; policy and
-comparison performance on diverse natural requests has not been measured.}
+\caption{Capability-to-evidence map. Inspector runs and mutations are authored synthetic
+checks; performance on natural customer requests has not been measured.}
 \label{tab:capabilities}
 \end{table}
 
@@ -316,10 +306,8 @@ with two questions has 223 episodes per simulator on the original set, not 224.
 Showing all records yields more correct confirmations than the shortlist (60\%/81\%). In a
 component variant, offering the full list after shortlist rejection raises DV correctness to
 66\%/81\%, with 49\%/30\% of customers seeing eight records, but wrong selections rise to
-3.1\%/4.9\%. These are observed rates, not evidence of superiority or equivalence. This
-comparison measures simulated record identification and question count, not human effort or
-completion time. It does not establish that clarification is faster or easier than a full list;
-human usability evaluation remains future work.
+3.1\%/4.9\%. These rates do not establish superiority or equivalence. The comparison measures
+simulated identification and question count; human effort and completion time remain unmeasured.
 
 \paragraph{Without unique amounts.}
 \label{sec:same}
@@ -355,6 +343,17 @@ unchanged (4.9\% and 5.8\%): a wrong belief only reorders the short list.
 
 \subsection{Answer checks}
 \label{sec:inject}
+
+\paragraph{Varied support cases.} Forty scripted \texttt{run\_demo} runs meet 28/28 comparison
+and 10/12 policy field/content checks; one cap/disclosure query, repeated under two faults,
+misses an available policy. Comparisons vary values, currencies, statuses, order and unavailable
+records. Separate controlled-evidence pairs test six fictional policies and six record pairs.
+All clean controls pass; 30/36 policy and 20/38 comparison mutations trigger rejection with a
+matching reason. Misses are six omitted policy exceptions, six currency swaps and 12 omitted
+records. Ten unchanged swaps are excluded. Extractive mode rejects all six supported paraphrases.
+Labels use authored expectations and exact fields, not gate decisions. These dependent diagnostics
+involve no model calls or rule tuning; component pairs bypass retrieval and generation. Full
+fixtures and traces are released in \texttt{varied-support.json}.
 
 \paragraph{Template tests and matched controls.} The original 224-episode test reports
 98.9\% rejection on development mutations after tuning status rules, and 82.3\%

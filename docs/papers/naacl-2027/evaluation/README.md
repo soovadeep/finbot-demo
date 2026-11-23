@@ -13,6 +13,8 @@ The current submission uses the following completed evaluations:
   including its failure boundaries, rather than a customer-accuracy estimate.
 - Matched clean/corrupted drafts, reporting both pre-existing failures and mutation-triggered
   rejections, alongside the historical live-writer audit and its known semantic errors.
+- Varied inspector workflow replays and policy/comparison component probes, including equal-value,
+  paraphrase and omission controls. See [results and concrete examples](varied-support.md).
 
 These results can be reproduced without recruiting participants or making new model calls.
 They do not establish that clarification is faster, easier, or preferred by real users.
@@ -90,13 +92,13 @@ The committed report includes source hashes. Automatic scans are not a complete 
 | Attribute clarification | Conversation `/study`; strategy comparison `/clarification` | `results/naacl2027/clarification-sim/`, `strong-baselines/` | 224 scenarios per simulator; component policy differs from conversation. |
 | Confirmation, correction and contradictory selections | Conversation: **A selection conflicts with your message** | `conversation-replay.json`, `contradiction-interface.json`; `tests/test_clarification_conversation.py` | 60 authored replays and regression checks; no customer-accuracy estimate. |
 | Record explanations and recovery | Conversation; inspector supported answer, decline and timeout presets | `paired-verification/`, `live-writer/audit.json`; `tests/test_demo.py` | Finite mutation formats and one live writer; known semantic errors remain. |
-| Two-record comparison and amount binding | Inspector **Keep two records separate**, **Catch swapped amounts** | `results/naacl2027/interface-after.json`; `tests/test_demo.py` (preset and binding tests) | Prepared examples and unit/browser checks; no broad natural-query benchmark. |
-| Cited policy answering and refusal | Inspector **A citation is not enough**, **When recovery is unavailable** | `results/naacl2027/interface-after.json`; `tests/test_demo.py` (policy repair/refusal tests) | Source-sentence/preset checks; no broad policy benchmark. |
+| Two-record comparison and amount binding | Inspector **Keep two records separate**, **Catch swapped amounts** | `varied-support.json`; preset/unit/browser checks | 28 workflow runs, 38 actual mutations; currency-binding and omission misses. Authored diagnostics. |
+| Cited policy answering and refusal | Inspector **A citation is not enough**, **When recovery is unavailable** | `varied-support.json`; preset/unit/browser checks | 12 workflow runs, 36 mutations, six paraphrases; retrieval and omission gaps. Authored diagnostics. |
 | Evidence, drafts and recovery inspection | Both interfaces, trace export | `interface-after.json`, `conversation-axe.json`, `contradiction-interface.json` | Engineering/accessibility checks; no human comprehension study. |
 
-Result paths without a prefix are under `results/naacl2027/`. This map makes uneven evidence
-explicit; it does not add empirical support to policy/comparison capabilities. Their prepared
-examples establish demonstrated behavior on those fixtures, not general task performance.
+Result paths without a prefix are under `results/naacl2027/`. The [varied support suite](varied-support.md)
+extends policy/comparison evidence beyond the presets. Its authored fixtures establish tested
+behavior and failure boundaries, not performance on natural customer requests.
 
 ## Answer verification
 
