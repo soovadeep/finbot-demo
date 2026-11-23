@@ -12,13 +12,19 @@ function controls(disabled) {
 function render() {
   const list = assignment.arm === "full_list";
   $("dialogue").replaceChildren();
-  state.messages.filter(m => m.role === "user" || m.record_id || (!list && !state.unresolved))
+  state.messages.filter(m => m.role === "user" || m.record_id || state.selection_conflict || (!list && !state.unresolved))
     .forEach(m => $("dialogue").append(make("p", `${m.role === "user" ? "You" : "Finbot"}${m.superseded ? " (earlier answer, superseded)" : ""}: ${m.text}`)));
   $("options").replaceChildren();
   if (!list && state.pending) [...state.pending.options, "I'm not sure"].forEach(text =>
     $("options").append(button(text, {type: "message", text})));
+  if (state.selection_conflict) {
+    const record_id = state.selection_conflict.record_id;
+    $("options").append(
+      button("Use this record and correct my details", {type: "resolve_selection", record_id, conflict_id: state.selection_conflict.id, choice: "use_record"}),
+      button("Keep my earlier details; choose again", {type: "resolve_selection", record_id, conflict_id: state.selection_conflict.id, choice: "keep_details"}));
+  }
   $("reply-form").hidden = list || state.unresolved;
-  $("records").hidden = (!list && Boolean(state.pending)) || state.unresolved;
+  $("records").hidden = (!list && Boolean(state.pending)) || Boolean(state.selection_conflict) || state.unresolved;
   $("matches").replaceChildren(); $("others").replaceChildren();
   state.candidates.forEach(c => {
     const b = button(`${c.kind} · ${c.merchant} · ${c.date} · ${c.amount} ${c.currency} · ${c.record_id}`,

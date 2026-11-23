@@ -18,7 +18,7 @@ sys.path.insert(0, str(ROOT))
 
 from finbot.clarification_conversation import CANDIDATES, SCENARIOS, run_conversation  # noqa: E402
 
-PROTOCOL = "finbot-deployed-workflow-replay-v1"
+PROTOCOL = "finbot-deployed-workflow-replay-v2"
 
 
 def message(text: str) -> dict:
@@ -29,11 +29,16 @@ def confirm(record: str) -> dict:
     return {"type": "confirm", "record_id": record}
 
 
+def resolve(record: str, choice: str) -> dict:
+    return {"type": "resolve_selection", "record_id": record, "choice": choice, "conflict_id": 1}
+
+
 def cases() -> list[dict]:
     openings = {s["id"]: s["opening"] for s in SCENARIOS}
     transfer, card = "txn_EMIX0001", "txn_EMIX0002"
     correction = message("Actually, it was a card payment to Willow Repairs on November 16.")
     unresolved = {"type": "unresolved"}
+    conflicting = [message("My $200 card payment to Willow Repairs."), confirm(transfer)]
     return [
         {"id": "vague", "target": transfer, "selected": transfer, "events": [
             message(openings["vague"]), message("Bank transfer"), message("Willow Repairs"), confirm(transfer)]},
@@ -55,6 +60,18 @@ def cases() -> list[dict]:
             message(openings["complete"]), confirm(transfer)]},
         {"id": "cannot-recall", "target": transfer, "selected": None, "events": [
             message("My payment hasn't arrived."), message("I'm not sure"), message("I'm not sure"), unresolved]},
+        {"id": "conflict-pauses-repeated-selection", "target": card, "selected": None,
+         "pending_conflict": transfer, "events": [*conflicting, confirm(transfer)]},
+        {"id": "conflict-use-record", "target": transfer, "selected": transfer,
+         "events": [*conflicting, resolve(transfer, "use_record")]},
+        {"id": "conflict-keep-details", "target": card, "selected": card,
+         "events": [*conflicting, resolve(transfer, "keep_details"), confirm(card)]},
+        {"id": "conflict-text-correction", "target": transfer, "selected": transfer,
+         "events": [*conflicting, message("Actually it was a bank transfer."), confirm(transfer)]},
+        {"id": "conflict-leave-unresolved", "target": card, "selected": None,
+         "events": [*conflicting, unresolved]},
+        {"id": "conflict-after-answer", "target": card, "selected": None, "pending_conflict": transfer,
+         "events": [message("My $200 card payment to Willow Repairs."), confirm(card), confirm(transfer)]},
     ]
 
 
@@ -62,11 +79,16 @@ def score(case: dict, result: dict) -> dict:
     selected, target = result["selected_id"], case["target"]
     financial = result["financial"]
     answer = financial["final"]["answer"] if financial else None
-    selection = ("correct" if selected is not None and selected == target else
+    conflict = result["selection_conflict"]
+    selection = ("awaiting_clarification" if conflict else "correct" if selected is not None and selected == target else
                  "wrong" if selected is not None else "appropriate_unresolved" if target is None else "unresolved")
     checks = {"expected_selection": selected == case["selected"],
+              "expected_conflict": (conflict["record_id"] if conflict else None) == case.get("pending_conflict"),
+              "expected_unresolved": result["unresolved"] == (case["selected"] is None and not case.get("pending_conflict")),
               "question_budget": result["questions_asked"] <= 2,
-              "no_answer_without_confirmation": selected is not None or financial is None}
+              "no_answer_without_confirmation": selected is not None or financial is None,
+              "earlier_answers_invalidated": all(m.get("superseded") for m in result["messages"]
+                  if m.get("record_id") and m["record_id"] != selected)}
     field_checks = None
     if selected:
         candidate = next(c for c in CANDIDATES if c.record_id == selected)
@@ -85,6 +107,7 @@ def score(case: dict, result: dict) -> dict:
         checks["expected_recovery"] = financial["outcome"] == expected
     return {"case": case["id"], "fault": result["fault"], "target_id": target, "selected_id": selected,
             "selection_outcome": selection, "questions": result["questions_asked"],
+            "selection_conflict": conflict,
             "answer": answer, "answer_outcome": financial["outcome"] if financial else None,
             "answer_field_checks": field_checks,
             "correct_selection_and_expected_fields": selection == "correct" and bool(field_checks)

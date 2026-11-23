@@ -23,6 +23,8 @@ main { max-width: 1340px; }
 .composer-footer span { color: var(--muted); font-size: 11px; max-width: 320px; }
 .composer-footer button { flex-shrink: 0; }
 #confirmation { margin-top: 25px; border-top: 1px solid var(--line); padding-top: 18px; }
+#selection-conflict { border: 2px solid var(--green); border-radius: 9px; padding: 16px; margin-top: 18px; overflow-wrap: anywhere; }
+#conflict-details { padding-left: 20px; }
 #confirmation h3, .reasoning-panel h3 { font-size: 15px; margin: 10px 0; }
 #matching-records, #other-record-buttons { flex-direction: column; }
 .detail-row { border-bottom: 1px solid var(--line); padding: 10px 0; }

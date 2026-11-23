@@ -1,25 +1,26 @@
 {
-  "protocol": "finbot-deployed-workflow-replay-v1",
+  "protocol": "finbot-deployed-workflow-replay-v2",
   "evaluation_type": "authored_workflow_regression",
   "controller": "finbot.clarification_conversation.run_conversation",
   "writer": "scripted",
   "human_participants": 0,
   "new_model_calls": 0,
   "sources": {
-    "finbot/clarification_conversation.py": "e4bcc063628acfdedd76a13f7073333dd4d331cdeffebcb0efe47c5b7386d183",
+    "finbot/clarification_conversation.py": "59dfbfbfce57b46256976637fa5a02986d86ba36e41bb1247b34e444a09ac32e",
     "finbot/demo.py": "981d614519fed78487ca989e1fdedcf8cfbc8a0498eedef42e4a0f0cbe280b8b",
-    "finbot/demo_assets/conversation.js": "2f1ab556bdadf9933065fe02fdbc6725a4c2cdb97c0c06c797346ada4c32a00b",
-    "scripts/naacl2027/evaluate_conversation.py": "75e5c86430f6b214a914b285039e5b708de301ff0637ce63cba8273c9ae2f5de"
+    "finbot/demo_assets/conversation.js": "96675b6e4a6cb0e0455bcd08a5500ed4222a0878532cda6a9a1c0ff1708ac576",
+    "scripts/naacl2027/evaluate_conversation.py": "0ac154140832fe8d9b6fa354dbbcbe99141a138906e45bf518a5a2fead54f990"
   },
-  "runs": 36,
-  "regressions_passed": 36,
+  "runs": 60,
+  "regressions_passed": 60,
   "selection_outcomes": {
-    "correct": 20,
+    "correct": 32,
     "appropriate_unresolved": 8,
     "wrong": 4,
-    "unresolved": 4
+    "unresolved": 8,
+    "awaiting_clarification": 8
   },
-  "correct_selection_and_expected_fields": 20,
+  "correct_selection_and_expected_fields": 32,
   "limitations": [
     "Authored events over four synthetic records; no estimate of customer accuracy.",
     "Repeated fault variants are dependent and are not independent users.",
@@ -34,6 +35,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "correct",
       "questions": 2,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
       "answer_outcome": "passed",
       "answer_field_checks": {
@@ -45,11 +47,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -61,6 +65,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "correct",
       "questions": 2,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
@@ -72,11 +77,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -88,6 +95,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "correct",
       "questions": 2,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
@@ -99,11 +107,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -115,6 +125,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "correct",
       "questions": 2,
+      "selection_conflict": null,
       "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet.",
       "answer_outcome": "record_fallback",
       "answer_field_checks": {
@@ -126,11 +137,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -142,6 +155,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "correct",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
       "answer_outcome": "passed",
       "answer_field_checks": {
@@ -153,11 +167,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -169,6 +185,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "correct",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
@@ -180,11 +197,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -196,6 +215,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "correct",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
@@ -207,11 +227,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -223,6 +245,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "correct",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet.",
       "answer_outcome": "record_fallback",
       "answer_field_checks": {
@@ -234,11 +257,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -250,6 +275,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "correct",
       "questions": 1,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
       "answer_outcome": "passed",
       "answer_field_checks": {
@@ -261,11 +287,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -277,6 +305,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "correct",
       "questions": 1,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
@@ -288,11 +317,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -304,6 +335,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "correct",
       "questions": 1,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
@@ -315,11 +347,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -331,6 +365,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "correct",
       "questions": 1,
+      "selection_conflict": null,
       "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet.",
       "answer_outcome": "record_fallback",
       "answer_field_checks": {
@@ -342,11 +377,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -358,6 +395,7 @@
       "selected_id": "txn_EMIX0002",
       "selection_outcome": "correct",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0002 was declined for 200.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
       "answer_outcome": "passed",
       "answer_field_checks": {
@@ -369,11 +407,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -385,6 +425,7 @@
       "selected_id": "txn_EMIX0002",
       "selection_outcome": "correct",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0002 was declined for 200.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
@@ -396,11 +437,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -412,6 +455,7 @@
       "selected_id": "txn_EMIX0002",
       "selection_outcome": "correct",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0002 was declined for 200.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
@@ -423,11 +467,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -439,6 +485,7 @@
       "selected_id": "txn_EMIX0002",
       "selection_outcome": "correct",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0002 was declined for 200.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
       "answer_outcome": "record_fallback",
       "answer_field_checks": {
@@ -450,11 +497,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -466,6 +515,7 @@
       "selected_id": "txn_EMIX0002",
       "selection_outcome": "correct",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0002 was declined for 200.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
       "answer_outcome": "passed",
       "answer_field_checks": {
@@ -477,11 +527,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -493,6 +545,7 @@
       "selected_id": "txn_EMIX0002",
       "selection_outcome": "correct",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0002 was declined for 200.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
@@ -504,11 +557,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -520,6 +575,7 @@
       "selected_id": "txn_EMIX0002",
       "selection_outcome": "correct",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0002 was declined for 200.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
@@ -531,11 +587,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -547,6 +605,7 @@
       "selected_id": "txn_EMIX0002",
       "selection_outcome": "correct",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0002 was declined for 200.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
       "answer_outcome": "record_fallback",
       "answer_field_checks": {
@@ -558,11 +617,13 @@
       "correct_selection_and_expected_fields": true,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -574,14 +635,18 @@
       "selected_id": null,
       "selection_outcome": "appropriate_unresolved",
       "questions": 0,
+      "selection_conflict": null,
       "answer": null,
       "answer_outcome": null,
       "answer_field_checks": null,
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
-        "no_answer_without_confirmation": true
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
       },
       "regression_passed": true
     },
@@ -592,14 +657,18 @@
       "selected_id": null,
       "selection_outcome": "appropriate_unresolved",
       "questions": 0,
+      "selection_conflict": null,
       "answer": null,
       "answer_outcome": null,
       "answer_field_checks": null,
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
-        "no_answer_without_confirmation": true
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
       },
       "regression_passed": true
     },
@@ -610,14 +679,18 @@
       "selected_id": null,
       "selection_outcome": "appropriate_unresolved",
       "questions": 0,
+      "selection_conflict": null,
       "answer": null,
       "answer_outcome": null,
       "answer_field_checks": null,
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
-        "no_answer_without_confirmation": true
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
       },
       "regression_passed": true
     },
@@ -628,14 +701,18 @@
       "selected_id": null,
       "selection_outcome": "appropriate_unresolved",
       "questions": 0,
+      "selection_conflict": null,
       "answer": null,
       "answer_outcome": null,
       "answer_field_checks": null,
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
-        "no_answer_without_confirmation": true
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
       },
       "regression_passed": true
     },
@@ -646,14 +723,18 @@
       "selected_id": null,
       "selection_outcome": "appropriate_unresolved",
       "questions": 0,
+      "selection_conflict": null,
       "answer": null,
       "answer_outcome": null,
       "answer_field_checks": null,
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
-        "no_answer_without_confirmation": true
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
       },
       "regression_passed": true
     },
@@ -664,14 +745,18 @@
       "selected_id": null,
       "selection_outcome": "appropriate_unresolved",
       "questions": 0,
+      "selection_conflict": null,
       "answer": null,
       "answer_outcome": null,
       "answer_field_checks": null,
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
-        "no_answer_without_confirmation": true
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
       },
       "regression_passed": true
     },
@@ -682,14 +767,18 @@
       "selected_id": null,
       "selection_outcome": "appropriate_unresolved",
       "questions": 0,
+      "selection_conflict": null,
       "answer": null,
       "answer_outcome": null,
       "answer_field_checks": null,
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
-        "no_answer_without_confirmation": true
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
       },
       "regression_passed": true
     },
@@ -700,14 +789,18 @@
       "selected_id": null,
       "selection_outcome": "appropriate_unresolved",
       "questions": 0,
+      "selection_conflict": null,
       "answer": null,
       "answer_outcome": null,
       "answer_field_checks": null,
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
-        "no_answer_without_confirmation": true
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
       },
       "regression_passed": true
     },
@@ -718,6 +811,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "wrong",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
       "answer_outcome": "passed",
       "answer_field_checks": {
@@ -729,11 +823,13 @@
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -745,6 +841,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "wrong",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
@@ -756,11 +853,13 @@
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -772,6 +871,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "wrong",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
@@ -783,11 +883,13 @@
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -799,6 +901,7 @@
       "selected_id": "txn_EMIX0001",
       "selection_outcome": "wrong",
       "questions": 0,
+      "selection_conflict": null,
       "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet.",
       "answer_outcome": "record_fallback",
       "answer_field_checks": {
@@ -810,11 +913,13 @@
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
         "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
         "selected_record_only": true,
         "expected_fields": true,
-        "earlier_answers_invalidated": true,
         "expected_recovery": true
       },
       "regression_passed": true
@@ -826,14 +931,18 @@
       "selected_id": null,
       "selection_outcome": "unresolved",
       "questions": 2,
+      "selection_conflict": null,
       "answer": null,
       "answer_outcome": null,
       "answer_field_checks": null,
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
-        "no_answer_without_confirmation": true
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
       },
       "regression_passed": true
     },
@@ -844,14 +953,18 @@
       "selected_id": null,
       "selection_outcome": "unresolved",
       "questions": 2,
+      "selection_conflict": null,
       "answer": null,
       "answer_outcome": null,
       "answer_field_checks": null,
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
-        "no_answer_without_confirmation": true
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
       },
       "regression_passed": true
     },
@@ -862,14 +975,18 @@
       "selected_id": null,
       "selection_outcome": "unresolved",
       "questions": 2,
+      "selection_conflict": null,
       "answer": null,
       "answer_outcome": null,
       "answer_field_checks": null,
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
-        "no_answer_without_confirmation": true
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
       },
       "regression_passed": true
     },
@@ -880,14 +997,722 @@
       "selected_id": null,
       "selection_outcome": "unresolved",
       "questions": 2,
+      "selection_conflict": null,
       "answer": null,
       "answer_outcome": null,
       "answer_field_checks": null,
       "correct_selection_and_expected_fields": false,
       "checks": {
         "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
         "question_budget": true,
-        "no_answer_without_confirmation": true
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-pauses-repeated-selection",
+      "fault": "none",
+      "target_id": "txn_EMIX0002",
+      "selected_id": null,
+      "selection_outcome": "awaiting_clarification",
+      "questions": 0,
+      "selection_conflict": {
+        "id": 2,
+        "record_id": "txn_EMIX0001",
+        "conflicts": [
+          {
+            "attribute": "kind",
+            "supplied": "Card payment",
+            "selected": "Bank transfer"
+          }
+        ]
+      },
+      "answer": null,
+      "answer_outcome": null,
+      "answer_field_checks": null,
+      "correct_selection_and_expected_fields": false,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-pauses-repeated-selection",
+      "fault": "status_once",
+      "target_id": "txn_EMIX0002",
+      "selected_id": null,
+      "selection_outcome": "awaiting_clarification",
+      "questions": 0,
+      "selection_conflict": {
+        "id": 2,
+        "record_id": "txn_EMIX0001",
+        "conflicts": [
+          {
+            "attribute": "kind",
+            "supplied": "Card payment",
+            "selected": "Bank transfer"
+          }
+        ]
+      },
+      "answer": null,
+      "answer_outcome": null,
+      "answer_field_checks": null,
+      "correct_selection_and_expected_fields": false,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-pauses-repeated-selection",
+      "fault": "amount_once",
+      "target_id": "txn_EMIX0002",
+      "selected_id": null,
+      "selection_outcome": "awaiting_clarification",
+      "questions": 0,
+      "selection_conflict": {
+        "id": 2,
+        "record_id": "txn_EMIX0001",
+        "conflicts": [
+          {
+            "attribute": "kind",
+            "supplied": "Card payment",
+            "selected": "Bank transfer"
+          }
+        ]
+      },
+      "answer": null,
+      "answer_outcome": null,
+      "answer_field_checks": null,
+      "correct_selection_and_expected_fields": false,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-pauses-repeated-selection",
+      "fault": "amount_always",
+      "target_id": "txn_EMIX0002",
+      "selected_id": null,
+      "selection_outcome": "awaiting_clarification",
+      "questions": 0,
+      "selection_conflict": {
+        "id": 2,
+        "record_id": "txn_EMIX0001",
+        "conflicts": [
+          {
+            "attribute": "kind",
+            "supplied": "Card payment",
+            "selected": "Bank transfer"
+          }
+        ]
+      },
+      "answer": null,
+      "answer_outcome": null,
+      "answer_field_checks": null,
+      "correct_selection_and_expected_fields": false,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-use-record",
+      "fault": "none",
+      "target_id": "txn_EMIX0001",
+      "selected_id": "txn_EMIX0001",
+      "selection_outcome": "correct",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer_outcome": "passed",
+      "answer_field_checks": {
+        "record_id": true,
+        "amount": true,
+        "currency": true,
+        "record_status": true
+      },
+      "correct_selection_and_expected_fields": true,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
+        "selected_record_only": true,
+        "expected_fields": true,
+        "expected_recovery": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-use-record",
+      "fault": "status_once",
+      "target_id": "txn_EMIX0001",
+      "selected_id": "txn_EMIX0001",
+      "selection_outcome": "correct",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer_outcome": "repaired",
+      "answer_field_checks": {
+        "record_id": true,
+        "amount": true,
+        "currency": true,
+        "record_status": true
+      },
+      "correct_selection_and_expected_fields": true,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
+        "selected_record_only": true,
+        "expected_fields": true,
+        "expected_recovery": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-use-record",
+      "fault": "amount_once",
+      "target_id": "txn_EMIX0001",
+      "selected_id": "txn_EMIX0001",
+      "selection_outcome": "correct",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer_outcome": "repaired",
+      "answer_field_checks": {
+        "record_id": true,
+        "amount": true,
+        "currency": true,
+        "record_status": true
+      },
+      "correct_selection_and_expected_fields": true,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
+        "selected_record_only": true,
+        "expected_fields": true,
+        "expected_recovery": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-use-record",
+      "fault": "amount_always",
+      "target_id": "txn_EMIX0001",
+      "selected_id": "txn_EMIX0001",
+      "selection_outcome": "correct",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet.",
+      "answer_outcome": "record_fallback",
+      "answer_field_checks": {
+        "record_id": true,
+        "amount": true,
+        "currency": true,
+        "record_status": true
+      },
+      "correct_selection_and_expected_fields": true,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
+        "selected_record_only": true,
+        "expected_fields": true,
+        "expected_recovery": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-keep-details",
+      "fault": "none",
+      "target_id": "txn_EMIX0002",
+      "selected_id": "txn_EMIX0002",
+      "selection_outcome": "correct",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": "Transaction txn_EMIX0002 was declined for 200.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
+      "answer_outcome": "passed",
+      "answer_field_checks": {
+        "record_id": true,
+        "amount": true,
+        "currency": true,
+        "record_status": true
+      },
+      "correct_selection_and_expected_fields": true,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
+        "selected_record_only": true,
+        "expected_fields": true,
+        "expected_recovery": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-keep-details",
+      "fault": "status_once",
+      "target_id": "txn_EMIX0002",
+      "selected_id": "txn_EMIX0002",
+      "selection_outcome": "correct",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": "Transaction txn_EMIX0002 was declined for 200.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
+      "answer_outcome": "repaired",
+      "answer_field_checks": {
+        "record_id": true,
+        "amount": true,
+        "currency": true,
+        "record_status": true
+      },
+      "correct_selection_and_expected_fields": true,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
+        "selected_record_only": true,
+        "expected_fields": true,
+        "expected_recovery": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-keep-details",
+      "fault": "amount_once",
+      "target_id": "txn_EMIX0002",
+      "selected_id": "txn_EMIX0002",
+      "selection_outcome": "correct",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": "Transaction txn_EMIX0002 was declined for 200.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
+      "answer_outcome": "repaired",
+      "answer_field_checks": {
+        "record_id": true,
+        "amount": true,
+        "currency": true,
+        "record_status": true
+      },
+      "correct_selection_and_expected_fields": true,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
+        "selected_record_only": true,
+        "expected_fields": true,
+        "expected_recovery": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-keep-details",
+      "fault": "amount_always",
+      "target_id": "txn_EMIX0002",
+      "selected_id": "txn_EMIX0002",
+      "selection_outcome": "correct",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0002 was declined for 200.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
+      "answer_outcome": "record_fallback",
+      "answer_field_checks": {
+        "record_id": true,
+        "amount": true,
+        "currency": true,
+        "record_status": true
+      },
+      "correct_selection_and_expected_fields": true,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
+        "selected_record_only": true,
+        "expected_fields": true,
+        "expected_recovery": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-text-correction",
+      "fault": "none",
+      "target_id": "txn_EMIX0001",
+      "selected_id": "txn_EMIX0001",
+      "selection_outcome": "correct",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer_outcome": "passed",
+      "answer_field_checks": {
+        "record_id": true,
+        "amount": true,
+        "currency": true,
+        "record_status": true
+      },
+      "correct_selection_and_expected_fields": true,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
+        "selected_record_only": true,
+        "expected_fields": true,
+        "expected_recovery": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-text-correction",
+      "fault": "status_once",
+      "target_id": "txn_EMIX0001",
+      "selected_id": "txn_EMIX0001",
+      "selection_outcome": "correct",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer_outcome": "repaired",
+      "answer_field_checks": {
+        "record_id": true,
+        "amount": true,
+        "currency": true,
+        "record_status": true
+      },
+      "correct_selection_and_expected_fields": true,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
+        "selected_record_only": true,
+        "expected_fields": true,
+        "expected_recovery": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-text-correction",
+      "fault": "amount_once",
+      "target_id": "txn_EMIX0001",
+      "selected_id": "txn_EMIX0001",
+      "selection_outcome": "correct",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer_outcome": "repaired",
+      "answer_field_checks": {
+        "record_id": true,
+        "amount": true,
+        "currency": true,
+        "record_status": true
+      },
+      "correct_selection_and_expected_fields": true,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
+        "selected_record_only": true,
+        "expected_fields": true,
+        "expected_recovery": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-text-correction",
+      "fault": "amount_always",
+      "target_id": "txn_EMIX0001",
+      "selected_id": "txn_EMIX0001",
+      "selection_outcome": "correct",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet.",
+      "answer_outcome": "record_fallback",
+      "answer_field_checks": {
+        "record_id": true,
+        "amount": true,
+        "currency": true,
+        "record_status": true
+      },
+      "correct_selection_and_expected_fields": true,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true,
+        "selected_record_only": true,
+        "expected_fields": true,
+        "expected_recovery": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-leave-unresolved",
+      "fault": "none",
+      "target_id": "txn_EMIX0002",
+      "selected_id": null,
+      "selection_outcome": "unresolved",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": null,
+      "answer_outcome": null,
+      "answer_field_checks": null,
+      "correct_selection_and_expected_fields": false,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-leave-unresolved",
+      "fault": "status_once",
+      "target_id": "txn_EMIX0002",
+      "selected_id": null,
+      "selection_outcome": "unresolved",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": null,
+      "answer_outcome": null,
+      "answer_field_checks": null,
+      "correct_selection_and_expected_fields": false,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-leave-unresolved",
+      "fault": "amount_once",
+      "target_id": "txn_EMIX0002",
+      "selected_id": null,
+      "selection_outcome": "unresolved",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": null,
+      "answer_outcome": null,
+      "answer_field_checks": null,
+      "correct_selection_and_expected_fields": false,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-leave-unresolved",
+      "fault": "amount_always",
+      "target_id": "txn_EMIX0002",
+      "selected_id": null,
+      "selection_outcome": "unresolved",
+      "questions": 0,
+      "selection_conflict": null,
+      "answer": null,
+      "answer_outcome": null,
+      "answer_field_checks": null,
+      "correct_selection_and_expected_fields": false,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-after-answer",
+      "fault": "none",
+      "target_id": "txn_EMIX0002",
+      "selected_id": null,
+      "selection_outcome": "awaiting_clarification",
+      "questions": 0,
+      "selection_conflict": {
+        "id": 2,
+        "record_id": "txn_EMIX0001",
+        "conflicts": [
+          {
+            "attribute": "kind",
+            "supplied": "Card payment",
+            "selected": "Bank transfer"
+          }
+        ]
+      },
+      "answer": null,
+      "answer_outcome": null,
+      "answer_field_checks": null,
+      "correct_selection_and_expected_fields": false,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-after-answer",
+      "fault": "status_once",
+      "target_id": "txn_EMIX0002",
+      "selected_id": null,
+      "selection_outcome": "awaiting_clarification",
+      "questions": 0,
+      "selection_conflict": {
+        "id": 2,
+        "record_id": "txn_EMIX0001",
+        "conflicts": [
+          {
+            "attribute": "kind",
+            "supplied": "Card payment",
+            "selected": "Bank transfer"
+          }
+        ]
+      },
+      "answer": null,
+      "answer_outcome": null,
+      "answer_field_checks": null,
+      "correct_selection_and_expected_fields": false,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-after-answer",
+      "fault": "amount_once",
+      "target_id": "txn_EMIX0002",
+      "selected_id": null,
+      "selection_outcome": "awaiting_clarification",
+      "questions": 0,
+      "selection_conflict": {
+        "id": 2,
+        "record_id": "txn_EMIX0001",
+        "conflicts": [
+          {
+            "attribute": "kind",
+            "supplied": "Card payment",
+            "selected": "Bank transfer"
+          }
+        ]
+      },
+      "answer": null,
+      "answer_outcome": null,
+      "answer_field_checks": null,
+      "correct_selection_and_expected_fields": false,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
+      },
+      "regression_passed": true
+    },
+    {
+      "case": "conflict-after-answer",
+      "fault": "amount_always",
+      "target_id": "txn_EMIX0002",
+      "selected_id": null,
+      "selection_outcome": "awaiting_clarification",
+      "questions": 0,
+      "selection_conflict": {
+        "id": 2,
+        "record_id": "txn_EMIX0001",
+        "conflicts": [
+          {
+            "attribute": "kind",
+            "supplied": "Card payment",
+            "selected": "Bank transfer"
+          }
+        ]
+      },
+      "answer": null,
+      "answer_outcome": null,
+      "answer_field_checks": null,
+      "correct_selection_and_expected_fields": false,
+      "checks": {
+        "expected_selection": true,
+        "expected_conflict": true,
+        "expected_unresolved": true,
+        "question_budget": true,
+        "no_answer_without_confirmation": true,
+        "earlier_answers_invalidated": true
       },
       "regression_passed": true
     }

@@ -76,11 +76,12 @@ def validate_export(entry: dict, *, allow_rehearsal: bool = False) -> dict:
         raise ValueError("Exported selection does not match replayed customer events.")
     selected = result["selected_id"]
     outcome = "correct" if selected == TASKS[task]["target"] else "wrong" if selected else "unresolved"
-    final_choice = max(i for i, e in enumerate(events) if e["type"] in ("confirm", "unresolved"))
+    final_choice = max(i for i, e in enumerate(events) if e["type"] in ("confirm", "unresolved")
+                       or (e["type"] == "resolve_selection" and e["choice"] == "use_record"))
     return {"participant_code": code, "mode": mode, "task": task, "arm": arm, "outcome": outcome,
             "decision_ms": timed[final_choice]["at_ms"], "elapsed_ms": elapsed, "effort": effort,
             "questions": result["questions_asked"] if arm == "clarify" else 0,
-            "selection_changes": max(0, sum(e["type"] == "confirm" for e in events) - 1)}
+            "selection_changes": max(0, sum(e["event"] == "confirm" for e in result["trace"]) - 1)}
 
 
 def summarize(exports: list[dict], *, allow_rehearsal: bool = False) -> dict:

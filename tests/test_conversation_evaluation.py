@@ -5,6 +5,15 @@ from scripts.naacl2027.evaluate_conversation import cases, score
 
 
 class EvaluationLabels(unittest.TestCase):
+    def test_pending_conflict_is_neither_confirmation_nor_explicit_abstention(self):
+        case = next(c for c in cases() if c["id"] == "conflict-pauses-repeated-selection")
+        result = run_conversation({"events": case["events"]})
+        row = score(case, result)
+        self.assertEqual(row["selection_outcome"], "awaiting_clarification")
+        self.assertIsNone(row["answer"])
+        self.assertFalse(row["correct_selection_and_expected_fields"])
+        self.assertTrue(row["regression_passed"])
+
     def test_passing_answer_about_wrong_confirmed_record_is_not_success(self):
         case = next(c for c in cases() if c["id"] == "confident-wrong-confirmation")
         result = run_conversation({"events": case["events"], "fault": "none", "live": False})
