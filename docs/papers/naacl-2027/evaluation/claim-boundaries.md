@@ -16,10 +16,17 @@ refund omission**. Treat these as semantic-role and completeness failures; the h
 "minor issue" label does not establish low financial impact. Its 115 other answers were assessed
 by authors with AI assistance, not an independent blinded study. Preserve that provenance.
 
-Confirmation is an authorization boundary, not a correctness oracle. Customers can confirm the
-wrong record, including an alternative that contradicts a previously supplied detail: the controller
-checks catalogue membership, not consistency with those details. User corrections trigger a new
-confirmation; the verifier cannot independently recover the customer's intended record.
+Confirmation is an authorization boundary, not a correctness oracle. A selected record that conflicts
+with confidently supplied type, payee, date, amount, currency or reference now pauses before retrieval.
+The customer sees both values and can explicitly correct those details and confirm the record, retain
+their earlier details and choose again, type a correction, or leave unresolved. The resolution event
+must identify the current conflict; repeated selection or a stale acknowledgement cannot bypass it.
+Tentative/unknown details do not block selection. Previous answers are superseded during a change.
+A customer can still confirm a wrong record consistent with their stated details, or explicitly accept
+the wrong correction; the verifier cannot independently recover hidden intent. The 60 controller
+replays test these boundaries but do not measure customer error reduction. Policy answering and record
+comparison still have prepared preset/unit/browser checks, not broad natural-query evaluations.
+See the capability-to-evidence table in [evaluation scope](README.md).
 The observed wrong-selection rates of 2.2%/4.0% for the two-question DV component
 are numerically above 1.8%/3.6% for the full list. Neither overlapping intervals nor a small observed
 difference establishes equivalence, non-inferiority or a production safety bound.

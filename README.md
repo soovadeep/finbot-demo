@@ -24,7 +24,8 @@ through two interfaces, using synthetic account records and fictional policies:
 
 The assistant is read-only: it does not initiate payments, refunds or disputes. Checks cover
 finite claim formats and do not establish semantic correctness or completeness. A customer can
-still confirm the wrong record, including an alternative that contradicts an earlier detail.
+still confirm a wrong record consistent with their stated details. A conflicting selection now pauses
+for explicit correction or reselection before retrieval; it never silently overrides supplied details.
 
 ## Run it locally
 
@@ -41,16 +42,18 @@ the evidence inspector. The demo uses synthetic records and a clearly labelled s
 
 The 224-question simulation evaluates the clarification **component**, not the deployed
 conversation's complete interaction policy. See the [evaluation scope](docs/papers/naacl-2027/evaluation/README.md).
-Run `python scripts/naacl2027/evaluate_conversation.py` for 36 authored regression replays through
+Run `python scripts/naacl2027/evaluate_conversation.py` for 60 authored regression replays through
 the actual conversation endpoint's controller, including corrections, abstention and wrong confirmation.
 Customer events and the answer writer are scripted; question selection and verification use the
-actual demo code. Twelve runs end unresolved without generating a financial draft, so their fault
-settings have no effect. These checks are not customer-accuracy or natural LLM error measurements.
+actual demo code. Fifteen scripts run under four fault settings, including six new conflict-resolution
+scripts. Twenty runs never generate a draft; four further runs pause on a conflict after superseding
+an earlier answer. These are repeated test conditions, not independent customer samples. These checks are not customer-accuracy or natural LLM error measurements.
 
 | Result | Command | Output |
 |---|---|---|
 | Ambiguity benchmark (224 Banking77 questions, 2 to 8 candidate records) | `python scripts/naacl2027/build_ambiguity_set.py` (and `--size 8`) | `data/naacl2027/` |
 | Simulated customers, two model families, safety conditions | `python scripts/naacl2027/simulate_customers.py --simulator haiku` (and `llama`), then `--report` | `results/naacl2027/clarification-sim/` |
+| Contradiction controls, keyboard/mobile behavior and accessibility | `node scripts/naacl2027/contradiction_interface.cjs` | `results/naacl2027/contradiction-interface.json` |
 | Interface checks and accessibility scans | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |
 | Answer checks on injected errors | `python scripts/naacl2027/check_injection.py` | `results/naacl2027/check-injection.json` |
 | Tests (no installs) | `python -m unittest discover -s tests` | |

@@ -24,13 +24,14 @@ the added baseline comparison is cache-only and reports missing coverage explici
 
 | Result | Command | Output |
 |---|---|---|
-| Actual conversation controller: 36 authored regressions | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |
+| Actual conversation controller: 60 authored regressions | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |
 | Amount-first and most-distinct baselines, cached replies only | `python scripts/naacl2027/compare_baselines.py` (also `--bench ambiguity-8-same-amount`) | `results/naacl2027/strong-baselines/` |
 | Matched clean/corrupted verification | `python scripts/naacl2027/paired_verification.py` | `results/naacl2027/paired-verification/` |
 | Ambiguity benchmark (224 episodes; 2 to 5 and 8 candidates) | `python scripts/naacl2027/build_ambiguity_set.py` and `--size 8` | `data/naacl2027/ambiguity*.jsonl` |
 | Simulated customers, two model families, safety conditions | `python scripts/naacl2027/simulate_customers.py --simulator haiku` (and `llama`, `--bench ambiguity-8`, `--conditions overconfident`), then `--report` | `results/naacl2027/clarification-sim/` |
 | Answer checks on injected errors | `python scripts/naacl2027/check_injection.py` | `results/naacl2027/check-injection.json` |
 | Inspector acceptance checks and axe scans | `node scripts/naacl2027/interface.cjs` | `results/naacl2027/interface-after.json` |
+| New contradiction flow: browser and axe checks | `node scripts/naacl2027/contradiction_interface.cjs` | `results/naacl2027/contradiction-interface.json` |
 | Conversation page axe scan | `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/conversation-axe.json` |
 
 See [evaluation scope](evaluation/README.md) and

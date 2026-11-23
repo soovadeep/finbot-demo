@@ -20,7 +20,11 @@ Two arms use the same records, attribute labels, confirmation buttons and script
 all records, with no clarification questions. The research interface hides the demo inspector and
 scenario answer keys. Two task notes identify a transfer or a card payment using type and recipient
 while leaving the date unknown. Participants may leave a task unresolved or correct a selection.
-This isolates the identification interface, not a live model's generation ability.
+Both arms use the same contradiction check if a selection conflicts with supplied details; a
+resolution can explicitly correct those details and confirm, or retain them for reselection.
+The decision timer includes that resolution; selection changes count completed confirmations,
+not attempts paused for clarification. A session awaiting conflict resolution cannot finish.
+This compares identification interfaces, not a live model's generation ability.
 
 If a future study is feasible, generate balanced, randomly ordered assignment slots, for example:
 

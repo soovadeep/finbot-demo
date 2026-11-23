@@ -17,7 +17,7 @@
 \node[end]  (msg)    at (0,0)    {Customer's payment-\\support request};
 \node[cbox] (belief) at (4.6,0)  {Filter supplied details;\\update beliefs};
 \node[cbox] (ask)    at (9.2,0)  {Ask the question\\with highest DV};
-\node[kbox] (list)   at (13.8,0) {Matching / other records;\\confirm or abstain};
+\node[kbox] (list)   at (13.8,0) {Select; resolve conflicts;\\confirm or abstain};
 \draw[arr] (msg) -- (belief);
 \draw[arr] ([yshift=2mm]belief.east) -- node[lab, above=1.5mm]{at most 2} ([yshift=2mm]ask.west);
 \draw[arr] ([yshift=-2mm]ask.west) -- node[lab, below=1.5mm]{reply: parse details} ([yshift=-2mm]belief.east);

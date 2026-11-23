@@ -30,12 +30,12 @@
 Payment-support conversations combine incomplete descriptions with questions about payment
 outcomes, decline reasons and policies. We present Finbot, an open-source, read-only assistant
 combining clarification, scoped retrieval, checked explanations and recovery from unsupported
-drafts. Its conversation view handles uncertain details, confirmation and corrections; a
+drafts. Its conversation view handles uncertain details, conflicting selections and corrections; a
 complementary inspector covers declines, unknown outcomes, record comparisons and cited policies.
 Reviewers inspect evidence and verification traces, then inject faults to observe repair,
 record-built fallback or refusal. A scripted writer makes demonstrations reproducible, while
 the conversation optionally uses a live model. Evaluation separates 224-scenario component
-simulations, 36 scripted controller runs and paired verification tests. These reveal strong
+simulations, 60 scripted controller runs and paired verification tests. These reveal strong
 simple baselines and residual semantic errors. We release code, traces, cached responses and
 evaluation scripts to characterize the system's capabilities and limits; the results do not
 establish human usability gains or complete financial correctness.
@@ -78,8 +78,8 @@ Run \texttt{python -m finbot.demo} locally without a model account. Code, data, 
 \centering
 \input{architecture}
 \caption{The conversation path. Clarification filters on supplied details and scores questions
-over matching records. The customer confirms a record, with other records accessible separately,
-or leaves unresolved. The answering step is restricted to the confirmed record ID. Code controls
+over matching records. Conflicting selections require explicit resolution before confirmation;
+customers can also leave unresolved. Answering is restricted to the confirmed record ID. Code controls
 tool access, checks and recovery; the writer drafts answers. Dashed links show inspector observations.
 The separate inspector also supports direct record-comparison and policy-answering scenarios.}
 \label{fig:architecture}
@@ -120,13 +120,14 @@ question budget or 95\% belief. The demo instead asks by decision value over mat
 stopping at two questions, a single match, indistinguishable matches, or no useful question.
 
 \paragraph{Confirmation and corrections.}
-The demo filters on unhedged details, keeps alternatives for hedged details, and shows matching
-records with other records available separately. The customer picks one or says none match.
-A probability never selects a record. Corrections invalidate the selected record and mark
-previous answers as superseded before requesting a new confirmation.
-Other records remain selectable even when they conflict with a supplied detail: confirmation
-checks account access, not consistency with earlier statements. A mistaken confirmation can
-therefore produce an answer about the wrong payment; verification cannot infer the user's intent.
+The demo filters on unhedged details and keeps alternatives for hedged details. Selecting an
+alternative that conflicts with supplied type, payee, date, amount, currency or reference pauses
+retrieval and shows both values. The customer explicitly corrects those details and confirms the
+record, keeps earlier details and chooses again, types a correction, or leaves unresolved.
+Acknowledgements bind to the current conflict; stale choices are rejected. Corrections and
+selection changes supersede prior answers. These consistency checks are separate from the
+two-question budget. A probability never selects a record; a mistaken confirmation consistent
+with stated details remains possible because the system cannot infer hidden intent.
 
 \subsection{Evidence retrieval, explanation and recovery}
 
@@ -158,13 +159,10 @@ draft before verification, leaving source records intact. Conversation faults ad
 or fee; inspector faults also swap amounts across records or reverse a cited policy rule.
 These controlled errors test recovery, not natural LLM error rates.
 
-\paragraph{Writers.} By default the hosted page and \texttt{python -m finbot.demo} draft answers
-with a scripted writer over synthetic records, so reviewers need no key and every run is
-reproducible; clarification itself uses no language model. A switch on the hosted page has a live
-model (Llama 3.3 70B through OpenRouter) write the answer about the confirmed record instead, inside
-the same conversation and behind the same checks, repair and fallback; the fault menu applies to
-either writer. Live answers are capped per visitor and per day, and the scripted writer answers
-when the cap is reached or the provider fails.
+\paragraph{Writers.} The default scripted writer needs no API key. An optional Llama 3.3 70B
+writer through OpenRouter uses the same confirmed-record scope, checks, fault menu and recovery.
+Live calls are capped per visitor and per day; the scripted writer handles exhausted quotas or
+provider failure. Clarification itself uses no language model.
 
 \section{Demonstration walkthrough}
 
@@ -181,15 +179,14 @@ builds the answer from the record.}
 \end{figure*}
 
 
-Figure~\ref{fig:screenshot} shows this conversation. The account holds four \$200 payments: a
-card payment and a bank transfer to each of two payees, on November 15 and 16. The customer writes
-``My \$200 payment hasn't arrived.'' The amount rules nothing out, and every question splits the records in half. The customer says it was a bank transfer and, asked for the date,
-replies ``Willow Repairs'', which the parser takes as the payee. One record now holds 72\% of the
-belief and is offered for confirmation, with the others still listed. With the fault menu at
-``wrong amount every time'', the draft and its repair both add a 12.34 fee and are rejected
-(\texttt{ungrounded\_amount:12.34}), and the customer sees an answer built from the record: the
-200.00 USD transfer is pending. If the customer then writes ``Actually, it was a card payment on
-November 16'', that answer is marked superseded and the matching card record is offered.
+In Figure~\ref{fig:screenshot}, four \$200 payments differ in type, payee and date. The customer
+writes ``My \$200 payment hasn't arrived'', then supplies ``bank transfer'' and ``Willow Repairs''.
+One record has 72\% belief and is offered for confirmation. With ``wrong amount every time'',
+both drafts add an unsupported 12.34 fee and are rejected; code reports the 200.00 USD transfer
+as pending. ``Actually, it was a card payment on November 16'' supersedes that answer and offers
+the matching card record for confirmation.
+Alternatively, selecting a transfer after stating ``card'' pauses for explicit correction or
+reselection, without answering about the conflicting record.
 
 \paragraph{Additional support scenarios.} In \texttt{/inspector}, a reviewer can explain a decline
 from its recorded reason and retry policy, or inspect a processor timeout that remains unknown.
@@ -233,6 +230,29 @@ exploratory cached comparisons. Correct-rate intervals are approximately $\pm$6 
 \section{Evaluation}
 \label{sec:eval}
 
+Table~\ref{tab:capabilities} maps capabilities to evidence. Policy answering and comparisons
+have authored checks, not broad task benchmarks; the clarification study does not validate them.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\columnwidth}{@{}p{.31\columnwidth}X@{}}
+\toprule
+Capability / demo & Evidence and boundary \\
+\midrule
+Clarification / conversation & 224 scenarios, two simulators and stronger baselines; component policy differs. \\
+Confirmation, corrections / conversation & 60 controller replays; unit and browser checks include conflicts. Not customer accuracy. \\
+Explanations, recovery / both views & Paired mutations and live-writer audit (\S\ref{sec:inject}); semantic errors remain. \\
+Record comparison / inspector & Pair and swapped-amount presets; unit/browser checks only. \\
+Policy, refusal / inspector & Cited-source and failed-repair presets; unit/browser checks only. \\
+Trace inspection / both views & Browser and accessibility checks (Appendix~\ref{app:ui}); no comprehension study. \\
+\bottomrule
+\end{tabularx}
+\caption{Capability-to-evidence map. Inspector presets are prepared examples; policy and
+comparison performance on diverse natural requests has not been measured.}
+\label{tab:capabilities}
+\end{table}
+
 \subsection{Ambiguity benchmark}
 
 We pair 224 Banking77 test questions \citep{casanueva-etal-2020-efficient} with synthetic card
@@ -248,11 +268,9 @@ This study uses \texttt{ClarificationSession}, which updates beliefs from option
 offers a ranked two-record shortlist. The deployed \texttt{Conversation} controller also parses
 openings and free text, filters on unhedged details and exposes other records. Shared scoring
 functions do not make these policies equivalent; the rates below describe the component only.
-Separate replays send nine authored customer-event sequences through the actual endpoint controller
-under four fault settings, with the scripted writer and no model calls. All 36 meet expected
-behavior: 20 correctly selected records, four deliberately wrong confirmations and 12 unresolved
-runs. The unresolved runs never generate a financial draft, so their fault settings have no effect.
-This measures regression coverage, not customer accuracy or 36 distinct injected failures.
+Separate controller replays use 15 authored event sequences and four fault settings, including
+conflicting selections. All 60 meet expected behavior with a scripted writer and no model calls
+(Appendix~\ref{app:ui}). These are regression checks, not customer accuracy.
 
 A simulated customer sees its opening and memory note, then the candidate list only at
 confirmation. Seeded personas are \emph{receipt} (40\%, all details), \emph{vague} (35\%, payee,
@@ -354,13 +372,11 @@ scripted field checks are not used as semantic labels; no independent end-to-end
 
 \section{Related work}
 
-Clarifying questions have been ranked by expected usefulness \citep{rao-daume-iii-2018-learning},
-asked in open-domain search \citep{aliannejadi2019asking,zhang2020evaluating}, asked selectively
-when a request is ambiguous \citep{kuhn2022clam}, and chosen by expected information gain to
-elicit what a user wants from a language model \citep{piriyakulkij2023active,li2025eliciting}.
-Simulated users can evaluate such systems before human studies \citep{sekulic2022evaluating}. In Finbot the hypotheses are the customer's own authorized records,
-the options come from those records, and the stopping rule targets the chance of naming the wrong
-one. Post-hoc revision against evidence \citep{gao-etal-2023-rarr}, programmable rails
+Clarification has been ranked by usefulness \citep{rao-daume-iii-2018-learning}, studied in search
+\citep{aliannejadi2019asking,zhang2020evaluating}, used selectively \citep{kuhn2022clam}, and guided
+by information gain \citep{piriyakulkij2023active,li2025eliciting}. Simulated users support early
+evaluation \citep{sekulic2022evaluating}. Finbot derives options from authorized records and
+targets wrong-record risk. Evidence-based revision \citep{gao-etal-2023-rarr}, programmable rails
 \citep{rebedea-etal-2023-nemo} and capability-based separation of control and data
 \citep{debenedetti2025camel} motivate the answering step. In finance, Ryt AI already combines
 deterministic guardrails and customer confirmation \citep{chua-etal-2025-banking}.
@@ -373,9 +389,9 @@ Simulators may read lists and follow memory notes differently from people and sh
 The records are synthetic; Banking77 questions were not written about them. Reliabilities are
 assumed, unique amounts favor amount questions, and candidates are capped at eight. Stronger
 heuristics challenge DV's accuracy advantage. Component policies differ from the deployed
-controller, whose confident-detail filters can exclude the target and whose alternative-record
-buttons allow contradictory confirmation. Its replays and corrections
-are authored checks. English parsing and verification rules miss formats and semantic errors;
+controller, whose confident-detail filters can exclude the target. Conflict checks require
+explicit correction but cannot infer intent or detect all contradictions in free text. Controller,
+policy and comparison checks use authored cases. English parsing and verification miss semantic errors;
 the live-writer audit covers one model and card payments. No human, voice, independent semantic
 or deployed-customer accuracy evaluation has been completed. Finbot is not validated for
 production financial support.
@@ -389,11 +405,9 @@ would require independent validation and appropriate consent, retention and acce
 
 \section*{Acknowledgements}
 
-Anthropic's Claude Code assisted implementation, evaluation, the author audit, video recording
-and manuscript preparation. OpenAI Codex assisted implementation, documentation, cached baseline
-replays, paired verification, optional pilot tools and manuscript revisions. Simulator, chooser
-and writer models are specified in Appendix~\ref{app:repro}. The authors are responsible for
-validating the submission.
+Claude Code and OpenAI Codex assisted development, evaluation, documentation and manuscript
+preparation; Claude Code also assisted the author audit and video. Model details are in
+Appendix~\ref{app:repro}. The authors are responsible for validating the submission.
 
 \clearpage
 \bibliography{references}
@@ -578,10 +592,19 @@ scenario, trace export, keyboard navigation, stale inputs, layouts from 320 to 1
 pass. A second script exercises the conversation page (parsing, questions, unknown replies,
 corrections, an unmatched payment, the mobile layout). axe-core 4.10.3 finds no WCAG 2.1 A or AA
 violations in 14 interface states, and no page makes an external request or raises a script error.
-These are feature checks, not measures of user comprehension. A separate replay script calls the
-deployed conversation controller on nine authored event sequences under four fault modes: all
-36 meet their expected behavior. These include deliberately wrong confirmation and unresolved
-cases; passing regression checks does not mean every conversation succeeded. Correct selection
-and expected answer fields are scored separately from the verifier verdict.
+These historical feature checks do not measure user comprehension. After adding conflict resolution,
+a new Chromium script checks both resolution choices, keyboard operation, superseded answers and
+abstention at 390 and 1280 pixels. Its eight axe-scanned states have no detected violations or
+browser errors; this is not a complete accessibility audit.
+
+The controller replay now contains 15 scripts under four fault settings (60 runs). Six added
+scripts cover repeated conflicting selection, explicit correction and confirmation, keeping
+earlier details, typed correction, abstention and conflict after an answer. All meet their expected
+behavior. Outcomes are 32 correct, four wrong, 16 unresolved (eight appropriately for absent
+targets) and eight awaiting clarification. Twenty runs produce no draft, so their fault settings
+are unused; four paused runs supersede an earlier answer. Unit tests also check every supported
+field, tentative details, stale acknowledgements and that a conflicting selection does not call
+the answering step. These are authored regression cases, not independent users. Correct selection
+and expected fields are scored separately from the verifier; no semantic accuracy is inferred.
 
 \end{document}

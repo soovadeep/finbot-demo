@@ -57,6 +57,24 @@ conversation demo is at <http://127.0.0.1:8765/>. The terminal prints both addre
 identifies the mode as offline/synthetic. Leave the terminal running. Stop the server with **Ctrl-C**.
 For an occupied port, use `python -m finbot.demo --port 8766` and open the printed address.
 
+## Try a contradictory selection in the conversation
+
+On the evaluation branch (`git checkout review/naacl-demo-evaluation`), open the local conversation
+and choose **A selection conflicts with your message**. Send the preset message about the $200
+card payment to Willow Repairs. Expand **Other records** and select the Willow Repairs bank transfer.
+The answer pauses and the prompt displays the conflicting type. Try:
+
+- **Keep my earlier details; choose again**, then confirm the matching card payment.
+- **Use this record and correct my details**, which explicitly changes the conflicting details
+  and confirms the transfer before retrieval.
+- Type a correction, or leave unresolved. A typed correction still requires a fresh confirmation.
+
+Selecting a conflicting alternative after an answer marks the old answer superseded. Tentative
+recollections do not block selection. A mistaken selection consistent with supplied details remains
+possible. This new behavior requires this branch's code; a branch push does not update the hosted service.
+The [capability-to-evidence map](evaluation/README.md#capability-to-evidence-map) identifies which
+features have component experiments, regression checks or prepared examples only.
+
 ## 2. Five-minute walkthrough
 
 Choose a scenario and click **Run inspection**. Selecting a scenario fills its question and

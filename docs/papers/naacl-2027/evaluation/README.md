@@ -53,15 +53,50 @@ These are workflow regression checks, not an accuracy estimate: events are autho
 variants repeat the same tasks, and expected-field checks do not establish prose completeness.
 The wrong-confirmation case deliberately demonstrates a remaining failure boundary. The scripted
 customer asks about and confirms a transfer while the evaluator's hidden target is a card payment;
-the controller does not know that hidden intent. Separately, the UI's "Other records" buttons
-permit confirming authorized records that contradict supplied details; there is no contradiction
-confirmation step implemented.
+the controller does not know that hidden intent. The UI's "Other records" buttons now pause when an authorized record contradicts a confidently
+supplied detail. No new record lookup or answer occurs at that step. The prompt shows each supplied
+and selected value; **Use this record and correct my details** both corrects the conflicting fields
+and explicitly confirms the record. **Keep my earlier details; choose again** retains the details
+without confirming. Typed corrections and unresolved choices cancel the pending conflict. Resolution
+is bound to the current record and conflict ID. Tentative/unknown details do not trigger this check.
 
-The 36 runs are nine customer-event scripts under four configured faults. User messages and
-confirmation actions are authored, while the real controller chooses its template-based questions.
-The answer writer is scripted (`live=False`), not a live LLM. Twelve runs end unresolved and never
-generate a financial draft; their fault settings have no effect. The count is regression coverage,
-not 36 independent customer samples or distinct injected failures.
+The **60 runs are 15 scripts × four configured faults**. The original nine scripts remain; six additions
+cover repeated conflicting selection, accepting the correction, keeping earlier details, a typed
+correction, leaving unresolved, and switching to a conflicting record after an answer. Results:
+
+- 32 correct selections with the expected scripted answer fields.
+- Four deliberately wrong selections consistent with the customer's stated details.
+- 16 explicit unresolved endings, eight appropriate because the target is absent.
+- Eight awaiting contradiction clarification, with no current answer or confirmed record.
+
+Twenty runs never generate a draft (16 unresolved and four awaiting an initial conflict resolution),
+so their fault settings have no effect. Four more runs pause after superseding an earlier answer.
+User events and the answer writer are scripted (`live=False`); question selection uses the real
+controller. Fault variants are dependent test conditions, not 60 independent customers or failures.
+
+`tests/test_clarification_conversation.py` covers all six conflict attributes, tentative details,
+no answer-writer call while conflicting, current-record-only retrieval after resolution, stale and
+forged resolution events, repeated confirmation, typed correction and invalidation of old answers.
+`node scripts/naacl2027/contradiction_interface.cjs` tests the visible choices with keyboard input,
+answer invalidation and unresolved escape at 390 and 1280 pixels. Eight new axe-core 4.10.3 states
+have no detected WCAG 2.1 A/AA violations or browser errors. Run a local server first; the script
+requires Playwright and axe-core, with `FINBOT_DEMO_URL` and `CHROME_PATH` overrides available.
+The committed report includes source hashes. Automatic scans are not a complete accessibility audit.
+
+## Capability-to-evidence map
+
+| Capability | Where to demonstrate | Evaluation artifact | Evidence boundary |
+|---|---|---|---|
+| Attribute clarification | Conversation `/study`; strategy comparison `/clarification` | `results/naacl2027/clarification-sim/`, `strong-baselines/` | 224 scenarios per simulator; component policy differs from conversation. |
+| Confirmation, correction and contradictory selections | Conversation: **A selection conflicts with your message** | `conversation-replay.json`, `contradiction-interface.json`; `tests/test_clarification_conversation.py` | 60 authored replays and regression checks; no customer-accuracy estimate. |
+| Record explanations and recovery | Conversation; inspector supported answer, decline and timeout presets | `paired-verification/`, `live-writer/audit.json`; `tests/test_demo.py` | Finite mutation formats and one live writer; known semantic errors remain. |
+| Two-record comparison and amount binding | Inspector **Keep two records separate**, **Catch swapped amounts** | `results/naacl2027/interface-after.json`; `tests/test_demo.py` (preset and binding tests) | Prepared examples and unit/browser checks; no broad natural-query benchmark. |
+| Cited policy answering and refusal | Inspector **A citation is not enough**, **When recovery is unavailable** | `results/naacl2027/interface-after.json`; `tests/test_demo.py` (policy repair/refusal tests) | Source-sentence/preset checks; no broad policy benchmark. |
+| Evidence, drafts and recovery inspection | Both interfaces, trace export | `interface-after.json`, `conversation-axe.json`, `contradiction-interface.json` | Engineering/accessibility checks; no human comprehension study. |
+
+Result paths without a prefix are under `results/naacl2027/`. This map makes uneven evidence
+explicit; it does not add empirical support to policy/comparison capabilities. Their prepared
+examples establish demonstrated behavior on those fixtures, not general task performance.
 
 ## Answer verification
 
