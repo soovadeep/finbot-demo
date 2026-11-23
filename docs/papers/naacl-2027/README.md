@@ -1,6 +1,6 @@
 # NAACL 2027 System Demonstrations: paper materials
 
-**Finbot: An Inspectable AI Assistant for Evidence-Grounded Payment Support.**
+**Finbot: Turning Payment Questions into Evidence Grounded Answers.**
 Sandip Nandi, Apurba Bose, Aishwarya Bose, Soovadeep Bakshi (independent researchers).
 
 The paper presents the conversation and evidence-inspector interfaces as a read-only support

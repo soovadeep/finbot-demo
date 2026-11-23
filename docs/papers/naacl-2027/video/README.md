@@ -4,7 +4,7 @@
 demo. `narration.md` is the script and storyboard; `captions.srt` holds the captions.
 
 This recording predates the revised title, broader support-workflow framing and evaluation.
-The current paper is titled "Finbot: An Inspectable AI Assistant for Evidence-Grounded Payment Support".
+The current paper is titled "Finbot: Turning Payment Questions into Evidence Grounded Answers".
 The recording's results slide describes the
 `ClarificationSession` component, not measured customer performance of the deployed controller.
 The revised paper adds stronger heuristics, the full-list comparison and paired verification
