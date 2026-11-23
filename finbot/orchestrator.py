@@ -469,7 +469,12 @@ class Chatbot:
             out = self._loop(cs, run_tool, retry_log, "strong" if tiered else None, route["models"])
             return out, retry_log
 
-        fallback = (lambda log: record_answer(log, cs.memory.focus)) if self.settings.record_fallback else None
+        from .comparison import ComparisonCoverageVerifier, comparison_record_answer
+        comparison = ComparisonCoverageVerifier(text)
+        fallback = None
+        if self.settings.record_fallback:
+            fallback = (lambda log: comparison_record_answer(log, comparison.required_ids)) if comparison.required_ids else (
+                lambda log: record_answer(log, cs.memory.focus))
 
         def review_policy(payload: dict) -> str:
             # Isolated review: no conversation history, no tools, and the same turn deadline.
@@ -489,7 +494,7 @@ class Chatbot:
 
         with self.telemetry.span("finbot.verify") as sp:
             gate = self.gate.run(answer, tool_log, lambda: cs.memory.focus, regenerate, fallback,
-                                 extra_verifiers=(PolicyDocumentVerifier(self.settings.policy_verification,
+                                 extra_verifiers=(comparison, PolicyDocumentVerifier(self.settings.policy_verification,
                                                                          review_policy, as_of=self.today(),
                                                                          max_age_days=self.settings.kb_max_age_days,
                                                                          question=text),))
