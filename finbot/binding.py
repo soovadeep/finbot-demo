@@ -95,6 +95,33 @@ def _shared_blob(tool_log: list[dict]) -> str:
                   and not id_of(c["input"])])
 
 
+def record_currencies(data: dict) -> set[str]:
+    """Currencies in structured record fields; prose and shared policy cannot vouch for them."""
+    out: set[str] = set()
+
+    def visit(value):
+        if isinstance(value, dict):
+            for key, item in value.items():
+                if (key == "currency" or key.endswith("_currency")) and isinstance(item, str):
+                    if re.fullmatch(r"[A-Z]{3}", item):
+                        out.add(item)
+                elif isinstance(item, (dict, list)):
+                    visit(item)
+        elif isinstance(value, list):
+            for item in value:
+                visit(item)
+
+    visit(trusted_view(data))
+    return out
+
+
+def stated_currencies(text: str) -> set[str]:
+    from .guardrails import CURRENCY
+    # Dollar signs alone are ambiguous (USD, CAD, AUD, ...); do not guess their code.
+    return set(CURRENCY.findall(text)) | {code for symbol, code in (("€", "EUR"), ("£", "GBP"))
+                                          if symbol in text}
+
+
 def binding_check(answer: str, tool_log: list[dict]) -> list[str]:
     from .domains.checks import _keys
     from .guardrails import AMOUNT, CODE, ISO_DATE, NEGATIVE, NEGATIVE_STATUSES, POSITIVE, UNKNOWN_STATUSES, _affirmed
@@ -108,6 +135,7 @@ def binding_check(answer: str, tool_log: list[dict]) -> list[str]:
     pay = {rid: str(r["data"][0].get("status", "")).lower() for rid, r in recs.items()
            if r["tool"] == "get_transaction"}
     others = {rid: {st for o, st in pay.items() if o != rid} for rid in pay}
+    currencies = {rid: record_currencies(r["data"][0]) for rid, r in recs.items()}
     reasons: list[str] = []
 
     def foreign(value: str, rid: str) -> str | None:
@@ -119,6 +147,10 @@ def binding_check(answer: str, tool_log: list[dict]) -> list[str]:
     for clause, rid in segments(answer, set(recs)):
         if rid is None:
             continue
+        for currency in sorted(stated_currencies(clause) - currencies[rid]):
+            other = next((o for o in recs if o != rid and currency in currencies[o]), None)
+            reasons.append(f"value_from_other_record:currency:{rid}<-{other}" if other else
+                           f"currency_mismatch:{rid}:claimed={currency}")
         values = [("amount", a) for a in AMOUNT.findall(clause)] + \
                  [("date", d) for d in ISO_DATE.findall(clause)] + \
                  [("code", c) for c in CODE.findall(clause)]
