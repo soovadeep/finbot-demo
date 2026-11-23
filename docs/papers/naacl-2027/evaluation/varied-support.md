@@ -8,7 +8,9 @@ python -m unittest discover -s tests -p 'test_support_evaluation.py' -v
 ```
 
 The original diagnostic report is preserved as `results/naacl2027/varied-support.json`.
-The command now saves the post-fix rerun to `results/naacl2027/varied-support-fixed.json`.
+The first post-fix report remains preserved as `results/naacl2027/varied-support-fixed.json`.
+The command now saves a rerun with financial-role checks to `results/naacl2027/varied-support-roles.json`;
+the support-suite outcomes remain unchanged. See [the separate role ablation](financial-roles.md).
 Reports include source hashes,
 questions, fixture evidence, clean/changed drafts, individual verdicts and reasons, workflow
 traces, independent field/content checks and failures. It is reproducible without API calls,

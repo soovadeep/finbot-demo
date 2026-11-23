@@ -15,6 +15,10 @@ The original live-writer audit covers 125 initially passing answers from one mod
 refund omission**. Treat these as semantic-role and completeness failures; the historical audit's
 "minor issue" label does not establish low financial impact. Its 115 other answers were assessed
 by authors with AI assistance, not an independent blinded study. Preserve that provenance.
+The [financial-role checker](financial-roles.md) now blocks those nine date errors when replaying
+the same saved drafts, while accepting all 115 author-labelled supported answers. The omitted
+refund still passes. These inspected failures informed the implementation; this is retrospective
+development replay, not fresh live-model or held-out validation. The original audit is unchanged.
 
 Confirmation is an authorization boundary, not a correctness oracle. A selected record that conflicts
 with confidently supplied type, payee, date, amount, currency or reference now pauses before retrieval.
@@ -37,8 +41,9 @@ are numerically above 1.8%/3.6% for the full list. Neither overlapping intervals
 difference establishes equivalence, non-inferiority or a production safety bound.
 
 Structured-value extraction is finite and format-dependent. Report successes as observations on
-the tested formats. A value occurring in evidence does not establish its semantic role (expected
-versus actual settlement), completeness (a refund omitted), temporal validity, or applicability.
+the tested formats. Value membership alone does not establish a financial role; the new checker
+handles four explicit role formats. Other role errors, completeness (a refund omitted), temporal
+validity and applicability remain outside that check.
 
 ## End-to-end success
 

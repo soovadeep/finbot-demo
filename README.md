@@ -54,7 +54,8 @@ an earlier answer. These are repeated test conditions, not independent customer 
 | Ambiguity benchmark (224 Banking77 questions, 2 to 8 candidate records) | `python scripts/naacl2027/build_ambiguity_set.py` (and `--size 8`) | `data/naacl2027/` |
 | Simulated customers, two model families, safety conditions | `python scripts/naacl2027/simulate_customers.py --simulator haiku` (and `llama`), then `--report` | `results/naacl2027/clarification-sim/` |
 | Contradiction controls, keyboard/mobile behavior and accessibility | `node scripts/naacl2027/contradiction_interface.cjs` | `results/naacl2027/contradiction-interface.json` |
-| Varied policy/comparison workflows and matched component probes | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support-fixed.json` |
+| Varied policy/comparison workflows and matched component probes | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support-roles.json` |
+| Financial-role ablation and retrospective cached-draft replay | `python scripts/naacl2027/evaluate_financial_roles.py` | `results/naacl2027/financial-roles.json` |
 | Interface checks and accessibility scans | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |
 | Answer checks on injected errors | `python scripts/naacl2027/check_injection.py` | `results/naacl2027/check-injection.json` |
 | Tests (no installs) | `python -m unittest discover -s tests` | |
@@ -76,6 +77,13 @@ pass 28/28 comparison and 12/12 policy checks, and all 74 mutations are rejected
 reasons while their clean controls pass. This reruns previously inspected development cases;
 it is not held-out, live-model or customer accuracy. Six supported paraphrases remain rejected
 by the deliberately extractive policy mode.
+
+The [financial-role extension](docs/papers/naacl-2027/evaluation/financial-roles.md) checks
+expected versus actual settlement dates and payment versus refund amounts. Try **Expected is
+not actual** and **Payment is not refund** in the inspector. On 60 authored value-preserving
+corruptions, the existing guardrail blocks 12; adding role checks blocks 60 while accepting
+all paired clean drafts and 12 equal-value controls. This is a development ablation, not
+held-out accuracy. Two out-of-grammar errors and the historical refund omission still pass.
 
 The submission's evaluation uses cached simulations, controller replays and verification diagnostics;
 reproducing those results requires no participant recruitment. The local `/pilot` page and

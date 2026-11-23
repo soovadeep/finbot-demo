@@ -32,13 +32,13 @@ outcomes, decline reasons and policies. We present Finbot, an open-source, read-
 combining clarification, scoped retrieval, checked explanations and recovery from unsupported
 drafts. Its conversation view handles uncertain details, conflicting selections and corrections; a
 complementary inspector covers declines, unknown outcomes, record comparisons and cited policies.
-Reviewers inspect evidence and verification traces, then inject faults to observe repair,
-record-built fallback or refusal. A scripted writer makes demonstrations reproducible, while
-the conversation optionally uses a live model. Evaluation separates 224-scenario component
-simulations, 60 conversation and 40 inspector runs, and paired verification tests. These reveal strong
-simple baselines and residual semantic errors. We release code, traces, cached responses and
-evaluation scripts to characterize the system's capabilities and limits; the results do not
-establish human usability gains or complete financial correctness.
+Reviewers inspect claim-to-field traces and inject faults to observe repair, record-built fallback
+or refusal. Financial-role checks distinguish expected from actual settlement dates and payment
+from refund amounts, even when the stated values occur on the correct record. A scripted writer
+makes demonstrations reproducible; live answers are optional. Evaluation separates component
+simulations, workflow replays and controlled verification ablations. These reveal stronger simple
+baselines and residual semantic errors. We release code, traces and cached responses without
+claiming human usability gains or complete financial correctness.
 \end{abstract}
 
 \section{Introduction}
@@ -52,7 +52,7 @@ These requirements span the workflow. Clarification addresses uncertain context
 \citep{rao-daume-iii-2018-learning}; Bayesian question selection provides one implementation
 \citep{lindley1956measure}. Grounding and revision address unsupported statements
 \citep{gao-etal-2023-rarr}. Neither alone prevents a supported answer about the wrong payment,
-a swapped amount across records, or an unsupported policy claim carrying a valid citation.
+a swapped amount across records, an expected date presented as actual, or an unsupported cited policy.
 
 Finbot exposes these decisions through a conversation interface and complementary inspector
 (Figure~\ref{fig:architecture}). They connect clarification and confirmation with scoped retrieval,
@@ -61,10 +61,10 @@ and executes no payments, refunds or disputes. Our contribution integrates estab
 \begin{itemize}\itemsep0pt
 \item A conversational support workflow and evidence inspector covering clarification, corrections,
   payment explanations, record comparisons and cited policy answers.
-\item Observable verification and recovery, with scoped tools, configurable fault injection,
-  scripted demonstrations and optional live-model answers.
-\item Reproducible component simulations, stronger inexpensive baselines, actual-controller replays
-  and matched verification diagnostics that expose remaining failure boundaries.
+\item Inspectable record-and-role binding: recognized claims carry a record, financial role and
+  source field through verification and bounded recovery.
+\item Reproducible simulations, controller replays and value-preserving fault ablations that
+  distinguish record ownership from financial meaning and expose remaining failures.
 \end{itemize}
 The hosted demo is at \url{https://finbot-demo-20852907589.us-central1.run.app}.
 Run \texttt{python -m finbot.demo} locally without a model account. Code, data, results and a 2.5-minute video are at
@@ -86,7 +86,7 @@ The separate inspector also supports direct record-comparison and policy-answeri
 
 \paragraph{Interaction surfaces.} The conversation interprets messages and asks template-based
 questions without an LLM, then summarizes one confirmed record among four synthetic payments.
-Eight \texttt{/inspector} presets cover declines, unknown outcomes, comparisons, policies and recovery.
+Ten \texttt{/inspector} presets cover declines, unknown outcomes, comparisons, policies, financial roles and recovery.
 Both share answering and verification; the conversation does not route arbitrary policy or
 multi-record requests to these presets.
 
@@ -157,16 +157,23 @@ Regular expressions and phrase tables recognize supported claim formats, with li
 and hedge handling. Recognized values must occur in eligible evidence; recognized causes must
 map to recorded reason codes. Policy statements must retain complete cited passages. Explicit
 comparisons require each requested record and recognized requested fields, including in fallback.
-Coverage is finite: paraphrases, numeric dates and bare web addresses can evade extraction
-(Section~\ref{sec:inject}). Even a matching value may have the wrong semantic role, and important
-facts may be omitted. A passing gate is not a correctness or completeness judgment.
+Coverage is finite: unrecognized wording, date formats and bare web addresses can evade extraction
+(Section~\ref{sec:inject}); omissions remain possible. A passing gate does not establish correctness.
+
+\paragraph{Financial roles.} A recognized claim $c=(h,r,v)$ identifies a record, role and value.
+The role maps to a schema path $\pi(r)$; support requires $v=D_h[\pi(r)]$ after normalization,
+using the latest lookup $D_h$. We implement payment/refund amounts and expected/actual settlement
+dates; actual dates also require settled status. Thus an expected date cannot support ``settled on'',
+even when settlement status is settled. The inspector exposes the phrase, role, field and verdict.
+Repair preserves the distinction; fallback states when an actual date is unavailable. These finite
+English patterns are not general semantic parsing.
 
 \subsection{What the inspector shows}
 
 Both interfaces expose evidence, drafts, rejection reasons and recovery; the conversation adds
 beliefs and question scores, and the inspector adds policy excerpts and trace export. Fault
 injection changes drafts while preserving evidence: a status or fee in the conversation; also
-record-bound amounts or policy rules in the inspector. These test recovery, not natural LLM error rates.
+record ownership, financial roles or policy rules in the inspector. These test recovery, not natural LLM error rates.
 
 \paragraph{Writers.} The default scripted writer needs no API key. An optional Llama 3.3 70B
 writer through OpenRouter uses the same confirmed-record scope, checks, fault menu and recovery.
@@ -192,9 +199,9 @@ pending. ``Actually, it was a card payment on November 16'' supersedes that answ
 fresh confirmation. Selecting a transfer after stating ``card'' instead pauses for conflict resolution.
 
 \paragraph{Additional scenarios.} Inspector presets explain declines and unknown timeouts,
-reject amounts swapped between two records, and reject ``can be surcharged'' when the cited
-source says ``cannot''. Failed policy-only repairs produce refusal because no record summary
-is available. All policies are fictional.
+reject cross-record amounts and reversed cited policies, and distinguish a \$200 payment from
+its \$50 refund. ``Expected is not actual'' shows a date-role rejection and repair. Failed
+policy-only repairs produce refusal. All policies are fictional.
 
 
 
@@ -244,6 +251,7 @@ Capability / demo & Evidence and boundary \\
 Clarification / conversation & 224 scenarios, two simulators and stronger baselines; component policy differs. \\
 Confirmation, corrections / conversation & 60 controller replays; unit and browser checks include conflicts. Not customer accuracy. \\
 Explanations, recovery / both views & Paired mutations and live-writer audit (\S\ref{sec:inject}); semantic errors remain. \\
+Financial roles / inspector & 60 corruption pairs, 12 equal-value controls and cached-draft replay; finite claim formats. \\
 Record comparison / inspector & 28 workflow runs; 38 mutation pairs reused to verify fixes. \\
 Policy, refusal / inspector & 12 workflow runs; 36 mutation pairs reused to verify fixes. \\
 Trace inspection / both views & Browser and accessibility checks (Appendix~\ref{app:ui}); no comprehension study. \\
@@ -273,13 +281,12 @@ Separate controller replays use 15 authored event sequences and four fault setti
 conflicting selections. All 60 meet expected behavior with a scripted writer and no model calls
 (Appendix~\ref{app:ui}). These are regression checks, not customer accuracy.
 
-A simulated customer sees its opening and memory note, then the candidate list only at
-confirmation. Seeded personas are \emph{receipt} (40\%, all details), \emph{vague} (35\%, payee,
-month and rounded amount) and \emph{misremembers} (25\%, one confident wrong detail from a
-distractor). It answers through options, using ``not sure'' when its note is insufficient.
-Claude Haiku 5.5 and Llama 3.3 70B Instruct provide two simulator families. Replies are cached
-per question and confirmation list, giving selectors the same responses to the same request.
-The original study made 9,501 model calls for under US\$5; the added baseline replays make none.
+A simulated customer sees its opening and memory note, then candidates only at confirmation.
+Seeded personas are \emph{receipt} (40\%, all details), \emph{vague} (35\%, partial details) and
+\emph{misremembers} (25\%, one confident wrong detail). Claude Haiku 5.5 and Llama 3.3 70B
+Instruct answer options, including ``not sure''. Replies are cached per question and confirmation
+list, giving selectors identical responses to identical requests. The original study made 9,501
+model calls for under US\$5; added baseline replays make none.
 
 We compare the five selectors, no questions (show the first two records), and showing every
 candidate at once. An episode is \emph{correct}
@@ -290,19 +297,15 @@ paired baseline comparisons use target-record-cluster bootstrap intervals.
 
 
 \paragraph{Results.}
-Table~\ref{tab:main} reports component results. Against the original fixed-order baseline, DV
-improves one-question identification and reaches similar two-question correctness with fewer
-questions (1.31--1.36 versus 1.95). On the smaller set, one question in any order already ranks
-the target first in 64--70\% of episodes.
+Against fixed order, DV reaches similar two-question correctness with fewer questions
+(1.31--1.36 versus 1.95; Table~\ref{tab:main}).
 
 Stronger untuned heuristics qualify this comparison. One most-distinct question yields
 49.6\%/66.1\% correct confirmations (Haiku/Llama), versus 46.9\%/62.5\% for one DV question;
-amount-first yields 41.5\%/63.4\%. Most-distinct with one question also matches or exceeds the
-correct rates of DV with two. Thus DV is not the strongest accuracy baseline here. On the
-same-amount set, most-distinct also exceeds DV with one question (32.6\%/46.9\% versus
-29.9\%/43.3\%). All these comparisons have 224 episodes. The released analysis includes
-paired, target-record-cluster bootstrap intervals and flags missing cache coverage: amount-first
-with two questions has 223 episodes per simulator on the original set, not 224.
+amount-first yields 41.5\%/63.4\%. Most-distinct also matches or exceeds two-question DV and
+wins on the same-amount set (32.6\%/46.9\% versus 29.9\%/43.3\%, one question).
+These comparisons have 224 episodes. Released bootstrap intervals flag missing cache coverage:
+two-question amount-first has 223 episodes per simulator.
 
 Showing all records yields more correct confirmations than the shortlist (60\%/81\%). In a
 component variant, offering the full list after shortlist rejection raises DV correctness to
@@ -312,14 +315,10 @@ simulated identification and question count; human effort and completion time re
 
 \paragraph{Without unique amounts.}
 \label{sec:same}
-Decision value asks for the amount first in 128 of 224 episodes (fixed order: 11). A second copy
-of the set gives every candidate the target's amount and currency; only 99 targets then differ
-from all others in kind, payee or date. One decision-value question puts the target first in 46\%
-of episodes (fixed order 16\%, none 13\%) and in 85\% of the 99 (fixed order 18\%). On those 99,
-decision value with two questions confirms the target in 68\% (Haiku) and 85\% (Llama) with
-2--3\% wrong, against 73\% and 88\% for the full list (95\% CIs in Appendix~\ref{app:same}). In the
-other 125 the target has an indistinguishable twin. The component still offers a ranked shortlist;
-the deployed demo instead flags indistinguishable matching records and requests a reference or abstention.
+Giving all candidates the target's amount and currency leaves only 99 distinguishable targets.
+On these, two-question DV confirms 68\%/85\% correctly, versus 73\%/88\% for the full list
+(Appendix~\ref{app:same}). The other 125 have indistinguishable twins. For these, the component
+ranks a shortlist; the demo requests a reference or abstention.
 
 \subsection{Sensitivity, baseline and free text}
 \label{sec:more}
@@ -335,46 +334,45 @@ correct confirmations fall to 42\%/51\%.
 Acting on the top guess after the questions would pick the wrong record in 26\% (Haiku) and
 21\% (Llama) of episodes; with confirmation, wrong selections are 2.2\% (0.9--5.1\%) and 4.0\%
 (2.1--7.5\%), numerically higher than showing the whole list (1.8\% and 3.6\%). Overlapping
-intervals do not establish equivalence or non-inferiority. When every customer is
-confident about one wrong detail, acting on the top guess would be wrong in 42\% of episodes, while
-confirmation yields 5.4\% and 5.8\% wrong selections, versus 4.5\% and
-7.6\% for the full list. If the system assumes every
-reply is right 99\% of the time, it stops sooner on the smaller set and wrong selections are
-unchanged (4.9\% and 5.8\%): a wrong belief only reorders the short list.
+intervals do not establish equivalence or non-inferiority. With every customer confidently wrong
+about one detail, top-guess selection is wrong in 42\%; confirmation yields 5.4\%/5.8\% wrong,
+versus 4.5\%/7.6\% for the full list. Confirmation limits, but cannot eliminate, wrong-record risk.
 
 \subsection{Answer checks}
 \label{sec:inject}
 
-\paragraph{Varied support cases.} Initially, 40 scripted inspector runs meet 28/28 comparison
-and 10/12 policy checks; one query misses an available policy. Controlled-evidence pairs over
-six fictional policies and six record pairs reject 30/36 policy and 20/38 comparison mutations,
-missing six policy exceptions, six currency swaps and 12 omitted records. We then add currency
-binding, requested-record coverage, complete cited passages and plural normalization in retrieval.
-Rerunning unchanged cases yields 28/28 comparison and 12/12 policy checks; all 74 mutations are
-rejected with matching reasons and all 74 paired clean drafts pass. Ten unchanged swaps are
-excluded; extractive mode still rejects six supported paraphrases. Labels use authored expectations
-and exact fields, not gate decisions. These dependent, post-fix development checks involve no
-model calls; they are not held-out accuracy. Component pairs bypass retrieval and generation.
-Original and post-fix traces are released separately.
+\paragraph{Varied support cases.} Initially, scripted inspector runs meet 28/28 comparison and
+10/12 policy checks. Controlled pairs reject 30/36 policy and 20/38 comparison mutations, missing
+exceptions, currency swaps and omitted records. After adding currency binding, requested-record
+coverage, complete passages and plural normalization, unchanged workflows pass 40/40; all 74
+mutations are rejected and their clean controls pass. Ten unchanged swaps are excluded; extractive
+mode still rejects six supported paraphrases. These authored post-fix checks are development
+diagnostics, not held-out accuracy. Historical reports are preserved; component pairs bypass retrieval.
+
+\paragraph{Role ablation.} Six authored records and two wordings produce 48 within-record
+role substitutions and 12 cross-record substitutions, all reusing existing values. Removing both
+binding checks detects 0/60; the existing guardrail with record binding detects 12/60; adding
+financial roles detects 60/60. Each configuration accepts all 60 clean counterparts and 12
+equal-value controls. Four inspector runs cover recovery. These dependent development cases
+do not estimate accuracy: a month-name date and ``You got \$200.00 back'' still pass incorrectly.
 
 \paragraph{Template tests and matched controls.} The original 224-episode test reports
 98.9\% rejection on development mutations after tuning status rules, and 82.3\%
 (2,668/3,240) on held-out wordings. Rejection alone does not show which error was caught.
-A post-hoc analysis pairs each existing mutation with the same wording before that change:
-570 clean controls already fail and their corrupted counterparts also fail. Among the 2,670
-accepted controls, a mutation causes 2,098 rejections (78.6\%); none of 186 accepted controls
-is rejected after adding a bare \texttt{www} link. Appendix~\ref{app:inject} reports all
-claim types. These are diagnostics of the previously inspected holdout, not new held-out
-results. The separate original clean-draft set still has 114/1,120 false rejections (10.2\%).
-The verifier rules were not changed for this analysis.
+A post-hoc analysis finds 570 clean controls already fail. Among 2,670 accepted controls,
+mutations cause 2,098 rejections (78.6\%), including zero additional bare-link rejections
+(Appendix~\ref{app:inject}). This earlier analysis did not change verifier rules; it is not a new
+holdout. The original clean-draft set has 114/1,120 false rejections (10.2\%).
 
 \paragraph{A live writer.} Of 128 Llama 3.3 70B card-payment drafts, 125 pass initially and
 three are falsely rejected, then recovered. The original author audit with AI assistance covers
 125 passing answers about 108 distinct records. It identifies nine answers confusing expected
 with actual settlement dates and one omitting a refund: 10/125 substantive support or
-completeness failures despite a passing gate. This was not an independent audit. In separate
-fault runs, repair removes an injected fee in 127/128 cases; when the repair also contains the
-fee, all 128 use the record-built fallback.
+completeness failures despite a passing gate. Retrospectively applying the new role checker to
+these same drafts blocks all nine date errors and none of the 115 author-labelled supported
+answers; the omitted refund still passes. This is development replay informed by that audit,
+not an independent audit or new live generation. Historical fee injections recover through
+repair in 127/128 cases or fallback in 128/128 when repair also fails.
 
 \paragraph{End-to-end assessment.} Success requires the intended record and a supported,
 sufficiently complete answer. The released scorer requires independent answer judgments and
@@ -391,8 +389,10 @@ targets wrong-record risk. Evidence-based revision \citep{gao-etal-2023-rarr}, p
 \citep{rebedea-etal-2023-nemo} and capability-based separation of control and data
 \citep{debenedetti2025camel} motivate the answering step. In finance, Ryt AI already combines
 deterministic guardrails and customer confirmation \citep{chua-etal-2025-banking}.
-Finbot contributes inspectable support workflows spanning clarification, record and policy
-evidence, answer checks and recovery, with explicit failure analysis.
+Certainty distortions and omissions are also studied by \citet{nnamdi-etal-2026-epistemic}.
+Finbot's systems contribution connects ambiguous-record confirmation to inspectable financial
+role checks and recovery, with value-preserving ablations. We do not claim a new Bayesian method,
+general semantic verifier or the first financial guardrail.
 
 \section{Limitations}
 
@@ -416,9 +416,8 @@ would require independent validation and appropriate consent, retention and acce
 
 \section*{Acknowledgements}
 
-Claude Code and OpenAI Codex assisted development, evaluation, documentation and manuscript
-preparation; Claude Code also assisted the author audit and video. Model details are in
-Appendix~\ref{app:repro}. The authors are responsible for validating the submission.
+Claude Code and OpenAI Codex assisted development, evaluation and manuscript preparation;
+Claude Code also assisted the author audit and video. The authors are responsible for validation.
 
 \clearpage
 \bibliography{references}

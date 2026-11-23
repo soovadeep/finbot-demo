@@ -25,7 +25,8 @@ the added baseline comparison is cache-only and reports missing coverage explici
 | Result | Command | Output |
 |---|---|---|
 | Actual conversation controller: 60 authored regressions | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |
-| Varied support: post-fix rerun of 40 inspector runs and 74 matched mutations | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support-fixed.json` (original: `varied-support.json`) |
+| Varied support: post-fix rerun of 40 inspector runs and 74 matched mutations | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support-roles.json` (earlier reports preserved) |
+| Financial-role ablation: 60 corruptions, 12 equal-value controls, 125 cached drafts | `python scripts/naacl2027/evaluate_financial_roles.py` | `results/naacl2027/financial-roles.json` |
 | Amount-first and most-distinct baselines, cached replies only | `python scripts/naacl2027/compare_baselines.py` (also `--bench ambiguity-8-same-amount`) | `results/naacl2027/strong-baselines/` |
 | Matched clean/corrupted verification | `python scripts/naacl2027/paired_verification.py` | `results/naacl2027/paired-verification/` |
 | Ambiguity benchmark (224 episodes; 2 to 5 and 8 candidates) | `python scripts/naacl2027/build_ambiguity_set.py` and `--size 8` | `data/naacl2027/ambiguity*.jsonl` |
@@ -36,6 +37,7 @@ the added baseline comparison is cache-only and reports missing coverage explici
 | Conversation page axe scan | `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/conversation-axe.json` |
 
 See [varied support results and failure examples](evaluation/varied-support.md),
+[financial roles, ablation and novelty boundaries](evaluation/financial-roles.md),
 [evaluation scope](evaluation/README.md) and
 [the simulation README](../../../results/naacl2027/clarification-sim/README.md) for what each file holds.
 The submission relies on the existing simulations, automated controller checks and verification
