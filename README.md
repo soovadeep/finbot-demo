@@ -56,6 +56,7 @@ an earlier answer. These are repeated test conditions, not independent customer 
 | Contradiction controls, keyboard/mobile behavior and accessibility | `node scripts/naacl2027/contradiction_interface.cjs` | `results/naacl2027/contradiction-interface.json` |
 | Varied policy/comparison workflows and matched component probes | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support-roles.json` |
 | Financial-role ablation and retrospective cached-draft replay | `python scripts/naacl2027/evaluate_financial_roles.py` | `results/naacl2027/financial-roles.json` |
+| Fresh authored wording against a frozen runtime | `PYTHONHASHSEED=0 python scripts/naacl2027/evaluate_fresh_wording.py` | `results/naacl2027/fresh-wording-v1.json` |
 | Interface checks and accessibility scans | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |
 | Answer checks on injected errors | `python scripts/naacl2027/check_injection.py` | `results/naacl2027/check-injection.json` |
 | Tests (no installs) | `python -m unittest discover -s tests` | |
@@ -84,6 +85,12 @@ not actual** and **Payment is not refund** in the inspector. On 60 authored valu
 corruptions, the existing guardrail blocks 12; adding role checks blocks 60 while accepting
 all paired clean drafts and 12 equal-value controls. This is a development ablation, not
 held-out accuracy. Two out-of-grammar errors and the historical refund omission still pass.
+
+A [subsequent fresh-wording challenge](docs/papers/naacl-2027/evaluation/fresh-wording.md)
+freezes the runtime before committing new texts and labels. Role checks catch 12/32 corruptions
+and accept all 32 correct counterparts; the controller matches expected candidate sets in 15/16
+unconfirmed message sequences. The runtime was not tuned on these results. These AI-assisted,
+developer-authored probes expose broader language failures; they are not fresh LLM-generated answers.
 
 The submission's evaluation uses cached simulations, controller replays and verification diagnostics;
 reproducing those results requires no participant recruitment. The local `/pilot` page and
