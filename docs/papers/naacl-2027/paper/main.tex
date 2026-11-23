@@ -43,12 +43,10 @@ establish human usability gains or complete financial correctness.
 
 \section{Introduction}
 
-Payment support spans declines, pending transfers, uncertain outcomes, comparisons and policy
-questions. ``Why was my card declined?'',
-``Has the transfer completed?'' and ``Can this card be surcharged?'' require different evidence.
-An assistant must establish the relevant context, keep values attached to the right records,
-distinguish unknown from successful outcomes, and connect explanations to recorded reasons or
-policy sources. Customer corrections can change that context during a conversation.
+Payment support spans declines, transfers, comparisons and policy questions. Answering
+``Why was my card declined?'' or ``Can this card be surcharged?'' requires establishing context,
+keeping values attached to records, distinguishing unknown outcomes, and grounding explanations
+in recorded reasons or policy sources. Customer corrections can change that context.
 
 These requirements span the workflow. Clarification addresses uncertain context
 \citep{rao-daume-iii-2018-learning}; Bayesian question selection provides one implementation
@@ -56,12 +54,10 @@ These requirements span the workflow. Clarification addresses uncertain context
 \citep{gao-etal-2023-rarr}. Neither alone prevents a supported answer about the wrong payment,
 a swapped amount across records, or an unsupported policy claim carrying a valid citation.
 
-Finbot makes these decisions inspectable through two interfaces. The conversation view combines
-message interpretation, clarification, confirmation, scoped retrieval and checked explanations
-(Figure~\ref{fig:architecture}). The complementary inspector exposes record-comparison and
-policy-answering scenarios, verification traces and controlled failures. The system is read-only
-and uses synthetic records and policies; it does not initiate payments, refunds or disputes.
-Our contribution is the integration and demonstration of established techniques:
+Finbot exposes these decisions through a conversation interface and complementary inspector
+(Figure~\ref{fig:architecture}). They connect clarification and confirmation with scoped retrieval,
+record and policy checks, corrections and recovery. The system uses synthetic records and policies
+and executes no payments, refunds or disputes. Our contribution integrates established techniques:
 \begin{itemize}\itemsep0pt
 \item A conversational support workflow and evidence inspector covering clarification, corrections,
   payment explanations, record comparisons and cited policy answers.
@@ -88,36 +84,50 @@ The separate inspector also supports direct record-comparison and policy-answeri
 \section{System}
 \label{sec:system}
 
-\paragraph{Interaction surfaces.} The conversation page uses four synthetic payments and summarizes
-the confirmed record's status and details. Its parser and template-based questions use no LLM.
-The separate \texttt{/inspector} page exposes eight presets for decline explanations, uncertain
-outcomes, two-record comparisons and cited policy answers, including recovery and refusal.
-These share the answering and verification pipeline; the main conversation does not route
-arbitrary policy or multi-record requests to those presets.
+\paragraph{Interaction surfaces.} The conversation interprets messages and asks template-based
+questions without an LLM, then summarizes one confirmed record among four synthetic payments.
+Eight \texttt{/inspector} presets cover declines, unknown outcomes, comparisons, policies and recovery.
+Both share answering and verification; the conversation does not route arbitrary policy or
+multi-record requests to these presets.
 
 \subsection{Clarifying which record}
 
 \paragraph{Candidates and beliefs.}
-Candidates have four question attributes: kind (card payment or bank transfer), payee, date and
-amount. Beliefs start uniform. The public demo has four fixed synthetic records; the component
-study uses up to eight. Clarification does not grant access to additional records.
+Let $b(h)$ be the belief that authorized record $h\in\mathcal{H}$ is intended, initially
+$b_0(h)=1/|\mathcal{H}|$. Question attributes are kind (card or transfer), payee, date and amount.
+The demo has four synthetic records; the component study uses up to eight. Clarification cannot
+expand this authorized pool.
 
 \paragraph{Questions and replies.}
-A question offers distinct attribute values plus ``I'm not sure''. Bayes' rule updates beliefs
-using assumed response reliabilities; uncertainty is uninformative. Hedged details receive less
-weight. These settings are design assumptions, not measured human reliabilities (Appendix~\ref{app:repro}).
+A question $q$ offers distinct attribute values plus ``I'm not sure''. For reply $r$ and assumed
+likelihood $\ell_q(r\mid h)$ (Appendix~\ref{app:repro}), Bayes' rule gives
+\begin{equation}
+b_{q,r}(h)=\frac{b(h)\,\ell_q(r\mid h)}{\sum_g b(g)\,\ell_q(r\mid g)}.
+\label{eq:bayes}
+\end{equation}
+An unsure reply has the same likelihood for every record, leaving beliefs unchanged; a
+zero-probability reply also retains the prior. Hedged details use lower assumed reliability.
+These are response-model assumptions, not measured human accuracy.
 
 \paragraph{Choosing the next question.}
-The component compares fixed order, amount-first, most-distinct options, information gain and
-decision value (DV). Most-distinct uses fixed-order ties; neither heuristic has learned parameters.
-With $e(b)=1-\max_h b(h)$ and $b_r$ the posterior after reply $r$, DV maximizes the expected
-drop in wrong-record risk minus question cost $c=0.02$:
-\[
-\mathrm{DV}(q) = e(b) - \textstyle\sum_r P(r)\, e(b_r) - c,
-\]
-and stops when no question has $\mathrm{DV}(q)>0$. The component selectors also stop at the
-question budget or 95\% belief. The demo instead asks by decision value over matching records,
-stopping at two questions, a single match, indistinguishable matches, or no useful question.
+Define $p_q(r)=\sum_h b(h)\ell_q(r\mid h)$ and entropy
+$H(b)=-\sum_h b(h)\log_2 b(h)$. Information gain (IG) is the expected entropy reduction:
+\begin{equation}
+\mathrm{IG}(q)=H(b)-\sum_r p_q(r)\,H(b_{q,r}).
+\label{eq:ig}
+\end{equation}
+With $e(b)=1-\max_h b(h)$, decision value (DV) is the expected reduction in maximum-belief
+selection error, minus cost $c=0.02$:
+\begin{equation}
+\mathrm{DV}(q)=e(b)-\sum_r p_q(r)\,e(b_{q,r})-c.
+\label{eq:dv}
+\end{equation}
+Sums include unsure replies. This hypothetical choice scores questions; it never selects a
+record for answering. The component compares IG and DV with fixed order, amount-first and
+most-distinct options (fixed-order ties). It stops at its question budget or 95\% belief;
+IG and DV additionally require a positive score. The demo uses DV after renormalizing beliefs
+over matching records, stopping at two questions, a single match, indistinguishable matches,
+or no useful question.
 
 \paragraph{Confirmation and corrections.}
 The demo filters on unhedged details and keeps alternatives for hedged details. Selecting an
@@ -126,8 +136,8 @@ retrieval and shows both values. The customer explicitly corrects those details 
 record, keeps earlier details and chooses again, types a correction, or leaves unresolved.
 Acknowledgements bind to the current conflict; stale choices are rejected. Corrections and
 selection changes supersede prior answers. These consistency checks are separate from the
-two-question budget. A probability never selects a record; a mistaken confirmation consistent
-with stated details remains possible because the system cannot infer hidden intent.
+two-question budget. Consistent but mistaken confirmations remain possible: the system cannot
+infer hidden intent.
 
 \subsection{Evidence retrieval, explanation and recovery}
 
@@ -152,12 +162,10 @@ facts may be omitted. A passing gate is not a correctness or completeness judgme
 
 \subsection{What the inspector shows}
 
-The conversation inspector shows beliefs, question scores, evidence, rejected drafts and reasons.
-The separate inspector exposes tool results, policy-source excerpts and exportable traces.
-Both identify initial, repaired and record-built answers. Fault injection modifies a writer's
-draft before verification, leaving source records intact. Conversation faults add a false status
-or fee; inspector faults also swap amounts across records or reverse a cited policy rule.
-These controlled errors test recovery, not natural LLM error rates.
+Both interfaces expose evidence, drafts, rejection reasons and recovery; the conversation adds
+beliefs and question scores, and the inspector adds policy excerpts and trace export. Fault
+injection changes drafts while preserving evidence: a status or fee in the conversation; also
+record-bound amounts or policy rules in the inspector. These test recovery, not natural LLM error rates.
 
 \paragraph{Writers.} The default scripted writer needs no API key. An optional Llama 3.3 70B
 writer through OpenRouter uses the same confirmed-record scope, checks, fault menu and recovery.
@@ -196,6 +204,11 @@ amounts triggers rejection even though both values occur in the evidence. A poli
 sentence check rejects it. If repair fails on a policy-only request, no transaction summary is
 available and the system refuses. These presets use fictional policy material.
 
+
+
+\section{Evaluation}
+\label{sec:eval}
+
 \begin{table}[t]
 \centering\small
 \footnotesize
@@ -226,9 +239,6 @@ None shows the first two records; fallback shows all eight after rejection. Heur
 exploratory cached comparisons. Correct-rate intervals are approximately $\pm$6 points.}
 \label{tab:main}
 \end{table}
-
-\section{Evaluation}
-\label{sec:eval}
 
 Table~\ref{tab:capabilities} maps capabilities to evidence. Policy answering and comparisons
 have authored checks, not broad task benchmarks; the clarification study does not validate them.
@@ -428,12 +438,13 @@ replay makes no model calls and reports missing coverage explicitly
 (\texttt{scripts/naacl2027/}). Prompts, settings, the 192-episode comparison and the live-writer
 audit are in \url{docs/papers/naacl-2027/evaluation/paper-details.md} in the repository.
 
-\paragraph{Response model.} For attribute $k$, the model assigns $u_k$ probability to uncertainty,
-$(1-u_k)a_k$ to the matching option, and divides the remainder uniformly among wrong options.
-Settings $(a_k,u_k)$ are $(0.9,0.1)$ for kind, $(0.85,0.15)$ for date and $(0.8,0.2)$ for
-payee and amount. Hedged details use $a=0.65$. Information gain scores
-$H(b)-\sum_r P(r)H(b_r)$, with $P(r)=\sum_h b(h)P(r\mid h,q)$.
-These response assumptions are not fitted human reliabilities.
+\paragraph{Response model.} In Eq.~\ref{eq:bayes}, attribute $k$ assigns likelihood $u_k$ to
+uncertainty, $(1-u_k)a_k$ to the matching option, and divides the remainder uniformly among
+wrong options. Settings $(a_k,u_k)$ are $(0.9,0.1)$ for kind, $(0.85,0.15)$ for date and
+$(0.8,0.2)$ for payee and amount; hedged details use $a=0.65$. Replies across attributes are assumed
+conditionally independent given the record. The demo rebuilds from a uniform prior with one
+current value per attribute; corrections replace observations and repeats add no evidence.
+These are model assumptions, not measured human reliabilities.
 
 \section{Benchmark and personas}
 \label{app:bench}
