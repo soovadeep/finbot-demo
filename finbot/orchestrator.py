@@ -438,7 +438,9 @@ class Chatbot:
         if cs.pending_notice:
             notices.append(cs.pending_notice)
             cs.pending_notice = None
-        policy_instruction = {"strict": STRICT_INSTRUCTION, "hybrid": HYBRID_INSTRUCTION}.get(
+        from .policy_documents import EXTRACTIVE_INSTRUCTION
+        policy_instruction = {"extractive": EXTRACTIVE_INSTRUCTION,
+                              "strict": STRICT_INSTRUCTION, "hybrid": HYBRID_INSTRUCTION}.get(
             self.settings.policy_verification)
         if policy_instruction:
             notices.append(policy_instruction)

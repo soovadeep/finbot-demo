@@ -164,9 +164,11 @@ class VerifierChain:
 REPAIR_PROMPT = ("<verifier>Your previous answer was NOT shown to the user because these checks failed: "
                  "{reasons}. Rewrite the answer using only facts from tool results (call tools again if "
                  "needed), and don't promise outcomes the records don't show. For policy_* failures, search "
-                 "the approved knowledge base again if needed; use complete supporting source sentences "
-                 "with their source URL, preserving conditions and exceptions. A citation alone is not "
+                 "the approved knowledge base again if needed; use complete supporting source passages "
+                 "with their source URL, preserving neighboring conditions and exceptions. A citation alone is not "
                  "support. If the data is missing, say so."
+                 " For comparison_* failures, fetch every requested record again, and include each record's "
+                 "requested fields or explicitly state that it was not found. Do not silently omit a record."
                  "</verifier>")
 
 

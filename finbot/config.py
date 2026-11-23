@@ -105,7 +105,7 @@ class Settings:
     # second time: a failed draft is replaced by the record-built answer (or the refusal).
     repair_attempts: int = field(default_factory=lambda: int(_env("FINBOT_REPAIR_ATTEMPTS", "1")))
     # Optional policy-prose verification: off (legacy checks), extractive (complete cited
-    # source sentences only), model (tool-free evidence review using the strong model chain),
+    # passages, including neighboring conditions), model (tool-free evidence review using the strong model chain),
     # strict (whole cited passages with dated/versioned evidence; no missing-lookup bypass),
     # hybrid (hard evidence requirements plus LLM support/applicability review).
     policy_verification: str = field(default_factory=lambda: _env("FINBOT_POLICY_VERIFICATION", "off"))
