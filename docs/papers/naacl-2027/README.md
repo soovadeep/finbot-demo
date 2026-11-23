@@ -1,6 +1,6 @@
 # NAACL 2027 System Demonstrations: paper materials
 
-**Finbot: Turning Payment Questions into Evidence Grounded Answers.**
+**Finbot: From Payment Ambiguity to Evidence Grounded Answers.**
 Sandip Nandi, Apurba Bose, Aishwarya Bose, Soovadeep Bakshi (independent researchers).
 
 The paper presents the conversation and evidence-inspector interfaces as a read-only support
