@@ -3,3 +3,6 @@ name = "finbot"
 version = "0.4.0"
 description = "Guarded fintech support chatbot: the model drafts, code verifies (synthetic data only)"
 requires-python = ">=3.11"
+
+[project.optional-dependencies]
+semantic-bedrock = ["boto3"]

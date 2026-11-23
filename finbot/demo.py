@@ -217,9 +217,10 @@ def run_demo(question: str, fault: str = "none", *, records: list[dict] | None =
     """live=True asks for the live writer; it is used only when the server enables it
     (FINBOT_DEMO_WRITER=live) and the caps allow, otherwise the scripted writer answers."""
     note = None
+    semantic = os.environ.get("FINBOT_DEMO_SEMANTIC", "off")
     if live and writer()["mode"] == "live_model":
         key = json.dumps([question, fault, records], sort_keys=True, default=str)
-        if key in LIVE_CACHE:
+        if semantic == "off" and key in LIVE_CACHE:
             LIVE_CACHE.move_to_end(key)
             return copy.deepcopy(LIVE_CACHE[key])
         if LIVE_BUDGET.allow(client):
@@ -228,7 +229,8 @@ def run_demo(question: str, fault: str = "none", *, records: list[dict] | None =
             except Exception:  # noqa: BLE001 - a provider outage must not break the page
                 note = "The live model did not answer; the scripted writer answered instead."
             else:
-                LIVE_CACHE[key] = copy.deepcopy(result)
+                if semantic == "off":
+                    LIVE_CACHE[key] = copy.deepcopy(result)
                 while len(LIVE_CACHE) > 256:
                     LIVE_CACHE.popitem(last=False)
                 return result
@@ -255,6 +257,7 @@ def _run_demo(question: str, fault: str = "none", *, records: list[dict] | None 
     toolbox = ToolBox(InMemoryTxns(rows), InMemoryLogs(copy.deepcopy(DEMO_LOGS)), kb, domains=["payments"])
     model = DemoModel(fault, live)
     settings = Settings(llm_provider="fake", guardrail_provider="local", store_provider="sqlite",
+                        semantic_verification=os.environ.get("FINBOT_DEMO_SEMANTIC", "off"),
                         auth_mode="hmac", repair_attempts=1, record_fallback=True, routing="single",
                         policy_verification="extractive",
                         llm_retry_attempts=1, support_contact="the demo support desk", tool_policy_path="")
@@ -277,6 +280,7 @@ def _run_demo(question: str, fault: str = "none", *, records: list[dict] | None 
         "writer": writer()["label"] if live else "Scripted writer", "synthetic_data": True,
         "question": turn.question,
         "policy_verification": "extractive",
+        **({"semantic_verification": "bedrock"} if settings.semantic_verification == "bedrock" else {}),
         "fault": fault, "injections": model.injections, "outcome": outcome,
         "steps": [asdict(step) for step in steps], "evidence": turn.tools_called,
         "final": {"answer": turn.answer, "blocked_by": turn.blocked_by, "reasons": turn.reasons,

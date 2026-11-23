@@ -27,6 +27,12 @@ class Settings:
     guardrail_id: str = field(default_factory=lambda: _env("FINBOT_GUARDRAIL_ID"))
     guardrail_version: str = field(default_factory=lambda: _env("FINBOT_GUARDRAIL_VERSION", "DRAFT"))
 
+    # Optional paid semantic check inside the repair/fallback gate. Dedicated
+    # grounding-only guardrail, pinned published version; default needs no AWS.
+    semantic_verification: str = field(default_factory=lambda: _env("FINBOT_SEMANTIC_VERIFICATION", "off"))
+    semantic_guardrail_id: str = field(default_factory=lambda: _env("FINBOT_SEMANTIC_GUARDRAIL_ID"))
+    semantic_guardrail_version: str = field(default_factory=lambda: _env("FINBOT_SEMANTIC_GUARDRAIL_VERSION"))
+
     # Knowledge base
     kb_path: str = field(default_factory=lambda: _env("FINBOT_KB_PATH", "kb_index.json"))
     data_dir: str = field(default_factory=lambda: _env("FINBOT_DATA_DIR", "data"))  # synthetic dataset

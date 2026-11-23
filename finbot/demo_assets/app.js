@@ -99,6 +99,16 @@ function selectStage(index) {
   }
   (step.checks || []).forEach((check) => {
     const detail = node("details");
+    if (check.kind === "semantic_grounding") {
+      detail.append(node("summary", `Bedrock evidence check: ${check.verdict}`),
+        node("p", `Version ${check.version}; ${check.latency_ms} ms. A passing score is not proof of correctness or completeness.`, "check-note"));
+      (check.filters || []).forEach((f) => detail.append(node("p",
+        `${f.type}: score ${f.score}, threshold ${f.threshold}.`, "check-note")));
+      if (check.verdict === "unavailable") detail.append(node("p",
+        "The check could not complete. The answer was withheld; this is not a detected factual error.", "check-note"));
+      draft.append(detail);
+      return;
+    }
     if (check.kind === "financial_role") {
       detail.append(node("summary", `${check.role.replaceAll("_", " ")}: ${check.verdict}`),
         node("p", check.text, "answer-text"),

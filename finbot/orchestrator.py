@@ -228,6 +228,8 @@ class Chatbot:
     def __init__(self, llm, guardrail, toolbox: ToolBox, settings, audit_path: str | None = None,
                  policies: PolicySource | None = None, tickets: TicketStore | None = None):
         self.llm, self.guard, self.toolbox, self.settings = llm, guardrail, toolbox, settings
+        from .semantic_verification import configured_verifier
+        configured_verifier(settings, "")  # validate configuration without provider calls
         PolicyDocumentVerifier(settings.policy_verification, max_age_days=settings.kb_max_age_days)
         self.audit_path = audit_path
         self.policies: PolicySource = policies or StaticPolicySource()
@@ -497,11 +499,13 @@ class Chatbot:
             return "".join(b.text for b in response.content)
 
         with self.telemetry.span("finbot.verify") as sp:
+            from .semantic_verification import configured_verifier
             gate = self.gate.run(answer, tool_log, lambda: cs.memory.focus, regenerate, fallback,
                                  extra_verifiers=(comparison, PolicyDocumentVerifier(self.settings.policy_verification,
                                                                          review_policy, as_of=self.today(),
                                                                          max_age_days=self.settings.kb_max_age_days,
-                                                                         question=text),))
+                                                                         question=text),
+                                                  *configured_verifier(self.settings, text)))
             sp.set(finbot__verify__action=gate.action, finbot__repaired=gate.repaired,
                    finbot__records_only=gate.records_only, finbot__reasons=tel.codes(gate.reasons))
         tool_log, answer = gate.tool_log, gate.answer
