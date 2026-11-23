@@ -12,7 +12,7 @@ class DemoScenarios(unittest.TestCase):
     def test_all_presets_reach_the_advertised_outcome(self):
         expected = {"correct": "passed", "repair": "repaired", "fallback": "record_fallback",
                     "timeout": "passed", "pair": "passed", "binding": "repaired", "refusal": "blocked",
-                    "policy": "repaired"}
+                    "policy": "repaired", "settlement_role": "repaired", "refund_role": "repaired"}
         for scenario in SCENARIOS:
             with self.subTest(scenario=scenario["id"]):
                 result = run_demo(scenario["question"], scenario["fault"])

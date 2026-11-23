@@ -1,7 +1,8 @@
 """Claim binding: each stated value must come from the record its sentence is about.
 
 The detail checks ask "does this amount, code or date appear in this turn's tool data?".
-With one record that is enough. With two it is not: "txn_A for 12.66 was approved, txn_B
+Even within one record, values can have different roles (financial_roles.py). With two,
+"txn_A for 12.66 was approved, txn_B
 for 28.24 was declined" swaps two real values and passes every per-value check. Binding
 ties each clause to one record and checks the clause against that record alone.
 

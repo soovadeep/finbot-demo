@@ -296,6 +296,9 @@ class FakeLLM:
                         g = d["guidance"]
                         s += f". Next step: {g['next_step']} Retry policy: {g['retry_rule']}"
                     parts.append(s if s.endswith(".") else s + ".")
+                    from .financial_roles import lifecycle_summary
+                    if details := lifecycle_summary(d):
+                        parts.append(details)
             elif r["source"] == "routing" and r["status"] == "found":
                 parts.append(self._routing(r["data"]))
             elif r["source"] == "processor_health" and r["status"] == "found":

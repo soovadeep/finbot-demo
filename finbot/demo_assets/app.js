@@ -33,6 +33,7 @@ function explainReason(reason) {
     ungrounded_amount: "This amount is not supported by the eligible evidence.",
     value_from_other_record: "A claimed value belongs to a different record. Check each transaction's own fields.",
     currency_mismatch: "The currency does not match the named record's currency fields.",
+    financial_role_mismatch: "The value is not supported by the field for this financial claim. An expected date is not an actual date; a payment amount is not a refund amount.",
     comparison_missing_record: "The answer omits one of the records you asked to compare.",
     comparison_missing_field: "A requested comparison field is missing or does not match that record.",
     comparison_missing_evidence: "One of the requested records has not been checked.",
@@ -98,6 +99,13 @@ function selectStage(index) {
   }
   (step.checks || []).forEach((check) => {
     const detail = node("details");
+    if (check.kind === "financial_role") {
+      detail.append(node("summary", `${check.role.replaceAll("_", " ")}: ${check.verdict}`),
+        node("p", check.text, "answer-text"),
+        node("p", `Record: ${check.record_id || "unresolved"}. Field: ${check.path}. Claimed: ${check.claimed_value}. Recorded: ${check.evidence_value ?? "unavailable"}.`, "check-note"));
+      draft.append(detail);
+      return;
+    }
     detail.append(node("summary", `Policy statement ${check.id + 1}: ${check.verdict} (${check.method})`),
       node("p", check.text, "answer-text"));
     check.evidence.forEach((evidence) => {

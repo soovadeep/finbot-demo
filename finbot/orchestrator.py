@@ -239,12 +239,14 @@ class Chatbot:
         self.today = date.today  # injectable for tests (help-page age)
         procs = getattr(toolbox, "processors", None)
         names = set(procs.names()) if procs is not None else None
+        from .financial_roles import FinancialRoleVerifier
         self.gate = HallucinationGate(VerifierChain([
             RecordIdentityVerifier(),
             EvidenceVerifier(names),
             ReasonVerifier(),
             DomainVerifier(),
             BindingVerifier(),
+            FinancialRoleVerifier(),
             LanguageVerifier(),
             PolicyVerifier(lambda: t.policy if (t := current_turn()) else BASELINE),
             TicketVerifier(lambda: set(t.tickets) if (t := current_turn()) else set()),

@@ -39,9 +39,17 @@ FAULTS = {
     "amount_always": "Invented fee in draft and repair",
     "swap_once": "Swap two transaction amounts in first draft",
     "policy_once": "Reverse a policy rule while keeping its citation",
+    "settlement_once": "Present an expected settlement date as an actual date",
+    "refund_once": "Present the payment amount as the refund amount",
 }
 PAIR = "Compare txn_A1B2C3D4 and txn_E5F6G7H8: what are their amounts and statuses?"
 SCENARIOS = [
+    {"id": "settlement_role", "title": "Expected is not actual", "fault": "settlement_once",
+     "question": "What are the settlement details for txn_ROLE0001?",
+     "description": "The date exists on the right record, but only as an expectation. Inspect the field that rejects an actual-date claim."},
+    {"id": "refund_role", "title": "Payment is not refund", "fault": "refund_once",
+     "question": "What are the payment and refund details for txn_ROLE0001?",
+     "description": "A $200 payment has a $50 refund. Reusing the payment amount as the refund fails the role check."},
     {"id": "correct", "title": "A supported answer", "fault": "none",
      "question": "Why was txn_A1B2C3D4 declined?",
      "description": "The scripted draft passes the implemented checks."},
@@ -68,6 +76,9 @@ SCENARIOS = [
 ]
 TIMEOUT = {"txn_id": "txn_TIMEOUT01", "tenant_id": "m_100", "status": "unknown", "amount": "80.00",
            "currency": "USD", "error": "PROCESSOR_TIMEOUT", "created_at": "2026-11-12T16:15:00Z"}
+ROLE_RECORD = {"txn_id": "txn_ROLE0001", "tenant_id": "m_100", "status": "approved", "amount": "200.00",
+               "currency": "USD", "settlement": {"status": "settled", "expected_date": "2026-11-20"},
+               "refund": {"status": "succeeded", "amount": "50.00"}}
 
 
 class ScriptedPayments(FakeLLM):
@@ -159,7 +170,26 @@ class DemoModel:
             return response
         before = "".join(b.text for b in response.content if b.type == "text")
         after, marker = before, None
-        if self.fault == "policy_once":
+        if self.fault == "settlement_once":
+            after = before.replace("Expected settlement date:", "Actual settlement date:")
+            if after != before:
+                after = after.replace(" An actual settlement date is not recorded.", "")
+                marker = "expected date relabelled as actual; date value unchanged"
+        elif self.fault == "refund_once":
+            blocks = messages[-1]["content"]
+            for block in blocks if isinstance(blocks, list) else []:
+                if block.get("type") != "tool_result":
+                    continue
+                result = unwrap(block["content"])
+                if result["status"] != "found" or result["source"] != "txn_db":
+                    continue
+                data = result["data"]
+                refund = (data.get("refund") or {}).get("amount")
+                if refund and refund != data.get("amount"):
+                    after = after.replace(f"Refund amount: {refund}.", f"Refund amount: {data['amount']}.")
+            if after != before:
+                marker = "payment amount reused as refund amount on the same record"
+        elif self.fault == "policy_once":
             after = before.replace("Debit and prepaid cards cannot be surcharged.",
                                    "Debit and prepaid cards can be surcharged.")
             if after != before:
@@ -221,7 +251,7 @@ def _run_demo(question: str, fault: str = "none", *, records: list[dict] | None 
     kb = Index()
     for page in DEMO_DOCS:
         kb.upsert_page(copy.deepcopy(page))
-    rows: list[dict] = copy.deepcopy(records if records is not None else [*DEMO_TXNS, TIMEOUT])
+    rows: list[dict] = copy.deepcopy(records if records is not None else [*DEMO_TXNS, TIMEOUT, ROLE_RECORD])
     toolbox = ToolBox(InMemoryTxns(rows), InMemoryLogs(copy.deepcopy(DEMO_LOGS)), kb, domains=["payments"])
     model = DemoModel(fault, live)
     settings = Settings(llm_provider="fake", guardrail_provider="local", store_provider="sqlite",

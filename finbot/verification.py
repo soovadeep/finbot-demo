@@ -169,6 +169,9 @@ REPAIR_PROMPT = ("<verifier>Your previous answer was NOT shown to the user becau
                  "support. If the data is missing, say so."
                  " For comparison_* failures, fetch every requested record again, and include each record's "
                  "requested fields or explicitly state that it was not found. Do not silently omit a record."
+                 " For financial_role_mismatch, match each value to its named field: an expected settlement "
+                 "date is not an actual settlement date, and a payment amount is not a refund amount. "
+                 "State when an actual date is not recorded."
                  "</verifier>")
 
 

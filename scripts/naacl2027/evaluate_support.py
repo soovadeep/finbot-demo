@@ -32,7 +32,7 @@ from finbot.tools import InMemoryLogs, InMemoryTxns, ToolBox  # noqa: E402
 from finbot.verification import VerifierChain  # noqa: E402
 
 FIXTURES = ROOT / "data/naacl2027/support-policies.json"
-PROTOCOL = "finbot-varied-support-v2"
+PROTOCOL = "finbot-varied-support-v3"
 BASELINE = ROOT / "results/naacl2027/varied-support.json"
 ASSERTION = re.compile(r"Transaction (txn_[A-Za-z0-9]{6,}) was (\w+) for (\d+\.\d{2}) ([A-Z]{3})")
 
@@ -267,7 +267,8 @@ def evaluate() -> dict:
     sources = ["scripts/naacl2027/evaluate_support.py", "data/naacl2027/support-policies.json",
                "finbot/demo.py", "finbot/orchestrator.py", "finbot/verification.py", "finbot/guardrails.py",
                "finbot/policy_documents.py", "finbot/binding.py", "finbot/tools.py", "finbot/llm.py",
-               "finbot/comparison.py", "finbot/knowledge.py", "finbot/recordanswer.py", "finbot/config.py"]
+               "finbot/comparison.py", "finbot/knowledge.py", "finbot/recordanswer.py", "finbot/config.py",
+               "finbot/financial_roles.py"]
     return {"protocol": PROTOCOL, "evaluation_type": "post_fix_development_regression",
             "new_model_calls": 0, "human_participants": 0, "verifier_rules_changed": True,
             "baseline": {"path": str(BASELINE.relative_to(ROOT)),
@@ -299,10 +300,10 @@ def evaluate() -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--out", type=Path, default=ROOT / "results/naacl2027/varied-support-fixed.json")
+    parser.add_argument("--out", type=Path, default=ROOT / "results/naacl2027/varied-support-roles.json")
     args = parser.parse_args()
-    if args.out.resolve() == BASELINE.resolve():
-        parser.error("The original baseline is immutable; choose a different output path.")
+    if args.out.resolve() in {BASELINE.resolve(), (ROOT / "results/naacl2027/varied-support-fixed.json").resolve()}:
+        parser.error("Historical reports are immutable; choose a different output path.")
     report = evaluate()
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(report, indent=2) + "\n")
