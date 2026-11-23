@@ -30,9 +30,12 @@ the added baseline comparison is cache-only and reports missing coverage explici
 
 See [evaluation scope](evaluation/README.md) and
 [the simulation README](../../../results/naacl2027/clarification-sim/README.md) for what each file holds.
-The [pilot protocol](evaluation/user-study-protocol.md) documents the local `/pilot` interface,
-allocation and analysis commands. [Claim boundaries](evaluation/claim-boundaries.md) documents
-independent end-to-end scoring. No human pilot or independent semantic audit has been completed.
+The submission relies on the existing simulations, automated controller checks and verification
+diagnostics; participant recruitment is not part of this revision. The
+[pilot protocol](evaluation/user-study-protocol.md) and local `/pilot` interface are optional
+future-work tools. [Claim boundaries](evaluation/claim-boundaries.md) documents independent
+end-to-end scoring. No human pilot or independent semantic audit has been completed or used
+as evidence for this submission.
 
 ## Build the paper
 

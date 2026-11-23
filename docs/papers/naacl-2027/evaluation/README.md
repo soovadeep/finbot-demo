@@ -3,6 +3,22 @@
 The released evaluations measure different things. Do not describe component results as measured
 performance of the hosted conversation, or engineering checks as a human study.
 
+## Submission evidence without participant recruitment
+
+The current submission uses the following completed evaluations:
+
+- Cached simulated-customer comparisons, including full-list, amount-first and most-distinct
+  baselines. Report correct/wrong confirmations, unresolved cases and question count.
+- Authored replays through the deployed conversation controller. Report regression coverage,
+  including its failure boundaries, rather than a customer-accuracy estimate.
+- Matched clean/corrupted drafts, reporting both pre-existing failures and mutation-triggered
+  rejections, alongside the historical live-writer audit and its known semantic errors.
+
+These results can be reproduced without recruiting participants or making new model calls.
+They do not establish that clarification is faster, easier, or preferred by real users.
+The full-list baseline's strong identification results are part of the finding, not a gap
+that must be filled with a human study before reporting the engineering evaluation.
+
 ## Clarification component benchmark
 
 `simulate_customers.py` evaluates `ClarificationSession`: uniform prior over two to eight records,
@@ -50,11 +66,13 @@ whose clean controls already fail. Mutation-triggered rejection is 2,098/2,670 a
 (78.6%); bare links trigger zero new rejections. Keep both denominators and the original clean-draft
 false rejection rate. The verifier and historical raw result file are unchanged.
 
-## Planned human pilot
+## Optional future human study
 
 `http://127.0.0.1:8765/pilot` provides an export-only comparison of the current four-record
-clarification UI and a full-list baseline. See [the protocol](user-study-protocol.md) for assignment,
-consent, timing and analysis. The default is rehearsal; no participant results are bundled.
+clarification UI and a full-list baseline. It is an optional future-work tool, not a dependency
+of the current submission or its reproduction commands. No study is scheduled and no participant
+results are bundled. See [the protocol](user-study-protocol.md) for assignment, consent, timing
+and analysis if participants become available. The default is rehearsal.
 Run `python scripts/naacl2027/user_study.py --help` for allocation and analysis commands.
 
 ## Independent end-to-end assessment
@@ -63,4 +81,5 @@ See [claim boundaries](claim-boundaries.md) for the scoring rubric and
 `score_end_to_end.py` commands. Correct record selection, supported claims and sufficient
 completeness must all hold. The script creates unfilled forms and leaves the success rate
 undefined while relevant answers lack independent judgments. Regression field checks and
-gate verdicts are not independent semantic labels. Actual auditors are still required.
+gate verdicts are not independent semantic labels. Independent judgments would be required to
+claim that accuracy measure; the current submission makes no such claim.

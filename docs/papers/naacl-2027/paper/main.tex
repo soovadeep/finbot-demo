@@ -37,8 +37,8 @@ eight synthetic records. Decision value with two questions yields 49\%/66\% corr
 across two simulators, versus 60\%/81\% for showing all records. A simple distinct-option
 heuristic matches or exceeds decision value with one question. On previously held-out drafts,
 82\% of corrupted answers are blocked, but matched controls reveal pre-existing rejections;
-mutations trigger rejection in 79\% of accepted controls. We release controller replays,
-paired diagnostics and a human-study protocol; no usability benefit is yet established.
+mutations trigger rejection in 79\% of accepted controls. We release cached component comparisons,
+controller replays and paired diagnostics. These evaluate system behavior, not human usability.
 \end{abstract}
 
 \section{Introduction}
@@ -280,10 +280,10 @@ with two questions has 223 episodes per simulator on the original set, not 224.
 Showing all records yields more correct confirmations than the shortlist (60\%/81\%). In a
 component variant, offering the full list after shortlist rejection raises DV correctness to
 66\%/81\%, with 49\%/30\% of customers seeing eight records, but wrong selections rise to
-3.1\%/4.9\%. These are observed rates, not evidence of superiority or equivalence. Question
-count alone does not measure effort. A local pilot and prespecified protocol compare the actual
-four-record clarification interface against a full list, recording time, errors, abstention
-and effort. No participant data have been collected or usability advantage established.
+3.1\%/4.9\%. These are observed rates, not evidence of superiority or equivalence. This
+comparison measures simulated record identification and question count, not human effort or
+completion time. It does not establish that clarification is faster or easier than a full list;
+human usability evaluation remains future work.
 
 \paragraph{Without unique amounts.}
 \label{sec:same}

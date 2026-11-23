@@ -1,7 +1,11 @@
-# Planned usability pilot: clarification versus showing all records
+# Optional future study: clarification versus showing all records
 
-**Status: protocol and collection interface prepared; no participants recruited or results collected.**
-This pilot tests the current four-record demo. It cannot substantiate benefits for eight-record
+**Status: optional future-work protocol; no study scheduled, participants recruited or results collected.**
+The current submission uses simulations, controller regressions and verification diagnostics;
+it does not depend on running this study. Retain this protocol for possible future use, without
+treating an available collection interface as evaluation evidence.
+
+If conducted, this pilot would test the current four-record demo. It cannot substantiate benefits for eight-record
 accounts, voice interfaces, real customers, or production financial accuracy.
 
 ## Question and design
@@ -18,15 +22,15 @@ scenario answer keys. Two task notes identify a transfer or a card payment using
 while leaving the date unknown. Participants may leave a task unresolved or correct a selection.
 This isolates the identification interface, not a live model's generation ability.
 
-Generate balanced, randomly ordered assignment slots:
+If a future study is feasible, generate balanced, randomly ordered assignment slots, for example:
 
 ```sh
 python scripts/naacl2027/user_study.py allocate --participants 24 --out assignments.json
 python -m finbot.demo
 ```
 
-The 24 slots (six per arm/task cell) are an **exploratory recruitment plan**, not a power calculation
-or evidence of participation. Decide a feasible sample and stopping rule in advance. Assign slots
+The 24 slots (six per arm/task cell) are an **example allocation**, not a recruitment commitment,
+power calculation or evidence of participation. Decide a feasible sample and stopping rule in advance. Assign slots
 in order after consent; do not let participants choose the arm. Keep participant exports, assignment
 records and consent records outside this public repository. Use opaque P-codes, not names or emails.
 Obtain the ethics review/consent appropriate to the recruiting institution before collection.

@@ -58,8 +58,10 @@ Run `python scripts/naacl2027/paired_verification.py` for matched clean/corrupte
 The raw 82.3% rejection rate includes pre-existing failures; mutations trigger 2,098/2,670
 rejections among accepted controls (78.6%), including zero for added bare links.
 
-The local `/pilot` page and [study protocol](docs/papers/naacl-2027/evaluation/user-study-protocol.md)
-support a consented, export-only comparison with a full list. No participant results are included.
+The submission's evaluation uses cached simulations, controller replays and verification diagnostics;
+reproducing those results requires no participant recruitment. The local `/pilot` page and
+[study protocol](docs/papers/naacl-2027/evaluation/user-study-protocol.md) are optional future-work
+tools, not a planned or completed study supporting this submission. No participant results are included.
 See [claim boundaries and independent scoring](docs/papers/naacl-2027/evaluation/claim-boundaries.md)
 for remaining semantic failures and how to assess correct selection **and** answer quality.
 
