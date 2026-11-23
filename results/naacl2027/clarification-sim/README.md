@@ -4,6 +4,12 @@ Language models play customers who did not quote a transaction reference; Finbot
 three multiple-choice questions and the customer then confirms a record. These are simulated
 customers, not people.
 
+This is a **component evaluation of `ClarificationSession`**, not a measurement of the hosted
+`Conversation` controller. The deployed controller parses openings, filters on unhedged details,
+and presents matching/other records rather than a ranked two-record shortlist. See
+[evaluation scope](../../../docs/papers/naacl-2027/evaluation/README.md) and the separate
+`conversation-replay.json` workflow regression report.
+
 | File | Contents |
 |---|---|
 | `rows-<sim>.jsonl` | One row per episode run on the 2-to-5-candidate benchmark, shortlist confirmation (the demo's design) |

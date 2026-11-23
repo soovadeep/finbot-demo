@@ -34,6 +34,12 @@ the evidence inspector. The demo uses synthetic records and a clearly labelled s
 
 ## Reproduce the evaluation
 
+The 224-question simulation evaluates the clarification **component**, not the deployed
+conversation's complete interaction policy. See the [evaluation scope](docs/papers/naacl-2027/evaluation/README.md).
+Run `python scripts/naacl2027/evaluate_conversation.py` for 36 authored regression replays through
+the actual conversation endpoint's controller, including corrections, abstention and wrong confirmation.
+These scripted checks are not customer-accuracy measurements.
+
 | Result | Command | Output |
 |---|---|---|
 | Ambiguity benchmark (224 Banking77 questions, 2 to 8 candidate records) | `python scripts/naacl2027/build_ambiguity_set.py` (and `--size 8`) | `data/naacl2027/` |

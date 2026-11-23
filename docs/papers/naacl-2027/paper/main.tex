@@ -31,12 +31,12 @@ Customers rarely quote a transaction ID, so a payment-support assistant that gue
 payment is meant can answer correctly about the wrong money. Finbot, an open-source
 demonstration, joins two steps in one conversation. It keeps a probability over the customer's
 authorized records, asks the one or two questions with the highest expected decision value, and
-has the customer confirm a record from a short list; a probability never selects a record. It then
+has the customer confirm a record; a probability never selects a record. It then
 answers about that record only through a conservative evidence-consistency gate that checks every
 amount, status and cause against it, with repair, a record-built answer and refusal as fallbacks.
-An inspector shows beliefs, question scores, evidence and rejected drafts. On 224 real Banking77
-questions with references removed, paired with synthetic records and answered by simulated
-customers from two model families, one question lifts the share of episodes whose most likely of
+An inspector shows beliefs, question scores, evidence and rejected drafts. In a component study, 224 Banking77
+questions with references removed are paired with synthetic records and answered by simulated
+customers from two model families. One question lifts the share of episodes whose most likely of
 eight records is the right one from 13\% to 69--74\% (fixed order: 19\%). Confirmation keeps
 wrong-record selections at 2--4\%, against 21--26\% when acting on the top guess. With equal
 amounts, one question still ranks the right record first in 46\% of episodes (fixed order: 16\%).
@@ -64,7 +64,7 @@ Finbot puts the two halves in one conversation (Figure~\ref{fig:architecture}). 
 step narrows the customer's authorized records with at most two multiple-choice questions and
 ends only when the customer confirms a record. A verification step then answers about that
 record, and code decides what may be said through a conservative evidence-consistency gate. The demonstration makes each decision inspectable.
-Each part rests on established techniques; what is new is how they are joined. In this
+Each part rests on established techniques; our contribution is their inspectable integration. In this
 architecture for conversations about ambiguous structured records, a probability ranks records but
 never authorizes an answer, and the customer's confirmation is the only path from the
 clarification step to the answering step. Our contributions are:
@@ -75,7 +75,7 @@ clarification step to the answering step. Our contributions are:
   paired with two to eight similar records, and a simulated-customer protocol with three personas.
 \item An evaluation with two simulator families, safety stress tests, a same-amount slice,
   sensitivity, a language-model question chooser, free-text replies, held-out tests of the answer
-  checks and a live-writer run. It needs no human participants.
+  checks, a live-writer run and separate replays of the deployed controller. No human study has been conducted.
 \end{itemize}
 The demonstration is meant for people who build assistants over customers' account data, and
 for researchers studying clarification and grounded generation. A hosted copy runs at \url{https://finbot-demo-20852907589.us-central1.run.app}. The
@@ -138,8 +138,9 @@ value, the selector that does best in Section~\ref{sec:eval}, and its inspector 
 scores.
 
 \paragraph{Confirmation and corrections.}
-The customer then sees the most likely records, most likely first, and picks one or says none
-match. A high probability is used only to order this list; it never selects a record. The
+The demo filters on unhedged details, keeps alternatives for hedged details, and shows matching
+records with other records available separately. The customer picks one or says none match.
+A probability never selects a record. The
 customer can change the selection later. A correction increases a revision counter and
 discards the earlier answer, so no answer about the old record survives.
 
@@ -270,7 +271,12 @@ Appendix~\ref{app:bench}). Results on these 192 differ from those on all 224 by 
 points. Because amounts are unique, an answer about the amount identifies a record outright;
 Section~\ref{sec:same} deliberately removes this shortcut with a second copy of the set.
 
-\subsection{Simulated customers}
+\subsection{Clarification component study}
+
+This study uses \texttt{ClarificationSession}, which updates beliefs from option replies and
+offers a ranked two-record shortlist. The deployed \texttt{Conversation} controller also parses
+openings and free text, filters on unhedged details and exposes other records. Shared scoring
+functions do not make these policies equivalent; the rates below describe the component only.
 
 A language model plays the customer. It sees its opening message and a memory note, never the
 candidate list until the confirmation step, and it answers in JSON. Each episode gets one of three
@@ -292,7 +298,7 @@ when the customer confirms the target, \emph{wrong} when they confirm another re
 
 
 \paragraph{Results.}
-Table~\ref{tab:main} gives the main results. Among eight records, one Bayesian question puts
+Table~\ref{tab:main} gives the component results. Among eight records, one Bayesian question puts
 the target first in 65--74\% of episodes, against 19\% for a question asked in fixed order and
 13\% for none; the customer then confirms the target in 44--63\% of episodes, about twice the
 fixed-order rate under both simulators. With a budget of two, fixed order catches up (48\% and
@@ -316,9 +322,8 @@ from all others in kind, payee or date. One decision-value question puts the tar
 of episodes (fixed order 16\%, none 13\%) and in 85\% of the 99 (fixed order 18\%). On those 99,
 decision value with two questions confirms the target in 68\% (Haiku) and 85\% (Llama) with
 2--3\% wrong, against 73\% and 88\% for the full list (95\% CIs in Appendix~\ref{app:same}). In the
-other 125 the target has a twin that no question or list can separate. When the remaining records
-agree on every attribute, Finbot says so, ranks none first and asks for the reference or
-lets the customer leave it unresolved.
+other 125 the target has an indistinguishable twin. The component still offers a ranked shortlist;
+the deployed demo instead flags indistinguishable matching records and requests a reference or abstention.
 
 \subsection{Sensitivity, baseline and free text}
 \label{sec:more}
@@ -584,6 +589,10 @@ scenario, trace export, keyboard navigation, stale inputs, layouts from 320 to 1
 pass. A second script exercises the conversation page (parsing, questions, unknown replies,
 corrections, an unmatched payment, the mobile layout). axe-core 4.10.3 finds no WCAG 2.1 A or AA
 violations in 14 interface states, and no page makes an external request or raises a script error.
-These are feature checks, not measures of user comprehension.
+These are feature checks, not measures of user comprehension. A separate replay script calls the
+deployed conversation controller on nine authored event sequences under four fault modes: all
+36 meet their expected behavior. These include deliberately wrong confirmation and unresolved
+cases; passing regression checks does not mean every conversation succeeded. Correct selection
+and expected answer fields are scored separately from the verifier verdict.
 
 \end{document}
