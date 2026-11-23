@@ -2,8 +2,11 @@
 
 ## What the present evidence supports
 
-The contribution is an inspectable workflow linking ambiguous-record clarification, explicit
-customer confirmation and evidence-consistency checks. It is not a novel Bayesian method,
+The contribution is inspectable payment support linking message interpretation, ambiguous-record
+clarification, customer confirmation, scoped retrieval, evidence-consistency checks and recovery.
+The separate inspector also demonstrates record comparisons and cited policy answers; those
+scenarios are not general-purpose routing capabilities of the conversation interface.
+It is not a novel Bayesian method,
 an established best question selector, or a universally safe financial agent. The component's
 most-distinct heuristic outperforms one-question decision value on this benchmark.
 
@@ -14,7 +17,10 @@ refund omission**. Treat these as semantic-role and completeness failures; the h
 by authors with AI assistance, not an independent blinded study. Preserve that provenance.
 
 Confirmation is an authorization boundary, not a correctness oracle. Customers can confirm the
-wrong record. The observed wrong-selection rates of 2.2%/4.0% for the two-question DV component
+wrong record, including an alternative that contradicts a previously supplied detail: the controller
+checks catalogue membership, not consistency with those details. User corrections trigger a new
+confirmation; the verifier cannot independently recover the customer's intended record.
+The observed wrong-selection rates of 2.2%/4.0% for the two-question DV component
 are numerically above 1.8%/3.6% for the full list. Neither overlapping intervals nor a small observed
 difference establishes equivalence, non-inferiority or a production safety bound.
 

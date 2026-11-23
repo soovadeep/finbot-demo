@@ -1,7 +1,12 @@
 # NAACL 2027 System Demonstrations: paper materials
 
-**Clarify, then Verify: A Payment-Support Assistant That Asks Which Record You Mean Before It
-Answers.** Sandip Nandi, Apurba Bose, Aishwarya Bose, Soovadeep Bakshi (independent researchers).
+**Finbot: An Inspectable AI Assistant for Evidence-Grounded Payment Support.**
+Sandip Nandi, Apurba Bose, Aishwarya Bose, Soovadeep Bakshi (independent researchers).
+
+The paper presents the conversation and evidence-inspector interfaces as a read-only support
+system: clarification and corrections, payment explanations, comparisons across records,
+cited policy answers, and inspectable verification and recovery. The inspector's direct policy
+and comparison scenarios are distinguished from the conversation's confirmed-record summaries.
 
 - [Reviewer guide](reviewer-guide.md): the hosted demo, the local demo and what to try.
 - [Paper (PDF)](finbot-naacl2027.pdf)

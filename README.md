@@ -1,6 +1,6 @@
-# Clarify, then Verify
+# Finbot
 
-A payment-support assistant that asks which record you mean before it answers.
+An inspectable AI assistant for evidence-grounded payment support.
 Code, data and demo for the NAACL 2027 System Demonstrations paper by Sandip Nandi,
 Apurba Bose, Aishwarya Bose and Soovadeep Bakshi.
 
@@ -9,17 +9,22 @@ Nothing to install. The [walkthrough](docs/papers/naacl-2027/reviewer-guide.md) 
 every scenario and what to look for. The [paper](docs/papers/naacl-2027/finbot-naacl2027.pdf) is in the repository. The 2.5-minute demo video is
 [docs/papers/naacl-2027/video/finbot-naacl2027-demo.mp4](docs/papers/naacl-2027/video/finbot-naacl2027-demo.mp4).
 
-Customers rarely quote a transaction ID, and "my $200 payment hasn't arrived" can match several
-payments. Finbot does two things in one conversation:
+Payment support involves identifying the relevant payment, explaining declines or uncertain
+outcomes, comparing records and answering policy questions. Finbot demonstrates these tasks
+through two interfaces, using synthetic account records and fictional policies:
 
-1. **Clarify.** The demo filters records using confidently supplied details and scores up to two
-   clarification questions. It shows matching records, with other records available separately.
-   The customer confirms a record; a probability never selects one.
-2. **Verify.** It fetches the confirmed record again and checks recognized claim formats against
-   the evidence. A failing draft gets one repair, then a checked answer built from the record,
-   then a refusal. These finite rules do not establish semantic correctness or completeness.
+1. **Conversation.** Interpret supplied details, ask up to two scored clarification questions,
+   request explicit record confirmation, and explain that record's status and details.
+   Customer corrections invalidate the selection and mark previous answers as superseded.
+2. **Evidence inspector.** Explore decline explanations, unknown outcomes, two-record comparisons
+   and cited policy answers. These direct scenarios are separate from the conversation interface.
+3. **Verification and recovery.** Inspect retrieved evidence, drafts and check results. Inject
+   wrong statuses, invented fees, swapped amounts or policy contradictions to observe repair,
+   a checked record-built fallback, or refusal. The fault options depend on the interface.
 
-An inspector shows the beliefs, question scores, retrieved evidence and every rejected draft.
+The assistant is read-only: it does not initiate payments, refunds or disputes. Checks cover
+finite claim formats and do not establish semantic correctness or completeness. A customer can
+still confirm the wrong record, including an alternative that contradicts an earlier detail.
 
 ## Run it locally
 
@@ -38,7 +43,9 @@ The 224-question simulation evaluates the clarification **component**, not the d
 conversation's complete interaction policy. See the [evaluation scope](docs/papers/naacl-2027/evaluation/README.md).
 Run `python scripts/naacl2027/evaluate_conversation.py` for 36 authored regression replays through
 the actual conversation endpoint's controller, including corrections, abstention and wrong confirmation.
-These scripted checks are not customer-accuracy measurements.
+Customer events and the answer writer are scripted; question selection and verification use the
+actual demo code. Twelve runs end unresolved without generating a financial draft, so their fault
+settings have no effect. These checks are not customer-accuracy or natural LLM error measurements.
 
 | Result | Command | Output |
 |---|---|---|

@@ -1,6 +1,11 @@
 # Finbot demo: reviewer guide
 
-The hosted demo needs no install: the clarify-then-verify conversation is at
+Finbot demonstrates read-only payment support through a conversation interface and an evidence
+inspector. The conversation handles uncertain descriptions, confirmation, corrections and
+confirmed-record explanations. The separate inspector adds decline and timeout explanations,
+two-record comparisons, cited policy responses, controlled faults and recovery traces.
+
+The hosted demo needs no install: the conversation is at
 <https://finbot-demo-20852907589.us-central1.run.app/> and the evidence inspector this guide
 walks through is at <https://finbot-demo-20852907589.us-central1.run.app/inspector>.
 The rest of this guide runs the same server locally.

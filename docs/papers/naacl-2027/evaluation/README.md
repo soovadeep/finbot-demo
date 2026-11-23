@@ -51,7 +51,17 @@ a wrongly confirmed record is counted as a wrong selection, even if verification
 
 These are workflow regression checks, not an accuracy estimate: events are authored, fault
 variants repeat the same tasks, and expected-field checks do not establish prose completeness.
-The wrong-confirmation case deliberately demonstrates a remaining failure boundary.
+The wrong-confirmation case deliberately demonstrates a remaining failure boundary. The scripted
+customer asks about and confirms a transfer while the evaluator's hidden target is a card payment;
+the controller does not know that hidden intent. Separately, the UI's "Other records" buttons
+permit confirming authorized records that contradict supplied details; there is no contradiction
+confirmation step implemented.
+
+The 36 runs are nine customer-event scripts under four configured faults. User messages and
+confirmation actions are authored, while the real controller chooses its template-based questions.
+The answer writer is scripted (`live=False`), not a live LLM. Twelve runs end unresolved and never
+generate a financial draft; their fault settings have no effect. The count is regression coverage,
+not 36 independent customer samples or distinct injected failures.
 
 ## Answer verification
 

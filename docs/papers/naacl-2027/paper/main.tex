@@ -18,7 +18,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
 
-\title{Clarify, then Verify: A Payment-Support Assistant That Asks\\Which Record You Mean Before It Answers}
+\title{Finbot: An Inspectable AI Assistant for\\Evidence-Grounded Payment Support}
 
 \author{Sandip Nandi \and Apurba Bose \and Aishwarya Bose \and Soovadeep Bakshi \\
   Independent Researchers}
@@ -27,65 +27,73 @@
 \maketitle
 
 \begin{abstract}
-Customers rarely quote a transaction ID, so a payment-support assistant that guesses which
-payment is meant can answer about the wrong money. Finbot is an open-source demonstration
-connecting record clarification, explicit customer confirmation and deterministic
-evidence-consistency checks, with an inspector exposing each step. The checks cover specified
-claim types and formats; they do not establish semantic correctness or completeness.
-In a separate component study, simulated customers answer 224 Banking77 questions paired with
-eight synthetic records. Decision value with two questions yields 49\%/66\% correct confirmations
-across two simulators, versus 60\%/81\% for showing all records. A simple distinct-option
-heuristic matches or exceeds decision value with one question. On previously held-out drafts,
-82\% of corrupted answers are blocked, but matched controls reveal pre-existing rejections;
-mutations trigger rejection in 79\% of accepted controls. We release cached component comparisons,
-controller replays and paired diagnostics. These evaluate system behavior, not human usability.
+Payment-support conversations combine incomplete descriptions with questions about payment
+outcomes, decline reasons and policies. We present Finbot, an open-source, read-only assistant
+combining clarification, scoped retrieval, checked explanations and recovery from unsupported
+drafts. Its conversation view handles uncertain details, confirmation and corrections; a
+complementary inspector covers declines, unknown outcomes, record comparisons and cited policies.
+Reviewers inspect evidence and verification traces, then inject faults to observe repair,
+record-built fallback or refusal. A scripted writer makes demonstrations reproducible, while
+the conversation optionally uses a live model. Evaluation separates 224-scenario component
+simulations, 36 scripted controller runs and paired verification tests. These reveal strong
+simple baselines and residual semantic errors. We release code, traces, cached responses and
+evaluation scripts to characterize the system's capabilities and limits; the results do not
+establish human usability gains or complete financial correctness.
 \end{abstract}
 
 \section{Introduction}
 
-A payment-support assistant that answers from retrieved records can still be wrong about the
-customer's money in two ways. It can state a fact the record does not support, or it can state
-a supported fact about the wrong record. The first failure has drawn most of the attention in
-grounding and verification work \citep{gao-etal-2023-rarr}. The second begins earlier, when
-the customer does not say which payment they mean. ``I was charged twice at the restaurant''
-gives no reference; the customer's account may hold five card payments that week.
+Payment support spans declines, pending transfers, uncertain outcomes, comparisons and policy
+questions. ``Why was my card declined?'',
+``Has the transfer completed?'' and ``Can this card be surcharged?'' require different evidence.
+An assistant must establish the relevant context, keep values attached to the right records,
+distinguish unknown from successful outcomes, and connect explanations to recorded reasons or
+policy sources. Customer corrections can change that context during a conversation.
 
-Alternatives include requesting a reference or showing every record. Whether clarification
-reduces user effort relative to a full list is an empirical question, especially on small
-screens or voice channels; we have not measured those benefits. Clarifying questions are a well-studied alternative
-\citep{rao-daume-iii-2018-learning,aliannejadi2019asking,kuhn2022clam}, and Bayesian
-experimental design gives a principled way to choose them \citep{lindley1956measure}. Recent
-work applies expected information gain to eliciting what a user wants from a language model
-\citep{piriyakulkij2023active,li2025eliciting}.
+These requirements span the workflow. Clarification addresses uncertain context
+\citep{rao-daume-iii-2018-learning}; Bayesian question selection provides one implementation
+\citep{lindley1956measure}. Grounding and revision address unsupported statements
+\citep{gao-etal-2023-rarr}. Neither alone prevents a supported answer about the wrong payment,
+a swapped amount across records, or an unsupported policy claim carrying a valid citation.
 
-Finbot connects these stages (Figure~\ref{fig:architecture}): clarification asks at most two
-questions, customer confirmation authorizes answering about one record, and a deterministic gate
-checks the draft against retrieved evidence. Each technique is established; the contribution is
-their inspectable integration and analysis of its failure boundaries:
+Finbot makes these decisions inspectable through two interfaces. The conversation view combines
+message interpretation, clarification, confirmation, scoped retrieval and checked explanations
+(Figure~\ref{fig:architecture}). The complementary inspector exposes record-comparison and
+policy-answering scenarios, verification traces and controlled failures. The system is read-only
+and uses synthetic records and policies; it does not initiate payments, refunds or disputes.
+Our contribution is the integration and demonstration of established techniques:
 \begin{itemize}\itemsep0pt
-\item An interactive workflow with question scoring, confirmation, corrections and an evidence inspector.
-\item An ambiguity benchmark of 224 real customer questions with their references removed, each
-  paired with two to eight similar records, and a simulated-customer protocol with three personas.
-\item Two-family component simulations, inexpensive baselines, matched verification tests and
-  separate deployed-controller replays. No human study has been conducted.
+\item A conversational support workflow and evidence inspector covering clarification, corrections,
+  payment explanations, record comparisons and cited policy answers.
+\item Observable verification and recovery, with scoped tools, configurable fault injection,
+  scripted demonstrations and optional live-model answers.
+\item Reproducible component simulations, stronger inexpensive baselines, actual-controller replays
+  and matched verification diagnostics that expose remaining failure boundaries.
 \end{itemize}
-The demonstration is meant for people who build assistants over customers' account data, and
-for researchers studying clarification and grounded generation. A hosted copy runs at \url{https://finbot-demo-20852907589.us-central1.run.app}. The
-system also runs locally with no model account: \texttt{python -m finbot.demo} serves the same pages. The code, data, results and a 2.5-minute video are at
+The hosted demo is at \url{https://finbot-demo-20852907589.us-central1.run.app}.
+Run \texttt{python -m finbot.demo} locally without a model account. Code, data, results and a 2.5-minute video are at
 \url{https://github.com/soovadeep/finbot-demo} (MIT license).
 
 \begin{figure*}[t]
 \centering
 \input{architecture}
-\caption{The deployed workflow. Clarification filters on supplied details and scores questions
+\caption{The conversation path. Clarification filters on supplied details and scores questions
 over matching records. The customer confirms a record, with other records accessible separately,
 or leaves unresolved. The answering step is restricted to the confirmed record ID. Code controls
-tool access, checks and recovery; the model drafts answers. Dashed links show inspector observations.}
+tool access, checks and recovery; the writer drafts answers. Dashed links show inspector observations.
+The separate inspector also supports direct record-comparison and policy-answering scenarios.}
 \label{fig:architecture}
 \end{figure*}
 
 \section{System}
 \label{sec:system}
+
+\paragraph{Interaction surfaces.} The conversation page uses four synthetic payments and summarizes
+the confirmed record's status and details. Its parser and template-based questions use no LLM.
+The separate \texttt{/inspector} page exposes eight presets for decline explanations, uncertain
+outcomes, two-record comparisons and cited policy answers, including recovery and refusal.
+These share the answering and verification pipeline; the main conversation does not route
+arbitrary policy or multi-record requests to those presets.
 
 \subsection{Clarifying which record}
 
@@ -95,21 +103,15 @@ amount. Beliefs start uniform. The public demo has four fixed synthetic records;
 study uses up to eight. Clarification does not grant access to additional records.
 
 \paragraph{Questions and replies.}
-A question offers distinct attribute values plus ``I'm not sure''. The response model assigns
-probability $u_k$ to uncertainty, $(1-u_k)a_k$ to the matching value, and distributes the remainder
-uniformly over wrong options. Bayes' rule updates the belief; uncertainty is uninformative.
-The settings $(a_k,u_k)$ are $(0.9,0.1)$ for kind, $(0.85,0.15)$ for date and $(0.8,0.2)$ for
-payee and amount. The demo uses $a=0.65$ for hedged free-text details.
-These are design assumptions, not measured human reliabilities.
+A question offers distinct attribute values plus ``I'm not sure''. Bayes' rule updates beliefs
+using assumed response reliabilities; uncertainty is uninformative. Hedged details receive less
+weight. These settings are design assumptions, not measured human reliabilities (Appendix~\ref{app:repro}).
 
 \paragraph{Choosing the next question.}
-The component offers five selectors. \emph{Fixed} asks attributes in a set order;
-\emph{amount-first} moves amount ahead of that order, and \emph{most-distinct} asks the attribute
-with the most distinct options (fixed-order ties). Neither heuristic uses learned parameters.
-\emph{Information gain} maximizes $\mathrm{IG}(q) = H(b) - \sum_r P(r)\,H(b_r)$, where $b_r$ is
-the belief after reply $r$ and $P(r) = \sum_h b(h)\,P(r \mid h, q)$. With
-$e(b) = 1 - \max_h b(h)$, the chance of picking the wrong record, \emph{decision value}
-maximizes its expected drop minus a cost $c = 0.02$ per question:
+The component compares fixed order, amount-first, most-distinct options, information gain and
+decision value (DV). Most-distinct uses fixed-order ties; neither heuristic has learned parameters.
+With $e(b)=1-\max_h b(h)$ and $b_r$ the posterior after reply $r$, DV maximizes the expected
+drop in wrong-record risk minus question cost $c=0.02$:
 \[
 \mathrm{DV}(q) = e(b) - \textstyle\sum_r P(r)\, e(b_r) - c,
 \]
@@ -122,17 +124,23 @@ The demo filters on unhedged details, keeps alternatives for hedged details, and
 records with other records available separately. The customer picks one or says none match.
 A probability never selects a record. Corrections invalidate the selected record and mark
 previous answers as superseded before requesting a new confirmation.
+Other records remain selectable even when they conflict with a supplied detail: confirmation
+checks account access, not consistency with earlier statements. A mistaken confirmation can
+therefore produce an answer about the wrong payment; verification cannot infer the user's intent.
 
-\subsection{Answering about the confirmed record}
+\subsection{Evidence retrieval, explanation and recovery}
 
-The answering step fetches the confirmed record again and drafts an answer in a tool loop.
-Deterministic checks compare recognized amounts, currencies, dates, statuses, causes and codes
-with retrieved evidence. A failing draft gets one repair, then a checked record-built answer,
-then refusal. Third-party fields such as merchant descriptors cannot support factual claims.
+The writer uses read-only tools to retrieve records and policy evidence. In the conversation,
+the confirmed record is fetched again for a status-and-details explanation; inspector requests
+can name multiple records or ask about policy. Deterministic checks compare recognized amounts,
+currencies, dates, statuses, causes and codes with eligible evidence. A failing draft gets one
+repair, then a checked record-built answer, then refusal. Third-party fields such as merchant
+descriptors cannot support factual claims.
 
 \paragraph{Access boundaries.} The demo fixes a synthetic customer identity; it does not
 authenticate real banking customers. Code binds the tenant and confirmed ID outside the model's
-tool arguments. Other record lookups return ``not found'', and mismatched returned IDs are rejected.
+tool arguments. The conversation exposes only the confirmed record to the answering step;
+other lookups return ``not found''. Mismatched returned IDs are rejected.
 
 Regular expressions and phrase tables recognize supported claim formats, with limited negation
 and hedge handling. Recognized values must occur in eligible evidence; recognized causes must
@@ -143,10 +151,12 @@ facts may be omitted. A passing gate is not a correctness or completeness judgme
 
 \subsection{What the inspector shows}
 
-Beside the conversation, the inspector shows candidate beliefs, question scores, retrieved
-records, rejected drafts and rejection reasons. It identifies whether the final answer is
-the initial draft, a repair or a record-built fallback. A fault menu injects a wrong status
-or amount once, or an amount into both draft and repair, exposing each recovery path.
+The conversation inspector shows beliefs, question scores, evidence, rejected drafts and reasons.
+The separate inspector exposes tool results, policy-source excerpts and exportable traces.
+Both identify initial, repaired and record-built answers. Fault injection modifies a writer's
+draft before verification, leaving source records intact. Conversation faults add a false status
+or fee; inspector faults also swap amounts across records or reverse a cited policy rule.
+These controlled errors test recovery, not natural LLM error rates.
 
 \paragraph{Writers.} By default the hosted page and \texttt{python -m finbot.demo} draft answers
 with a scripted writer over synthetic records, so reviewers need no key and every run is
@@ -179,7 +189,15 @@ belief and is offered for confirmation, with the others still listed. With the f
 ``wrong amount every time'', the draft and its repair both add a 12.34 fee and are rejected
 (\texttt{ungrounded\_amount:12.34}), and the customer sees an answer built from the record: the
 200.00 USD transfer is pending. If the customer then writes ``Actually, it was a card payment on
-November 16'', that answer is discarded and the matching card record is offered.
+November 16'', that answer is marked superseded and the matching card record is offered.
+
+\paragraph{Additional support scenarios.} In \texttt{/inspector}, a reviewer can explain a decline
+from its recorded reason and retry policy, or inspect a processor timeout that remains unknown.
+A comparison preset keeps a 129.00 USD decline separate from a 54.20 USD approval; swapping their
+amounts triggers rejection even though both values occur in the evidence. A policy preset reverses
+``cannot be surcharged'' to ``can be surcharged'' while retaining a valid citation; the source
+sentence check rejects it. If repair fails on a policy-only request, no transaction summary is
+available and the system refuses. These presets use fictional policy material.
 
 \begin{table}[t]
 \centering\small
@@ -204,13 +222,11 @@ DV, 2 & 1.36 & 74 & 49 & 2.2 & 79 & 66 & 4.0 \\
 Show all 8 & 0 & n/a & 60 & 1.8 & n/a & 81 & 3.6 \\
 \bottomrule
 \end{tabular}
-\caption{Eight candidate records, 224 episodes, mixed personas (\%). Fixed: fixed order; IG: information gain; DV: decision value; the number is the question
-budget; None shows the first two records. Qs: mean questions asked with Haiku customers (Llama: 1.31 for DV, 2). Top-1: episodes whose most likely record
-after the questions is the target. Corr.\ and Wr.: episodes in which the customer
-confirmed the target or another record from the two-record short list (or from all eight).
-``+ fallback'' shows all eight only to customers who reject the short list. The two heuristic
-rows are exploratory additions using cached replies. Correct-rate
-intervals are about $\pm$6 points.}
+\caption{Eight-record component study, 224 episodes (\%). Fixed: fixed order; IG: information gain;
+DV: decision value. Suffix: question budget. Qs: Haiku mean (Llama DV2: 1.31). Top-1: target
+ranked first. Corr./Wr.: correct/wrong confirmations from the two-record shortlist or full list.
+None shows the first two records; fallback shows all eight after rejection. Heuristic rows are
+exploratory cached comparisons. Correct-rate intervals are approximately $\pm$6 points.}
 \label{tab:main}
 \end{table}
 
@@ -219,15 +235,12 @@ intervals are about $\pm$6 points.}
 
 \subsection{Ambiguity benchmark}
 
-We use 224 Banking77 test questions \citep{casanueva-etal-2020-efficient} from our two evaluation
-sets, paired with synthetic card payments or transfers, and remove their added references with
-rules. The original paired record is the hidden target. Distractors come from the same customer,
-preferring the same payment kind and nearest dates (seed 2027). The synthetic records use invented
-payees and October--November 2026 dates. The main set has eight candidates with unique amounts;
-the target shares its kind with 6.6 distractors on average, payee with 4.0 and date with 2.2.
-A smaller set has two to five candidates (mean 3.6). In 192 episodes the question is consistent
-with its paired record; restricting to these changes the original results by at most three
-points (Appendix~\ref{app:bench}). Section~\ref{sec:same} removes the unique-amount shortcut.
+We pair 224 Banking77 test questions \citep{casanueva-etal-2020-efficient} with synthetic card
+payments or transfers and remove their added references. Same-customer distractors prefer the
+target's payment kind and nearby dates (seed 2027). The main set has eight candidates with
+unique amounts; a smaller set has two to five (mean 3.6). Restricting to the 192 questions
+consistent with their paired records changes the original rates by at most three points
+(Appendix~\ref{app:bench}). Section~\ref{sec:same} removes the unique-amount shortcut.
 
 \subsection{Clarification component study}
 
@@ -235,21 +248,19 @@ This study uses \texttt{ClarificationSession}, which updates beliefs from option
 offers a ranked two-record shortlist. The deployed \texttt{Conversation} controller also parses
 openings and free text, filters on unhedged details and exposes other records. Shared scoring
 functions do not make these policies equivalent; the rates below describe the component only.
-Separate authored replays exercise the actual endpoint controller on nine cases under four
-fault modes. All 36 meet their expected behavior, including deliberately wrong confirmations
-and unresolved cases; this is regression coverage, not customer accuracy.
+Separate replays send nine authored customer-event sequences through the actual endpoint controller
+under four fault settings, with the scripted writer and no model calls. All 36 meet expected
+behavior: 20 correctly selected records, four deliberately wrong confirmations and 12 unresolved
+runs. The unresolved runs never generate a financial draft, so their fault settings have no effect.
+This measures regression coverage, not customer accuracy or 36 distinct injected failures.
 
-A language model plays the customer. It sees its opening message and a memory note, never the
-candidate list until the confirmation step, and it answers in JSON. Each episode gets one of three
-personas, assigned by a fixed seed: \emph{receipt} (40\%) knows every detail; \emph{vague}
-(35\%) remembers the payee and month and a rounded amount; \emph{misremembers} (25\%) is
-confident about one wrong detail taken from another candidate. Unlike the demonstration, the
-simulated customer answers only through the question's options. The system prompt tells the
-model to say it is not sure whenever its note does not settle a question. We run two model
-families, Claude Haiku 5.5 and Llama 3.3 70B Instruct, so that results do not rest on one
-simulator. Replies are cached per question and per list, so every selector meets the same
-customer and differences between selectors come from the questions they ask. The study made
-9,501 model calls and cost under US\$5.
+A simulated customer sees its opening and memory note, then the candidate list only at
+confirmation. Seeded personas are \emph{receipt} (40\%, all details), \emph{vague} (35\%, payee,
+month and rounded amount) and \emph{misremembers} (25\%, one confident wrong detail from a
+distractor). It answers through options, using ``not sure'' when its note is insufficient.
+Claude Haiku 5.5 and Llama 3.3 70B Instruct provide two simulator families. Replies are cached
+per question and confirmation list, giving selectors the same responses to the same request.
+The original study made 9,501 model calls for under US\$5; the added baseline replays make none.
 
 We compare the five selectors, no questions (show the first two records), and showing every
 candidate at once. An episode is \emph{correct}
@@ -260,13 +271,10 @@ paired baseline comparisons use target-record-cluster bootstrap intervals.
 
 
 \paragraph{Results.}
-Table~\ref{tab:main} gives the component results. Among eight records, one Bayesian question puts
-the target first in 65--74\% of episodes, against 19\% for a question asked in fixed order and
-13\% for none; the customer then confirms the target in 44--63\% of episodes, about twice the
-fixed-order rate under both simulators. With a budget of two, fixed order catches up (48\% and
-66\% correct) but asks 1.95 questions; decision value reaches the same rates with 1.31 to
-1.36, because it stops when another question is not worth asking. On the smaller set (two to five records), the selectors differ
-little: one question in any order already puts the target first in 64--70\% of episodes.
+Table~\ref{tab:main} reports component results. Against the original fixed-order baseline, DV
+improves one-question identification and reaches similar two-question correctness with fewer
+questions (1.31--1.36 versus 1.95). On the smaller set, one question in any order already ranks
+the target first in 64--70\% of episodes.
 
 Stronger untuned heuristics qualify this comparison. One most-distinct question yields
 49.6\%/66.1\% correct confirmations (Haiku/Llama), versus 46.9\%/62.5\% for one DV question;
@@ -299,14 +307,10 @@ the deployed demo instead flags indistinguishable matching records and requests 
 \subsection{Sensitivity, baseline and free text}
 \label{sec:more}
 
-Three further studies reuse the cached replies (eight records, budget two;
-Appendix~\ref{app:studies}). Within this benchmark, one reliability for every attribute, from 0.6
-to 0.99, changes no question: the amount question then always scores highest, and after its
-answer no single question can change the most likely record, so decision value stops. Claude
-Sonnet 5.5 choosing the questions reaches 43\% and 63\% correct, against 49\% and 66\%. With
-free-text replies, the deterministic rules read 63\% of
-definite answers with one wrong read in 670 replies and leave the rest to the option buttons;
-correct confirmations fall to 42\% and 51\%.
+Appendix~\ref{app:studies} reports reliability sensitivity, a Sonnet question chooser and free-text
+replies. Sonnet reaches 43\%/63\% correct confirmations versus DV's 49\%/66\%.
+The parser reads 63\% of definite free-text replies, with one wrong read in 670;
+correct confirmations fall to 42\%/51\%.
 
 \subsection{Safety under wrong assumptions}
 \label{sec:safety}
@@ -324,7 +328,7 @@ unchanged (4.9\% and 5.8\%): a wrong belief only reorders the short list.
 \subsection{Answer checks}
 \label{sec:inject}
 
-\paragraph{Template tests and matched controls.} The original 224-record test reports
+\paragraph{Template tests and matched controls.} The original 224-episode test reports
 98.9\% rejection on development mutations after tuning status rules, and 82.3\%
 (2,668/3,240) on held-out wordings. Rejection alone does not show which error was caught.
 A post-hoc analysis pairs each existing mutation with the same wording before that change:
@@ -360,8 +364,8 @@ one. Post-hoc revision against evidence \citep{gao-etal-2023-rarr}, programmable
 \citep{rebedea-etal-2023-nemo} and capability-based separation of control and data
 \citep{debenedetti2025camel} motivate the answering step. In finance, Ryt AI already combines
 deterministic guardrails and customer confirmation \citep{chua-etal-2025-banking}.
-Finbot's contribution is an inspectable ambiguous-record workflow and its failure analysis,
-not the invention of confirmation or financial guardrails.
+Finbot contributes inspectable support workflows spanning clarification, record and policy
+evidence, answer checks and recovery, with explicit failure analysis.
 
 \section{Limitations}
 
@@ -369,7 +373,8 @@ Simulators may read lists and follow memory notes differently from people and sh
 The records are synthetic; Banking77 questions were not written about them. Reliabilities are
 assumed, unique amounts favor amount questions, and candidates are capped at eight. Stronger
 heuristics challenge DV's accuracy advantage. Component policies differ from the deployed
-controller, whose confident-detail filters can exclude the target. Its replays and corrections
+controller, whose confident-detail filters can exclude the target and whose alternative-record
+buttons allow contradictory confirmation. Its replays and corrections
 are authored checks. English parsing and verification rules miss formats and semantic errors;
 the live-writer audit covers one model and card payments. No human, voice, independent semantic
 or deployed-customer accuracy evaluation has been completed. Finbot is not validated for
@@ -377,24 +382,18 @@ production financial support.
 
 \section*{Ethics and broader impact}
 
-Telling a customer the wrong thing about their money can cost them fees, repeated charges or
-missed disputes. The design choice we evaluate, that a probability never selects a record, trades
-some resolved conversations for fewer answers about the wrong payment, and we report both sides.
-The demonstration uses synthetic records and executes no payments. Simulated customers were used
-so that no person's financial data was needed; a deployment would need its own consent, retention
-and access controls.
+Wrong-record answers and unsupported financial claims can cause fees, repeated charges or missed
+disputes. We report unresolved cases and remaining errors alongside successful checks. The demo
+uses synthetic records and policies, involves no participants and executes no payments. Deployment
+would require independent validation and appropriate consent, retention and access controls.
 
 \section*{Acknowledgements}
 
-The authors used AI assistants during this project. Anthropic's Claude Code helped write the
-system's code, including the demonstration interface and inspector, ran the evaluations, helped
-audit the live-writer answers, scripted the screen recording of the demonstration video, and helped
-draft and edit this paper. OpenAI Codex assisted implementation, documentation, cached baseline
-replays, paired verification analysis, the pilot setup and revisions to evaluation claims.
-Claude Haiku 5.5 and Llama 3.3 70B Instruct played the simulated customers, Claude Sonnet 5.5 chose
-questions in one baseline, and Llama 3.3 70B writes answers in the live-writer study and in the
-hosted demonstration's optional live mode. The authors are responsible for reviewing and
-validating the revised content, code and results before submission.
+Anthropic's Claude Code assisted implementation, evaluation, the author audit, video recording
+and manuscript preparation. OpenAI Codex assisted implementation, documentation, cached baseline
+replays, paired verification, optional pilot tools and manuscript revisions. Simulator, chooser
+and writer models are specified in Appendix~\ref{app:repro}. The authors are responsible for
+validating the submission.
 
 \clearpage
 \bibliography{references}
@@ -414,6 +413,13 @@ Simulator responses are cached; prompt templates remain in the scripts. The adde
 replay makes no model calls and reports missing coverage explicitly
 (\texttt{scripts/naacl2027/}). Prompts, settings, the 192-episode comparison and the live-writer
 audit are in \url{docs/papers/naacl-2027/evaluation/paper-details.md} in the repository.
+
+\paragraph{Response model.} For attribute $k$, the model assigns $u_k$ probability to uncertainty,
+$(1-u_k)a_k$ to the matching option, and divides the remainder uniformly among wrong options.
+Settings $(a_k,u_k)$ are $(0.9,0.1)$ for kind, $(0.85,0.15)$ for date and $(0.8,0.2)$ for
+payee and amount. Hedged details use $a=0.65$. Information gain scores
+$H(b)-\sum_r P(r)H(b_r)$, with $P(r)=\sum_h b(h)P(r\mid h,q)$.
+These response assumptions are not fitted human reliabilities.
 
 \section{Benchmark and personas}
 \label{app:bench}
