@@ -38,6 +38,12 @@ python -m finbot.demo
 Then open <http://127.0.0.1:8765/> for the conversation, or <http://127.0.0.1:8765/inspector> for
 the evidence inspector. The demo uses synthetic records and a clearly labelled scripted model.
 
+An [optional semantic checker and three-way evaluation harness](docs/papers/naacl-2027/evaluation/semantic-verification.md)
+adds Bedrock contextual grounding inside draft, repair and fallback verification. It is **off
+by default** and requires a paid AWS service when enabled. Local contract tests pass; no live
+semantic accuracy improvement has been measured. The existing 32 wording pairs are development
+data; the harness separately freezes configuration, generates new drafts and consumes author labels.
+
 ## Reproduce the evaluation
 
 The 224-question simulation evaluates the clarification **component**, not the deployed
@@ -56,7 +62,8 @@ an earlier answer. These are repeated test conditions, not independent customer 
 | Contradiction controls, keyboard/mobile behavior and accessibility | `node scripts/naacl2027/contradiction_interface.cjs` | `results/naacl2027/contradiction-interface.json` |
 | Varied policy/comparison workflows and matched component probes | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support-roles.json` |
 | Financial-role ablation and retrospective cached-draft replay | `python scripts/naacl2027/evaluate_financial_roles.py` | `results/naacl2027/financial-roles.json` |
-| Fresh authored wording against a frozen runtime | `PYTHONHASHSEED=0 python scripts/naacl2027/evaluate_fresh_wording.py` | `results/naacl2027/fresh-wording-v1.json` |
+| Fresh authored wording against a frozen runtime (use revision `af5cb8a`) | `PYTHONHASHSEED=0 python scripts/naacl2027/evaluate_fresh_wording.py` | `results/naacl2027/fresh-wording-v1.json` |
+| Semantic study, offline development arm; paid checks remain pending | `python scripts/naacl2027/semantic_study.py development --out /tmp/semantic-development.json` | `results/naacl2027/semantic-development-offline.json` |
 | Interface checks and accessibility scans | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |
 | Answer checks on injected errors | `python scripts/naacl2027/check_injection.py` | `results/naacl2027/check-injection.json` |
 | Tests (no installs) | `python -m unittest discover -s tests` | |

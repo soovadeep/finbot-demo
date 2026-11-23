@@ -32,13 +32,12 @@ outcomes, decline reasons and policies. We present Finbot, an open-source, read-
 combining clarification, scoped retrieval, checked explanations and recovery from unsupported
 drafts. Its conversation view handles uncertain details, conflicting selections and corrections; a
 complementary inspector covers declines, unknown outcomes, record comparisons and cited policies.
-Reviewers inspect claim-to-field traces and inject faults to observe repair, record-built fallback
-or refusal. Financial-role checks distinguish expected from actual settlement dates and payment
-from refund amounts, even when the stated values occur on the correct record. A scripted writer
-makes demonstrations reproducible; live answers are optional. Evaluation separates component
-simulations, workflow replays and controlled verification ablations. These reveal stronger simple
-baselines and residual semantic errors. We release code, traces and cached responses without
-claiming human usability gains or complete financial correctness.
+Reviewers inspect claim-to-field traces and inject faults to observe repair, fallback or refusal.
+Financial-role checks distinguish expected/actual settlement dates and payment/refund amounts,
+even when values occur on the correct record. A scripted writer supports reproducibility; live
+answers are optional. Component simulations, workflow replays and verification ablations reveal
+strong simple baselines and residual semantic errors. We release code, traces and cached responses
+without claiming human usability gains or complete financial correctness.
 \end{abstract}
 
 \section{Introduction}
@@ -74,11 +73,10 @@ Run \texttt{python -m finbot.demo} locally without a model account. Code, data, 
 \begin{figure*}[t]
 \centering
 \input{architecture}
-\caption{The conversation path. Clarification filters on supplied details and scores questions
-over matching records. Conflicting selections require explicit resolution before confirmation;
-customers can also leave unresolved. Answering is restricted to the confirmed record ID. Code controls
-tool access, checks and recovery, including a checked record-built fallback. Dashed links show inspector observations.
-The separate inspector also supports direct record-comparison and policy-answering scenarios.}
+\caption{Clarification filters supplied details and scores questions over matching records.
+Conflicting selections require explicit resolution; customers may leave unresolved. Code restricts
+answering to the confirmed ID and governs verification and recovery. Dashed links show inspector
+observations. The separate inspector also supports direct comparisons and policy questions.}
 \label{fig:architecture}
 \end{figure*}
 
@@ -131,14 +129,11 @@ over matching records, stopping at two questions, a single match, indistinguisha
 or no useful question.
 
 \paragraph{Confirmation and corrections.}
-The demo filters on unhedged details and keeps alternatives for hedged details. Selecting an
-alternative that conflicts with supplied type, payee, date, amount, currency or reference pauses
-retrieval and shows both values. The customer explicitly corrects those details and confirms the
-record, keeps earlier details and chooses again, types a correction, or leaves unresolved.
-Acknowledgements bind to the current conflict; stale choices are rejected. Corrections and
-selection changes supersede prior answers. These consistency checks are separate from the
-two-question budget. Consistent but mistaken confirmations remain possible: the system cannot
-infer hidden intent.
+The demo filters unhedged details while retaining alternatives for hedged details. A selection
+conflicting with supplied type, payee, date, amount, currency or reference pauses retrieval for
+explicit correction, reselection or abstention. Stale acknowledgements are rejected; changed
+selections supersede prior answers. Conflict resolution is outside the two-question budget.
+Consistent but mistaken confirmations remain possible: the system cannot infer hidden intent.
 
 \subsection{Evidence retrieval, explanation and recovery}
 
@@ -163,11 +158,13 @@ Coverage is finite: unrecognized wording, date formats and bare web addresses ca
 
 \paragraph{Financial roles.} A recognized claim $c=(h,r,v)$ identifies a record, role and value.
 The role maps to a schema path $\pi(r)$; support requires $v=D_h[\pi(r)]$ after normalization,
-using the latest lookup $D_h$. We implement payment/refund amounts and expected/actual settlement
-dates; actual dates also require settled status. Thus an expected date cannot support ``settled on'',
-even when settlement status is settled. The inspector exposes the phrase, role, field and verdict.
-Repair preserves the distinction; fallback states when an actual date is unavailable. These finite
-English patterns are not general semantic parsing.
+using the latest lookup $D_h$. Roles cover payment/refund amounts and expected/actual settlement
+dates; actual dates also require settled status. The inspector exposes the phrase, role, field
+and verdict. Fallback states when actual dates are unavailable. Finite English patterns limit coverage.
+
+An optional Bedrock contextual-grounding check covers drafts, repairs and fallbacks, exposing
+scores in the inspector. Disabled by default, its live effectiveness and cost remain unmeasured.
+Provider failures withhold answers but are not counted as error detections.
 
 \subsection{What the inspector shows}
 
@@ -176,10 +173,9 @@ beliefs and question scores, and the inspector adds policy excerpts and trace ex
 injection changes drafts while preserving evidence: a status or fee in the conversation; also
 record ownership, financial roles or policy rules in the inspector. These test recovery, not natural LLM error rates.
 
-\paragraph{Writers.} The default scripted writer needs no API key. An optional Llama 3.3 70B
-writer through OpenRouter uses the same confirmed-record scope, checks, fault menu and recovery.
-Live calls are capped per visitor and per day; the scripted writer handles exhausted quotas or
-provider failure. Clarification itself uses no language model.
+\paragraph{Writers.} The default writer is scripted; optional Llama 3.3 70B through OpenRouter
+uses the same scope, checks and recovery. Visitor/daily caps and provider failure trigger scripted
+fallback. Clarification uses no LLM.
 
 \section{Demonstration walkthrough}
 
@@ -193,11 +189,10 @@ four \$200 payments before confirmation. (b)~Beliefs and question scores at the 
 \end{figure*}
 
 
-In Figure~\ref{fig:screenshot}, the customer writes ``My \$200 payment hasn't arrived'', then
-``bank transfer'' and ``Willow Repairs''. One record reaches 72\% belief and is offered for
-confirmation. After both drafts invent a 12.34 fee, code reports the 200.00 USD transfer as
-pending. ``Actually, it was a card payment on November 16'' supersedes that answer and requires
-fresh confirmation. Selecting a transfer after stating ``card'' instead pauses for conflict resolution.
+In Figure~\ref{fig:screenshot}, ``My \$200 payment hasn't arrived'', ``bank transfer'' and
+``Willow Repairs'' give one record 72\% belief for customer confirmation. Both drafts invent a
+12.34 fee; fallback reports the transfer as pending. Correcting to ``card payment on November 16''
+supersedes the answer and requires fresh confirmation. Contradictory selections pause for resolution.
 
 \paragraph{Additional scenarios.} Inspector presets explain declines and unknown timeouts,
 reject cross-record amounts and reversed cited policies, and distinguish a \$200 payment from
@@ -342,13 +337,12 @@ versus 4.5\%/7.6\% for the full list. Confirmation limits, but cannot eliminate,
 \subsection{Answer checks}
 \label{sec:inject}
 
-\paragraph{Varied support cases.} Initially, scripted inspector runs meet 28/28 comparison and
-10/12 policy checks. Controlled pairs reject 30/36 policy and 20/38 comparison mutations, missing
-exceptions, currency swaps and omitted records. After adding currency binding, requested-record
-coverage, complete passages and plural normalization, unchanged workflows pass 40/40; all 74
-mutations are rejected and their clean controls pass. Ten unchanged swaps are excluded; extractive
-mode still rejects six supported paraphrases. These authored post-fix checks are development
-diagnostics, not held-out accuracy. Historical reports are preserved; component pairs bypass retrieval.
+\paragraph{Varied support cases.} Initially, scripted inspector runs pass 28/28 comparison and
+10/12 policy checks; component pairs reject 30/36 policy and 20/38 comparison mutations. Fixing
+currency binding, requested-record coverage, complete passages and plural normalization yields
+40/40 workflow passes and 74/74 rejections with clean controls accepted. Ten unchanged swaps are
+excluded; six supported paraphrases are rejected. These are authored development diagnostics;
+component pairs bypass retrieval. Historical reports remain available.
 
 \paragraph{Role ablation.} Six authored records and two wordings produce 48 within-record
 role substitutions and 12 cross-record substitutions, all reusing existing values. Removing both
@@ -356,6 +350,13 @@ binding checks detects 0/60; the existing guardrail with record binding detects 
 financial roles detects 60/60. Each configuration accepts all 60 clean counterparts and 12
 equal-value controls. Four inspector runs cover recovery. These dependent development cases
 do not estimate accuracy: a month-name date and ``You got \$200.00 back'' still pass incorrectly.
+
+\paragraph{Fresh wording.} With runtime frozen, we committed 32 authored draft pairs and 16
+message sequences before evaluation. Role checks reject 12/32 corruptions, versus 0/32 without
+them; all clean counterparts pass. Expected candidate sets match in 15/16 sequences; none answer
+before confirmation. These developer-authored cases are now development data for a
+deterministic/semantic/combined comparison harness. Live semantic results and new LLM-generated
+test answers remain pending; no customer accuracy is inferred.
 
 \paragraph{Template tests and matched controls.} The original 224-episode test reports
 98.9\% rejection on development mutations after tuning status rules, and 82.3\%
@@ -365,20 +366,17 @@ mutations cause 2,098 rejections (78.6\%), including zero additional bare-link r
 (Appendix~\ref{app:inject}). This earlier analysis did not change verifier rules; it is not a new
 holdout. The original clean-draft set has 114/1,120 false rejections (10.2\%).
 
-\paragraph{A live writer.} Of 128 Llama 3.3 70B card-payment drafts, 125 pass initially and
-three are falsely rejected, then recovered. The original author audit with AI assistance covers
-125 passing answers about 108 distinct records. It identifies nine answers confusing expected
-with actual settlement dates and one omitting a refund: 10/125 substantive support or
-completeness failures despite a passing gate. Retrospectively applying the new role checker to
-these same drafts blocks all nine date errors and none of the 115 author-labelled supported
-answers; the omitted refund still passes. This is development replay informed by that audit,
-not an independent audit or new live generation. Historical fee injections recover through
-repair in 127/128 cases or fallback in 128/128 when repair also fails.
+\paragraph{A live writer.} Of 128 Llama 3.3 70B card-payment drafts, 125 pass initially;
+three false rejections recover. The AI-assisted author audit of those passes covers 108 distinct
+records, finding nine expected/actual-date confusions and one omitted refund. Retrospective role
+checking blocks the nine date errors and none of 115 author-labelled supported answers; the
+refund omission still passes. This audit-informed development replay is neither independent
+annotation nor new generation. Historical fee injections recover through repair in 127/128 cases,
+or fallback in 128/128 when repair also fails.
 
 \paragraph{End-to-end assessment.} Success requires the intended record and a supported,
-sufficiently complete answer. The released scorer requires independent answer judgments and
-leaves the overall rate undefined while relevant answers remain unassessed. Gate passes and
-scripted field checks are not used as semantic labels; no independent end-to-end rate is claimed.
+sufficiently complete answer. The scorer requires independent judgments, leaving the overall
+rate undefined while answers remain unassessed. Gate passes cannot supply semantic labels.
 
 \section{Related work}
 
