@@ -7,15 +7,56 @@ python scripts/naacl2027/evaluate_support.py
 python -m unittest discover -s tests -p 'test_support_evaluation.py' -v
 ```
 
-The complete report is `results/naacl2027/varied-support.json`. It includes source hashes,
+The original diagnostic report is preserved as `results/naacl2027/varied-support.json`.
+The command now saves the post-fix rerun to `results/naacl2027/varied-support-fixed.json`.
+Reports include source hashes,
 questions, fixture evidence, clean/changed drafts, individual verdicts and reasons, workflow
 traces, independent field/content checks and failures. It is reproducible without API calls,
-credentials or additional dependencies. No runtime verifier, retrieval rule or public endpoint
-was changed to improve these results. The evaluator completes successfully when it records
+credentials or additional dependencies. No runtime rules were changed for the original report;
+the fixes below respond to its observed failures. The evaluator completes successfully when it records
 missed errors: those are findings, not evaluator crashes. Unit tests check scoring and report
 reproducibility, rather than requiring the system to reject every mutation.
 
-## Actual inspector workflow checks
+## Fix verification on the same cases
+
+| Check | Original | After fixes |
+|---|---:|---:|
+| Comparison workflow checks | 28/28 | 28/28 |
+| Policy workflow checks | 10/12 | 12/12 |
+| New policy rejections with matching reasons | 30/36 | 36/36 |
+| New comparison rejections with matching reasons | 20/38 | 38/38 |
+| Paired clean drafts rejected | 0/74 | 0/74 |
+| Unchanged swap controls rejected | 0/10 | 0/10 |
+| Supported paraphrases rejected | 6/6 | 6/6 |
+
+This is a **development regression rerun**, not held-out validation. The evaluator verifies
+that paired questions, evidence, clean/changed drafts and expected labels match the original
+report exactly, records its SHA-256, and refuses to overwrite it. The same six policy questions
+and six two-record datasets are reused; no customer or model accuracy claim follows.
+
+The implementation changes are:
+
+- Bind stated currencies to structured currency fields on the named record. Currency values
+  in another record, shared policy, or third-party prose cannot justify that binding.
+- Attach a request-scoped comparison check to the gate. Explicit payment comparisons must
+  cover each named record's lookup and recognized requested amount/currency/status fields,
+  or identify a record that was not found. Repairs get the same check. Fallback builds all
+  requested summaries and is checked too; it cannot silently summarize just the last record.
+- Require a cited policy sentence's complete retrieved supporting passage, including neighboring
+  conditions and exceptions. Unrelated retrieved passages need not be quoted. This is conservative
+  extractive checking, not an applicability or general semantic-completeness judge.
+- Normalize plural word forms consistently in lexical ranking and query-coverage checks.
+  The cap/disclosure query retrieves the existing surcharge source without lowering the
+  relevance threshold or changing access filtering. General synonyms remain unsupported.
+
+Additional tests cover currency symbols, shared-policy and third-party text, equal currencies,
+incomplete repair, missing lookups, unavailable records, stale lookup errors, explicit field
+requirements, source context across cited paragraphs, abstention and retrieval access controls.
+All 156 unit tests and the existing 60 conversation replays pass. The original results below
+remain the pre-fix record. To rerun the original evaluator, use revision `10566bc` in a separate
+checkout; the current evaluator exercises the fixes.
+
+## Original inspector workflow checks
 
 These call `finbot.demo.run_demo`, the function behind `/api/run`, with its scripted writer
 and extractive policy mode. The comparison fixtures use the existing internal `records=`
@@ -42,7 +83,7 @@ This avoids invention but fails the task: the policy exists in the demo knowledg
 The report preserves this retrieval miss. The injected policy fault has no effect when there
 is no matching sentence to alter; fault settings are not counted as actual injections.
 
-## Matched component probes
+## Original matched component probes
 
 These use the actual `Chatbot` verifier chain plus `PolicyDocumentVerifier("extractive")`,
 with controlled tool-result envelopes. They bypass retrieval, the writer, repair and the UI.
@@ -79,7 +120,7 @@ reusing the production binding parser. Repeated orders and mutations share fixtu
 these counts into customer accuracy or treat them as independent trials with binomial intervals.
 This is a diagnostic suite developed with knowledge of the implementation, not a held-out benchmark.
 
-## Concrete observed examples
+## Concrete examples before and after the fixes
 
 **Successful recovery, `comparison/mixed-currency/0/swap_once`:**
 
@@ -91,17 +132,21 @@ This is a diagnostic suite developed with knowledge of the implementation, not a
   `value_from_other_record:amount:` reasons. The scripted repair restores **210.00 EUR** to
   the first record and **47.25 GBP** to the second. The independent field scorer passes.
 
-**Missed error, `comparison/mixed-currency/0/swap_currency`:**
+**Previously missed error, `comparison/mixed-currency/0/swap_currency`:**
 
 With the same evidence, the component draft says **210.00 GBP** for the first record and
-**47.25 EUR** for the second. The gate allows it, while the independent field scorer marks
+**47.25 EUR** for the second. The original gate allows it, while the independent field scorer marks
 the bindings wrong. Currency membership in the combined evidence is insufficient to establish
-which currency belongs to which record.
+which currency belongs to which record. The fixed gate blocks it with
+`value_from_other_record:currency:` reasons. A separate workflow regression verifies that
+a scripted repair restores both correct currencies before release.
 
-**Missed completeness, `policy/surcharge/missing_exception`:**
+**Previously missed completeness, `policy/surcharge/missing_exception`:**
 
 The question asks which cards qualify and the cap. The fixture source states:
 “Credit cards may carry a surcharge of at most 3 percent. Debit and prepaid cards are excluded.”
-Removing the second sentence leaves a cited, source-matching answer. The gate allows it, but
+Removing the second sentence leaves a cited, source-matching answer. The original gate allows it, but
 the authored task expectation fails because a required exception is omitted. This is why a
-passing evidence check must not be counted as a complete answer.
+passing evidence check must not be counted as a complete answer. The fixed gate blocks the
+same draft with `policy_incomplete_context:statement_0`. Workflow regressions check restoration
+of the exception on repair and refusal when the repair omits it again.

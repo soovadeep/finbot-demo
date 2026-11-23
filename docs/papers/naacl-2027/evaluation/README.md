@@ -92,13 +92,14 @@ The committed report includes source hashes. Automatic scans are not a complete 
 | Attribute clarification | Conversation `/study`; strategy comparison `/clarification` | `results/naacl2027/clarification-sim/`, `strong-baselines/` | 224 scenarios per simulator; component policy differs from conversation. |
 | Confirmation, correction and contradictory selections | Conversation: **A selection conflicts with your message** | `conversation-replay.json`, `contradiction-interface.json`; `tests/test_clarification_conversation.py` | 60 authored replays and regression checks; no customer-accuracy estimate. |
 | Record explanations and recovery | Conversation; inspector supported answer, decline and timeout presets | `paired-verification/`, `live-writer/audit.json`; `tests/test_demo.py` | Finite mutation formats and one live writer; known semantic errors remain. |
-| Two-record comparison and amount binding | Inspector **Keep two records separate**, **Catch swapped amounts** | `varied-support.json`; preset/unit/browser checks | 28 workflow runs, 38 actual mutations; currency-binding and omission misses. Authored diagnostics. |
-| Cited policy answering and refusal | Inspector **A citation is not enough**, **When recovery is unavailable** | `varied-support.json`; preset/unit/browser checks | 12 workflow runs, 36 mutations, six paraphrases; retrieval and omission gaps. Authored diagnostics. |
+| Two-record comparison and amount binding | Inspector **Keep two records separate**, **Catch swapped amounts** | `varied-support.json`, `varied-support-fixed.json`; unit checks | 28 workflow runs, 38 mutations; original currency/omission failures fixed on the same cases. |
+| Cited policy answering and refusal | Inspector **A citation is not enough**, **When recovery is unavailable** | `varied-support.json`, `varied-support-fixed.json`; unit checks | 12 workflow runs, 36 mutations; original retrieval/context failures fixed on the same cases. Six supported paraphrases still rejected. |
 | Evidence, drafts and recovery inspection | Both interfaces, trace export | `interface-after.json`, `conversation-axe.json`, `contradiction-interface.json` | Engineering/accessibility checks; no human comprehension study. |
 
 Result paths without a prefix are under `results/naacl2027/`. The [varied support suite](varied-support.md)
 extends policy/comparison evidence beyond the presets. Its authored fixtures establish tested
-behavior and failure boundaries, not performance on natural customer requests.
+behavior and failure boundaries, not performance on natural customer requests. The post-fix report
+is a development regression rerun, not a new holdout; the original report remains unchanged.
 
 ## Answer verification
 

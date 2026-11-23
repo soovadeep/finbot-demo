@@ -170,10 +170,11 @@ Delete the downloaded JSON when no longer needed.
 ## Reproduce varied policy and comparison checks
 
 On `review/naacl-demo-evaluation`, run `python scripts/naacl2027/evaluate_support.py` without
-starting a server. It saves `results/naacl2027/varied-support.json`, including full local
+starting a server. It saves `results/naacl2027/varied-support-fixed.json`, including full local
 inspector traces, six additional synthetic policy fixtures, matched drafts and expected fields.
-See [the results and concrete examples](evaluation/varied-support.md): 28/28 comparison workflow
-checks and 10/12 policy checks pass; controlled probes expose currency-binding and omission gaps.
+See [the results and concrete examples](evaluation/varied-support.md): after fixes, 28/28 comparison
+and 12/12 policy checks pass; all 74 actual mutations are rejected and their clean controls pass.
+The original failures remain in `varied-support.json`; the rerun is on those same development cases.
 The records supplied by the evaluator are internal fixtures, not new hosted presets. There are
 no model calls or participants, and a branch push does not redeploy the hosted service or video.
 
@@ -197,8 +198,10 @@ are masked, but a production diagnostic workflow needs explicit access and reten
 The inspector enables **extractive** policy verification. Normal application configuration
 defaults to `off`; optional model review and Bedrock Guardrails are separate paths that may
 require credentials and incur provider charges, and are not enabled by this guide. Automated Reasoning and NeMo are
-not integrated. A legitimate paraphrase may fail extractive checks, while a reused sentence
-can still omit important context. Multi-record fallback can be incomplete. Passing the
+not integrated. Extractive checks now require the complete supporting retrieved passage, and
+explicit comparisons require each requested record and recognized fields in fallback too.
+A legitimate paraphrase may still fail; incomplete upstream sources, unsupported formats and
+semantic applicability remain limitations. Passing the
 implemented checks is not a universal correctness or financial-safety guarantee.
 
 ## License and data

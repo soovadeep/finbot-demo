@@ -3,7 +3,8 @@
 Workflow runs call the inspector's actual run_demo function. Component pairs use the
 same Chatbot verifier chain plus extractive policy verification on controlled evidence.
 The policy labels are authored fixture judgments; comparison labels come from exact
-record/field expectations, never from the gate verdict. No verifier rules are tuned here.
+record/field expectations, never from the gate verdict. The current run checks fixes on
+previously inspected cases; the original failing report is preserved separately.
 """
 from __future__ import annotations
 
@@ -21,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 from finbot.config import Settings  # noqa: E402
+from finbot.comparison import ComparisonCoverageVerifier  # noqa: E402
 from finbot.demo import DemoModel, run_demo  # noqa: E402
 from finbot.guardrails import LocalGuardrail  # noqa: E402
 from finbot.knowledge import Index  # noqa: E402
@@ -30,7 +32,8 @@ from finbot.tools import InMemoryLogs, InMemoryTxns, ToolBox  # noqa: E402
 from finbot.verification import VerifierChain  # noqa: E402
 
 FIXTURES = ROOT / "data/naacl2027/support-policies.json"
-PROTOCOL = "finbot-varied-support-v1"
+PROTOCOL = "finbot-varied-support-v2"
+BASELINE = ROOT / "results/naacl2027/varied-support.json"
 ASSERTION = re.compile(r"Transaction (txn_[A-Za-z0-9]{6,}) was (\w+) for (\d+\.\d{2}) ([A-Z]{3})")
 
 
@@ -127,7 +130,8 @@ def policy_pairs(chain) -> tuple[list[dict], list[dict]]:
         for mutation, changed in variants.items():
             rows.append(paired_result(chain, case_id=f"policy/{case['id']}/{mutation}", family="policy",
                 mutation=mutation, question=case["question"], evidence=evidence, clean=clean, changed=changed,
-                target_reason="policy_unsupported:", expected_complete=False))
+                target_reason="policy_incomplete_context:" if mutation == "missing_exception" else "policy_unsupported:",
+                expected_complete=False))
         answer = cite(case["paraphrase"])
         paraphrases.append({"id": f"policy/{case['id']}/paraphrase", "question": case["question"],
                             "evidence": evidence, "answer": answer, "expected_supported_and_complete": True,
@@ -141,6 +145,8 @@ def comparison_pairs(chain) -> list[dict]:
         for reverse in (False, True):
             records = copy.deepcopy(case["records"][::-1] if reverse else case["records"])
             question = "Compare " + " and ".join(r["txn_id"] for r in records) + ": amounts, currencies and statuses?"
+            # The deployed orchestrator attaches this request-scoped verifier too.
+            scoped_chain = VerifierChain([*chain.verifiers, ComparisonCoverageVerifier(question)])
             evidence = [{"name": "get_transaction", "input": {"txn_id": r["txn_id"]},
                          "result": {"status": "found", "source": "txn_db", "data": r}} for r in records]
             clean = comparison_answer(records)
@@ -154,8 +160,8 @@ def comparison_pairs(chain) -> list[dict]:
                 changed = comparison_answer(changed_records)
                 valid = comparison_fields(changed, records)["all_requested_fields_correct"]
                 reason = {"amount": "value_from_other_record:amount:", "status": "status_mismatch:",
-                          "currency": "value_from_other_record:currency:", None: None}[field]
-                rows.append(paired_result(chain, case_id=f"comparison/{case['id']}/{int(reverse)}/{mutation}",
+                          "currency": "value_from_other_record:currency:", None: "comparison_missing_record:"}[field]
+                rows.append(paired_result(scoped_chain, case_id=f"comparison/{case['id']}/{int(reverse)}/{mutation}",
                     family="comparison", mutation=mutation, question=question, evidence=evidence,
                     clean=clean, changed=changed, target_reason=reason, expected_complete=valid))
     return rows
@@ -251,11 +257,23 @@ def evaluate() -> dict:
     policies, paraphrases = policy_pairs(chain)
     pairs = policies + comparison_pairs(chain)
     workflows = workflow_comparisons() + workflow_policies()
+    baseline = json.loads(BASELINE.read_text())
+    input_keys = ("id", "family", "mutation", "question", "evidence", "clean", "changed",
+                  "expected_changed_supported_and_complete", "no_op_control")
+    same_inputs = [{k: r[k] for k in input_keys} for r in pairs] == [
+        {k: r[k] for k in input_keys} for r in baseline["paired_rows"]]
+    if not same_inputs:
+        raise ValueError("Paired inputs differ from the preserved baseline; do not claim the same-case comparison.")
     sources = ["scripts/naacl2027/evaluate_support.py", "data/naacl2027/support-policies.json",
                "finbot/demo.py", "finbot/orchestrator.py", "finbot/verification.py", "finbot/guardrails.py",
-               "finbot/policy_documents.py", "finbot/binding.py", "finbot/tools.py", "finbot/llm.py"]
-    return {"protocol": PROTOCOL, "evaluation_type": "authored_synthetic_diagnostics",
-            "new_model_calls": 0, "human_participants": 0, "verifier_rules_changed": False,
+               "finbot/policy_documents.py", "finbot/binding.py", "finbot/tools.py", "finbot/llm.py",
+               "finbot/comparison.py", "finbot/knowledge.py", "finbot/recordanswer.py", "finbot/config.py"]
+    return {"protocol": PROTOCOL, "evaluation_type": "post_fix_development_regression",
+            "new_model_calls": 0, "human_participants": 0, "verifier_rules_changed": True,
+            "baseline": {"path": str(BASELINE.relative_to(ROOT)),
+                         "sha256": hashlib.sha256(BASELINE.read_bytes()).hexdigest(),
+                         "same_paired_inputs": same_inputs,
+                         "workflow_summary": baseline["workflow_summary"], "pair_summary": baseline["pair_summary"]},
             "sources": {p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in sources},
             "workflow_summary": {family: {"runs": len(rs := [r for r in workflows if r['family'] == family]),
                 "passed": sum(r["passed"] for r in rs)} for family in ("policy", "comparison")},
@@ -267,6 +285,7 @@ def evaluate() -> dict:
             "paraphrase_controls": {"supported": len(paraphrases),
                                     "blocked": sum(r["check"]["action"] == "block" for r in paraphrases)},
             "limitations": [
+                "Fixes were developed after inspecting these failures; this rerun is not held-out validation.",
                 "Authored synthetic cases, not held-out natural requests, users or live-model accuracy.",
                 "Orders and mutations share fixtures; counts are dependent, not independent trials.",
                 "Workflow runs use the inspector's run_demo function and existing demo policies.",
@@ -280,8 +299,10 @@ def evaluate() -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--out", type=Path, default=ROOT / "results/naacl2027/varied-support.json")
+    parser.add_argument("--out", type=Path, default=ROOT / "results/naacl2027/varied-support-fixed.json")
     args = parser.parse_args()
+    if args.out.resolve() == BASELINE.resolve():
+        parser.error("The original baseline is immutable; choose a different output path.")
     report = evaluate()
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(report, indent=2) + "\n")

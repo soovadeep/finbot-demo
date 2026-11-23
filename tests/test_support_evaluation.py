@@ -72,9 +72,11 @@ class IndependentSupportScoring(unittest.TestCase):
 
     def test_committed_report_reproduces_without_model_calls(self):
         actual = evaluate()
-        saved = json.loads((ROOT / "results/naacl2027/varied-support.json").read_text())
+        saved = json.loads((ROOT / "results/naacl2027/varied-support-fixed.json").read_text())
         self.assertEqual(actual, saved)
         self.assertEqual(actual["new_model_calls"], 0)
+        self.assertTrue(actual["baseline"]["same_paired_inputs"])
+        self.assertTrue(actual["verifier_rules_changed"])
         self.assertTrue(all(row["result"]["mode"] == "offline_scripted" for row in actual["workflow_rows"]))
 
 

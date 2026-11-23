@@ -25,7 +25,7 @@ the added baseline comparison is cache-only and reports missing coverage explici
 | Result | Command | Output |
 |---|---|---|
 | Actual conversation controller: 60 authored regressions | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |
-| Varied support: 40 inspector runs and 74 matched mutations | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support.json` |
+| Varied support: post-fix rerun of 40 inspector runs and 74 matched mutations | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support-fixed.json` (original: `varied-support.json`) |
 | Amount-first and most-distinct baselines, cached replies only | `python scripts/naacl2027/compare_baselines.py` (also `--bench ambiguity-8-same-amount`) | `results/naacl2027/strong-baselines/` |
 | Matched clean/corrupted verification | `python scripts/naacl2027/paired_verification.py` | `results/naacl2027/paired-verification/` |
 | Ambiguity benchmark (224 episodes; 2 to 5 and 8 candidates) | `python scripts/naacl2027/build_ambiguity_set.py` and `--size 8` | `data/naacl2027/ambiguity*.jsonl` |
