@@ -69,6 +69,10 @@ overwrite a different result. To reproduce after later runtime changes, use a ch
 evaluation's commit. `PYTHONHASHSEED=0` pins set iteration in the frozen controller. The report at
 `results/naacl2027/fresh-wording-v1.json` includes texts, source-field labels, verdicts, candidate
 sets and provenance. No runtime fixes were made as part of this evaluation.
+The first evaluator and report are preserved in commit `73fb88a`.
+A reporting-only follow-up normalizes JSON lists/tuples during reproduction checks. Reruns
+compare every input, runtime identifier and measured outcome, while permitting the evaluator's
+own source hash to differ. They keep the original report and its original evaluator hash intact.
 
 ## How the earlier model experiments differ
 

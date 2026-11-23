@@ -2,7 +2,7 @@ import hashlib
 import json
 import unittest
 
-from scripts.naacl2027.evaluate_fresh_wording import DATA, conversation_score, pair_counts
+from scripts.naacl2027.evaluate_fresh_wording import DATA, conversation_score, pair_counts, same_measurement
 
 
 class FreshWordingScoring(unittest.TestCase):
@@ -45,6 +45,13 @@ class FreshWordingScoring(unittest.TestCase):
             "candidates": [{"record_id": "a", "matches_supplied": True}]})
         self.assertTrue(score["exact_candidate_set"])
         self.assertFalse(score["no_answer_before_confirmation"])
+
+    def test_replay_comparison_normalizes_json_without_ignoring_changed_results(self):
+        first = {"evaluator_sha256": "first", "cases_sha256": "cases", "options": ["a", "b"], "detected": 12}
+        replay = {**first, "evaluator_sha256": "new-harness", "options": ("a", "b")}
+        self.assertTrue(same_measurement(first, replay))
+        self.assertFalse(same_measurement(first, {**replay, "detected": 13}))
+        self.assertFalse(same_measurement(first, {**replay, "cases_sha256": "changed-cases"}))
 
 
 if __name__ == "__main__":

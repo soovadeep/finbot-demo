@@ -107,6 +107,14 @@ def evaluate():
             "draft_rows": pairs, "conversation_rows": conversations}
 
 
+def same_measurement(saved, current):
+    # JSON persists tuples as lists. The evaluator's source hash can change for
+    # harness-only fixes; all runtime/fixture provenance and outcomes must match.
+    def measurement(report):
+        return json.loads(json.dumps({k: v for k, v in report.items() if k != "evaluator_sha256"}))
+    return measurement(saved) == measurement(current)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, default=ROOT / "results/naacl2027/fresh-wording-v1.json")
@@ -114,9 +122,12 @@ def main():
     if os.environ.get("PYTHONHASHSEED") != "0":
         parser.error("Run with PYTHONHASHSEED=0 for reproducible set iteration in the frozen controller.")
     result = evaluate()
-    if args.out.exists() and json.loads(args.out.read_text()) != result:
-        raise ValueError("Refusing to replace a different report; preserve the first result.")
-    args.out.write_text(json.dumps(result, indent=2) + "\n")
+    if args.out.exists():
+        if not same_measurement(json.loads(args.out.read_text()), result):
+            raise ValueError("Refusing to replace a different report; preserve the first result.")
+        print("Reproduced the original measurements; retained the first report and its evaluator hash.")
+    else:
+        args.out.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({k: result[k] for k in ("draft_summary", "draft_by_role", "conversation_summary")}, indent=2))
 
 
