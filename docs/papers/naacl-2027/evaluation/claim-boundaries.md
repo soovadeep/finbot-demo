@@ -1,0 +1,63 @@
+# Claim boundaries and independent answer scoring
+
+## What the present evidence supports
+
+The contribution is an inspectable workflow linking ambiguous-record clarification, explicit
+customer confirmation and evidence-consistency checks. It is not a novel Bayesian method,
+an established best question selector, or a universally safe financial agent. The component's
+most-distinct heuristic outperforms one-question decision value on this benchmark.
+
+The original live-writer audit covers 125 initially passing answers from one model on card payments
+(108 distinct records). It identifies **nine expected-versus-actual settlement-date errors and one
+refund omission**. Treat these as semantic-role and completeness failures; the historical audit's
+"minor issue" label does not establish low financial impact. Its 115 other answers were assessed
+by authors with AI assistance, not an independent blinded study. Preserve that provenance.
+
+Confirmation is an authorization boundary, not a correctness oracle. Customers can confirm the
+wrong record. The observed wrong-selection rates of 2.2%/4.0% for the two-question DV component
+are numerically above 1.8%/3.6% for the full list. Neither overlapping intervals nor a small observed
+difference establishes equivalence, non-inferiority or a production safety bound.
+
+Structured-value extraction is finite and format-dependent. Report successes as observations on
+the tested formats. A value occurring in evidence does not establish its semantic role (expected
+versus actual settlement), completeness (a refund omitted), temporal validity, or applicability.
+
+## End-to-end success
+
+For an actionable task, require **correct intended record AND supported final answer AND sufficient
+completeness for the user's task**. Report wrong selections, unresolved tasks, missing answers and
+unsupported/incomplete answers separately. Report appropriate abstention for absent/indistinguishable
+targets separately from successful actionable answers.
+
+Prepare independent audit forms for the deployed workflow replay:
+
+```sh
+python scripts/naacl2027/score_end_to_end.py prepare \
+  --runs results/naacl2027/conversation-replay.json --out annotations.json
+```
+
+The forms deliberately contain null judgments. Give reviewers the original customer events/task,
+final answer and source record/policies, with method/fault labels and gate decisions concealed where
+feasible. Review **all released answers**, including repaired and record-built fallbacks. Judge:
+
+- Support: every substantive claim agrees with the intended record, including field roles,
+  status chronology, settlement expectations, refund state and advice applicability.
+- Completeness: the answer covers the requested information and material qualifiers; unsupported
+  payment execution claims fail. Identification-only fixtures do not establish cancellation ability.
+
+Use two reviewers where feasible, record disagreements and adjudicate before final scoring. Keep
+the independent reviewer process and rubric documented; a nonempty reviewer code alone cannot
+prove independence. Fill explicit boolean judgments and notes, then run:
+
+```sh
+python scripts/naacl2027/score_end_to_end.py score \
+  --runs results/naacl2027/conversation-replay.json --annotations annotations.json --out end-to-end.json
+```
+
+Stale hashes, duplicate runs and unfilled submitted judgments are rejected. Without completed audits,
+the score remains null for potentially successful unassessed answers. Gate passes and the replay's
+expected-field checks are never silently converted into independent answer-quality labels.
+
+No independent end-to-end accuracy or human usability result is claimed in this revision. Auditing
+authored regression cases remains a regression assessment; estimating customer performance requires
+the actual deployed controller on separately collected customer/simulator interactions.

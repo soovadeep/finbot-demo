@@ -15,12 +15,12 @@
 % Columns (cm): 0, 4.6, 9.2, 13.8, 18.4. Rows: clarify 0; verify -3.4 and -5.4.
 % ---- Clarify lane
 \node[end]  (msg)    at (0,0)    {Customer message\\(no reference)};
-\node[cbox] (belief) at (4.6,0)  {Belief over the\\customer's records};
+\node[cbox] (belief) at (4.6,0)  {Filter supplied details;\\update beliefs};
 \node[cbox] (ask)    at (9.2,0)  {Ask the question\\with highest DV};
-\node[kbox] (list)   at (13.8,0) {Short list; customer\\picks one or none};
+\node[kbox] (list)   at (13.8,0) {Matching / other records;\\confirm or abstain};
 \draw[arr] (msg) -- (belief);
 \draw[arr] ([yshift=2mm]belief.east) -- node[lab, above=1.5mm]{at most 2} ([yshift=2mm]ask.west);
-\draw[arr] ([yshift=-2mm]ask.west) -- node[lab, below=1.5mm]{reply: Bayes update} ([yshift=-2mm]belief.east);
+\draw[arr] ([yshift=-2mm]ask.west) -- node[lab, below=1.5mm]{reply: parse details} ([yshift=-2mm]belief.east);
 \draw[arr] (ask) -- node[lab, above]{stop} (list);
 % ---- Verify lane
 \node[vbox] (fetch)  at (0,-3.4)    {Fetch the record again\\(tenant-scoped)};

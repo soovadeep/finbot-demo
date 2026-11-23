@@ -3,6 +3,14 @@
 `finbot-naacl2027-demo.mp4` (2:26, 1080p, H.264/AAC, burned-in captions) walks through the hosted
 demo. `narration.md` is the script and storyboard; `captions.srt` holds the captions.
 
+This recording predates the revised evaluation. Its results slide describes the
+`ClarificationSession` component, not measured customer performance of the deployed controller.
+The revised paper adds stronger heuristics, the full-list comparison and paired verification
+diagnostics. Its bounded claims supersede the narration's statement that code extracts
+"every amount, status and ID": extraction covers finite formats and does not establish
+semantic correctness or completeness. Update the narration, captions and results slide before
+using this recording as the final submission video; the original audio clips are not bundled.
+
 To rebuild (Linux, with Xvfb, ffmpeg, Node and Playwright):
 
 1. Run the demo locally: `python -m finbot.demo --port 8766`.

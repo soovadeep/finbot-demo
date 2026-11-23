@@ -20,7 +20,7 @@ Clone the repository:
 
 ```sh
 git clone https://github.com/soovadeep/finbot-demo.git
-cd finbot
+cd finbot-demo
 git rev-parse HEAD
 ```
 
@@ -45,8 +45,7 @@ py -3 -m venv .venv-demo
 .\.venv-demo\Scripts\python.exe -m finbot.demo
 ```
 
-No `pip install` is needed for this offline entry point. The repository's broader
-`requirements.txt` supports other application paths and is not required here.
+No `pip install` is needed for this offline entry point.
 
 Open **<http://127.0.0.1:8765/inspector>** for the evidence inspector this guide covers; the
 conversation demo is at <http://127.0.0.1:8765/>. The terminal prints both addresses and

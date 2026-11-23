@@ -12,12 +12,12 @@ every scenario and what to look for. The [paper](docs/papers/naacl-2027/finbot-n
 Customers rarely quote a transaction ID, and "my $200 payment hasn't arrived" can match several
 payments. Finbot does two things in one conversation:
 
-1. **Clarify.** It keeps a probability for each record the customer is allowed to see, asks the
-   one or two questions with the highest expected value, then shows a short list. A probability
-   never selects a record; the customer confirms it.
-2. **Verify.** It fetches the confirmed record again, and code checks every amount, status and
-   cause in the model's draft against it. A failing draft gets one repair, then an answer built
-   from the record, then a refusal.
+1. **Clarify.** The demo filters records using confidently supplied details and scores up to two
+   clarification questions. It shows matching records, with other records available separately.
+   The customer confirms a record; a probability never selects one.
+2. **Verify.** It fetches the confirmed record again and checks recognized claim formats against
+   the evidence. A failing draft gets one repair, then a checked answer built from the record,
+   then a refusal. These finite rules do not establish semantic correctness or completeness.
 
 An inspector shows the beliefs, question scores, retrieved evidence and every rejected draft.
 
@@ -48,7 +48,20 @@ These scripted checks are not customer-accuracy measurements.
 | Answer checks on injected errors | `python scripts/naacl2027/check_injection.py` | `results/naacl2027/check-injection.json` |
 | Tests (no installs) | `python -m unittest discover -s tests` | |
 
-The simulations call model APIs; their saved outputs are in `results/` so nothing needs to be rerun.
+The original simulations can call model APIs on cache misses. The added
+`python scripts/naacl2027/compare_baselines.py` replays cached replies only, reports coverage,
+and compares amount-first and most-distinct heuristics. A most-distinct question matches or
+exceeds the correct-confirmation rate of two decision-value questions on the main component set;
+showing all records remains a strong baseline. No human usability benefit has been demonstrated.
+
+Run `python scripts/naacl2027/paired_verification.py` for matched clean/corrupted checks.
+The raw 82.3% rejection rate includes pre-existing failures; mutations trigger 2,098/2,670
+rejections among accepted controls (78.6%), including zero for added bare links.
+
+The local `/pilot` page and [study protocol](docs/papers/naacl-2027/evaluation/user-study-protocol.md)
+support a consented, export-only comparison with a full list. No participant results are included.
+See [claim boundaries and independent scoring](docs/papers/naacl-2027/evaluation/claim-boundaries.md)
+for remaining semantic failures and how to assess correct selection **and** answer quality.
 
 ## Where things are
 

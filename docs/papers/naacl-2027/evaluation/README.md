@@ -56,3 +56,11 @@ false rejection rate. The verifier and historical raw result file are unchanged.
 clarification UI and a full-list baseline. See [the protocol](user-study-protocol.md) for assignment,
 consent, timing and analysis. The default is rehearsal; no participant results are bundled.
 Run `python scripts/naacl2027/user_study.py --help` for allocation and analysis commands.
+
+## Independent end-to-end assessment
+
+See [claim boundaries](claim-boundaries.md) for the scoring rubric and
+`score_end_to_end.py` commands. Correct record selection, supported claims and sufficient
+completeness must all hold. The script creates unfilled forms and leaves the success rate
+undefined while relevant answers lack independent judgments. Regression field checks and
+gate verdicts are not independent semantic labels. Actual auditors are still required.
