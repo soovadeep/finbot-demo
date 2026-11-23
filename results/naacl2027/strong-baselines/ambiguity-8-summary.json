@@ -1,0 +1,996 @@
+{
+  "protocol": "finbot-strong-baselines-v1",
+  "bench": "ambiguity-8",
+  "new_model_calls": 0,
+  "sources": {
+    "data/naacl2027/ambiguity-8.jsonl": "490e559fcf6375099f2bd891b7f4f602d539e2673a89acd4e8b0c4659234cb35",
+    "finbot/clarification.py": "fda040ec2e94f74005c34c96fff4742050173a75e4fee2710fd0768820bf4ba6",
+    "scripts/naacl2027/compare_baselines.py": "eeb188ec1dec939c0000f84476d8225eb21beaa8dabf27ad394ba688e0c6977c",
+    "scripts/naacl2027/simulate_customers.py": "be09d8ee7c84b6e6db9443db0a2344d7e4eea4d03840f143563c2601755ef36d",
+    "results/naacl2027/clarification-sim/cache-haiku.jsonl": "699eda91ed9f32165924977e1214a209ce26e0c63b919800ab13aec6f9a592c9",
+    "results/naacl2027/clarification-sim/cache-llama.jsonl": "ffe3c1b80e7d3670236e0377d3752100f21dae3a1cfb399cd0dc7a25da48fd27"
+  },
+  "definitions": {
+    "amount_first": "Amount first, then original kind/merchant/date order; skip constant attributes.",
+    "most_distinct": "Most distinct options first; ties use original kind/merchant/date/amount order.",
+    "shared": "Same Bayesian updates, response settings, 0.95 threshold, budgets and two-record confirmation.",
+    "stopping": "Heuristics stop at budget/threshold/exhaustion; DV may also stop on nonpositive decision value."
+  },
+  "limitations": [
+    "Exploratory component comparison added after viewing the original results.",
+    "Missing cached replies are unmeasured, not unresolved or incorrect customer outcomes.",
+    "Compare methods on the reported paired intersection when coverage differs.",
+    "Bootstrap resamples target records (2000 draws, seed 2027); eight synthetic customers limit generalization.",
+    "No human effort, live demo accuracy, equivalence or non-inferiority claim."
+  ],
+  "results": [
+    {
+      "simulator": "haiku",
+      "selector": "fixed",
+      "budget": 1,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 54,
+      "wrong": 5,
+      "unresolved": 165,
+      "correct_rate": 0.24107142857142858,
+      "wrong_rate": 0.022321428571428572,
+      "unresolved_rate": 0.7366071428571429,
+      "top1_rate": 0.1875,
+      "mean_questions": 1.0
+    },
+    {
+      "simulator": "haiku",
+      "selector": "fixed",
+      "budget": 2,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 107,
+      "wrong": 4,
+      "unresolved": 113,
+      "correct_rate": 0.47767857142857145,
+      "wrong_rate": 0.017857142857142856,
+      "unresolved_rate": 0.5044642857142857,
+      "top1_rate": 0.71875,
+      "mean_questions": 1.9508928571428572
+    },
+    {
+      "simulator": "haiku",
+      "selector": "amount_first",
+      "budget": 1,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 93,
+      "wrong": 5,
+      "unresolved": 126,
+      "correct_rate": 0.41517857142857145,
+      "wrong_rate": 0.022321428571428572,
+      "unresolved_rate": 0.5625,
+      "top1_rate": 0.625,
+      "mean_questions": 1.0
+    },
+    {
+      "simulator": "haiku",
+      "selector": "amount_first",
+      "budget": 2,
+      "requested": 224,
+      "completed": 223,
+      "missing_cache": 1,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 88,
+      "wrong": 4,
+      "unresolved": 131,
+      "correct_rate": 0.39461883408071746,
+      "wrong_rate": 0.017937219730941704,
+      "unresolved_rate": 0.5874439461883408,
+      "top1_rate": 0.6233183856502242,
+      "mean_questions": 1.9506726457399104
+    },
+    {
+      "simulator": "haiku",
+      "selector": "most_distinct",
+      "budget": 1,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 111,
+      "wrong": 5,
+      "unresolved": 108,
+      "correct_rate": 0.4955357142857143,
+      "wrong_rate": 0.022321428571428572,
+      "unresolved_rate": 0.48214285714285715,
+      "top1_rate": 0.71875,
+      "mean_questions": 1.0
+    },
+    {
+      "simulator": "haiku",
+      "selector": "most_distinct",
+      "budget": 2,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 106,
+      "wrong": 4,
+      "unresolved": 114,
+      "correct_rate": 0.4732142857142857,
+      "wrong_rate": 0.017857142857142856,
+      "unresolved_rate": 0.5089285714285714,
+      "top1_rate": 0.7410714285714286,
+      "mean_questions": 1.9508928571428572
+    },
+    {
+      "simulator": "haiku",
+      "selector": "information_gain",
+      "budget": 1,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 98,
+      "wrong": 5,
+      "unresolved": 121,
+      "correct_rate": 0.4375,
+      "wrong_rate": 0.022321428571428572,
+      "unresolved_rate": 0.5401785714285714,
+      "top1_rate": 0.6473214285714286,
+      "mean_questions": 1.0
+    },
+    {
+      "simulator": "haiku",
+      "selector": "information_gain",
+      "budget": 2,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 104,
+      "wrong": 4,
+      "unresolved": 116,
+      "correct_rate": 0.4642857142857143,
+      "wrong_rate": 0.017857142857142856,
+      "unresolved_rate": 0.5178571428571429,
+      "top1_rate": 0.7276785714285714,
+      "mean_questions": 1.9508928571428572
+    },
+    {
+      "simulator": "haiku",
+      "selector": "decision_value",
+      "budget": 1,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 105,
+      "wrong": 5,
+      "unresolved": 114,
+      "correct_rate": 0.46875,
+      "wrong_rate": 0.022321428571428572,
+      "unresolved_rate": 0.5089285714285714,
+      "top1_rate": 0.6919642857142857,
+      "mean_questions": 1.0
+    },
+    {
+      "simulator": "haiku",
+      "selector": "decision_value",
+      "budget": 2,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 109,
+      "wrong": 5,
+      "unresolved": 110,
+      "correct_rate": 0.48660714285714285,
+      "wrong_rate": 0.022321428571428572,
+      "unresolved_rate": 0.49107142857142855,
+      "top1_rate": 0.7366071428571429,
+      "mean_questions": 1.3616071428571428
+    },
+    {
+      "simulator": "haiku",
+      "selector": "show_list",
+      "budget": 0,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 135,
+      "wrong": 4,
+      "unresolved": 85,
+      "correct_rate": 0.6026785714285714,
+      "wrong_rate": 0.017857142857142856,
+      "unresolved_rate": 0.3794642857142857,
+      "top1_rate": null,
+      "mean_questions": 0.0
+    },
+    {
+      "simulator": "llama",
+      "selector": "fixed",
+      "budget": 1,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 68,
+      "wrong": 13,
+      "unresolved": 143,
+      "correct_rate": 0.30357142857142855,
+      "wrong_rate": 0.05803571428571429,
+      "unresolved_rate": 0.6383928571428571,
+      "top1_rate": 0.19196428571428573,
+      "mean_questions": 1.0
+    },
+    {
+      "simulator": "llama",
+      "selector": "fixed",
+      "budget": 2,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 147,
+      "wrong": 9,
+      "unresolved": 68,
+      "correct_rate": 0.65625,
+      "wrong_rate": 0.04017857142857143,
+      "unresolved_rate": 0.30357142857142855,
+      "top1_rate": 0.7723214285714286,
+      "mean_questions": 1.9508928571428572
+    },
+    {
+      "simulator": "llama",
+      "selector": "amount_first",
+      "budget": 1,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 142,
+      "wrong": 9,
+      "unresolved": 73,
+      "correct_rate": 0.6339285714285714,
+      "wrong_rate": 0.04017857142857143,
+      "unresolved_rate": 0.32589285714285715,
+      "top1_rate": 0.7544642857142857,
+      "mean_questions": 1.0
+    },
+    {
+      "simulator": "llama",
+      "selector": "amount_first",
+      "budget": 2,
+      "requested": 224,
+      "completed": 223,
+      "missing_cache": 1,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 142,
+      "wrong": 9,
+      "unresolved": 72,
+      "correct_rate": 0.6367713004484304,
+      "wrong_rate": 0.04035874439461883,
+      "unresolved_rate": 0.32286995515695066,
+      "top1_rate": 0.7533632286995515,
+      "mean_questions": 1.9506726457399104
+    },
+    {
+      "simulator": "llama",
+      "selector": "most_distinct",
+      "budget": 1,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 148,
+      "wrong": 9,
+      "unresolved": 67,
+      "correct_rate": 0.6607142857142857,
+      "wrong_rate": 0.04017857142857143,
+      "unresolved_rate": 0.29910714285714285,
+      "top1_rate": 0.7723214285714286,
+      "mean_questions": 1.0
+    },
+    {
+      "simulator": "llama",
+      "selector": "most_distinct",
+      "budget": 2,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 147,
+      "wrong": 9,
+      "unresolved": 68,
+      "correct_rate": 0.65625,
+      "wrong_rate": 0.04017857142857143,
+      "unresolved_rate": 0.30357142857142855,
+      "top1_rate": 0.7901785714285714,
+      "mean_questions": 1.9508928571428572
+    },
+    {
+      "simulator": "llama",
+      "selector": "information_gain",
+      "budget": 1,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 132,
+      "wrong": 9,
+      "unresolved": 83,
+      "correct_rate": 0.5892857142857143,
+      "wrong_rate": 0.04017857142857143,
+      "unresolved_rate": 0.3705357142857143,
+      "top1_rate": 0.6964285714285714,
+      "mean_questions": 1.0
+    },
+    {
+      "simulator": "llama",
+      "selector": "information_gain",
+      "budget": 2,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 147,
+      "wrong": 9,
+      "unresolved": 68,
+      "correct_rate": 0.65625,
+      "wrong_rate": 0.04017857142857143,
+      "unresolved_rate": 0.30357142857142855,
+      "top1_rate": 0.7767857142857143,
+      "mean_questions": 1.9508928571428572
+    },
+    {
+      "simulator": "llama",
+      "selector": "decision_value",
+      "budget": 1,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 140,
+      "wrong": 9,
+      "unresolved": 75,
+      "correct_rate": 0.625,
+      "wrong_rate": 0.04017857142857143,
+      "unresolved_rate": 0.33482142857142855,
+      "top1_rate": 0.7410714285714286,
+      "mean_questions": 1.0
+    },
+    {
+      "simulator": "llama",
+      "selector": "decision_value",
+      "budget": 2,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 148,
+      "wrong": 9,
+      "unresolved": 67,
+      "correct_rate": 0.6607142857142857,
+      "wrong_rate": 0.04017857142857143,
+      "unresolved_rate": 0.29910714285714285,
+      "top1_rate": 0.7857142857142857,
+      "mean_questions": 1.3125
+    },
+    {
+      "simulator": "llama",
+      "selector": "show_list",
+      "budget": 0,
+      "requested": 224,
+      "completed": 224,
+      "missing_cache": 0,
+      "rates_denominator": "completed_episodes_only",
+      "correct": 182,
+      "wrong": 8,
+      "unresolved": 34,
+      "correct_rate": 0.8125,
+      "wrong_rate": 0.03571428571428571,
+      "unresolved_rate": 0.15178571428571427,
+      "top1_rate": null,
+      "mean_questions": 0.0
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "simulator": "haiku",
+      "budget": 1,
+      "baseline": "fixed",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.22767857142857142,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.16666666666666666,
+            0.28444444444444444
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.013452914798206279,
+            0.013452914798206279
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "haiku",
+      "budget": 1,
+      "baseline": "amount_first",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.05357142857142857,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.023696682464454975,
+            0.08372093023255814
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "haiku",
+      "budget": 1,
+      "baseline": "most_distinct",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.026785714285714284,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.05194805194805195,
+            -0.0048543689320388345
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "haiku",
+      "budget": 1,
+      "baseline": "show_list",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.13392857142857142,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.20080321285140562,
+            -0.07589285714285714
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.004464285714285714,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.014354066985645933,
+            0.024489795918367346
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 1.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            1.0,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "haiku",
+      "budget": 2,
+      "baseline": "fixed",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.008928571428571428,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.017167381974248927,
+            0.0380952380952381
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.004464285714285714,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.014634146341463415
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.5892857142857143,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.6759259259259259,
+            -0.5085470085470085
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "haiku",
+      "budget": 2,
+      "baseline": "amount_first",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 223,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.09417040358744394,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.04918032786885246,
+            0.13744075829383887
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 223,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.004484304932735426,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.014634146341463415
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 223,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.5919282511210763,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.6782178217821783,
+            -0.5066666666666667
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "haiku",
+      "budget": 2,
+      "baseline": "most_distinct",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.013392857142857142,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.008733624454148471,
+            0.03940886699507389
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.004464285714285714,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.014634146341463415
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.5892857142857143,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.6759259259259259,
+            -0.5085470085470085
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "haiku",
+      "budget": 2,
+      "baseline": "show_list",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.11607142857142858,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.1784037558685446,
+            -0.061946902654867256
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.004464285714285714,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.014354066985645933,
+            0.024489795918367346
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 1.3616071428571428,
+          "paired_record_cluster_bootstrap_ci95": [
+            1.277533039647577,
+            1.4444444444444444
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "llama",
+      "budget": 1,
+      "baseline": "fixed",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.32142857142857145,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.25892857142857145,
+            0.3805668016194332
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.017857142857142856,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.037209302325581395,
+            -0.0041841004184100415
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "llama",
+      "budget": 1,
+      "baseline": "amount_first",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.008928571428571428,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.0502283105022831,
+            0.02512562814070352
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "llama",
+      "budget": 1,
+      "baseline": "most_distinct",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.03571428571428571,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.06995884773662552,
+            -0.009259259259259259
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "llama",
+      "budget": 1,
+      "baseline": "show_list",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.1875,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.24413145539906103,
+            -0.1350210970464135
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.004464285714285714,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.013953488372093023,
+            0.024875621890547265
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 1.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            1.0,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "llama",
+      "budget": 2,
+      "baseline": "fixed",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.004464285714285714,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.014423076923076924
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.6383928571428571,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.7230046948356808,
+            -0.5555555555555556
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "llama",
+      "budget": 2,
+      "baseline": "amount_first",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 223,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.026905829596412557,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.008771929824561403,
+            0.04954954954954955
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 223,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 223,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.6412556053811659,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.7255813953488373,
+            -0.5545454545454546
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "llama",
+      "budget": 2,
+      "baseline": "most_distinct",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.004464285714285714,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.014423076923076924
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.0,
+          "paired_record_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.6383928571428571,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.7230046948356808,
+            -0.5555555555555556
+          ]
+        }
+      ]
+    },
+    {
+      "simulator": "llama",
+      "budget": 2,
+      "baseline": "show_list",
+      "differences": [
+        {
+          "metric": "correct",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": -0.15178571428571427,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.20408163265306123,
+            -0.10091743119266056
+          ]
+        },
+        {
+          "metric": "wrong",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 0.004464285714285714,
+          "paired_record_cluster_bootstrap_ci95": [
+            -0.013953488372093023,
+            0.024875621890547265
+          ]
+        },
+        {
+          "metric": "questions",
+          "common_episodes": 224,
+          "target_record_clusters": 154,
+          "decision_value_minus_baseline": 1.3125,
+          "paired_record_cluster_bootstrap_ci95": [
+            1.2289719626168225,
+            1.393939393939394
+          ]
+        }
+      ]
+    }
+  ]
+}

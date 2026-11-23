@@ -123,7 +123,9 @@ transfer''). These are design settings, not measured human accuracy;
 Sections~\ref{sec:more} and~\ref{sec:safety} test what happens when they are wrong.
 
 \paragraph{Choosing the next question.}
-Three selectors are implemented. \emph{Fixed} asks attributes in a set order.
+The component offers five selectors. \emph{Fixed} asks attributes in a set order;
+\emph{amount-first} moves amount ahead of that order, and \emph{most-distinct} asks the attribute
+with the most distinct options (fixed-order ties). Neither heuristic uses learned parameters.
 \emph{Information gain} maximizes $\mathrm{IG}(q) = H(b) - \sum_r P(r)\,H(b_r)$, where $b_r$ is
 the belief after reply $r$ and $P(r) = \sum_h b(h)\,P(r \mid h, q)$. With
 $e(b) = 1 - \max_h b(h)$, the chance of picking the wrong record, \emph{decision value}
@@ -134,7 +136,7 @@ maximizes its expected drop minus a cost $c = 0.02$ per question:
 and stops when no question has $\mathrm{DV}(q) > 0$. Unlike information gain, decision value counts only the drop in the chance of picking the wrong
 record, the error confirmation guards against, and its cost lets it stop early. All selectors stop after the budget (two by
 default) or once one record holds 95\% of the belief. The live demonstration asks by decision
-value, the selector that does best in Section~\ref{sec:eval}, and its inspector shows both
+value over records matching supplied details, and its inspector shows both
 scores.
 
 \paragraph{Confirmation and corrections.}
@@ -233,6 +235,8 @@ None & 0 & 13 & 17 & 3.1 & 13 & 21 & 5.4 \\
 Fixed, 1 & 1 & 19 & 24 & 2.2 & 19 & 30 & 5.8 \\
 IG, 1 & 1 & 65 & 44 & 2.2 & 70 & 59 & 4.0 \\
 DV, 1 & 1 & 69 & 47 & 2.2 & 74 & 63 & 4.0 \\
+Amount-first, 1 & 1 & 63 & 42 & 2.2 & 75 & 63 & 4.0 \\
+Most-distinct, 1 & 1 & 72 & 50 & 2.2 & 77 & 66 & 4.0 \\
 Fixed, 2 & 1.95 & 72 & 48 & 1.8 & 77 & 66 & 4.0 \\
 IG, 2 & 1.95 & 73 & 46 & 1.8 & 78 & 66 & 4.0 \\
 DV, 2 & 1.36 & 74 & 49 & 2.2 & 79 & 66 & 4.0 \\
@@ -244,7 +248,8 @@ Show all 8 & 0 & n/a & 60 & 1.8 & n/a & 81 & 3.6 \\
 budget; None shows the first two records. Qs: mean questions asked with Haiku customers (Llama: 1.31 for DV, 2). Top-1: episodes whose most likely record
 after the questions is the target. Corr.\ and Wr.: episodes in which the customer
 confirmed the target or another record from the two-record short list (or from all eight).
-``+ fallback'' shows all eight only to customers who reject the short list. Correct-rate
+``+ fallback'' shows all eight only to customers who reject the short list. The two heuristic
+rows are exploratory additions using cached replies. Correct-rate
 intervals are about $\pm$6 points.}
 \label{tab:main}
 \end{table}
@@ -305,6 +310,15 @@ fixed-order rate under both simulators. With a budget of two, fixed order catche
 66\% correct) but asks 1.95 questions; decision value reaches the same rates with 1.31 to
 1.36, because it stops when another question is not worth asking. On the smaller set (two to five records), the selectors differ
 little: one question in any order already puts the target first in 64--70\% of episodes.
+
+Stronger untuned heuristics qualify this comparison. One most-distinct question yields
+49.6\%/66.1\% correct confirmations (Haiku/Llama), versus 46.9\%/62.5\% for one DV question;
+amount-first yields 41.5\%/63.4\%. Most-distinct with one question also matches or exceeds the
+correct rates of DV with two. Thus DV is not the strongest accuracy baseline here. On the
+same-amount set, most-distinct also exceeds DV with one question (32.6\%/46.9\% versus
+29.9\%/43.3\%). All these comparisons have 224 episodes. The released analysis includes
+paired, target-record-cluster bootstrap intervals and flags missing cache coverage: amount-first
+with two questions has 223 episodes per simulator on the original set, not 224.
 
 Showing every record at once resolves more episodes than the short list alone (60\% and 81\%).
 This is a strong baseline, and question count alone does not measure effort. In a component variant, when the customer

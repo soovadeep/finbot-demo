@@ -11,6 +11,11 @@ The 224 openings are seen by the simulator but are **not parsed by this selectio
 Its response reliabilities are assumptions. It does not execute the answer-writing stage.
 The saved two-family results and their limitations remain in `results/naacl2027/clarification-sim/`.
 
+`compare_baselines.py` adds amount-first and most-distinct heuristics, with cache-only coverage
+reporting and paired differences. Run it with `--bench ambiguity-8` and `--bench ambiguity-8-same-amount`.
+See `results/naacl2027/strong-baselines/README.md`: a stronger heuristic exceeds one-question DV,
+so the old comparison against fixed order alone is insufficient to claim selector superiority.
+
 ## Deployed conversation workflow
 
 `POST /api/conversation` calls `run_conversation`, which uses `Conversation`. It parses the opening
