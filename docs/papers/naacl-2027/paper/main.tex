@@ -52,9 +52,9 @@ grounding and verification work \citep{gao-etal-2023-rarr}. The second begins ea
 the customer does not say which payment they mean. ``I was charged twice at the restaurant''
 gives no reference; the customer's account may hold five card payments that week.
 
-The usual responses to this are to ask for the reference, which customers often do not have
-at hand, or to show the whole list. The first stalls the conversation; the second works when
-the customer can read a list, but is long on a phone screen and does not fit a voice channel. Clarifying questions are a well-studied alternative
+Alternatives include requesting a reference or showing every record. Whether clarification
+reduces user effort relative to a full list is an empirical question, especially on small
+screens or voice channels; we have not measured those benefits. Clarifying questions are a well-studied alternative
 \citep{rao-daume-iii-2018-learning,aliannejadi2019asking,kuhn2022clam}, and Bayesian
 experimental design gives a principled way to choose them \citep{lindley1956measure}. Recent
 work applies expected information gain to eliciting what a user wants from a language model
@@ -306,13 +306,15 @@ fixed-order rate under both simulators. With a budget of two, fixed order catche
 1.36, because it stops when another question is not worth asking. On the smaller set (two to five records), the selectors differ
 little: one question in any order already puts the target first in 64--70\% of episodes.
 
-Showing every record at once resolves more episodes than the short list alone (60\% and 81\%):
-the simulated customers are good at scanning lists. The two combine well: when the customer
+Showing every record at once resolves more episodes than the short list alone (60\% and 81\%).
+This is a strong baseline, and question count alone does not measure effort. In a component variant, when the customer
 rejects the short list, the system shows the full list. Decision value followed by this fallback confirms the target in
 66\% (Haiku) and 81\% (Llama) of episodes, matching or beating the full list, while only 49\%
 and 30\% of customers ever see eight records; wrong selections rise slightly, to 3.1\% and
 4.9\%, because a customer gets two chances to choose. The simulators differ mainly on vague customers, whom Haiku often leaves unresolved,
-as its prompt asks (Appendix~\ref{app:bench}).
+as its prompt asks (Appendix~\ref{app:bench}). A local pilot interface and prespecified protocol
+compare clarification with showing all records, recording time, errors, abstention and effort;
+no participant data have been collected and no usability advantage is claimed.
 
 \paragraph{Without unique amounts.}
 \label{sec:same}

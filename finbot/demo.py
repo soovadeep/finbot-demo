@@ -299,7 +299,7 @@ class DemoApp:
             elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] in {
                     "/", "/inspector", "/app.js", "/style.css", "/clarification", "/clarification.js",
                     "/study", "/study/probes", "/study.js", "/study.css",
-                    "/conversation.js", "/conversation.css"}:
+                    "/conversation.js", "/conversation.css", "/pilot", "/pilot.js", "/pilot.css"}:
                 filename, mime = {"/": ("conversation.html", "text/html; charset=utf-8"),
                                   "/inspector": ("index.html", "text/html; charset=utf-8"),
                                   "/app.js": ("app.js", "text/javascript; charset=utf-8"),
@@ -311,12 +311,18 @@ class DemoApp:
                                   "/conversation.js": ("conversation.js", "text/javascript; charset=utf-8"),
                                   "/conversation.css": ("conversation.css", "text/css; charset=utf-8"),
                                   "/study.js": ("study.js", "text/javascript; charset=utf-8"),
-                                  "/study.css": ("study.css", "text/css; charset=utf-8")
+                                  "/study.css": ("study.css", "text/css; charset=utf-8"),
+                                  "/pilot": ("pilot.html", "text/html; charset=utf-8"),
+                                  "/pilot.js": ("pilot.js", "text/javascript; charset=utf-8"),
+                                  "/pilot.css": ("pilot.css", "text/css; charset=utf-8")
                                   }[environ["PATH_INFO"]]
                 body = (ASSETS / filename).read_bytes()
                 payload = None
             elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] == "/api/scenarios":
                 payload = {"scenarios": SCENARIOS, "faults": FAULTS, "mode": "offline_scripted"}
+            elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] == "/api/pilot/tasks":
+                from .usability import public_tasks
+                payload = public_tasks()
             elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] == "/api/clarification/cases":
                 from .clarification_demo import case_catalogue
                 payload = case_catalogue()

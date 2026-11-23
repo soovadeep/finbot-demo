@@ -38,3 +38,10 @@ The wrong-confirmation case deliberately demonstrates a remaining failure bounda
 audit concerns saved Llama answers about card payments. Neither measures full customer conversations.
 Report false rejections alongside corrupted-draft rejections. Do not use a passing gate as its own
 independent factuality label.
+
+## Planned human pilot
+
+`http://127.0.0.1:8765/pilot` provides an export-only comparison of the current four-record
+clarification UI and a full-list baseline. See [the protocol](user-study-protocol.md) for assignment,
+consent, timing and analysis. The default is rehearsal; no participant results are bundled.
+Run `python scripts/naacl2027/user_study.py --help` for allocation and analysis commands.
