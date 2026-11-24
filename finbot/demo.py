@@ -39,9 +39,17 @@ FAULTS = {
     "amount_always": "Invented fee in draft and repair",
     "swap_once": "Swap two transaction amounts in first draft",
     "policy_once": "Reverse a policy rule while keeping its citation",
+    "settlement_once": "Present an expected settlement date as an actual date",
+    "refund_once": "Present the payment amount as the refund amount",
 }
 PAIR = "Compare txn_A1B2C3D4 and txn_E5F6G7H8: what are their amounts and statuses?"
 SCENARIOS = [
+    {"id": "settlement_role", "title": "Expected is not actual", "fault": "settlement_once",
+     "question": "What are the settlement details for txn_ROLE0001?",
+     "description": "The date exists on the right record, but only as an expectation. Inspect the field that rejects an actual-date claim."},
+    {"id": "refund_role", "title": "Payment is not refund", "fault": "refund_once",
+     "question": "What are the payment and refund details for txn_ROLE0001?",
+     "description": "A $200 payment has a $50 refund. Reusing the payment amount as the refund fails the role check."},
     {"id": "correct", "title": "A supported answer", "fault": "none",
      "question": "Why was txn_A1B2C3D4 declined?",
      "description": "The scripted draft passes the implemented checks."},
@@ -68,6 +76,9 @@ SCENARIOS = [
 ]
 TIMEOUT = {"txn_id": "txn_TIMEOUT01", "tenant_id": "m_100", "status": "unknown", "amount": "80.00",
            "currency": "USD", "error": "PROCESSOR_TIMEOUT", "created_at": "2026-11-12T16:15:00Z"}
+ROLE_RECORD = {"txn_id": "txn_ROLE0001", "tenant_id": "m_100", "status": "approved", "amount": "200.00",
+               "currency": "USD", "settlement": {"status": "settled", "expected_date": "2026-11-20"},
+               "refund": {"status": "succeeded", "amount": "50.00"}}
 
 
 class ScriptedPayments(FakeLLM):
@@ -159,7 +170,26 @@ class DemoModel:
             return response
         before = "".join(b.text for b in response.content if b.type == "text")
         after, marker = before, None
-        if self.fault == "policy_once":
+        if self.fault == "settlement_once":
+            after = before.replace("Expected settlement date:", "Actual settlement date:")
+            if after != before:
+                after = after.replace(" An actual settlement date is not recorded.", "")
+                marker = "expected date relabelled as actual; date value unchanged"
+        elif self.fault == "refund_once":
+            blocks = messages[-1]["content"]
+            for block in blocks if isinstance(blocks, list) else []:
+                if block.get("type") != "tool_result":
+                    continue
+                result = unwrap(block["content"])
+                if result["status"] != "found" or result["source"] != "txn_db":
+                    continue
+                data = result["data"]
+                refund = (data.get("refund") or {}).get("amount")
+                if refund and refund != data.get("amount"):
+                    after = after.replace(f"Refund amount: {refund}.", f"Refund amount: {data['amount']}.")
+            if after != before:
+                marker = "payment amount reused as refund amount on the same record"
+        elif self.fault == "policy_once":
             after = before.replace("Debit and prepaid cards cannot be surcharged.",
                                    "Debit and prepaid cards can be surcharged.")
             if after != before:
@@ -187,9 +217,10 @@ def run_demo(question: str, fault: str = "none", *, records: list[dict] | None =
     """live=True asks for the live writer; it is used only when the server enables it
     (FINBOT_DEMO_WRITER=live) and the caps allow, otherwise the scripted writer answers."""
     note = None
+    semantic = os.environ.get("FINBOT_DEMO_SEMANTIC", "off")
     if live and writer()["mode"] == "live_model":
         key = json.dumps([question, fault, records], sort_keys=True, default=str)
-        if key in LIVE_CACHE:
+        if semantic == "off" and key in LIVE_CACHE:
             LIVE_CACHE.move_to_end(key)
             return copy.deepcopy(LIVE_CACHE[key])
         if LIVE_BUDGET.allow(client):
@@ -198,7 +229,8 @@ def run_demo(question: str, fault: str = "none", *, records: list[dict] | None =
             except Exception:  # noqa: BLE001 - a provider outage must not break the page
                 note = "The live model did not answer; the scripted writer answered instead."
             else:
-                LIVE_CACHE[key] = copy.deepcopy(result)
+                if semantic == "off":
+                    LIVE_CACHE[key] = copy.deepcopy(result)
                 while len(LIVE_CACHE) > 256:
                     LIVE_CACHE.popitem(last=False)
                 return result
@@ -221,10 +253,11 @@ def _run_demo(question: str, fault: str = "none", *, records: list[dict] | None 
     kb = Index()
     for page in DEMO_DOCS:
         kb.upsert_page(copy.deepcopy(page))
-    rows: list[dict] = copy.deepcopy(records if records is not None else [*DEMO_TXNS, TIMEOUT])
+    rows: list[dict] = copy.deepcopy(records if records is not None else [*DEMO_TXNS, TIMEOUT, ROLE_RECORD])
     toolbox = ToolBox(InMemoryTxns(rows), InMemoryLogs(copy.deepcopy(DEMO_LOGS)), kb, domains=["payments"])
     model = DemoModel(fault, live)
     settings = Settings(llm_provider="fake", guardrail_provider="local", store_provider="sqlite",
+                        semantic_verification=os.environ.get("FINBOT_DEMO_SEMANTIC", "off"),
                         auth_mode="hmac", repair_attempts=1, record_fallback=True, routing="single",
                         policy_verification="extractive",
                         llm_retry_attempts=1, support_contact="the demo support desk", tool_policy_path="")
@@ -247,6 +280,7 @@ def _run_demo(question: str, fault: str = "none", *, records: list[dict] | None 
         "writer": writer()["label"] if live else "Scripted writer", "synthetic_data": True,
         "question": turn.question,
         "policy_verification": "extractive",
+        **({"semantic_verification": "bedrock"} if settings.semantic_verification == "bedrock" else {}),
         "fault": fault, "injections": model.injections, "outcome": outcome,
         "steps": [asdict(step) for step in steps], "evidence": turn.tools_called,
         "final": {"answer": turn.answer, "blocked_by": turn.blocked_by, "reasons": turn.reasons,
@@ -299,7 +333,7 @@ class DemoApp:
             elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] in {
                     "/", "/inspector", "/app.js", "/style.css", "/clarification", "/clarification.js",
                     "/study", "/study/probes", "/study.js", "/study.css",
-                    "/conversation.js", "/conversation.css"}:
+                    "/conversation.js", "/conversation.css", "/pilot", "/pilot.js", "/pilot.css"}:
                 filename, mime = {"/": ("conversation.html", "text/html; charset=utf-8"),
                                   "/inspector": ("index.html", "text/html; charset=utf-8"),
                                   "/app.js": ("app.js", "text/javascript; charset=utf-8"),
@@ -311,12 +345,18 @@ class DemoApp:
                                   "/conversation.js": ("conversation.js", "text/javascript; charset=utf-8"),
                                   "/conversation.css": ("conversation.css", "text/css; charset=utf-8"),
                                   "/study.js": ("study.js", "text/javascript; charset=utf-8"),
-                                  "/study.css": ("study.css", "text/css; charset=utf-8")
+                                  "/study.css": ("study.css", "text/css; charset=utf-8"),
+                                  "/pilot": ("pilot.html", "text/html; charset=utf-8"),
+                                  "/pilot.js": ("pilot.js", "text/javascript; charset=utf-8"),
+                                  "/pilot.css": ("pilot.css", "text/css; charset=utf-8")
                                   }[environ["PATH_INFO"]]
                 body = (ASSETS / filename).read_bytes()
                 payload = None
             elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] == "/api/scenarios":
                 payload = {"scenarios": SCENARIOS, "faults": FAULTS, "mode": "offline_scripted"}
+            elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] == "/api/pilot/tasks":
+                from .usability import public_tasks
+                payload = public_tasks()
             elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] == "/api/clarification/cases":
                 from .clarification_demo import case_catalogue
                 payload = case_catalogue()

@@ -1,0 +1,116 @@
+{
+  "evaluation_type": "authored_browser_regression",
+  "page": "/study",
+  "browser": "157.0.8103.79",
+  "standard": "WCAG 2.1 A and AA rules in axe-core 4.10.3",
+  "sources": {
+    "finbot/clarification_conversation.py": "59dfbfbfce57b46256976637fa5a02986d86ba36e41bb1247b34e444a09ac32e",
+    "finbot/demo_assets/conversation.js": "96675b6e4a6cb0e0455bcd08a5500ed4222a0878532cda6a9a1c0ff1708ac576",
+    "finbot/demo_assets/conversation.html": "9a6af11477efd60ef43d5651ab4b0aa9a9c7ee18679183d57ebb053ff55e7a19",
+    "finbot/demo_assets/conversation.css": "1d40da3047ccc8671b6f6454674ada45fa07c3002cf8c562377ef5620b2b5f55",
+    "scripts/naacl2027/contradiction_interface.cjs": "dfb567317f3b7c1b2ed4973a177a3432281c00ca60254e9c606f44bab82fb85c"
+  },
+  "checks": [
+    {
+      "width": 1280,
+      "keyboard_resolution": true,
+      "retained_details": true,
+      "explicit_correction": true,
+      "no_current_answer_during_conflict": true,
+      "old_answer_superseded": true,
+      "unresolved_exit": true,
+      "no_horizontal_overflow": true
+    },
+    {
+      "width": 390,
+      "keyboard_resolution": true,
+      "retained_details": true,
+      "explicit_correction": true,
+      "no_current_answer_during_conflict": true,
+      "old_answer_superseded": true,
+      "unresolved_exit": true,
+      "no_horizontal_overflow": true
+    }
+  ],
+  "states": [
+    {
+      "width": 1280,
+      "state": "conflicting selection paused",
+      "version": "4.10.3",
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 1280,
+      "state": "kept details; confirmation still required",
+      "version": "4.10.3",
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 1280,
+      "state": "corrected details and confirmed alternative",
+      "version": "4.10.3",
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 1280,
+      "state": "left unresolved from conflict",
+      "version": "4.10.3",
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 390,
+      "state": "conflicting selection paused",
+      "version": "4.10.3",
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 390,
+      "state": "kept details; confirmation still required",
+      "version": "4.10.3",
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 390,
+      "state": "corrected details and confirmed alternative",
+      "version": "4.10.3",
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 390,
+      "state": "left unresolved from conflict",
+      "version": "4.10.3",
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    }
+  ],
+  "violations": 0,
+  "browser_errors": [],
+  "external_requests": [],
+  "limitations": [
+    "Scripted browser checks, not a user study.",
+    "Automatic accessibility scans do not establish full accessibility compliance."
+  ]
+}

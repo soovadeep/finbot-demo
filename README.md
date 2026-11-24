@@ -1,6 +1,6 @@
-# Clarify, then Verify
+# Finbot
 
-A payment-support assistant that asks which record you mean before it answers.
+An inspectable AI assistant for evidence-grounded payment support.
 Code, data and demo for the NAACL 2027 System Demonstrations paper by Sandip Nandi,
 Apurba Bose, Aishwarya Bose and Soovadeep Bakshi.
 
@@ -9,17 +9,23 @@ Nothing to install. The [walkthrough](docs/papers/naacl-2027/reviewer-guide.md) 
 every scenario and what to look for. The [paper](docs/papers/naacl-2027/finbot-naacl2027.pdf) is in the repository. The 2.5-minute demo video is
 [docs/papers/naacl-2027/video/finbot-naacl2027-demo.mp4](docs/papers/naacl-2027/video/finbot-naacl2027-demo.mp4).
 
-Customers rarely quote a transaction ID, and "my $200 payment hasn't arrived" can match several
-payments. Finbot does two things in one conversation:
+Payment support involves identifying the relevant payment, explaining declines or uncertain
+outcomes, comparing records and answering policy questions. Finbot demonstrates these tasks
+through two interfaces, using synthetic account records and fictional policies:
 
-1. **Clarify.** It keeps a probability for each record the customer is allowed to see, asks the
-   one or two questions with the highest expected value, then shows a short list. A probability
-   never selects a record; the customer confirms it.
-2. **Verify.** It fetches the confirmed record again, and code checks every amount, status and
-   cause in the model's draft against it. A failing draft gets one repair, then an answer built
-   from the record, then a refusal.
+1. **Conversation.** Interpret supplied details, ask up to two scored clarification questions,
+   request explicit record confirmation, and explain that record's status and details.
+   Customer corrections invalidate the selection and mark previous answers as superseded.
+2. **Evidence inspector.** Explore decline explanations, unknown outcomes, two-record comparisons
+   and cited policy answers. These direct scenarios are separate from the conversation interface.
+3. **Verification and recovery.** Inspect retrieved evidence, drafts and check results. Inject
+   wrong statuses, invented fees, swapped amounts or policy contradictions to observe repair,
+   a checked record-built fallback, or refusal. The fault options depend on the interface.
 
-An inspector shows the beliefs, question scores, retrieved evidence and every rejected draft.
+The assistant is read-only: it does not initiate payments, refunds or disputes. Checks cover
+finite claim formats and do not establish semantic correctness or completeness. A customer can
+still confirm a wrong record consistent with their stated details. A conflicting selection now pauses
+for explicit correction or reselection before retrieval; it never silently overrides supplied details.
 
 ## Run it locally
 
@@ -32,17 +38,73 @@ python -m finbot.demo
 Then open <http://127.0.0.1:8765/> for the conversation, or <http://127.0.0.1:8765/inspector> for
 the evidence inspector. The demo uses synthetic records and a clearly labelled scripted model.
 
+An [optional semantic checker and three-way evaluation harness](docs/papers/naacl-2027/evaluation/semantic-verification.md)
+adds Bedrock contextual grounding inside draft, repair and fallback verification. It is **off
+by default** and requires a paid AWS service when enabled. Local contract tests pass; no live
+semantic accuracy improvement has been measured. The existing 32 wording pairs are development
+data; the harness separately freezes configuration, generates new drafts and consumes author labels.
+
 ## Reproduce the evaluation
+
+The 224-question simulation evaluates the clarification **component**, not the deployed
+conversation's complete interaction policy. See the [evaluation scope](docs/papers/naacl-2027/evaluation/README.md).
+Run `python scripts/naacl2027/evaluate_conversation.py` for 60 authored regression replays through
+the actual conversation endpoint's controller, including corrections, abstention and wrong confirmation.
+Customer events and the answer writer are scripted; question selection and verification use the
+actual demo code. Fifteen scripts run under four fault settings, including six new conflict-resolution
+scripts. Twenty runs never generate a draft; four further runs pause on a conflict after superseding
+an earlier answer. These are repeated test conditions, not independent customer samples. These checks are not customer-accuracy or natural LLM error measurements.
 
 | Result | Command | Output |
 |---|---|---|
 | Ambiguity benchmark (224 Banking77 questions, 2 to 8 candidate records) | `python scripts/naacl2027/build_ambiguity_set.py` (and `--size 8`) | `data/naacl2027/` |
 | Simulated customers, two model families, safety conditions | `python scripts/naacl2027/simulate_customers.py --simulator haiku` (and `llama`), then `--report` | `results/naacl2027/clarification-sim/` |
+| Contradiction controls, keyboard/mobile behavior and accessibility | `node scripts/naacl2027/contradiction_interface.cjs` | `results/naacl2027/contradiction-interface.json` |
+| Varied policy/comparison workflows and matched component probes | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support-roles.json` |
+| Financial-role ablation and retrospective cached-draft replay | `python scripts/naacl2027/evaluate_financial_roles.py` | `results/naacl2027/financial-roles.json` |
+| Fresh authored wording against a frozen runtime (use revision `af5cb8a`) | `PYTHONHASHSEED=0 python scripts/naacl2027/evaluate_fresh_wording.py` | `results/naacl2027/fresh-wording-v1.json` |
+| Semantic study, offline development arm; paid checks remain pending | `python scripts/naacl2027/semantic_study.py development --out /tmp/semantic-development.json` | `results/naacl2027/semantic-development-offline.json` |
 | Interface checks and accessibility scans | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |
 | Answer checks on injected errors | `python scripts/naacl2027/check_injection.py` | `results/naacl2027/check-injection.json` |
 | Tests (no installs) | `python -m unittest discover -s tests` | |
 
-The simulations call model APIs; their saved outputs are in `results/` so nothing needs to be rerun.
+The original simulations can call model APIs on cache misses. The added
+`python scripts/naacl2027/compare_baselines.py` replays cached replies only, reports coverage,
+and compares amount-first and most-distinct heuristics. A most-distinct question matches or
+exceeds the correct-confirmation rate of two decision-value questions on the main component set;
+showing all records remains a strong baseline. No human usability benefit has been demonstrated.
+
+Run `python scripts/naacl2027/paired_verification.py` for matched clean/corrupted checks.
+The raw 82.3% rejection rate includes pre-existing failures; mutations trigger 2,098/2,670
+rejections among accepted controls (78.6%), including zero for added bare links.
+
+The [varied support evaluation](docs/papers/naacl-2027/evaluation/varied-support.md) adds 40
+scripted inspector runs and 74 actual matched mutations, plus unchanged-swap and paraphrase
+controls. The original failures are preserved in `varied-support.json`. After fixes, workflows
+pass 28/28 comparison and 12/12 policy checks, and all 74 mutations are rejected with matching
+reasons while their clean controls pass. This reruns previously inspected development cases;
+it is not held-out, live-model or customer accuracy. Six supported paraphrases remain rejected
+by the deliberately extractive policy mode.
+
+The [financial-role extension](docs/papers/naacl-2027/evaluation/financial-roles.md) checks
+expected versus actual settlement dates and payment versus refund amounts. Try **Expected is
+not actual** and **Payment is not refund** in the inspector. On 60 authored value-preserving
+corruptions, the existing guardrail blocks 12; adding role checks blocks 60 while accepting
+all paired clean drafts and 12 equal-value controls. This is a development ablation, not
+held-out accuracy. Two out-of-grammar errors and the historical refund omission still pass.
+
+A [subsequent fresh-wording challenge](docs/papers/naacl-2027/evaluation/fresh-wording.md)
+freezes the runtime before committing new texts and labels. Role checks catch 12/32 corruptions
+and accept all 32 correct counterparts; the controller matches expected candidate sets in 15/16
+unconfirmed message sequences. The runtime was not tuned on these results. These AI-assisted,
+developer-authored probes expose broader language failures; they are not fresh LLM-generated answers.
+
+The submission's evaluation uses cached simulations, controller replays and verification diagnostics;
+reproducing those results requires no participant recruitment. The local `/pilot` page and
+[study protocol](docs/papers/naacl-2027/evaluation/user-study-protocol.md) are optional future-work
+tools, not a planned or completed study supporting this submission. No participant results are included.
+See [claim boundaries and independent scoring](docs/papers/naacl-2027/evaluation/claim-boundaries.md)
+for remaining semantic failures and how to assess correct selection **and** answer quality.
 
 ## Where things are
 

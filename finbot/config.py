@@ -27,6 +27,12 @@ class Settings:
     guardrail_id: str = field(default_factory=lambda: _env("FINBOT_GUARDRAIL_ID"))
     guardrail_version: str = field(default_factory=lambda: _env("FINBOT_GUARDRAIL_VERSION", "DRAFT"))
 
+    # Optional paid semantic check inside the repair/fallback gate. Dedicated
+    # grounding-only guardrail, pinned published version; default needs no AWS.
+    semantic_verification: str = field(default_factory=lambda: _env("FINBOT_SEMANTIC_VERIFICATION", "off"))
+    semantic_guardrail_id: str = field(default_factory=lambda: _env("FINBOT_SEMANTIC_GUARDRAIL_ID"))
+    semantic_guardrail_version: str = field(default_factory=lambda: _env("FINBOT_SEMANTIC_GUARDRAIL_VERSION"))
+
     # Knowledge base
     kb_path: str = field(default_factory=lambda: _env("FINBOT_KB_PATH", "kb_index.json"))
     data_dir: str = field(default_factory=lambda: _env("FINBOT_DATA_DIR", "data"))  # synthetic dataset
@@ -105,7 +111,7 @@ class Settings:
     # second time: a failed draft is replaced by the record-built answer (or the refusal).
     repair_attempts: int = field(default_factory=lambda: int(_env("FINBOT_REPAIR_ATTEMPTS", "1")))
     # Optional policy-prose verification: off (legacy checks), extractive (complete cited
-    # source sentences only), model (tool-free evidence review using the strong model chain),
+    # passages, including neighboring conditions), model (tool-free evidence review using the strong model chain),
     # strict (whole cited passages with dated/versioned evidence; no missing-lookup bypass),
     # hybrid (hard evidence requirements plus LLM support/applicability review).
     policy_verification: str = field(default_factory=lambda: _env("FINBOT_POLICY_VERIFICATION", "off"))

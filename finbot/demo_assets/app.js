@@ -32,7 +32,16 @@ function explainReason(reason) {
     status_mismatch: "The draft's payment status disagrees with the retrieved record.",
     ungrounded_amount: "This amount is not supported by the eligible evidence.",
     value_from_other_record: "A claimed value belongs to a different record. Check each transaction's own fields.",
+    currency_mismatch: "The currency does not match the named record's currency fields.",
+    financial_role_mismatch: "The value is not supported by the field for this financial claim. An expected date is not an actual date; a payment amount is not a refund amount.",
+    comparison_missing_record: "The answer omits one of the records you asked to compare.",
+    comparison_missing_field: "A requested comparison field is missing or does not match that record.",
+    comparison_missing_evidence: "One of the requested records has not been checked.",
+    comparison_missing_unavailable_notice: "The answer must say which requested record could not be found.",
+    comparison_unavailable_evidence: "A requested record could not be checked, so the comparison is incomplete.",
+    comparison_claim_for_unavailable_record: "The answer states money details for a record that was not found.",
     policy_unsupported: "The policy statement has no complete supporting source sentence in its cited evidence.",
+    policy_incomplete_context: "The quoted policy omits part of its supporting passage, such as a condition or exception.",
     policy_uncertain: "The policy reviewer could not establish support for this statement.",
     policy_empty_answer: "The draft contains no answer statement to verify.",
     policy_review_budget_exceeded: "The policy review exceeded its statement or size limit.",
@@ -90,6 +99,23 @@ function selectStage(index) {
   }
   (step.checks || []).forEach((check) => {
     const detail = node("details");
+    if (check.kind === "semantic_grounding") {
+      detail.append(node("summary", `Bedrock evidence check: ${check.verdict}`),
+        node("p", `Version ${check.version}; ${check.latency_ms} ms. A passing score is not proof of correctness or completeness.`, "check-note"));
+      (check.filters || []).forEach((f) => detail.append(node("p",
+        `${f.type}: score ${f.score}, threshold ${f.threshold}.`, "check-note")));
+      if (check.verdict === "unavailable") detail.append(node("p",
+        "The check could not complete. The answer was withheld; this is not a detected factual error.", "check-note"));
+      draft.append(detail);
+      return;
+    }
+    if (check.kind === "financial_role") {
+      detail.append(node("summary", `${check.role.replaceAll("_", " ")}: ${check.verdict}`),
+        node("p", check.text, "answer-text"),
+        node("p", `Record: ${check.record_id || "unresolved"}. Field: ${check.path}. Claimed: ${check.claimed_value}. Recorded: ${check.evidence_value ?? "unavailable"}.`, "check-note"));
+      draft.append(detail);
+      return;
+    }
     detail.append(node("summary", `Policy statement ${check.id + 1}: ${check.verdict} (${check.method})`),
       node("p", check.text, "answer-text"));
     check.evidence.forEach((evidence) => {

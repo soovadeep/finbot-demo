@@ -11,7 +11,7 @@ import math
 from dataclasses import dataclass, field
 
 UNKNOWN = "I'm not sure"
-STRATEGIES = ("none", "fixed", "information_gain", "decision_value")
+STRATEGIES = ("none", "fixed", "amount_first", "most_distinct", "information_gain", "decision_value")
 TEMPLATES = (
     ("kind", "Which type of payment do you mean?"),
     ("merchant", "Which merchant or recipient do you mean?"),
@@ -175,6 +175,12 @@ class ClarificationSession:
         if self.strategy in {"information_gain", "decision_value"}:
             scored.sort(key=lambda s: s.information_gain_bits if self.strategy == "information_gain"
                         else s.decision_value, reverse=True)
+        elif self.strategy == "amount_first":
+            # Stable sort: amount, then the existing kind/merchant/date order. No tuning.
+            scored.sort(key=lambda s: s.question.template != "amount")
+        elif self.strategy == "most_distinct":
+            # Unweighted cardinality heuristic; ties keep the fixed template order.
+            scored.sort(key=lambda s: len(s.question.options), reverse=True)
         return scored
 
     def next_question(self) -> Question | None:

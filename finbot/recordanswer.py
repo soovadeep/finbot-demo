@@ -69,6 +69,9 @@ def record_answer(tool_log: list[dict], focus: str | None) -> str | None:
         line += "."
     else:
         return None
+    from .financial_roles import lifecycle_summary
+    if details := lifecycle_summary(d):
+        line += " " + details
     g = d.get("guidance") or {}          # computed by finbot/policy.py, never record text
     if g.get("next_step") and g.get("retry_rule"):
         line += f" Next step: {g['next_step']} Retry policy: {g['retry_rule']}"

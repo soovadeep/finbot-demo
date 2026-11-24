@@ -228,6 +228,8 @@ class Chatbot:
     def __init__(self, llm, guardrail, toolbox: ToolBox, settings, audit_path: str | None = None,
                  policies: PolicySource | None = None, tickets: TicketStore | None = None):
         self.llm, self.guard, self.toolbox, self.settings = llm, guardrail, toolbox, settings
+        from .semantic_verification import configured_verifier
+        configured_verifier(settings, "")  # validate configuration without provider calls
         PolicyDocumentVerifier(settings.policy_verification, max_age_days=settings.kb_max_age_days)
         self.audit_path = audit_path
         self.policies: PolicySource = policies or StaticPolicySource()
@@ -239,12 +241,14 @@ class Chatbot:
         self.today = date.today  # injectable for tests (help-page age)
         procs = getattr(toolbox, "processors", None)
         names = set(procs.names()) if procs is not None else None
+        from .financial_roles import FinancialRoleVerifier
         self.gate = HallucinationGate(VerifierChain([
             RecordIdentityVerifier(),
             EvidenceVerifier(names),
             ReasonVerifier(),
             DomainVerifier(),
             BindingVerifier(),
+            FinancialRoleVerifier(),
             LanguageVerifier(),
             PolicyVerifier(lambda: t.policy if (t := current_turn()) else BASELINE),
             TicketVerifier(lambda: set(t.tickets) if (t := current_turn()) else set()),
@@ -438,7 +442,9 @@ class Chatbot:
         if cs.pending_notice:
             notices.append(cs.pending_notice)
             cs.pending_notice = None
-        policy_instruction = {"strict": STRICT_INSTRUCTION, "hybrid": HYBRID_INSTRUCTION}.get(
+        from .policy_documents import EXTRACTIVE_INSTRUCTION
+        policy_instruction = {"extractive": EXTRACTIVE_INSTRUCTION,
+                              "strict": STRICT_INSTRUCTION, "hybrid": HYBRID_INSTRUCTION}.get(
             self.settings.policy_verification)
         if policy_instruction:
             notices.append(policy_instruction)
@@ -469,7 +475,12 @@ class Chatbot:
             out = self._loop(cs, run_tool, retry_log, "strong" if tiered else None, route["models"])
             return out, retry_log
 
-        fallback = (lambda log: record_answer(log, cs.memory.focus)) if self.settings.record_fallback else None
+        from .comparison import ComparisonCoverageVerifier, comparison_record_answer
+        comparison = ComparisonCoverageVerifier(text)
+        fallback = None
+        if self.settings.record_fallback:
+            fallback = (lambda log: comparison_record_answer(log, comparison.required_ids)) if comparison.required_ids else (
+                lambda log: record_answer(log, cs.memory.focus))
 
         def review_policy(payload: dict) -> str:
             # Isolated review: no conversation history, no tools, and the same turn deadline.
@@ -488,11 +499,13 @@ class Chatbot:
             return "".join(b.text for b in response.content)
 
         with self.telemetry.span("finbot.verify") as sp:
+            from .semantic_verification import configured_verifier
             gate = self.gate.run(answer, tool_log, lambda: cs.memory.focus, regenerate, fallback,
-                                 extra_verifiers=(PolicyDocumentVerifier(self.settings.policy_verification,
+                                 extra_verifiers=(comparison, PolicyDocumentVerifier(self.settings.policy_verification,
                                                                          review_policy, as_of=self.today(),
                                                                          max_age_days=self.settings.kb_max_age_days,
-                                                                         question=text),))
+                                                                         question=text),
+                                                  *configured_verifier(self.settings, text)))
             sp.set(finbot__verify__action=gate.action, finbot__repaired=gate.repaired,
                    finbot__records_only=gate.records_only, finbot__reasons=tel.codes(gate.reasons))
         tool_log, answer = gate.tool_log, gate.answer

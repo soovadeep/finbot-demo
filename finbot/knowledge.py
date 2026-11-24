@@ -41,8 +41,22 @@ def tokenize(text: str) -> list[str]:
     return TOKEN.findall(text.lower())
 
 
+def lexical_form(token: str) -> str:
+    """Conservative plural normalization shared by ranking and coverage, not query expansion.
+
+    Keep codes and singular endings such as 'status', 'business' and 'analysis'.
+    This deliberately does not attempt general stemming or synonym resolution.
+    """
+    if token.isalpha() and len(token) > 3:
+        if token.endswith("ies"):
+            return token[:-3] + "y"
+        if token.endswith("s") and not token.endswith(("ss", "us", "is")):
+            return token[:-1]
+    return token
+
+
 def content_terms(text: str) -> set[str]:
-    return {t for t in tokenize(text) if t not in STOP}
+    return {lexical_form(t) for t in tokenize(text) if t not in STOP}
 
 
 @dataclass
@@ -161,7 +175,7 @@ class Index:
 
     def add(self, c: Chunk) -> None:
         self.generation = getattr(self, "generation", 0) + 1   # any change invalidates cached searches
-        toks = tokenize(f"{c.section} {c.text}")
+        toks = [lexical_form(t) for t in tokenize(f"{c.section} {c.text}")]
         tf = Counter(toks)
         self.chunks.append(c)
         self._tf.append(tf)
@@ -171,7 +185,7 @@ class Index:
     def _bm25(self, query: str, k1: float = 1.4, b: float = 0.75) -> list[float]:
         n = len(self.chunks) or 1
         avg = (sum(self._len) / n) or 1.0
-        q = tokenize(query)
+        q = [lexical_form(t) for t in tokenize(query)]
         scores = []
         for tf, ln in zip(self._tf, self._len, strict=True):
             s = 0.0

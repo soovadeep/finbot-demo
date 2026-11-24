@@ -2,7 +2,8 @@
 
 The agent retrieves through its existing authorized KB tool. This verifier checks
 the resulting statements and supplies bounded repair feedback through the gate.
-`extractive` requires complete source sentences; `model` permits paraphrases using
+`extractive` requires source sentences with their complete retrieved passage context;
+`model` permits paraphrases using
 a fallible, tool-free evidence reviewer. `strict` requires complete retrieved passages
 with dated, versioned evidence, even when the writer skipped retrieval. `hybrid` keeps
 those source requirements and uses a model to review meaning and applicability. None
@@ -23,6 +24,12 @@ MODES = frozenset({"off", "extractive", "model", "strict", "hybrid"})
 MAX_CLAIMS = 24
 MAX_PAYLOAD_CHARS = 80000
 MAX_REVIEW_CHARS = 24000
+EXTRACTIVE_INSTRUCTION = (
+    "Extractive policy verification is enabled. For policy answers, retrieve approved evidence and "
+    "copy complete supporting passages with their source URLs. Preserve all sentences, including "
+    "neighboring exceptions and conditions; do not excerpt a rule without its source context. "
+    "If support is unavailable, say exactly: I couldn't verify that from the retrieved policy documents."
+)
 STRICT_INSTRUCTION = (
     "Strict policy verification is enabled. For document answers, retrieve approved evidence and copy "
     "each complete retrieved passage into its own paragraph with its source URL in that paragraph. "
@@ -161,13 +168,22 @@ class PolicyDocumentVerifier:
             return self._block("policy_review_budget_exceeded")
         if self.mode == "extractive":
             checks = []
+            # Sentence matching alone permits omission of a neighboring exception.
+            # Require a complete supporting retrieved passage (not every retrieved hit).
+            # Sentences may span paragraphs, but each must retain the source citation.
+            complete = {s["id"] for s in sources if s["kind"] == "document"
+                        and set(_sentences(s["text"])) <= {
+                            c["text"] for c in claims if s["id"] in c["source_ids"]}}
             for claim in claims:
                 evidence = [{"source_id": s["id"], "quote": claim["text"], "source_url": s["source_url"],
                              "chunk_id": s["chunk_id"], "version": s["version"]}
                             for s in sources if s["kind"] == "document" and s["id"] in claim["source_ids"]
                             and claim["text"] in _sentences(s["text"])]
-                checks.append({**claim, "method": "extractive", "verdict": "supported" if evidence else "unsupported",
-                               "evidence": evidence})
+                contextual = [e for e in evidence if e["source_id"] in complete]
+                checks.append({**claim, "method": "extractive", "verdict": "supported" if contextual else "unsupported",
+                               "evidence": contextual or evidence,
+                               "context_complete": bool(contextual),
+                               "reason": "policy_incomplete_context" if evidence and not contextual else None})
         else:
             if self.review is None:
                 return self._block("policy_reviewer_unavailable")
@@ -179,7 +195,8 @@ class PolicyDocumentVerifier:
                 checks = self._validate(raw, claims, sources)
             except (ValueError, TypeError, KeyError, AttributeError):
                 return self._block("policy_review_invalid")
-        reasons = [f"policy_{c['verdict']}:statement_{c['id']}" for c in checks if c["verdict"] != "supported"]
+        reasons = [f"{c.get('reason') or 'policy_' + c['verdict']}:statement_{c['id']}"
+                   for c in checks if c["verdict"] != "supported"]
         return GuardResult("block" if reasons else "allow", BLOCKED_OUTPUT_MSG if reasons else answer, reasons, checks)
 
     def _hybrid(self, answer: str, log: list[dict], focus: str | None) -> GuardResult:

@@ -1,6 +1,11 @@
 # Finbot demo: reviewer guide
 
-The hosted demo needs no install: the clarify-then-verify conversation is at
+Finbot demonstrates read-only payment support through a conversation interface and an evidence
+inspector. The conversation handles uncertain descriptions, confirmation, corrections and
+confirmed-record explanations. The separate inspector adds decline and timeout explanations,
+two-record comparisons, cited policy responses, controlled faults and recovery traces.
+
+The hosted demo needs no install: the conversation is at
 <https://finbot-demo-20852907589.us-central1.run.app/> and the evidence inspector this guide
 walks through is at <https://finbot-demo-20852907589.us-central1.run.app/inspector>.
 The rest of this guide runs the same server locally.
@@ -20,7 +25,7 @@ Clone the repository:
 
 ```sh
 git clone https://github.com/soovadeep/finbot-demo.git
-cd finbot
+cd finbot-demo
 git rev-parse HEAD
 ```
 
@@ -45,13 +50,30 @@ py -3 -m venv .venv-demo
 .\.venv-demo\Scripts\python.exe -m finbot.demo
 ```
 
-No `pip install` is needed for this offline entry point. The repository's broader
-`requirements.txt` supports other application paths and is not required here.
+No `pip install` is needed for this offline entry point.
 
 Open **<http://127.0.0.1:8765/inspector>** for the evidence inspector this guide covers; the
 conversation demo is at <http://127.0.0.1:8765/>. The terminal prints both addresses and
 identifies the mode as offline/synthetic. Leave the terminal running. Stop the server with **Ctrl-C**.
 For an occupied port, use `python -m finbot.demo --port 8766` and open the printed address.
+
+## Try a contradictory selection in the conversation
+
+On the evaluation branch (`git checkout review/naacl-demo-evaluation`), open the local conversation
+and choose **A selection conflicts with your message**. Send the preset message about the $200
+card payment to Willow Repairs. Expand **Other records** and select the Willow Repairs bank transfer.
+The answer pauses and the prompt displays the conflicting type. Try:
+
+- **Keep my earlier details; choose again**, then confirm the matching card payment.
+- **Use this record and correct my details**, which explicitly changes the conflicting details
+  and confirms the transfer before retrieval.
+- Type a correction, or leave unresolved. A typed correction still requires a fresh confirmation.
+
+Selecting a conflicting alternative after an answer marks the old answer superseded. Tentative
+recollections do not block selection. A mistaken selection consistent with supplied details remains
+possible. This new behavior requires this branch's code; a branch push does not update the hosted service.
+The [capability-to-evidence map](evaluation/README.md#capability-to-evidence-map) identifies which
+features have component experiments, regression checks or prepared examples only.
 
 ## 2. Five-minute walkthrough
 
@@ -145,6 +167,17 @@ python -m json.tool finbot-policy-trace.json
 Expect `outcome` to be `repaired`, two verification steps and an applied `policy_once` fault.
 Delete the downloaded JSON when no longer needed.
 
+## Reproduce varied policy and comparison checks
+
+On `review/naacl-demo-evaluation`, run `python scripts/naacl2027/evaluate_support.py` without
+starting a server. It saves `results/naacl2027/varied-support-fixed.json`, including full local
+inspector traces, six additional synthetic policy fixtures, matched drafts and expected fields.
+See [the results and concrete examples](evaluation/varied-support.md): after fixes, 28/28 comparison
+and 12/12 policy checks pass; all 74 actual mutations are rejected and their clean controls pass.
+The original failures remain in `varied-support.json`; the rerun is on those same development cases.
+The records supplied by the evaluator are internal fixtures, not new hosted presets. There are
+no model calls or participants, and a branch push does not redeploy the hosted service or video.
+
 ## 5. Troubleshooting and limits
 
 | Symptom | Action / explanation |
@@ -165,8 +198,10 @@ are masked, but a production diagnostic workflow needs explicit access and reten
 The inspector enables **extractive** policy verification. Normal application configuration
 defaults to `off`; optional model review and Bedrock Guardrails are separate paths that may
 require credentials and incur provider charges, and are not enabled by this guide. Automated Reasoning and NeMo are
-not integrated. A legitimate paraphrase may fail extractive checks, while a reused sentence
-can still omit important context. Multi-record fallback can be incomplete. Passing the
+not integrated. Extractive checks now require the complete supporting retrieved passage, and
+explicit comparisons require each requested record and recognized fields in fallback too.
+A legitimate paraphrase may still fail; incomplete upstream sources, unsupported formats and
+semantic applicability remain limitations. Passing the
 implemented checks is not a universal correctness or financial-safety guarantee.
 
 ## License and data

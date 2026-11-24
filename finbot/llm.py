@@ -281,7 +281,10 @@ class FakeLLM:
                 parts.append(self._domain(domain, r))
             elif r["source"] == "txn_db":
                 if r["status"] == "not_found":
-                    parts.append("I could not find that transaction for your account.")
+                    from .tools import TXN_ID
+                    ids = TXN_ID.findall(r.get("note", ""))
+                    subject = f"transaction {ids[0]}" if len(ids) == 1 else "that transaction"
+                    parts.append(f"I could not find {subject} for your account.")
                 else:
                     d = r["data"]
                     s = f"Transaction {d['txn_id']} was {d['status']} for {d['amount']} {d['currency']}"
@@ -293,6 +296,9 @@ class FakeLLM:
                         g = d["guidance"]
                         s += f". Next step: {g['next_step']} Retry policy: {g['retry_rule']}"
                     parts.append(s if s.endswith(".") else s + ".")
+                    from .financial_roles import lifecycle_summary
+                    if details := lifecycle_summary(d):
+                        parts.append(details)
             elif r["source"] == "routing" and r["status"] == "found":
                 parts.append(self._routing(r["data"]))
             elif r["source"] == "processor_health" and r["status"] == "found":

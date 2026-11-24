@@ -8,7 +8,9 @@ Run from the repository root (build the benchmark first with build_ambiguity_set
 A language model plays the customer. It knows its own payment only through a persona note
 (exact receipt, vague memory, or one detail misremembered) and answers Finbot's multiple-choice
 questions and then picks its payment from a short list of the most likely records (or says
-none), as in the demo. Finbot never sees the target or the persona. `--confirm sequential`
+none). This evaluates ClarificationSession, not the deployed Conversation controller's
+opening parser, exact filters or matching/other-record presentation. The selector never sees
+the target or the persona. `--confirm sequential`
 instead proposes records one at a time for a yes or no.
 
 Every selector meets the same simulated customer: replies are cached per (episode, persona,

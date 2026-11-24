@@ -15,7 +15,7 @@ from .clarification import Candidate, Question, ResponseModel, posterior, questi
 from .clarification_demo import TENANT
 from .clarification_study import ASSUMED, catalogue
 
-PROTOCOL = "finbot-conversation-demo-v2"
+PROTOCOL = "finbot-conversation-demo-v3"
 CANDIDATES = tuple(Candidate(c.record_id, c.tenant_id, {**c.attributes, "amount": "200.00", "currency": "USD"})
                    for c in catalogue()["evaluation"][0].candidates)
 SCENARIOS: list[dict] = [
@@ -43,6 +43,11 @@ SCENARIOS: list[dict] = [
      "opening": "Please check my bank transfer to Pine Pharmacy on November 18.",
      "memory": "Your receipt says Pine Pharmacy, November 18. Do not choose another payment just to finish.",
      "target": None, "expected": "Explain that the details do not match the catalogue and leave unresolved."},
+    {"id": "contradiction", "title": "A selection conflicts with your message",
+     "opening": "My $200 card payment to Willow Repairs.",
+     "memory": "Open the other records and choose the Willow Repairs bank transfer. Finbot should pause: "
+               "you said card. Keep your earlier details and then confirm the card record.",
+     "target": "txn_EMIX0002", "expected": "Resolve the conflicting payment type before retrieving a record."},
 ]
 
 
@@ -164,6 +169,8 @@ class Conversation:
         self.belief = [1 / len(candidates)] * len(candidates)
         self.asked: list[str] = []
         self.pending: Question | None = None
+        self.selection_conflict: dict | None = None
+        self.selection_attempts = 0
         self.selected_id: str | None = None
         self.financial: dict | None = None
         self.unresolved = False
@@ -226,7 +233,7 @@ class Conversation:
         ranked = [score_question(pool, weights, q, ASSUMED[q.template]) for q in questions(pool)
                   if q.template not in self.details and q.template not in self.unknown
                   and q.template not in self.asked]
-        ranked.sort(key=lambda s: s.decision_value, reverse=True)  # the selector the evaluation favours
+        ranked.sort(key=lambda s: s.decision_value, reverse=True)  # demo policy; heuristics are compared separately
         self.ranking = [score_dict(s) for s in ranked]
         if ranked and ranked[0].decision_value > 1e-12:
             self.pending = ranked[0].question
@@ -241,15 +248,10 @@ class Conversation:
     def message(self, text: str) -> None:
         if not isinstance(text, str) or not 1 <= len(text.strip()) <= 500:
             raise ValueError("Messages must have 1–500 characters.")
-        fields, unknown, issues = extract_details(text, self.pending)
+        fields, unknown, issues = extract_details(text, self.pending, self.candidates)
         self.messages.append({"role": "user", "text": text.strip()})
-        previous = self.selected_id
-        if previous:
-            for message in self.messages:
-                if message.get("record_id"):
-                    message["superseded"] = True
-            self.trace.append({"event": "invalidate", "record_id": previous})
-        self.selected_id, self.financial, self.unresolved = None, None, False
+        self.invalidate_answer()
+        self.selection_conflict, self.unresolved = None, False
         for key in unknown:
             self.details.pop(key, None)
         self.unknown.update(unknown)
@@ -267,17 +269,37 @@ class Conversation:
             self.say("I'll treat that as a tentative recollection and keep other possibilities open.")
         self.ask_next()
 
-    def confirm(self, record_id: str) -> None:
-        from .demo import run_demo
-        if record_id not in {c.record_id for c in self.candidates} or not self.messages:
-            raise ValueError("Choose an authorized record after sending a message.")
+    def invalidate_answer(self) -> None:
         if self.selected_id:
             for message in self.messages:
                 if message.get("record_id"):
                     message["superseded"] = True
             self.trace.append({"event": "invalidate", "record_id": self.selected_id})
+        self.selected_id, self.financial = None, None
+
+    def confirm(self, record_id: str) -> None:
+        from .demo import run_demo
+        if not isinstance(record_id, str) or record_id not in {c.record_id for c in self.candidates} or not self.messages:
+            raise ValueError("Choose an authorized record after sending a message.")
+        candidate = next(c for c in self.candidates if c.record_id == record_id)
+        self.selection_attempts += 1
+        conflicts = [{"attribute": key, "supplied": detail["value"],
+                      "selected": candidate.record_id if key == "reference" else candidate.attributes.get(key)}
+                     for key, detail in self.details.items() if detail["certainty"] == "supplied"
+                     and detail["value"] != (candidate.record_id if key == "reference" else candidate.attributes.get(key))]
+        self.invalidate_answer()
+        self.pending, self.selection_conflict, self.unresolved = None, None, False
+        if conflicts:
+            self.selection_conflict = {"id": self.selection_attempts, "record_id": record_id, "conflicts": conflicts}
+            self.messages.append({"role": "user", "text": f"Use {record_id}."})
+            self.say("That record conflicts with details you supplied: " + "; ".join(
+                f"{c['attribute']}: you said {c['supplied']}, the record shows {c['selected']}" for c in conflicts)
+                + ". Should I use this record and correct those details, or keep your earlier details? "
+                  "You can also type a correction or leave this unresolved. I haven't checked its status yet.")
+            self.trace.append({"event": "selection_conflict", **self.selection_conflict})
+            return
         self.pending, self.selected_id, self.unresolved = None, record_id, False
-        rows = [{"txn_id": c.record_id, "tenant_id": TENANT, "amount": "200.00", "currency": "USD",
+        rows = [{"txn_id": c.record_id, "tenant_id": TENANT, "amount": c.attributes["amount"], "currency": c.attributes["currency"],
                  "status": "pending" if c.attributes["kind"] == "Bank transfer" else "declined",
                  "created_at": c.attributes["date"] + "T12:00:00Z", "merchant": c.attributes["merchant"],
                  "payment_type": c.attributes["kind"],
@@ -292,15 +314,34 @@ class Conversation:
         self.messages.append({"role": "assistant", "text": self.financial["final"]["answer"], "record_id": record_id})
         self.trace.append({"event": "confirm", "record_id": record_id})
 
+    def resolve_selection(self, record_id: str, choice: str, conflict_id: int) -> None:
+        """Acknowledge only the currently displayed conflict, never a generic override.
+
+        Using the record explicitly both corrects the conflicting details and confirms it.
+        A new message, unresolved action or selection cancels the previous pending choice.
+        """
+        conflict = self.selection_conflict
+        if (not conflict or record_id != conflict["record_id"] or choice not in ("use_record", "keep_details")
+                or type(conflict_id) is not int or conflict_id != conflict["id"]):
+            raise ValueError("Resolve the current selection conflict using a listed choice.")
+        self.selection_conflict = None
+        self.trace.append({"event": "resolve_selection", "choice": choice, **conflict})
+        if choice == "keep_details":
+            self.messages.append({"role": "user", "text": "Keep my earlier details. I'll choose again."})
+            self.ask_next()
+            return
+        self.messages.append({"role": "user", "text": f"Use {record_id} and correct my conflicting details."})
+        for item in conflict["conflicts"]:
+            self.details[item["attribute"]] = {"value": item["selected"], "certainty": "supplied"}
+            self.unknown.discard(item["attribute"])
+        self.update_belief()
+        self.confirm(record_id)
+
     def leave_unresolved(self) -> None:
         if not self.messages:
             raise ValueError("Start with a message.")
-        if self.selected_id:
-            for message in self.messages:
-                if message.get("record_id"):
-                    message["superseded"] = True
-            self.trace.append({"event": "invalidate", "record_id": self.selected_id})
-        self.selected_id, self.financial, self.pending = None, None, None
+        self.invalidate_answer()
+        self.pending, self.selection_conflict = None, None
         self.unresolved = True
         self.messages.append({"role": "user", "text": "I can't identify the payment from these records."})
         self.say("I'll leave the payment unresolved. I can't give a financial answer about an unidentified record.")
@@ -311,6 +352,7 @@ class Conversation:
                                 "matches_supplied": c in self.matches}
                                for c, p in zip(self.candidates, self.belief, strict=True)],
                 "pending": asdict(self.pending) if self.pending else None, "ranking": self.ranking,
+                "selection_conflict": self.selection_conflict,
                 "questions_asked": len(self.asked), "selected_id": self.selected_id,
                 "indistinguishable": self.indistinguishable() and not self.selected_id,
                 "unresolved": self.unresolved, "financial": self.financial, "trace": self.trace}
@@ -337,6 +379,8 @@ def run_conversation(request: dict, client: str = "") -> dict:
             engine.message(event["text"])
         elif event.get("type") == "confirm" and set(event) == {"type", "record_id"}:
             engine.confirm(event["record_id"])
+        elif event.get("type") == "resolve_selection" and set(event) == {"type", "record_id", "choice", "conflict_id"}:
+            engine.resolve_selection(event["record_id"], event["choice"], event["conflict_id"])
         elif event == {"type": "unresolved"}:
             engine.leave_unresolved()
         else:

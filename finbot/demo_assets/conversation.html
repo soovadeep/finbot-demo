@@ -30,8 +30,14 @@
         <div class="panel-title"><span class="pill">CONVERSATION</span><h2>You and Finbot</h2></div>
         <div id="chat-messages" aria-live="polite"></div>
         <div id="conversation-options" class="conversation-options"></div>
+        <section id="selection-conflict" hidden aria-labelledby="conflict-title">
+          <h3 id="conflict-title" tabindex="-1">This record conflicts with your details</h3>
+          <p id="conflict-record"></p><ul id="conflict-details"></ul>
+          <p>Choose which details to use before Finbot checks the record. You can also type a correction or leave this unresolved.</p>
+          <div id="conflict-actions" class="conversation-options"></div>
+        </section>
         <section id="confirmation" hidden><h3 id="confirmation-title">Confirm a record</h3>
-          <p class="hint">A matching description is a suggestion. Your confirmation selects the record for retrieval.</p>
+          <p class="hint">Your confirmation selects the record for retrieval. If it conflicts with your earlier details, Finbot asks you to resolve the difference first.</p>
           <div id="matching-records" class="conversation-options"></div>
           <details id="other-records"><summary>Other records in this fictional account</summary><div id="other-record-buttons" class="conversation-options"></div></details>
         </section>

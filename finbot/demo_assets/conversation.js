@@ -32,6 +32,7 @@ function actionButton(label, event) {
   button.addEventListener("click", () => send([...events, event])); return button;
 }
 function render(data) {
+  const previousConflict = result && result.selection_conflict;
   result = data;
   $("chat-messages").replaceChildren();
   if (!data.messages.length) $("chat-messages").append(node("p", "Send a message to begin. Finbot has not received your role-play notes or any payment details.", "hint"));
@@ -45,6 +46,17 @@ function render(data) {
   if (data.pending) [...data.pending.options, "I'm not sure"].forEach(text => {
     $("conversation-options").append(actionButton(text, {type: "message", text}));
   });
+  const conflict = data.selection_conflict;
+  $("selection-conflict").hidden = !conflict;
+  $("conflict-details").replaceChildren(); $("conflict-actions").replaceChildren();
+  $("conflict-record").textContent = conflict ? `Selected record: ${conflict.record_id}` : "";
+  if (conflict) {
+    conflict.conflicts.forEach(c => $("conflict-details").append(node("li",
+      `${labels[c.attribute] || c.attribute}: you said ${c.supplied}; this record shows ${c.selected}.`)));
+    $("conflict-actions").append(
+      actionButton("Use this record and correct my details", {type: "resolve_selection", record_id: conflict.record_id, conflict_id: conflict.id, choice: "use_record"}),
+      actionButton("Keep my earlier details; choose again", {type: "resolve_selection", record_id: conflict.record_id, conflict_id: conflict.id, choice: "keep_details"}));
+  }
   $("recognized-details").replaceChildren();
   if (!Object.keys(data.details).length && !data.unknown.length) $("recognized-details").append(node("p", "No identifying details received yet.", "hint"));
   Object.entries(data.details).forEach(([key, detail]) => {
@@ -62,6 +74,7 @@ function render(data) {
   $("selection-reason").textContent = !data.messages.length ? "Four authorized fictional records are available. Only what you send will narrow them." :
     data.selected_id ? `You confirmed ${data.selected_id}. The answer uses a fresh retrieval of that record.` :
     data.unresolved ? "No record selected. No financial answer released." :
+    conflict ? "Selection paused: resolve the conflicting details before Finbot retrieves a record or writes an answer." :
     !matches.length ? "No records match all the explicit details. Check your message or leave unresolved." :
     data.pending ? `${matches.length} records match the explicit details. Asking about ${labels[data.pending.template].toLowerCase()} to reduce the remaining ambiguity.` :
     data.indistinguishable ? `${matches.length} records match every detail Finbot can ask about. No question separates them and none is ranked first; send the reference number if you have it, or leave unresolved.` :
@@ -76,7 +89,7 @@ function render(data) {
   });
   $("conversation-scores").replaceChildren(node("p", `${data.questions_asked}/2 questions asked. Scores consider records matching explicit details.`));
   data.ranking.forEach(q => $("conversation-scores").append(node("p", `${q.text} — wrong-record risk cut by ${(100 * q.error_reduction).toFixed(1)} points, value ${q.decision_value.toFixed(3)} after the question cost; ${q.information_gain_bits.toFixed(3)} bits expected gain`)));
-  $("confirmation").hidden = !data.messages.length || Boolean(data.pending) || data.unresolved;
+  $("confirmation").hidden = !data.messages.length || Boolean(data.pending) || Boolean(conflict) || data.unresolved;
   $("leave-unresolved").hidden = !data.messages.length || data.unresolved;
   $("confirmation-title").textContent = data.selected_id ? "Change the selected record" : matches.length === 1 ? "Is this the payment?" : "Can you identify the payment?";
   $("matching-records").replaceChildren(); $("other-record-buttons").replaceChildren();
@@ -97,6 +110,11 @@ function render(data) {
   if (data.reference) $("reference-content").append(node("p", `Preset reference: ${data.reference.target_id || "No record in this catalogue"}`), node("p", data.reference.expected), node("p", data.reference.note));
   $("conversation-export").disabled = !events.length;
   $("conversation-status").textContent = data.messages.length ? "Conversation updated. You can add or correct details in your next message." : "Ready. Edit or send the starting message below.";
+  if (conflict) $("conflict-title").focus();
+  else if (previousConflict) {
+    const target = data.financial ? $("answer-check") : $("confirmation").hidden ? $("customer-message") : $("confirmation-title");
+    target.setAttribute("tabindex", "-1"); target.focus();
+  }
 }
 async function send(nextEvents, inspect = false) {
   if (busy || !scenario()) return;
@@ -144,7 +162,7 @@ $("reveal-reference").addEventListener("click", () => send(events, true));
 $("conversation-export").addEventListener("click", () => {
   if (!result) return;
   const url = URL.createObjectURL(new Blob([JSON.stringify({...result, events}, null, 2)], {type: "application/json"}));
-  const link = node("a"); link.href = url; link.download = "finbot-conversation-demo-v2.json"; link.click();
+  const link = node("a"); link.href = url; link.download = `${result.protocol}.json`; link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 (async () => {

@@ -139,6 +139,141 @@ class ConversationDetails(unittest.TestCase):
         self.assertIsNone(engine.financial)
 
 
+class ContradictorySelection(unittest.TestCase):
+    transfer, card = "txn_EMIX0001", "txn_EMIX0002"
+
+    def conflicted(self):
+        engine = Conversation()
+        engine.message("My $200 card payment to Willow Repairs.")
+        engine.confirm(self.transfer)
+        return engine
+
+    def test_conflict_and_repeated_confirmation_never_call_answering(self):
+        with patch("finbot.demo.run_demo") as writer:
+            engine = self.conflicted()
+            before = list(engine.asked)
+            engine.confirm(self.transfer)
+            writer.assert_not_called()
+        self.assertIsNone(engine.selected_id)
+        self.assertIsNone(engine.financial)
+        self.assertEqual(engine.asked, before)
+        self.assertEqual(engine.selection_conflict, {"id": 2, "record_id": self.transfer, "conflicts": [
+            {"attribute": "kind", "supplied": "Card payment", "selected": "Bank transfer"}]})
+
+    def test_all_supplied_fields_are_checked_and_explicitly_corrected(self):
+        engine = Conversation()
+        engine.message("My 500 EUR card payment to Harbor Books on November 16, reference txn_EMIX0000.")
+        engine.confirm(self.transfer)
+        conflicts = engine.selection_conflict["conflicts"]
+        self.assertEqual({c["attribute"] for c in conflicts},
+                         {"amount", "currency", "kind", "merchant", "date", "reference"})
+        original = copy.deepcopy(engine.details)
+        engine.resolve_selection(self.transfer, "use_record", 1)
+        self.assertEqual(engine.selected_id, self.transfer)
+        self.assertIsNone(engine.selection_conflict)
+        self.assertEqual([c.record_id for c in engine.matches], [self.transfer])
+        for item in conflicts:
+            self.assertEqual(item["supplied"], original[item["attribute"]]["value"])
+            self.assertEqual(engine.details[item["attribute"]], {"value": item["selected"], "certainty": "supplied"})
+        found = [c["result"]["data"]["txn_id"] for c in engine.financial["evidence"]
+                 if c["result"]["status"] == "found"]
+        self.assertTrue(found)
+        self.assertEqual(set(found), {self.transfer})
+        self.assertIn("resolve_selection", [t["event"] for t in engine.trace])
+
+    def test_keep_details_requires_another_confirmation(self):
+        engine = self.conflicted()
+        before = copy.deepcopy(engine.details)
+        engine.resolve_selection(self.transfer, "keep_details", 1)
+        self.assertEqual(engine.details, before)
+        self.assertIsNone(engine.selection_conflict)
+        self.assertIsNone(engine.financial)
+        engine.confirm(self.card)
+        self.assertEqual(engine.selected_id, self.card)
+
+    def test_switching_after_an_answer_invalidates_old_answer_while_conflicted(self):
+        engine = Conversation()
+        engine.message("My card payment to Willow Repairs.")
+        engine.confirm(self.card)
+        with patch("finbot.demo.run_demo") as writer:
+            engine.confirm(self.transfer)
+            writer.assert_not_called()
+        self.assertIsNone(engine.financial)
+        self.assertIsNone(engine.selected_id)
+        self.assertTrue(all(m["superseded"] for m in engine.messages if m.get("record_id")))
+
+    def test_tentative_details_and_unknowns_do_not_block_confirmation(self):
+        for text in ("I think it was a card payment to Willow Repairs.",
+                     "My payment to Willow Repairs. I don't remember the payment type."):
+            engine = Conversation()
+            engine.message(text)
+            engine.confirm(self.transfer)
+            self.assertIsNone(engine.selection_conflict)
+            self.assertEqual(engine.selected_id, self.transfer)
+
+    def test_free_text_correction_cancels_pending_choice_without_confirming(self):
+        engine = self.conflicted()
+        engine.message("Actually it was a bank transfer.")
+        self.assertIsNone(engine.selection_conflict)
+        self.assertIsNone(engine.selected_id)
+        self.assertIsNone(engine.financial)
+        with self.assertRaises(ValueError):
+            engine.resolve_selection(self.transfer, "use_record", 1)
+        engine.confirm(self.transfer)
+        self.assertEqual(engine.selected_id, self.transfer)
+
+    def test_stale_forged_and_malformed_resolutions_cannot_authorize(self):
+        for choice in ("use_record", "keep_details"):
+            with self.assertRaises(ValueError):
+                Conversation().resolve_selection(self.transfer, choice, 1)
+        engine = self.conflicted()
+        for record_id, choice in ((self.card, "use_record"), (self.transfer, "force"), ([], "use_record")):
+            with self.assertRaises(ValueError):
+                engine.resolve_selection(record_id, choice, 1)
+        self.assertIsNone(engine.financial)
+        engine.resolve_selection(self.transfer, "keep_details", 1)
+        with self.assertRaises(ValueError):
+            engine.resolve_selection(self.transfer, "use_record", 1)
+        request = {"events": [message("Card payment to Willow Repairs"),
+                              {"type": "confirm", "record_id": self.transfer, "force": True}]}
+        with self.assertRaises(ValueError):
+            run_conversation(request)
+
+    def test_unresolved_cancels_conflict_and_cannot_be_acknowledged(self):
+        engine = self.conflicted()
+        engine.leave_unresolved()
+        self.assertTrue(engine.unresolved)
+        self.assertIsNone(engine.selection_conflict)
+        self.assertIsNone(engine.financial)
+        with self.assertRaises(ValueError):
+            engine.resolve_selection(self.transfer, "use_record", 1)
+
+    def test_older_acknowledgement_of_same_record_cannot_resolve_new_conflict(self):
+        engine = self.conflicted()
+        first = engine.selection_conflict["id"]
+        engine.message("Actually it was a card payment on November 16.")
+        engine.confirm(self.transfer)
+        with self.assertRaises(ValueError):
+            engine.resolve_selection(self.transfer, "use_record", first)
+        self.assertIsNone(engine.financial)
+        engine.resolve_selection(self.transfer, "use_record", engine.selection_conflict["id"])
+        self.assertEqual(engine.selected_id, self.transfer)
+
+    def test_http_replay_serializes_conflict_and_resolves_current_record_only(self):
+        events = [message("Card payment to Willow Repairs"), {"type": "confirm", "record_id": self.transfer}]
+        for resolved in (False, True):
+            if resolved:
+                events.append({"type": "resolve_selection", "record_id": self.transfer, "choice": "use_record", "conflict_id": 1})
+            wire = json.dumps({"events": events}).encode()
+            statuses = []
+            env = {"REQUEST_METHOD": "POST", "PATH_INFO": "/api/conversation", "HTTP_HOST": "127.0.0.1:8765",
+                   "CONTENT_TYPE": "application/json", "CONTENT_LENGTH": str(len(wire)), "wsgi.input": io.BytesIO(wire)}
+            result = json.loads(b"".join(DemoApp()(env, lambda status, _: statuses.append(status))))
+            self.assertEqual(statuses, ["200 OK"])
+            self.assertEqual(result["selected_id"], self.transfer if resolved else None)
+            self.assertEqual(bool(result["selection_conflict"]), not resolved)
+
+
 class ScenarioSeparation(unittest.TestCase):
     def test_changing_private_notes_and_target_cannot_change_questions_or_beliefs(self):
         request = {"scenario": "vague", "events": [message("My payment hasn't arrived")]}
