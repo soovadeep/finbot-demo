@@ -77,9 +77,13 @@ def extract_details(text: str, pending: Question | None,
     A new statement about a field replaces its previous observation (no double counting).
     """
     lowered = text.casefold().replace("’", "'")
-    hedge = r"\b(think|maybe|perhaps|probably|might|not sure|unsure|not certain|guess|" \
-            r"(?:don't|do not) (?:know|remember) (?:if|whether))\b"
-    clauses = re.split(r"(?<=[.!?;])\s+|\bbut\b", lowered)
+    # "may" only as a modal ("may have", "it may"), never the month.
+    hedge = r"\b(think|maybe|perhaps|probably|possibly|might|not sure|unsure|not certain|guess|believe|suppose|" \
+            r"may (?:have|be|not)|it may|could (?:have|be)|(?:don't|do not) (?:know|remember) (?:if|whether))\b"
+    # Hedges stay with the clause they qualify: split at sentence and clause punctuation, at
+    # "but", and at "and"/"though" when a new statement starts ("..., and I'm sure it was a card").
+    clauses = re.split(r"(?<=[.!?;,])\s+|\bbut\b|\b(?:and|though|although)\b(?=\s+(?:i|i'm|it|it's|the|that|"
+                       r"this|which)\b)", lowered)
 
     def certainty_for(key: str, value: str) -> str:
         patterns = {"kind": r"\b(?:transfer|card)\b", "merchant": re.escape(value.casefold()),
