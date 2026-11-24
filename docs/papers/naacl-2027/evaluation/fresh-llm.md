@@ -223,3 +223,19 @@ rm results/naacl2027/fresh-llm-v2/replay.json          # replay refuses to overw
 python scripts/naacl2027/paired_gate_study.py replay   # offline, from responses.json
 python scripts/naacl2027/paired_gate_study.py score
 ```
+
+### Re-run on the final runtime (fresh-llm-v3)
+
+Later commits changed the policy checks (requested-code coverage for quotes, context
+budgets), so the v2 freeze no longer matches the code and `replay` stops at its hash check.
+We therefore re-froze the same 30 cases as `data/naacl2027/fresh-llm-v3/` and ran the study
+again, reusing v2's saved responses for byte-identical requests (`--seed`). Only 15 requests
+were new (370 replayed). All 43 distinct answers are byte-identical to v2 answers, so both
+label sets carry over unchanged (no relabelling). Counts are identical for `before` and
+`after` (17 → 26 released, 13 → 4 withheld, none wrong under either labeller); `after_review`
+now matches `after` (one comparison case is repaired instead of withheld).
+
+```sh
+python scripts/naacl2027/paired_gate_study.py replay --version fresh-llm-v3   # 90/90 identical
+python scripts/naacl2027/paired_gate_study.py score --version fresh-llm-v3
+```
