@@ -1,0 +1,52 @@
+{
+  "mode": "live",
+  "reviewer": "Apurba Bose",
+  "reviewer_relationship": "Apurba Bose (second author), using a blind web form that hid expected outcomes, gate verdicts and the other labels. Not external: she is a co-author and authored parts of these studies.",
+  "labels_sha256": "73206b3eff9f552ea003d9c144ce13b1403544edcefe1b295e891a3ef4b196b3",
+  "results": [
+    {
+      "case": "refund_updated",
+      "arm": "short",
+      "success": true
+    },
+    {
+      "case": "refund_updated",
+      "arm": "long",
+      "success": true
+    },
+    {
+      "case": "refund_removed",
+      "arm": "long",
+      "success": true
+    },
+    {
+      "case": "refund_removed",
+      "arm": "short",
+      "success": true
+    },
+    {
+      "case": "settlement_updated",
+      "arm": "short",
+      "success": true
+    },
+    {
+      "case": "settlement_updated",
+      "arm": "long",
+      "success": true
+    },
+    {
+      "case": "corrected_focus",
+      "arm": "long",
+      "success": true
+    },
+    {
+      "case": "corrected_focus",
+      "arm": "short",
+      "success": true
+    }
+  ],
+  "planned_arms": 8,
+  "scored_arms": 8,
+  "paired_comparison_ready": true,
+  "note": "Report all arms, including unfinished ones. Scripted rehearsal is never live LLM accuracy."
+}
