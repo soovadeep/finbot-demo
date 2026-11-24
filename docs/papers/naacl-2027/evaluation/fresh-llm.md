@@ -96,8 +96,13 @@ US$0.30.
 The requested-information triggers were too broad ("Has the refund come through?" asked for
 an amount; "When did it actually settle?" also asked for the expected date; "the settlement
 date" asked for both dates), and "was not refunded" did not count as stating the absence.
-These were fixed **after** seeing the results, so the study data are now development data
-for them; the frozen results above are unchanged and were not rerun as evidence.
+Also, the policy table gave a refunded payment the "unmapped failure; investigate the logs"
+guidance. These were fixed **after** seeing the results, so the study data are now
+development data for them; the frozen results above are unchanged. A development rerun of
+the deterministic checks on the same saved drafts (`development-rerun-after-fixes.json`)
+blocks 11 of 28 correct drafts instead of 14 and still 1 of 2 wrong drafts; because the
+fixes were made on these drafts, that is not evidence of improvement. A new frozen case set
+would be needed for that.
 
 ## Reproduce
 

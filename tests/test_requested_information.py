@@ -129,7 +129,7 @@ class ConversationKeepsTheQuestion(unittest.TestCase):
         self.assertEqual(result["question"]["requested"], ["refund_amount"])
 
     def test_refund_question_about_a_record_without_refund_says_so(self):
-        result = self.run_events(message("Was my bank transfer to Willow Repairs refunded?"), confirm(WILLOW_TRANSFER))
+        result = self.run_events(message("How much was refunded on my bank transfer to Willow Repairs?"), confirm(WILLOW_TRANSFER))
         answer = result["financial"]["final"]["answer"]
         self.assertIn("does not show a refund amount", answer)
         self.assertEqual(result["financial"]["outcome"], "passed")
@@ -200,6 +200,28 @@ class ConversationKeepsTheQuestion(unittest.TestCase):
         writer_question = self.answer_event(result)[-1]["writer_question"]
         self.assertNotIn("cancel", writer_question.lower())
         self.assertNotIn("TCK-", result["financial"]["final"]["answer"])   # no ticket path from the demo
+
+    def test_triggers_found_too_broad_in_the_fresh_study(self):
+        # Post-study fixes (docs/papers/naacl-2027/evaluation/fresh-llm.md): development cases now.
+        self.assertEqual(requested_roles("Has the refund for txn_X come through yet?"), ())
+        self.assertEqual(requested_roles("Was txn_X refunded?"), ())
+        self.assertEqual(requested_roles("When did txn_X actually settle?"), ("actual_settlement_date",))
+        self.assertEqual(requested_roles("For txn_X: what was the payment amount, the refund, and the settlement date?"),
+                         ("refund_amount", "actual_settlement_date", "payment_amount"))
+        self.assertEqual(requested_roles("Did I get my money back for txn_X, and how much?"), ("refund_amount",))
+        self.assertEqual(requested_roles("Compare the refunds on txn_A and txn_B."), ("refund_amount",))
+
+    def test_not_refunded_states_the_absence(self):
+        record = {k: v for k, v in ROLE_RECORD.items() if k != "refund"}
+        from finbot.guardrails import evidence_check
+        self.assertNotIn("ungrounded_refund_claim",
+                         evidence_check("The transaction txn_ROLE0001 was not refunded.", [envelope(record)], None).reasons)
+        self.assertIn("ungrounded_refund_claim",
+                      evidence_check("The transaction txn_ROLE0001 was refunded.", [envelope(record)], None).reasons)
+
+    def test_refunded_payment_gets_no_failure_guidance(self):
+        from finbot.policy import guidance
+        self.assertIsNone(guidance({"status": "refunded"}, "support"))
 
     def test_settle_and_when_asks_for_the_actual_date(self):
         self.assertEqual(requested_roles("Did my card payment settle, and when?"), ("actual_settlement_date",))

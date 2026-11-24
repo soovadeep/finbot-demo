@@ -30,13 +30,16 @@ from .provenance import trusted_log
 # statement must name. Triggers look for an explicit request, not a passing mention.
 ROLES = {
     "refund_amount": (
-        r"\bhow much\b[^.?!]{0,40}\brefund|\brefund(?:ed)?\s+amount\b|\brefund details\b|"
-        r"\b(?:was|were|has|have|did)\s+(?:i|it|this|that|the payment|my payment)\s+(?:been\s+)?refund|"
-        r"\b(?:any|a|my|the)\s+refund\b|\brefunded\b",
-        r"refund"),
+        # An amount is required only when the question asks for one; "Was it refunded?" or
+        # "Has the refund come through?" are answered by the refund's status.
+        r"\bhow much\b[^.?!]{0,40}\b(?:refund|back|returned)|\brefund(?:ed)?\s+amount\b|\brefund details\b|"
+        r"\bmoney back\b[^.?!]{0,30}\bhow much\b|\bthe refunds\s+(?:on|for)\b|"
+        r"\bwhat (?:was|is|were)\b[^?]{0,60}\bthe refund\b(?!\s+(?:status|come|arriv))",
+        r"refund\w*"),
     "expected_settlement_date": (
         r"\bwhen will\b|\bhow long\b|\bexpected\b[^.?!]{0,25}\b(?:settle|arriv|clear|land)|"
-        r"\bwhen (?:should|is it expected|do i expect)\b|\bsettlement (?:details|dates?)\b|\bwhen\b[^.?!]{0,30}\bsettle\b",
+        r"\bwhen (?:should|is it expected|do i expect)\b|\bsettlement (?:details|dates)\b|"
+        r"\bwhen\b(?![^.?!]{0,30}\b(?:did|has|have|actually)\b)[^.?!]{0,30}\bsettle\b",
         r"expected settlement(?: date)?|expected date"),
     "actual_settlement_date": (
         r"\bwhen did\b[^.?!]{0,30}\b(?:settle|clear|arrive|go through|complete)|"

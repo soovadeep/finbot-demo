@@ -218,7 +218,8 @@ RECORD_CLAIMS = [
 
 ABSENCE = re.compile(r"^\W*(?:the record|this record|our records?)\s+(?:does not|doesn't|do not|don't)\s+"
                      r"(?:show|record|list|include)\s+(?:a|an|any)\s+[\w ]{0,40}[.!]?\W*$|"
-                     r"^\W*an? [\w ]{0,40}\b(?:is|was) not recorded[.!]?\W*$", re.I)
+                     r"^\W*an? [\w ]{0,40}\b(?:is|was) not recorded[.!]?\W*$|"
+                     r"^[^.!?]*\b(?:was|were|has|have|had)\s+not\s+(?:been\s+)?refunded[^.!?]*[.!]?\W*$", re.I)
 NEGATION = re.compile(r"(\b(not|never|no|neither|nor|avoid|stop)\b|n't)\W+(\w+\W+){0,2}$", re.I)
 # "retry" as advice, not as a noun ("retry policy", "retry rule", "retry limit").
 RETRY_ADVICE = re.compile(r"\b(retry(?!\s+(policy|rule|rules|limit|limits|logic|count|window|attempts?)\b)|"

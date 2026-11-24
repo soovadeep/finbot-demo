@@ -95,7 +95,9 @@ QUALIFIERS = {"PROCESSOR_TIMEOUT": ["status", "idempotency"], "RISK_BLOCKED": ["
 def guidance(txn: dict, role: str) -> dict | None:
     """Return failure guidance; pending records do not establish a failure."""
     status = str(txn.get("status", "")).lower()
-    if status in ("approved", "succeeded", "settled", "pending"):
+    # A refunded payment is not a failure either: without this it got the "unmapped
+    # failure; investigate the logs" guidance (found in the fresh-LLM study).
+    if status in ("approved", "succeeded", "settled", "pending", "refunded", "partially_refunded"):
         return None
     key = txn.get("decline_code") or txn.get("error") or ""
     retryable, rule, cardholder, merchant, support = POLICY.get(key, UNKNOWN)
