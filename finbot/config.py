@@ -139,9 +139,14 @@ class Settings:
     escalate_after_fallbacks: int = 2  # offer a human after this many unverifiable answers in a row
     support_contact: str = field(default_factory=lambda: _env("FINBOT_SUPPORT_CONTACT", "the Support Center"))
     max_turns_per_thread: int = 30  # then roll to a fresh thread seeded with typed state
-    # ...or earlier, when the history passes this size (characters, ~4 per token). Bounds the
-    # model's context and the stored session (DynamoDB items are capped at 400 KB).
+    # Legacy history rollover trigger, independent of the full-request context check.
+    # This alone does not bound provider input or the serialized session ledger.
     max_history_chars: int = 120_000
+    # Minimum context capacity across writer/reviewer/failover models. Admission uses a
+    # conservative UTF-8 estimate, not an exact provider token count. Keep output headroom.
+    context_window_tokens: int = field(default_factory=lambda: int(_env("FINBOT_CONTEXT_WINDOW_TOKENS", "131072")))
+    context_output_reserve_tokens: int = field(default_factory=lambda: int(_env("FINBOT_CONTEXT_OUTPUT_RESERVE_TOKENS", "16000")))
+    context_margin_tokens: int = field(default_factory=lambda: int(_env("FINBOT_CONTEXT_MARGIN_TOKENS", "1024")))
     # Cache (finbot/cache.py): help-page searches and model breaker health only, never records.
     cache: str = field(default_factory=lambda: _env("FINBOT_CACHE", "memory"))   # memory | redis | none
     cache_url: str = field(default_factory=lambda: _env("FINBOT_CACHE_URL"))     # rediss://... for redis
@@ -153,6 +158,8 @@ class Settings:
     recap_requests: int = 8   # user requests carried into a fresh thread (each cut to 200 characters)
 
     def __post_init__(self) -> None:
+        from .context import ContextBudget
+        ContextBudget(self.context_window_tokens, self.context_output_reserve_tokens, self.context_margin_tokens)
         if self.store_provider == "dynamodb" and self.auth_mode == "jwks" and not self.tenant_role_arn:
             raise ValueError("FINBOT_TENANT_ROLE_ARN is required for DynamoDB with production JWKS authentication")
 

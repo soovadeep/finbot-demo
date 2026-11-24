@@ -47,7 +47,7 @@ class EntityState:
 
     def record(self, key: str, value, source: str) -> None:
         hist = self.facts.setdefault(key, [])
-        if hist and hist[-1].value == value:
+        if hist and hist[-1].value == value and hist[-1].superseded_by is None:
             return
         if hist:
             hist[-1].superseded_by = source
@@ -96,6 +96,11 @@ class SessionMemory:
             return
         ent.not_found = False
         if name in record_tools():
+            # A lookup is a fresh snapshot, not a patch. Absent fields from the same
+            # tool must not survive as active facts (e.g. a removed refund field).
+            for key, history in ent.facts.items():
+                if key not in result["data"] and history and history[-1].source.endswith(":" + name):
+                    history[-1].superseded_by = f"{result['source']}:{name}:absent"
             for k, v in result["data"].items():
                 ent.record(k, v, f"{result['source']}:{name}")
         elif name == "search_transaction_logs":
@@ -112,7 +117,13 @@ class SessionMemory:
             if ent and ent.not_found:
                 lines.append("focus_status: NOT FOUND for this customer (verified by lookup)")
             elif ent:
-                lines.append(f"verified_facts: {ent.current()}")
+                facts = str(ent.current())
+                if len(facts) <= 4000:
+                    lines.append(f"verified_facts: {facts}")
+                    lines.append("These are historical observations; refresh tools for current financial claims.")
+                else:
+                    lines.append("verified_facts: omitted for size; fetch the focused record again. "
+                                 "No financial fact may be inferred from the omission.")
             else:
                 lines.append("verified_facts: none yet; call tools before stating any fact")
         else:
@@ -120,12 +131,12 @@ class SessionMemory:
                          "earlier record's details unless the user explicitly refers back)")
         others = [e for e in self.entities if e != self.focus]
         if others:
-            lines.append(f"other_records_in_session (inactive, do not mix in): {others}")
+            lines.append(f"other_records_in_session (inactive, do not mix in; last 8 of {len(others)}): {others[-8:]}")
         if self.recap:
             lines.append("earlier_requests_in_this_conversation (from a previous thread, oldest first): "
-                         + " | ".join(self.recap))
+                         + " | ".join(r[:200] for r in self.recap[-8:]))
         if self.tickets:
             lines.append("tickets_opened_this_session (a person will act; nothing has been executed): "
-                         + ", ".join(f"{t['id']} {t['kind']} {t.get('txn_id') or ''}".strip() for t in self.tickets))
+                         + ", ".join(f"{t['id']} {t['kind']} {t.get('txn_id') or ''}".strip() for t in self.tickets[-8:]))
         lines.append("</session_state>")
         return "\n".join(lines)

@@ -11,6 +11,8 @@ NOT_ALLOWED = ("I can't look that up for you, so I haven't opened a request. A s
                "if you need this.")
 
 CANCELLED = "Stopped. I didn't finish that request, and nothing was changed."
+CONTEXT_LIMIT = ("There is too much information to check in one reply. "
+                 "Please narrow the question to one payment or one policy at a time.")
 
 UNAVAILABLE = ("I can't reach our systems right now, so I won't guess. Please try again in a minute or two. "
                "If it's urgent, contact {contact} and quote reference {ref}.")

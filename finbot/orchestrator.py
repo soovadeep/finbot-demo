@@ -45,6 +45,7 @@ from .freshness import stale_dates
 from .guardrails import BLOCKED_INPUT_MSG, BLOCKED_OUTPUT_MSG
 from .language import detect as detect_language
 from .memory import SessionMemory
+from .context import ContextBudget, ContextBudgetExceeded
 from .models import ModelOrchestrator, ModelTarget
 from .pii import CARD_REASONS, mask_pii, mask_value
 from .policy_documents import (
@@ -288,7 +289,7 @@ class Chatbot:
         """Run one turn. If a dependency is down after retries, roll the turn back
         (so resending the same message is safe) and tell the user what to do."""
         t0 = time.time()
-        snapshot = len(cs.history), copy.deepcopy(cs.memory), cs.pending_notice
+        snapshot = list(cs.history), copy.deepcopy(cs.memory), cs.pending_notice, cs.pending_focus_notice
         text, pii = mask_pii(user_text)   # before guards, model, history, audit, queues, tickets
         ctx = TurnContext(text, pii, self.policies.for_session(cs.session.session_id),
                           frozenset(t["id"] for t in cs.memory.tickets), t0)
@@ -301,16 +302,25 @@ class Chatbot:
                 except SessionLocked as e:
                     # Behaviour crossed the threshold mid-turn. Drop the turn's model output, keep
                     # the raised risk (it is committed), and hand the session to a person.
-                    del cs.history[snapshot[0]:]
+                    cs.history = snapshot[0]
                     risk = cs.memory.risk
                     cs.memory, cs.pending_notice = snapshot[1], snapshot[2]
                     cs.memory.risk = max(cs.memory.risk, risk)
+                    cs.pending_focus_notice = snapshot[3]
                     reply = Reply(self._fixed(cs, replies.RISK_LOCK), "session_risk", [str(e)], escalated=True)
+                except ContextBudgetExceeded as e:
+                    cs.history = snapshot[0]
+                    risk = cs.memory.risk
+                    cs.memory, cs.pending_notice = snapshot[1], snapshot[2]
+                    cs.memory.risk = max(cs.memory.risk, risk)
+                    cs.pending_focus_notice = snapshot[3]
+                    reply = Reply(replies.CONTEXT_LIMIT, "context_budget", [str(e)])
                 except ServiceUnavailable as e:
-                    del cs.history[snapshot[0]:]
+                    cs.history = snapshot[0]
                     risk = cs.memory.risk
                     cs.memory, cs.pending_notice = snapshot[1], snapshot[2]
                     cs.memory.risk = max(cs.memory.risk, risk)   # an outage does not wash out raised risk
+                    cs.pending_focus_notice = snapshot[3]
                     reply = Reply(replies.UNAVAILABLE.format(contact=self.settings.support_contact,
                                                              ref=self._ref(cs)), "unavailable", [str(e)])
                 turn = self._finish(cs, ctx, reply)
@@ -428,28 +438,29 @@ class Chatbot:
 
     def _model_answer(self, cs: ChatSession, ctx: TurnContext) -> Reply:
         text = ctx.text
+        from .policy_documents import EXTRACTIVE_INSTRUCTION
+        policy_instruction = {"extractive": EXTRACTIVE_INSTRUCTION,
+                              "strict": STRICT_INSTRUCTION, "hybrid": HYBRID_INSTRUCTION}.get(
+            self.settings.policy_verification)
+        notices = [n for n in (cs.pending_focus_notice, cs.pending_notice, policy_instruction) if n]
+
+        def request_messages():
+            return [{"role": "user", "content": text},
+                    {"role": "system", "content": "\n".join([cs.memory.render(), *notices])}]
+
+        # Account for the imminent question, state, system prompt and tool schemas.
+        # Only complete previous turns are removed; current tool exchanges stay intact.
         if (cs.memory.turns_in_thread >= self.settings.max_turns_per_thread
-                or history_chars(cs.history) >= self.settings.max_history_chars):
+                or history_chars(cs.history) >= self.settings.max_history_chars
+                or not self._context_budget().fits(SYSTEM_PROMPT, cs.history + request_messages(),
+                                                   self.toolbox.schemas())):
             cs.memory.recap = recap(cs.history, cs.memory.recap, self.settings.recap_requests)
             cs.history = []  # roll to a fresh thread; typed state and the recap carry continuity
             cs.memory.turns_in_thread = 0
         cs.memory.turns_in_thread += 1
 
-        notices = [cs.memory.render()]
-        if cs.pending_focus_notice:
-            notices.append(cs.pending_focus_notice)
-            cs.pending_focus_notice = None
-        if cs.pending_notice:
-            notices.append(cs.pending_notice)
-            cs.pending_notice = None
-        from .policy_documents import EXTRACTIVE_INSTRUCTION
-        policy_instruction = {"extractive": EXTRACTIVE_INSTRUCTION,
-                              "strict": STRICT_INSTRUCTION, "hybrid": HYBRID_INSTRUCTION}.get(
-            self.settings.policy_verification)
-        if policy_instruction:
-            notices.append(policy_instruction)
-        cs.history.append({"role": "user", "content": text})
-        cs.history.append({"role": "system", "content": "\n".join(notices)})
+        cs.pending_focus_notice = cs.pending_notice = None
+        cs.history.extend(request_messages())
 
         tool_log: list[dict] = []
         run_tool = self.toolbox.handler(cs.session)
@@ -490,7 +501,9 @@ class Chatbot:
                 cs.heartbeat()
             with self.telemetry.span("finbot.policy_review") as review_span:
                 review_system = HYBRID_REVIEW_SYSTEM if self.settings.policy_verification == "hybrid" else REVIEW_SYSTEM
-                response = engine.create(review_system, [{"role": "user", "content": json.dumps(payload)}], [],
+                review_messages = [{"role": "user", "content": json.dumps(payload)}]
+                self._context_budget().require_fit(review_system, review_messages, [])
+                response = engine.create(review_system, review_messages, [],
                                          tier="strong", deadline=cs.deadline)
                 route["models"].append(engine.last_target or "unknown")
                 usage = getattr(response, "usage", None)
@@ -540,6 +553,12 @@ class Chatbot:
             notes = [*notes, "stale_source"]
         return Reply(final, None, notes, tool_log, repaired=gate.repaired, route=route)
 
+    def _context_budget(self) -> ContextBudget:
+        caps = [getattr(t.client, "max_tokens", 0) for t in self.engine().targets()]
+        reserve = max(self.settings.context_output_reserve_tokens,
+                      *[n for n in caps if type(n) is int and n > 0], 0)
+        return ContextBudget(self.settings.context_window_tokens, reserve, self.settings.context_margin_tokens)
+
     def _loop(self, cs: ChatSession, run_tool, tool_log: list[dict], tier: str | None,
               models_used: list[str]) -> str:
         """Claude tool-use loop. Appends every message to the (append-only) history."""
@@ -548,6 +567,9 @@ class Chatbot:
                 cs.heartbeat()
             engine = self.engine()
             with self.telemetry.span("chat", gen_ai__operation__name="chat") as sp:
+                budget = self._context_budget()
+                estimated = budget.require_fit(SYSTEM_PROMPT, cs.history, self.toolbox.schemas())
+                sp.set(finbot__context_estimated_tokens=estimated, finbot__context_input_limit=budget.input_limit)
                 resp = engine.create(SYSTEM_PROMPT, cs.history, self.toolbox.schemas(), tier=tier,
                                      deadline=cs.deadline)
                 target = engine.last_target

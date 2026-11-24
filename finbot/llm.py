@@ -29,12 +29,13 @@ class ClaudeLLM:
         else:
             self.client = anthropic.Anthropic(max_retries=0)
         self.model = model
+        self.max_tokens = 16000
         self.effort = cast(Literal["low", "medium", "high", "xhigh", "max"], effort)
 
     def create(self, system: str, messages: list, tools: list[dict]):
         return self.client.messages.create(
             model=self.model,
-            max_tokens=16000,
+            max_tokens=self.max_tokens,
             # Stable system prompt + tool list first, cached; volatile state goes
             # into messages as a mid-conversation system message.
             system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
