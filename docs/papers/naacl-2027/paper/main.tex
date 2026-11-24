@@ -35,8 +35,8 @@ complementary inspector covers declines, unknown outcomes, record comparisons an
 Reviewers inspect claim-to-field traces and inject faults to observe repair, fallback or refusal.
 Financial-role checks distinguish expected/actual settlement dates and payment/refund amounts,
 even when values occur on the correct record. A scripted writer supports reproducibility; live
-answers are optional. Component simulations, workflow replays and verification ablations reveal
-strong simple baselines and residual semantic errors. We release code, traces and cached responses
+answers are optional. Simulations, replays, ablations and 30 fresh live answers reveal strong
+simple baselines, false rejections and residual semantic errors. We release code, traces and cached responses
 without claiming human usability gains or complete financial correctness.
 \end{abstract}
 
@@ -138,7 +138,7 @@ Consistent but mistaken confirmations remain possible: the system cannot infer h
 \subsection{Evidence retrieval, explanation and recovery}
 
 The writer uses read-only tools to retrieve records and policy evidence. In the conversation,
-the confirmed record is fetched again for a status-and-details explanation; inspector requests
+the confirmed record is fetched again to answer the customer's own question; inspector requests
 can name multiple records or ask about policy. Deterministic checks compare recognized amounts,
 currencies, dates, statuses, causes and codes with eligible evidence. A failing draft gets one
 repair, then a checked record-built answer, then refusal. Third-party fields such as merchant
@@ -153,6 +153,7 @@ Regular expressions and phrase tables recognize supported claim formats, with li
 and hedge handling. Recognized values must occur in eligible evidence; recognized causes must
 map to recorded reason codes. Policy statements must retain complete cited passages. Explicit
 comparisons require each requested record and recognized requested fields, including in fallback.
+Single-record answers must state each requested field or its absence, so ``Your payment was \$200'' fails ``How much was refunded?''.
 Coverage is finite: unrecognized wording, date formats and bare web addresses can evade extraction
 (Section~\ref{sec:inject}); omissions remain possible. A passing gate does not establish correctness.
 
@@ -162,9 +163,9 @@ using the latest lookup $D_h$. Roles cover payment/refund amounts and expected/a
 dates; actual dates also require settled status. The inspector exposes the phrase, role, field
 and verdict. Fallback states when actual dates are unavailable. Finite English patterns limit coverage.
 
-An optional Bedrock contextual-grounding check covers drafts, repairs and fallbacks, exposing
-scores in the inspector. Disabled by default, its live effectiveness and cost remain unmeasured.
-Provider failures withhold answers but are not counted as error detections.
+Two optional semantic checks run in the same gate: Bedrock contextual grounding (unmeasured) and a
+direct LLM evidence review through OpenRouter (\S\ref{sec:inject}). Both are off by default;
+provider failures withhold answers but are not counted as error detections.
 
 \subsection{What the inspector shows}
 
@@ -175,7 +176,8 @@ record ownership, financial roles or policy rules in the inspector. These test r
 
 \paragraph{Writers.} The default writer is scripted; optional Llama 3.3 70B through OpenRouter
 uses the same scope, checks and recovery. Visitor/daily caps and provider failure trigger scripted
-fallback. Clarification uses no LLM.
+fallback; each answer is labelled scripted, newly generated, cached replay, or scripted after a cap or
+failure. Clarification uses no LLM.
 
 \section{Demonstration walkthrough}
 
@@ -248,6 +250,7 @@ Clarification / conversation & 224 scenarios, two simulators and stronger baseli
 Confirmation, corrections / conversation & 60 controller replays; unit and browser checks include conflicts. Not customer accuracy. \\
 Explanations, recovery / both views & Paired mutations and live-writer audit (\S\ref{sec:inject}); semantic errors remain. \\
 Financial roles / inspector & 60 corruption pairs, 12 equal-value controls and cached-draft replay; finite claim formats. \\
+Requested fields, live answers / both & 30 fresh Llama answers, provisional labels; only 2 wrong drafts. \\
 Record comparison / inspector & 28 workflow runs; 38 mutation pairs reused to verify fixes. \\
 Policy, refusal / inspector & 12 workflow runs; 36 mutation pairs reused to verify fixes. \\
 Trace inspection / both views & Browser and accessibility checks (Appendix~\ref{app:ui}); no comprehension study. \\
@@ -354,9 +357,13 @@ do not estimate accuracy: a month-name date and ``You got \$200.00 back'' still 
 \paragraph{Fresh wording.} With runtime frozen, we committed 32 authored draft pairs and 16
 message sequences before evaluation. Role checks reject 12/32 corruptions, versus 0/32 without
 them; all clean counterparts pass. Expected candidate sets match in 15/16 sequences; none answer
-before confirmation. These developer-authored cases are now development data for a
-deterministic/semantic/combined comparison harness. Live semantic results and new LLM-generated
-test answers remain pending; no customer accuracy is inferred.
+before confirmation. The one failure (an earlier-sentence hedge) is now a fixed development case.
+
+\paragraph{Fresh LLM answers.} After freezing the runtime, a Gemini 2.5 Flash Lite reviewer and 30
+new cases, we generated Llama 3.3 70B answers. Provisional AI-assisted labels mark 2/30 drafts wrong.
+Deterministic checks block 1/2 wrong and 14/28 correct drafts; the reviewer blocks 0/2 and 1/23 it
+reviewed (5 unavailable from rate limits). End to end, deterministic gating releases 23 correct and
+1 wrong answer; adding the reviewer releases 21 and 2, so it stays off.
 
 \paragraph{Template tests and matched controls.} The original 224-episode test reports
 98.9\% rejection on development mutations after tuning status rules, and 82.3\%
@@ -375,8 +382,7 @@ annotation nor new generation. Historical fee injections recover through repair 
 or fallback in 128/128 when repair also fails.
 
 \paragraph{End-to-end assessment.} Success requires the intended record and a supported,
-sufficiently complete answer. The scorer requires independent judgments, leaving the overall
-rate undefined while answers remain unassessed. Gate passes cannot supply semantic labels.
+sufficiently complete answer. Only the fresh study has (provisional) labels; gate passes are not labels.
 
 \section{Related work}
 
@@ -402,7 +408,7 @@ heuristics challenge DV's accuracy advantage. Component policies differ from the
 controller, whose confident-detail filters can exclude the target. Conflict checks require
 explicit correction but cannot infer intent or detect all contradictions in free text. Controller,
 policy and comparison checks use authored cases. English parsing and verification miss semantic errors;
-the live-writer audit covers one model and card payments. No human, voice, independent semantic
+the live-writer audit covers one model and card payments; fresh labels are AI-assisted. No human, voice, independent semantic
 or deployed-customer accuracy evaluation has been completed. Finbot is not validated for
 production financial support.
 
