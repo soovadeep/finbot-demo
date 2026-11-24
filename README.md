@@ -4,8 +4,7 @@ An inspectable AI assistant for evidence-grounded payment support.
 Code, data and demo for the NAACL 2027 System Demonstrations paper by Sandip Nandi,
 Apurba Bose, Aishwarya Bose and Soovadeep Bakshi.
 
-See the [prioritized next steps](docs/papers/naacl-2027/next-steps.md) for original-question
-handling, answer coverage, live evaluation, demo synchronization and a citable release.
+See the [next steps](docs/papers/naacl-2027/next-steps.md) for what this revision changed and what remains open.
 
 **Try it:** open the hosted demo at <https://finbot-demo-20852907589.us-central1.run.app/>.
 Nothing to install. The [walkthrough](docs/papers/naacl-2027/reviewer-guide.md) lists
@@ -17,7 +16,8 @@ outcomes, comparing records and answering policy questions. Finbot demonstrates 
 through two interfaces, using synthetic account records and fictional policies:
 
 1. **Conversation.** Interpret supplied details, ask up to two scored clarification questions,
-   request explicit record confirmation, and explain that record's status and details.
+   request explicit record confirmation, then answer the customer's own question about that record.
+   Answers must cover the requested field (for example the refund amount) or say it is not recorded.
    Customer corrections invalidate the selection and mark previous answers as superseded.
 2. **Evidence inspector.** Explore decline explanations, unknown outcomes, two-record comparisons
    and cited policy answers. These direct scenarios are separate from the conversation interface.
@@ -102,8 +102,13 @@ and accept all 32 correct counterparts; the controller matches expected candidat
 unconfirmed message sequences. The runtime was not tuned on these results. These AI-assisted,
 developer-authored probes expose broader language failures; they are not fresh LLM-generated answers.
 
+A [fresh LLM study](docs/papers/naacl-2027/evaluation/fresh-llm.md) froze the runtime and an
+LLM evidence reviewer before generating 30 new Llama 3.3 70B answers. Provisional, AI-assisted
+labels mark 2 drafts wrong; deterministic checks block 1 of them and half of the correct drafts,
+and the reviewer adds no measured benefit, so it stays off by default.
+
 The submission's evaluation uses cached simulations, controller replays and verification diagnostics;
-reproducing those results requires no participant recruitment. The local `/pilot` page and
+reproducing those results requires no participant recruitment. The local `/pilot` page (enabled with `FINBOT_DEMO_PILOT=1`) and
 [study protocol](docs/papers/naacl-2027/evaluation/user-study-protocol.md) are optional future-work
 tools, not a planned or completed study supporting this submission. No participant results are included.
 See [claim boundaries and independent scoring](docs/papers/naacl-2027/evaluation/claim-boundaries.md)

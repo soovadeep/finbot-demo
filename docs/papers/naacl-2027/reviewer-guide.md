@@ -15,6 +15,23 @@ It requires no API key, subscription, AWS account, database, Node.js or Docker. 
 model API calls. The interface demonstrates implemented verification and recovery behavior;
 the examples are not evidence of natural model-error rates or general financial correctness.
 
+## What to try first (this revision)
+
+- **Ask your own question.** In the conversation, type for example *"How much was refunded on
+  my Harbor Books card payment?"* Finbot asks for confirmation, then answers that question about
+  the confirmed record (the refund amount and status), not a generic summary. The question is
+  shown above the answer as **Your question**. A follow-up such as *"When did it settle?"* is
+  answered about the same record. Requests to cancel or refund are declined: the demo is read-only.
+- **Incomplete answers are sent back.** An answer that is true but misses the requested field
+  (for example the payment amount when the refund was asked) fails the requested-information
+  check and is repaired or replaced; inspect `requested_information` entries in the trace.
+- **Live answers are labelled.** On the hosted demo, a toggle in both views drafts answers with
+  Llama 3.3 70B through OpenRouter, under per-visitor and daily caps. Every answer says who wrote
+  it: scripted, newly generated, cached replay, or scripted after a cap or provider error. The
+  same checks and recovery apply. Locally the toggle works only when `OPENROUTER_API_KEY` is set;
+  everything below uses the scripted writer and needs no key.
+- The `/pilot` pages are off unless the server is started with `FINBOT_DEMO_PILOT=1`.
+
 ## 1. Obtain and run the source
 
 Prerequisites: Python **3.11 or later** and a modern browser. This guide was smoke-tested on
@@ -196,8 +213,9 @@ customer data or expose this development server as a public deployment. Syntheti
 are masked, but a production diagnostic workflow needs explicit access and retention controls.
 
 The inspector enables **extractive** policy verification. Normal application configuration
-defaults to `off`; optional model review and Bedrock Guardrails are separate paths that may
-require credentials and incur provider charges, and are not enabled by this guide. Automated Reasoning and NeMo are
+defaults to `off`; the optional LLM evidence review (`FINBOT_SEMANTIC_VERIFICATION=llm`, see
+[the fresh LLM study](evaluation/fresh-llm.md)) and Bedrock Guardrails are separate paths that
+require credentials, incur provider charges and are not enabled by this guide. Automated Reasoning and NeMo are
 not integrated. Extractive checks now require the complete supporting retrieved passage, and
 explicit comparisons require each requested record and recognized fields in fallback too.
 A legitimate paraphrase may still fail; incomplete upstream sources, unsupported formats and

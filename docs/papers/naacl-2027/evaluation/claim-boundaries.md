@@ -81,6 +81,10 @@ Stale hashes, duplicate runs and unfilled submitted judgments are rejected. With
 the score remains null for potentially successful unassessed answers. Gate passes and the replay's
 expected-field checks are never silently converted into independent answer-quality labels.
 
+The [fresh LLM study](fresh-llm.md) is the only labelled set: 30 answers with provisional,
+AI-assisted support and completeness labels written by the authors' assistant, not by an
+independent reviewer. Its end-to-end counts are therefore provisional.
+
 No independent end-to-end accuracy or human usability result is claimed in this revision. Auditing
 authored regression cases remains a regression assessment; estimating customer performance requires
 the actual deployed controller on separately collected customer/simulator interactions.
