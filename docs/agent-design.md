@@ -65,7 +65,10 @@ counted as successful error detection.
   not a recovery strategy. Deadlines prevent new calls after expiry; an already-running
   provider request also depends on the adapter's transport timeout.
 - Record fallback uses retrieved fields. Policy-only fallback quotes retrieved passages
-  with citations. Neither proves source relevance, completeness or customer eligibility.
+  with citations. Explicit code questions additionally require every requested numeric
+  or alphanumeric code to be covered by the actual passages or their section headings.
+  Fallback ranks within each requested code and refuses incomplete coverage. This check
+  does not establish general semantic relevance or customer eligibility.
 - Telemetry records prompt-size estimates and limits, not prompt/evidence text, for the
   new context diagnostic. The inspector's financial checks and model-provider labels
   remain distinct from context-management tests.
@@ -78,3 +81,15 @@ rollover with focus and refetch, oversized active requests, tool growth, rollbac
 outage, snapshot replacement, and bounded memory rendering. These are software tests,
 not measured accuracy of a live LLM over long conversations. Frozen earlier studies stay
 unchanged; their runtime manifests intentionally reject this revised implementation.
+
+For example, after a long discussion about payment A, its remembered refund might be
+USD 24.60. Rollover preserves which payment the customer means, but the next question
+still causes a fresh lookup. If the backend now says USD 39.20, the old amount is
+superseded; if the refund field is gone, it is no longer an active fact. The model's
+ability to use that state correctly still needs live evaluation.
+
+The [paired conversation protocol](papers/naacl-2027/evaluation/conversation-study.md)
+now exercises actual multi-turn sessions, with matched short/long probes, backend changes,
+source/runtime freezing, provider usage traces, and blind review forms. Its committed
+run uses the scripted model without network calls. Independent cases and live long-chat
+accuracy remain pending; neither the rehearsal nor the nine software tests supplies them.
