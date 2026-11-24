@@ -68,6 +68,28 @@ run; they refuse to overwrite the committed cases or protocol. Changing the veri
 after inspecting these cases makes subsequent results development results, requiring a
 new version and fresh cases for another prospective test.
 
+## Post-fix development replay
+
+The original frozen results above are retained. The revised extractive/strict verifier
+requires coverage of explicit requested code identifiers by the actual quoted passages,
+using their text or section headings. It supports numeric and alphanumeric identifiers
+and multi-code requests; a shared citation URL alone cannot supply coverage. The
+question-aware fallback ranks passages within each requested code and abstains when
+one is unavailable. A later unsuccessful search supersedes earlier fallback candidates.
+
+`results/naacl2027/policy-relevance-development/report.json` rechecks the **same, already
+inspected 48 pairs**: all 48 corruptions are blocked, the same five clean controls are
+blocked, and all 43 eligible pairs now produce a new rejection. The four authentic
+off-topic quotations are blocked without rejecting their four correct controls.
+This is a regression result after fixing a known failure, **not unseen generalisation**.
+The identifier check does not establish free-text semantic applicability or customer
+eligibility; faithful paraphrases remain restricted in extractive mode.
+
+```sh
+python scripts/naacl2027/verification_challenge.py replay-development --output /tmp/policy-development.json
+python -m unittest discover -s tests -p test_policy_relevance.py -v
+```
+
 ## Context and agent design
 
 [Agent design](../../../agent-design.md) documents prompt admission, state rollover,

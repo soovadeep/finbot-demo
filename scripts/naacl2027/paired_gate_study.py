@@ -127,7 +127,7 @@ def configured(config: str):
     os.environ.update(env)
     original = orchestrator.policy_passage_answer
     if config == "before":
-        orchestrator.policy_passage_answer = lambda _log: None
+        orchestrator.policy_passage_answer = lambda _log, _question="": None
     demo.LIVE_CACHE.clear()      # no whole-run replay; pairing is per request (see Cache)
     demo.LIVE_BUDGET.__init__()
     try:

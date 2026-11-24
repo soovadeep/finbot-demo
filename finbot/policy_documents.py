@@ -12,12 +12,14 @@ of these modes establishes that a source is correct or applies to a particular c
 from __future__ import annotations
 
 import json
+import math
 import re
 from collections.abc import Callable
 from datetime import date
 
 from .guardrails import BLOCKED_OUTPUT_MSG, URL, GuardResult
 from .provenance import trusted_log
+from .policy_relevance import passage_codes, policy_codes
 from .resilience import ServiceUnavailable
 
 MODES = frozenset({"off", "extractive", "model", "strict", "hybrid"})
@@ -78,7 +80,7 @@ supported statement. Quotes must be literal substrings, including JSON punctuati
 No reasoning, extra fields, tools or outside citations. When unsure, return uncertain.
 """
 
-_SOURCE = re.compile(r"\(source:\s*https?://[^\s)]+\)", re.I)
+_SOURCE = re.compile(r"\(source:\s*https?://[^\s)]+(?:\s+updated\s+[^)]+)?\)", re.I)
 _LINK = re.compile(r"\[([^\]]+)\]\((https?://[^\s)]+)\)")
 _ABSTENTIONS = frozenset({
     "I don't have documentation on that, so I won't guess",
@@ -115,6 +117,7 @@ def _sources(log: list[dict]) -> list[dict]:
                     continue
                 out.append({"id": f"doc:{len(out)}", "kind": "document", "text": hit["text"],
                             "source_url": hit["source_url"], "chunk_id": hit.get("chunk_id"),
+                            "title": hit.get("title"), "section": hit.get("section"),
                             "version": hit.get("version"), "updated": hit.get("updated")})
         else:
             out.append({"id": f"record:{len(out)}", "kind": "record",
@@ -125,7 +128,7 @@ def _sources(log: list[dict]) -> list[dict]:
 PASSAGE_RATIO = 0.8  # also quote a further hit scoring at least this share of the best one
 
 
-def policy_passage_answer(tool_log: list[dict]) -> str | None:
+def policy_passage_answer(tool_log: list[dict], question: str = "") -> str | None:
     """Code-built fallback for a policy-only turn: the best retrieved passages, verbatim.
 
     Used after the model's own answer and its repair both fail, as the record-built answer
@@ -138,14 +141,28 @@ def policy_passage_answer(tool_log: list[dict]) -> str | None:
     log = trusted_log(tool_log)
     if any(c["name"] in record_tools() for c in log):
         return None
-    searches = [c for c in log if c["name"] == "search_knowledge_base" and c["result"].get("status") == "found"]
+    searches = [c for c in log if c["name"] == "search_knowledge_base"]
+    if not searches or searches[-1]["result"].get("status") != "found":
+        return None
     hits = [h for h in (searches[-1]["result"].get("data") or []) if searches
             and isinstance(h, dict) and all(isinstance(h.get(k), str) and h[k].strip() for k in ("text", "source_url"))
-            and isinstance(h.get("score"), (int, float))] if searches else []
+            and type(h.get("score")) in (int, float) and math.isfinite(h["score"]) and h["score"] > 0]
     if not hits:
         return None
-    best = max(h["score"] for h in hits)
-    chosen = sorted((h for h in hits if h["score"] >= PASSAGE_RATIO * best), key=lambda h: -h["score"])
+    requested = policy_codes(question)
+    if requested:
+        # Rank within each requested code, never let a high-scoring wrong code win.
+        chosen = []
+        for code in sorted(requested):
+            eligible = [h for h in hits if code in passage_codes(h)]
+            if not eligible:
+                return None  # a partial answer is not complete coverage
+            best = max(h["score"] for h in eligible)
+            chosen.extend(h for h in eligible if h["score"] >= PASSAGE_RATIO * best and h not in chosen)
+    else:
+        best = max(h["score"] for h in hits)
+        chosen = [h for h in hits if h["score"] >= PASSAGE_RATIO * best]
+    chosen.sort(key=lambda h: -h["score"])
     paragraphs = [f"{' '.join(h['text'].split())} (source: {h['source_url']}"
                   + (f", updated {h['updated']})" if isinstance(h.get("updated"), str) and h["updated"] else ")")
                   for h in chosen]
@@ -168,6 +185,26 @@ class PolicyDocumentVerifier:
     def check(self, answer: str, tool_log: list[dict], focus: str | None) -> GuardResult:
         if self.mode == "off":
             return GuardResult("allow", answer)
+        if self.mode in {"extractive", "strict"} and (requested := policy_codes(self.question)):
+            # Citation URLs alone do not bind a quote to the requested code. Require
+            # the actual complete passage, including its own section/body identifier.
+            paragraphs = [p.strip() for p in re.split(r"\n\s*\n", answer) if p.strip()]
+            if paragraphs and not all(_normal(p) in _ABSTENTIONS for p in paragraphs):
+                sources = _sources(trusted_log(tool_log))
+                covered = set()
+                for source in sources:
+                    if source["kind"] != "document":
+                        continue
+                    sentences = set(_sentences(source["text"]))
+                    quoted = set()
+                    for paragraph in paragraphs:
+                        cited = {url.rstrip(".,;:") for url in URL.findall(paragraph)}
+                        if source["source_url"] in cited:
+                            quoted.update(_sentences(_without_citations(paragraph)))
+                    if sentences and sentences <= quoted:
+                        covered.update(passage_codes(source))
+                if missing := requested - covered:
+                    return self._block("policy_requested_code_missing:" + ",".join(sorted(missing)))
         if self.mode == "strict":
             return self._strict(answer, trusted_log(tool_log), focus)
         if self.mode == "hybrid":
@@ -181,7 +218,7 @@ class PolicyDocumentVerifier:
         if answer == record_answer(log, focus):
             return GuardResult("allow", answer)
         # Likewise the policy-passage renderer copies whole retrieved chunks with their source.
-        if answer == policy_passage_answer(log):
+        if answer == policy_passage_answer(log, self.question):
             return GuardResult("allow", answer)
         sources = _sources(log)
         claims: list[dict] = []

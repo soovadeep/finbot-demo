@@ -493,7 +493,7 @@ class Chatbot:
         fallback = None
         if self.settings.record_fallback:
             fallback = (lambda log: comparison_record_answer(log, comparison.required_ids)) if comparison.required_ids else (
-                lambda log: complete_record_answer(log, cs.memory.focus, requested.roles) or policy_passage_answer(log))
+                lambda log: complete_record_answer(log, cs.memory.focus, requested.roles) or policy_passage_answer(log, text))
 
         def review_policy(payload: dict) -> str:
             # Isolated review: no conversation history, no tools, and the same turn deadline.

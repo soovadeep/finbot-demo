@@ -184,7 +184,7 @@ def evaluate(cases):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("prepare", "freeze", "run"))
+    parser.add_argument("command", choices=("prepare", "freeze", "run", "replay-development"))
     parser.add_argument("--output", type=Path, default=OUT / "report.json")
     args = parser.parse_args()
     if args.command == "prepare":
@@ -194,6 +194,17 @@ def main():
         print(f"Prepared {len(cases['pairs'])} pairs; no checks run.")
         return
     cases = json.loads((DATA / "cases.json").read_text())
+    if args.command == "replay-development":
+        if args.output == OUT / "report.json":
+            raise SystemExit("Use --output with a new development report path; the frozen report stays unchanged.")
+        protocol = json.loads((DATA / "protocol.json").read_text())
+        if protocol["cases_sha256"] != digest(cases):
+            raise SystemExit("The original challenge cases changed.")
+        report = {**evaluate(cases), "kind": "post-fix development replay, not held-out evaluation",
+                  "original_protocol_sha256": digest(protocol), "current_sources": sources()}
+        write_new(args.output, report)
+        print(json.dumps(report["summary"], indent=2))
+        return
     if args.command == "freeze":
         write_new(DATA / "protocol.json", {"cases_sha256": digest(cases), "sources": sources(),
                   "base_revision": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
