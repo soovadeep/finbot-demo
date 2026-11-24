@@ -28,8 +28,9 @@ the examples are not evidence of natural model-error rates or general financial 
 - **Live answers are labelled.** On the hosted demo, a toggle in both views drafts answers with
   Llama 3.3 70B through OpenRouter, under per-visitor and daily caps. Every answer says who wrote
   it: scripted, newly generated, cached replay, or scripted after a cap or provider error. The
-  same checks and recovery apply. Locally the toggle works only when `OPENROUTER_API_KEY` is set;
-  everything below uses the scripted writer and needs no key.
+  same checks and recovery apply. Locally the toggle appears only when the server is configured
+  for a live writer (`FINBOT_DEMO_WRITER=live`, see `deploy/demo/README.md`); everything below
+  uses the scripted writer and needs no key.
 - The `/pilot` pages are off unless the server is started with `FINBOT_DEMO_PILOT=1`.
 
 ## 1. Obtain and run the source

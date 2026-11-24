@@ -132,3 +132,8 @@ deploy/demo/               container and Cloud Run guide for the hosted demo
 Code: [MIT](LICENSE). The records and policies are synthetic. Evaluation questions use Banking77
 wording under CC-BY-4.0 (see [data/naacl2027/README.md](data/naacl2027/README.md)). Not financial advice, and not
 connected to any company.
+
+## Cite
+
+Citation metadata is in [CITATION.cff](CITATION.cff) (GitHub shows a "Cite this repository"
+button). Release notes are in [CHANGELOG.md](CHANGELOG.md).

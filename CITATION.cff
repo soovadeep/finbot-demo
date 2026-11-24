@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Finbot: From Payment Ambiguity to Evidence Grounded Answers"
+abstract: >-
+  Code, synthetic data, evaluation scripts, saved results and demo for an inspectable,
+  read-only payment-support assistant: scored clarification with explicit record
+  confirmation, evidence-checked answers with repair, record-built fallback or refusal,
+  and an evidence inspector.
+type: software
+version: 1.0.0
+date-released: 2026-11-24
+license: MIT
+repository-code: "https://github.com/soovadeep/finbot-demo"
+url: "https://finbot-demo-20852907589.us-central1.run.app/"
+keywords:
+  - payment support
+  - clarification
+  - grounded generation
+  - verification
+  - system demonstration
+authors:
+  - given-names: Sandip
+    family-names: Nandi
+    affiliation: Independent Researcher
+  - given-names: Apurba
+    family-names: Bose
+    affiliation: Independent Researcher
+  - given-names: Aishwarya
+    family-names: Bose
+    affiliation: Independent Researcher
+  - given-names: Soovadeep
+    family-names: Bakshi
+    affiliation: Independent Researcher
