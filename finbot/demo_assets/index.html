@@ -14,8 +14,8 @@
       <div><p class="eyebrow">PAYMENT SUPPORT · INSPECT THE DECISION</p><h1>Evidence before answers.</h1>
         <p class="lede">See the retrieved facts, inspect a draft, and follow what happens when a claim fails a check.</p>
         <p><a href="/clarification">Explore clarification experiments →</a></p></div>
-      <div class="mode" role="note" aria-label="Demo mode"><span class="dot"></span><strong>Offline · scripted model</strong>
-        <p>Synthetic records. Real verification pipeline.<br>No live model or payment system is connected.</p></div>
+      <div class="mode" role="note" aria-label="Demo mode"><span class="dot"></span><strong id="mode-title">Offline · scripted model</strong>
+        <p id="mode-text">Synthetic records. Real verification pipeline.<br>No live model or payment system is connected.</p></div>
     </section>
 
     <form id="run-form" class="controls">
@@ -25,6 +25,8 @@
         <textarea id="question" rows="3" maxlength="2000" required spellcheck="false"></textarea>
         <p>Each run starts a fresh session for the synthetic support account <code>m_100</code>.</p></div>
       <div class="run-control"><label for="fault">03 / Fault injection</label><select id="fault" disabled></select>
+        <label id="inspector-live-toggle" class="live-toggle" hidden><input type="checkbox" id="inspector-live">
+          <span id="inspector-live-label">Live model</span></label>
         <button id="run" type="submit" disabled>Run inspection <span aria-hidden="true">↗</span></button>
         <p>Faults are deliberately inserted before verification. They are not observed model errors.</p></div>
     </form>

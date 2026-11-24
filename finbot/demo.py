@@ -143,6 +143,12 @@ class LiveBudget:
 
 
 LIVE_BUDGET = LiveBudget()
+
+
+def PILOT_ENABLED() -> bool:  # noqa: N802 - read per request so tests can toggle it
+    """The usability-pilot page is optional future work: off unless FINBOT_DEMO_PILOT=1, so a
+    hosted copy does not show a consent form for a study that is not running."""
+    return os.environ.get("FINBOT_DEMO_PILOT", "0") == "1"
 LIVE_CACHE: OrderedDict[str, dict] = OrderedDict()
 LIVE_MAX_TOKENS = 400
 
@@ -212,34 +218,55 @@ class DemoModel:
         return NS(stop_reason="end_turn", content=[NS(type="text", text=after)])
 
 
+WRITER_SOURCES = {
+    "scripted": "Scripted writer",
+    "live_generated": "Live model, generated for this request",
+    "live_cached": "Live model, replayed from an earlier identical request",
+    "scripted_after_limit": "Scripted writer (live-model limit reached)",
+    "scripted_after_provider_error": "Scripted writer (live model unavailable)",
+}
+
+
+def _labelled(result: dict, source: str) -> dict:
+    """Every answer says who wrote it, so a reader never mistakes a script or a replay for a
+    newly generated model answer, or a fallback for the model."""
+    result["writer_source"] = source
+    result["writer_label"] = WRITER_SOURCES[source] + (
+        f": {writer()['label'].removeprefix('Live model (').rstrip(')')}" if source.startswith("live") else "")
+    return result
+
+
 def run_demo(question: str, fault: str = "none", *, records: list[dict] | None = None,
              live: bool = False, client: str = "") -> dict:
     """live=True asks for the live writer; it is used only when the server enables it
-    (FINBOT_DEMO_WRITER=live) and the caps allow, otherwise the scripted writer answers."""
-    note = None
+    (FINBOT_DEMO_WRITER=live) and the caps allow, otherwise the scripted writer answers.
+    The result's writer_source says which happened (see WRITER_SOURCES)."""
+    note, source = None, "scripted"
     semantic = os.environ.get("FINBOT_DEMO_SEMANTIC", "off")
     if live and writer()["mode"] == "live_model":
         key = json.dumps([question, fault, records], sort_keys=True, default=str)
         if semantic == "off" and key in LIVE_CACHE:
             LIVE_CACHE.move_to_end(key)
-            return copy.deepcopy(LIVE_CACHE[key])
+            return _labelled(copy.deepcopy(LIVE_CACHE[key]), "live_cached")
         if LIVE_BUDGET.allow(client):
             try:
                 result = _run_demo(question, fault, records=records, live=True)
             except Exception:  # noqa: BLE001 - a provider outage must not break the page
                 note = "The live model did not answer; the scripted writer answered instead."
+                source = "scripted_after_provider_error"
             else:
                 if semantic == "off":
                     LIVE_CACHE[key] = copy.deepcopy(result)
                 while len(LIVE_CACHE) > 256:
                     LIVE_CACHE.popitem(last=False)
-                return result
+                return _labelled(result, "live_generated")
         else:
             note = "The live-model limit for now is reached; the scripted writer answered instead."
+            source = "scripted_after_limit"
     result = _run_demo(question, fault, records=records, live=False)
     if note:
         result["writer_note"] = note
-    return result
+    return _labelled(result, source)
 
 
 def _run_demo(question: str, fault: str = "none", *, records: list[dict] | None = None,
@@ -333,7 +360,8 @@ class DemoApp:
             elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] in {
                     "/", "/inspector", "/app.js", "/style.css", "/clarification", "/clarification.js",
                     "/study", "/study/probes", "/study.js", "/study.css",
-                    "/conversation.js", "/conversation.css", "/pilot", "/pilot.js", "/pilot.css"}:
+                    "/conversation.js", "/conversation.css", "/pilot", "/pilot.js", "/pilot.css"} and (
+                    not environ["PATH_INFO"].startswith("/pilot") or PILOT_ENABLED()):
                 filename, mime = {"/": ("conversation.html", "text/html; charset=utf-8"),
                                   "/inspector": ("index.html", "text/html; charset=utf-8"),
                                   "/app.js": ("app.js", "text/javascript; charset=utf-8"),
@@ -353,8 +381,10 @@ class DemoApp:
                 body = (ASSETS / filename).read_bytes()
                 payload = None
             elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] == "/api/scenarios":
-                payload = {"scenarios": SCENARIOS, "faults": FAULTS, "mode": "offline_scripted"}
-            elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] == "/api/pilot/tasks":
+                w = writer()
+                payload = {"scenarios": SCENARIOS, "faults": FAULTS, "mode": "offline_scripted",
+                           "live_writer": w["label"] if w["mode"] == "live_model" else None}
+            elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] == "/api/pilot/tasks" and PILOT_ENABLED():
                 from .usability import public_tasks
                 payload = public_tasks()
             elif environ["REQUEST_METHOD"] == "GET" and environ["PATH_INFO"] == "/api/clarification/cases":
@@ -389,9 +419,14 @@ class DemoApp:
                             from .clarification_demo import run_clarification
                             payload = run_clarification(request)
                         else:
-                            if not isinstance(request, dict) or set(request) - {"question", "fault"}:
+                            if not isinstance(request, dict) or set(request) - {"question", "fault", "live"}:
                                 raise ValueError("Unexpected request fields.")
-                            payload = run_demo(request.get("question", ""), request.get("fault", "none"))
+                            live = request.get("live", False)
+                            if type(live) is not bool:
+                                raise ValueError("live must be true or false.")
+                            forwarded = environ.get("HTTP_X_FORWARDED_FOR", "").split(",")[-1].strip()
+                            payload = run_demo(request.get("question", ""), request.get("fault", "none"), live=live,
+                                               client=forwarded or environ.get("REMOTE_ADDR", ""))
             else:
                 status, payload = "404 Not Found", {"error": "Route not found."}
         except (ValueError, TypeError, UnicodeError):

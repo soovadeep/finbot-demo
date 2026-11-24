@@ -41,14 +41,15 @@ ROLES = {
     "actual_settlement_date": (
         r"\bwhen did\b[^.?!]{0,30}\b(?:settle|clear|arrive|go through|complete)|"
         r"\b(?:has|did|have)\s+(?:it|the payment|this|my payment|the transfer)\s+(?:already\s+)?(?:settle|clear)|"
-        r"\bactual settlement\b|\bsettlement (?:details|dates?)\b|\bsettled on\b",
+        r"\bactual settlement\b|\bsettlement (?:details|dates?)\b|\bsettled on\b|"
+        r"\b(?:settle|clear)(?:d)?\b[^.?!]{0,15}\bwhen\b",
         r"actual settlement(?: date)?|settlement date"),
     "payment_amount": (
         r"\bhow much (?:was|did|is|were)\b(?![^.?!]*\brefund)|\bpayment amount\b|\bpayment and refund\b|"
         r"\bwhat (?:was|is) the amount\b",
         r""),
     "decline_reason": (
-        r"\bwhy\b[^.?!]{0,40}\b(?:declin|fail|reject|refus|bounc)",
+        r"\bwhy\b[^.?!]{0,40}\b(?:declin|fail|reject|refus|bounc)|\bdecline reason\b",
         r"reason|decline code|cause"),
 }
 LABELS = {"refund_amount": "a refund amount", "expected_settlement_date": "an expected settlement date",
@@ -96,7 +97,33 @@ def _covered(text: str, role: str, data: dict) -> bool:
         code, message = str(data.get("decline_code") or data.get("error") or ""), str(data.get("processor_response") or "")
         return bool(code and re.search(rf"\b{re.escape(code)}\b", text)) or bool(
             message and message.casefold() in text.casefold())
-    return any(r == role for r, _, _ in claims(text))
+    if any(r == role for r, _, _ in claims(text)):
+        return True
+    # Coverage (not factuality): a sentence naming the field and carrying the record's own
+    # value also answers the question, e.g. "The refund for your card payment is $50.00."
+    # The value must be the record's value for that role, so "Your refund came to 200.00"
+    # on a 50.00 refund is still sent back.
+    value = _value(data, role)
+    if value is None:
+        return False
+    cue = {"refund_amount": r"\brefund", "expected_settlement_date": r"\b(?:expect|estimat|schedul|due|should)",
+           "actual_settlement_date": r"\b(?:settled|cleared|completed)\b"}[role]
+    if role.endswith("date"):
+        day = _normalized(value, role)
+        forms = {day, f"{_MONTH_NAMES[int(day[5:7]) - 1]} {int(day[8:])}"}
+        pattern = "|".join(re.escape(f) for f in forms)
+    else:
+        number = re.escape(str(value)).replace(r"\.00", r"(?:\.00)?")
+        pattern = rf"(?<![\d.]){number}(?![\d])"
+    for sentence in re.split(r"(?<=[.!?])\s+", text):
+        if re.search(cue, sentence, re.I) and re.search(pattern, sentence, re.I) and not (
+                role == "actual_settlement_date" and re.search(r"\bexpect|\bestimat|\bschedul", sentence, re.I)):
+            return True
+    return False
+
+
+_MONTH_NAMES = ("January", "February", "March", "April", "May", "June", "July", "August", "September",
+                "October", "November", "December")
 
 
 def missing_statements(data: dict, roles: tuple[str, ...]) -> str:

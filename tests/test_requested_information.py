@@ -194,6 +194,17 @@ class ConversationKeepsTheQuestion(unittest.TestCase):
         self.assertIn("can't cancel", texts)
         self.assertNotRegex(result["financial"]["final"]["answer"].lower(), r"\b(?:cancelled|i have cancel)")
 
+    def test_action_request_is_not_forwarded_to_the_writer(self):
+        result = self.run_events(message("Can you cancel my card payment to Willow Repairs on November 16?"),
+                                 confirm(WILLOW_CARD))
+        writer_question = self.answer_event(result)[-1]["writer_question"]
+        self.assertNotIn("cancel", writer_question.lower())
+        self.assertNotIn("TCK-", result["financial"]["final"]["answer"])   # no ticket path from the demo
+
+    def test_settle_and_when_asks_for_the_actual_date(self):
+        self.assertEqual(requested_roles("Did my card payment settle, and when?"), ("actual_settlement_date",))
+        self.assertEqual(requested_roles("What is its decline reason?"), ("decline_reason",))
+
     def test_fixture_fields_used_above(self):
         rows = {r["txn_id"]: r for r in record_rows()}
         self.assertEqual(rows[HARBOR_CARD]["refund"]["amount"], "50.00")

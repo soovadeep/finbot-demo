@@ -40,6 +40,8 @@ function render(data) {
     const bubble = node("div", undefined, `chat-bubble ${message.role}${message.superseded ? " superseded" : ""}`);
     if (message.record_id) bubble.dataset.recordId = message.record_id;
     bubble.append(node("span", message.role === "user" ? "YOU" : message.superseded ? "FINBOT · EARLIER ANSWER, SUPERSEDED" : "FINBOT", "speaker"), node("span", message.text));
+    if (message.record_id && message.writer_source) bubble.append(node("span", `Written by: ${message.writer || "Scripted writer"}` +
+      ({live_cached: " · replayed from cache", scripted_after_limit: " · live limit reached", scripted_after_provider_error: " · live model unavailable"}[message.writer_source] || ""), "writer-tag"));
     $("chat-messages").append(bubble);
   });
   $("conversation-options").replaceChildren();
@@ -100,8 +102,10 @@ function render(data) {
   });
   $("other-records").hidden = matches.length === data.candidates.length;
   $("answer-check").hidden = !data.financial;
-  $("answer-result").textContent = data.financial ? `${outcomes[data.financial.outcome] || data.financial.outcome}. ${data.financial.final.answer}` +
-    ` (Writer: ${data.financial.writer || "Scripted writer"}.${data.financial.writer_note ? " " + data.financial.writer_note : ""})` : "";
+  $("answer-result").textContent = data.financial ? `${data.question ? `Your question: “${data.question.text}” ` : ""}` +
+    `${outcomes[data.financial.outcome] || data.financial.outcome}. ${data.financial.final.answer}` +
+    ` (Written by: ${data.financial.writer_label || data.financial.writer || "Scripted writer"}.` +
+    `${data.financial.writer_note ? " " + data.financial.writer_note : ""})` : "";
   renderSteps(data.financial);
   $("answer-evidence").textContent = data.financial ? JSON.stringify(data.financial, null, 2) : "";
   $("scenario-reference").hidden = !data.selected_id && !data.unresolved;

@@ -484,7 +484,7 @@ def detail_check(answer: str, tool_log: list[dict]) -> list[str]:
     for m in DAY_MONTH.finditer(answer):          # "Nov 2", "2nd of November": some record date must match
         day, month = (m.group(1), m.group(2)) if m.group(1) else (m.group(4), m.group(3))
         md = f"-{[x[:3] for x in _MONTHS].index(month[:3].lower()) + 1:02d}-{int(day):02d}"
-        if not 1 <= int(day) <= 31 or not re.search(rf"\d{{4}}{md}\b", blob):
+        if not 1 <= int(day) <= 31 or not re.search(rf"\d{{4}}{md}(?!\d)", blob):
             reasons.append(f"ungrounded_date:{md[1:]}")
     for x in _sentences(answer):                  # a promised timeline the data doesn't state
         if not FUTURE.search(x):

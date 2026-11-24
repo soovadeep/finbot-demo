@@ -48,3 +48,4 @@ main { max-width: 1340px; }
 .answer-steps blockquote{margin:.25rem 0 .25rem .5rem;padding-left:.5rem;border-left:3px solid currentColor;color:inherit;opacity:.85;font-size:.9em}
 .live-toggle { display: flex; align-items: center; gap: 6px; font-size: 13px; margin-bottom: 10px; max-width: 260px; }
 .live-toggle[hidden] { display: none; }
+.writer-tag { display: block; margin-top: 6px; font-size: 12px; opacity: .75; }

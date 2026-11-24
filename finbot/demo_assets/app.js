@@ -145,7 +145,9 @@ function render(result) {
     $("draft").replaceChildren(node("p", "The turn was handled before answer verification. No draft was checked.", "empty"));
   }
   $("answer").replaceChildren(node("span", labels[result.outcome], `pill ${result.final.blocked_by ? "block" : ""}`),
-    node("p", result.final.answer, "answer-text"));
+    node("p", result.final.answer, "answer-text"),
+    node("p", `Written by: ${result.writer_label || "Scripted writer"}${result.writer_note ? ". " + result.writer_note : ""}`,
+      `writer-note writer-${result.writer_source || "scripted"}`));
   if (result.final.blocked_by) $("answer").append(node("p", `Stopped by: ${result.final.blocked_by}`, "check-note"));
   if (result.outcome === "record_fallback") {
     $("answer").append(node("p", "This summary may not cover every record or every part of your question. Check it for completeness.", "coverage-note"));
@@ -154,7 +156,9 @@ function render(result) {
     $("answer").append(node("p", "No eligible record-built fallback was available.", "check-note"));
   }
   $("metrics").replaceChildren();
-  const metrics = [["Local scripted latency", `${result.metrics.latency_ms} ms`], ["Scripted model calls", result.metrics.model_calls],
+  const live = (result.writer_source || "").startsWith("live");
+  const metrics = [[live ? "Latency" : "Local scripted latency", `${result.metrics.latency_ms} ms`],
+    [live ? "Model calls" : "Scripted model calls", result.metrics.model_calls],
     ["Tool calls (including repair)", result.metrics.tool_calls], ["Injected faults applied", result.injections.length]];
   metrics.forEach(([name, value]) => $("metrics").append(node("dt", name), node("dd", value)));
   $("status").textContent = `Inspection complete · ${labels[result.outcome]} · ${result.injections.length} injected fault(s).`;
@@ -169,10 +173,13 @@ $("run-form").addEventListener("submit", async (event) => {
   ["scenario", "question", "fault", "run"].forEach((id) => { $(id).disabled = true; });
   $("download").disabled = true;
   $("workspace").setAttribute("aria-busy", "true");
-  $("status").textContent = "Running the scripted model through the verification pipeline…";
+  $("status").textContent = !$("inspector-live-toggle").hidden && $("inspector-live").checked
+    ? "Asking the live model, then running the verification pipeline…"
+    : "Running the scripted model through the verification pipeline…";
   try {
     const response = await fetch("/api/run", {method: "POST", headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({question: $("question").value, fault: $("fault").value})});
+      body: JSON.stringify({question: $("question").value, fault: $("fault").value,
+        live: !$("inspector-live-toggle").hidden && $("inspector-live").checked})});
     const result = await response.json();
     if (!response.ok) throw new Error(result.error || "Inspection failed.");
     render(result);
@@ -203,6 +210,12 @@ $("fault").addEventListener("change", markEdited);
     if (!response.ok) throw new Error("Could not load scenarios. Reload the local demo.");
     const config = await response.json();
     scenarios = config.scenarios;
+    if (config.live_writer) {
+      $("inspector-live-toggle").hidden = false;
+      $("inspector-live-label").textContent = `${config.live_writer} writes the draft (limited daily)`;
+      $("mode-title").textContent = "Scripted by default · live model optional";
+      $("mode-text").textContent = "Synthetic records. Real verification pipeline. Every answer says whether a script, a newly generated live answer or a cached replay wrote it.";
+    }
     scenarios.forEach((scenario) => {
       const option = node("option", scenario.title);
       option.value = scenario.id;

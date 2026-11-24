@@ -3,6 +3,7 @@ import copy
 import json
 import unittest
 
+from tests.historical import historical
 from finbot.guardrails import GuardResult
 from scripts.naacl2027.evaluate_support import (
     ROOT, comparison_answer, comparison_cases, comparison_fields, evaluate,
@@ -71,7 +72,7 @@ class IndependentSupportScoring(unittest.TestCase):
         self.assertEqual(summary["missed_errors"], 0)
 
     def test_current_outcomes_match_historical_report_without_model_calls(self):
-        actual = evaluate()
+        actual = historical(evaluate())   # later additive fields set aside; see tests/historical.py
         saved = json.loads((ROOT / "results/naacl2027/varied-support-roles.json").read_text())
         # Runtime hashes change as optional components are added. Preserve the
         # historical report and compare every outcome, not historical provenance.

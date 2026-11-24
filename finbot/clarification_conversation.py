@@ -393,8 +393,11 @@ class Conversation:
         Other record references in it are neutralized: a question never authorizes a lookup,
         and the gateway only holds the confirmed record anyway.
         """
-        if not self.question:
-            return f"What are the recorded status and details of {record_id}?"
+        if not self.question or self.question["action_request"]:
+            # An action request ("cancel it") is not passed on: this assistant only explains
+            # records, so the writer is asked what the record shows, plus any requested field.
+            asked = " ".join(f"What is its {r.replace('_', ' ')}?" for r in (self.question or {}).get("requested", []))
+            return f"What are the recorded status and details of {record_id}?" + (f" {asked}" if asked else "")
         text = re.sub(r"\btxn_[A-Za-z0-9]+\b", lambda m: m.group(0) if m.group(0) == record_id else "that payment",
                       self.question["text"])
         return f"About the confirmed payment {record_id}: {text}"
@@ -409,7 +412,7 @@ class Conversation:
                                   live=self.live, client=self.client)
         self.messages.append({"role": "assistant", "text": self.financial["final"]["answer"], "record_id": record_id,
                               "question": self.question["text"] if self.question else None,
-                              "writer": self.financial.get("writer"),
+                              "writer": self.financial.get("writer_label") or self.financial.get("writer"),
                               "writer_source": self.financial.get("writer_source")})
         self.trace.append({"event": "answer", "record_id": record_id, "writer_question": question,
                            "requested": self.question["requested"] if self.question else [],
