@@ -1,0 +1,134 @@
+{
+  "mode": "offline scripted rehearsal",
+  "protocol_sha256": "0affa7bd197dcce57bb70f0b5838f7c6ead76eea7e4fd7eebeaedabd151b169c",
+  "provenance": {
+    "author_role": "developer",
+    "source": "AI-assisted development fixtures in this repository",
+    "independent": false
+  },
+  "planned_arms": 8,
+  "completed_arms": 8,
+  "model_requests": 320,
+  "provider_call_attempts": 0,
+  "call_limit_exhausted": false,
+  "provider_usage": {
+    "input_tokens": 0,
+    "output_tokens": 0
+  },
+  "semantic_success_rate": null,
+  "labels": "pending",
+  "summary": [
+    {
+      "case": "refund_updated",
+      "arm": "short",
+      "planned_turns": 4,
+      "completed": true,
+      "rollovers": 0,
+      "diagnostics": {
+        "focused_record_matches": true,
+        "refetched_current_records": true,
+        "literal_required_strings": true,
+        "literal_forbidden_strings_absent": true,
+        "released": true
+      }
+    },
+    {
+      "case": "refund_updated",
+      "arm": "long",
+      "planned_turns": 36,
+      "completed": true,
+      "rollovers": 1,
+      "diagnostics": {
+        "focused_record_matches": true,
+        "refetched_current_records": true,
+        "literal_required_strings": true,
+        "literal_forbidden_strings_absent": true,
+        "released": true
+      }
+    },
+    {
+      "case": "refund_removed",
+      "arm": "long",
+      "planned_turns": 36,
+      "completed": true,
+      "rollovers": 1,
+      "diagnostics": {
+        "focused_record_matches": true,
+        "refetched_current_records": true,
+        "literal_required_strings": true,
+        "literal_forbidden_strings_absent": true,
+        "released": true
+      }
+    },
+    {
+      "case": "refund_removed",
+      "arm": "short",
+      "planned_turns": 4,
+      "completed": true,
+      "rollovers": 0,
+      "diagnostics": {
+        "focused_record_matches": true,
+        "refetched_current_records": true,
+        "literal_required_strings": true,
+        "literal_forbidden_strings_absent": true,
+        "released": true
+      }
+    },
+    {
+      "case": "settlement_updated",
+      "arm": "short",
+      "planned_turns": 4,
+      "completed": true,
+      "rollovers": 0,
+      "diagnostics": {
+        "focused_record_matches": true,
+        "refetched_current_records": true,
+        "literal_required_strings": true,
+        "literal_forbidden_strings_absent": true,
+        "released": true
+      }
+    },
+    {
+      "case": "settlement_updated",
+      "arm": "long",
+      "planned_turns": 36,
+      "completed": true,
+      "rollovers": 1,
+      "diagnostics": {
+        "focused_record_matches": true,
+        "refetched_current_records": true,
+        "literal_required_strings": true,
+        "literal_forbidden_strings_absent": true,
+        "released": true
+      }
+    },
+    {
+      "case": "corrected_focus",
+      "arm": "long",
+      "planned_turns": 36,
+      "completed": true,
+      "rollovers": 1,
+      "diagnostics": {
+        "focused_record_matches": true,
+        "refetched_current_records": true,
+        "literal_required_strings": true,
+        "literal_forbidden_strings_absent": true,
+        "released": true
+      }
+    },
+    {
+      "case": "corrected_focus",
+      "arm": "short",
+      "planned_turns": 4,
+      "completed": true,
+      "rollovers": 0,
+      "diagnostics": {
+        "focused_record_matches": true,
+        "refetched_current_records": true,
+        "literal_required_strings": true,
+        "literal_forbidden_strings_absent": true,
+        "released": true
+      }
+    }
+  ]
+}

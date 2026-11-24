@@ -1,0 +1,633 @@
+{
+  "case": "refund_updated",
+  "arm": "short",
+  "planned_turns": 4,
+  "completed": true,
+  "trace": [
+    {
+      "index": 0,
+      "probe": false,
+      "question": "Please check the payment txn_LONG0001.",
+      "turn": {
+        "answer": "Transaction txn_LONG0001 was approved for 184.60 USD. Expected settlement date: 2026-11-26. Refund amount: 24.60. An actual settlement date is not recorded.",
+        "blocked_by": null,
+        "reasons": [],
+        "tools_called": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_LONG0001"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_LONG0001",
+                "status": "approved",
+                "amount": "184.60",
+                "currency": "USD",
+                "refund": {
+                  "status": "succeeded",
+                  "amount": "24.60"
+                },
+                "settlement": {
+                  "status": "pending",
+                  "expected_date": "2026-11-26"
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_LONG0001",
+              "limit": 10
+            },
+            "result": {
+              "status": "not_found",
+              "source": "log_search",
+              "data": null,
+              "note": "No log events found for this transaction."
+            }
+          }
+        ],
+        "focus": "txn_LONG0001",
+        "latency_ms": 6,
+        "repaired": false,
+        "escalated": false,
+        "tier": null,
+        "models_used": [
+          "Recorder",
+          "Recorder"
+        ],
+        "question": "Please check the payment txn_LONG0001.",
+        "policy_version": 1
+      },
+      "calls": [
+        {
+          "request_sha256": "861891050c2f8367953c93c2e61d90ab226c84c333e170102c70318678d34df2",
+          "estimated_input_tokens": 6241,
+          "evidence": [],
+          "response": {
+            "stop_reason": "tool_use",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "t1a",
+                "name": "get_transaction",
+                "input": {
+                  "txn_id": "txn_LONG0001"
+                }
+              },
+              {
+                "type": "tool_use",
+                "id": "t1b",
+                "name": "search_transaction_logs",
+                "input": {
+                  "txn_id": "txn_LONG0001",
+                  "limit": 10
+                }
+              }
+            ]
+          }
+        },
+        {
+          "request_sha256": "8e0502a78a82edf441d670ae86747ee79b459ffc6073d606e8bc1712a6c56c3c",
+          "estimated_input_tokens": 7353,
+          "evidence": [
+            {
+              "name": "get_transaction",
+              "input": {
+                "txn_id": "txn_LONG0001"
+              },
+              "result": {
+                "status": "found",
+                "source": "txn_db",
+                "data": {
+                  "txn_id": "txn_LONG0001",
+                  "status": "approved",
+                  "amount": "184.60",
+                  "currency": "USD",
+                  "refund": {
+                    "status": "succeeded",
+                    "amount": "24.60"
+                  },
+                  "settlement": {
+                    "status": "pending",
+                    "expected_date": "2026-11-26"
+                  }
+                }
+              }
+            },
+            {
+              "name": "search_transaction_logs",
+              "input": {
+                "txn_id": "txn_LONG0001",
+                "limit": 10
+              },
+              "result": {
+                "status": "not_found",
+                "source": "log_search",
+                "data": null,
+                "note": "No log events found for this transaction."
+              }
+            }
+          ],
+          "response": {
+            "stop_reason": "end_turn",
+            "content": [
+              {
+                "type": "text",
+                "text": "Transaction txn_LONG0001 was approved for 184.60 USD. Expected settlement date: 2026-11-26. Refund amount: 24.60. An actual settlement date is not recorded."
+              }
+            ]
+          }
+        }
+      ],
+      "thread_turns_before": 0,
+      "thread_turns_after": 1,
+      "rolled_over": false,
+      "focus": "txn_LONG0001",
+      "recap": []
+    },
+    {
+      "index": 1,
+      "probe": false,
+      "question": "Please check txn_LONG0002 as well.",
+      "turn": {
+        "answer": "Transaction txn_LONG0002 was approved for 97.30 USD. Expected settlement date: 2026-11-26. Refund amount: 17.30. An actual settlement date is not recorded.",
+        "blocked_by": null,
+        "reasons": [],
+        "tools_called": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_LONG0002"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_LONG0002",
+                "status": "approved",
+                "amount": "97.30",
+                "currency": "USD",
+                "refund": {
+                  "status": "succeeded",
+                  "amount": "17.30"
+                },
+                "settlement": {
+                  "status": "pending",
+                  "expected_date": "2026-11-26"
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_LONG0002",
+              "limit": 10
+            },
+            "result": {
+              "status": "not_found",
+              "source": "log_search",
+              "data": null,
+              "note": "No log events found for this transaction."
+            }
+          }
+        ],
+        "focus": "txn_LONG0002",
+        "latency_ms": 1,
+        "repaired": false,
+        "escalated": false,
+        "tier": null,
+        "models_used": [
+          "Recorder",
+          "Recorder"
+        ],
+        "question": "Please check txn_LONG0002 as well.",
+        "policy_version": 1
+      },
+      "calls": [
+        {
+          "request_sha256": "8a671357d41715c5c1c9dc96927b25de0a48177b135d0a8bdeb794e89d30b383",
+          "estimated_input_tokens": 8509,
+          "evidence": [],
+          "response": {
+            "stop_reason": "tool_use",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "t3a",
+                "name": "get_transaction",
+                "input": {
+                  "txn_id": "txn_LONG0002"
+                }
+              },
+              {
+                "type": "tool_use",
+                "id": "t3b",
+                "name": "search_transaction_logs",
+                "input": {
+                  "txn_id": "txn_LONG0002",
+                  "limit": 10
+                }
+              }
+            ]
+          }
+        },
+        {
+          "request_sha256": "eda72a99a088fd9b63ab5a424740607ab2fdecda427f0a8b0a42c09a3d13d9f8",
+          "estimated_input_tokens": 9620,
+          "evidence": [
+            {
+              "name": "get_transaction",
+              "input": {
+                "txn_id": "txn_LONG0002"
+              },
+              "result": {
+                "status": "found",
+                "source": "txn_db",
+                "data": {
+                  "txn_id": "txn_LONG0002",
+                  "status": "approved",
+                  "amount": "97.30",
+                  "currency": "USD",
+                  "refund": {
+                    "status": "succeeded",
+                    "amount": "17.30"
+                  },
+                  "settlement": {
+                    "status": "pending",
+                    "expected_date": "2026-11-26"
+                  }
+                }
+              }
+            },
+            {
+              "name": "search_transaction_logs",
+              "input": {
+                "txn_id": "txn_LONG0002",
+                "limit": 10
+              },
+              "result": {
+                "status": "not_found",
+                "source": "log_search",
+                "data": null,
+                "note": "No log events found for this transaction."
+              }
+            }
+          ],
+          "response": {
+            "stop_reason": "end_turn",
+            "content": [
+              {
+                "type": "text",
+                "text": "Transaction txn_LONG0002 was approved for 97.30 USD. Expected settlement date: 2026-11-26. Refund amount: 17.30. An actual settlement date is not recorded."
+              }
+            ]
+          }
+        }
+      ],
+      "thread_turns_before": 1,
+      "thread_turns_after": 2,
+      "rolled_over": false,
+      "focus": "txn_LONG0002",
+      "recap": []
+    },
+    {
+      "index": 2,
+      "probe": false,
+      "question": "Correction: this conversation is about txn_LONG0001. Please check that payment.",
+      "turn": {
+        "answer": "Transaction txn_LONG0001 was approved for 184.60 USD. Expected settlement date: 2026-11-26. Refund amount: 24.60. An actual settlement date is not recorded.",
+        "blocked_by": null,
+        "reasons": [],
+        "tools_called": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_LONG0001"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_LONG0001",
+                "status": "approved",
+                "amount": "184.60",
+                "currency": "USD",
+                "refund": {
+                  "status": "succeeded",
+                  "amount": "24.60"
+                },
+                "settlement": {
+                  "status": "pending",
+                  "expected_date": "2026-11-26"
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_LONG0001",
+              "limit": 10
+            },
+            "result": {
+              "status": "not_found",
+              "source": "log_search",
+              "data": null,
+              "note": "No log events found for this transaction."
+            }
+          }
+        ],
+        "focus": "txn_LONG0001",
+        "latency_ms": 1,
+        "repaired": false,
+        "escalated": false,
+        "tier": null,
+        "models_used": [
+          "Recorder",
+          "Recorder"
+        ],
+        "question": "Correction: this conversation is about txn_LONG0001. Please check that payment.",
+        "policy_version": 1
+      },
+      "calls": [
+        {
+          "request_sha256": "c72f5bc1b6523f917bb0417c6b13f30157506e18ac47b3e75429f49aab859274",
+          "estimated_input_tokens": 11065,
+          "evidence": [],
+          "response": {
+            "stop_reason": "tool_use",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "t5a",
+                "name": "get_transaction",
+                "input": {
+                  "txn_id": "txn_LONG0001"
+                }
+              },
+              {
+                "type": "tool_use",
+                "id": "t5b",
+                "name": "search_transaction_logs",
+                "input": {
+                  "txn_id": "txn_LONG0001",
+                  "limit": 10
+                }
+              }
+            ]
+          }
+        },
+        {
+          "request_sha256": "15690f93457de4c28d01beefb4242d133cf78636c7c90c35e1d232d26ac85855",
+          "estimated_input_tokens": 12177,
+          "evidence": [
+            {
+              "name": "get_transaction",
+              "input": {
+                "txn_id": "txn_LONG0001"
+              },
+              "result": {
+                "status": "found",
+                "source": "txn_db",
+                "data": {
+                  "txn_id": "txn_LONG0001",
+                  "status": "approved",
+                  "amount": "184.60",
+                  "currency": "USD",
+                  "refund": {
+                    "status": "succeeded",
+                    "amount": "24.60"
+                  },
+                  "settlement": {
+                    "status": "pending",
+                    "expected_date": "2026-11-26"
+                  }
+                }
+              }
+            },
+            {
+              "name": "search_transaction_logs",
+              "input": {
+                "txn_id": "txn_LONG0001",
+                "limit": 10
+              },
+              "result": {
+                "status": "not_found",
+                "source": "log_search",
+                "data": null,
+                "note": "No log events found for this transaction."
+              }
+            }
+          ],
+          "response": {
+            "stop_reason": "end_turn",
+            "content": [
+              {
+                "type": "text",
+                "text": "Transaction txn_LONG0001 was approved for 184.60 USD. Expected settlement date: 2026-11-26. Refund amount: 24.60. An actual settlement date is not recorded."
+              }
+            ]
+          }
+        }
+      ],
+      "thread_turns_before": 2,
+      "thread_turns_after": 3,
+      "rolled_over": false,
+      "focus": "txn_LONG0001",
+      "recap": []
+    },
+    {
+      "index": 3,
+      "probe": true,
+      "question": "How much was refunded on that payment now?",
+      "turn": {
+        "answer": "Transaction txn_LONG0001 was approved for 184.60 USD. Expected settlement date: 2026-11-26. Refund amount: 39.20. An actual settlement date is not recorded.",
+        "blocked_by": null,
+        "reasons": [],
+        "tools_called": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_LONG0001"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_LONG0001",
+                "status": "approved",
+                "amount": "184.60",
+                "currency": "USD",
+                "refund": {
+                  "status": "succeeded",
+                  "amount": "39.20"
+                },
+                "settlement": {
+                  "status": "pending",
+                  "expected_date": "2026-11-26"
+                }
+              }
+            }
+          },
+          {
+            "name": "search_transaction_logs",
+            "input": {
+              "txn_id": "txn_LONG0001",
+              "limit": 10
+            },
+            "result": {
+              "status": "not_found",
+              "source": "log_search",
+              "data": null,
+              "note": "No log events found for this transaction."
+            }
+          }
+        ],
+        "focus": "txn_LONG0001",
+        "latency_ms": 1,
+        "repaired": false,
+        "escalated": false,
+        "tier": null,
+        "models_used": [
+          "Recorder",
+          "Recorder"
+        ],
+        "question": "How much was refunded on that payment now?",
+        "policy_version": 1
+      },
+      "calls": [
+        {
+          "request_sha256": "81d8d38c655c40c3ab5822586c12d7002cd4d22697cd0fbf5b1575492419e7cc",
+          "estimated_input_tokens": 13518,
+          "evidence": [],
+          "response": {
+            "stop_reason": "tool_use",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "t7a",
+                "name": "get_transaction",
+                "input": {
+                  "txn_id": "txn_LONG0001"
+                }
+              },
+              {
+                "type": "tool_use",
+                "id": "t7b",
+                "name": "search_transaction_logs",
+                "input": {
+                  "txn_id": "txn_LONG0001",
+                  "limit": 10
+                }
+              }
+            ]
+          }
+        },
+        {
+          "request_sha256": "332252ca2e937b26cfc9c686907787f54a8dac6808c1933fe9be526a57fe06ca",
+          "estimated_input_tokens": 14630,
+          "evidence": [
+            {
+              "name": "get_transaction",
+              "input": {
+                "txn_id": "txn_LONG0001"
+              },
+              "result": {
+                "status": "found",
+                "source": "txn_db",
+                "data": {
+                  "txn_id": "txn_LONG0001",
+                  "status": "approved",
+                  "amount": "184.60",
+                  "currency": "USD",
+                  "refund": {
+                    "status": "succeeded",
+                    "amount": "39.20"
+                  },
+                  "settlement": {
+                    "status": "pending",
+                    "expected_date": "2026-11-26"
+                  }
+                }
+              }
+            },
+            {
+              "name": "search_transaction_logs",
+              "input": {
+                "txn_id": "txn_LONG0001",
+                "limit": 10
+              },
+              "result": {
+                "status": "not_found",
+                "source": "log_search",
+                "data": null,
+                "note": "No log events found for this transaction."
+              }
+            }
+          ],
+          "response": {
+            "stop_reason": "end_turn",
+            "content": [
+              {
+                "type": "text",
+                "text": "Transaction txn_LONG0001 was approved for 184.60 USD. Expected settlement date: 2026-11-26. Refund amount: 39.20. An actual settlement date is not recorded."
+              }
+            ]
+          }
+        }
+      ],
+      "thread_turns_before": 3,
+      "thread_turns_after": 4,
+      "rolled_over": false,
+      "focus": "txn_LONG0001",
+      "recap": []
+    }
+  ],
+  "rollovers": 0,
+  "probe_rubric": "State the latest refund, USD 39.20, for txn_LONG0001; do not reuse USD 24.60 or the other record's refund.",
+  "final_backend": {
+    "txn_LONG0001": {
+      "txn_id": "txn_LONG0001",
+      "tenant_id": "m_100",
+      "status": "approved",
+      "amount": "184.60",
+      "currency": "USD",
+      "refund": {
+        "status": "succeeded",
+        "amount": "39.20"
+      },
+      "settlement": {
+        "status": "pending",
+        "expected_date": "2026-11-26"
+      }
+    },
+    "txn_LONG0002": {
+      "txn_id": "txn_LONG0002",
+      "tenant_id": "m_100",
+      "status": "approved",
+      "amount": "97.30",
+      "currency": "USD",
+      "refund": {
+        "status": "succeeded",
+        "amount": "17.30"
+      },
+      "settlement": {
+        "status": "pending",
+        "expected_date": "2026-11-26"
+      }
+    }
+  },
+  "diagnostics": {
+    "focused_record_matches": true,
+    "refetched_current_records": true,
+    "literal_required_strings": true,
+    "literal_forbidden_strings_absent": true,
+    "released": true
+  }
+}

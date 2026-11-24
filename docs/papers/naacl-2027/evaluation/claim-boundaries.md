@@ -3,14 +3,21 @@
 ## What the present evidence supports
 
 The [matched error challenge](verification-challenge.md) adds 48 pairs with authored label
-expectations: 44 corrupted drafts blocked, five correct controls blocked, and 39/43 new
-rejections conditional on accepted controls. Four authentic but off-topic policy quotes pass.
-These are diagnostic examples, not independent live-writer accuracy. A blank blind form is
-provided; its human labels are pending. The separate live v2 study already has two labellers.
+expectations: originally 44 corrupted drafts blocked, five correct controls blocked, and
+39/43 new rejections conditional on accepted controls. Requested-code coverage now blocks
+the four authentic off-topic quotations in a development replay of the same examples:
+48/48 corruptions and 43/43 new rejections, with unchanged false rejections. This is not
+unseen accuracy or general semantic relevance. Original artifacts remain intact. A blank
+blind form is provided; human labels are pending. The live v2 study already has two labellers.
 
 Context admission and rollover have nine offline software tests. The byte-based prompt
 estimate is conservative rather than a provider-exact token count. Neither those contracts
 nor the inspector establish long-conversation reasoning quality; see [agent design](../../../agent-design.md).
+The [paired conversation harness](conversation-study.md) now records actual multi-turn sessions,
+backend updates, draft/repair evidence and rollover. Its eight committed runs are scripted
+rehearsals (160 turns), with zero provider calls. Independent wording, live-model runs and
+semantic labels remain pending. A frozen harness and lexical overlap screening improve
+evaluation design but do not themselves supply generalisation evidence.
 
 The contribution is inspectable payment support linking message interpretation, ambiguous-record
 clarification, customer confirmation, scoped retrieval, evidence-consistency checks and recovery.

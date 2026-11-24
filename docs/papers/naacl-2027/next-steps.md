@@ -24,15 +24,22 @@ validation or human review. Earlier frozen studies retain their original results
 - **Second labels complete:** the live v2 study now has AI and blind co-author labels for
   43 distinct answers, agreeing on 41; both give 26 correct releases and four refusals.
 - **Error diversity:** 48 matched pairs across 12 families, frozen before evaluation;
-  44 corruptions and five correct controls blocked, 39/43 new rejections. Four authentic
-  wrong-policy quotations pass. [Scope and review form](evaluation/verification-challenge.md).
+  originally 44 corruptions and five correct controls blocked, 39/43 new rejections.
+  Requested-code coverage now blocks all four wrong-policy quotations in development
+  replay: 48 corruptions, unchanged five false rejections, 43/43 new rejections.
+  [Historical results, fix and review form](evaluation/verification-challenge.md).
 - **Context and memory:** full-prompt admission, output reserve, rollover, bounded state,
   rollback and fresh-snapshot replacement; nine offline contracts pass. [Design](../../agent-design.md).
+- **Conversation evaluation prepared:** four paired short/long scenarios complete 160 actual
+  chatbot turns using the scripted writer. Frozen runtime, raw traces, independent-case
+  import and blind review forms are available. No paid calls or live reasoning results.
+  [Protocol and pending evaluation](evaluation/conversation-study.md).
 - **Hosted smoke:** scripted policy quotation and missing-document refusal checked on
   November 24 (`results/naacl2027/hosted-smoke-2026-11-24.json`). This does not attest the
   deployed Git revision; the new context branch has not been deployed. Video is unchanged.
-- **Still open:** live long-conversation/full-controller assessment, human review of the
-  new authored challenge, and release/deployment identity. External participants remain optional.
+- **Still open:** independently authored wording and live long-conversation/full-controller
+  assessment, human review of the new challenge, broader semantic applicability, and
+  release/deployment identity. External participants remain optional.
 
 ## 1. Preserve the actual support question (highest priority)
 

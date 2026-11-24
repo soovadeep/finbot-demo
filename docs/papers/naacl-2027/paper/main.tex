@@ -154,7 +154,8 @@ other lookups return ``not found''. Mismatched returned IDs are rejected.
 
 Regular expressions and phrase tables recognize supported claim formats, with limited negation
 and hedge handling. Recognized values must occur in eligible evidence; recognized causes must
-map to recorded reason codes. Policy statements must retain complete cited passages. Explicit
+map to recorded reason codes. Policy statements retain complete cited passages; code questions
+also require coverage of every requested code by passage text or section headings. Explicit
 comparisons require each requested record and recognized requested fields, including in fallback.
 Single-record answers must state each requested field or its absence, so ``Your payment was \$200'' fails ``How much was refunded?''.
 Coverage is finite: unrecognized wording, date formats and bare web addresses can evade extraction
@@ -169,8 +170,8 @@ and verdict. Fallback states when actual dates are unavailable. Finite English p
 An optional LLM evidence review (\S\ref{sec:inject}) can join the gate; it is off by default, and provider failures withhold answers without counting as detections.
 
 \paragraph{Agent context.} Full-prompt admission reserves output capacity; old turns roll into
-bounded state, while oversized current evidence stops the call. Nine offline contracts cover
-rollover and memory replacement (Appendix~\ref{app:context}); live long-chat accuracy is unmeasured.
+bounded state, while oversized current evidence stops the call. Offline contracts and paired
+4-/36-turn rehearsals exercise rollover (Appendix~\ref{app:context}); live accuracy is unmeasured.
 
 \subsection{What the inspector shows}
 
@@ -256,7 +257,7 @@ Explanations, recovery / both views & Paired mutations and live-writer audit (\S
 Financial roles / inspector & 60 corruption pairs, 12 equal-value controls, replayed cached drafts; finite claim formats. \\
 Requested fields, live answers / both & 30 fresh Llama answers, two labellers; only 2--4 wrong drafts. \\
 Record comparison / inspector & 28 workflow runs; 38 mutation pairs reused to verify fixes. \\
-Policy, recovery / inspector & Paired 30-case live follow-up; two labellers. Authored stress tests expose off-topic quotes. \\
+Policy, recovery / inspector & Paired 30-case live follow-up; two labellers. Known off-topic quotes blocked in development replay. \\
 Trace inspection / both views & Browser and accessibility checks (Appendix~\ref{app:ui}); no comprehension study. \\
 \bottomrule
 \end{tabularx}
@@ -371,9 +372,10 @@ all configurations judged the same Llama draft, refusals fell from 13 to 4 (two 
 released answers rose from 17 to 26, none wrong for either labeller (41/43 agree);
 checks still block 16/29 correct drafts.
 
-\paragraph{Matched error challenge.} Across 48 authored pairs, 44 corruptions and five clean
-controls are blocked (39/43 new rejections). Four off-topic quotations pass. Construction-based
-labels await human review; these are diagnostics (Appendix~\ref{app:challenge}).
+\paragraph{Matched error challenge.} Originally, 44/48 corruptions and five clean controls fail.
+Requested-code coverage now blocks all four off-topic quotes: 48/48 corruptions and 43/43 new
+rejections, with unchanged false rejections. This is development replay; construction labels
+await human review (Appendix~\ref{app:challenge}).
 
 \paragraph{Template tests and matched controls.} On held-out template wordings, 82.3\%
 (2,668/3,240) of mutations are rejected, but 570 clean controls already fail; among the 2,670
@@ -596,41 +598,45 @@ rejections, all from ``has not settled yet'' about pending transfers.}
 \label{tab:inject}
 \end{table}
 
-The released paired report retains both texts, verdicts, reasons and transitions. No bare-link
-mutation changes an accepted control's verdict; the 38 raw link rejections come entirely from
-the pre-existing settlement-phrase failure. Report conditional mutation sensitivity together
-with control rejection: filtering to accepted controls alone would hide false positives.
-Neither value matching nor these template tests establish semantic completeness.
+The paired report retains texts, verdicts and reasons. All 38 bare-link rejections predate
+the mutation; no added link changes an accepted control's verdict. Reporting control rejection
+alongside conditional sensitivity exposes false positives. These tests do not establish semantic completeness.
 
-\paragraph{New challenge.}\label{app:challenge} The 48-pair suite covers financial roles, record binding, missing/stale
-facts, omissions and policy meaning. Five correct paraphrases fail. Four off-topic quotations pass.
-Instances share templates, not independent samples. Frozen cases, source hashes, traces and a
-blank blind form for 91 distinct answers are released; human review is pending.
+\paragraph{New challenge.}\label{app:challenge} The 48 pairs cover roles, record binding, missing/stale facts and
+policy errors. Requested-code coverage fixes four off-topic quotes; five correct paraphrases
+still fail. These inspected-case replays share templates and are not independent generalisation.
+Original results, revised traces and a blind form for 91 distinct answers are available;
+human review is pending. Code coverage does not establish general semantic applicability.
 
 \section{Context and execution contracts}
 \label{app:context}
 
-The configured window defaults to 131,072 tokens, reserving 16,000 for output and 1,024
-for framing. UTF-8 bytes plus overhead give a conservative estimate, not exact tokenization;
-deployments must configure their smallest model window. History rolls at 30 turns, 120,000
-characters, or insufficient space. Focus and tool-derived state survive; snapshots over 4,000
-characters are omitted whole and refetched. Current tool exchanges are never truncated.
-Nine offline tests cover admission, rollover, rollback, refetch and snapshot replacement.
-Separate semantic checkers have their own limits. Details are in \texttt{docs/agent-design.md}.
+The default 131,072-token window reserves 16,000 for output and 1,024 for framing. UTF-8
+bytes plus overhead conservatively estimate input; deployments must configure their smallest
+model window. History rolls at 30 turns, 120,000 characters, or insufficient space. Focus and
+tool-derived state survive; snapshots over 4,000 characters are omitted whole and refetched.
+Current exchanges are never truncated. Nine tests cover admission, rollover, rollback and
+snapshot replacement; see \texttt{docs/agent-design.md}. Separate reviewers have their own limits.
+
+A frozen harness pairs 4-/36-turn chatbot sessions with identical final questions and records.
+Four probes cover changed refunds, missing fields, settlement and corrected focus. All eight
+scripted runs complete (160 turns); long runs roll over and final probes refetch evidence.
+No provider calls occur; output reserve is 600 tokens. Traces and blind forms are released.
+These are developer-authored rehearsals; independent wording, live reasoning and semantic
+labels remain unmeasured.
 
 \section{Interface checks}
 \label{app:ui}
 
-Historical Chromium checks pass 18 inspector acceptance checks (presets, export, keyboard,
-stale inputs, 320--1440-pixel layouts). Conversation checks cover parsing, questions, corrections,
-unknown replies and unmatched payments. axe-core 4.10.3 detects no WCAG 2.1 A/AA violations in
-14 states. Eight later conflict-resolution states at 390 and 1280 pixels likewise show no
-detected violations or browser errors. These are not comprehensive accessibility or comprehension studies.
+Chromium passes 18 inspector checks across 320--1440-pixel layouts. axe-core 4.10.3 detects
+no WCAG 2.1 A/AA violations in 14 states; eight later conflict-resolution states at 390 and
+1280 pixels likewise show no violations or browser errors. These are not comprehensive
+accessibility or comprehension studies.
 
-Fifteen controller scripts under four fault settings give 60 expected runs: 32 correct, four
-wrong, 16 unresolved (eight appropriately for absent targets), eight awaiting clarification.
-Twenty produce no draft, so their fault setting is unused; four paused runs supersede an earlier
-answer. Tests include correction, repeated conflicts, tentative details and stale acknowledgements.
-Selection and expected fields are scored separately from the verifier; no semantic accuracy is inferred.
+Fifteen scripts under four fault settings give 60 expected runs: 32 correct, four wrong,
+16 unresolved (eight with absent targets), eight awaiting clarification. Twenty have no draft
+to corrupt; four paused runs supersede an earlier answer. Checks include corrections,
+conflicts, tentative details and stale acknowledgements. Selection and field checks are
+separate from the verifier and do not establish semantic accuracy.
 
 \end{document}
