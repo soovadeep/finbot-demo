@@ -6,6 +6,11 @@ contracts, not live LLM reasoning quality or independent generalisation. The sup
 four scenarios are AI-assisted developer-authored fixtures. They must not be relabelled
 as unseen customer conversations.
 
+The subsequently authorised US$1 live follow-up has a separate frozen protocol and
+[agent handoff](live-agent-handoff.md). Use its budgeted runner for that authorisation;
+the generic `live` command below has only a call-count ceiling. No live results have
+yet been collected by the preparing agent.
+
 ## What is paired
 
 Each case has a four-turn short conversation and a 36-turn long conversation, starting
