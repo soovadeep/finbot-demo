@@ -46,8 +46,12 @@ Total charged across both: about US$0.214.
 `labels-ai.json` (scored in `score-ai.json`) was written by Claude, the AI assistant working for
 the authors. It is **not an independent human review**: the labeller saw the run's progress
 lines (completion and mechanical diagnostics) before labelling. All 8 released answers are
-labelled correct-record, supported and complete; one draft is labelled unsupported. The blank
-`review-form.json` is preserved for a separate reviewer.
+labelled correct-record, supported and complete; one draft is labelled unsupported.
+
+Apurba Bose, a co-author, then labelled all 13 answers on a blind form that hid expected
+answers, gate verdicts and the AI labels (`labels-second.json`, scored in
+`score-second.json`). She agrees with the AI labels on every field of all 13, including the
+unsupported draft. The blank `review-form.json` is preserved.
 
 ## What this does and does not show
 

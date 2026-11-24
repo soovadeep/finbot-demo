@@ -19,8 +19,12 @@ questions. Some policy instances share wording with different source IDs; instan
 are not independent observations. Expected labels follow explicit fields and mutations,
 not gate verdicts. `results/naacl2027/verification-challenge-v1/review-form.json` provides
 91 distinct question/evidence/answer items, deduplicated and ordered by content hash, with
-blank judgments and no mutation names, side labels or verifier decisions. Human review
-has **not** been completed. Do not substitute these expectations for the two labellers'
+blank judgments and no mutation names, side labels or verifier decisions. A blind co-author
+(Apurba Bose) labelled all 91 on 2026-11-24 (`labels-second.json`). She agrees with the
+construction labels on 79/91 (support 84/91, completeness 84/91). All 12 differences are
+corrupted answers she accepted: reversed policy rules, dropped exceptions, off-code quotes,
+swapped payment/refund roles and a superseded refund (`label-agreement.json`). She rejected
+no clean answer. Do not substitute these expectations for the two labellers'
 judgments on the separate live v2 study.
 
 ## Results on the frozen implementation

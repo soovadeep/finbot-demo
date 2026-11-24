@@ -7,16 +7,18 @@ expectations: originally 44 corrupted drafts blocked, five correct controls bloc
 39/43 new rejections conditional on accepted controls. Requested-code coverage now blocks
 the four authentic off-topic quotations in a development replay of the same examples:
 48/48 corruptions and 43/43 new rejections, with unchanged false rejections. This is not
-unseen accuracy or general semantic relevance. Original artifacts remain intact. A blank
-blind form is provided; human labels are pending. The live v2 study already has two labellers.
+unseen accuracy or general semantic relevance. Original artifacts remain intact. A blind
+co-author agrees with the construction labels on 79/91 answers; all 12 differences are
+corrupted answers she accepted. The live v2 study already has two labellers.
 
 Context admission and rollover have nine offline software tests. The byte-based prompt
 estimate is conservative rather than a provider-exact token count. Neither those contracts
 nor the inspector establish long-conversation reasoning quality; see [agent design](../../../agent-design.md).
 The [paired conversation harness](conversation-study.md) now records actual multi-turn sessions,
 backend updates, draft/repair evidence and rollover. Its eight committed runs are scripted
-rehearsals (160 turns), with zero provider calls. Independent wording, live-model runs and
-semantic labels remain pending. A frozen harness and lexical overlap screening improve
+rehearsals (160 turns), with zero provider calls. A live Llama 3.3 70B run completed all
+eight arms ([conversation-live.md](conversation-live.md)); two labellers agree on all 13
+answers. Independent wording remains untested. A frozen harness and lexical overlap screening improve
 evaluation design but do not themselves supply generalisation evidence.
 
 The contribution is inspectable payment support linking message interpretation, ambiguous-record
