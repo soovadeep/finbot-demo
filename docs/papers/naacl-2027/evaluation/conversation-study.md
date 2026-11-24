@@ -8,8 +8,8 @@ as unseen customer conversations.
 
 The subsequently authorised US$1 live follow-up has a separate frozen protocol and
 [agent handoff](live-agent-handoff.md). Use its budgeted runner for that authorisation;
-the generic `live` command below has only a call-count ceiling. No live results have
-yet been collected by the preparing agent.
+the generic `live` command below has only a call-count ceiling. Live results are in
+[conversation-live.md](conversation-live.md).
 
 ## What is paired
 

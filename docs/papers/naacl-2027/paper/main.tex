@@ -171,7 +171,8 @@ An optional LLM evidence review (\S\ref{sec:inject}) can join the gate; it is of
 
 \paragraph{Agent context.} Full-prompt admission reserves output capacity; old turns roll into
 bounded state, while oversized current evidence stops the call. Offline contracts and paired
-4-/36-turn rehearsals exercise rollover (Appendix~\ref{app:context}); live accuracy is unmeasured.
+4-/36-turn rehearsals exercise rollover (Appendix~\ref{app:context}); live, all 8 runs answer from
+the current record (provisional AI labels).
 
 \subsection{What the inspector shows}
 
@@ -618,12 +619,11 @@ tool-derived state survive; snapshots over 4,000 characters are omitted whole an
 Current exchanges are never truncated. Nine tests cover admission, rollover, rollback and
 snapshot replacement; see \texttt{docs/agent-design.md}. Separate reviewers have their own limits.
 
-A frozen harness pairs 4-/36-turn chatbot sessions with identical final questions and records.
-Four probes cover changed refunds, missing fields, settlement and corrected focus. All eight
-scripted runs complete (160 turns); long runs roll over and final probes refetch evidence.
-No provider calls occur; output reserve is 600 tokens. Traces and blind forms are released.
-These are developer-authored rehearsals; independent wording, live reasoning and semantic
-labels remain unmeasured.
+A frozen harness pairs 4-/36-turn sessions with identical final questions and records:
+changed refunds, missing fields, settlement and corrected focus. A live Llama 3.3 70B run
+(US\$0.20) completes all eight arms (160 turns); each long arm rolls over once, and all
+released answers use the current record (AI labels, not independent). Both removed-refund
+arms fall back to the record-built answer. These are developer-authored rehearsals.
 
 \section{Interface checks}
 \label{app:ui}
