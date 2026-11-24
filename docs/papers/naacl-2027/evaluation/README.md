@@ -15,6 +15,11 @@ The current submission uses the following completed evaluations:
   rejections, alongside the historical live-writer audit and its known semantic errors.
 - Varied inspector workflow replays and policy/comparison component probes, including equal-value,
   paraphrase and omission controls. See [results and concrete examples](varied-support.md).
+- [48 matched error pairs](verification-challenge.md) across 12 families, with frozen inputs,
+  construction-based labels, and conditional new-rejection counts. These authored diagnostics
+  complement the live v2 study's rare initial errors; they are not independent accuracy evidence.
+- Nine offline [context and memory contracts](../../../agent-design.md), including full-request
+  admission, thread rollover, tool-result growth, and stale snapshot replacement.
 
 These results can be reproduced without recruiting participants or making new model calls.
 They do not establish that clarification is faster, easier, or preferred by real users.

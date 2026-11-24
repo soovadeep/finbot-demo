@@ -6,6 +6,7 @@ Soovadeep Bakshi.
 
 - **Hosted demo:** <https://finbot-demo-20852907589.us-central1.run.app/> (nothing to install)
 - **Walkthrough:** [reviewer guide](docs/papers/naacl-2027/reviewer-guide.md), with every scenario and what to look for
+- **Agent design:** [context windows, session memory and execution limits](docs/agent-design.md)
 - **Paper:** [finbot-naacl2027.pdf](docs/papers/naacl-2027/finbot-naacl2027.pdf)
 - **Video (2.5 min):** [finbot-naacl2027-demo.mp4](docs/papers/naacl-2027/video/finbot-naacl2027-demo.mp4)
 
@@ -53,6 +54,8 @@ for the evidence inspector. The demo uses a scripted writer, and labels it as sc
 | Fresh wording, frozen runtime (revision `af5cb8a`) | `PYTHONHASHSEED=0 python scripts/naacl2027/evaluate_fresh_wording.py` | `results/naacl2027/fresh-wording-v1.json` |
 | Fresh Llama answers, two labellers | `python scripts/naacl2027/fresh_llm_agreement.py` | `results/naacl2027/fresh-llm-v1/` |
 | Paired policy-quote study, two labellers | `python scripts/naacl2027/paired_gate_study.py score` | `results/naacl2027/fresh-llm-v2/` |
+| Matched error challenge, 48 pairs / 12 families | `python scripts/naacl2027/verification_challenge.py run --output /tmp/finbot-challenge-replay.json` | [Scope and results](docs/papers/naacl-2027/evaluation/verification-challenge.md) |
+| Context and memory contracts | `python -m unittest discover -s tests -p test_context_budget.py -v` | Nine offline runtime checks |
 | Interface and accessibility checks | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |
 
 The [evaluation guide](docs/papers/naacl-2027/evaluation/README.md) explains what each result

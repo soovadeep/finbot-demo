@@ -2,6 +2,16 @@
 
 ## What the present evidence supports
 
+The [matched error challenge](verification-challenge.md) adds 48 pairs with authored label
+expectations: 44 corrupted drafts blocked, five correct controls blocked, and 39/43 new
+rejections conditional on accepted controls. Four authentic but off-topic policy quotes pass.
+These are diagnostic examples, not independent live-writer accuracy. A blank blind form is
+provided; its human labels are pending. The separate live v2 study already has two labellers.
+
+Context admission and rollover have nine offline software tests. The byte-based prompt
+estimate is conservative rather than a provider-exact token count. Neither those contracts
+nor the inspector establish long-conversation reasoning quality; see [agent design](../../../agent-design.md).
+
 The contribution is inspectable payment support linking message interpretation, ambiguous-record
 clarification, customer confirmation, scoped retrieval, evidence-consistency checks and recovery.
 The separate inspector also demonstrates record comparisons and cited policy answers; those

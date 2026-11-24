@@ -1,0 +1,2352 @@
+{
+  "version": "verification-challenge-v1",
+  "kind": "authored matched stress test",
+  "provenance": "Developer-authored with AI assistance, before running the checks. No customer data. Expected labels follow explicit field values or documented mutations; no independent labels yet.",
+  "scope": "Supplied drafts against the production deterministic chain, not generated error prevalence, full conversations, or independent held-out accuracy. No LLM calls.",
+  "pairs": [
+    {
+      "id": "refund_role-0",
+      "family": "refund_role",
+      "question": "How much was refunded on txn_CHAL0000A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0000A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0000A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "137.25",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "27.25"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-10",
+                "actual_date": "2026-11-14"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "refund.amount is the refund; the larger amount is the payment",
+      "clean": {
+        "answer": "Your refund amount was $27.25.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your refund amount was $137.25.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "payment_role-0",
+      "family": "payment_role",
+      "question": "What was the payment amount for txn_CHAL0000A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0000A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0000A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "137.25",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "27.25"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-10",
+                "actual_date": "2026-11-14"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "amount is the original payment",
+      "clean": {
+        "answer": "Your payment amount was $137.25.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your payment amount was $27.25.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "settlement_role-0",
+      "family": "settlement_role",
+      "question": "When did txn_CHAL0000A actually settle?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0000A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0000A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "137.25",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "27.25"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-10",
+                "actual_date": "2026-11-14"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "settlement.actual_date differs from settlement.expected_date",
+      "clean": {
+        "answer": "Transaction txn_CHAL0000A settled on 2026-11-14.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Transaction txn_CHAL0000A settled on 2026-11-10.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "requested_omission-0",
+      "family": "requested_omission",
+      "question": "How much was refunded on txn_CHAL0000A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0000A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0000A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "137.25",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "27.25"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-10",
+                "actual_date": "2026-11-14"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "The payment amount is true but does not answer the refund question",
+      "clean": {
+        "answer": "Your refund amount was $27.25.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your payment amount was $137.25.",
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "id": "cross_record_amount-0",
+      "family": "cross_record_amount",
+      "question": "Compare txn_CHAL0000A and txn_CHAL0000B: what are their amounts and currencies?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0000A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0000A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "137.25",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "27.25"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-10",
+                "actual_date": "2026-11-14"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0000B"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0000B",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "178.25",
+              "currency": "GBP",
+              "refund": {
+                "status": "succeeded",
+                "amount": "27.25"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-10",
+                "actual_date": "2026-11-14"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "Amounts are swapped between the two records",
+      "clean": {
+        "answer": "txn_CHAL0000A: 137.25 USD. txn_CHAL0000B: 178.25 GBP.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "txn_CHAL0000A: 178.25 USD. txn_CHAL0000B: 137.25 GBP.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "currency_binding-0",
+      "family": "currency_binding",
+      "question": "Compare txn_CHAL0000A and txn_CHAL0000B: what are their amounts and currencies?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0000A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0000A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "137.25",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "27.25"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-10",
+                "actual_date": "2026-11-14"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0000B"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0000B",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "178.25",
+              "currency": "GBP",
+              "refund": {
+                "status": "succeeded",
+                "amount": "27.25"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-10",
+                "actual_date": "2026-11-14"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "Currencies are swapped between the two records",
+      "clean": {
+        "answer": "txn_CHAL0000A: 137.25 USD. txn_CHAL0000B: 178.25 GBP.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "txn_CHAL0000A: 137.25 GBP. txn_CHAL0000B: 178.25 USD.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "missing_fact-0",
+      "family": "missing_fact",
+      "question": "How much was refunded on txn_CHAL0000A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0000A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0000A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "137.25",
+              "currency": "USD",
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-10",
+                "actual_date": "2026-11-14"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "The record contains no refund field; the payment amount cannot establish a refund",
+      "clean": {
+        "answer": "The record does not show a refund amount.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your refund amount was $137.25.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "stale_snapshot-0",
+      "family": "stale_snapshot",
+      "question": "How much was refunded on txn_CHAL0000A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0000A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0000A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "137.25",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "27.25"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-10",
+                "actual_date": "2026-11-14"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0000A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0000A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "137.25",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "30.25"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-10",
+                "actual_date": "2026-11-14"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "The later lookup supersedes the old refund amount",
+      "clean": {
+        "answer": "Your refund amount was $30.25.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your refund amount was $27.25.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "policy_negation-0",
+      "family": "policy_negation",
+      "question": "Can debit and prepaid cards be surcharged?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Surcharges apply to credit cards only. Debit and prepaid cards cannot be surcharged.",
+                "source_url": "https://kb.example.test/cards-0",
+                "chunk_id": "cards-0:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The draft reverses the prohibition",
+      "clean": {
+        "answer": "Surcharges apply to credit cards only. Debit and prepaid cards cannot be surcharged. (source: https://kb.example.test/cards-0)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Surcharges apply to credit cards only. Debit and prepaid cards can be surcharged. (source: https://kb.example.test/cards-0)",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "policy_exception-0",
+      "family": "policy_exception",
+      "question": "What are the refund rules, including exceptions?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Refunds may be requested within 20 days of settlement. This excludes final-sale purchases.",
+                "source_url": "https://kb.example.test/refunds-0",
+                "chunk_id": "refunds-0:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The final-sale exception was removed",
+      "clean": {
+        "answer": "Refunds may be requested within 20 days of settlement. This excludes final-sale purchases. (source: https://kb.example.test/refunds-0)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Refunds may be requested within 20 days of settlement. (source: https://kb.example.test/refunds-0)",
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "id": "wrong_policy_quote-0",
+      "family": "wrong_policy_quote",
+      "question": "What does decline code 51 mean?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Code 51 means the card has insufficient available balance.",
+                "source_url": "https://kb.example.test/code-51-0",
+                "chunk_id": "code-51-0:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              },
+              {
+                "text": "Code 54 means the card has expired.",
+                "source_url": "https://kb.example.test/code-54-0",
+                "chunk_id": "code-54-0:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 1.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The quoted source is authentic but answers a different code question",
+      "clean": {
+        "answer": "Code 51 means the card has insufficient available balance. (source: https://kb.example.test/code-51-0)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Code 54 means the card has expired. (source: https://kb.example.test/code-54-0)",
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "id": "policy_paraphrase-0",
+      "family": "policy_paraphrase",
+      "question": "Can a prepaid card be surcharged?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Surcharges apply to credit cards only. Debit and prepaid cards cannot be surcharged.",
+                "source_url": "https://kb.example.test/cards-0",
+                "chunk_id": "cards-0:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The clean paraphrase preserves the prohibition; removing 'not' reverses it",
+      "clean": {
+        "answer": "A surcharge is not permitted on a prepaid card. (source: https://kb.example.test/cards-0)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "A surcharge is permitted on a prepaid card. (source: https://kb.example.test/cards-0)",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "refund_role-1",
+      "family": "refund_role",
+      "question": "How much was refunded on txn_CHAL0001A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0001A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0001A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "246.80",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "46.80"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-11",
+                "actual_date": "2026-11-15"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "refund.amount is the refund; the larger amount is the payment",
+      "clean": {
+        "answer": "Refund amount: 46.80 USD.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Refund amount: 246.80 USD.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "payment_role-1",
+      "family": "payment_role",
+      "question": "What was the payment amount for txn_CHAL0001A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0001A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0001A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "246.80",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "46.80"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-11",
+                "actual_date": "2026-11-15"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "amount is the original payment",
+      "clean": {
+        "answer": "Your payment amount was $246.80.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your payment amount was $46.80.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "settlement_role-1",
+      "family": "settlement_role",
+      "question": "When did txn_CHAL0001A actually settle?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0001A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0001A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "246.80",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "46.80"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-11",
+                "actual_date": "2026-11-15"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "settlement.actual_date differs from settlement.expected_date",
+      "clean": {
+        "answer": "Transaction txn_CHAL0001A settled on 2026-11-15.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Transaction txn_CHAL0001A settled on 2026-11-11.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "requested_omission-1",
+      "family": "requested_omission",
+      "question": "How much was refunded on txn_CHAL0001A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0001A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0001A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "246.80",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "46.80"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-11",
+                "actual_date": "2026-11-15"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "The payment amount is true but does not answer the refund question",
+      "clean": {
+        "answer": "Your refund amount was $46.80.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your payment amount was $246.80.",
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "id": "cross_record_amount-1",
+      "family": "cross_record_amount",
+      "question": "Compare txn_CHAL0001A and txn_CHAL0001B: what are their amounts and currencies?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0001A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0001A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "246.80",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "46.80"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-11",
+                "actual_date": "2026-11-15"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0001B"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0001B",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "287.80",
+              "currency": "GBP",
+              "refund": {
+                "status": "succeeded",
+                "amount": "46.80"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-11",
+                "actual_date": "2026-11-15"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "Amounts are swapped between the two records",
+      "clean": {
+        "answer": "txn_CHAL0001A: 246.80 USD. txn_CHAL0001B: 287.80 GBP.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "txn_CHAL0001A: 287.80 USD. txn_CHAL0001B: 246.80 GBP.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "currency_binding-1",
+      "family": "currency_binding",
+      "question": "Compare txn_CHAL0001A and txn_CHAL0001B: what are their amounts and currencies?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0001A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0001A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "246.80",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "46.80"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-11",
+                "actual_date": "2026-11-15"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0001B"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0001B",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "287.80",
+              "currency": "GBP",
+              "refund": {
+                "status": "succeeded",
+                "amount": "46.80"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-11",
+                "actual_date": "2026-11-15"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "Currencies are swapped between the two records",
+      "clean": {
+        "answer": "txn_CHAL0001A: 246.80 USD. txn_CHAL0001B: 287.80 GBP.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "txn_CHAL0001A: 246.80 GBP. txn_CHAL0001B: 287.80 USD.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "missing_fact-1",
+      "family": "missing_fact",
+      "question": "How much was refunded on txn_CHAL0001A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0001A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0001A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "246.80",
+              "currency": "USD",
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-11",
+                "actual_date": "2026-11-15"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "The record contains no refund field; the payment amount cannot establish a refund",
+      "clean": {
+        "answer": "The record does not show a refund amount.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your refund amount was $246.80.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "stale_snapshot-1",
+      "family": "stale_snapshot",
+      "question": "How much was refunded on txn_CHAL0001A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0001A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0001A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "246.80",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "46.80"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-11",
+                "actual_date": "2026-11-15"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0001A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0001A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "246.80",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "49.80"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-11",
+                "actual_date": "2026-11-15"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "The later lookup supersedes the old refund amount",
+      "clean": {
+        "answer": "Your refund amount was $49.80.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your refund amount was $46.80.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "policy_negation-1",
+      "family": "policy_negation",
+      "question": "Can debit and prepaid cards be surcharged?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Surcharges apply to credit cards only. Debit and prepaid cards cannot be surcharged.",
+                "source_url": "https://kb.example.test/cards-1",
+                "chunk_id": "cards-1:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The draft reverses the prohibition",
+      "clean": {
+        "answer": "Surcharges apply to credit cards only. Debit and prepaid cards cannot be surcharged. (source: https://kb.example.test/cards-1)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Surcharges apply to credit cards only. Debit and prepaid cards can be surcharged. (source: https://kb.example.test/cards-1)",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "policy_exception-1",
+      "family": "policy_exception",
+      "question": "What are the refund rules, including exceptions?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Refunds may be requested within 21 days of settlement. This excludes final-sale purchases.",
+                "source_url": "https://kb.example.test/refunds-1",
+                "chunk_id": "refunds-1:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The final-sale exception was removed",
+      "clean": {
+        "answer": "Refunds may be requested within 21 days of settlement. This excludes final-sale purchases. (source: https://kb.example.test/refunds-1)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Refunds may be requested within 21 days of settlement. (source: https://kb.example.test/refunds-1)",
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "id": "wrong_policy_quote-1",
+      "family": "wrong_policy_quote",
+      "question": "What does decline code 51 mean?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Code 51 means the card has insufficient available balance.",
+                "source_url": "https://kb.example.test/code-51-1",
+                "chunk_id": "code-51-1:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              },
+              {
+                "text": "Code 54 means the card has expired.",
+                "source_url": "https://kb.example.test/code-54-1",
+                "chunk_id": "code-54-1:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 1.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The quoted source is authentic but answers a different code question",
+      "clean": {
+        "answer": "Code 51 means the card has insufficient available balance. (source: https://kb.example.test/code-51-1)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Code 54 means the card has expired. (source: https://kb.example.test/code-54-1)",
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "id": "policy_paraphrase-1",
+      "family": "policy_paraphrase",
+      "question": "Can a prepaid card be surcharged?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Surcharges apply to credit cards only. Debit and prepaid cards cannot be surcharged.",
+                "source_url": "https://kb.example.test/cards-1",
+                "chunk_id": "cards-1:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The clean paraphrase preserves the prohibition; removing 'not' reverses it",
+      "clean": {
+        "answer": "A surcharge is not permitted on a prepaid card. (source: https://kb.example.test/cards-1)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "A surcharge is permitted on a prepaid card. (source: https://kb.example.test/cards-1)",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "refund_role-2",
+      "family": "refund_role",
+      "question": "How much was refunded on txn_CHAL0002A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0002A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0002A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "79.45",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "19.45"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-12",
+                "actual_date": "2026-11-16"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "refund.amount is the refund; the larger amount is the payment",
+      "clean": {
+        "answer": "Your refund came to 19.45 USD.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your refund came to 79.45 USD.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "payment_role-2",
+      "family": "payment_role",
+      "question": "What was the payment amount for txn_CHAL0002A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0002A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0002A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "79.45",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "19.45"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-12",
+                "actual_date": "2026-11-16"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "amount is the original payment",
+      "clean": {
+        "answer": "Your payment amount was $79.45.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your payment amount was $19.45.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "settlement_role-2",
+      "family": "settlement_role",
+      "question": "When did txn_CHAL0002A actually settle?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0002A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0002A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "79.45",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "19.45"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-12",
+                "actual_date": "2026-11-16"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "settlement.actual_date differs from settlement.expected_date",
+      "clean": {
+        "answer": "Transaction txn_CHAL0002A settled on November 16, 2026.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Transaction txn_CHAL0002A settled on November 12, 2026.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "requested_omission-2",
+      "family": "requested_omission",
+      "question": "How much was refunded on txn_CHAL0002A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0002A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0002A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "79.45",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "19.45"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-12",
+                "actual_date": "2026-11-16"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "The payment amount is true but does not answer the refund question",
+      "clean": {
+        "answer": "Your refund amount was $19.45.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your payment amount was $79.45.",
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "id": "cross_record_amount-2",
+      "family": "cross_record_amount",
+      "question": "Compare txn_CHAL0002A and txn_CHAL0002B: what are their amounts and currencies?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0002A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0002A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "79.45",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "19.45"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-12",
+                "actual_date": "2026-11-16"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0002B"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0002B",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "120.45",
+              "currency": "GBP",
+              "refund": {
+                "status": "succeeded",
+                "amount": "19.45"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-12",
+                "actual_date": "2026-11-16"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "Amounts are swapped between the two records",
+      "clean": {
+        "answer": "txn_CHAL0002A: 79.45 USD. txn_CHAL0002B: 120.45 GBP.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "txn_CHAL0002A: 120.45 USD. txn_CHAL0002B: 79.45 GBP.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "currency_binding-2",
+      "family": "currency_binding",
+      "question": "Compare txn_CHAL0002A and txn_CHAL0002B: what are their amounts and currencies?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0002A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0002A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "79.45",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "19.45"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-12",
+                "actual_date": "2026-11-16"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0002B"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0002B",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "120.45",
+              "currency": "GBP",
+              "refund": {
+                "status": "succeeded",
+                "amount": "19.45"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-12",
+                "actual_date": "2026-11-16"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "Currencies are swapped between the two records",
+      "clean": {
+        "answer": "txn_CHAL0002A: 79.45 USD. txn_CHAL0002B: 120.45 GBP.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "txn_CHAL0002A: 79.45 GBP. txn_CHAL0002B: 120.45 USD.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "missing_fact-2",
+      "family": "missing_fact",
+      "question": "How much was refunded on txn_CHAL0002A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0002A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0002A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "79.45",
+              "currency": "USD",
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-12",
+                "actual_date": "2026-11-16"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "The record contains no refund field; the payment amount cannot establish a refund",
+      "clean": {
+        "answer": "The record does not show a refund amount.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your refund amount was $79.45.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "stale_snapshot-2",
+      "family": "stale_snapshot",
+      "question": "How much was refunded on txn_CHAL0002A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0002A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0002A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "79.45",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "19.45"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-12",
+                "actual_date": "2026-11-16"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0002A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0002A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "79.45",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "22.45"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-12",
+                "actual_date": "2026-11-16"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "The later lookup supersedes the old refund amount",
+      "clean": {
+        "answer": "Your refund amount was $22.45.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your refund amount was $19.45.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "policy_negation-2",
+      "family": "policy_negation",
+      "question": "Can debit and prepaid cards be surcharged?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Surcharges apply to credit cards only. Debit and prepaid cards cannot be surcharged.",
+                "source_url": "https://kb.example.test/cards-2",
+                "chunk_id": "cards-2:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The draft reverses the prohibition",
+      "clean": {
+        "answer": "Surcharges apply to credit cards only. Debit and prepaid cards cannot be surcharged. (source: https://kb.example.test/cards-2)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Surcharges apply to credit cards only. Debit and prepaid cards can be surcharged. (source: https://kb.example.test/cards-2)",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "policy_exception-2",
+      "family": "policy_exception",
+      "question": "What are the refund rules, including exceptions?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Refunds may be requested within 22 days of settlement. This excludes final-sale purchases.",
+                "source_url": "https://kb.example.test/refunds-2",
+                "chunk_id": "refunds-2:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The final-sale exception was removed",
+      "clean": {
+        "answer": "Refunds may be requested within 22 days of settlement. This excludes final-sale purchases. (source: https://kb.example.test/refunds-2)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Refunds may be requested within 22 days of settlement. (source: https://kb.example.test/refunds-2)",
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "id": "wrong_policy_quote-2",
+      "family": "wrong_policy_quote",
+      "question": "What does decline code 51 mean?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Code 51 means the card has insufficient available balance.",
+                "source_url": "https://kb.example.test/code-51-2",
+                "chunk_id": "code-51-2:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              },
+              {
+                "text": "Code 54 means the card has expired.",
+                "source_url": "https://kb.example.test/code-54-2",
+                "chunk_id": "code-54-2:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 1.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The quoted source is authentic but answers a different code question",
+      "clean": {
+        "answer": "Code 51 means the card has insufficient available balance. (source: https://kb.example.test/code-51-2)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Code 54 means the card has expired. (source: https://kb.example.test/code-54-2)",
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "id": "policy_paraphrase-2",
+      "family": "policy_paraphrase",
+      "question": "Can a prepaid card be surcharged?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Surcharges apply to credit cards only. Debit and prepaid cards cannot be surcharged.",
+                "source_url": "https://kb.example.test/cards-2",
+                "chunk_id": "cards-2:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The clean paraphrase preserves the prohibition; removing 'not' reverses it",
+      "clean": {
+        "answer": "A surcharge is not permitted on a prepaid card. (source: https://kb.example.test/cards-2)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "A surcharge is permitted on a prepaid card. (source: https://kb.example.test/cards-2)",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "refund_role-3",
+      "family": "refund_role",
+      "question": "How much was refunded on txn_CHAL0003A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0003A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0003A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "180.60",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "80.60"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-13",
+                "actual_date": "2026-11-17"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "refund.amount is the refund; the larger amount is the payment",
+      "clean": {
+        "answer": "You got $80.60 back.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "You got $180.60 back.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "payment_role-3",
+      "family": "payment_role",
+      "question": "What was the payment amount for txn_CHAL0003A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0003A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0003A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "180.60",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "80.60"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-13",
+                "actual_date": "2026-11-17"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "amount is the original payment",
+      "clean": {
+        "answer": "Your payment amount was $180.60.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your payment amount was $80.60.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "settlement_role-3",
+      "family": "settlement_role",
+      "question": "When did txn_CHAL0003A actually settle?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0003A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0003A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "180.60",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "80.60"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-13",
+                "actual_date": "2026-11-17"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "settlement.actual_date differs from settlement.expected_date",
+      "clean": {
+        "answer": "Transaction txn_CHAL0003A settled on November 17, 2026.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Transaction txn_CHAL0003A settled on November 13, 2026.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "requested_omission-3",
+      "family": "requested_omission",
+      "question": "How much was refunded on txn_CHAL0003A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0003A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0003A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "180.60",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "80.60"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-13",
+                "actual_date": "2026-11-17"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "The payment amount is true but does not answer the refund question",
+      "clean": {
+        "answer": "Your refund amount was $80.60.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your payment amount was $180.60.",
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "id": "cross_record_amount-3",
+      "family": "cross_record_amount",
+      "question": "Compare txn_CHAL0003A and txn_CHAL0003B: what are their amounts and currencies?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0003A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0003A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "180.60",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "80.60"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-13",
+                "actual_date": "2026-11-17"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0003B"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0003B",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "221.60",
+              "currency": "GBP",
+              "refund": {
+                "status": "succeeded",
+                "amount": "80.60"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-13",
+                "actual_date": "2026-11-17"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "Amounts are swapped between the two records",
+      "clean": {
+        "answer": "txn_CHAL0003A: 180.60 USD. txn_CHAL0003B: 221.60 GBP.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "txn_CHAL0003A: 221.60 USD. txn_CHAL0003B: 180.60 GBP.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "currency_binding-3",
+      "family": "currency_binding",
+      "question": "Compare txn_CHAL0003A and txn_CHAL0003B: what are their amounts and currencies?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0003A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0003A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "180.60",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "80.60"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-13",
+                "actual_date": "2026-11-17"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0003B"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0003B",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "221.60",
+              "currency": "GBP",
+              "refund": {
+                "status": "succeeded",
+                "amount": "80.60"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-13",
+                "actual_date": "2026-11-17"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "Currencies are swapped between the two records",
+      "clean": {
+        "answer": "txn_CHAL0003A: 180.60 USD. txn_CHAL0003B: 221.60 GBP.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "txn_CHAL0003A: 180.60 GBP. txn_CHAL0003B: 221.60 USD.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "missing_fact-3",
+      "family": "missing_fact",
+      "question": "How much was refunded on txn_CHAL0003A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0003A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0003A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "180.60",
+              "currency": "USD",
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-13",
+                "actual_date": "2026-11-17"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "The record contains no refund field; the payment amount cannot establish a refund",
+      "clean": {
+        "answer": "The record does not show a refund amount.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your refund amount was $180.60.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "stale_snapshot-3",
+      "family": "stale_snapshot",
+      "question": "How much was refunded on txn_CHAL0003A?",
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0003A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0003A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "180.60",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "80.60"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-13",
+                "actual_date": "2026-11-17"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_CHAL0003A"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_CHAL0003A",
+              "tenant_id": "m_100",
+              "status": "approved",
+              "amount": "180.60",
+              "currency": "USD",
+              "refund": {
+                "status": "succeeded",
+                "amount": "83.60"
+              },
+              "settlement": {
+                "status": "settled",
+                "expected_date": "2026-11-13",
+                "actual_date": "2026-11-17"
+              }
+            }
+          }
+        }
+      ],
+      "label_basis": "The later lookup supersedes the old refund amount",
+      "clean": {
+        "answer": "Your refund amount was $83.60.",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Your refund amount was $80.60.",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "policy_negation-3",
+      "family": "policy_negation",
+      "question": "Can debit and prepaid cards be surcharged?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Surcharges apply to credit cards only. Debit and prepaid cards cannot be surcharged.",
+                "source_url": "https://kb.example.test/cards-3",
+                "chunk_id": "cards-3:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The draft reverses the prohibition",
+      "clean": {
+        "answer": "Surcharges apply to credit cards only. Debit and prepaid cards cannot be surcharged. (source: https://kb.example.test/cards-3)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Surcharges apply to credit cards only. Debit and prepaid cards can be surcharged. (source: https://kb.example.test/cards-3)",
+        "supported": false,
+        "complete": true
+      }
+    },
+    {
+      "id": "policy_exception-3",
+      "family": "policy_exception",
+      "question": "What are the refund rules, including exceptions?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Refunds may be requested within 23 days of settlement. This excludes final-sale purchases.",
+                "source_url": "https://kb.example.test/refunds-3",
+                "chunk_id": "refunds-3:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The final-sale exception was removed",
+      "clean": {
+        "answer": "Refunds may be requested within 23 days of settlement. This excludes final-sale purchases. (source: https://kb.example.test/refunds-3)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Refunds may be requested within 23 days of settlement. (source: https://kb.example.test/refunds-3)",
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "id": "wrong_policy_quote-3",
+      "family": "wrong_policy_quote",
+      "question": "What does decline code 51 mean?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Code 51 means the card has insufficient available balance.",
+                "source_url": "https://kb.example.test/code-51-3",
+                "chunk_id": "code-51-3:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              },
+              {
+                "text": "Code 54 means the card has expired.",
+                "source_url": "https://kb.example.test/code-54-3",
+                "chunk_id": "code-54-3:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 1.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The quoted source is authentic but answers a different code question",
+      "clean": {
+        "answer": "Code 51 means the card has insufficient available balance. (source: https://kb.example.test/code-51-3)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "Code 54 means the card has expired. (source: https://kb.example.test/code-54-3)",
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "id": "policy_paraphrase-3",
+      "family": "policy_paraphrase",
+      "question": "Can a prepaid card be surcharged?",
+      "evidence": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "policy"
+          },
+          "result": {
+            "status": "found",
+            "source": "knowledge_base",
+            "data": [
+              {
+                "text": "Surcharges apply to credit cards only. Debit and prepaid cards cannot be surcharged.",
+                "source_url": "https://kb.example.test/cards-3",
+                "chunk_id": "cards-3:v1:0",
+                "version": 1,
+                "updated": "2026-11-24",
+                "score": 2.0
+              }
+            ]
+          }
+        }
+      ],
+      "label_basis": "The clean paraphrase preserves the prohibition; removing 'not' reverses it",
+      "clean": {
+        "answer": "A surcharge is not permitted on a prepaid card. (source: https://kb.example.test/cards-3)",
+        "supported": true,
+        "complete": true
+      },
+      "corrupted": {
+        "answer": "A surcharge is permitted on a prepaid card. (source: https://kb.example.test/cards-3)",
+        "supported": false,
+        "complete": true
+      }
+    }
+  ]
+}

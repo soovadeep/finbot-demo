@@ -1,0 +1,1042 @@
+{
+  "protocol_sha256": "8b738a299bf948d6f448a554ecc11d4b7909e0716df67940e94c9c3d08c59862",
+  "scope": "Supplied drafts against the production deterministic chain, not generated error prevalence, full conversations, or independent held-out accuracy. No LLM calls.",
+  "label_basis": "Developer-authored with AI assistance, before running the checks. No customer data. Expected labels follow explicit field values or documented mutations; no independent labels yet.",
+  "summary": {
+    "pairs": 48,
+    "correct_rejected": 5,
+    "incorrect_blocked": 44,
+    "eligible_clean_accepted_pairs": 43,
+    "paired_new_rejections": 39,
+    "unsupported_released": [],
+    "incomplete_released": [
+      "wrong_policy_quote-0",
+      "wrong_policy_quote-1",
+      "wrong_policy_quote-2",
+      "wrong_policy_quote-3"
+    ]
+  },
+  "by_family": {
+    "cross_record_amount": {
+      "pairs": 4,
+      "correct_rejected": 0,
+      "incorrect_blocked": 4,
+      "eligible_clean_accepted_pairs": 4,
+      "paired_new_rejections": 4,
+      "unsupported_released": [],
+      "incomplete_released": []
+    },
+    "currency_binding": {
+      "pairs": 4,
+      "correct_rejected": 0,
+      "incorrect_blocked": 4,
+      "eligible_clean_accepted_pairs": 4,
+      "paired_new_rejections": 4,
+      "unsupported_released": [],
+      "incomplete_released": []
+    },
+    "missing_fact": {
+      "pairs": 4,
+      "correct_rejected": 0,
+      "incorrect_blocked": 4,
+      "eligible_clean_accepted_pairs": 4,
+      "paired_new_rejections": 4,
+      "unsupported_released": [],
+      "incomplete_released": []
+    },
+    "payment_role": {
+      "pairs": 4,
+      "correct_rejected": 0,
+      "incorrect_blocked": 4,
+      "eligible_clean_accepted_pairs": 4,
+      "paired_new_rejections": 4,
+      "unsupported_released": [],
+      "incomplete_released": []
+    },
+    "policy_exception": {
+      "pairs": 4,
+      "correct_rejected": 0,
+      "incorrect_blocked": 4,
+      "eligible_clean_accepted_pairs": 4,
+      "paired_new_rejections": 4,
+      "unsupported_released": [],
+      "incomplete_released": []
+    },
+    "policy_negation": {
+      "pairs": 4,
+      "correct_rejected": 0,
+      "incorrect_blocked": 4,
+      "eligible_clean_accepted_pairs": 4,
+      "paired_new_rejections": 4,
+      "unsupported_released": [],
+      "incomplete_released": []
+    },
+    "policy_paraphrase": {
+      "pairs": 4,
+      "correct_rejected": 4,
+      "incorrect_blocked": 4,
+      "eligible_clean_accepted_pairs": 0,
+      "paired_new_rejections": 0,
+      "unsupported_released": [],
+      "incomplete_released": []
+    },
+    "refund_role": {
+      "pairs": 4,
+      "correct_rejected": 1,
+      "incorrect_blocked": 4,
+      "eligible_clean_accepted_pairs": 3,
+      "paired_new_rejections": 3,
+      "unsupported_released": [],
+      "incomplete_released": []
+    },
+    "requested_omission": {
+      "pairs": 4,
+      "correct_rejected": 0,
+      "incorrect_blocked": 4,
+      "eligible_clean_accepted_pairs": 4,
+      "paired_new_rejections": 4,
+      "unsupported_released": [],
+      "incomplete_released": []
+    },
+    "settlement_role": {
+      "pairs": 4,
+      "correct_rejected": 0,
+      "incorrect_blocked": 4,
+      "eligible_clean_accepted_pairs": 4,
+      "paired_new_rejections": 4,
+      "unsupported_released": [],
+      "incomplete_released": []
+    },
+    "stale_snapshot": {
+      "pairs": 4,
+      "correct_rejected": 0,
+      "incorrect_blocked": 4,
+      "eligible_clean_accepted_pairs": 4,
+      "paired_new_rejections": 4,
+      "unsupported_released": [],
+      "incomplete_released": []
+    },
+    "wrong_policy_quote": {
+      "pairs": 4,
+      "correct_rejected": 0,
+      "incorrect_blocked": 0,
+      "eligible_clean_accepted_pairs": 4,
+      "paired_new_rejections": 0,
+      "unsupported_released": [],
+      "incomplete_released": [
+        "wrong_policy_quote-0",
+        "wrong_policy_quote-1",
+        "wrong_policy_quote-2",
+        "wrong_policy_quote-3"
+      ]
+    }
+  },
+  "rows": [
+    {
+      "id": "refund_role-0",
+      "family": "refund_role",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "financial_role_mismatch:txn_CHAL0000A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "payment_role-0",
+      "family": "payment_role",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "financial_role_mismatch:txn_CHAL0000A:payment_amount",
+          "requested_information_missing:txn_CHAL0000A:payment_amount"
+        ]
+      }
+    },
+    {
+      "id": "settlement_role-0",
+      "family": "settlement_role",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "financial_role_mismatch:txn_CHAL0000A:actual_settlement_date"
+        ]
+      }
+    },
+    {
+      "id": "requested_omission-0",
+      "family": "requested_omission",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": true,
+        "complete": false,
+        "action": "block",
+        "reasons": [
+          "requested_information_missing:txn_CHAL0000A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "cross_record_amount-0",
+      "family": "cross_record_amount",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "value_from_other_record:amount:txn_CHAL0000A<-txn_CHAL0000B",
+          "value_from_other_record:amount:txn_CHAL0000B<-txn_CHAL0000A",
+          "comparison_missing_field:txn_CHAL0000A:amount",
+          "comparison_missing_field:txn_CHAL0000B:amount"
+        ]
+      }
+    },
+    {
+      "id": "currency_binding-0",
+      "family": "currency_binding",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "value_from_other_record:currency:txn_CHAL0000A<-txn_CHAL0000B",
+          "value_from_other_record:currency:txn_CHAL0000B<-txn_CHAL0000A",
+          "comparison_missing_field:txn_CHAL0000A:currency",
+          "comparison_missing_field:txn_CHAL0000B:currency"
+        ]
+      }
+    },
+    {
+      "id": "missing_fact-0",
+      "family": "missing_fact",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "ungrounded_refund_claim",
+          "financial_role_mismatch:txn_CHAL0000A:refund_amount",
+          "requested_information_unavailable_unstated:txn_CHAL0000A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "stale_snapshot-0",
+      "family": "stale_snapshot",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "financial_role_mismatch:txn_CHAL0000A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "policy_negation-0",
+      "family": "policy_negation",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "policy_incomplete_context:statement_0",
+          "policy_unsupported:statement_1"
+        ]
+      }
+    },
+    {
+      "id": "policy_exception-0",
+      "family": "policy_exception",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": true,
+        "complete": false,
+        "action": "block",
+        "reasons": [
+          "policy_incomplete_context:statement_0"
+        ]
+      }
+    },
+    {
+      "id": "wrong_policy_quote-0",
+      "family": "wrong_policy_quote",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": true,
+        "complete": false,
+        "action": "allow",
+        "reasons": []
+      }
+    },
+    {
+      "id": "policy_paraphrase-0",
+      "family": "policy_paraphrase",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "policy_unsupported:statement_0"
+        ]
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "policy_unsupported:statement_0"
+        ]
+      }
+    },
+    {
+      "id": "refund_role-1",
+      "family": "refund_role",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "financial_role_mismatch:txn_CHAL0001A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "payment_role-1",
+      "family": "payment_role",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "financial_role_mismatch:txn_CHAL0001A:payment_amount",
+          "requested_information_missing:txn_CHAL0001A:payment_amount"
+        ]
+      }
+    },
+    {
+      "id": "settlement_role-1",
+      "family": "settlement_role",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "financial_role_mismatch:txn_CHAL0001A:actual_settlement_date"
+        ]
+      }
+    },
+    {
+      "id": "requested_omission-1",
+      "family": "requested_omission",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": true,
+        "complete": false,
+        "action": "block",
+        "reasons": [
+          "requested_information_missing:txn_CHAL0001A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "cross_record_amount-1",
+      "family": "cross_record_amount",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "value_from_other_record:amount:txn_CHAL0001A<-txn_CHAL0001B",
+          "value_from_other_record:amount:txn_CHAL0001B<-txn_CHAL0001A",
+          "comparison_missing_field:txn_CHAL0001A:amount",
+          "comparison_missing_field:txn_CHAL0001B:amount"
+        ]
+      }
+    },
+    {
+      "id": "currency_binding-1",
+      "family": "currency_binding",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "value_from_other_record:currency:txn_CHAL0001A<-txn_CHAL0001B",
+          "value_from_other_record:currency:txn_CHAL0001B<-txn_CHAL0001A",
+          "comparison_missing_field:txn_CHAL0001A:currency",
+          "comparison_missing_field:txn_CHAL0001B:currency"
+        ]
+      }
+    },
+    {
+      "id": "missing_fact-1",
+      "family": "missing_fact",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "ungrounded_refund_claim",
+          "financial_role_mismatch:txn_CHAL0001A:refund_amount",
+          "requested_information_unavailable_unstated:txn_CHAL0001A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "stale_snapshot-1",
+      "family": "stale_snapshot",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "financial_role_mismatch:txn_CHAL0001A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "policy_negation-1",
+      "family": "policy_negation",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "policy_incomplete_context:statement_0",
+          "policy_unsupported:statement_1"
+        ]
+      }
+    },
+    {
+      "id": "policy_exception-1",
+      "family": "policy_exception",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": true,
+        "complete": false,
+        "action": "block",
+        "reasons": [
+          "policy_incomplete_context:statement_0"
+        ]
+      }
+    },
+    {
+      "id": "wrong_policy_quote-1",
+      "family": "wrong_policy_quote",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": true,
+        "complete": false,
+        "action": "allow",
+        "reasons": []
+      }
+    },
+    {
+      "id": "policy_paraphrase-1",
+      "family": "policy_paraphrase",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "policy_unsupported:statement_0"
+        ]
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "policy_unsupported:statement_0"
+        ]
+      }
+    },
+    {
+      "id": "refund_role-2",
+      "family": "refund_role",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "requested_information_missing:txn_CHAL0002A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "payment_role-2",
+      "family": "payment_role",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "financial_role_mismatch:txn_CHAL0002A:payment_amount",
+          "requested_information_missing:txn_CHAL0002A:payment_amount"
+        ]
+      }
+    },
+    {
+      "id": "settlement_role-2",
+      "family": "settlement_role",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "requested_information_missing:txn_CHAL0002A:actual_settlement_date"
+        ]
+      }
+    },
+    {
+      "id": "requested_omission-2",
+      "family": "requested_omission",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": true,
+        "complete": false,
+        "action": "block",
+        "reasons": [
+          "requested_information_missing:txn_CHAL0002A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "cross_record_amount-2",
+      "family": "cross_record_amount",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "value_from_other_record:amount:txn_CHAL0002A<-txn_CHAL0002B",
+          "value_from_other_record:amount:txn_CHAL0002B<-txn_CHAL0002A",
+          "comparison_missing_field:txn_CHAL0002A:amount",
+          "comparison_missing_field:txn_CHAL0002B:amount"
+        ]
+      }
+    },
+    {
+      "id": "currency_binding-2",
+      "family": "currency_binding",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "value_from_other_record:currency:txn_CHAL0002A<-txn_CHAL0002B",
+          "value_from_other_record:currency:txn_CHAL0002B<-txn_CHAL0002A",
+          "comparison_missing_field:txn_CHAL0002A:currency",
+          "comparison_missing_field:txn_CHAL0002B:currency"
+        ]
+      }
+    },
+    {
+      "id": "missing_fact-2",
+      "family": "missing_fact",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "ungrounded_refund_claim",
+          "financial_role_mismatch:txn_CHAL0002A:refund_amount",
+          "requested_information_unavailable_unstated:txn_CHAL0002A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "stale_snapshot-2",
+      "family": "stale_snapshot",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "financial_role_mismatch:txn_CHAL0002A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "policy_negation-2",
+      "family": "policy_negation",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "policy_incomplete_context:statement_0",
+          "policy_unsupported:statement_1"
+        ]
+      }
+    },
+    {
+      "id": "policy_exception-2",
+      "family": "policy_exception",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": true,
+        "complete": false,
+        "action": "block",
+        "reasons": [
+          "policy_incomplete_context:statement_0"
+        ]
+      }
+    },
+    {
+      "id": "wrong_policy_quote-2",
+      "family": "wrong_policy_quote",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": true,
+        "complete": false,
+        "action": "allow",
+        "reasons": []
+      }
+    },
+    {
+      "id": "policy_paraphrase-2",
+      "family": "policy_paraphrase",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "policy_unsupported:statement_0"
+        ]
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "policy_unsupported:statement_0"
+        ]
+      }
+    },
+    {
+      "id": "refund_role-3",
+      "family": "refund_role",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "requested_information_missing:txn_CHAL0003A:refund_amount"
+        ]
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "requested_information_missing:txn_CHAL0003A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "payment_role-3",
+      "family": "payment_role",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "financial_role_mismatch:txn_CHAL0003A:payment_amount",
+          "requested_information_missing:txn_CHAL0003A:payment_amount"
+        ]
+      }
+    },
+    {
+      "id": "settlement_role-3",
+      "family": "settlement_role",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "requested_information_missing:txn_CHAL0003A:actual_settlement_date"
+        ]
+      }
+    },
+    {
+      "id": "requested_omission-3",
+      "family": "requested_omission",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": true,
+        "complete": false,
+        "action": "block",
+        "reasons": [
+          "requested_information_missing:txn_CHAL0003A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "cross_record_amount-3",
+      "family": "cross_record_amount",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "value_from_other_record:amount:txn_CHAL0003A<-txn_CHAL0003B",
+          "value_from_other_record:amount:txn_CHAL0003B<-txn_CHAL0003A",
+          "comparison_missing_field:txn_CHAL0003A:amount",
+          "comparison_missing_field:txn_CHAL0003B:amount"
+        ]
+      }
+    },
+    {
+      "id": "currency_binding-3",
+      "family": "currency_binding",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "value_from_other_record:currency:txn_CHAL0003A<-txn_CHAL0003B",
+          "value_from_other_record:currency:txn_CHAL0003B<-txn_CHAL0003A",
+          "comparison_missing_field:txn_CHAL0003A:currency",
+          "comparison_missing_field:txn_CHAL0003B:currency"
+        ]
+      }
+    },
+    {
+      "id": "missing_fact-3",
+      "family": "missing_fact",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "ungrounded_refund_claim",
+          "financial_role_mismatch:txn_CHAL0003A:refund_amount",
+          "requested_information_unavailable_unstated:txn_CHAL0003A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "stale_snapshot-3",
+      "family": "stale_snapshot",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "financial_role_mismatch:txn_CHAL0003A:refund_amount"
+        ]
+      }
+    },
+    {
+      "id": "policy_negation-3",
+      "family": "policy_negation",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "policy_incomplete_context:statement_0",
+          "policy_unsupported:statement_1"
+        ]
+      }
+    },
+    {
+      "id": "policy_exception-3",
+      "family": "policy_exception",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": true,
+        "complete": false,
+        "action": "block",
+        "reasons": [
+          "policy_incomplete_context:statement_0"
+        ]
+      }
+    },
+    {
+      "id": "wrong_policy_quote-3",
+      "family": "wrong_policy_quote",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "allow",
+        "reasons": []
+      },
+      "corrupted": {
+        "supported": true,
+        "complete": false,
+        "action": "allow",
+        "reasons": []
+      }
+    },
+    {
+      "id": "policy_paraphrase-3",
+      "family": "policy_paraphrase",
+      "clean": {
+        "supported": true,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "policy_unsupported:statement_0"
+        ]
+      },
+      "corrupted": {
+        "supported": false,
+        "complete": true,
+        "action": "block",
+        "reasons": [
+          "policy_unsupported:statement_0"
+        ]
+      }
+    }
+  ]
+}
