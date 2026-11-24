@@ -1,0 +1,45 @@
+{
+  "mode": "live",
+  "protocol_sha256": "76f94818ed68009f871c3bb40f8b098897c48f1fd4dac417aad4b704922bdef6",
+  "provenance": {
+    "author_role": "developer",
+    "source": "AI-assisted development fixtures in this repository",
+    "independent": false
+  },
+  "planned_arms": 8,
+  "completed_arms": 1,
+  "semantic_success_rate": null,
+  "labels": "pending",
+  "spending": {
+    "limit_usd": "1.00",
+    "charged_or_reserved_usd": "0.02320150",
+    "provider_reported_usd": "0.00990230",
+    "stopped": "provider_error_cost_unknown",
+    "request_attempts": 31,
+    "unknown_cost_requests": 1
+  },
+  "summary": [
+    {
+      "case": "refund_updated",
+      "arm": "short",
+      "planned_turns": 4,
+      "completed": true,
+      "rollovers": 0,
+      "diagnostics": {
+        "focused_record_matches": true,
+        "refetched_current_records": true,
+        "literal_required_strings": true,
+        "literal_forbidden_strings_absent": true,
+        "released": true
+      }
+    },
+    {
+      "case": "refund_updated",
+      "arm": "long",
+      "planned_turns": 36,
+      "completed": false,
+      "rollovers": 0,
+      "diagnostics": null
+    }
+  ]
+}

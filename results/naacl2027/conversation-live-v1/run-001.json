@@ -1,0 +1,525 @@
+{
+  "case": "refund_updated",
+  "arm": "short",
+  "planned_turns": 4,
+  "completed": true,
+  "trace": [
+    {
+      "index": 0,
+      "probe": false,
+      "question": "Please check the payment txn_LONG0001.",
+      "turn": {
+        "answer": "The payment txn_LONG0001 was approved for $184.60 USD. A refund of $24.60 USD has been successfully processed. The settlement of the transaction is still pending and is expected to be completed by November 26, 2026.",
+        "blocked_by": null,
+        "reasons": [],
+        "tools_called": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_LONG0001"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_LONG0001",
+                "status": "approved",
+                "amount": "184.60",
+                "currency": "USD",
+                "refund": {
+                  "status": "succeeded",
+                  "amount": "24.60"
+                },
+                "settlement": {
+                  "status": "pending",
+                  "expected_date": "2026-11-26"
+                }
+              }
+            }
+          }
+        ],
+        "focus": "txn_LONG0001",
+        "latency_ms": 52605,
+        "repaired": false,
+        "escalated": false,
+        "tier": null,
+        "models_used": [
+          "Recorder",
+          "Recorder"
+        ],
+        "question": "Please check the payment txn_LONG0001.",
+        "policy_version": 1
+      },
+      "calls": [
+        {
+          "request_sha256": "861891050c2f8367953c93c2e61d90ab226c84c333e170102c70318678d34df2",
+          "estimated_input_tokens": 6241,
+          "evidence": [],
+          "response": {
+            "stop_reason": "tool_use",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "call_rAlsZpajUeOpy1lRxsWDG608",
+                "name": "get_transaction",
+                "input": {
+                  "txn_id": "txn_LONG0001"
+                }
+              }
+            ],
+            "usage": {
+              "input_tokens": 1590,
+              "output_tokens": 18
+            }
+          }
+        },
+        {
+          "request_sha256": "aec8eb73629156ecea1866f4636f3110424c46826a247b996d0356707360952f",
+          "estimated_input_tokens": 7022,
+          "evidence": [
+            {
+              "name": "get_transaction",
+              "input": {
+                "txn_id": "txn_LONG0001"
+              },
+              "result": {
+                "status": "found",
+                "source": "txn_db",
+                "data": {
+                  "txn_id": "txn_LONG0001",
+                  "status": "approved",
+                  "amount": "184.60",
+                  "currency": "USD",
+                  "refund": {
+                    "status": "succeeded",
+                    "amount": "24.60"
+                  },
+                  "settlement": {
+                    "status": "pending",
+                    "expected_date": "2026-11-26"
+                  }
+                }
+              }
+            }
+          ],
+          "response": {
+            "stop_reason": "end_turn",
+            "content": [
+              {
+                "type": "text",
+                "text": "The payment txn_LONG0001 was approved for $184.60 USD. A refund of $24.60 USD has been successfully processed. The settlement of the transaction is still pending and is expected to be completed by November 26, 2026."
+              }
+            ],
+            "usage": {
+              "input_tokens": 1733,
+              "output_tokens": 52
+            }
+          }
+        }
+      ],
+      "thread_turns_before": 0,
+      "thread_turns_after": 1,
+      "rolled_over": false,
+      "focus": "txn_LONG0001",
+      "recap": []
+    },
+    {
+      "index": 1,
+      "probe": false,
+      "question": "Please check txn_LONG0002 as well.",
+      "turn": {
+        "answer": "The payment txn_LONG0002 was approved for $97.30 USD. A refund of $17.30 USD has been successfully processed. The settlement of the transaction is still pending and is expected to be completed by November 26, 2026.",
+        "blocked_by": null,
+        "reasons": [],
+        "tools_called": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_LONG0002"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_LONG0002",
+                "status": "approved",
+                "amount": "97.30",
+                "currency": "USD",
+                "refund": {
+                  "status": "succeeded",
+                  "amount": "17.30"
+                },
+                "settlement": {
+                  "status": "pending",
+                  "expected_date": "2026-11-26"
+                }
+              }
+            }
+          }
+        ],
+        "focus": "txn_LONG0002",
+        "latency_ms": 50834,
+        "repaired": false,
+        "escalated": false,
+        "tier": null,
+        "models_used": [
+          "Recorder",
+          "Recorder"
+        ],
+        "question": "Please check txn_LONG0002 as well.",
+        "policy_version": 1
+      },
+      "calls": [
+        {
+          "request_sha256": "0b2fcc7009720b5c3bbc9f277092aab5b4d9637c6a4f0c5d50cc5a0c25c7f689",
+          "estimated_input_tokens": 8237,
+          "evidence": [],
+          "response": {
+            "stop_reason": "tool_use",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "call_uDMfelNXODKcUqXIgDYP6KCm",
+                "name": "get_transaction",
+                "input": {
+                  "txn_id": "txn_LONG0002"
+                }
+              }
+            ],
+            "usage": {
+              "input_tokens": 1944,
+              "output_tokens": 18
+            }
+          }
+        },
+        {
+          "request_sha256": "7543e39f204426e1e268f99fc10c2a2cb446d1acbd6aa52ed987f68fdc665994",
+          "estimated_input_tokens": 9017,
+          "evidence": [
+            {
+              "name": "get_transaction",
+              "input": {
+                "txn_id": "txn_LONG0002"
+              },
+              "result": {
+                "status": "found",
+                "source": "txn_db",
+                "data": {
+                  "txn_id": "txn_LONG0002",
+                  "status": "approved",
+                  "amount": "97.30",
+                  "currency": "USD",
+                  "refund": {
+                    "status": "succeeded",
+                    "amount": "17.30"
+                  },
+                  "settlement": {
+                    "status": "pending",
+                    "expected_date": "2026-11-26"
+                  }
+                }
+              }
+            }
+          ],
+          "response": {
+            "stop_reason": "end_turn",
+            "content": [
+              {
+                "type": "text",
+                "text": "The payment txn_LONG0002 was approved for $97.30 USD. A refund of $17.30 USD has been successfully processed. The settlement of the transaction is still pending and is expected to be completed by November 26, 2026."
+              }
+            ],
+            "usage": {
+              "input_tokens": 2089,
+              "output_tokens": 52
+            }
+          }
+        }
+      ],
+      "thread_turns_before": 1,
+      "thread_turns_after": 2,
+      "rolled_over": false,
+      "focus": "txn_LONG0002",
+      "recap": []
+    },
+    {
+      "index": 2,
+      "probe": false,
+      "question": "Correction: this conversation is about txn_LONG0001. Please check that payment.",
+      "turn": {
+        "answer": "The payment txn_LONG0001 was approved for $184.60 USD. A refund of $24.60 USD has been successfully processed. The settlement of the transaction is still pending and is expected to be completed by November 26, 2026.",
+        "blocked_by": null,
+        "reasons": [],
+        "tools_called": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_LONG0001"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_LONG0001",
+                "status": "approved",
+                "amount": "184.60",
+                "currency": "USD",
+                "refund": {
+                  "status": "succeeded",
+                  "amount": "24.60"
+                },
+                "settlement": {
+                  "status": "pending",
+                  "expected_date": "2026-11-26"
+                }
+              }
+            }
+          }
+        ],
+        "focus": "txn_LONG0001",
+        "latency_ms": 23972,
+        "repaired": false,
+        "escalated": false,
+        "tier": null,
+        "models_used": [
+          "Recorder",
+          "Recorder"
+        ],
+        "question": "Correction: this conversation is about txn_LONG0001. Please check that payment.",
+        "policy_version": 1
+      },
+      "calls": [
+        {
+          "request_sha256": "f813c50dd9637ce2e9d6e12937293e7d31fc9b0edb7e591e0f455bef47a5cc60",
+          "estimated_input_tokens": 10521,
+          "evidence": [],
+          "response": {
+            "stop_reason": "tool_use",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "call_uGSdWkLQVfmbcYXXW6gxtBVt",
+                "name": "get_transaction",
+                "input": {
+                  "txn_id": "txn_LONG0001"
+                }
+              }
+            ],
+            "usage": {
+              "input_tokens": 2379,
+              "output_tokens": 18
+            }
+          }
+        },
+        {
+          "request_sha256": "f1f63c1a5322b2fef40717a3fc260f4ab2c57ea983c9452b1b23a63a2e220265",
+          "estimated_input_tokens": 11302,
+          "evidence": [
+            {
+              "name": "get_transaction",
+              "input": {
+                "txn_id": "txn_LONG0001"
+              },
+              "result": {
+                "status": "found",
+                "source": "txn_db",
+                "data": {
+                  "txn_id": "txn_LONG0001",
+                  "status": "approved",
+                  "amount": "184.60",
+                  "currency": "USD",
+                  "refund": {
+                    "status": "succeeded",
+                    "amount": "24.60"
+                  },
+                  "settlement": {
+                    "status": "pending",
+                    "expected_date": "2026-11-26"
+                  }
+                }
+              }
+            }
+          ],
+          "response": {
+            "stop_reason": "end_turn",
+            "content": [
+              {
+                "type": "text",
+                "text": "The payment txn_LONG0001 was approved for $184.60 USD. A refund of $24.60 USD has been successfully processed. The settlement of the transaction is still pending and is expected to be completed by November 26, 2026."
+              }
+            ],
+            "usage": {
+              "input_tokens": 2522,
+              "output_tokens": 52
+            }
+          }
+        }
+      ],
+      "thread_turns_before": 2,
+      "thread_turns_after": 3,
+      "rolled_over": false,
+      "focus": "txn_LONG0001",
+      "recap": []
+    },
+    {
+      "index": 3,
+      "probe": true,
+      "question": "How much was refunded on that payment now?",
+      "turn": {
+        "answer": "The refund amount for the payment txn_LONG0001 is $39.20 USD.",
+        "blocked_by": null,
+        "reasons": [],
+        "tools_called": [
+          {
+            "name": "get_transaction",
+            "input": {
+              "txn_id": "txn_LONG0001"
+            },
+            "result": {
+              "status": "found",
+              "source": "txn_db",
+              "data": {
+                "txn_id": "txn_LONG0001",
+                "status": "approved",
+                "amount": "184.60",
+                "currency": "USD",
+                "refund": {
+                  "status": "succeeded",
+                  "amount": "39.20"
+                },
+                "settlement": {
+                  "status": "pending",
+                  "expected_date": "2026-11-26"
+                }
+              }
+            }
+          }
+        ],
+        "focus": "txn_LONG0001",
+        "latency_ms": 6031,
+        "repaired": false,
+        "escalated": false,
+        "tier": null,
+        "models_used": [
+          "Recorder",
+          "Recorder"
+        ],
+        "question": "How much was refunded on that payment now?",
+        "policy_version": 1
+      },
+      "calls": [
+        {
+          "request_sha256": "0f6fda9317cf7e72bf3b4ff241c72f54bb3fb53fea53d9c6415fbd4a54696e1d",
+          "estimated_input_tokens": 12702,
+          "evidence": [],
+          "response": {
+            "stop_reason": "tool_use",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "call_bpSdHTiBlfG4RDjx3oA3nBhg",
+                "name": "get_transaction",
+                "input": {
+                  "txn_id": "txn_LONG0001"
+                }
+              }
+            ],
+            "usage": {
+              "input_tokens": 2791,
+              "output_tokens": 18
+            }
+          }
+        },
+        {
+          "request_sha256": "61b12305b429496869ee0b8d473d7f68c2353826f3999b6bc21a3cc05761b737",
+          "estimated_input_tokens": 13483,
+          "evidence": [
+            {
+              "name": "get_transaction",
+              "input": {
+                "txn_id": "txn_LONG0001"
+              },
+              "result": {
+                "status": "found",
+                "source": "txn_db",
+                "data": {
+                  "txn_id": "txn_LONG0001",
+                  "status": "approved",
+                  "amount": "184.60",
+                  "currency": "USD",
+                  "refund": {
+                    "status": "succeeded",
+                    "amount": "39.20"
+                  },
+                  "settlement": {
+                    "status": "pending",
+                    "expected_date": "2026-11-26"
+                  }
+                }
+              }
+            }
+          ],
+          "response": {
+            "stop_reason": "end_turn",
+            "content": [
+              {
+                "type": "text",
+                "text": "The refund amount for the payment txn_LONG0001 is $39.20 USD."
+              }
+            ],
+            "usage": {
+              "input_tokens": 2930,
+              "output_tokens": 18
+            }
+          }
+        }
+      ],
+      "thread_turns_before": 3,
+      "thread_turns_after": 4,
+      "rolled_over": false,
+      "focus": "txn_LONG0001",
+      "recap": []
+    }
+  ],
+  "rollovers": 0,
+  "probe_rubric": "State the latest refund, USD 39.20, for txn_LONG0001; do not reuse USD 24.60 or the other record's refund.",
+  "final_backend": {
+    "txn_LONG0001": {
+      "txn_id": "txn_LONG0001",
+      "tenant_id": "m_100",
+      "status": "approved",
+      "amount": "184.60",
+      "currency": "USD",
+      "refund": {
+        "status": "succeeded",
+        "amount": "39.20"
+      },
+      "settlement": {
+        "status": "pending",
+        "expected_date": "2026-11-26"
+      }
+    },
+    "txn_LONG0002": {
+      "txn_id": "txn_LONG0002",
+      "tenant_id": "m_100",
+      "status": "approved",
+      "amount": "97.30",
+      "currency": "USD",
+      "refund": {
+        "status": "succeeded",
+        "amount": "17.30"
+      },
+      "settlement": {
+        "status": "pending",
+        "expected_date": "2026-11-26"
+      }
+    }
+  },
+  "diagnostics": {
+    "focused_record_matches": true,
+    "refetched_current_records": true,
+    "literal_required_strings": true,
+    "literal_forbidden_strings_absent": true,
+    "released": true
+  }
+}
