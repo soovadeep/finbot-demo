@@ -172,6 +172,9 @@ REPAIR_PROMPT = ("<verifier>Your previous answer was NOT shown to the user becau
                  " For financial_role_mismatch, match each value to its named field: an expected settlement "
                  "date is not an actual settlement date, and a payment amount is not a refund amount. "
                  "State when an actual date is not recorded."
+                 " For requested_information_* failures, answer the customer's actual question: state each "
+                 "requested field with its name (for example \"Refund amount: 50.00 USD.\"), or say plainly that "
+                 "the record does not show it. Do not substitute a different field."
                  "</verifier>")
 
 

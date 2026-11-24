@@ -233,6 +233,9 @@ class FakeLLM:
                 last["content"][0].get("type") == "tool_result":
             from .untrusted import unwrap
             results = [unwrap(b["content"]) for b in last["content"]]
+            asked = next((m["content"] for m in reversed(messages) if m["role"] == "user"
+                          and isinstance(m["content"], str) and not m["content"].startswith("<verifier>")), "")
+            self.question = asked
             return self._answer(results)
         # Find the latest real user text (skip system messages).
         # (verifier feedback is not a new question: redo the latest real one)
@@ -299,6 +302,9 @@ class FakeLLM:
                     from .financial_roles import lifecycle_summary
                     if details := lifecycle_summary(d):
                         parts.append(details)
+                    from .requested_fields import missing_statements, requested_roles
+                    if missing := missing_statements(d, requested_roles(getattr(self, "question", ""))):
+                        parts.append(missing)
             elif r["source"] == "routing" and r["status"] == "found":
                 parts.append(self._routing(r["data"]))
             elif r["source"] == "processor_health" and r["status"] == "found":

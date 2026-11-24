@@ -15,7 +15,7 @@ from .clarification import Candidate, Question, ResponseModel, posterior, questi
 from .clarification_demo import TENANT
 from .clarification_study import ASSUMED, catalogue
 
-PROTOCOL = "finbot-conversation-demo-v3"
+PROTOCOL = "finbot-conversation-demo-v4"
 CANDIDATES = tuple(Candidate(c.record_id, c.tenant_id, {**c.attributes, "amount": "200.00", "currency": "USD"})
                    for c in catalogue()["evaluation"][0].candidates)
 SCENARIOS: list[dict] = [
@@ -149,6 +149,70 @@ def extract_details(text: str, pending: Question | None,
     return fields, unknown, issues
 
 
+def record_rows(candidates: tuple[Candidate, ...] = CANDIDATES) -> list[dict]:
+    """The synthetic records behind the conversation catalogue (one row per candidate).
+
+    Transfers are pending with an expected settlement date and no actual date yet; the
+    Willow Repairs card payment was declined; the Harbor Books card payment settled and
+    was partly refunded. These give refund and settlement questions something to answer
+    and something legitimately absent to say "not recorded" about.
+    """
+    rows = []
+    for c in candidates:
+        a = c.attributes
+        row = {"txn_id": c.record_id, "tenant_id": TENANT, "amount": a["amount"], "currency": a["currency"],
+               "created_at": a["date"] + "T12:00:00Z", "merchant": a["merchant"], "payment_type": a["kind"]}
+        if a["kind"] == "Bank transfer":
+            expected = date.fromordinal(date.fromisoformat(a["date"]).toordinal() + 3).isoformat()
+            row.update(status="pending", settlement={"status": "pending", "expected_date": expected})
+        elif a["merchant"] == "Harbor Books":
+            settled = date.fromordinal(date.fromisoformat(a["date"]).toordinal() + 2).isoformat()
+            row.update(status="approved", settlement={"status": "settled", "actual_date": settled},
+                       refund={"status": "succeeded", "amount": "50.00"})
+        else:
+            row.update(status="declined", decline_code="05", processor_response="Do not honor")
+        rows.append(row)
+    return rows
+
+
+# A request, as opposed to a reply that only identifies a payment ("Willow Repairs").
+_REQUEST = re.compile(r"\?|^\s*(?:what|why|when|where|how|which|who|is|are|was|were|has|have|did|does|do|can|could|"
+                      r"will|would|should|please|tell me|check|i want|i need|i'd like)\b|\b(?:hasn't|has not|"
+                      r"didn't|did not|never|still hasn't) (?:arrived|come through|gone through|cleared|settled)\b|"
+                      r"\b(?:help|explain|find out|look into)\b", re.I)
+# Things this read-only assistant cannot do, however politely asked.
+_ACTION = re.compile(r"\b(?:can|could|would|will) you\b[^.?!]{0,30}\b(?:cancel|reverse|refund|dispute|stop|resend|"
+                     r"retry|re-?send|charge ?back)\b|\bplease\b[^.?!]{0,20}\b(?:cancel|reverse|refund|dispute|stop|"
+                     r"resend|retry)\b|\bi (?:want|need) (?:you )?to (?:cancel|reverse|dispute|stop)\b|"
+                     r"\b(?:cancel|reverse|dispute) (?:it|this|that|the|my)\b|\b(?:issue|give|send) me (?:a|my) refund\b",
+                     re.I)
+_PAYMENT_TOPIC = re.compile(r"\b(?:pa(?:y|id|yment)s?|transfer\w*|card|charge\w*|refund\w*|money|transaction\w*|settle\w*|amount\w*|"
+                            r"declin\w*|arriv\w*|bank|merchant|receipt|purchase|bill|txn_\w+)\b|\$", re.I)
+
+
+def support_question(text: str) -> dict | None:
+    """The customer's support request in a message, kept apart from identifying details.
+
+    Returns None for a message that only supplies details. The requested financial fields
+    come from finbot/requested_fields.py; the writer receives the customer's words, and the
+    verifier requires each requested field (or an explicit "not recorded").
+    """
+    from .requested_fields import requested_roles
+    cleaned = text.strip()
+    roles = requested_roles(cleaned)
+    action = bool(_ACTION.search(cleaned))
+    if not (roles or action or _REQUEST.search(cleaned)):
+        return None
+    return {"text": cleaned, "requested": list(roles), "action_request": action,
+            "off_topic": not _PAYMENT_TOPIC.search(cleaned)}
+
+
+OFF_TOPIC = ("I can only help with the payments on this account: their status, amounts, settlement dates "
+             "and refunds. I can't help with that request here.")
+READ_ONLY = ("I can't cancel, reverse, refund or dispute a payment; I can only explain what its record "
+             "shows. Let's identify the payment first.")
+
+
 class Conversation:
     """No scenario ID, task brief or evaluator target enters this engine."""
 
@@ -176,6 +240,7 @@ class Conversation:
         self.unresolved = False
         self.matches = list(candidates)
         self.ranking: list[dict] = []
+        self.question: dict | None = None   # the customer's request, carried to the answer
 
     def indistinguishable(self) -> bool:
         """Two or more remaining records that agree on every attribute a question could ask about."""
@@ -250,6 +315,22 @@ class Conversation:
             raise ValueError("Messages must have 1–500 characters.")
         fields, unknown, issues = extract_details(text, self.pending, self.candidates)
         self.messages.append({"role": "user", "text": text.strip()})
+        asked = support_question(text)
+        if asked and asked["off_topic"] and not fields and not unknown and not self.selected_id:
+            self.trace.append({"event": "off_topic", "text": asked["text"]})
+            self.say(OFF_TOPIC)
+            return
+        if asked:
+            if self.question is None or asked["text"] != self.question["text"]:
+                self.trace.append({"event": "question", "previous": self.question, "current": asked})
+            self.question = asked
+            if asked["action_request"]:
+                self.say(READ_ONLY if not self.selected_id else READ_ONLY.split(";")[0] + "; here is what the record shows.")
+        if asked and self.selected_id and not fields and not unknown and not issues:
+            # A follow-up question about the record already confirmed: no detail changed, so the
+            # selection stands and only the answer is recomputed for the new question.
+            self.answer(self.selected_id, follow_up=True)
+            return
         self.invalidate_answer()
         self.selection_conflict, self.unresolved = None, False
         for key in unknown:
@@ -278,7 +359,6 @@ class Conversation:
         self.selected_id, self.financial = None, None
 
     def confirm(self, record_id: str) -> None:
-        from .demo import run_demo
         if not isinstance(record_id, str) or record_id not in {c.record_id for c in self.candidates} or not self.messages:
             raise ValueError("Choose an authorized record after sending a message.")
         candidate = next(c for c in self.candidates if c.record_id == record_id)
@@ -299,20 +379,37 @@ class Conversation:
             self.trace.append({"event": "selection_conflict", **self.selection_conflict})
             return
         self.pending, self.selected_id, self.unresolved = None, record_id, False
-        rows = [{"txn_id": c.record_id, "tenant_id": TENANT, "amount": c.attributes["amount"], "currency": c.attributes["currency"],
-                 "status": "pending" if c.attributes["kind"] == "Bank transfer" else "declined",
-                 "created_at": c.attributes["date"] + "T12:00:00Z", "merchant": c.attributes["merchant"],
-                 "payment_type": c.attributes["kind"],
-                 **({"decline_code": "05", "processor_response": "Do not honor"}
-                    if c.attributes["kind"] == "Card payment" else {})} for c in self.candidates]
+        self.messages.append({"role": "user", "text": f"Yes, use {record_id}."})
+        self.trace.append({"event": "confirm", "record_id": record_id})
+        self.answer(record_id)
+
+    def writer_question(self, record_id: str) -> str:
+        """The customer's own question, scoped to the confirmed record.
+
+        Other record references in it are neutralized: a question never authorizes a lookup,
+        and the gateway only holds the confirmed record anyway.
+        """
+        if not self.question:
+            return f"What are the recorded status and details of {record_id}?"
+        text = re.sub(r"\btxn_[A-Za-z0-9]+\b", lambda m: m.group(0) if m.group(0) == record_id else "that payment",
+                      self.question["text"])
+        return f"About the confirmed payment {record_id}: {text}"
+
+    def answer(self, record_id: str, follow_up: bool = False) -> None:
+        from .demo import run_demo
+        rows = record_rows(self.candidates)
+        question = self.writer_question(record_id)
         # Only the confirmed record reaches the answering step: the model can ask for another ID,
         # but the gateway answers "not found", so no other record can become evidence.
-        self.financial = run_demo(f"What are the recorded status and details of {record_id}?", self.fault,
-                                  records=[r for r in rows if r["txn_id"] == record_id],
+        self.financial = run_demo(question, self.fault, records=[r for r in rows if r["txn_id"] == record_id],
                                   live=self.live, client=self.client)
-        self.messages.append({"role": "user", "text": f"Yes, use {record_id}."})
-        self.messages.append({"role": "assistant", "text": self.financial["final"]["answer"], "record_id": record_id})
-        self.trace.append({"event": "confirm", "record_id": record_id})
+        self.messages.append({"role": "assistant", "text": self.financial["final"]["answer"], "record_id": record_id,
+                              "question": self.question["text"] if self.question else None,
+                              "writer": self.financial.get("writer"),
+                              "writer_source": self.financial.get("writer_source")})
+        self.trace.append({"event": "answer", "record_id": record_id, "writer_question": question,
+                           "requested": self.question["requested"] if self.question else [],
+                           "follow_up": follow_up})
 
     def resolve_selection(self, record_id: str, choice: str, conflict_id: int) -> None:
         """Acknowledge only the currently displayed conflict, never a generic override.
@@ -354,6 +451,7 @@ class Conversation:
                 "pending": asdict(self.pending) if self.pending else None, "ranking": self.ranking,
                 "selection_conflict": self.selection_conflict,
                 "questions_asked": len(self.asked), "selected_id": self.selected_id,
+                "question": self.question,
                 "indistinguishable": self.indistinguishable() and not self.selected_id,
                 "unresolved": self.unresolved, "financial": self.financial, "trace": self.trace}
 

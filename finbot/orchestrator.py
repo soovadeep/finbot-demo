@@ -55,7 +55,6 @@ from .policy_documents import (
     PolicyDocumentVerifier,
 )
 from .provenance import trusted_blob
-from .recordanswer import record_answer
 from .resilience import GuardrailUnavailable, ServiceUnavailable
 from .security_gateway import SecurityEvents, SecurityGateway, load_rules
 from .tickets import InMemoryTickets, TicketStore
@@ -476,11 +475,13 @@ class Chatbot:
             return out, retry_log
 
         from .comparison import ComparisonCoverageVerifier, comparison_record_answer
+        from .requested_fields import RequestedInformationVerifier, complete_record_answer
         comparison = ComparisonCoverageVerifier(text)
+        requested = RequestedInformationVerifier(text)
         fallback = None
         if self.settings.record_fallback:
             fallback = (lambda log: comparison_record_answer(log, comparison.required_ids)) if comparison.required_ids else (
-                lambda log: record_answer(log, cs.memory.focus))
+                lambda log: complete_record_answer(log, cs.memory.focus, requested.roles))
 
         def review_policy(payload: dict) -> str:
             # Isolated review: no conversation history, no tools, and the same turn deadline.
@@ -501,7 +502,7 @@ class Chatbot:
         with self.telemetry.span("finbot.verify") as sp:
             from .semantic_verification import configured_verifier
             gate = self.gate.run(answer, tool_log, lambda: cs.memory.focus, regenerate, fallback,
-                                 extra_verifiers=(comparison, PolicyDocumentVerifier(self.settings.policy_verification,
+                                 extra_verifiers=(comparison, requested, PolicyDocumentVerifier(self.settings.policy_verification,
                                                                          review_policy, as_of=self.today(),
                                                                          max_age_days=self.settings.kb_max_age_days,
                                                                          question=text),

@@ -6,10 +6,10 @@
   "human_participants": 0,
   "new_model_calls": 0,
   "sources": {
-    "finbot/clarification_conversation.py": "59dfbfbfce57b46256976637fa5a02986d86ba36e41bb1247b34e444a09ac32e",
-    "finbot/demo.py": "981d614519fed78487ca989e1fdedcf8cfbc8a0498eedef42e4a0f0cbe280b8b",
+    "finbot/clarification_conversation.py": "e17b9ddb070d8d5fa702b68b661741c52c37cf4ff2aaa96e23679f3a392b56cd",
+    "finbot/demo.py": "75f0ae75e7695f726c08d9708639d3a1b8b67b754892e208be64dc5dd16c04c3",
     "finbot/demo_assets/conversation.js": "96675b6e4a6cb0e0455bcd08a5500ed4222a0878532cda6a9a1c0ff1708ac576",
-    "scripts/naacl2027/evaluate_conversation.py": "0ac154140832fe8d9b6fa354dbbcbe99141a138906e45bf518a5a2fead54f990"
+    "scripts/naacl2027/evaluate_conversation.py": "f027e18353bc60b2c8bfbf76bec6ad3b46038112ae9b29fc34a18b5e9af18712"
   },
   "runs": 60,
   "regressions_passed": 60,
@@ -36,7 +36,7 @@
       "selection_outcome": "correct",
       "questions": 2,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "passed",
       "answer_field_checks": {
         "record_id": true,
@@ -66,7 +66,7 @@
       "selection_outcome": "correct",
       "questions": 2,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
         "record_id": true,
@@ -96,7 +96,7 @@
       "selection_outcome": "correct",
       "questions": 2,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
         "record_id": true,
@@ -126,7 +126,7 @@
       "selection_outcome": "correct",
       "questions": 2,
       "selection_conflict": null,
-      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet.",
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "record_fallback",
       "answer_field_checks": {
         "record_id": true,
@@ -156,7 +156,7 @@
       "selection_outcome": "correct",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "passed",
       "answer_field_checks": {
         "record_id": true,
@@ -186,7 +186,7 @@
       "selection_outcome": "correct",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
         "record_id": true,
@@ -216,7 +216,7 @@
       "selection_outcome": "correct",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
         "record_id": true,
@@ -246,7 +246,7 @@
       "selection_outcome": "correct",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet.",
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "record_fallback",
       "answer_field_checks": {
         "record_id": true,
@@ -276,7 +276,7 @@
       "selection_outcome": "correct",
       "questions": 1,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "passed",
       "answer_field_checks": {
         "record_id": true,
@@ -306,7 +306,7 @@
       "selection_outcome": "correct",
       "questions": 1,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
         "record_id": true,
@@ -336,7 +336,7 @@
       "selection_outcome": "correct",
       "questions": 1,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
         "record_id": true,
@@ -366,7 +366,7 @@
       "selection_outcome": "correct",
       "questions": 1,
       "selection_conflict": null,
-      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet.",
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "record_fallback",
       "answer_field_checks": {
         "record_id": true,
@@ -812,7 +812,7 @@
       "selection_outcome": "wrong",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "passed",
       "answer_field_checks": {
         "record_id": true,
@@ -842,7 +842,7 @@
       "selection_outcome": "wrong",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
         "record_id": true,
@@ -872,7 +872,7 @@
       "selection_outcome": "wrong",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
         "record_id": true,
@@ -902,7 +902,7 @@
       "selection_outcome": "wrong",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet.",
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "record_fallback",
       "answer_field_checks": {
         "record_id": true,
@@ -1148,7 +1148,7 @@
       "selection_outcome": "correct",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "passed",
       "answer_field_checks": {
         "record_id": true,
@@ -1178,7 +1178,7 @@
       "selection_outcome": "correct",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
         "record_id": true,
@@ -1208,7 +1208,7 @@
       "selection_outcome": "correct",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
         "record_id": true,
@@ -1238,7 +1238,7 @@
       "selection_outcome": "correct",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet.",
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "record_fallback",
       "answer_field_checks": {
         "record_id": true,
@@ -1388,7 +1388,7 @@
       "selection_outcome": "correct",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "passed",
       "answer_field_checks": {
         "record_id": true,
@@ -1418,7 +1418,7 @@
       "selection_outcome": "correct",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
         "record_id": true,
@@ -1448,7 +1448,7 @@
       "selection_outcome": "correct",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD.",
+      "answer": "Transaction txn_EMIX0001 was pending for 200.00 USD. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "repaired",
       "answer_field_checks": {
         "record_id": true,
@@ -1478,7 +1478,7 @@
       "selection_outcome": "correct",
       "questions": 0,
       "selection_conflict": null,
-      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet.",
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_EMIX0001 for 200.00 USD has status pending: its outcome is not confirmed yet. Expected settlement date: 2026-11-18. An actual settlement date is not recorded.",
       "answer_outcome": "record_fallback",
       "answer_field_checks": {
         "record_id": true,

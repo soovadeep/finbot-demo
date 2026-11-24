@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from finbot.clarification_conversation import CANDIDATES, SCENARIOS, run_conversation  # noqa: E402
+from finbot.clarification_conversation import SCENARIOS, record_rows, run_conversation  # noqa: E402
 
 PROTOCOL = "finbot-deployed-workflow-replay-v2"
 
@@ -91,8 +91,7 @@ def score(case: dict, result: dict) -> dict:
                   if m.get("record_id") and m["record_id"] != selected)}
     field_checks = None
     if selected:
-        candidate = next(c for c in CANDIDATES if c.record_id == selected)
-        status = "pending" if candidate.attributes["kind"] == "Bank transfer" else "declined"
+        status = next(r["status"] for r in record_rows() if r["txn_id"] == selected)
         found = [c["result"]["data"] for c in financial["evidence"] if c["result"]["status"] == "found"]
         # Independent, deliberately narrow checks of the scripted answer; the gate verdict
         # is not used as a factuality label. These do not adjudicate arbitrary prose.
