@@ -1,402 +1,403 @@
 {
- "answers": 91,
- "combined_agreement": 79,
- "field_agreement": {
-  "supported": 84,
-  "complete": 84
- },
- "note": "Construction labels are the expected outcomes fixed when each pair was authored; the second labeller was blind to them.",
- "disagreements": [
-  {
-   "key": "3cac16f22853f35341aa740062cf871729d203cb4edf5f4c40b82e1309d816a0",
-   "cases": [
-    {
-     "pair": "payment_role-0",
-     "side": "corrupted",
-     "supported": false,
-     "complete": true
-    }
-   ],
-   "construction_ok": false,
-   "second_ok": true,
-   "second_rationale": ""
+  "answers": 91,
+  "combined_agreement": 79,
+  "field_agreement": {
+    "supported": 84,
+    "complete": 84
   },
-  {
-   "key": "097793536afd032378d8c3f37d3c6efece02a2a55070cb78731129c884e05c7b",
-   "cases": [
+  "note": "Construction labels are the expected outcomes fixed when each pair was authored; the second labeller was blind to them.",
+  "disagreements": [
     {
-     "pair": "stale_snapshot-0",
-     "side": "corrupted",
-     "supported": false,
-     "complete": true
-    }
-   ],
-   "construction_ok": false,
-   "second_ok": true,
-   "second_rationale": ""
-  },
-  {
-   "key": "4fae32fe6daf57b906d50ef34f1450a33810013330a9dfd14c210ee584796505",
-   "cases": [
+      "key": "3cac16f22853f35341aa740062cf871729d203cb4edf5f4c40b82e1309d816a0",
+      "cases": [
+        {
+          "pair": "payment_role-0",
+          "side": "corrupted",
+          "supported": false,
+          "complete": true
+        }
+      ],
+      "construction_ok": false,
+      "second_ok": true,
+      "second_rationale": ""
+    },
     {
-     "pair": "policy_negation-0",
-     "side": "corrupted",
-     "supported": false,
-     "complete": true
-    }
-   ],
-   "construction_ok": false,
-   "second_ok": true,
-   "second_rationale": ""
-  },
-  {
-   "key": "231323f032d97e351c6c3132da878e1edfab08663b79e10f5e976c9a6f19cab7",
-   "cases": [
+      "key": "097793536afd032378d8c3f37d3c6efece02a2a55070cb78731129c884e05c7b",
+      "cases": [
+        {
+          "pair": "stale_snapshot-0",
+          "side": "corrupted",
+          "supported": false,
+          "complete": true
+        }
+      ],
+      "construction_ok": false,
+      "second_ok": true,
+      "second_rationale": ""
+    },
     {
-     "pair": "policy_exception-0",
-     "side": "corrupted",
-     "supported": true,
-     "complete": false
-    }
-   ],
-   "construction_ok": false,
-   "second_ok": true,
-   "second_rationale": ""
-  },
-  {
-   "key": "14fd6d13da8dc3b47ebc1357d833aada6d4f26019a449d720b1ca731099f2b36",
-   "cases": [
+      "key": "4fae32fe6daf57b906d50ef34f1450a33810013330a9dfd14c210ee584796505",
+      "cases": [
+        {
+          "pair": "policy_negation-0",
+          "side": "corrupted",
+          "supported": false,
+          "complete": true
+        }
+      ],
+      "construction_ok": false,
+      "second_ok": true,
+      "second_rationale": ""
+    },
     {
-     "pair": "wrong_policy_quote-0",
-     "side": "corrupted",
-     "supported": true,
-     "complete": false
-    }
-   ],
-   "construction_ok": false,
-   "second_ok": true,
-   "second_rationale": ""
-  },
-  {
-   "key": "3196461de91aeb541224c0bac62339d58eea7bc891aba7e5d6129ccd0aea4625",
-   "cases": [
+      "key": "231323f032d97e351c6c3132da878e1edfab08663b79e10f5e976c9a6f19cab7",
+      "cases": [
+        {
+          "pair": "policy_exception-0",
+          "side": "corrupted",
+          "supported": true,
+          "complete": false
+        }
+      ],
+      "construction_ok": false,
+      "second_ok": true,
+      "second_rationale": ""
+    },
     {
-     "pair": "policy_negation-1",
-     "side": "corrupted",
-     "supported": false,
-     "complete": true
-    }
-   ],
-   "construction_ok": false,
-   "second_ok": true,
-   "second_rationale": ""
-  },
-  {
-   "key": "298a9e57e9576b2462e90c48ea6cf06e7e58d71822ca6c23babf79856538f31c",
-   "cases": [
+      "key": "14fd6d13da8dc3b47ebc1357d833aada6d4f26019a449d720b1ca731099f2b36",
+      "cases": [
+        {
+          "pair": "wrong_policy_quote-0",
+          "side": "corrupted",
+          "supported": true,
+          "complete": false
+        }
+      ],
+      "construction_ok": false,
+      "second_ok": true,
+      "second_rationale": ""
+    },
     {
-     "pair": "refund_role-2",
-     "side": "corrupted",
-     "supported": false,
-     "complete": true
-    }
-   ],
-   "construction_ok": false,
-   "second_ok": true,
-   "second_rationale": ""
-  },
-  {
-   "key": "3987da5650f42c484292c0dcf2ac6b830583cd56934bd3945e343812604659f6",
-   "cases": [
+      "key": "3196461de91aeb541224c0bac62339d58eea7bc891aba7e5d6129ccd0aea4625",
+      "cases": [
+        {
+          "pair": "policy_negation-1",
+          "side": "corrupted",
+          "supported": false,
+          "complete": true
+        }
+      ],
+      "construction_ok": false,
+      "second_ok": true,
+      "second_rationale": ""
+    },
     {
-     "pair": "policy_negation-2",
-     "side": "corrupted",
-     "supported": false,
-     "complete": true
-    }
-   ],
-   "construction_ok": false,
-   "second_ok": true,
-   "second_rationale": ""
-  },
-  {
-   "key": "28a196d8d91609a500f523c8a79f7acb1057e04fb55beb0ff89ff74ab2cc8252",
-   "cases": [
+      "key": "298a9e57e9576b2462e90c48ea6cf06e7e58d71822ca6c23babf79856538f31c",
+      "cases": [
+        {
+          "pair": "refund_role-2",
+          "side": "corrupted",
+          "supported": false,
+          "complete": true
+        }
+      ],
+      "construction_ok": false,
+      "second_ok": true,
+      "second_rationale": ""
+    },
     {
-     "pair": "policy_exception-2",
-     "side": "corrupted",
-     "supported": true,
-     "complete": false
-    }
-   ],
-   "construction_ok": false,
-   "second_ok": true,
-   "second_rationale": ""
-  },
-  {
-   "key": "6d340456c48f5337a6eea20ee605332544e5eba367abab382a23229d90771644",
-   "cases": [
+      "key": "3987da5650f42c484292c0dcf2ac6b830583cd56934bd3945e343812604659f6",
+      "cases": [
+        {
+          "pair": "policy_negation-2",
+          "side": "corrupted",
+          "supported": false,
+          "complete": true
+        }
+      ],
+      "construction_ok": false,
+      "second_ok": true,
+      "second_rationale": ""
+    },
     {
-     "pair": "wrong_policy_quote-2",
-     "side": "corrupted",
-     "supported": true,
-     "complete": false
-    }
-   ],
-   "construction_ok": false,
-   "second_ok": true,
-   "second_rationale": ""
-  },
-  {
-   "key": "2bfbe3e53345941ca3dac862d3a31fa3cedef9ffe279e7ea7fb685eb846374b5",
-   "cases": [
+      "key": "28a196d8d91609a500f523c8a79f7acb1057e04fb55beb0ff89ff74ab2cc8252",
+      "cases": [
+        {
+          "pair": "policy_exception-2",
+          "side": "corrupted",
+          "supported": true,
+          "complete": false
+        }
+      ],
+      "construction_ok": false,
+      "second_ok": true,
+      "second_rationale": ""
+    },
     {
-     "pair": "policy_exception-3",
-     "side": "corrupted",
-     "supported": true,
-     "complete": false
-    }
-   ],
-   "construction_ok": false,
-   "second_ok": true,
-   "second_rationale": ""
-  },
-  {
-   "key": "fc8c9a0354bd8c331e1b84fc8e3754353528a1e67c8cc458fae7a3ff696f9d74",
-   "cases": [
+      "key": "6d340456c48f5337a6eea20ee605332544e5eba367abab382a23229d90771644",
+      "cases": [
+        {
+          "pair": "wrong_policy_quote-2",
+          "side": "corrupted",
+          "supported": true,
+          "complete": false
+        }
+      ],
+      "construction_ok": false,
+      "second_ok": true,
+      "second_rationale": ""
+    },
     {
-     "pair": "wrong_policy_quote-3",
-     "side": "corrupted",
-     "supported": true,
-     "complete": false
+      "key": "2bfbe3e53345941ca3dac862d3a31fa3cedef9ffe279e7ea7fb685eb846374b5",
+      "cases": [
+        {
+          "pair": "policy_exception-3",
+          "side": "corrupted",
+          "supported": true,
+          "complete": false
+        }
+      ],
+      "construction_ok": false,
+      "second_ok": true,
+      "second_rationale": ""
+    },
+    {
+      "key": "fc8c9a0354bd8c331e1b84fc8e3754353528a1e67c8cc458fae7a3ff696f9d74",
+      "cases": [
+        {
+          "pair": "wrong_policy_quote-3",
+          "side": "corrupted",
+          "supported": true,
+          "complete": false
+        }
+      ],
+      "construction_ok": false,
+      "second_ok": true,
+      "second_rationale": ""
     }
-   ],
-   "construction_ok": false,
-   "second_ok": true,
-   "second_rationale": ""
+  ],
+  "adjudication": {
+    "date": "2026-11-24",
+    "procedure": "Final labels after adjudicating the 12 blind disagreements with the labeller (shown the expected label and introduced error). Blind labels are unchanged in labels-second.json.",
+    "now_judged_wrong": 12,
+    "items": [
+      {
+        "key": "6d340456c48f5337a6eea20ee605332544e5eba367abab382a23229d90771644",
+        "pair": "wrong_policy_quote-2",
+        "expected": {
+          "supported": true,
+          "complete": false
+        },
+        "first": {
+          "supported": true,
+          "complete": true
+        },
+        "second_look": {
+          "supported": true,
+          "complete": false
+        },
+        "rationale": "",
+        "now_agrees": true
+      },
+      {
+        "key": "097793536afd032378d8c3f37d3c6efece02a2a55070cb78731129c884e05c7b",
+        "pair": "stale_snapshot-0",
+        "expected": {
+          "supported": false,
+          "complete": true
+        },
+        "first": {
+          "supported": true,
+          "complete": true
+        },
+        "second_look": {
+          "supported": false,
+          "complete": true
+        },
+        "rationale": "wrong amount",
+        "now_agrees": true
+      },
+      {
+        "key": "4fae32fe6daf57b906d50ef34f1450a33810013330a9dfd14c210ee584796505",
+        "pair": "policy_negation-0",
+        "expected": {
+          "supported": false,
+          "complete": true
+        },
+        "first": {
+          "supported": true,
+          "complete": true
+        },
+        "second_look": {
+          "supported": false,
+          "complete": true
+        },
+        "rationale": "",
+        "now_agrees": true
+      },
+      {
+        "key": "298a9e57e9576b2462e90c48ea6cf06e7e58d71822ca6c23babf79856538f31c",
+        "pair": "refund_role-2",
+        "expected": {
+          "supported": false,
+          "complete": true
+        },
+        "first": {
+          "supported": true,
+          "complete": true
+        },
+        "second_look": {
+          "supported": false,
+          "complete": true
+        },
+        "rationale": "",
+        "now_agrees": true
+      },
+      {
+        "key": "28a196d8d91609a500f523c8a79f7acb1057e04fb55beb0ff89ff74ab2cc8252",
+        "pair": "policy_exception-2",
+        "expected": {
+          "supported": true,
+          "complete": false
+        },
+        "first": {
+          "supported": true,
+          "complete": true
+        },
+        "second_look": {
+          "supported": true,
+          "complete": false
+        },
+        "rationale": "",
+        "now_agrees": true
+      },
+      {
+        "key": "3987da5650f42c484292c0dcf2ac6b830583cd56934bd3945e343812604659f6",
+        "pair": "policy_negation-2",
+        "expected": {
+          "supported": false,
+          "complete": true
+        },
+        "first": {
+          "supported": true,
+          "complete": true
+        },
+        "second_look": {
+          "supported": false,
+          "complete": true
+        },
+        "rationale": "",
+        "now_agrees": true
+      },
+      {
+        "key": "fc8c9a0354bd8c331e1b84fc8e3754353528a1e67c8cc458fae7a3ff696f9d74",
+        "pair": "wrong_policy_quote-3",
+        "expected": {
+          "supported": true,
+          "complete": false
+        },
+        "first": {
+          "supported": true,
+          "complete": true
+        },
+        "second_look": {
+          "supported": true,
+          "complete": false
+        },
+        "rationale": "",
+        "now_agrees": true
+      },
+      {
+        "key": "3196461de91aeb541224c0bac62339d58eea7bc891aba7e5d6129ccd0aea4625",
+        "pair": "policy_negation-1",
+        "expected": {
+          "supported": false,
+          "complete": true
+        },
+        "first": {
+          "supported": true,
+          "complete": true
+        },
+        "second_look": {
+          "supported": false,
+          "complete": true
+        },
+        "rationale": "",
+        "now_agrees": true
+      },
+      {
+        "key": "14fd6d13da8dc3b47ebc1357d833aada6d4f26019a449d720b1ca731099f2b36",
+        "pair": "wrong_policy_quote-0",
+        "expected": {
+          "supported": true,
+          "complete": false
+        },
+        "first": {
+          "supported": true,
+          "complete": true
+        },
+        "second_look": {
+          "supported": true,
+          "complete": false
+        },
+        "rationale": "",
+        "now_agrees": true
+      },
+      {
+        "key": "3cac16f22853f35341aa740062cf871729d203cb4edf5f4c40b82e1309d816a0",
+        "pair": "payment_role-0",
+        "expected": {
+          "supported": false,
+          "complete": true
+        },
+        "first": {
+          "supported": true,
+          "complete": true
+        },
+        "second_look": {
+          "supported": false,
+          "complete": true
+        },
+        "rationale": "wrong amount",
+        "now_agrees": true
+      },
+      {
+        "key": "2bfbe3e53345941ca3dac862d3a31fa3cedef9ffe279e7ea7fb685eb846374b5",
+        "pair": "policy_exception-3",
+        "expected": {
+          "supported": true,
+          "complete": false
+        },
+        "first": {
+          "supported": true,
+          "complete": true
+        },
+        "second_look": {
+          "supported": true,
+          "complete": false
+        },
+        "rationale": "",
+        "now_agrees": true
+      },
+      {
+        "key": "231323f032d97e351c6c3132da878e1edfab08663b79e10f5e976c9a6f19cab7",
+        "pair": "policy_exception-0",
+        "expected": {
+          "supported": true,
+          "complete": false
+        },
+        "first": {
+          "supported": true,
+          "complete": true
+        },
+        "second_look": {
+          "supported": true,
+          "complete": false
+        },
+        "rationale": "",
+        "now_agrees": true
+      }
+    ],
+    "final_agreement": "91/91"
   }
- ],
- "second_look": {
-  "date": "2026-11-24",
-  "procedure": "The same labeller re-judged only the 12 disagreements, now shown her first label, the expected label and the introduced error. Not blind. Blind labels are kept unchanged in labels-second.json.",
-  "now_judged_wrong": 12,
-  "items": [
-   {
-    "key": "6d340456c48f5337a6eea20ee605332544e5eba367abab382a23229d90771644",
-    "pair": "wrong_policy_quote-2",
-    "expected": {
-     "supported": true,
-     "complete": false
-    },
-    "first": {
-     "supported": true,
-     "complete": true
-    },
-    "second_look": {
-     "supported": true,
-     "complete": false
-    },
-    "rationale": "",
-    "now_agrees": true
-   },
-   {
-    "key": "097793536afd032378d8c3f37d3c6efece02a2a55070cb78731129c884e05c7b",
-    "pair": "stale_snapshot-0",
-    "expected": {
-     "supported": false,
-     "complete": true
-    },
-    "first": {
-     "supported": true,
-     "complete": true
-    },
-    "second_look": {
-     "supported": false,
-     "complete": true
-    },
-    "rationale": "wrong amount",
-    "now_agrees": true
-   },
-   {
-    "key": "4fae32fe6daf57b906d50ef34f1450a33810013330a9dfd14c210ee584796505",
-    "pair": "policy_negation-0",
-    "expected": {
-     "supported": false,
-     "complete": true
-    },
-    "first": {
-     "supported": true,
-     "complete": true
-    },
-    "second_look": {
-     "supported": false,
-     "complete": true
-    },
-    "rationale": "",
-    "now_agrees": true
-   },
-   {
-    "key": "298a9e57e9576b2462e90c48ea6cf06e7e58d71822ca6c23babf79856538f31c",
-    "pair": "refund_role-2",
-    "expected": {
-     "supported": false,
-     "complete": true
-    },
-    "first": {
-     "supported": true,
-     "complete": true
-    },
-    "second_look": {
-     "supported": false,
-     "complete": true
-    },
-    "rationale": "",
-    "now_agrees": true
-   },
-   {
-    "key": "28a196d8d91609a500f523c8a79f7acb1057e04fb55beb0ff89ff74ab2cc8252",
-    "pair": "policy_exception-2",
-    "expected": {
-     "supported": true,
-     "complete": false
-    },
-    "first": {
-     "supported": true,
-     "complete": true
-    },
-    "second_look": {
-     "supported": true,
-     "complete": false
-    },
-    "rationale": "",
-    "now_agrees": true
-   },
-   {
-    "key": "3987da5650f42c484292c0dcf2ac6b830583cd56934bd3945e343812604659f6",
-    "pair": "policy_negation-2",
-    "expected": {
-     "supported": false,
-     "complete": true
-    },
-    "first": {
-     "supported": true,
-     "complete": true
-    },
-    "second_look": {
-     "supported": false,
-     "complete": true
-    },
-    "rationale": "",
-    "now_agrees": true
-   },
-   {
-    "key": "fc8c9a0354bd8c331e1b84fc8e3754353528a1e67c8cc458fae7a3ff696f9d74",
-    "pair": "wrong_policy_quote-3",
-    "expected": {
-     "supported": true,
-     "complete": false
-    },
-    "first": {
-     "supported": true,
-     "complete": true
-    },
-    "second_look": {
-     "supported": true,
-     "complete": false
-    },
-    "rationale": "",
-    "now_agrees": true
-   },
-   {
-    "key": "3196461de91aeb541224c0bac62339d58eea7bc891aba7e5d6129ccd0aea4625",
-    "pair": "policy_negation-1",
-    "expected": {
-     "supported": false,
-     "complete": true
-    },
-    "first": {
-     "supported": true,
-     "complete": true
-    },
-    "second_look": {
-     "supported": false,
-     "complete": true
-    },
-    "rationale": "",
-    "now_agrees": true
-   },
-   {
-    "key": "14fd6d13da8dc3b47ebc1357d833aada6d4f26019a449d720b1ca731099f2b36",
-    "pair": "wrong_policy_quote-0",
-    "expected": {
-     "supported": true,
-     "complete": false
-    },
-    "first": {
-     "supported": true,
-     "complete": true
-    },
-    "second_look": {
-     "supported": true,
-     "complete": false
-    },
-    "rationale": "",
-    "now_agrees": true
-   },
-   {
-    "key": "3cac16f22853f35341aa740062cf871729d203cb4edf5f4c40b82e1309d816a0",
-    "pair": "payment_role-0",
-    "expected": {
-     "supported": false,
-     "complete": true
-    },
-    "first": {
-     "supported": true,
-     "complete": true
-    },
-    "second_look": {
-     "supported": false,
-     "complete": true
-    },
-    "rationale": "wrong amount",
-    "now_agrees": true
-   },
-   {
-    "key": "2bfbe3e53345941ca3dac862d3a31fa3cedef9ffe279e7ea7fb685eb846374b5",
-    "pair": "policy_exception-3",
-    "expected": {
-     "supported": true,
-     "complete": false
-    },
-    "first": {
-     "supported": true,
-     "complete": true
-    },
-    "second_look": {
-     "supported": true,
-     "complete": false
-    },
-    "rationale": "",
-    "now_agrees": true
-   },
-   {
-    "key": "231323f032d97e351c6c3132da878e1edfab08663b79e10f5e976c9a6f19cab7",
-    "pair": "policy_exception-0",
-    "expected": {
-     "supported": true,
-     "complete": false
-    },
-    "first": {
-     "supported": true,
-     "complete": true
-    },
-    "second_look": {
-     "supported": true,
-     "complete": false
-    },
-    "rationale": "",
-    "now_agrees": true
-   }
-  ]
- }
 }

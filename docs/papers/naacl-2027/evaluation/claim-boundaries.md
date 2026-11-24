@@ -9,7 +9,7 @@ the four authentic off-topic quotations in a development replay of the same exam
 48/48 corruptions and 43/43 new rejections, with unchanged false rejections. This is not
 unseen accuracy or general semantic relevance. Original artifacts remain intact. A blind
 co-author agrees with the construction labels on 79/91 answers; all 12 differences are
-corrupted answers she accepted; on a non-blind second look she judged all 12 wrong. The live v2 study already has two labellers.
+corrupted answers she accepted; adjudication resolved all 12 (91/91). The live v2 study already has two labellers.
 
 Context admission and rollover have nine offline software tests. The byte-based prompt
 estimate is conservative rather than a provider-exact token count. Neither those contracts
