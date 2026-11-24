@@ -4,6 +4,9 @@ An inspectable AI assistant for evidence-grounded payment support.
 Code, data and demo for the NAACL 2027 System Demonstrations paper by Sandip Nandi,
 Apurba Bose, Aishwarya Bose and Soovadeep Bakshi.
 
+See the [prioritized next steps](docs/papers/naacl-2027/next-steps.md) for original-question
+handling, answer coverage, live evaluation, demo synchronization and a citable release.
+
 **Try it:** open the hosted demo at <https://finbot-demo-20852907589.us-central1.run.app/>.
 Nothing to install. The [walkthrough](docs/papers/naacl-2027/reviewer-guide.md) lists
 every scenario and what to look for. The [paper](docs/papers/naacl-2027/finbot-naacl2027.pdf) is in the repository. The 2.5-minute demo video is

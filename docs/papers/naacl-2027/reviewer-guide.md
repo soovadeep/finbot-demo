@@ -59,7 +59,7 @@ For an occupied port, use `python -m finbot.demo --port 8766` and open the print
 
 ## Try a contradictory selection in the conversation
 
-On the evaluation branch (`git checkout review/naacl-demo-evaluation`), open the local conversation
+On the current `main` branch, open the local conversation
 and choose **A selection conflicts with your message**. Send the preset message about the $200
 card payment to Willow Repairs. Expand **Other records** and select the Willow Repairs bank transfer.
 The answer pauses and the prompt displays the conflicting type. Try:
@@ -71,7 +71,7 @@ The answer pauses and the prompt displays the conflicting type. Try:
 
 Selecting a conflicting alternative after an answer marks the old answer superseded. Tentative
 recollections do not block selection. A mistaken selection consistent with supplied details remains
-possible. This new behavior requires this branch's code; a branch push does not update the hosted service.
+possible. This behavior is included in `main`; merging code does not itself update the hosted service.
 The [capability-to-evidence map](evaluation/README.md#capability-to-evidence-map) identifies which
 features have component experiments, regression checks or prepared examples only.
 
@@ -169,7 +169,7 @@ Delete the downloaded JSON when no longer needed.
 
 ## Reproduce varied policy and comparison checks
 
-On `review/naacl-demo-evaluation`, run `python scripts/naacl2027/evaluate_support.py` without
+On current `main`, run `python scripts/naacl2027/evaluate_support.py` without
 starting a server. It saves `results/naacl2027/varied-support-fixed.json`, including full local
 inspector traces, six additional synthetic policy fixtures, matched drafts and expected fields.
 See [the results and concrete examples](evaluation/varied-support.md): after fixes, 28/28 comparison

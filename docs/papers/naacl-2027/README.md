@@ -9,6 +9,7 @@ cited policy answers, and inspectable verification and recovery. The inspector's
 and comparison scenarios are distinguished from the conversation's confirmed-record summaries.
 
 - [Reviewer guide](reviewer-guide.md): the hosted demo, the local demo and what to try.
+- [Prioritized next steps](next-steps.md): remaining implementation, evaluation and submission work.
 - [Paper (PDF)](finbot-naacl2027.pdf)
 - [Paper source](paper/main.tex): LaTeX in the official ACL style (see [TEMPLATE.md](paper/TEMPLATE.md)).
 - [Paper details](evaluation/paper-details.md): prompts, settings and extra results the
