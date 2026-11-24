@@ -24,7 +24,10 @@ blank judgments and no mutation names, side labels or verifier decisions. A blin
 construction labels on 79/91 (support 84/91, completeness 84/91). All 12 differences are
 corrupted answers she accepted: reversed policy rules, dropped exceptions, off-code quotes,
 swapped payment/refund roles and a superseded refund (`label-agreement.json`). She rejected
-no clean answer. Do not substitute these expectations for the two labellers'
+no clean answer. In a later, non-blind second look at only those 12 (shown her first label,
+the expected label and the introduced error) she judged all 12 wrong, matching the
+expectations. The blind labels in `labels-second.json` are unchanged and remain the reported
+agreement figure. Do not substitute these expectations for the two labellers'
 judgments on the separate live v2 study.
 
 ## Results on the frozen implementation
