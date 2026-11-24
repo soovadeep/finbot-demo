@@ -1,0 +1,6 @@
+{
+  "model": "claude-haiku-5-5",
+  "calls": 4464,
+  "input_tokens": 1483047,
+  "output_tokens": 50191
+}

@@ -1,0 +1,440 @@
+{
+ "provenance": {
+  "labeller": "The AI assistant working for the authors (Claude), provisional",
+  "independence": "Not independent: the labeller wrote the cases and the fallback, and saw the gate outcomes before labelling.",
+  "date": "2026-11-24",
+  "rubric": "Judge each answer against its records and the policy pages only. supported: every claim agrees with the evidence, in the right role. complete: it gives what was asked that the evidence contains, or says it is not there."
+ },
+ "items": [
+  {
+   "key": "cmp-amounts:96826d6622a4",
+   "case": "cmp-amounts",
+   "question": "What are the amounts and currencies of txn_FRESH2004 and txn_FRESH2010?",
+   "answer": "The amounts and currencies of txn_FRESH2004 and txn_FRESH2010 are as follows:\n- txn_FRESH2004: \u20ac19.99\n- txn_FRESH2010: $1200.00 CAD",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "cmp-declines:c8100e0e6421",
+   "case": "cmp-declines",
+   "question": "Why were txn_FRESH2005 and txn_FRESH2006 each declined?",
+   "answer": "The transaction txn_FRESH2006 was declined with a decline code of 05, which means the issuing bank declined without a specific reason. The merchant cannot fix this; the cardholder must contact their bank or use another card. Do not retry more than once in 24 hours.\n\nThe transaction txn_FRESH2005 was declined with a decline code of 51, which means the card has insufficient available balance. A single delayed retry is allowed under policy. \n\nPlease let me know if you need further assistance.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "cmp-refunds:e80abdbec0d2",
+   "case": "cmp-refunds",
+   "question": "Compare the refunds on txn_FRESH2001 and txn_FRESH2009.",
+   "answer": "For txn_FRESH2001, the status is \"approved\" and the refund amount is $12.50. For txn_FRESH2009, the status is \"refunded\" and the refund amount is $48.00.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "cmp-refunds:fdafc76f77e2",
+   "case": "cmp-refunds",
+   "question": "Compare the refunds on txn_FRESH2001 and txn_FRESH2009.",
+   "answer": "The refund for txn_FRESH2009 was $48.00, while the refund for txn_FRESH2001 was $12.50.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "cmp-settled:6faccac82320",
+   "case": "cmp-settled",
+   "question": "Of txn_FRESH2003 and txn_FRESH2011, which has settled?",
+   "answer": "txn_FRESH2011 has settled.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Names the settled record; the question does not require the other record's details.",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "nodoc-chargeback:e461a5ba051a",
+   "case": "nodoc-chargeback",
+   "question": "How long does a customer have to file a chargeback?",
+   "answer": "I couldn't verify that from the retrieved policy documents.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "nodoc-fx:e461a5ba051a",
+   "case": "nodoc-fx",
+   "question": "What exchange-rate markup do you apply to foreign payments?",
+   "answer": "I couldn't verify that from the retrieved policy documents.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-05-fix:4971c8afcdf9",
+   "case": "pol-05-fix",
+   "question": "Can the merchant do anything to fix a code 05 decline?",
+   "answer": "The merchant cannot fix a code 05 decline. According to the knowledge base (https://wiki.example.com/decline-codes), the issuing bank declined without a specific reason, and the cardholder must contact their bank or use another card. The merchant should not retry more than once in 24 hours.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-05-fix:62fccfd9200a",
+   "case": "pol-05-fix",
+   "question": "Can the merchant do anything to fix a code 05 decline?",
+   "answer": "I couldn't verify a paraphrase, so here is the policy text as written.\n\nThe issuing bank declined without a specific reason. The merchant cannot fix this; the cardholder must contact their bank or use another card. Do not retry more than once in 24 hours. (source: https://wiki.example.com/decline-codes, updated 2026-10-01)",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-05-meaning:62fccfd9200a",
+   "case": "pol-05-meaning",
+   "question": "What does a 'do not honor' decline mean?",
+   "answer": "I couldn't verify a paraphrase, so here is the policy text as written.\n\nThe issuing bank declined without a specific reason. The merchant cannot fix this; the cardholder must contact their bank or use another card. Do not retry more than once in 24 hours. (source: https://wiki.example.com/decline-codes, updated 2026-10-01)",
+   "supported": true,
+   "complete": true,
+   "rationale": "Quoted passage answers the question, though the quote omits the 'Code 05 Do not honor' heading.",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-05-meaning:8c4a0c7b1003",
+   "case": "pol-05-meaning",
+   "question": "What does a 'do not honor' decline mean?",
+   "answer": "A 'do not honor' decline means that the issuing bank declined the transaction without a specific reason. The merchant cannot fix this; the cardholder must contact their bank or use another card. Do not retry more than once in 24 hours. (Source: https://wiki.example.com/decline-codes)",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-05-retry-24h:62fccfd9200a",
+   "case": "pol-05-retry-24h",
+   "question": "Is it OK to retry a code 05 decline twice in the same day?",
+   "answer": "I couldn't verify a paraphrase, so here is the policy text as written.\n\nThe issuing bank declined without a specific reason. The merchant cannot fix this; the cardholder must contact their bank or use another card. Do not retry more than once in 24 hours. (source: https://wiki.example.com/decline-codes, updated 2026-10-01)",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-05-retry-24h:aed13b133039",
+   "case": "pol-05-retry-24h",
+   "question": "Is it OK to retry a code 05 decline twice in the same day?",
+   "answer": "It is not OK to retry a code 05 decline twice in the same day. According to the knowledge base, \"Do not retry more than once in 24 hours\" for a code 05 decline, which means the issuing bank declined without a specific reason and the merchant cannot fix this; the cardholder must contact their bank or use another card. \n\nSource: https://wiki.example.com/decline-codes",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-51-what:ad2ca4a553be",
+   "case": "pol-51-what",
+   "question": "What should a cardholder know about decline code 51?",
+   "answer": "For decline code 51, the cardholder should know that it means the card has insufficient available balance. According to the knowledge base (https://wiki.example.com/decline-codes), this is the reason for the decline.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-51-what:cfe6bc9a6133",
+   "case": "pol-51-what",
+   "question": "What should a cardholder know about decline code 51?",
+   "answer": "I couldn't verify a paraphrase, so here is the policy text as written.\n\nThe card has insufficient available balance. (source: https://wiki.example.com/decline-codes, updated 2026-10-01)",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-cap-pct:37b1ba2a55a1",
+   "case": "pol-cap-pct",
+   "question": "What's the highest surcharge percentage we can charge on credit cards?",
+   "answer": "I couldn't verify a paraphrase, so here is the policy text as written.\n\nSend surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (source: https://wiki.example.com/surcharge, updated 2026-09-15)",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-cap-pct:4286e1bfdd57",
+   "case": "pol-cap-pct",
+   "question": "What's the highest surcharge percentage we can charge on credit cards?",
+   "answer": "The highest surcharge percentage that can be charged on credit cards is 3 percent. This is according to the knowledge base article on surcharging, which states that surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. The source URL for this information is https://wiki.example.com/surcharge.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-disclose:e461a5ba051a",
+   "case": "pol-disclose",
+   "question": "Do surcharges have to be disclosed to the customer, and when?",
+   "answer": "I couldn't verify that from the retrieved policy documents.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Abstains; the writer's knowledge-base searches returned nothing, so the evidence it had lacks the answer (a retrieval miss).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-how-send:2965580a9f5e",
+   "case": "pol-how-send",
+   "question": "How do we send a surcharge amount with an authorization?",
+   "answer": "To send a surcharge amount with an authorization, you should include the surcharge amount in minor units in the authorization request. The surcharge is only applicable to credit cards, has a cap of 3 percent, and must be disclosed to the customer before the payment is made. Debit and prepaid cards cannot be surcharged. For more information, see https://wiki.example.com/surcharge.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-how-send:37b1ba2a55a1",
+   "case": "pol-how-send",
+   "question": "How do we send a surcharge amount with an authorization?",
+   "answer": "I couldn't verify a paraphrase, so here is the policy text as written.\n\nSend surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (source: https://wiki.example.com/surcharge, updated 2026-09-15)",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-prepaid:37b1ba2a55a1",
+   "case": "pol-prepaid",
+   "question": "Are we allowed to add a surcharge when a customer pays with a prepaid card?",
+   "answer": "I couldn't verify a paraphrase, so here is the policy text as written.\n\nSend surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (source: https://wiki.example.com/surcharge, updated 2026-09-15)",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-prepaid:c5960c9caff4",
+   "case": "pol-prepaid",
+   "question": "Are we allowed to add a surcharge when a customer pays with a prepaid card?",
+   "answer": "No, you are not allowed to add a surcharge when a customer pays with a prepaid card. According to the knowledge base, surcharges apply to credit cards only and are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (Source: https://wiki.example.com/surcharge)",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-surcharge-debit-cap:37b1ba2a55a1",
+   "case": "pol-surcharge-debit-cap",
+   "question": "If a customer uses a debit card, can we apply the 3 percent surcharge?",
+   "answer": "I couldn't verify a paraphrase, so here is the policy text as written.\n\nSend surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (source: https://wiki.example.com/surcharge, updated 2026-09-15)",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-surcharge-debit-cap:d0e4a664fbd0",
+   "case": "pol-surcharge-debit-cap",
+   "question": "If a customer uses a debit card, can we apply the 3 percent surcharge?",
+   "answer": "No, you cannot apply a 3 percent surcharge if a customer uses a debit card. According to the knowledge base, surcharges apply to credit cards only and are capped at 3 percent. Debit and prepaid cards cannot be surcharged. For more information, see https://wiki.example.com/surcharge.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-which-cards:37b1ba2a55a1",
+   "case": "pol-which-cards",
+   "question": "Which card types can carry a surcharge?",
+   "answer": "I couldn't verify a paraphrase, so here is the policy text as written.\n\nSend surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (source: https://wiki.example.com/surcharge, updated 2026-09-15)",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "pol-which-cards:815905873eab",
+   "case": "pol-which-cards",
+   "question": "Which card types can carry a surcharge?",
+   "answer": "According to the knowledge base, surcharges can only be applied to credit cards, with a cap of 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. For more information, see https://wiki.example.com/surcharge.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-actual-date:e865cd864137",
+   "case": "rec-actual-date",
+   "question": "What day did txn_FRESH2001 actually settle?",
+   "answer": "The transaction txn_FRESH2001 actually settled on November 20, 2026.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-actual-missing:793153928d65",
+   "case": "rec-actual-missing",
+   "question": "Which date did txn_FRESH2004 settle on?",
+   "answer": "The transaction txn_FRESH2004 settled on 2026-11-20.",
+   "supported": false,
+   "complete": true,
+   "rationale": "States the expected date as the settlement date; the record has no actual settlement date.",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-actual-missing:943908b2cdd4",
+   "case": "rec-actual-missing",
+   "question": "Which date did txn_FRESH2004 settle on?",
+   "answer": "The transaction txn_FRESH2004 has an expected settlement date of 2026-11-20, but the actual settlement date is not recorded.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-approver:e461a5ba051a",
+   "case": "rec-approver",
+   "question": "Which bank employee approved txn_FRESH2011?",
+   "answer": "I couldn't verify that from the retrieved policy documents.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Abstains rather than inventing an approver; the record does not show one.",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-card-pending:9f6d1810fe86",
+   "case": "rec-card-pending",
+   "question": "Is txn_FRESH2010 settled?",
+   "answer": "The transaction txn_FRESH2010 is approved but not yet settled. The settlement is pending and expected on 2026-11-26.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-currency:dde7baf4b9ee",
+   "case": "rec-currency",
+   "question": "How much was txn_FRESH2007 and in what currency?",
+   "answer": "The transaction amount for txn_FRESH2007 was 66.40 in GBP.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-decline-05-next:d4eeceb8e912",
+   "case": "rec-decline-05-next",
+   "question": "txn_FRESH2006 was declined. What should the customer do next?",
+   "answer": "The transaction txn_FRESH2006 was declined by the issuer without a reason. The customer should contact the card's issuing bank or pay with another card. The merchant should not retry the transaction with the same card details.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-decline-51:7c8a46fcb495",
+   "case": "rec-decline-51",
+   "question": "Why was my payment txn_FRESH2005 declined?",
+   "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_FRESH2005 was declined for 145.00 USD with decline code 51 (Insufficient funds). Next step: Soft decline. A single delayed retry is allowed under policy. Retry policy: Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-decline-51:db02d00a7f1b",
+   "case": "rec-decline-51",
+   "question": "Why was my payment txn_FRESH2005 declined?",
+   "answer": "Your payment txn_FRESH2005 was declined because of insufficient funds. According to the decline code 51 documentation (https://wiki.example.com/decline-codes), this means that \"The card has insufficient available balance.\" \n\nThe next step is a soft decline, which allows for a single delayed retry under policy. You can either use another card or retry once funds are available.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-not-found:bd8a9d2a4ec1",
+   "case": "rec-not-found",
+   "question": "Can you check txn_FRESH2099 for me?",
+   "answer": "The transaction txn_FRESH2099 was not found for your account. Please check the ID and try again.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-refund-amt:9408b987ab8d",
+   "case": "rec-refund-amt",
+   "question": "How much of txn_FRESH2001 was refunded?",
+   "answer": "The transaction txn_FRESH2001 was refunded $12.50.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-refund-none:07c127ddc65c",
+   "case": "rec-refund-none",
+   "question": "Did txn_FRESH2007 get refunded?",
+   "answer": "The transaction txn_FRESH2007 was approved for \u00a366.40 and has been settled. It did not get refunded.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-refund-none:541863957feb",
+   "case": "rec-refund-none",
+   "question": "Did txn_FRESH2007 get refunded?",
+   "answer": "The transaction status of txn_FRESH2007 is approved. The transaction amount is \u00a366.40. The settlement status is settled, and the actual settlement date is 2026-11-19. The record does not show a refund amount.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-refund-pending:36ae389f9b4c",
+   "case": "rec-refund-pending",
+   "question": "Has my refund on txn_FRESH2002 arrived?",
+   "answer": "The refund for transaction txn_FRESH2002 is pending. The transaction was approved on November 15, 2026, and settled on November 17, 2026. The refund amount is $730.00 USD.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-refunded-status:537dc61b3bbd",
+   "case": "rec-refunded-status",
+   "question": "What's the current status of txn_FRESH2009?",
+   "answer": "The current status of txn_FRESH2009 is refunded. The transaction was for $48.00 USD and was settled on November 15, 2026. The refund was successful and was for the full amount of $48.00.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-timeout:3ef6324ade45",
+   "case": "rec-timeout",
+   "question": "Was txn_FRESH2008 charged?",
+   "answer": "The transaction status of txn_FRESH2008 is unknown. The processor timed out, and it's not clear if the transaction was charged or not. The guidance is to check the transaction status with the processor before retrying. You should tell the cardholder to wait before paying again to avoid being charged twice.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  },
+  {
+   "key": "rec-transfer-when:87b8b6a0bcdd",
+   "case": "rec-transfer-when",
+   "question": "When will txn_FRESH2003 reach the builder?",
+   "answer": "The transaction txn_FRESH2003 is pending and expected to reach the builder on 2026-11-27.",
+   "supported": true,
+   "complete": true,
+   "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+   "labeller": "AI assistant (provisional)"
+  }
+ ]
+}

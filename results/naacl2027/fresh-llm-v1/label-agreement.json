@@ -1,0 +1,183 @@
+{
+  "agreement": {
+    "supported": {
+      "n": 57,
+      "agree": 53,
+      "agreement": 0.93,
+      "kappa": 0.301,
+      "yes_first": 55,
+      "yes_second": 53
+    },
+    "complete": {
+      "n": 57,
+      "agree": 53,
+      "agreement": 0.93,
+      "kappa": -0.027,
+      "yes_first": 56,
+      "yes_second": 54
+    },
+    "combined": {
+      "n": 57,
+      "agree": 51,
+      "agreement": 0.895,
+      "kappa": 0.197,
+      "yes_first": 54,
+      "yes_second": 52
+    }
+  },
+  "disagreements": [
+    {
+      "key": "compare-settlement:f03b89ff0bcd",
+      "provisional": true,
+      "second": false,
+      "second_rationale": ""
+    },
+    {
+      "key": "decline-51:540ee013e29c",
+      "provisional": true,
+      "second": false,
+      "second_rationale": "you can try 4 times in 16 days"
+    },
+    {
+      "key": "decline-51:7e9095100f96",
+      "provisional": true,
+      "second": false,
+      "second_rationale": "doesn't mention 4 times in 16 days"
+    },
+    {
+      "key": "no-evidence-2:1047b0f4d06f",
+      "provisional": false,
+      "second": true,
+      "second_rationale": ""
+    },
+    {
+      "key": "refund-pending:ee91a1c09691",
+      "provisional": true,
+      "second": false,
+      "second_rationale": "refund status exists"
+    },
+    {
+      "key": "refunded-status:a65261345887",
+      "provisional": false,
+      "second": true,
+      "second_rationale": ""
+    }
+  ],
+  "component_file": "component-checks-3.json",
+  "component": {
+    "provisional": {
+      "deterministic": {
+        "drafts": 30,
+        "bad": 2,
+        "bad_blocked": 1,
+        "good": 28,
+        "good_blocked": 14,
+        "unavailable": 0,
+        "bad_blocked_available": 1,
+        "good_blocked_available": 14,
+        "available_bad": 2,
+        "available_good": 28
+      },
+      "semantic": {
+        "drafts": 30,
+        "bad": 2,
+        "bad_blocked": 0,
+        "good": 28,
+        "good_blocked": 6,
+        "unavailable": 5,
+        "bad_blocked_available": 0,
+        "good_blocked_available": 1,
+        "available_bad": 2,
+        "available_good": 23
+      },
+      "combined": {
+        "drafts": 30,
+        "bad": 2,
+        "bad_blocked": 1,
+        "good": 28,
+        "good_blocked": 19,
+        "unavailable": 7,
+        "bad_blocked_available": 1,
+        "good_blocked_available": 12,
+        "available_bad": 2,
+        "available_good": 21
+      }
+    },
+    "second": {
+      "deterministic": {
+        "drafts": 30,
+        "bad": 4,
+        "bad_blocked": 2,
+        "good": 26,
+        "good_blocked": 13,
+        "unavailable": 0,
+        "bad_blocked_available": 2,
+        "good_blocked_available": 13,
+        "available_bad": 4,
+        "available_good": 26
+      },
+      "semantic": {
+        "drafts": 30,
+        "bad": 4,
+        "bad_blocked": 1,
+        "good": 26,
+        "good_blocked": 5,
+        "unavailable": 5,
+        "bad_blocked_available": 0,
+        "good_blocked_available": 1,
+        "available_bad": 3,
+        "available_good": 22
+      },
+      "combined": {
+        "drafts": 30,
+        "bad": 4,
+        "bad_blocked": 2,
+        "good": 26,
+        "good_blocked": 18,
+        "unavailable": 7,
+        "bad_blocked_available": 1,
+        "good_blocked_available": 12,
+        "available_bad": 3,
+        "available_good": 20
+      }
+    }
+  },
+  "end_to_end": {
+    "provisional": {
+      "deterministic": {
+        "released_good": 23,
+        "released_bad": 1,
+        "withheld": 6,
+        "bad_keys": [
+          "refunded-status:a65261345887"
+        ]
+      },
+      "combined": {
+        "released_good": 21,
+        "released_bad": 2,
+        "withheld": 7,
+        "bad_keys": [
+          "refunded-status:a65261345887",
+          "no-evidence-2:1047b0f4d06f"
+        ]
+      }
+    },
+    "second": {
+      "deterministic": {
+        "released_good": 22,
+        "released_bad": 2,
+        "withheld": 6,
+        "bad_keys": [
+          "decline-51:540ee013e29c",
+          "compare-settlement:f03b89ff0bcd"
+        ]
+      },
+      "combined": {
+        "released_good": 23,
+        "released_bad": 0,
+        "withheld": 7,
+        "bad_keys": []
+      }
+    }
+  }
+}

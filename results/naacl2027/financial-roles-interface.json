@@ -1,0 +1,71 @@
+{
+  "protocol": "finbot-role-interface-v1",
+  "browser": "157.0.8103.79",
+  "checks": [
+    {
+      "id": "settlement_role",
+      "width": 1280,
+      "passed": true
+    },
+    {
+      "id": "refund_role",
+      "width": 1280,
+      "passed": true
+    },
+    {
+      "id": "settlement_role",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "id": "refund_role",
+      "width": 390,
+      "passed": true
+    }
+  ],
+  "states": [
+    {
+      "id": "settlement_role",
+      "width": 1280,
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "id": "refund_role",
+      "width": 1280,
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "id": "settlement_role",
+      "width": 390,
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "id": "refund_role",
+      "width": 390,
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    }
+  ],
+  "errors": [],
+  "sources": {
+    "finbot/demo.py": "a2080593258d4c6f651bab2807af2ebbd876b376db0888b23b1b648d79052ad1",
+    "finbot/demo_assets/app.js": "5dce7af9ea699b9b35c6ca27a7718c0a2bbb599c29033b397beb1710f2731b7a",
+    "finbot/financial_roles.py": "af5665c98ebcd0a3b90f3f2a039566936bcb6d2c3f13c9454ab4f3a7e1d53416",
+    "scripts/naacl2027/financial_roles_interface.cjs": "0e32088572d71469f22377b40117d755eea2b3842d753d37ab05b3a7e2ff0150"
+  },
+  "limitations": [
+    "Automated Chromium regression; no human usability or comprehension study.",
+    "Axe is not proof of accessibility conformance."
+  ]
+}

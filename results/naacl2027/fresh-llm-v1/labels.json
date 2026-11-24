@@ -1,0 +1,1615 @@
+{
+  "provenance": {
+    "labeller": "The AI assistant working for the authors (Claude), provisional, pending author review",
+    "independence": "Not independent. The labeller wrote the cases and the checker prompt, and saw the per-case checker allow/block summary before labelling. The checker model (Gemini 2.5 Flash Lite) is a different model family from the labeller and the writer (Llama 3.3 70B).",
+    "date": "2026-11-24",
+    "rubric": "Judge each answer against its records and the policy pages only. supported: every claim agrees with the evidence, in the right role. complete: it gives what was asked that the evidence contains, or says it is not there. Do not look at checker verdicts while labelling."
+  },
+  "items": [
+    {
+      "key": "actual-missing:081a297b09c0",
+      "case": "actual-missing",
+      "question": "On what date did txn_FRESH0008 settle?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0008",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "42.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:08:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-22"
+          },
+          "merchant": "Pine Street Cafe",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0008 does not show an actual settlement date. Its expected settlement date is 2026-11-22.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "actual-missing:ccaa25f07a71",
+      "case": "actual-missing",
+      "question": "On what date did txn_FRESH0008 settle?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0008",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "42.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:08:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-22"
+          },
+          "merchant": "Pine Street Cafe",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0008 has an expected settlement date of 2026-11-22, but the actual settlement date is not recorded.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "actual-missing:f876b9aec42f",
+      "case": "actual-missing",
+      "question": "On what date did txn_FRESH0008 settle?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0008",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "42.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:08:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-22"
+          },
+          "merchant": "Pine Street Cafe",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0008 settled on 2026-11-22.",
+      "supported": false,
+      "complete": true,
+      "rationale": "States the expected date 2026-11-22 as the settlement date; the record has no actual settlement date.",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "actual-vs-expected:4327c8844e99",
+      "case": "actual-vs-expected",
+      "question": "When did txn_FRESH0007 actually settle?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0007",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "310.40",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:07:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-23"
+          },
+          "merchant": "Harbor Dental",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0007 actually settled on 2026-11-23.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "actual-vs-expected:82f11b25360a",
+      "case": "actual-vs-expected",
+      "question": "When did txn_FRESH0007 actually settle?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0007",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "310.40",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:07:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-23"
+          },
+          "merchant": "Harbor Dental",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0007 has an expected settlement date of 2026-11-21 and an actual settlement date of 2026-11-23.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "card-pending-settlement:0743775bb6a8",
+      "case": "card-pending-settlement",
+      "question": "Has txn_FRESH0013 settled yet?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0013",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "999.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:13:00Z",
+          "settlement": {
+            "status": "pending",
+            "expected_date": "2026-11-26"
+          },
+          "merchant": "Orbit Appliances",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0013 has not settled yet. It is still pending and the expected settlement date is 2026-11-26.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-amounts:5d0e3f4da6a3",
+      "case": "compare-amounts",
+      "question": "Compare txn_FRESH0001 and txn_FRESH0004: what are their amounts and statuses?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0001",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "120.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:01:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-22"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "30.00"
+          },
+          "merchant": "Corner Bakery",
+          "payment_type": "Card payment"
+        },
+        {
+          "txn_id": "txn_FRESH0004",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "64.10",
+          "currency": "EUR",
+          "created_at": "2026-11-20T10:04:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-21"
+          },
+          "merchant": "Lumen Books",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The amount of txn_FRESH0001 is $120.00 USD and its status is approved. \nThe amount of txn_FRESH0004 is 64.10 EUR and its status is approved.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-amounts:dcb0fca3f2ee",
+      "case": "compare-amounts",
+      "question": "Compare txn_FRESH0001 and txn_FRESH0004: what are their amounts and statuses?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0001",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "120.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:01:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-22"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "30.00"
+          },
+          "merchant": "Corner Bakery",
+          "payment_type": "Card payment"
+        },
+        {
+          "txn_id": "txn_FRESH0004",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "64.10",
+          "currency": "EUR",
+          "created_at": "2026-11-20T10:04:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-21"
+          },
+          "merchant": "Lumen Books",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The amount of txn_FRESH0001 is $120.00 USD and its status is approved. The amount of txn_FRESH0004 is 64.10 EUR and its status is also approved.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-currencies:2b865cc258e0",
+      "case": "compare-currencies",
+      "question": "Compare txn_FRESH0004 and txn_FRESH0012: what currencies and amounts?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0004",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "64.10",
+          "currency": "EUR",
+          "created_at": "2026-11-20T10:04:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-21"
+          },
+          "merchant": "Lumen Books",
+          "payment_type": "Card payment"
+        },
+        {
+          "txn_id": "txn_FRESH0012",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "260.00",
+          "currency": "CAD",
+          "created_at": "2026-11-20T10:12:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-20"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "60.00"
+          },
+          "merchant": "Maple Hardware",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_FRESH0004 was approved for 64.10 EUR. Actual settlement date: 2026-11-21.\n\nTransaction txn_FRESH0012 was approved for 260.00 CAD. Actual settlement date: 2026-11-20. Refund amount: 60.00.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-currencies:df4573639c06",
+      "case": "compare-currencies",
+      "question": "Compare txn_FRESH0004 and txn_FRESH0012: what currencies and amounts?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0004",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "64.10",
+          "currency": "EUR",
+          "created_at": "2026-11-20T10:04:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-21"
+          },
+          "merchant": "Lumen Books",
+          "payment_type": "Card payment"
+        },
+        {
+          "txn_id": "txn_FRESH0012",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "260.00",
+          "currency": "CAD",
+          "created_at": "2026-11-20T10:12:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-20"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "60.00"
+          },
+          "merchant": "Maple Hardware",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0012 has an amount of 260.00 CAD, while the transaction txn_FRESH0004 has an amount of 64.10 EUR.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-decline:ade8f15410cb",
+      "case": "compare-decline",
+      "question": "Compare txn_FRESH0009 and txn_FRESH0010: why was each declined?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0009",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "220.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:09:00Z",
+          "decline_code": "05",
+          "processor_response": "Do not honor",
+          "merchant": "Northgate Electronics",
+          "payment_type": "Card payment"
+        },
+        {
+          "txn_id": "txn_FRESH0010",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "18.50",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:10:00Z",
+          "decline_code": "51",
+          "processor_response": "Insufficient funds",
+          "merchant": "Metro Transit",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "Transaction txn_FRESH0010 was declined due to insufficient funds. Transaction txn_FRESH0009 was declined by the issuer without a reason given. For txn_FRESH0010, a single retry is allowed after 1 hour. For txn_FRESH0009, the cardholder should contact their bank or use another card.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-decline:ce25d2c4cea8",
+      "case": "compare-decline",
+      "question": "Compare txn_FRESH0009 and txn_FRESH0010: why was each declined?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0009",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "220.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:09:00Z",
+          "decline_code": "05",
+          "processor_response": "Do not honor",
+          "merchant": "Northgate Electronics",
+          "payment_type": "Card payment"
+        },
+        {
+          "txn_id": "txn_FRESH0010",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "18.50",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:10:00Z",
+          "decline_code": "51",
+          "processor_response": "Insufficient funds",
+          "merchant": "Metro Transit",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "Transaction txn_FRESH0010 was declined due to insufficient funds. Transaction txn_FRESH0009 was declined by the issuer without a reason given. For txn_FRESH0010, a single retry is allowed after 1 hour. For txn_FRESH0009, the merchant should not retry with the same card details and the cardholder should contact their bank or use another card.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-missing:37711425b720",
+      "case": "compare-missing",
+      "question": "Compare txn_FRESH0001 and txn_FRESH0098: what are their amounts?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0001",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "120.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:01:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-22"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "30.00"
+          },
+          "merchant": "Corner Bakery",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The amount of txn_FRESH0001 is $120.00. \ntxn_FRESH0098 was not found for your account. Please check the ID.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Amount 120.00 is right; currency omitted but not asked separately.",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-missing:a8bbaef95295",
+      "case": "compare-missing",
+      "question": "Compare txn_FRESH0001 and txn_FRESH0098: what are their amounts?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0001",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "120.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:01:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-22"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "30.00"
+          },
+          "merchant": "Corner Bakery",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The amount of txn_FRESH0001 is 120.00 USD. \ntxn_FRESH0098 was not found for your account. Please check the ID.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-refunds:5ae3f4374ff8",
+      "case": "compare-refunds",
+      "question": "Compare the refunds on txn_FRESH0002 and txn_FRESH0012.",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0002",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "89.99",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:02:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-21"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "89.99"
+          },
+          "merchant": "Tidewater Outfitters",
+          "payment_type": "Card payment"
+        },
+        {
+          "txn_id": "txn_FRESH0012",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "260.00",
+          "currency": "CAD",
+          "created_at": "2026-11-20T10:12:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-20"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "60.00"
+          },
+          "merchant": "Maple Hardware",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "For txn_FRESH0012, the status is \"approved\" and the refund amount is $60.00 CAD. \nFor txn_FRESH0002, the status is \"approved\" and the refund amount is $89.99 USD.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-refunds:6941174b8e94",
+      "case": "compare-refunds",
+      "question": "Compare the refunds on txn_FRESH0002 and txn_FRESH0012.",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0002",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "89.99",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:02:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-21"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "89.99"
+          },
+          "merchant": "Tidewater Outfitters",
+          "payment_type": "Card payment"
+        },
+        {
+          "txn_id": "txn_FRESH0012",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "260.00",
+          "currency": "CAD",
+          "created_at": "2026-11-20T10:12:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-20"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "60.00"
+          },
+          "merchant": "Maple Hardware",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The refund for txn_FRESH0012 was $60.00 CAD, while the refund for txn_FRESH0002 was $89.99 USD.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-refunds:af12930f7155",
+      "case": "compare-refunds",
+      "question": "Compare the refunds on txn_FRESH0002 and txn_FRESH0012.",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0002",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "89.99",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:02:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-21"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "89.99"
+          },
+          "merchant": "Tidewater Outfitters",
+          "payment_type": "Card payment"
+        },
+        {
+          "txn_id": "txn_FRESH0012",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "260.00",
+          "currency": "CAD",
+          "created_at": "2026-11-20T10:12:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-20"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "60.00"
+          },
+          "merchant": "Maple Hardware",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_FRESH0002 was approved for 89.99 USD. Actual settlement date: 2026-11-21. Refund amount: 89.99.\n\nTransaction txn_FRESH0012 was approved for 260.00 CAD. Actual settlement date: 2026-11-20. Refund amount: 60.00.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-settlement:dd7f03f8e50f",
+      "case": "compare-settlement",
+      "question": "Which of txn_FRESH0005 and txn_FRESH0007 has settled?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0005",
+          "tenant_id": "m_100",
+          "status": "pending",
+          "amount": "1500.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:05:00Z",
+          "settlement": {
+            "status": "pending",
+            "expected_date": "2026-11-25"
+          },
+          "merchant": "Brightside Property",
+          "payment_type": "Bank transfer"
+        },
+        {
+          "txn_id": "txn_FRESH0007",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "310.40",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:07:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-23"
+          },
+          "merchant": "Harbor Dental",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "For txn_FRESH0007, the settlement status is \"settled\" with an actual settlement date of \"2026-11-23\". For txn_FRESH0005, the settlement status is \"pending\" with an expected settlement date of \"2026-11-25\" and no actual settlement date recorded.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "compare-settlement:f03b89ff0bcd",
+      "case": "compare-settlement",
+      "question": "Which of txn_FRESH0005 and txn_FRESH0007 has settled?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0005",
+          "tenant_id": "m_100",
+          "status": "pending",
+          "amount": "1500.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:05:00Z",
+          "settlement": {
+            "status": "pending",
+            "expected_date": "2026-11-25"
+          },
+          "merchant": "Brightside Property",
+          "payment_type": "Bank transfer"
+        },
+        {
+          "txn_id": "txn_FRESH0007",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "310.40",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:07:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-23"
+          },
+          "merchant": "Harbor Dental",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "txn_FRESH0007 has settled.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Names the settled record; answering 'which has settled' does not require the other record's details.",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "currency:6dc042b3bd49",
+      "case": "currency",
+      "question": "What currency was txn_FRESH0006 in and how much?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0006",
+          "tenant_id": "m_100",
+          "status": "pending",
+          "amount": "75.00",
+          "currency": "GBP",
+          "created_at": "2026-11-20T10:06:00Z",
+          "settlement": {
+            "status": "pending",
+            "expected_date": "2026-11-24"
+          },
+          "merchant": "Kestrel Garage",
+          "payment_type": "Bank transfer"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0006 was in GBP and the amount was 75.00.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "decline-05:6dd2a70de777",
+      "case": "decline-05",
+      "question": "Why was txn_FRESH0009 declined?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0009",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "220.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:09:00Z",
+          "decline_code": "05",
+          "processor_response": "Do not honor",
+          "merchant": "Northgate Electronics",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0009 was declined with a decline code of 05, which means the issuing bank declined without a specific reason. According to the knowledge base (https://wiki.example.com/decline-codes), this decline code indicates that the merchant cannot fix this issue and the cardholder must contact their bank or use another card. The guidance for this transaction advises not to retry with the same card details and to tell the cardholder to contact the card's issuing bank or pay with another card.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "decline-05:88cdb155d3db",
+      "case": "decline-05",
+      "question": "Why was txn_FRESH0009 declined?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0009",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "220.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:09:00Z",
+          "decline_code": "05",
+          "processor_response": "Do not honor",
+          "merchant": "Northgate Electronics",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_FRESH0009 was declined for 220.00 USD with decline code 05 (Do not honor). Next step: Issuer declined without a reason; nothing to fix on our side. Advise the merchant not to retry. Retry policy: Do not retry with the same card details.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "decline-05:a8b84273a92c",
+      "case": "decline-05",
+      "question": "Why was txn_FRESH0009 declined?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0009",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "220.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:09:00Z",
+          "decline_code": "05",
+          "processor_response": "Do not honor",
+          "merchant": "Northgate Electronics",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0009 was declined with a decline code of 05, which means the issuer declined without a specific reason. According to the knowledge base, this decline code indicates that the issuing bank declined without a specific reason, and the merchant cannot fix this; the cardholder must contact their bank or use another card. Do not retry more than once in 24 hours. \n\nThe next step is to advise the merchant not to retry the transaction and to tell the cardholder to contact the card's issuing bank or pay with another card.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Both retry statements are quoted from evidence (knowledge base and record guidance).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "decline-51:29e250912e7e",
+      "case": "decline-51",
+      "question": "Why did my card payment txn_FRESH0010 fail?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0010",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "18.50",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:10:00Z",
+          "decline_code": "51",
+          "processor_response": "Insufficient funds",
+          "merchant": "Metro Transit",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_FRESH0010 was declined for 18.50 USD with decline code 51 (Insufficient funds). Next step: Soft decline. A single delayed retry is allowed under policy. Retry policy: Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "decline-51:540ee013e29c",
+      "case": "decline-51",
+      "question": "Why did my card payment txn_FRESH0010 fail?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0010",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "18.50",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:10:00Z",
+          "decline_code": "51",
+          "processor_response": "Insufficient funds",
+          "merchant": "Metro Transit",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "Your card payment txn_FRESH0010 was declined due to insufficient funds. You can either use another card or retry the payment once you have sufficient funds. According to the policy, a single delayed retry is allowed.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "decline-51:7e9095100f96",
+      "case": "decline-51",
+      "question": "Why did my card payment txn_FRESH0010 fail?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0010",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "18.50",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:10:00Z",
+          "decline_code": "51",
+          "processor_response": "Insufficient funds",
+          "merchant": "Metro Transit",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "Your card payment txn_FRESH0010 failed because it was declined due to insufficient funds. The decline code is 51, which means the card has insufficient available balance. \n\nAccording to the knowledge base (https://wiki.example.com/decline-codes), the cardholder should use another card or retry once funds are available. A single delayed retry is allowed under policy. \n\nPlease let the cardholder know that they can use another card or retry once funds are available.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "expected-1:1cf53ba570ff",
+      "case": "expected-1",
+      "question": "When will my transfer txn_FRESH0005 arrive?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0005",
+          "tenant_id": "m_100",
+          "status": "pending",
+          "amount": "1500.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:05:00Z",
+          "settlement": {
+            "status": "pending",
+            "expected_date": "2026-11-25"
+          },
+          "merchant": "Brightside Property",
+          "payment_type": "Bank transfer"
+        }
+      ],
+      "answer": "The transfer txn_FRESH0005 is pending and expected to arrive on 2026-11-25.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "expected-1:5c124e1abf5b",
+      "case": "expected-1",
+      "question": "When will my transfer txn_FRESH0005 arrive?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0005",
+          "tenant_id": "m_100",
+          "status": "pending",
+          "amount": "1500.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:05:00Z",
+          "settlement": {
+            "status": "pending",
+            "expected_date": "2026-11-25"
+          },
+          "merchant": "Brightside Property",
+          "payment_type": "Bank transfer"
+        }
+      ],
+      "answer": "Your transfer txn_FRESH0005 is pending and expected to arrive on 2026-11-25.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "expected-2:3ec1abce57f9",
+      "case": "expected-2",
+      "question": "When should txn_FRESH0006 settle?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0006",
+          "tenant_id": "m_100",
+          "status": "pending",
+          "amount": "75.00",
+          "currency": "GBP",
+          "created_at": "2026-11-20T10:06:00Z",
+          "settlement": {
+            "status": "pending",
+            "expected_date": "2026-11-24"
+          },
+          "merchant": "Kestrel Garage",
+          "payment_type": "Bank transfer"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0006 is pending and expected to settle on 2026-11-24.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "expected-2:6b18215830b5",
+      "case": "expected-2",
+      "question": "When should txn_FRESH0006 settle?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0006",
+          "tenant_id": "m_100",
+          "status": "pending",
+          "amount": "75.00",
+          "currency": "GBP",
+          "created_at": "2026-11-20T10:06:00Z",
+          "settlement": {
+            "status": "pending",
+            "expected_date": "2026-11-24"
+          },
+          "merchant": "Kestrel Garage",
+          "payment_type": "Bank transfer"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0006 is pending and expected to settle on 2026-11-24. There are no log events available for this transaction.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "multi-field:1047b0f4d06f",
+      "case": "multi-field",
+      "question": "For txn_FRESH0001: what was the payment amount, the refund, and the settlement date?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0001",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "120.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:01:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-22"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "30.00"
+          },
+          "merchant": "Corner Bakery",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_FRESH0001 was approved for 120.00 USD. Expected settlement date: 2026-11-21. Actual settlement date: 2026-11-22. Refund amount: 30.00.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "multi-field:aadd54afdaf9",
+      "case": "multi-field",
+      "question": "For txn_FRESH0001: what was the payment amount, the refund, and the settlement date?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0001",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "120.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:01:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-22"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "30.00"
+          },
+          "merchant": "Corner Bakery",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The payment amount for txn_FRESH0001 was $120.00. The refund was $30.00. The settlement date was November 22, 2026.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "no-evidence-1:e461a5ba051a",
+      "case": "no-evidence-1",
+      "question": "What is the interest rate on my savings account?",
+      "records": [],
+      "answer": "I couldn't verify that from the retrieved policy documents.",
+      "supported": true,
+      "complete": true,
+      "rationale": "No evidence exists; it declines to answer rather than inventing a rate.",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "no-evidence-2:1047b0f4d06f",
+      "case": "no-evidence-2",
+      "question": "Who approved txn_FRESH0001 at the bank?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0001",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "120.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:01:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-22"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "30.00"
+          },
+          "merchant": "Corner Bakery",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_FRESH0001 was approved for 120.00 USD. Expected settlement date: 2026-11-21. Actual settlement date: 2026-11-22. Refund amount: 30.00.",
+      "supported": true,
+      "complete": false,
+      "rationale": "Record-built summary is accurate but neither answers who approved the payment nor says the record does not show it.",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "no-evidence-2:e461a5ba051a",
+      "case": "no-evidence-2",
+      "question": "Who approved txn_FRESH0001 at the bank?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0001",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "120.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:01:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-22"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "30.00"
+          },
+          "merchant": "Corner Bakery",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "I couldn't verify that from the retrieved policy documents.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Makes no claim and says it could not verify; wording refers to policy documents, but nothing false is stated.",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "not-found:eb0060c6b652",
+      "case": "not-found",
+      "question": "What is the status of txn_FRESH0099?",
+      "records": [],
+      "answer": "The transaction txn_FRESH0099 was not found for your account. Please check the ID and try again.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "payment-vs-refund:22a98a43d27a",
+      "case": "payment-vs-refund",
+      "question": "How much did I originally pay for txn_FRESH0012, and how much came back?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0012",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "260.00",
+          "currency": "CAD",
+          "created_at": "2026-11-20T10:12:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-20"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "60.00"
+          },
+          "merchant": "Maple Hardware",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The original amount paid for txn_FRESH0012 was $260.00 CAD, and $60.00 CAD was refunded.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "payment-vs-refund:92ab387462ac",
+      "case": "payment-vs-refund",
+      "question": "How much did I originally pay for txn_FRESH0012, and how much came back?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0012",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "260.00",
+          "currency": "CAD",
+          "created_at": "2026-11-20T10:12:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-20"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "60.00"
+          },
+          "merchant": "Maple Hardware",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The original payment for txn_FRESH0012 was $260.00 CAD, and $60.00 CAD was refunded.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "policy-05-retry:1dddcc269b2b",
+      "case": "policy-05-retry",
+      "question": "After a code 05 decline, how often can we retry?",
+      "records": [],
+      "answer": "After a code 05 decline, you can retry no more than once in 24 hours. The cardholder should contact their bank or use another card, as the merchant cannot fix this issue. For more information, see https://wiki.example.com/decline-codes.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "policy-51:578e1b279183",
+      "case": "policy-51",
+      "question": "What does decline code 51 mean?",
+      "records": [],
+      "answer": "Decline code 51 means that the card has insufficient available balance. According to the knowledge base article on decline codes (https://wiki.example.com/decline-codes), this code indicates that the cardholder's account does not have enough funds to complete the transaction.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "policy-cap:7cbf34ad346b",
+      "case": "policy-cap",
+      "question": "What is the maximum surcharge on a credit card, and does it need to be disclosed?",
+      "records": [],
+      "answer": "The maximum surcharge on a credit card is 3 percent and it must be disclosed before payment. According to the knowledge base article on surcharging (https://wiki.example.com/surcharge), surcharges apply to credit cards only and cannot be applied to debit or prepaid cards.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "policy-cap:a3f55fed77a4",
+      "case": "policy-cap",
+      "question": "What is the maximum surcharge on a credit card, and does it need to be disclosed?",
+      "records": [],
+      "answer": "The maximum surcharge on a credit card is 3 percent and it must be disclosed before payment. This is according to the surcharging policy, which can be found at https://wiki.example.com/surcharge.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "policy-debit:f9634b97271b",
+      "case": "policy-debit",
+      "question": "Can a debit card be surcharged?",
+      "records": [],
+      "answer": "Debit cards cannot be surcharged. According to the surcharging policy, surcharges apply to credit cards only and are capped at 3 percent. Debit and prepaid cards cannot be surcharged, as stated in the knowledge base article found at https://wiki.example.com/surcharge.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "policy-debit:ff836c5d90ec",
+      "case": "policy-debit",
+      "question": "Can a debit card be surcharged?",
+      "records": [],
+      "answer": "Debit cards cannot be surcharged. According to the knowledge base, surcharges apply to credit cards only and are capped at 3 percent. Debit and prepaid cards cannot be surcharged, as stated in the surcharging policy (https://wiki.example.com/surcharge).",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "refund-full:177360bfad3c",
+      "case": "refund-full",
+      "question": "Did I get my money back for txn_FRESH0002, and how much?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0002",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "89.99",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:02:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-21"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "89.99"
+          },
+          "merchant": "Tidewater Outfitters",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "Your money was refunded for txn_FRESH0002. The refund amount was $89.99.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "refund-full:817b0de5f343",
+      "case": "refund-full",
+      "question": "Did I get my money back for txn_FRESH0002, and how much?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0002",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "89.99",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:02:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-21"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "89.99"
+          },
+          "merchant": "Tidewater Outfitters",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "Your money for txn_FRESH0002 has been refunded. The refund amount is $89.99.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "refund-none-1:5039dd661cdc",
+      "case": "refund-none-1",
+      "question": "How much was refunded on txn_FRESH0004?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0004",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "64.10",
+          "currency": "EUR",
+          "created_at": "2026-11-20T10:04:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-21"
+          },
+          "merchant": "Lumen Books",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "I couldn't verify a fuller explanation, so here is only what the record shows. Transaction txn_FRESH0004 was approved for 64.10 EUR. Actual settlement date: 2026-11-21. The record does not show a refund amount.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "refund-none-1:6086315c0219",
+      "case": "refund-none-1",
+      "question": "How much was refunded on txn_FRESH0004?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0004",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "64.10",
+          "currency": "EUR",
+          "created_at": "2026-11-20T10:04:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-21"
+          },
+          "merchant": "Lumen Books",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The refund amount for txn_FRESH0004 is not specified in the transaction data. The transaction status is \"approved\" and the amount is \"64.10\" EUR, but there is no information about a refund.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "refund-none-2:d6586daf57f2",
+      "case": "refund-none-2",
+      "question": "Was txn_FRESH0007 refunded?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0007",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "310.40",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:07:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-23"
+          },
+          "merchant": "Harbor Dental",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0007 was not refunded. It was approved for $310.40 USD and has been settled.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "refund-none-2:eb7c30b41cc9",
+      "case": "refund-none-2",
+      "question": "Was txn_FRESH0007 refunded?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0007",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "310.40",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:07:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-23"
+          },
+          "merchant": "Harbor Dental",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction status of txn_FRESH0007 is approved. The transaction amount is $310.40 USD. The settlement status is settled, the expected settlement date was 2026-11-21, and the actual settlement date is 2026-11-23. The record does not show a refund amount.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "refund-partial:11f662484196",
+      "case": "refund-partial",
+      "question": "How much was refunded on txn_FRESH0001?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0001",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "120.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:01:00Z",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-21",
+            "actual_date": "2026-11-22"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "30.00"
+          },
+          "merchant": "Corner Bakery",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The refund amount for txn_FRESH0001 is $30.00.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "refund-pending:0144eecdabaa",
+      "case": "refund-pending",
+      "question": "Has the refund for txn_FRESH0003 come through yet?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0003",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "450.00",
+          "currency": "USD",
+          "created_at": "2026-11-17T10:03:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-19"
+          },
+          "refund": {
+            "status": "pending",
+            "amount": "450.00"
+          },
+          "merchant": "Summit Travel",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction status for txn_FRESH0003 is approved. The transaction amount is $450.00 USD. Refund status: pending. The refund amount is $450.00 USD. The actual settlement date is recorded as 2026-11-19.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "refund-pending:360a66cdf5e4",
+      "case": "refund-pending",
+      "question": "Has the refund for txn_FRESH0003 come through yet?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0003",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "450.00",
+          "currency": "USD",
+          "created_at": "2026-11-17T10:03:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-19"
+          },
+          "refund": {
+            "status": "pending",
+            "amount": "450.00"
+          },
+          "merchant": "Summit Travel",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction status for txn_FRESH0003 is approved. The transaction amount is $450.00 USD. Refund status: pending. The refund amount is $450.00 USD.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "refund-pending:ee91a1c09691",
+      "case": "refund-pending",
+      "question": "Has the refund for txn_FRESH0003 come through yet?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0003",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "450.00",
+          "currency": "USD",
+          "created_at": "2026-11-17T10:03:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-19"
+          },
+          "refund": {
+            "status": "pending",
+            "amount": "450.00"
+          },
+          "merchant": "Summit Travel",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The refund for txn_FRESH0003 is pending. The transaction was approved and settled on November 19, 2026. There are no log events available to provide further information on the refund status.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "refunded-status:a65261345887",
+      "case": "refunded-status",
+      "question": "What happened to txn_FRESH0014?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0014",
+          "tenant_id": "m_100",
+          "status": "refunded",
+          "amount": "35.00",
+          "currency": "USD",
+          "created_at": "2026-11-16T10:14:00Z",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-18"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "35.00"
+          },
+          "merchant": "Quill Stationery",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction txn_FRESH0014 was refunded. The refund was successful, and the amount of $35.00 was returned to the customer. The next step is to investigate the logs to understand the cause of the failure. The customer should be told to contact the merchant.",
+      "supported": false,
+      "complete": true,
+      "rationale": "Refund facts are right, but it repeats guidance about investigating 'the cause of the failure'; this payment did not fail. The guidance text comes from the policy table's fallback for unmapped statuses (a fixture/policy bug), so the claim is on the evidence but has the wrong meaning.",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "timeout:0759a174fda3",
+      "case": "timeout",
+      "question": "Did txn_FRESH0011 go through?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0011",
+          "tenant_id": "m_100",
+          "status": "unknown",
+          "amount": "95.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:11:00Z",
+          "error": "PROCESSOR_TIMEOUT",
+          "merchant": "Fable Toys",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction status of txn_FRESH0011 is unknown. The processor timed out, and it's not clear if the transaction was successful or not. Do not retry the transaction yet. Instead, check the transaction status with the processor before attempting any retry. If you're the cardholder, please wait before making another payment to avoid potential duplicate charges.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    },
+    {
+      "key": "timeout:ca4053688d03",
+      "case": "timeout",
+      "question": "Did txn_FRESH0011 go through?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH0011",
+          "tenant_id": "m_100",
+          "status": "unknown",
+          "amount": "95.00",
+          "currency": "USD",
+          "created_at": "2026-11-20T10:11:00Z",
+          "error": "PROCESSOR_TIMEOUT",
+          "merchant": "Fable Toys",
+          "payment_type": "Card payment"
+        }
+      ],
+      "answer": "The transaction status of txn_FRESH0011 is unknown. The processor timed out, and it's not clear if the transaction was successful or not. The guidance is to check the transaction status with the processor before retrying. You should tell the cardholder to wait before paying again to avoid being charged twice.",
+      "supported": true,
+      "complete": true,
+      "rationale": "Every stated value and status matches the record or cited policy in its role, and the requested information is present (or its absence is stated).",
+      "labeller": "AI assistant (provisional)"
+    }
+  ]
+}

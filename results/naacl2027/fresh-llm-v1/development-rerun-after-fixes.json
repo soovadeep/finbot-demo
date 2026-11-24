@@ -1,0 +1,228 @@
+{
+  "kind": "development_rerun_after_fixes",
+  "note": "Deterministic checks only, rerun on the study's saved first drafts after the post-study fixes. These drafts informed the fixes, so this is not evidence of improvement.",
+  "correct_drafts_blocked": [
+    11,
+    28
+  ],
+  "wrong_drafts_blocked": [
+    1,
+    2
+  ],
+  "rows": [
+    {
+      "id": "refund-partial",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "refund-full",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "refund-pending",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "refund-none-1",
+      "label_good": true,
+      "action": "block",
+      "reasons": [
+        "ungrounded_refund_claim"
+      ]
+    },
+    {
+      "id": "refund-none-2",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "payment-vs-refund",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "expected-1",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "expected-2",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "actual-vs-expected",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "actual-missing",
+      "label_good": false,
+      "action": "block",
+      "reasons": [
+        "financial_role_mismatch:txn_FRESH0008:actual_settlement_date"
+      ]
+    },
+    {
+      "id": "card-pending-settlement",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "decline-05",
+      "label_good": true,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_0",
+        "policy_unsupported:statement_1",
+        "policy_unsupported:statement_2",
+        "policy_unsupported:statement_3"
+      ]
+    },
+    {
+      "id": "decline-51",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "timeout",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "refunded-status",
+      "label_good": false,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "multi-field",
+      "label_good": true,
+      "action": "block",
+      "reasons": [
+        "requested_information_missing:txn_FRESH0001:actual_settlement_date"
+      ]
+    },
+    {
+      "id": "not-found",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "currency",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "compare-amounts",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "compare-decline",
+      "label_good": true,
+      "action": "block",
+      "reasons": [
+        "retry_advice_contradicts_policy:05"
+      ]
+    },
+    {
+      "id": "compare-refunds",
+      "label_good": true,
+      "action": "block",
+      "reasons": [
+        "comparison_missing_field:txn_FRESH0002:status",
+        "comparison_missing_field:txn_FRESH0012:status"
+      ]
+    },
+    {
+      "id": "compare-settlement",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "compare-currencies",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    },
+    {
+      "id": "compare-missing",
+      "label_good": true,
+      "action": "block",
+      "reasons": [
+        "comparison_missing_field:txn_FRESH0001:currency"
+      ]
+    },
+    {
+      "id": "policy-debit",
+      "label_good": true,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_0",
+        "policy_unsupported:statement_1",
+        "policy_unsupported:statement_2"
+      ]
+    },
+    {
+      "id": "policy-cap",
+      "label_good": true,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_0",
+        "policy_unsupported:statement_1"
+      ]
+    },
+    {
+      "id": "policy-51",
+      "label_good": true,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_0",
+        "policy_unsupported:statement_1"
+      ]
+    },
+    {
+      "id": "policy-05-retry",
+      "label_good": true,
+      "action": "block",
+      "reasons": [
+        "policy_unsupported:statement_0",
+        "policy_unsupported:statement_1",
+        "policy_unsupported:statement_2"
+      ]
+    },
+    {
+      "id": "no-evidence-1",
+      "label_good": true,
+      "action": "block",
+      "reasons": [
+        "answer_without_documentation"
+      ]
+    },
+    {
+      "id": "no-evidence-2",
+      "label_good": true,
+      "action": "allow",
+      "reasons": []
+    }
+  ]
+}

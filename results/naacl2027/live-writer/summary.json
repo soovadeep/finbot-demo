@@ -1,0 +1,36 @@
+{
+ "writer": "Live model (Llama 3.3 70B)",
+ "model": "meta-llama/llama-3.3-70b-instruct",
+ "records": 128,
+ "faults": {
+  "none": {
+   "outcomes": {
+    "passed": 125,
+    "repaired": 2,
+    "record_fallback": 1
+   },
+   "reasons": {
+    "repaired": 2,
+    "records_only": 1
+   }
+  },
+  "amount_once": {
+   "outcomes": {
+    "repaired": 127,
+    "record_fallback": 1
+   },
+   "reasons": {
+    "repaired": 127,
+    "records_only": 1
+   }
+  },
+  "amount_always": {
+   "outcomes": {
+    "record_fallback": 128
+   },
+   "reasons": {
+    "records_only": 129
+   }
+  }
+ }
+}

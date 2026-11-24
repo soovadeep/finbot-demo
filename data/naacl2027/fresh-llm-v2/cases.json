@@ -1,0 +1,545 @@
+{
+  "version": "fresh-llm-v2",
+  "created": "2026-11-24",
+  "author": "Developer-authored synthetic records and questions (AI-assisted), written before any v2 answer was generated, after the policy-passage fallback was added.",
+  "records_note": "New synthetic records (txn_FRESH2*); none appear in earlier fixtures. Policy questions use new wordings over the demo's two help pages, the only policy documents available.",
+  "cases": [
+    {
+      "id": "pol-prepaid",
+      "kind": "policy",
+      "question": "Are we allowed to add a surcharge when a customer pays with a prepaid card?",
+      "records": [],
+      "expected_facts": "No; debit and prepaid cards cannot be surcharged."
+    },
+    {
+      "id": "pol-cap-pct",
+      "kind": "policy",
+      "question": "What's the highest surcharge percentage we can charge on credit cards?",
+      "records": [],
+      "expected_facts": "Capped at 3 percent (credit cards only)."
+    },
+    {
+      "id": "pol-disclose",
+      "kind": "policy",
+      "question": "Do surcharges have to be disclosed to the customer, and when?",
+      "records": [],
+      "expected_facts": "Yes, before payment."
+    },
+    {
+      "id": "pol-how-send",
+      "kind": "policy",
+      "question": "How do we send a surcharge amount with an authorization?",
+      "records": [],
+      "expected_facts": "Send surcharge_amount in minor units with the authorization request."
+    },
+    {
+      "id": "pol-which-cards",
+      "kind": "policy",
+      "question": "Which card types can carry a surcharge?",
+      "records": [],
+      "expected_facts": "Credit cards only; not debit or prepaid."
+    },
+    {
+      "id": "pol-51-what",
+      "kind": "policy",
+      "question": "What should a cardholder know about decline code 51?",
+      "records": [],
+      "expected_facts": "Insufficient funds: the card has insufficient available balance."
+    },
+    {
+      "id": "pol-05-meaning",
+      "kind": "policy",
+      "question": "What does a 'do not honor' decline mean?",
+      "records": [],
+      "expected_facts": "Code 05: issuer declined without a specific reason; merchant cannot fix; cardholder contacts bank or uses another card."
+    },
+    {
+      "id": "pol-05-fix",
+      "kind": "policy",
+      "question": "Can the merchant do anything to fix a code 05 decline?",
+      "records": [],
+      "expected_facts": "No; the cardholder must contact their bank or use another card."
+    },
+    {
+      "id": "pol-05-retry-24h",
+      "kind": "policy",
+      "question": "Is it OK to retry a code 05 decline twice in the same day?",
+      "records": [],
+      "expected_facts": "No; do not retry more than once in 24 hours."
+    },
+    {
+      "id": "pol-surcharge-debit-cap",
+      "kind": "policy",
+      "question": "If a customer uses a debit card, can we apply the 3 percent surcharge?",
+      "records": [],
+      "expected_facts": "No; surcharges apply to credit cards only; debit cannot be surcharged."
+    },
+    {
+      "id": "nodoc-chargeback",
+      "kind": "missing",
+      "question": "How long does a customer have to file a chargeback?",
+      "records": [],
+      "expected_facts": "No supporting documentation; must not invent a time limit."
+    },
+    {
+      "id": "nodoc-fx",
+      "kind": "missing",
+      "question": "What exchange-rate markup do you apply to foreign payments?",
+      "records": [],
+      "expected_facts": "No supporting documentation; must not invent a markup."
+    },
+    {
+      "id": "rec-refund-amt",
+      "kind": "refund",
+      "question": "How much of txn_FRESH2001 was refunded?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2001",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "58.00",
+          "currency": "USD",
+          "created_at": "2026-11-18T09:01:00Z",
+          "merchant": "Riverside Florist",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-19",
+            "actual_date": "2026-11-20"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "12.50"
+          }
+        }
+      ],
+      "expected_facts": "Refund 12.50 USD (payment 58.00 USD)."
+    },
+    {
+      "id": "rec-refund-pending",
+      "kind": "refund",
+      "question": "Has my refund on txn_FRESH2002 arrived?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2002",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "730.00",
+          "currency": "USD",
+          "created_at": "2026-11-15T09:02:00Z",
+          "merchant": "Crescent Hotels",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-17"
+          },
+          "refund": {
+            "status": "pending",
+            "amount": "730.00"
+          }
+        }
+      ],
+      "expected_facts": "Refund of 730.00 USD is pending, not completed."
+    },
+    {
+      "id": "rec-refund-none",
+      "kind": "refund",
+      "question": "Did txn_FRESH2007 get refunded?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2007",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "66.40",
+          "currency": "GBP",
+          "created_at": "2026-11-18T09:07:00Z",
+          "merchant": "Thistle Bakery",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-19"
+          }
+        }
+      ],
+      "expected_facts": "No refund on the record."
+    },
+    {
+      "id": "rec-refunded-status",
+      "kind": "status",
+      "question": "What's the current status of txn_FRESH2009?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2009",
+          "tenant_id": "m_100",
+          "status": "refunded",
+          "amount": "48.00",
+          "currency": "USD",
+          "created_at": "2026-11-14T09:09:00Z",
+          "merchant": "Copper Kettle",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-15"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "48.00"
+          }
+        }
+      ],
+      "expected_facts": "Refunded in full, 48.00 USD."
+    },
+    {
+      "id": "rec-transfer-when",
+      "kind": "settlement",
+      "question": "When will txn_FRESH2003 reach the builder?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2003",
+          "tenant_id": "m_100",
+          "status": "pending",
+          "amount": "2400.00",
+          "currency": "USD",
+          "created_at": "2026-11-21T09:03:00Z",
+          "merchant": "Granite Builders",
+          "payment_type": "Bank transfer",
+          "settlement": {
+            "status": "pending",
+            "expected_date": "2026-11-27"
+          }
+        }
+      ],
+      "expected_facts": "Pending; expected 2026-11-27; not settled."
+    },
+    {
+      "id": "rec-actual-date",
+      "kind": "settlement",
+      "question": "What day did txn_FRESH2001 actually settle?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2001",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "58.00",
+          "currency": "USD",
+          "created_at": "2026-11-18T09:01:00Z",
+          "merchant": "Riverside Florist",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-19",
+            "actual_date": "2026-11-20"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "12.50"
+          }
+        }
+      ],
+      "expected_facts": "Actual settlement 2026-11-20 (expected 2026-11-19)."
+    },
+    {
+      "id": "rec-actual-missing",
+      "kind": "settlement",
+      "question": "Which date did txn_FRESH2004 settle on?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2004",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "19.99",
+          "currency": "EUR",
+          "created_at": "2026-11-19T09:04:00Z",
+          "merchant": "Nordlicht Music",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-20"
+          }
+        }
+      ],
+      "expected_facts": "Settled; only an expected date (2026-11-20) is recorded; actual date not recorded."
+    },
+    {
+      "id": "rec-card-pending",
+      "kind": "settlement",
+      "question": "Is txn_FRESH2010 settled?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2010",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "1200.00",
+          "currency": "CAD",
+          "created_at": "2026-11-20T09:10:00Z",
+          "merchant": "Northern Rail",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "pending",
+            "expected_date": "2026-11-26"
+          }
+        }
+      ],
+      "expected_facts": "Approved; settlement pending, expected 2026-11-26."
+    },
+    {
+      "id": "rec-decline-51",
+      "kind": "decline",
+      "question": "Why was my payment txn_FRESH2005 declined?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2005",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "145.00",
+          "currency": "USD",
+          "created_at": "2026-11-21T09:05:00Z",
+          "merchant": "Bayview Sports",
+          "payment_type": "Card payment",
+          "decline_code": "51",
+          "processor_response": "Insufficient funds"
+        }
+      ],
+      "expected_facts": "Declined, code 51 Insufficient funds."
+    },
+    {
+      "id": "rec-decline-05-next",
+      "kind": "decline",
+      "question": "txn_FRESH2006 was declined. What should the customer do next?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2006",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "880.00",
+          "currency": "USD",
+          "created_at": "2026-11-21T09:06:00Z",
+          "merchant": "Summit Jewelers",
+          "payment_type": "Card payment",
+          "decline_code": "05",
+          "processor_response": "Do not honor"
+        }
+      ],
+      "expected_facts": "Code 05 Do not honor; contact bank or use another card; do not retry more than once in 24 hours."
+    },
+    {
+      "id": "rec-timeout",
+      "kind": "status",
+      "question": "Was txn_FRESH2008 charged?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2008",
+          "tenant_id": "m_100",
+          "status": "unknown",
+          "amount": "210.00",
+          "currency": "USD",
+          "created_at": "2026-11-22T09:08:00Z",
+          "merchant": "Lakeside Rentals",
+          "payment_type": "Card payment",
+          "error": "PROCESSOR_TIMEOUT"
+        }
+      ],
+      "expected_facts": "Outcome unknown (processor timeout); must not claim charged or not."
+    },
+    {
+      "id": "rec-currency",
+      "kind": "amounts",
+      "question": "How much was txn_FRESH2007 and in what currency?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2007",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "66.40",
+          "currency": "GBP",
+          "created_at": "2026-11-18T09:07:00Z",
+          "merchant": "Thistle Bakery",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-19"
+          }
+        }
+      ],
+      "expected_facts": "66.40 GBP."
+    },
+    {
+      "id": "rec-not-found",
+      "kind": "missing",
+      "question": "Can you check txn_FRESH2099 for me?",
+      "records": [],
+      "expected_facts": "Record not found; must not invent details."
+    },
+    {
+      "id": "rec-approver",
+      "kind": "missing",
+      "question": "Which bank employee approved txn_FRESH2011?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2011",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "35.75",
+          "currency": "USD",
+          "created_at": "2026-11-19T09:11:00Z",
+          "merchant": "Elm Street Pharmacy",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-20"
+          }
+        }
+      ],
+      "expected_facts": "The record does not show who approved it."
+    },
+    {
+      "id": "cmp-declines",
+      "kind": "comparison",
+      "question": "Why were txn_FRESH2005 and txn_FRESH2006 each declined?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2005",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "145.00",
+          "currency": "USD",
+          "created_at": "2026-11-21T09:05:00Z",
+          "merchant": "Bayview Sports",
+          "payment_type": "Card payment",
+          "decline_code": "51",
+          "processor_response": "Insufficient funds"
+        },
+        {
+          "txn_id": "txn_FRESH2006",
+          "tenant_id": "m_100",
+          "status": "declined",
+          "amount": "880.00",
+          "currency": "USD",
+          "created_at": "2026-11-21T09:06:00Z",
+          "merchant": "Summit Jewelers",
+          "payment_type": "Card payment",
+          "decline_code": "05",
+          "processor_response": "Do not honor"
+        }
+      ],
+      "expected_facts": "2005 code 51 Insufficient funds; 2006 code 05 Do not honor."
+    },
+    {
+      "id": "cmp-refunds",
+      "kind": "comparison",
+      "question": "Compare the refunds on txn_FRESH2001 and txn_FRESH2009.",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2001",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "58.00",
+          "currency": "USD",
+          "created_at": "2026-11-18T09:01:00Z",
+          "merchant": "Riverside Florist",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-19",
+            "actual_date": "2026-11-20"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "12.50"
+          }
+        },
+        {
+          "txn_id": "txn_FRESH2009",
+          "tenant_id": "m_100",
+          "status": "refunded",
+          "amount": "48.00",
+          "currency": "USD",
+          "created_at": "2026-11-14T09:09:00Z",
+          "merchant": "Copper Kettle",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-15"
+          },
+          "refund": {
+            "status": "succeeded",
+            "amount": "48.00"
+          }
+        }
+      ],
+      "expected_facts": "2001 refund 12.50 USD of 58.00; 2009 refund 48.00 USD (full)."
+    },
+    {
+      "id": "cmp-settled",
+      "kind": "comparison",
+      "question": "Of txn_FRESH2003 and txn_FRESH2011, which has settled?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2003",
+          "tenant_id": "m_100",
+          "status": "pending",
+          "amount": "2400.00",
+          "currency": "USD",
+          "created_at": "2026-11-21T09:03:00Z",
+          "merchant": "Granite Builders",
+          "payment_type": "Bank transfer",
+          "settlement": {
+            "status": "pending",
+            "expected_date": "2026-11-27"
+          }
+        },
+        {
+          "txn_id": "txn_FRESH2011",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "35.75",
+          "currency": "USD",
+          "created_at": "2026-11-19T09:11:00Z",
+          "merchant": "Elm Street Pharmacy",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "settled",
+            "actual_date": "2026-11-20"
+          }
+        }
+      ],
+      "expected_facts": "2011 settled 2026-11-20; 2003 pending (expected 2026-11-27)."
+    },
+    {
+      "id": "cmp-amounts",
+      "kind": "comparison",
+      "question": "What are the amounts and currencies of txn_FRESH2004 and txn_FRESH2010?",
+      "records": [
+        {
+          "txn_id": "txn_FRESH2004",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "19.99",
+          "currency": "EUR",
+          "created_at": "2026-11-19T09:04:00Z",
+          "merchant": "Nordlicht Music",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "settled",
+            "expected_date": "2026-11-20"
+          }
+        },
+        {
+          "txn_id": "txn_FRESH2010",
+          "tenant_id": "m_100",
+          "status": "approved",
+          "amount": "1200.00",
+          "currency": "CAD",
+          "created_at": "2026-11-20T09:10:00Z",
+          "merchant": "Northern Rail",
+          "payment_type": "Card payment",
+          "settlement": {
+            "status": "pending",
+            "expected_date": "2026-11-26"
+          }
+        }
+      ],
+      "expected_facts": "19.99 EUR and 1200.00 CAD."
+    }
+  ]
+}

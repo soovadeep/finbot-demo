@@ -1,0 +1,523 @@
+{
+ "provenance": {
+  "labeller": "Apurba Bose (second author), using a blind web form; she did not write the cases, the checker prompt or the provisional labels",
+  "independence": "Independent of the provisional labeller and blind to checker verdicts and to the provisional labels. Not external: she is a co-author.",
+  "date": "2026-11-24",
+  "rubric": "Judge each answer against its records and the policy pages only. supported: every claim agrees with the evidence, in the right role. complete: it gives what was asked that the evidence contains, or says it is not there. Do not look at checker verdicts while labelling.",
+  "rounds": "Round 1 covered all 57 answers. The form omitted the payment policy table that the runtime attaches to declined, timed-out and unmapped records (record field `guidance`, from finbot/policy.py), so retry rules had no visible source. Round 2 re-showed the 11 answers from the 5 cases with that table and replaced their round-1 labels; round-1 labels are kept under round_1.",
+  "final": "Round 2 where present, otherwise round 1."
+ },
+ "items": [
+  {
+   "key": "actual-missing:081a297b09c0",
+   "case": "actual-missing",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "actual-missing:ccaa25f07a71",
+   "case": "actual-missing",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "actual-missing:f876b9aec42f",
+   "case": "actual-missing",
+   "supported": false,
+   "complete": false,
+   "rationale": "expected date and not date",
+   "round": 1
+  },
+  {
+   "key": "actual-vs-expected:4327c8844e99",
+   "case": "actual-vs-expected",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "actual-vs-expected:82f11b25360a",
+   "case": "actual-vs-expected",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "card-pending-settlement:0743775bb6a8",
+   "case": "card-pending-settlement",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "compare-amounts:5d0e3f4da6a3",
+   "case": "compare-amounts",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "compare-amounts:dcb0fca3f2ee",
+   "case": "compare-amounts",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "compare-currencies:2b865cc258e0",
+   "case": "compare-currencies",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "compare-currencies:df4573639c06",
+   "case": "compare-currencies",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "compare-decline:ade8f15410cb",
+   "case": "compare-decline",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 2,
+   "round_1": {
+    "supported": false,
+    "complete": true,
+    "rationale": ""
+   }
+  },
+  {
+   "key": "compare-decline:ce25d2c4cea8",
+   "case": "compare-decline",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 2,
+   "round_1": {
+    "supported": false,
+    "complete": true,
+    "rationale": "1 hour is not there anywhere?"
+   }
+  },
+  {
+   "key": "compare-missing:37711425b720",
+   "case": "compare-missing",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "compare-missing:a8bbaef95295",
+   "case": "compare-missing",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "compare-refunds:5ae3f4374ff8",
+   "case": "compare-refunds",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "compare-refunds:6941174b8e94",
+   "case": "compare-refunds",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "compare-refunds:af12930f7155",
+   "case": "compare-refunds",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "compare-settlement:dd7f03f8e50f",
+   "case": "compare-settlement",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "compare-settlement:f03b89ff0bcd",
+   "case": "compare-settlement",
+   "supported": true,
+   "complete": false,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "currency:6dc042b3bd49",
+   "case": "currency",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "decline-05:6dd2a70de777",
+   "case": "decline-05",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 2,
+   "round_1": {
+    "supported": true,
+    "complete": true,
+    "rationale": ""
+   }
+  },
+  {
+   "key": "decline-05:88cdb155d3db",
+   "case": "decline-05",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 2,
+   "round_1": {
+    "supported": true,
+    "complete": true,
+    "rationale": ""
+   }
+  },
+  {
+   "key": "decline-05:a8b84273a92c",
+   "case": "decline-05",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 2,
+   "round_1": {
+    "supported": true,
+    "complete": true,
+    "rationale": ""
+   }
+  },
+  {
+   "key": "decline-51:29e250912e7e",
+   "case": "decline-51",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 2,
+   "round_1": {
+    "supported": false,
+    "complete": true,
+    "rationale": "where is the retry policy coming from?"
+   }
+  },
+  {
+   "key": "decline-51:540ee013e29c",
+   "case": "decline-51",
+   "supported": false,
+   "complete": true,
+   "rationale": "you can try 4 times in 16 days",
+   "round": 2,
+   "round_1": {
+    "supported": false,
+    "complete": true,
+    "rationale": "retry policy source?"
+   }
+  },
+  {
+   "key": "decline-51:7e9095100f96",
+   "case": "decline-51",
+   "supported": false,
+   "complete": true,
+   "rationale": "doesn't mention 4 times in 16 days",
+   "round": 2,
+   "round_1": {
+    "supported": false,
+    "complete": true,
+    "rationale": "retry policy source?"
+   }
+  },
+  {
+   "key": "expected-1:1cf53ba570ff",
+   "case": "expected-1",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "expected-1:5c124e1abf5b",
+   "case": "expected-1",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "expected-2:3ec1abce57f9",
+   "case": "expected-2",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "expected-2:6b18215830b5",
+   "case": "expected-2",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "multi-field:1047b0f4d06f",
+   "case": "multi-field",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "multi-field:aadd54afdaf9",
+   "case": "multi-field",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "no-evidence-1:e461a5ba051a",
+   "case": "no-evidence-1",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "no-evidence-2:1047b0f4d06f",
+   "case": "no-evidence-2",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "no-evidence-2:e461a5ba051a",
+   "case": "no-evidence-2",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "not-found:eb0060c6b652",
+   "case": "not-found",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "payment-vs-refund:22a98a43d27a",
+   "case": "payment-vs-refund",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "payment-vs-refund:92ab387462ac",
+   "case": "payment-vs-refund",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "policy-05-retry:1dddcc269b2b",
+   "case": "policy-05-retry",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "policy-51:578e1b279183",
+   "case": "policy-51",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "policy-cap:7cbf34ad346b",
+   "case": "policy-cap",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "policy-cap:a3f55fed77a4",
+   "case": "policy-cap",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "policy-debit:f9634b97271b",
+   "case": "policy-debit",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "policy-debit:ff836c5d90ec",
+   "case": "policy-debit",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "refund-full:177360bfad3c",
+   "case": "refund-full",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "refund-full:817b0de5f343",
+   "case": "refund-full",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "refund-none-1:5039dd661cdc",
+   "case": "refund-none-1",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "refund-none-1:6086315c0219",
+   "case": "refund-none-1",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "refund-none-2:d6586daf57f2",
+   "case": "refund-none-2",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "refund-none-2:eb7c30b41cc9",
+   "case": "refund-none-2",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "refund-partial:11f662484196",
+   "case": "refund-partial",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "refund-pending:0144eecdabaa",
+   "case": "refund-pending",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "refund-pending:360a66cdf5e4",
+   "case": "refund-pending",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 1
+  },
+  {
+   "key": "refund-pending:ee91a1c09691",
+   "case": "refund-pending",
+   "supported": false,
+   "complete": false,
+   "rationale": "refund status exists",
+   "round": 1
+  },
+  {
+   "key": "refunded-status:a65261345887",
+   "case": "refunded-status",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 2,
+   "round_1": {
+    "supported": false,
+    "complete": true,
+    "rationale": "nothing about contacting merchant in logs"
+   }
+  },
+  {
+   "key": "timeout:0759a174fda3",
+   "case": "timeout",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 2,
+   "round_1": {
+    "supported": true,
+    "complete": true,
+    "rationale": ""
+   }
+  },
+  {
+   "key": "timeout:ca4053688d03",
+   "case": "timeout",
+   "supported": true,
+   "complete": true,
+   "rationale": "",
+   "round": 2,
+   "round_1": {
+    "supported": true,
+    "complete": true,
+    "rationale": ""
+   }
+  }
+ ]
+}
