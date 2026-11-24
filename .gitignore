@@ -10,3 +10,6 @@ kb_vectors.json*
 .ruff_cache/
 # Private participant exports, fitted models and analysis; never commit study data.
 .study/
+# Local provider credentials; never commit keys.
+.env
+.env.local
