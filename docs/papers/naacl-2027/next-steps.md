@@ -1,8 +1,8 @@
 # Finbot: next steps for the demo submission
 
-Updated November 24, 2026. Items 1 to 6 have been implemented on branch
-`claude/project-thread-kv0667`; boxes below are ticked only for work that exists in code,
-tests or saved results. Item 7 is partly done and item 8 is prepared.
+Updated November 24, 2026 on `abose/evaluation-context-gaps`, based on main `1c866d9`.
+Boxes distinguish implemented software and authored evaluations from outstanding live
+validation or human review. Earlier frozen studies retain their original results.
 
 ## Status, November 24
 
@@ -21,10 +21,18 @@ tests or saved results. Item 7 is partly done and item 8 is prepared.
   Flash Lite via OpenRouter) and a fresh 30-answer study frozen before generation. Results and
   caveats: [evaluation/fresh-llm.md](evaluation/fresh-llm.md). Its effect depends on the
   labeller, so it stays off by default. Two label sets: the AI assistant and a co-author.
-- **Done since:** hosted demo redeployed and checked; video re-recorded on the current build
-  (2:28). No release tag, by the authors' choice.
-- **Still open:** external labels for the fresh answers.
-- 227 automated tests pass. The paper is nine pages (six main, one reference, two appendix).
+- **Second labels complete:** the live v2 study now has AI and blind co-author labels for
+  43 distinct answers, agreeing on 41; both give 26 correct releases and four refusals.
+- **Error diversity:** 48 matched pairs across 12 families, frozen before evaluation;
+  44 corruptions and five correct controls blocked, 39/43 new rejections. Four authentic
+  wrong-policy quotations pass. [Scope and review form](evaluation/verification-challenge.md).
+- **Context and memory:** full-prompt admission, output reserve, rollover, bounded state,
+  rollback and fresh-snapshot replacement; nine offline contracts pass. [Design](../../agent-design.md).
+- **Hosted smoke:** scripted policy quotation and missing-document refusal checked on
+  November 24 (`results/naacl2027/hosted-smoke-2026-11-24.json`). This does not attest the
+  deployed Git revision; the new context branch has not been deployed. Video is unchanged.
+- **Still open:** live long-conversation/full-controller assessment, human review of the
+  new authored challenge, and release/deployment identity. External participants remain optional.
 
 ## 1. Preserve the actual support question (highest priority)
 
@@ -52,7 +60,7 @@ record, rather than becoming a generic status summary; correction and authorizat
 
 | Candidate answer | Required behavior |
 |---|---|
-| "Your payment was $200." | Trigger repair for missing refund information; the current verifier allows it. |
+| "Your payment was $200." | Trigger repair for missing refund information; covered by the current regression test. |
 | "Your refund amount was $200." | Reject the amount-role mismatch. |
 | "Your refund amount was $50." | Accept when the record supports it. |
 | "The record does not show a refund amount." | Accept only when the relevant evidence is genuinely unavailable. |
@@ -90,8 +98,8 @@ labelled live answer, with authorization, confirmation, rate limits and recovery
 - [x] Select a checker model and provider configuration. OpenRouter can serve a model used by
   a NeMo adapter or a direct LLM verifier; the existing Bedrock adapter separately requires AWS access.
   Choose one initial route rather than making both integrations prerequisites.
-- [x] If choosing NeMo, implement and test its adapter inside `HallucinationGate`; do not label
-  direct LLM prompting as a NeMo integration. Keep the existing deterministic checks enabled.
+- [x] Record the chosen implementation accurately: direct LLM evidence review inside
+  `HallucinationGate`, with deterministic checks retained. No NeMo adapter is integrated.
 - [x] Assess both evidence support and question coverage. NeMo's standard fact-checking rail
   alone may accept a true statement that does not answer the question.
 - [x] Extend the existing three-way harness to the chosen checker. Pin model, prompts, version,
@@ -110,15 +118,17 @@ inspectable findings, and has real provider measurements distinct from mock-resp
   dates, policy exceptions, record comparisons, omissions and missing evidence.
 - [x] Generate fresh LLM answers with injected faults off; save failures and refusals as well
   as successful answers. Use a separate set for deliberately corrupted matched-pair tests.
-- [~] Review answers against source evidence, recording support and completeness separately
-  with rationales. Author adjudication needs no recruited participants but is not independent review. (Done with
-  AI-assistant labels and a co-author's second labels, 89% agreement; external review still open.)
+- [x] Review live v1 and v2 answers with AI-assistant and blind co-author labels, recording
+  support and completeness separately (89% and 95% agreement). This is author assessment,
+  not external annotation. The separate new challenge still has construction-based expectations.
   The checker must not supply its own gold labels.
 - [x] Compare deterministic checks, semantic checking and their combination on identical inputs.
   Report detections, false rejections, paired new rejections, remaining errors, unavailable cases,
   latency and measured cost; retain denominators and raw results.
-- [x] Evaluate the deployed controller end to end as well as supplied-draft components. Success
-  requires the intended record AND a supported, sufficiently complete final answer.
+- [x] Retain the 60 authored controller replays and separately score record selection and answer fields.
+- [ ] Add fresh live evaluation of the complete clarification-to-answer journey. The live
+  writer studies name the record and bypass clarification/confirmation. Full success requires
+  the intended record AND a supported, sufficiently complete final answer.
 
 **Done when:** reproducible new results support the final claims, including unsuccessful cases.
 Replaying cached answers or previously inspected wording must remain labelled as replay/development.

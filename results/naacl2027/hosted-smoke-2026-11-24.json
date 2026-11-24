@@ -1,0 +1,100 @@
+{
+  "checked_at": "2026-11-24T19:49:44.567722+00:00",
+  "url": "https://finbot-demo-20852907589.us-central1.run.app",
+  "scope": "Synthetic scripted requests with live=false; no live model reliability or backend revision attested. No deployment performed.",
+  "catalogue_status": 200,
+  "scenario_ids": [
+    "settlement_role",
+    "refund_role",
+    "correct",
+    "repair",
+    "fallback",
+    "timeout",
+    "pair",
+    "binding",
+    "policy_quote",
+    "refusal",
+    "policy"
+  ],
+  "runs": [
+    {
+      "case": "policy_quote",
+      "http_status": 200,
+      "writer_source": "scripted",
+      "outcome": "policy_fallback",
+      "final": {
+        "answer": "I couldn't verify a paraphrase, so here is the policy text as written.\n\nSend surcharge_amount in minor units with the authorization request. Surcharges apply to credit cards only, are capped at 3 percent, and must be disclosed before payment. Debit and prepaid cards cannot be surcharged. (source: https://wiki.example.com/surcharge, updated 2026-09-15)",
+        "blocked_by": null,
+        "reasons": [
+          "records_only:ungrounded_amount:12.34",
+          "records_only:policy_unsupported:statement_3"
+        ],
+        "repaired": false,
+        "escalated": false
+      },
+      "stages": [
+        {
+          "stage": "draft",
+          "action": "block",
+          "reasons": [
+            "ungrounded_amount:12.34",
+            "policy_unsupported:statement_3"
+          ]
+        },
+        {
+          "stage": "repair",
+          "action": "block",
+          "reasons": [
+            "ungrounded_amount:12.34",
+            "policy_unsupported:statement_3"
+          ]
+        },
+        {
+          "stage": "fallback",
+          "action": "allow",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "case": "refusal",
+      "http_status": 200,
+      "writer_source": "scripted",
+      "outcome": "blocked",
+      "final": {
+        "answer": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "blocked_by": "evidence_guard",
+        "reasons": [
+          "ungrounded_amount:12.34",
+          "policy_unsupported:statement_0"
+        ],
+        "repaired": false,
+        "escalated": false
+      },
+      "stages": [
+        {
+          "stage": "draft",
+          "action": "block",
+          "reasons": [
+            "ungrounded_amount:12.34",
+            "policy_unsupported:statement_0"
+          ]
+        },
+        {
+          "stage": "repair",
+          "action": "block",
+          "reasons": [
+            "ungrounded_amount:12.34",
+            "policy_unsupported:statement_0"
+          ]
+        }
+      ]
+    }
+  ],
+  "video": {
+    "duration_seconds": 147.825,
+    "sha256": "0b791895bb8200877acfac825886fd65c73e6b820037f3b5a05e3bc79a7cc03f",
+    "scope": "Metadata and narration scope checked; no frame/audio audit or rerecording in this revision.",
+    "recorded_workflow": "clarification, confirmation, record fallback, correction; not context contracts or matched-error challenge"
+  }
+}

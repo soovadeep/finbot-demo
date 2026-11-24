@@ -88,7 +88,7 @@ observations. The separate inspector also supports direct comparisons and policy
 
 \paragraph{Interaction surfaces.} The conversation interprets messages and asks template-based
 questions without an LLM, then answers about one confirmed record among four synthetic payments.
-Ten \texttt{/inspector} presets cover declines, unknown outcomes, comparisons, policies, financial roles and recovery.
+Eleven \texttt{/inspector} presets cover declines, unknown outcomes, comparisons, policies, financial roles and recovery.
 Both share answering and verification; the conversation does not route arbitrary policy or
 multi-record requests to these presets.
 
@@ -144,7 +144,7 @@ The writer uses read-only tools to retrieve records and policy evidence. In the 
 the confirmed record is fetched again to answer the customer's own question; inspector requests
 can name multiple records or ask about policy. Deterministic checks compare recognized amounts,
 currencies, dates, statuses, causes and codes with eligible evidence. A failing draft gets one
-repair, then a checked record-built answer, then refusal. Third-party fields such as merchant
+repair, then a checked record-built answer or policy-only source quotation, then refusal. Fields such as merchant
 descriptors cannot support factual claims.
 
 \paragraph{Access boundaries.} The demo fixes a synthetic customer identity; it does not
@@ -167,6 +167,10 @@ dates; actual dates also require settled status. The inspector exposes the phras
 and verdict. Fallback states when actual dates are unavailable. Finite English patterns limit coverage.
 
 An optional LLM evidence review (\S\ref{sec:inject}) can join the gate; it is off by default, and provider failures withhold answers without counting as detections.
+
+\paragraph{Agent context.} Full-prompt admission reserves output capacity; old turns roll into
+bounded state, while oversized current evidence stops the call. Nine offline contracts cover
+rollover and memory replacement (Appendix~\ref{app:context}); live long-chat accuracy is unmeasured.
 
 \subsection{What the inspector shows}
 
@@ -193,15 +197,13 @@ and checks a record-built fallback that states the expected date. Each answer na
 \end{figure*}
 
 
-In Figure~\ref{fig:screenshot}, ``My \$200 payment hasn't arrived. When will it get there?'',
-``bank transfer'' and ``Willow Repairs'' give one record 72\% belief for customer confirmation.
-Both drafts invent a 12.34 fee; fallback reports the pending transfer and its expected date. Correcting to ``card payment on November 16''
-supersedes the answer and requires fresh confirmation.
+Figure~\ref{fig:screenshot} shows clarification and record-built recovery. Correcting to
+``card payment on November 16'' supersedes the answer and requires fresh confirmation.
 
 \paragraph{Additional scenarios.} Inspector presets explain declines and unknown timeouts,
 reject cross-record amounts and reversed cited policies, and distinguish a \$200 payment from
 its \$50 refund. ``Expected is not actual'' shows a date-role rejection and repair. Failed
-policy-only repairs produce refusal. All policies are fictional.
+policy-only repairs trigger a cited passage fallback; absent documentation produces refusal. All policies are fictional.
 
 
 
@@ -254,7 +256,7 @@ Explanations, recovery / both views & Paired mutations and live-writer audit (\S
 Financial roles / inspector & 60 corruption pairs, 12 equal-value controls, replayed cached drafts; finite claim formats. \\
 Requested fields, live answers / both & 30 fresh Llama answers, two labellers; only 2--4 wrong drafts. \\
 Record comparison / inspector & 28 workflow runs; 38 mutation pairs reused to verify fixes. \\
-Policy, refusal / inspector & 12 workflow runs; 36 mutation pairs reused to verify fixes. \\
+Policy, recovery / inspector & Paired 30-case live follow-up; two labellers. Authored stress tests expose off-topic quotes. \\
 Trace inspection / both views & Browser and accessibility checks (Appendix~\ref{app:ui}); no comprehension study. \\
 \bottomrule
 \end{tabularx}
@@ -351,31 +353,27 @@ answers, but unnecessary refusals remain.
 record coverage, complete passages and plural normalization, 40/40 runs pass and 74/74 mutations
 are rejected with clean controls accepted; six supported paraphrases are still rejected.
 
-\paragraph{Role ablation.} Six authored records and two wordings produce 48 within-record
-role substitutions and 12 cross-record substitutions, all reusing existing values. Removing both
-binding checks detects 0/60; the existing guardrail with record binding detects 12/60; adding
-financial roles detects 60/60. Each configuration accepts all 60 clean counterparts and 12
-equal-value controls. These development cases do not estimate accuracy: a month-name date and
-``You got \$200.00 back'' still pass incorrectly.
+\paragraph{Role ablation.} Six records and two wordings yield 60 value-preserving substitutions:
+48 within-record, 12 cross-record. Detection is 0/60 without binding, 12/60 with record binding,
+60/60 with financial roles; all 60 clean and 12 equal-value controls pass. These development
+cases do not estimate accuracy; unrecognized date/refund phrasing still evades role extraction.
 
-\paragraph{Fresh wording.} With runtime frozen, we committed 32 authored draft pairs and 16
-message sequences before evaluation. Role checks reject 12/32 corruptions (0/32 without them) and
-pass all clean counterparts; 15/16 sequences give the expected candidates.
-
-\paragraph{Fresh LLM answers.} With the runtime and a Gemini 2.5 Flash Lite reviewer frozen, Llama
-3.3 70B answered 30 new cases about supplied records (answering only). An AI assistant that had seen
-gate verdicts and a blind co-author labelled all 57 answers (89\% agreement, $\kappa{=}0.20$),
-marking 2 and 4 of 30 drafts wrong. Deterministic checks block 1/2 (2/4) wrong and 14/28 (13/26)
-correct drafts, five of them paraphrased policy answers; the reviewer blocks 0/2 (0/3) wrong and
-1/23 (1/22) correct (5/30 rate-limited). End to end, gating releases 23 correct and 1 wrong (22
-and 2), the reviewer run 21 and 2 (23 and 0; 12/59 rate-limited). Runs drew separate drafts and
-the gap flips with the labeller, so the reviewer stays off.
+\paragraph{Fresh LLM answers.} With runtime and Gemini 2.5 Flash Lite reviewer frozen, Llama
+3.3 70B answered 30 new supplied-record cases. An unblinded AI assistant and blind co-author
+labelled 57 answers (89\% agreement, $\kappa{=}0.20$), marking 2 and 4 drafts wrong.
+Checks block 1/2 (2/4) wrong and 14/28 (13/26) correct drafts. Final answers are 23 correct/1 wrong
+(22/2); with review, 21/2 (23/0), with 12/59 reviews unavailable. Separate drafts and
+labeller-dependent effects prevent attributing improvement to review; it stays off.
 
 \paragraph{Paired follow-up.} We then added a policy fallback: if a policy answer and its repair
 fail, code quotes the best retrieved passage verbatim with its source. On 30 new frozen cases where
 all configurations judged the same Llama draft, refusals fell from 13 to 4 (two correct) and
 released answers rose from 17 to 26, none wrong for either labeller (41/43 agree);
 checks still block 16/29 correct drafts.
+
+\paragraph{Matched error challenge.} Across 48 authored pairs, 44 corruptions and five clean
+controls are blocked (39/43 new rejections). Four off-topic quotations pass. Construction-based
+labels await human review; these are diagnostics (Appendix~\ref{app:challenge}).
 
 \paragraph{Template tests and matched controls.} On held-out template wordings, 82.3\%
 (2,668/3,240) of mutations are rejected, but 570 clean controls already fail; among the 2,670
@@ -388,15 +386,14 @@ Injected fees recover through repair in 127/128 cases and fallback in 128/128.
 
 \section{Related work}
 
-Clarification has been ranked by usefulness \citep{rao-daume-iii-2018-learning}, studied in search
-\citep{aliannejadi2019asking,zhang2020evaluating}, used selectively \citep{kuhn2022clam}, and guided
-by information gain \citep{piriyakulkij2023active,li2025eliciting}. Simulated users support early
-evaluation \citep{sekulic2022evaluating}. Finbot derives options from authorized records and
-targets wrong-record risk. Attribution and atomic-fact metrics \citep{rashkin-etal-2023-measuring,min-etal-2023-factscore}
-score support after generation; Finbot gates answers at run time on typed record fields. Evidence-based revision \citep{gao-etal-2023-rarr}, programmable rails
-\citep{rebedea-etal-2023-nemo} and capability-based separation of control and data
-\citep{debenedetti2025camel} motivate the answering step. In finance, Ryt AI already combines
-deterministic guardrails and customer confirmation \citep{chua-etal-2025-banking}.
+Prior work ranks clarification by usefulness \citep{rao-daume-iii-2018-learning}, studies search
+\citep{aliannejadi2019asking,zhang2020evaluating}, selective questions \citep{kuhn2022clam},
+information gain \citep{piriyakulkij2023active,li2025eliciting} and simulated users \citep{sekulic2022evaluating}.
+Finbot targets authorized-record ambiguity and runtime checking of typed fields, complementing
+attribution and atomic-fact metrics \citep{rashkin-etal-2023-measuring,min-etal-2023-factscore}.
+Evidence-based revision \citep{gao-etal-2023-rarr}, programmable rails \citep{rebedea-etal-2023-nemo}
+and control/data separation \citep{debenedetti2025camel} motivate its answering step.
+Ryt AI already combines financial guardrails and customer confirmation \citep{chua-etal-2025-banking}.
 Certainty distortions and omissions are also studied by \citet{nnamdi-etal-2026-epistemic}.
 Finbot's systems contribution connects ambiguous-record confirmation to inspectable financial
 role checks and recovery, with value-preserving ablations. We do not claim a new Bayesian method,
@@ -404,16 +401,14 @@ general semantic verifier or the first financial guardrail.
 
 \section{Limitations}
 
-Simulators may read lists and follow memory notes differently from people and share blind spots.
-The records are synthetic; Banking77 questions were not written about them. Reliabilities are
-assumed, unique amounts favor amount questions, and candidates are capped at eight. Stronger
-heuristics challenge DV's accuracy advantage. Component policies differ from the deployed
-controller, whose confident-detail filters can exclude the target. Conflict checks require
-explicit correction but cannot infer intent or detect all contradictions in free text. Controller,
-policy and comparison checks use authored cases. English parsing and verification miss semantic errors;
-the live-writer audit covers one model and card payments. No external annotator, user, voice or
-deployed-customer evaluation has been completed. Finbot is not validated for
-production financial support.
+Simulators and synthetic records do not establish user performance. Banking77 questions were not
+written for these records; assumed reliabilities and unique amounts favor amount questions.
+Candidates are capped at eight; stronger heuristics challenge DV. Component and controller
+policies differ: confident-detail filters can exclude the target, and conflict checks cannot
+infer intent. Authored workflow tests do not establish generalization. Finite English checks
+miss semantic errors; quotation does not prove relevance, nor context budgets long-chat recall.
+The live audit covers one writer and card payments. No external annotator, user, voice or
+deployed-customer study is complete; Finbot is not validated for production financial support.
 
 \section*{Ethics and broader impact}
 
@@ -424,7 +419,8 @@ would need independent validation, consent and access controls.
 
 \section*{Acknowledgements}
 
-Claude Code and OpenAI Codex assisted coding, writing and the video; authors validated all results.
+Claude Code and OpenAI Codex assisted coding, writing and the video. Label provenance and
+unreviewed construction-based expectations are disclosed with each evaluation.
 
 \clearpage
 \bibliography{references}
@@ -567,6 +563,10 @@ correct and wrong confirmations.}
 \section{Answer checks with matched controls}
 \label{app:inject}
 
+With runtime frozen, an earlier fresh-wording test committed 32 authored draft pairs and 16
+message sequences before evaluation. Role checks reject 12/32 corruptions (0/32 without them)
+and pass all clean counterparts; 15/16 sequences give the expected candidates.
+
 \begin{table}[H]
 \centering\small
 \setlength{\tabcolsep}{3pt}
@@ -602,28 +602,35 @@ the pre-existing settlement-phrase failure. Report conditional mutation sensitiv
 with control rejection: filtering to accepted controls alone would hide false positives.
 Neither value matching nor these template tests establish semantic completeness.
 
-\newpage
+\paragraph{New challenge.}\label{app:challenge} The 48-pair suite covers financial roles, record binding, missing/stale
+facts, omissions and policy meaning. Five correct paraphrases fail. Four off-topic quotations pass.
+Instances share templates, not independent samples. Frozen cases, source hashes, traces and a
+blank blind form for 91 distinct answers are released; human review is pending.
+
+\section{Context and execution contracts}
+\label{app:context}
+
+The configured window defaults to 131,072 tokens, reserving 16,000 for output and 1,024
+for framing. UTF-8 bytes plus overhead give a conservative estimate, not exact tokenization;
+deployments must configure their smallest model window. History rolls at 30 turns, 120,000
+characters, or insufficient space. Focus and tool-derived state survive; snapshots over 4,000
+characters are omitted whole and refetched. Current tool exchanges are never truncated.
+Nine offline tests cover admission, rollover, rollback, refetch and snapshot replacement.
+Separate semantic checkers have their own limits. Details are in \texttt{docs/agent-design.md}.
+
 \section{Interface checks}
 \label{app:ui}
 
-An automated Chromium walkthrough runs 18 acceptance checks on the inspector (every preset
-scenario, trace export, keyboard navigation, stale inputs, layouts from 320 to 1440 pixels); all
-pass. A second script exercises the conversation page (parsing, questions, unknown replies,
-corrections, an unmatched payment, the mobile layout). axe-core 4.10.3 finds no WCAG 2.1 A or AA
-violations in 14 interface states, and no page makes an external request or raises a script error.
-These historical feature checks do not measure user comprehension. After adding conflict resolution,
-a new Chromium script checks both resolution choices, keyboard operation, superseded answers and
-abstention at 390 and 1280 pixels. Its eight axe-scanned states have no detected violations or
-browser errors; this is not a complete accessibility audit.
+Historical Chromium checks pass 18 inspector acceptance checks (presets, export, keyboard,
+stale inputs, 320--1440-pixel layouts). Conversation checks cover parsing, questions, corrections,
+unknown replies and unmatched payments. axe-core 4.10.3 detects no WCAG 2.1 A/AA violations in
+14 states. Eight later conflict-resolution states at 390 and 1280 pixels likewise show no
+detected violations or browser errors. These are not comprehensive accessibility or comprehension studies.
 
-The controller replay now contains 15 scripts under four fault settings (60 runs). Six added
-scripts cover repeated conflicting selection, explicit correction and confirmation, keeping
-earlier details, typed correction, abstention and conflict after an answer. All meet their expected
-behavior. Outcomes are 32 correct, four wrong, 16 unresolved (eight appropriately for absent
-targets) and eight awaiting clarification. Twenty runs produce no draft, so their fault settings
-are unused; four paused runs supersede an earlier answer. Unit tests also check every supported
-field, tentative details, stale acknowledgements and that a conflicting selection does not call
-the answering step. These are authored regression cases, not independent users. Correct selection
-and expected fields are scored separately from the verifier; no semantic accuracy is inferred.
+Fifteen controller scripts under four fault settings give 60 expected runs: 32 correct, four
+wrong, 16 unresolved (eight appropriately for absent targets), eight awaiting clarification.
+Twenty produce no draft, so their fault setting is unused; four paused runs supersede an earlier
+answer. Tests include correction, repeated conflicts, tentative details and stale acknowledgements.
+Selection and expected fields are scored separately from the verifier; no semantic accuracy is inferred.
 
 \end{document}

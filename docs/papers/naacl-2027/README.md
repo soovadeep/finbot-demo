@@ -10,6 +10,8 @@ and comparison scenarios are distinguished from the conversation's confirmed-rec
 
 - [Reviewer guide](reviewer-guide.md): the hosted demo, the local demo and what to try.
 - [Prioritized next steps](next-steps.md): remaining implementation, evaluation and submission work.
+- [Agent design](../../agent-design.md): context budgets, memory, tool-loop limits and recovery.
+- [Matched error challenge](evaluation/verification-challenge.md): 48 pairs, failure cases and scope.
 - [Paper (PDF)](finbot-naacl2027.pdf)
 - [Paper source](paper/main.tex): LaTeX in the official ACL style (see [TEMPLATE.md](paper/TEMPLATE.md)).
 - [Paper details](evaluation/paper-details.md): prompts, settings and extra results the

@@ -1,8 +1,13 @@
 # NAACL 2027 demo video
 
 `finbot-naacl2027-demo.mp4` (2:28, 1080p, H.264/AAC, burned-in captions) walks through the
-current demo build, narrated by Soovadeep Bakshi. `narration.md` is the script and storyboard;
+earlier November 24 demo build, narrated by Soovadeep Bakshi. `narration.md` is the script and storyboard;
 `captions.srt` holds the captions.
+
+This video demonstrates clarification, explicit confirmation, record-based recovery and
+corrections. It does not demonstrate the newly added context-budget contracts or the
+48-pair error challenge. It has not been re-recorded for `abose/evaluation-context-gaps`;
+the paper reports those additions separately as offline implementation/evaluation evidence.
 
 The results slide describes the `ClarificationSession` component, not measured customer
 performance of the deployed controller. When the narration says code looks for "every amount,
