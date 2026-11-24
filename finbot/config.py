@@ -32,6 +32,9 @@ class Settings:
     semantic_verification: str = field(default_factory=lambda: _env("FINBOT_SEMANTIC_VERIFICATION", "off"))
     semantic_guardrail_id: str = field(default_factory=lambda: _env("FINBOT_SEMANTIC_GUARDRAIL_ID"))
     semantic_guardrail_version: str = field(default_factory=lambda: _env("FINBOT_SEMANTIC_GUARDRAIL_VERSION"))
+    # FINBOT_SEMANTIC_VERIFICATION=llm: a direct LLM evidence review (finbot/semantic_verification.py)
+    # through FINBOT_SEMANTIC_BASE_URL / FINBOT_SEMANTIC_API_KEY (any OpenAI-compatible endpoint).
+    semantic_model: str = field(default_factory=lambda: _env("FINBOT_SEMANTIC_MODEL"))
 
     # Knowledge base
     kb_path: str = field(default_factory=lambda: _env("FINBOT_KB_PATH", "kb_index.json"))

@@ -285,6 +285,7 @@ def _run_demo(question: str, fault: str = "none", *, records: list[dict] | None 
     model = DemoModel(fault, live)
     settings = Settings(llm_provider="fake", guardrail_provider="local", store_provider="sqlite",
                         semantic_verification=os.environ.get("FINBOT_DEMO_SEMANTIC", "off"),
+                        semantic_model=os.environ.get("FINBOT_SEMANTIC_MODEL", ""),
                         auth_mode="hmac", repair_attempts=1, record_fallback=True, routing="single",
                         policy_verification="extractive",
                         llm_retry_attempts=1, support_contact="the demo support desk", tool_policy_path="")
@@ -307,7 +308,8 @@ def _run_demo(question: str, fault: str = "none", *, records: list[dict] | None 
         "writer": writer()["label"] if live else "Scripted writer", "synthetic_data": True,
         "question": turn.question,
         "policy_verification": "extractive",
-        **({"semantic_verification": "bedrock"} if settings.semantic_verification == "bedrock" else {}),
+        **({"semantic_verification": settings.semantic_verification}
+           if settings.semantic_verification != "off" else {}),
         "fault": fault, "injections": model.injections, "outcome": outcome,
         "steps": [asdict(step) for step in steps], "evidence": turn.tools_called,
         "final": {"answer": turn.answer, "blocked_by": turn.blocked_by, "reasons": turn.reasons,
