@@ -35,8 +35,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from fresh_llm_study import CHECKER, WRITER, environment, sha, write_new  # noqa: E402
 
-DATA = ROOT / "data/naacl2027/fresh-llm-v2"
-OUT = ROOT / "results/naacl2027/fresh-llm-v2"
+VERSION = "fresh-llm-v2"   # --version selects another frozen copy (e.g. fresh-llm-v3, the re-run on later code)
+DATA = ROOT / "data/naacl2027" / VERSION
+OUT = ROOT / "results/naacl2027" / VERSION
 CONFIGS = ("before", "after", "after_review")
 NONCE = re.compile(r'nonce=\\"[0-9a-f]+\\"|nonce=\"[0-9a-f]+\"')
 
@@ -57,7 +58,7 @@ def sources() -> dict:
 def freeze(_args) -> None:
     from finbot.semantic_verification import LLM_PROMPT_VERSION, LLM_SYSTEM
     write_new(DATA / "protocol.json", {
-        "version": "fresh-llm-v2", "frozen": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "version": VERSION, "frozen": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "cases_sha256": sha((DATA / "cases.json").read_bytes()), "sources": sources(),
         "writer": WRITER, "checker": {**CHECKER, "prompt_version": LLM_PROMPT_VERSION,
                                        "prompt_sha256": sha(LLM_SYSTEM.encode())},
@@ -154,9 +155,9 @@ def _one(case: dict, config: str) -> dict:
             "wall_ms": round((time.perf_counter() - started) * 1000, 1)}
 
 
-def _run(offline: bool) -> None:
+def _run(offline: bool, seed: Path | None = None) -> None:
     verify_freeze()
-    saved = read(OUT / "responses.json")["responses"] if offline else None
+    saved = read(OUT / "responses.json")["responses"] if offline else (read(seed)["responses"] if seed else None)
     cache = Cache(saved, offline=offline)
     rows = []
     with cache.installed():
@@ -179,8 +180,10 @@ def _run(offline: bool) -> None:
                                            "responses": cache.responses})
 
 
-def run(_args) -> None:
-    _run(offline=False)
+def run(args) -> None:
+    # --seed reuses an earlier study's saved responses for byte-identical requests, so a re-run
+    # on changed code pays only for requests the change altered; all responses are saved again.
+    _run(offline=False, seed=args.seed)
 
 
 def replay(_args) -> None:
@@ -251,5 +254,9 @@ def score(_args) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("command", choices=("freeze", "run", "replay", "labels", "score"))
+    parser.add_argument("--version", default=VERSION)
+    parser.add_argument("--seed", type=Path, default=None, help="responses.json to reuse (run only)")
     args = parser.parse_args()
+    VERSION = args.version
+    DATA, OUT = ROOT / "data/naacl2027" / VERSION, ROOT / "results/naacl2027" / VERSION
     {"freeze": freeze, "run": run, "replay": replay, "labels": labels, "score": score}[args.command](args)
