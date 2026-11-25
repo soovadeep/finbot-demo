@@ -16,6 +16,8 @@ and comparison scenarios are distinguished from the conversation's confirmed-rec
   questions, 60 scripted runs, provisional AI review, and remaining omissions.
 - [Shared coverage and new paired evaluation](evaluation/support-coverage.md): different
   unused questions, the same pre/post-fix tasks, 23/60 to 50/60 complete under provisional AI review.
+  A separate development replay addresses eight omissions and requests clarification for two;
+  it does not replace the frozen score.
 - [Paper (PDF)](finbot-naacl2027.pdf)
 - [Paper source](paper/main.tex): LaTeX in the official ACL style (see [TEMPLATE.md](paper/TEMPLATE.md)).
 - [Paper details](evaluation/paper-details.md): prompts, settings and extra results the
@@ -30,6 +32,7 @@ the added baseline comparison is cache-only and reports missing coverage explici
 
 | Result | Command | Output |
 |---|---|---|
+| Later development coverage replay, 60 inspected tasks | `python scripts/naacl2027/replay_support_coverage.py --output /tmp/finbot-coverage-followup.json` | `results/naacl2027/support-coverage-followup.json` |
 | Frozen paired coverage study: 30 new questions, 120 pre/post-fix runs | See [protocol and reproduction](evaluation/support-coverage.md) | `results/naacl2027/public-wording-v2/` |
 | Frozen public wording: 30 questions, 60 scripted runs | See [preserving/replaying the frozen results](evaluation/public-wording.md) | `results/naacl2027/public-wording-v1/` |
 | Actual conversation controller: 60 authored regressions | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |

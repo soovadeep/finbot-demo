@@ -46,8 +46,12 @@ validation or human review. Earlier frozen studies retain their original results
   connect writer hints, checks and fallback for refund status, timing, causes and evidence
   limits. All 285 tests pass. On 30 different unused questions, 60 paired tasks improve
   from 23 to 50 supported/complete outcomes under provisional unblinded AI review.
-  Ten outcomes still miss navigation, resolution, cause or timing requests. This is
+  Ten outcomes in that frozen run miss navigation, resolution, cause or timing requests. This is
   scripted evaluation, with no new paid calls. [Details](evaluation/support-coverage.md).
+- **Later coverage regressions:** shared rules now cover statement access, cause variants,
+  read-only action limits and resolution timing; ambiguous returns prompt clarification.
+  All 292 tests pass. Separate development replay addresses eight omissions and asks
+  clarification for two unresolved outcomes; original scores and failures are preserved.
 - **Hosted smoke:** scripted policy quotation and missing-document refusal checked on
   November 24 (`results/naacl2027/hosted-smoke-2026-11-24.json`). This does not attest the
   deployed Git revision; the new context branch has not been deployed. Video is unchanged.

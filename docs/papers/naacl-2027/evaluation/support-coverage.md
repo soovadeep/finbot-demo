@@ -102,7 +102,49 @@ status/absence controls and rejects all 60 unsupported-status corruptions. It
 repeats a small number of status schemas across IDs and is **not** a natural LLM
 error rate, an independent sample of 60 failure types, or a substitute for answer review.
 
-## Artifacts and reproduction
+## Later development fixes for the ten omissions
+
+After inspecting and reporting the frozen results, revision `e75a046` extends the shared rules:
+
+- Statement/app questions require an explicit access/information limit. The assistant
+  cannot inspect the customer's statement; it does not invent where the bank displays refunds.
+- Cause requests include "how come" and "what is going on", in either order relative
+  to a decline description. They require a recorded reason or an explicit absence notice.
+- Requests to fix/resolve an issue require the assistant's read-only capability limit.
+- Resolution timing is separate from refund/settlement timing. A retry interval does not
+  establish when a decline issue will be fixed. Compound questions retain both requirements.
+- "Returned transaction/payment/transfer" without explicit refund wording prompts a
+  clarification: merchant refund or payment returned to sender. It does not assume that
+  a populated date field resolves the meaning. The exact code-owned clarification question
+  is excluded from the broad refund-mention check; surrounding assertions remain checked.
+
+The same rules guide the scripted/live writer, verifier, repair and record fallback.
+Seven added test methods cover these paths, present/absent fields, positive and negative
+controls, and an actual conversation clarification/follow-up. **All 292 tests pass.**
+The finite parser and strict wording requirements remain limitations.
+
+`support-coverage-followup.json` separately replays all 60 already-inspected tasks.
+All 60 produce a response; 48 are byte-identical and 12 change. The revised coverage
+check rejects all ten original incomplete answers. Provisional unblinded review of
+the changed answers finds eight of those omissions answered with the required facts
+or limits; the other two ask the return-type clarification and **remain unresolved**
+pending the customer reply. The two additional changed answers add missing-decline-reason
+notices to previously accepted evidence-limited guidance. See
+`support-coverage-followup-review-ai.json` for answer-bound rationales.
+
+This is development regression evidence, **not a new generalisation score**. The frozen
+23/60 to 50/60 comparison, raw outputs and original labels are unchanged. No fresh LLM
+calls were made. A separate conversation test verifies that an explicit follow-up about
+the refund keeps the confirmed record and answers with refund timing or its absence;
+that authored test is not a completed customer interaction in the frozen study.
+
+Reproduce this development replay with an unused output path:
+
+```sh
+python scripts/naacl2027/replay_support_coverage.py --output /tmp/finbot-coverage-followup.json
+```
+
+## Frozen study artifacts and reproduction
 
 - Protocol, source attribution, overlap audit and selected questions:
   `data/naacl2027/public-wording-v2/`.
@@ -113,6 +155,9 @@ error rate, an independent sample of 60 failure types, or a substitute for answe
 - `status-pairs.json` contains the narrow status diagnostics separately.
 
 Reproduction on the matching revision, retaining original outputs:
+
+Use the original study checkout (`d1a8afc`) for the frozen reproduction below;
+later runtime fixes intentionally fail its source-hash check.
 
 ```sh
 python - <<'PY'

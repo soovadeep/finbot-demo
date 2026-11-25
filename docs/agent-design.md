@@ -21,10 +21,18 @@ status consistency (`support_status`) from coverage (`support_coverage`). Fixed
 sentences describe schema meaning and read-only limits rather than inventing bank
 policies or account-interface instructions.
 
+Statement/app requests require an access limit; assistance requests require the
+read-only capability limit. Resolution time is distinct from settlement/refund time
+and retry intervals. A bare "returned transaction" can mean a merchant refund or a
+returned payment, so the assistant asks which process is meant. Exact code-owned
+limit sentences must be present as whole sentences, not quoted or negated fragments.
+
 This remains finite English parsing and can both miss a request and reject an
 equivalent paraphrase. The [paired public-wording study](papers/naacl-2027/evaluation/support-coverage.md)
 documents 50/60 complete revised outcomes versus 23/60 before the change under
 provisional AI review. It is scripted evidence, not fresh live-model validation.
+Later development replay addresses eight of its ten omissions and asks clarification
+for the other two; those two remain unresolved. The frozen score is preserved.
 
 ## What survives a long conversation
 
