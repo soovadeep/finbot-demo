@@ -7,6 +7,9 @@ performance of the hosted conversation, or engineering checks as a human study.
 
 The current submission uses the following completed evaluations:
 
+- [Paired coverage study](support-coverage.md): 30 different unused public questions,
+  60 tasks run against old and revised code. Provisional AI review finds 23/60 versus
+  50/60 complete; ten revised outcomes remain incomplete despite passing the gate.
 - [Frozen public-question study](public-wording.md): 30 previously unused BANKING77
   questions, paired populated/missing records, 60 scripted inspector runs. Provisional
   AI review separates supported statements from complete answers and preserves failures.

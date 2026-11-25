@@ -14,6 +14,8 @@ and comparison scenarios are distinguished from the conversation's confirmed-rec
 - [Matched error challenge](evaluation/verification-challenge.md): 48 pairs, failure cases and scope.
 - [Public wording and absence checks](evaluation/public-wording.md): 30 unused BANKING77
   questions, 60 scripted runs, provisional AI review, and remaining omissions.
+- [Shared coverage and new paired evaluation](evaluation/support-coverage.md): different
+  unused questions, the same pre/post-fix tasks, 23/60 to 50/60 complete under provisional AI review.
 - [Paper (PDF)](finbot-naacl2027.pdf)
 - [Paper source](paper/main.tex): LaTeX in the official ACL style (see [TEMPLATE.md](paper/TEMPLATE.md)).
 - [Paper details](evaluation/paper-details.md): prompts, settings and extra results the
@@ -28,6 +30,7 @@ the added baseline comparison is cache-only and reports missing coverage explici
 
 | Result | Command | Output |
 |---|---|---|
+| Frozen paired coverage study: 30 new questions, 120 pre/post-fix runs | See [protocol and reproduction](evaluation/support-coverage.md) | `results/naacl2027/public-wording-v2/` |
 | Frozen public wording: 30 questions, 60 scripted runs | See [preserving/replaying the frozen results](evaluation/public-wording.md) | `results/naacl2027/public-wording-v1/` |
 | Actual conversation controller: 60 authored regressions | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |
 | Varied support: post-fix rerun of 40 inspector runs and 74 matched mutations | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support-roles.json` (earlier reports preserved) |

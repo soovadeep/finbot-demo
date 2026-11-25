@@ -1,5 +1,9 @@
 # Shared absence checks and an external-wording evaluation
 
+This document preserves the first public-wording study. A subsequent shared coverage
+fix and prospective paired evaluation on different questions are documented in
+[support-coverage.md](support-coverage.md); the original results below remain unchanged.
+
 ## What changed
 
 `finbot/missing_information.py` gives evidence checking and requested-field coverage
@@ -98,9 +102,9 @@ study.run()
 PY
 ```
 
-The next shared coverage improvement should cover **refund status, missing refund
+The subsequent shared coverage improvement addresses **refund status, missing refund
 information, pending-status explanations and explicit limits on missing causes**
-across draft, repair and fallback. Treat these now-inspected cases as development
+across draft, repair and fallback. These inspected cases are development
 cases. Keep this first report, and reserve different external wording for a future
 prospective test. More regex synonyms alone will not establish semantic adequacy.
 

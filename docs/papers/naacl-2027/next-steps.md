@@ -42,10 +42,16 @@ validation or human review. Earlier frozen studies retain their original results
   BANKING77 questions. Sixty scripted runs release 57 answers; provisional unblinded AI
   review judges 24 releases complete plus three refusals appropriate. Refund status and
   pending explanations remain gaps. [Protocol, examples and limits](evaluation/public-wording.md).
+- **Coverage revision and prospective comparison:** shared topic/facet requirements now
+  connect writer hints, checks and fallback for refund status, timing, causes and evidence
+  limits. All 285 tests pass. On 30 different unused questions, 60 paired tasks improve
+  from 23 to 50 supported/complete outcomes under provisional unblinded AI review.
+  Ten outcomes still miss navigation, resolution, cause or timing requests. This is
+  scripted evaluation, with no new paid calls. [Details](evaluation/support-coverage.md).
 - **Hosted smoke:** scripted policy quotation and missing-document refusal checked on
   November 24 (`results/naacl2027/hosted-smoke-2026-11-24.json`). This does not attest the
   deployed Git revision; the new context branch has not been deployed. Video is unchanged.
-- **Still open:** shared coverage of refund status/pending explanations, fresh live answers
+- **Still open:** broader coverage beyond the recognised topic/facet grammar, fresh live answers
   on external wording, broader full-controller assessment, semantic applicability and
   release/deployment identity. AI-only labels are disclosed; external participants remain optional.
 

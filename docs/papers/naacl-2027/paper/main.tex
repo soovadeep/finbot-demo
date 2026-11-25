@@ -61,8 +61,8 @@ release. We contribute:
 \begin{itemize}\itemsep0pt
 \item A controller linking belief updates and question scores to clarification; explicit
   confirmation and conflict resolution govern retrieval for explanation.
-\item Inspectable verification and bounded recovery require requested-field coverage;
-  traces show source fields, rejection reasons and scripted/live writer labels.
+\item Shared evidence requirements guide writer instructions, verification and bounded
+  recovery; traces show source fields, missing information and scripted/live writer labels.
 \item Reproducible simulations, controller replays and value-preserving ablations distinguish
   record ownership from financial meaning; they do not establish customer accuracy.
 \end{itemize}
@@ -155,16 +155,17 @@ and hedge handling. Recognized values must occur in eligible evidence; recognize
 map to recorded reason codes. Policy statements retain complete cited passages; code questions
 also require coverage of every requested code by passage text or section headings. Explicit
 comparisons require each requested record and recognized requested fields, including in fallback.
-Single-record answers must state each requested field or its absence, so ``Your payment was \$200'' fails ``How much was refunded?''.
-Shared absence checks distinguish missing fields from events not occurring and use the latest
-record; ``not recorded'' cannot deny a known value, including zero.
+Single-record coverage maps question topics to required statuses, amounts, timing and causes.
+The same plan supplies writer instructions, checks and fallback; missing information must be
+explicit. Refund arrival and payment settlement use separate fields. Fixed text explains schema
+meaning and assistance limits. The latest record governs absence; known zero cannot be denied.
 Coverage is finite: unrecognized wording, date formats and bare web addresses can evade extraction
 (Section~\ref{sec:inject}); omissions remain possible. A passing gate does not establish correctness.
 
 \paragraph{Financial roles.} A recognized claim $c=(h,r,v)$ identifies a record, role and value.
 The role maps to a schema path $\pi(r)$; support requires $v=D_h[\pi(r)]$ after normalization,
-using the latest lookup $D_h$. Roles cover payment/refund amounts and expected/actual settlement
-dates; actual dates also require settled status. The inspector exposes the phrase, role, field
+using the latest lookup $D_h$. Roles cover amounts and refund/settlement dates; actual settlement
+dates require settled status. The inspector exposes the phrase, role, field
 and verdict. Fallback states when actual dates are unavailable. Finite English patterns limit coverage.
 
 An optional LLM evidence review (\S\ref{sec:inject}) can join the gate; it is off by default, and provider failures withhold answers without counting as detections.
@@ -254,7 +255,7 @@ Clarification / conversation & 224 scenarios, two simulators and stronger baseli
 Confirmation, corrections / conversation & 60 controller replays; unit and browser checks include conflicts. Not customer accuracy. \\
 Explanations, recovery / both views & Paired mutations and live-writer audit (\S\ref{sec:inject}); semantic errors remain. \\
 Financial roles / inspector & 60 corruption pairs, 12 equal-value controls, replayed cached drafts; finite claim formats. \\
-Requested fields / both & 30-case live study; 60 public-question scripted runs expose omissions. \\
+Requested fields / both & Live study plus paired scripted public questions: 23/60 to 50/60 complete, provisional AI review. \\
 Record comparison / inspector & 28 workflow runs; 38 mutation pairs reused to verify fixes. \\
 Policy, recovery / inspector & Paired 30-case live follow-up; two labellers. Known off-topic quotes blocked in development replay. \\
 Trace inspection / both views & Browser and accessibility checks (Appendix~\ref{app:ui}); no comprehension study. \\
@@ -361,12 +362,13 @@ refusals from 13 to 4 (two appropriate) on 30 new frozen cases, with configurati
 released answers rose from 17 to 26, none wrong for either labeller (41/43 agree);
 checks still block 16/29 correct drafts, also in our current development replay.
 
-\paragraph{Public questions.} With code and sampling frozen, we select 30 unused Banking77
-questions after overlap screening: refunds, pending payments and declines. Paired populated/missing
-synthetic details give 60 scripted runs, 57 releases. Provisional unblinded AI review judges
-24 releases complete and three refusals appropriate; refund status and pending explanations
-are often omitted. This is not live LLM or customer evaluation. Separately, shared absence
-checks recover 3/4 saved correct missing-refund drafts in development replay.
+\paragraph{Public questions.} Initial public wording exposed omitted refund status and pending
+explanations. After adding shared coverage requirements, we freeze code and sampling, then select
+30 unused Banking77 train questions with prior-overlap screening. Two synthetic evidence conditions
+give 60 tasks, run on pre-fix and revised code. Provisional unblinded AI review judges 23/60 versus
+50/60 outcomes supported and complete (27 improved, none regressed). The revised writer releases
+all 60, but ten still miss requested information. These are scripted,
+post-identification answers; fresh live-writer and customer performance remain unmeasured.
 
 \paragraph{Matched error challenge.} Originally, 44/48 corruptions and five clean controls fail.
 Requested-code coverage now blocks all four off-topic quotes: 48/48 corruptions and 43/43 new

@@ -6,6 +6,26 @@ and expected decision value; the customer explicitly confirms the record. Genera
 questions in the inspector do not need record clarification. The LLM drafts answers and
 requests tools; it does not grant access or execute payments.
 
+## Shared answer requirements
+
+`support_coverage.py` maps recognised question topics and facets to evidence fields
+and explicit limits. Refund progress needs refund status; asking why needs a reason
+or a statement that no reason is recorded; refund arrival uses a different date
+from payment settlement. Missing evidence does not imply that an event never happened.
+
+The same plan supplies code-owned live-writer hints, repair instructions, output
+checks, scripted supplements and the checked record fallback. Hints are included
+before context admission; user text is not copied into the generated system hint.
+Status claims bind to their subject and latest record. Inspector traces separate
+status consistency (`support_status`) from coverage (`support_coverage`). Fixed
+sentences describe schema meaning and read-only limits rather than inventing bank
+policies or account-interface instructions.
+
+This remains finite English parsing and can both miss a request and reject an
+equivalent paraphrase. The [paired public-wording study](papers/naacl-2027/evaluation/support-coverage.md)
+documents 50/60 complete revised outcomes versus 23/60 before the change under
+provisional AI review. It is scripted evidence, not fresh live-model validation.
+
 ## What survives a long conversation
 
 `SessionMemory` holds the focused record ID, tool-derived facts with provenance/time,
