@@ -211,10 +211,10 @@ class ConversationKeepsTheQuestion(unittest.TestCase):
         self.assertEqual(requested_roles("Did I get my money back for txn_X, and how much?"), ("refund_amount",))
         self.assertEqual(requested_roles("Compare the refunds on txn_A and txn_B."), ("refund_amount",))
 
-    def test_not_refunded_states_the_absence(self):
+    def test_missing_refund_data_does_not_establish_nonoccurrence(self):
         record = {k: v for k, v in ROLE_RECORD.items() if k != "refund"}
         from finbot.guardrails import evidence_check
-        self.assertNotIn("ungrounded_refund_claim",
+        self.assertIn("ungrounded_refund_claim",
                          evidence_check("The transaction txn_ROLE0001 was not refunded.", [envelope(record)], None).reasons)
         self.assertIn("ungrounded_refund_claim",
                       evidence_check("The transaction txn_ROLE0001 was refunded.", [envelope(record)], None).reasons)

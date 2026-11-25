@@ -22,9 +22,10 @@ from __future__ import annotations
 import re
 
 from .binding import segments
-from .financial_roles import PATHS, _field, _normalized, claims
+from .financial_roles import _field, _normalized, claims
 from .guardrails import AMOUNT, BLOCKED_OUTPUT_MSG, MONEY, GuardResult
 from .provenance import trusted_log
+from .missing_information import states_absent, value_for_field
 
 # Ordered: the label used in reasons, the trigger phrasings, and the words a "not recorded"
 # statement must name. Triggers look for an explicit request, not a passing mention.
@@ -58,8 +59,6 @@ ROLES = {
 LABELS = {"refund_amount": "a refund amount", "expected_settlement_date": "an expected settlement date",
           "actual_settlement_date": "an actual settlement date", "payment_amount": "a payment amount",
           "decline_reason": "a decline reason"}
-_NOT = r"(?:\bno\b|\bnot\b|n't\b|\bnone\b|\bwithout\b)"
-_ABSENT = r"(?:recorded|shown|available|listed|known|present|included|on (?:the|this) record)"
 
 
 def requested_roles(question: str) -> tuple[str, ...]:
@@ -69,26 +68,12 @@ def requested_roles(question: str) -> tuple[str, ...]:
 
 
 def _states_absent(text: str, role: str) -> bool:
-    words = ROLES[role][1]
-    if not words:
-        return False
-    lowered = text.casefold()
-    return bool(re.search(rf"{_NOT}[^.!?]{{0,40}}\b(?:{words})\b", lowered)
-                or re.search(rf"\b(?:{words})\b[^.!?]{{0,40}}{_NOT}[^.!?]{{0,12}}{_ABSENT}", lowered))
+    return states_absent(text, role)
 
 
 def _value(data: dict, role: str):
     """The record's value for a role, or None when the record does not establish it."""
-    if role == "payment_amount":
-        return data.get("amount")
-    if role == "decline_reason":
-        return data.get("decline_code") or data.get("error")
-    value = _field(data, PATHS[role])
-    if _normalized(value, role) is None:
-        return None
-    if role == "actual_settlement_date" and _field(data, "settlement.status") != "settled":
-        return None
-    return value
+    return value_for_field(data, role)
 
 
 def _covered(text: str, role: str, data: dict) -> bool:
@@ -170,14 +155,13 @@ class RequestedInformationVerifier:
             present = _value(data, role) is not None
             covered = _covered(about, role, data)
             absent_stated = _states_absent(about, role)
-            if present and absent_stated and not covered:
+            if present and absent_stated:
                 verdict = "denied"
                 reasons.append(f"requested_information_denied:{rid}:{role}")
             elif present and not covered:
                 verdict = "missing"
                 reasons.append(f"requested_information_missing:{rid}:{role}")
-            elif not present and not (absent_stated or (role == "actual_settlement_date"
-                                                        and "actual settlement date is not recorded" in about.casefold())):
+            elif not present and not absent_stated:
                 verdict = "missing_unavailable_notice"
                 reasons.append(f"requested_information_unavailable_unstated:{rid}:{role}")
             else:

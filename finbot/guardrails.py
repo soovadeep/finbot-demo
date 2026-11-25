@@ -216,10 +216,6 @@ RECORD_CLAIMS = [
 ]
 
 
-ABSENCE = re.compile(r"^\W*(?:the record|this record|our records?)\s+(?:does not|doesn't|do not|don't)\s+"
-                     r"(?:show|record|list|include)\s+(?:a|an|any)\s+[\w ]{0,40}[.!]?\W*$|"
-                     r"^\W*an? [\w ]{0,40}\b(?:is|was) not recorded[.!]?\W*$|"
-                     r"^[^.!?]*\b(?:was|were|has|have|had)\s+not\s+(?:been\s+)?refunded[^.!?]*[.!]?\W*$", re.I)
 NEGATION = re.compile(r"(\b(not|never|no|neither|nor|avoid|stop)\b|n't)\W+(\w+\W+){0,2}$", re.I)
 # "retry" as advice, not as a noun ("retry policy", "retry rule", "retry limit").
 RETRY_ADVICE = re.compile(r"\b(retry(?!\s+(policy|rule|rules|limit|limits|logic|count|window|attempts?)\b)|"
@@ -592,9 +588,10 @@ def evidence_check(answer: str, tool_log: list[dict], focus_txn: str | None,
         reasons.append("status_claim_without_lookup")
     reasons += retry_advice_check(answer, tool_log)
     low_blob = blob.lower()
-    # A sentence that only says the record lacks a field ("The record does not show a refund
-    # amount.") is not a lifecycle claim; every other mention still needs the field.
-    claimed = " ".join(sentence for sentence in _sentences(answer) if not ABSENCE.search(sentence))
+    # Missing information is a scoped, checked claim, not a wording-based exemption.
+    from .missing_information import check_absence
+    claimed, absence_reasons, absence_checks = check_absence(answer, tool_log)
+    reasons += absence_reasons
     for claim, needs in RECORD_CLAIMS:
         if claim.search(claimed) and needs not in low_blob:
             reasons.append(f"ungrounded_{needs}_claim")
@@ -624,8 +621,8 @@ def evidence_check(answer: str, tool_log: list[dict], focus_txn: str | None,
         if not says_missing or pos or neg:
             reasons.append("claims_about_missing_transaction")
     if reasons:
-        return GuardResult("block", BLOCKED_OUTPUT_MSG, reasons)
-    return GuardResult("allow", answer)
+        return GuardResult("block", BLOCKED_OUTPUT_MSG, reasons, absence_checks)
+    return GuardResult("allow", answer, checks=absence_checks)
 
 
 def _code_values(v) -> set[str]:
