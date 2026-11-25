@@ -1,0 +1,3489 @@
+{
+  "rubric": "Supported: every financial assertion is entailed by the retrieved record/docs, without equating missing evidence with zero/nonoccurrence. Complete: addresses all parts of the original question or explicitly states what evidence cannot answer. A generic payment summary does not answer a refund question. Correct status does not answer why/how long/advice by itself. Never infer labels from gate decisions.",
+  "items": [
+    {
+      "key": "public-001/populated",
+      "question": "I should have received a refund however it is not showing on my statement",
+      "record": {
+        "txn_id": "txn_EXT00001",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00001"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00001",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "refund": {
+                "status": "pending",
+                "amount": "23.40"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00001",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00001 was approved for 81.70 USD. Refund amount: 23.40.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-001/missing",
+      "question": "I should have received a refund however it is not showing on my statement",
+      "record": {
+        "txn_id": "txn_EXT00001",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00001"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00001",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD"
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00001",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00001 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-002/populated",
+      "question": "Why doesn't a return show up im my account from a purchase I made?",
+      "record": {
+        "txn_id": "txn_EXT00002",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00002"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00002",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "refund": {
+                "status": "pending",
+                "amount": "23.40"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00002",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00002 was approved for 81.70 USD. Refund amount: 23.40.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-002/missing",
+      "question": "Why doesn't a return show up im my account from a purchase I made?",
+      "record": {
+        "txn_id": "txn_EXT00002",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00002"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00002",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD"
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00002",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00002 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-003/populated",
+      "question": "I requested a refund from a merchant days ago but I do not see it in my account.",
+      "record": {
+        "txn_id": "txn_EXT00003",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00003"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00003",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "refund": {
+                "status": "pending",
+                "amount": "23.40"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00003",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00003 was approved for 81.70 USD. Refund amount: 23.40.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-003/missing",
+      "question": "I requested a refund from a merchant days ago but I do not see it in my account.",
+      "record": {
+        "txn_id": "txn_EXT00003",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00003"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00003",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD"
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00003",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00003 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-004/populated",
+      "question": "Where is my refund? I have been checking my account all day.",
+      "record": {
+        "txn_id": "txn_EXT00004",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00004"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00004",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "refund": {
+                "status": "pending",
+                "amount": "23.40"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00004",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00004 was approved for 81.70 USD. Refund amount: 23.40.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-004/missing",
+      "question": "Where is my refund? I have been checking my account all day.",
+      "record": {
+        "txn_id": "txn_EXT00004",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00004"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00004",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD"
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00004",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00004 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-005/populated",
+      "question": "I still haven't seen a refund on my account",
+      "record": {
+        "txn_id": "txn_EXT00005",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00005"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00005",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "refund": {
+                "status": "pending",
+                "amount": "23.40"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00005",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00005 was approved for 81.70 USD. Refund amount: 23.40.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-005/missing",
+      "question": "I still haven't seen a refund on my account",
+      "record": {
+        "txn_id": "txn_EXT00005",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00005"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00005",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD"
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00005",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00005 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-006/populated",
+      "question": "I am awaiting my refund",
+      "record": {
+        "txn_id": "txn_EXT00006",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00006"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00006",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "refund": {
+                "status": "pending",
+                "amount": "23.40"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00006",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00006 was approved for 81.70 USD. Refund amount: 23.40.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-006/missing",
+      "question": "I am awaiting my refund",
+      "record": {
+        "txn_id": "txn_EXT00006",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00006"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00006",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD"
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00006",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00006 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-007/populated",
+      "question": "The refund has not appeared in my account",
+      "record": {
+        "txn_id": "txn_EXT00007",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00007"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00007",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "refund": {
+                "status": "pending",
+                "amount": "23.40"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00007",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00007 was approved for 81.70 USD. Refund amount: 23.40.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-007/missing",
+      "question": "The refund has not appeared in my account",
+      "record": {
+        "txn_id": "txn_EXT00007",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00007"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00007",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD"
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00007",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00007 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-008/populated",
+      "question": "Where can I see the refund in my account",
+      "record": {
+        "txn_id": "txn_EXT00008",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00008"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00008",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "refund": {
+                "status": "pending",
+                "amount": "23.40"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00008",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00008 was approved for 81.70 USD. Refund amount: 23.40.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-008/missing",
+      "question": "Where can I see the refund in my account",
+      "record": {
+        "txn_id": "txn_EXT00008",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00008"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00008",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD"
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00008",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00008 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-009/populated",
+      "question": "Help! I keep checking my account, but my refund is not showing. I requested that a seller refund my money a while back, but there is no money showing in my account. What can you do for me?",
+      "record": {
+        "txn_id": "txn_EXT00009",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00009"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00009",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "refund": {
+                "status": "pending",
+                "amount": "23.40"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00009",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00009 was approved for 81.70 USD. Refund amount: 23.40.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-009/missing",
+      "question": "Help! I keep checking my account, but my refund is not showing. I requested that a seller refund my money a while back, but there is no money showing in my account. What can you do for me?",
+      "record": {
+        "txn_id": "txn_EXT00009",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00009"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00009",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD"
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00009",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00009 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-010/populated",
+      "question": "I was supposed to get a purchase refunded but I don't see the money in my account",
+      "record": {
+        "txn_id": "txn_EXT00010",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00010"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00010",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "refund": {
+                "status": "pending",
+                "amount": "23.40"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00010",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00010 was approved for 81.70 USD. Refund amount: 23.40.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-010/missing",
+      "question": "I was supposed to get a purchase refunded but I don't see the money in my account",
+      "record": {
+        "txn_id": "txn_EXT00010",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00010"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00010",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD"
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00010",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00010 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-011/populated",
+      "question": "I made a purchase and it says it's pending. What does that mean?",
+      "record": {
+        "txn_id": "txn_EXT00011",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00011"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00011",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending",
+                "expected_date": "2026-12-01"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00011",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00011 was approved for 81.70 USD. Expected settlement date: 2026-12-01. An actual settlement date is not recorded.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-011/missing",
+      "question": "I made a purchase and it says it's pending. What does that mean?",
+      "record": {
+        "txn_id": "txn_EXT00011",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00011"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00011",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00011",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00011 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-012/populated",
+      "question": "What is a pending payment?",
+      "record": {
+        "txn_id": "txn_EXT00012",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00012"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00012",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending",
+                "expected_date": "2026-12-01"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00012",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00012 was approved for 81.70 USD. Expected settlement date: 2026-12-01. An actual settlement date is not recorded.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-012/missing",
+      "question": "What is a pending payment?",
+      "record": {
+        "txn_id": "txn_EXT00012",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00012"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00012",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00012",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00012 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-013/populated",
+      "question": "How long does an item I bought show as pending?",
+      "record": {
+        "txn_id": "txn_EXT00013",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00013"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00013",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending",
+                "expected_date": "2026-12-01"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00013",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00013 was approved for 81.70 USD. Expected settlement date: 2026-12-01. An actual settlement date is not recorded.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-013/missing",
+      "question": "How long does an item I bought show as pending?",
+      "record": {
+        "txn_id": "txn_EXT00013",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00013"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00013",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00013",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00013 was approved for 81.70 USD. The record does not show an expected settlement date.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-014/populated",
+      "question": "My card payment is showing pending.",
+      "record": {
+        "txn_id": "txn_EXT00014",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00014"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00014",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending",
+                "expected_date": "2026-12-01"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00014",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00014 was approved for 81.70 USD. Expected settlement date: 2026-12-01. An actual settlement date is not recorded.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-014/missing",
+      "question": "My card payment is showing pending.",
+      "record": {
+        "txn_id": "txn_EXT00014",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00014"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00014",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00014",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00014 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-015/populated",
+      "question": "Why is my payment pending?",
+      "record": {
+        "txn_id": "txn_EXT00015",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00015"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00015",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending",
+                "expected_date": "2026-12-01"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00015",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00015 was approved for 81.70 USD. Expected settlement date: 2026-12-01. An actual settlement date is not recorded.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-015/missing",
+      "question": "Why is my payment pending?",
+      "record": {
+        "txn_id": "txn_EXT00015",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00015"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00015",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00015",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00015 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-016/populated",
+      "question": "I have waited 15 days, but my payment still hasn't cleared.",
+      "record": {
+        "txn_id": "txn_EXT00016",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00016"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00016",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending",
+                "expected_date": "2026-12-01"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00016",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00016 was approved for 81.70 USD. Expected settlement date: 2026-12-01. An actual settlement date is not recorded.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-016/missing",
+      "question": "I have waited 15 days, but my payment still hasn't cleared.",
+      "record": {
+        "txn_id": "txn_EXT00016",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00016"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00016",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00016",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00016 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-017/populated",
+      "question": "When will my card payment be done pending?",
+      "record": {
+        "txn_id": "txn_EXT00017",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00017"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00017",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending",
+                "expected_date": "2026-12-01"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00017",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00017 was approved for 81.70 USD. Expected settlement date: 2026-12-01. An actual settlement date is not recorded.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-017/missing",
+      "question": "When will my card payment be done pending?",
+      "record": {
+        "txn_id": "txn_EXT00017",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00017"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00017",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00017",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00017 was approved for 81.70 USD. The record does not show an expected settlement date.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-018/populated",
+      "question": "I made this payment days ago so why hasn't it gone through yet?",
+      "record": {
+        "txn_id": "txn_EXT00018",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00018"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00018",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending",
+                "expected_date": "2026-12-01"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00018",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00018 was approved for 81.70 USD. Expected settlement date: 2026-12-01. An actual settlement date is not recorded.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-018/missing",
+      "question": "I made this payment days ago so why hasn't it gone through yet?",
+      "record": {
+        "txn_id": "txn_EXT00018",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00018"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00018",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00018",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00018 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-019/populated",
+      "question": "I have paid by my card but payment is still its coming as pending. I think there is some issue please check and let me know when the status will complete.",
+      "record": {
+        "txn_id": "txn_EXT00019",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00019"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00019",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending",
+                "expected_date": "2026-12-01"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00019",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00019 was approved for 81.70 USD. Expected settlement date: 2026-12-01. An actual settlement date is not recorded.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-019/missing",
+      "question": "I have paid by my card but payment is still its coming as pending. I think there is some issue please check and let me know when the status will complete.",
+      "record": {
+        "txn_id": "txn_EXT00019",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00019"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00019",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00019",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00019 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-020/populated",
+      "question": "Why is a payment showing up on my card as pending?",
+      "record": {
+        "txn_id": "txn_EXT00020",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00020"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00020",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending",
+                "expected_date": "2026-12-01"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00020",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00020 was approved for 81.70 USD. Expected settlement date: 2026-12-01. An actual settlement date is not recorded.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-020/missing",
+      "question": "Why is a payment showing up on my card as pending?",
+      "record": {
+        "txn_id": "txn_EXT00020",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00020"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00020",
+              "status": "approved",
+              "amount": "81.70",
+              "currency": "USD",
+              "settlement": {
+                "status": "pending"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00020",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00020 was approved for 81.70 USD.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-021/populated",
+      "question": "My card was declined in a shop",
+      "record": {
+        "txn_id": "txn_EXT00021",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00021"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00021",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "decline_code": "51",
+              "processor_response": "Insufficient funds",
+              "guidance": {
+                "reason_key": "51",
+                "retryable": true,
+                "retry_rule": "Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+                "next_step": "Soft decline. A single delayed retry is allowed under policy.",
+                "tell_the_cardholder": "Use another card, or retry once funds are available."
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00021",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00021 was declined for 81.70 USD with decline code 51 (Insufficient funds). Next step: Soft decline. A single delayed retry is allowed under policy. Retry policy: Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-021/missing",
+      "question": "My card was declined in a shop",
+      "record": {
+        "txn_id": "txn_EXT00021",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00021"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00021",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00021",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00021 was declined for 81.70 USD. Next step: Unmapped failure; investigate the logs. Retry policy: Do not retry until the cause is understood.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-022/populated",
+      "question": "Card payment declined?",
+      "record": {
+        "txn_id": "txn_EXT00022",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00022"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00022",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "decline_code": "51",
+              "processor_response": "Insufficient funds",
+              "guidance": {
+                "reason_key": "51",
+                "retryable": true,
+                "retry_rule": "Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+                "next_step": "Soft decline. A single delayed retry is allowed under policy.",
+                "tell_the_cardholder": "Use another card, or retry once funds are available."
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00022",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00022 was declined for 81.70 USD with decline code 51 (Insufficient funds). Next step: Soft decline. A single delayed retry is allowed under policy. Retry policy: Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-022/missing",
+      "question": "Card payment declined?",
+      "record": {
+        "txn_id": "txn_EXT00022",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00022"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00022",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00022",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00022 was declined for 81.70 USD. Next step: Unmapped failure; investigate the logs. Retry policy: Do not retry until the cause is understood.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-023/populated",
+      "question": "I finally got my new card and was very excited to use it today. However, my payment kept declining. What is happening?",
+      "record": {
+        "txn_id": "txn_EXT00023",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00023"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00023",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "decline_code": "51",
+              "processor_response": "Insufficient funds",
+              "guidance": {
+                "reason_key": "51",
+                "retryable": true,
+                "retry_rule": "Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+                "next_step": "Soft decline. A single delayed retry is allowed under policy.",
+                "tell_the_cardholder": "Use another card, or retry once funds are available."
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00023",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00023 was declined for 81.70 USD with decline code 51 (Insufficient funds). Next step: Soft decline. A single delayed retry is allowed under policy. Retry policy: Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-023/missing",
+      "question": "I finally got my new card and was very excited to use it today. However, my payment kept declining. What is happening?",
+      "record": {
+        "txn_id": "txn_EXT00023",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00023"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00023",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00023",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00023 was declined for 81.70 USD. Next step: Unmapped failure; investigate the logs. Retry policy: Do not retry until the cause is understood.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-024/populated",
+      "question": "How do you fix  my card payment?",
+      "record": {
+        "txn_id": "txn_EXT00024",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00024"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00024",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "decline_code": "51",
+              "processor_response": "Insufficient funds",
+              "guidance": {
+                "reason_key": "51",
+                "retryable": true,
+                "retry_rule": "Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+                "next_step": "Soft decline. A single delayed retry is allowed under policy.",
+                "tell_the_cardholder": "Use another card, or retry once funds are available."
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00024",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00024 was declined for 81.70 USD with decline code 51 (Insufficient funds). Next step: Soft decline. A single delayed retry is allowed under policy. Retry policy: Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-024/missing",
+      "question": "How do you fix  my card payment?",
+      "record": {
+        "txn_id": "txn_EXT00024",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00024"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00024",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00024",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00024 was declined for 81.70 USD. Next step: Unmapped failure; investigate the logs. Retry policy: Do not retry until the cause is understood.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-025/populated",
+      "question": "Do you know why my card payment is declined?",
+      "record": {
+        "txn_id": "txn_EXT00025",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00025"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00025",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "decline_code": "51",
+              "processor_response": "Insufficient funds",
+              "guidance": {
+                "reason_key": "51",
+                "retryable": true,
+                "retry_rule": "Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+                "next_step": "Soft decline. A single delayed retry is allowed under policy.",
+                "tell_the_cardholder": "Use another card, or retry once funds are available."
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00025",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00025 was declined for 81.70 USD with decline code 51 (Insufficient funds). Next step: Soft decline. A single delayed retry is allowed under policy. Retry policy: Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-025/missing",
+      "question": "Do you know why my card payment is declined?",
+      "record": {
+        "txn_id": "txn_EXT00025",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00025"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00025",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00025",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00025"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00025",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00025",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-026/populated",
+      "question": "Why was a transaction on my card declined?",
+      "record": {
+        "txn_id": "txn_EXT00026",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00026"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00026",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "decline_code": "51",
+              "processor_response": "Insufficient funds",
+              "guidance": {
+                "reason_key": "51",
+                "retryable": true,
+                "retry_rule": "Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+                "next_step": "Soft decline. A single delayed retry is allowed under policy.",
+                "tell_the_cardholder": "Use another card, or retry once funds are available."
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00026",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00026 was declined for 81.70 USD with decline code 51 (Insufficient funds). Next step: Soft decline. A single delayed retry is allowed under policy. Retry policy: Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-026/missing",
+      "question": "Why was a transaction on my card declined?",
+      "record": {
+        "txn_id": "txn_EXT00026",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00026"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00026",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00026",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00026"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00026",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00026",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-027/populated",
+      "question": "Can you look at my account ans see why my card was declined",
+      "record": {
+        "txn_id": "txn_EXT00027",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00027"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00027",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "decline_code": "51",
+              "processor_response": "Insufficient funds",
+              "guidance": {
+                "reason_key": "51",
+                "retryable": true,
+                "retry_rule": "Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+                "next_step": "Soft decline. A single delayed retry is allowed under policy.",
+                "tell_the_cardholder": "Use another card, or retry once funds are available."
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00027",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00027 was declined for 81.70 USD with decline code 51 (Insufficient funds). Next step: Soft decline. A single delayed retry is allowed under policy. Retry policy: Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-027/missing",
+      "question": "Can you look at my account ans see why my card was declined",
+      "record": {
+        "txn_id": "txn_EXT00027",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00027"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00027",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00027",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        },
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00027"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00027",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00027",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-028/populated",
+      "question": "Something is wrong with my payment account since it has been declined",
+      "record": {
+        "txn_id": "txn_EXT00028",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00028"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00028",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "decline_code": "51",
+              "processor_response": "Insufficient funds",
+              "guidance": {
+                "reason_key": "51",
+                "retryable": true,
+                "retry_rule": "Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+                "next_step": "Soft decline. A single delayed retry is allowed under policy.",
+                "tell_the_cardholder": "Use another card, or retry once funds are available."
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00028",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00028 was declined for 81.70 USD with decline code 51 (Insufficient funds). Next step: Soft decline. A single delayed retry is allowed under policy. Retry policy: Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-028/missing",
+      "question": "Something is wrong with my payment account since it has been declined",
+      "record": {
+        "txn_id": "txn_EXT00028",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00028"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00028",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00028",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00028 was declined for 81.70 USD. Next step: Unmapped failure; investigate the logs. Retry policy: Do not retry until the cause is understood.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-029/populated",
+      "question": "I know I have enough funds in my account but my card payment hasn't worked for some reason. What do I do?",
+      "record": {
+        "txn_id": "txn_EXT00029",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00029"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00029",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "decline_code": "51",
+              "processor_response": "Insufficient funds",
+              "guidance": {
+                "reason_key": "51",
+                "retryable": true,
+                "retry_rule": "Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+                "next_step": "Soft decline. A single delayed retry is allowed under policy.",
+                "tell_the_cardholder": "Use another card, or retry once funds are available."
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00029",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00029 was declined for 81.70 USD with decline code 51 (Insufficient funds). Next step: Soft decline. A single delayed retry is allowed under policy. Retry policy: Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-029/missing",
+      "question": "I know I have enough funds in my account but my card payment hasn't worked for some reason. What do I do?",
+      "record": {
+        "txn_id": "txn_EXT00029",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00029"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00029",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00029",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00029 was declined for 81.70 USD. Next step: Unmapped failure; investigate the logs. Retry policy: Do not retry until the cause is understood.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-030/populated",
+      "question": "They declined my card payment.",
+      "record": {
+        "txn_id": "txn_EXT00030",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00030"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00030",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "decline_code": "51",
+              "processor_response": "Insufficient funds",
+              "guidance": {
+                "reason_key": "51",
+                "retryable": true,
+                "retry_rule": "Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+                "next_step": "Soft decline. A single delayed retry is allowed under policy.",
+                "tell_the_cardholder": "Use another card, or retry once funds are available."
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00030",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00030 was declined for 81.70 USD with decline code 51 (Insufficient funds). Next step: Soft decline. A single delayed retry is allowed under policy. Retry policy: Retry at most once after 1 hour, and never more than 4 times in 16 days.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    },
+    {
+      "key": "public-030/missing",
+      "question": "They declined my card payment.",
+      "record": {
+        "txn_id": "txn_EXT00030",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      },
+      "evidence": [
+        {
+          "name": "get_transaction",
+          "input": {
+            "txn_id": "txn_EXT00030"
+          },
+          "result": {
+            "status": "found",
+            "source": "txn_db",
+            "data": {
+              "txn_id": "txn_EXT00030",
+              "status": "declined",
+              "amount": "81.70",
+              "currency": "USD",
+              "guidance": {
+                "reason_key": "unknown",
+                "retryable": false,
+                "retry_rule": "Do not retry until the cause is understood.",
+                "next_step": "Unmapped failure; investigate the logs.",
+                "tell_the_cardholder": "Contact the merchant.",
+                "retry_only_if": [
+                  "another card",
+                  "different card",
+                  "new card",
+                  "other card",
+                  "updated card",
+                  "another payment method",
+                  "different payment method",
+                  "re-enter",
+                  "reenter",
+                  "correct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "search_transaction_logs",
+          "input": {
+            "txn_id": "txn_EXT00030",
+            "limit": 10
+          },
+          "result": {
+            "status": "not_found",
+            "source": "log_search",
+            "data": null,
+            "note": "No log events found for this transaction."
+          }
+        }
+      ],
+      "answer": "Transaction txn_EXT00030 was declined for 81.70 USD. Next step: Unmapped failure; investigate the logs. Retry policy: Do not retry until the cause is understood.",
+      "supported": null,
+      "complete": null,
+      "premise_mismatch": null,
+      "rationale": ""
+    }
+  ]
+}

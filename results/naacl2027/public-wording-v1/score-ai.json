@@ -1,0 +1,63 @@
+{
+  "reviewer_provenance": {
+    "reviewer": "Codex AI assistant",
+    "relationship": "Implementing assistant; not independent human review",
+    "date": "2026-11-24",
+    "blinding": "Unblinded: aggregate gate counts and answers had been inspected before annotation.",
+    "method": "Reviewed all 60 question/record/answer pairs and retrieved evidence; labels are provisional judgments separate from gate decisions.",
+    "caveats": "Supported evaluates assertions against synthetic evidence, not real financial advice. Completeness of indirect complaints is subjective. Three refusals about absent decline reasons count as complete evidence-limited answers; requests for an already supplied reference remain a usability flaw."
+  },
+  "counts": {
+    "all": {
+      "cases": 60,
+      "released": 57,
+      "supported": 60,
+      "complete": 27,
+      "supported_and_complete": 27,
+      "premise_mismatch": 1
+    },
+    "refund_not_showing_up": {
+      "cases": 20,
+      "released": 20,
+      "supported": 20,
+      "complete": 0,
+      "supported_and_complete": 0,
+      "premise_mismatch": 0
+    },
+    "populated": {
+      "cases": 30,
+      "released": 30,
+      "supported": 30,
+      "complete": 15,
+      "supported_and_complete": 15,
+      "premise_mismatch": 1
+    },
+    "missing": {
+      "cases": 30,
+      "released": 27,
+      "supported": 30,
+      "complete": 12,
+      "supported_and_complete": 12,
+      "premise_mismatch": 0
+    },
+    "pending_card_payment": {
+      "cases": 20,
+      "released": 20,
+      "supported": 20,
+      "complete": 7,
+      "supported_and_complete": 7,
+      "premise_mismatch": 0
+    },
+    "declined_card_payment": {
+      "cases": 20,
+      "released": 17,
+      "supported": 20,
+      "complete": 20,
+      "supported_and_complete": 20,
+      "premise_mismatch": 1
+    }
+  },
+  "labels_sha256": "342088dc61aa6e5e15c63a3e5f6354a7ebb5b10f26c7ffe8daab384527995ef6",
+  "runs_sha256": "3212648dd772eb3725b0ee29f58b8c1423134c890e34bd00dbeb3680a6c4a379",
+  "note": "One AI/author review is provisional; scripted outputs, paired cases are not independent."
+}

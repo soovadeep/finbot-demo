@@ -1,0 +1,492 @@
+{
+  "provenance": {
+    "reviewer": "Codex AI assistant",
+    "relationship": "Implementing assistant; not independent human review",
+    "date": "2026-11-24",
+    "blinding": "Unblinded: aggregate gate counts and answers had been inspected before annotation.",
+    "method": "Reviewed all 60 question/record/answer pairs and retrieved evidence; labels are provisional judgments separate from gate decisions.",
+    "caveats": "Supported evaluates assertions against synthetic evidence, not real financial advice. Completeness of indirect complaints is subjective. Three refusals about absent decline reasons count as complete evidence-limited answers; requests for an already supplied reference remain a usability flaw."
+  },
+  "items": [
+    {
+      "key": "public-001/populated",
+      "answer_sha256": "fc8c78a144bb982920570e20c23ee92d2ce5b623fa998d34ccbd744e72102fec",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer reports a missing refund; its pending status is the relevant information. The stated amounts/status agree with the record, but the pending refund status is omitted."
+    },
+    {
+      "key": "public-001/missing",
+      "answer_sha256": "4745f4b9df9fbea3d8bbeb57f83bec2dab2ffa1537bdfdb6a8e402fa8bb66eb5",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer reports a missing refund; its pending status is the relevant information. The stated amounts/status agree with the record, but the answer never says refund information is absent."
+    },
+    {
+      "key": "public-002/populated",
+      "answer_sha256": "82c32baac0b8749c713e79f33411de5cc9ef55261c5d63272baaf4951227b950",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer asks why a return is absent; an amount alone supplies neither a reason nor an evidence limit. The stated amounts/status agree with the record, but the pending refund status is omitted."
+    },
+    {
+      "key": "public-002/missing",
+      "answer_sha256": "f335bdf4dc9071759f249a6d890a864b33153113c94a1a65989ee51511050bed",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer asks why a return is absent; an amount alone supplies neither a reason nor an evidence limit. The stated amounts/status agree with the record, but the answer never says refund information is absent."
+    },
+    {
+      "key": "public-003/populated",
+      "answer_sha256": "115be8a80b8fa16536787689ac42b5225dcb8659dd512cb7365fc956d8388218",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer reports a delayed merchant refund; its current status is needed. The stated amounts/status agree with the record, but the pending refund status is omitted."
+    },
+    {
+      "key": "public-003/missing",
+      "answer_sha256": "c781ff70bc77e53c623ab6c3eefd0773558abcbedc686a053a0dae649b53edbc",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer reports a delayed merchant refund; its current status is needed. The stated amounts/status agree with the record, but the answer never says refund information is absent."
+    },
+    {
+      "key": "public-004/populated",
+      "answer_sha256": "841c88c9aaaf34e74484fb80c127970bc9d342a490b7148f26a73e39c822fe36",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Where is my refund asks for progress/status, not merely an amount. The stated amounts/status agree with the record, but the pending refund status is omitted."
+    },
+    {
+      "key": "public-004/missing",
+      "answer_sha256": "eb3317cbd2bfa06cfb1db189f32cf27265d8eb32087423135bceed7d1ba6a5e3",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Where is my refund asks for progress/status, not merely an amount. The stated amounts/status agree with the record, but the answer never says refund information is absent."
+    },
+    {
+      "key": "public-005/populated",
+      "answer_sha256": "9f7c6fe952b2389a5836f3f6d956b6db89504d3e3369d0eb1e2ff25896a2d45e",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer cannot see the refund; current refund status is needed. The stated amounts/status agree with the record, but the pending refund status is omitted."
+    },
+    {
+      "key": "public-005/missing",
+      "answer_sha256": "be0af9e11e7e3842b1a5a1d7052b631c031f7f9415c77995b9064064181d550d",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer cannot see the refund; current refund status is needed. The stated amounts/status agree with the record, but the answer never says refund information is absent."
+    },
+    {
+      "key": "public-006/populated",
+      "answer_sha256": "d6349c054c0f01cc2c2ae9374f4eb24ea63c3e4a1ce8bf2c8d5c5047407302fc",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Awaiting a refund calls for its current status. The stated amounts/status agree with the record, but the pending refund status is omitted."
+    },
+    {
+      "key": "public-006/missing",
+      "answer_sha256": "9dbc85ac246a15f9905f677931f73eaf8306be4e00de1ced0b87f2a37dd398a0",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Awaiting a refund calls for its current status. The stated amounts/status agree with the record, but the answer never says refund information is absent."
+    },
+    {
+      "key": "public-007/populated",
+      "answer_sha256": "57a02d26162c737122015ab95f5526a4273d8d01f4aa1249cbe8b0872e3054f6",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "A refund not appearing calls for its current status. The stated amounts/status agree with the record, but the pending refund status is omitted."
+    },
+    {
+      "key": "public-007/missing",
+      "answer_sha256": "4a16c3c35e663f37f487c09a10c88c11c78ab4c87ae0e6f486a35eaa68661362",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "A refund not appearing calls for its current status. The stated amounts/status agree with the record, but the answer never says refund information is absent."
+    },
+    {
+      "key": "public-008/populated",
+      "answer_sha256": "6a8e34d915440737d91f72202727a436ff099ebe36a787a430e9cdb472b0d2f2",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks where to see a refund in the account; no navigation information or explicit limitation is provided. The stated amounts/status agree with the record, but the pending refund status is omitted."
+    },
+    {
+      "key": "public-008/missing",
+      "answer_sha256": "ce05866b07947d11fb09908670b1712548fa9197d6c72a787f2163e3e0b8a8ca",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks where to see a refund in the account; no navigation information or explicit limitation is provided. The stated amounts/status agree with the record, but the answer never says refund information is absent."
+    },
+    {
+      "key": "public-009/populated",
+      "answer_sha256": "410378b7d1cc5fa25172e8c97b367e0662e097c8d8e91bcffd775a8e6bc138f5",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks for help with a missing refund; status and the limits of available assistance are omitted. The stated amounts/status agree with the record, but the pending refund status is omitted."
+    },
+    {
+      "key": "public-009/missing",
+      "answer_sha256": "7b206071d83072ac1b9f6c32b878b9a33f8f875946863b989e83337ec0ff7e1a",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks for help with a missing refund; status and the limits of available assistance are omitted. The stated amounts/status agree with the record, but the answer never says refund information is absent."
+    },
+    {
+      "key": "public-010/populated",
+      "answer_sha256": "66aba083d6f4c1659e0cbb5945eb63de44fe7c8d579c4ee84208befbb2afcebe",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer reports a missing purchase refund; current refund status is needed. The stated amounts/status agree with the record, but the pending refund status is omitted."
+    },
+    {
+      "key": "public-010/missing",
+      "answer_sha256": "508e70f3556f2980bd274d44f140c54b47d4564a706516fb268f27c69ee12fcd",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer reports a missing purchase refund; current refund status is needed. The stated amounts/status agree with the record, but the answer never says refund information is absent."
+    },
+    {
+      "key": "public-011/populated",
+      "answer_sha256": "031f2481670f33a22be55268f6a452910606bad036c10c9f5564ecc0ce494a50",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks what pending means; the answer does not explain it or state that documentation is absent. The stated payment facts agree with the record. "
+    },
+    {
+      "key": "public-011/missing",
+      "answer_sha256": "67b621f2fdee56bc506cf3cfb5a82aad6a0393df6f29a01833696c930b660a7a",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks what pending means; the answer does not explain it or state that documentation is absent. The stated payment facts agree with the record. "
+    },
+    {
+      "key": "public-012/populated",
+      "answer_sha256": "8bc38577f19c97fc90f13ccdf973cc10f986b1e90925fd6ebd3816e61ba38883",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "A definition of pending payment is requested; a transaction summary does not define it. The stated payment facts agree with the record. "
+    },
+    {
+      "key": "public-012/missing",
+      "answer_sha256": "ae8fc818462e56587a804253851bd9f75e2bbebf6ffccfc7c076df14d06b49f1",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "A definition of pending payment is requested; a transaction summary does not define it. The stated payment facts agree with the record. "
+    },
+    {
+      "key": "public-013/populated",
+      "answer_sha256": "9f6f976fadd242a4f7ccbae16cfdafbfaa563eac3154ecf718e55d44fe4a02ac",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question asks how long the pending period lasts. The stated payment facts agree with the record. The expected date is qualified and actual-date absence is explicit."
+    },
+    {
+      "key": "public-013/missing",
+      "answer_sha256": "58aed92e614684287b95bc4b73afd8789f1f2a0d1cfd408d91ca417a63d4a883",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question asks how long the pending period lasts. The stated payment facts agree with the record. Expected-date absence explicitly answers the timing request."
+    },
+    {
+      "key": "public-014/populated",
+      "answer_sha256": "619cd0a42bfd387e408140f2fb1840edd230507e4bc5d2237bfbc2390cb1b19b",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The customer reports a pending payment; a current settlement update addresses the concern. The stated payment facts agree with the record. The expected date is qualified and actual-date absence is explicit."
+    },
+    {
+      "key": "public-014/missing",
+      "answer_sha256": "7f3f6baaa7828d590bf27eafda77a39c985a27ea830b719ca4b435f6fd9f1a48",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer reports a pending payment; a current settlement update addresses the concern. The stated payment facts agree with the record. The payment-only summary omits the pending settlement and any limit on timing information."
+    },
+    {
+      "key": "public-015/populated",
+      "answer_sha256": "f66bdcd93f83f7de4aacda4fbdc4c13b086bdc8b49e85cc61345881b8fddcfcf",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks why the payment is pending; neither a cause nor lack of cause evidence is stated. The stated payment facts agree with the record. "
+    },
+    {
+      "key": "public-015/missing",
+      "answer_sha256": "f88f44c3ddb5fd7e58b878f45cca9ad6335ab8ca816a37921987ecb3513d96cc",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks why the payment is pending; neither a cause nor lack of cause evidence is stated. The stated payment facts agree with the record. "
+    },
+    {
+      "key": "public-016/populated",
+      "answer_sha256": "7f2884d17211014455aa9b5bb50e822e4cea4ee0adaabf288bfbaeb042657e87",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The customer reports that the payment has not cleared; an expected date and no actual date give a bounded update. The stated payment facts agree with the record. The expected date is qualified and actual-date absence is explicit."
+    },
+    {
+      "key": "public-016/missing",
+      "answer_sha256": "b5731779b150d4cb9f8b3565c6db73872198eb3069628a375c7889ec66ed78d0",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer reports that the payment has not cleared; an expected date and no actual date give a bounded update. The stated payment facts agree with the record. The payment-only summary omits the pending settlement and any limit on timing information."
+    },
+    {
+      "key": "public-017/populated",
+      "answer_sha256": "26f49eda9f41d0a41c32c2acf812fd0c346bd4462e4539d3fcdc3d94335083e3",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question asks when pending ends. The stated payment facts agree with the record. The expected date is qualified and actual-date absence is explicit."
+    },
+    {
+      "key": "public-017/missing",
+      "answer_sha256": "08eeff52d2fa7297aab48367415bd36c98a709b68bc68a38a4a28d8af1c71f76",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question asks when pending ends. The stated payment facts agree with the record. Expected-date absence explicitly answers the timing request."
+    },
+    {
+      "key": "public-018/populated",
+      "answer_sha256": "2519f304cc8a7dbc01d9de12d1978a6d1dea94e6a0e6f82e5ac830ebb3a4bf0f",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks why the payment has not gone through; a date alone does not explain the cause or its absence. The stated payment facts agree with the record. "
+    },
+    {
+      "key": "public-018/missing",
+      "answer_sha256": "fcd6ecd68a869f3295058237fdd3e2ff4e4ba9d86d50be049ac1bf84ed970d06",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks why the payment has not gone through; a date alone does not explain the cause or its absence. The stated payment facts agree with the record. "
+    },
+    {
+      "key": "public-019/populated",
+      "answer_sha256": "c17930fec2159d9366b49c2f367d6e50f2a291b9c29675e8272f97dbbb6e90ee",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The request is to check when the status will complete. The stated payment facts agree with the record. The expected date is qualified and actual-date absence is explicit."
+    },
+    {
+      "key": "public-019/missing",
+      "answer_sha256": "fa9f60e01eef8587914453ba9e12248a50cf839b3608ea77f6397e26df260c17",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The request is to check when the status will complete. The stated payment facts agree with the record. The payment-only summary omits the pending settlement and any limit on timing information."
+    },
+    {
+      "key": "public-020/populated",
+      "answer_sha256": "a7a656f51f98ef0180f90a50d54ee8c207971b72f8a805ff94292d2b784967e4",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks why a pending status appears; neither a cause nor an evidence limitation is given. The stated payment facts agree with the record. "
+    },
+    {
+      "key": "public-020/missing",
+      "answer_sha256": "c864bc56ffbcaeefcccccaeac0d21ac80cb2847e7baa91f3038a7b0821f4ca7a",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks why a pending status appears; neither a cause nor an evidence limitation is given. The stated payment facts agree with the record. "
+    },
+    {
+      "key": "public-021/populated",
+      "answer_sha256": "a5ecc8efbc5ac0c3624593c767f650556e476cbc550a104143588849c1070106",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The decline is confirmed, with recorded guidance for next steps. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-021/missing",
+      "answer_sha256": "fdaedf66f77212028eb52ac5612f89536b52f0d30cd48401f15bfc343e022211",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The decline is confirmed, with recorded guidance for next steps. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-022/populated",
+      "answer_sha256": "3587107b782538fda682452f2ef74efebeb4cb0beb1d671fc2f16c0e688ae0af",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The decline-status question is answered, with recorded guidance. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-022/missing",
+      "answer_sha256": "1a4beb765b5fcef21e91ec0954683c6f902409e9d0a018142709c93e642ce5bc",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The decline-status question is answered, with recorded guidance. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-023/populated",
+      "answer_sha256": "072811c954e5dcbede3461a535c78a01f4f44390ea8d21d5eafb7975cf18234b",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The recorded decline explanation or explicit unmapped failure and guidance addresses the current payment; it does not establish the reason for every earlier attempt. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-023/missing",
+      "answer_sha256": "9730f65dc60dd94abf965ca70fe71c63c3e02e1544bb53299819bb9ba22cd224",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The recorded decline explanation or explicit unmapped failure and guidance addresses the current payment; it does not establish the reason for every earlier attempt. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-024/populated",
+      "answer_sha256": "de5440e597b55aa58941356e18499bd789fda27b814258946bfbebe559cc4fd8",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The answer provides the recorded next-step guidance; it does not claim to execute a fix. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-024/missing",
+      "answer_sha256": "3e55017c2f4ba6d381700b7f090f4391cd6d4ea0c60f5a0bca57ba0cf30f671d",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The answer provides the recorded next-step guidance; it does not claim to execute a fix. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-025/populated",
+      "answer_sha256": "521fdaf286f21849b4110798c02f4e56130897f6e04dfa704583b2c585251963",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The requested reason is supplied when recorded; otherwise the answer explicitly says it cannot verify an explanation. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-025/missing",
+      "answer_sha256": "d1a81b6eff07e61e35c2fdfc38c34c08fb1edc19b420ad3e2cad93eb54e810f5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The requested reason is supplied when recorded; otherwise the answer explicitly says it cannot verify an explanation. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-026/populated",
+      "answer_sha256": "fc03fb702775d75e994d0552fcf3dd03f48924e9028c8ae29e7a4e9bf06e0671",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The requested reason is supplied when recorded; otherwise the answer explicitly says it cannot verify an explanation. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-026/missing",
+      "answer_sha256": "d1a81b6eff07e61e35c2fdfc38c34c08fb1edc19b420ad3e2cad93eb54e810f5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The requested reason is supplied when recorded; otherwise the answer explicitly says it cannot verify an explanation. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-027/populated",
+      "answer_sha256": "fc7d69d6f74542b7e8f870d5838412cdc8c449c8eb5a30904d1aa719fcc139ee",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The requested decline cause is supplied when recorded; otherwise the answer explicitly withholds an unverifiable explanation. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-027/missing",
+      "answer_sha256": "d1a81b6eff07e61e35c2fdfc38c34c08fb1edc19b420ad3e2cad93eb54e810f5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The requested decline cause is supplied when recorded; otherwise the answer explicitly withholds an unverifiable explanation. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-028/populated",
+      "answer_sha256": "964d2c85feed69ec3618f37f574b844c9f0f51d1ba9ca1d51fb131e03d23c94d",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The payment decline and available guidance are stated without inventing an account-wide diagnosis. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-028/missing",
+      "answer_sha256": "d65de759e68ac3b373f7f37a6a577524e8684d26664413bbe2f16b478b7fed7d",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The payment decline and available guidance are stated without inventing an account-wide diagnosis. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-029/populated",
+      "answer_sha256": "bfd56a4f54968e1de3a3bd66314b4f77e7b9a230016b2f8d38a1cf303cf3eea4",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": true,
+      "rationale": "The populated record reports code 51 despite the customer claiming sufficient funds; this is flagged as a synthetic premise mismatch. The answer states the recorded code and guidance, without claiming to inspect the account balance. The missing record states an unmapped failure and limits retry advice. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-029/missing",
+      "answer_sha256": "57109ad3543c00e08bb359e0a9e03558b90ac2dae2f35f235cd38c0ed89e8a08",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The populated record reports code 51 despite the customer claiming sufficient funds; this is flagged as a synthetic premise mismatch. The answer states the recorded code and guidance, without claiming to inspect the account balance. The missing record states an unmapped failure and limits retry advice. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-030/populated",
+      "answer_sha256": "2a580851edcd70f32d9e76ba71c44f33a8737cc49d2f193952450dcbd384698f",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The answer confirms the decline and gives the recorded next-step guidance. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    },
+    {
+      "key": "public-030/missing",
+      "answer_sha256": "8c4e83ab293109740cfd5b8d826aab4ee73862c0544d65bf4420f05d4f5e76a8",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The answer confirms the decline and gives the recorded next-step guidance. All financial claims and retry guidance match the retrieved tool evidence; a generic refusal adds no unsupported financial claim."
+    }
+  ]
+}
