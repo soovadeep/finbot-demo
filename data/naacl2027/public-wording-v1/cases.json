@@ -1,0 +1,1486 @@
+{
+  "source_sha256": "d12d6e3bc4c3103966ae786dc435913c0c563dfa328f5a3646d0e62cfeeb474d",
+  "source_url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/test.csv",
+  "source_rows": 3080,
+  "cases": [
+    {
+      "id": "public-001",
+      "category": "refund_not_showing_up",
+      "source_row": 1800,
+      "original": "I should have received a refund however it is not showing on my statement",
+      "normalized": "i should have received a refund however it is not showing on my statement",
+      "question": "I should have received a refund however it is not showing on my statement The reference is txn_EXT00001.",
+      "populated": {
+        "txn_id": "txn_EXT00001",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00001",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-002",
+      "category": "refund_not_showing_up",
+      "source_row": 1795,
+      "original": "Why doesn't a return show up im my account from a purchase I made?",
+      "normalized": "why doesn t a return show up im my account from a purchase i made",
+      "question": "Why doesn't a return show up im my account from a purchase I made? The reference is txn_EXT00002.",
+      "populated": {
+        "txn_id": "txn_EXT00002",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00002",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-003",
+      "category": "refund_not_showing_up",
+      "source_row": 1781,
+      "original": "I requested a refund from a merchant days ago but I do not see it in my account.",
+      "normalized": "i requested a refund from a merchant days ago but i do not see it in my account",
+      "question": "I requested a refund from a merchant days ago but I do not see it in my account. The reference is txn_EXT00003.",
+      "populated": {
+        "txn_id": "txn_EXT00003",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00003",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-004",
+      "category": "refund_not_showing_up",
+      "source_row": 1792,
+      "original": "Where is my refund? I have been checking my account all day.",
+      "normalized": "where is my refund i have been checking my account all day",
+      "question": "Where is my refund? I have been checking my account all day. The reference is txn_EXT00004.",
+      "populated": {
+        "txn_id": "txn_EXT00004",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00004",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-005",
+      "category": "refund_not_showing_up",
+      "source_row": 1786,
+      "original": "I still haven't seen a refund on my account",
+      "normalized": "i still haven t seen a refund on my account",
+      "question": "I still haven't seen a refund on my account The reference is txn_EXT00005.",
+      "populated": {
+        "txn_id": "txn_EXT00005",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00005",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-006",
+      "category": "refund_not_showing_up",
+      "source_row": 1767,
+      "original": "I am awaiting my refund",
+      "normalized": "i am awaiting my refund",
+      "question": "I am awaiting my refund The reference is txn_EXT00006.",
+      "populated": {
+        "txn_id": "txn_EXT00006",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00006",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-007",
+      "category": "refund_not_showing_up",
+      "source_row": 1782,
+      "original": "The refund has not appeared in my account",
+      "normalized": "the refund has not appeared in my account",
+      "question": "The refund has not appeared in my account The reference is txn_EXT00007.",
+      "populated": {
+        "txn_id": "txn_EXT00007",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00007",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-008",
+      "category": "refund_not_showing_up",
+      "source_row": 1779,
+      "original": "Where can I see the refund in my account",
+      "normalized": "where can i see the refund in my account",
+      "question": "Where can I see the refund in my account The reference is txn_EXT00008.",
+      "populated": {
+        "txn_id": "txn_EXT00008",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00008",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-009",
+      "category": "refund_not_showing_up",
+      "source_row": 1769,
+      "original": "Help! I keep checking my account, but my refund is not showing. I requested that a seller refund my money a while back, but there is no money showing in my account. What can you do for me?",
+      "normalized": "help i keep checking my account but my refund is not showing i requested that a seller refund my money a while back but there is no money showing in my account what can you do for me",
+      "question": "Help! I keep checking my account, but my refund is not showing. I requested that a seller refund my money a while back, but there is no money showing in my account. What can you do for me? The reference is txn_EXT00009.",
+      "populated": {
+        "txn_id": "txn_EXT00009",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00009",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-010",
+      "category": "refund_not_showing_up",
+      "source_row": 1764,
+      "original": "I was supposed to get a purchase refunded but I don't see the money in my account",
+      "normalized": "i was supposed to get a purchase refunded but i don t see the money in my account",
+      "question": "I was supposed to get a purchase refunded but I don't see the money in my account The reference is txn_EXT00010.",
+      "populated": {
+        "txn_id": "txn_EXT00010",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00010",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-011",
+      "category": "pending_card_payment",
+      "source_row": 1622,
+      "original": "I made a purchase and it says it's pending. What does that mean?",
+      "normalized": "i made a purchase and it says it s pending what does that mean",
+      "question": "I made a purchase and it says it's pending. What does that mean? The reference is txn_EXT00011.",
+      "populated": {
+        "txn_id": "txn_EXT00011",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00011",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-012",
+      "category": "pending_card_payment",
+      "source_row": 1617,
+      "original": "What is a pending payment?",
+      "normalized": "what is a pending payment",
+      "question": "What is a pending payment? The reference is txn_EXT00012.",
+      "populated": {
+        "txn_id": "txn_EXT00012",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00012",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-013",
+      "category": "pending_card_payment",
+      "source_row": 1616,
+      "original": "How long does an item I bought show as pending?",
+      "normalized": "how long does an item i bought show as pending",
+      "question": "How long does an item I bought show as pending? The reference is txn_EXT00013.",
+      "populated": {
+        "txn_id": "txn_EXT00013",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00013",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-014",
+      "category": "pending_card_payment",
+      "source_row": 1613,
+      "original": "My card payment is showing pending.",
+      "normalized": "my card payment is showing pending",
+      "question": "My card payment is showing pending. The reference is txn_EXT00014.",
+      "populated": {
+        "txn_id": "txn_EXT00014",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00014",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-015",
+      "category": "pending_card_payment",
+      "source_row": 1602,
+      "original": "Why is my payment pending?",
+      "normalized": "why is my payment pending",
+      "question": "Why is my payment pending? The reference is txn_EXT00015.",
+      "populated": {
+        "txn_id": "txn_EXT00015",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00015",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-016",
+      "category": "pending_card_payment",
+      "source_row": 1628,
+      "original": "I have waited 15 days, but my payment still hasn't cleared.",
+      "normalized": "i have waited number days but my payment still hasn t cleared",
+      "question": "I have waited 15 days, but my payment still hasn't cleared. The reference is txn_EXT00016.",
+      "populated": {
+        "txn_id": "txn_EXT00016",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00016",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-017",
+      "category": "pending_card_payment",
+      "source_row": 1610,
+      "original": "When will my card payment be done pending?",
+      "normalized": "when will my card payment be done pending",
+      "question": "When will my card payment be done pending? The reference is txn_EXT00017.",
+      "populated": {
+        "txn_id": "txn_EXT00017",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00017",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-018",
+      "category": "pending_card_payment",
+      "source_row": 1611,
+      "original": "I made this payment days ago so why hasn't it gone through yet?",
+      "normalized": "i made this payment days ago so why hasn t it gone through yet",
+      "question": "I made this payment days ago so why hasn't it gone through yet? The reference is txn_EXT00018.",
+      "populated": {
+        "txn_id": "txn_EXT00018",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00018",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-019",
+      "category": "pending_card_payment",
+      "source_row": 1638,
+      "original": "I have paid by my card but payment is still its coming as pending. I think there is some issue please check and let me know when the status will complete.",
+      "normalized": "i have paid by my card but payment is still its coming as pending i think there is some issue please check and let me know when the status will complete",
+      "question": "I have paid by my card but payment is still its coming as pending. I think there is some issue please check and let me know when the status will complete. The reference is txn_EXT00019.",
+      "populated": {
+        "txn_id": "txn_EXT00019",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00019",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-020",
+      "category": "pending_card_payment",
+      "source_row": 1621,
+      "original": "Why is a payment showing up on my card as pending?",
+      "normalized": "why is a payment showing up on my card as pending",
+      "question": "Why is a payment showing up on my card as pending? The reference is txn_EXT00020.",
+      "populated": {
+        "txn_id": "txn_EXT00020",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00020",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-021",
+      "category": "declined_card_payment",
+      "source_row": 1806,
+      "original": "My card was declined in a shop",
+      "normalized": "my card was declined in a shop",
+      "question": "My card was declined in a shop The reference is txn_EXT00021.",
+      "populated": {
+        "txn_id": "txn_EXT00021",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00021",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-022",
+      "category": "declined_card_payment",
+      "source_row": 1837,
+      "original": "Card payment declined?",
+      "normalized": "card payment declined",
+      "question": "Card payment declined? The reference is txn_EXT00022.",
+      "populated": {
+        "txn_id": "txn_EXT00022",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00022",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-023",
+      "category": "declined_card_payment",
+      "source_row": 1834,
+      "original": "I finally got my new card and was very excited to use it today. However, my payment kept declining. What is happening?",
+      "normalized": "i finally got my new card and was very excited to use it today however my payment kept declining what is happening",
+      "question": "I finally got my new card and was very excited to use it today. However, my payment kept declining. What is happening? The reference is txn_EXT00023.",
+      "populated": {
+        "txn_id": "txn_EXT00023",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00023",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-024",
+      "category": "declined_card_payment",
+      "source_row": 1839,
+      "original": "How do you fix  my card payment?",
+      "normalized": "how do you fix my card payment",
+      "question": "How do you fix  my card payment? The reference is txn_EXT00024.",
+      "populated": {
+        "txn_id": "txn_EXT00024",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00024",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-025",
+      "category": "declined_card_payment",
+      "source_row": 1830,
+      "original": "Do you know why my card payment is declined?",
+      "normalized": "do you know why my card payment is declined",
+      "question": "Do you know why my card payment is declined? The reference is txn_EXT00025.",
+      "populated": {
+        "txn_id": "txn_EXT00025",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00025",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-026",
+      "category": "declined_card_payment",
+      "source_row": 1811,
+      "original": "Why was a transaction on my card declined?",
+      "normalized": "why was a transaction on my card declined",
+      "question": "Why was a transaction on my card declined? The reference is txn_EXT00026.",
+      "populated": {
+        "txn_id": "txn_EXT00026",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00026",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-027",
+      "category": "declined_card_payment",
+      "source_row": 1809,
+      "original": "Can you look at my account ans see why my card was declined",
+      "normalized": "can you look at my account ans see why my card was declined",
+      "question": "Can you look at my account ans see why my card was declined The reference is txn_EXT00027.",
+      "populated": {
+        "txn_id": "txn_EXT00027",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00027",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-028",
+      "category": "declined_card_payment",
+      "source_row": 1819,
+      "original": "Something is wrong with my payment account since it has been declined",
+      "normalized": "something is wrong with my payment account since it has been declined",
+      "question": "Something is wrong with my payment account since it has been declined The reference is txn_EXT00028.",
+      "populated": {
+        "txn_id": "txn_EXT00028",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00028",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-029",
+      "category": "declined_card_payment",
+      "source_row": 1814,
+      "original": "I know I have enough funds in my account but my card payment hasn't worked for some reason. What do I do?",
+      "normalized": "i know i have enough funds in my account but my card payment hasn t worked for some reason what do i do",
+      "question": "I know I have enough funds in my account but my card payment hasn't worked for some reason. What do I do? The reference is txn_EXT00029.",
+      "populated": {
+        "txn_id": "txn_EXT00029",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00029",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-030",
+      "category": "declined_card_payment",
+      "source_row": 1832,
+      "original": "They declined my card payment.",
+      "normalized": "they declined my card payment",
+      "question": "They declined my card payment. The reference is txn_EXT00030.",
+      "populated": {
+        "txn_id": "txn_EXT00030",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00030",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    }
+  ],
+  "selection_audit": [
+    {
+      "row": 1800,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1795,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1781,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1792,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1786,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1789,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "i am not seeing a refund in my statement",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1767,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1770,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "can you tell me why my refund is not showing in my statement",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1762,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "why is my refund missing from my statement",
+        "method": "token_jaccard"
+      }
+    },
+    {
+      "row": 1784,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "my statement doesn t show that a refund has processed",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1782,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1779,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1769,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1764,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1799,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1777,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1785,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1768,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1787,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1780,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1788,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1763,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "i requested a refund and never received it what can i do",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1796,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1783,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "did my refund go through it s not on my statement",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1794,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1791,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1774,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "i requested a refund and it is missing",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1765,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "why is my refund missing from my statement",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 1798,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1778,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1793,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1772,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "why is my refund missing from my statement",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1790,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "why can t i see a recent refund in my statement",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1775,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1766,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1773,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1771,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1797,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1761,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1776,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 1623,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "how long do card transactions take to clear",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1622,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1603,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "my card payment is pending",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 1617,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1616,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1613,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1602,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1628,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1610,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1627,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "i was double charged and the second charge is showing as pending how long will it be before i get my money back once the second charge has been refunded",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1625,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "how long will this card payment stay pending",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1611,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1638,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1621,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1640,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1608,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1615,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1620,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "my card payment is pending",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1630,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "explain what the pending payment means",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1632,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1606,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1639,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1633,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1624,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1626,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1614,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "i bought some stuff this morning but the payment shows as pending",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1601,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1636,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1619,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1629,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1605,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "why is my card payment showing as pending",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1609,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1607,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1604,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1618,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1634,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1631,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1637,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "what does a pending transaction mean",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1635,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1612,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1806,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1820,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "why are you declining my payment everything was fine",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1837,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1834,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1839,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1830,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1811,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1809,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1819,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1814,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1803,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "why has my card payment been declined",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 1802,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "the new card that was just sent to me was declined multiple times yesterday when i tried to use it at a restaurant to pay for my dinner i am really disappointed and embarrassed that my card was denied when i tried to use it to pay for my friend s birthday dinner",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1821,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "i don t know why my payment didn t work",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1832,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1826,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1829,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1823,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1801,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1827,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1816,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "i m really stuck i don t know why but my card payment has not gone through",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1822,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1810,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1813,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1807,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1817,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1805,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1835,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1808,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1812,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1836,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "my card didn t work in one of the shops",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1824,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1838,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1833,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "why has my card payment been declined",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1815,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1825,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "i have no idea why my card payment did not work",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1828,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1818,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1840,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 1804,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "i was trying to purchase something at the store today and my card has been declined why has this happened",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 1831,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "why was my payment record declined",
+        "method": "character_similarity"
+      }
+    }
+  ]
+}
