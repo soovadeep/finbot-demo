@@ -1,0 +1,2367 @@
+{
+  "scope": "Authored status checks, not final-answer accuracy",
+  "controls_allowed": 60,
+  "corruptions_blocked": 60,
+  "rows": [
+    {
+      "case": "public-001",
+      "condition": "populated",
+      "field": "refund",
+      "clean": "Refund status: pending.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Refund status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00001",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00001:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00001",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-001",
+      "condition": "missing",
+      "field": "refund",
+      "clean": "The record does not show a refund status.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "The record does not show a refund status.",
+        "reasons": [],
+        "checks": []
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00001:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00001",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": null,
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-002",
+      "condition": "populated",
+      "field": "refund",
+      "clean": "Refund status: pending.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Refund status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00002",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00002:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00002",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-002",
+      "condition": "missing",
+      "field": "refund",
+      "clean": "The record does not show a refund status.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "The record does not show a refund status.",
+        "reasons": [],
+        "checks": []
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00002:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00002",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": null,
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-003",
+      "condition": "populated",
+      "field": "refund",
+      "clean": "Refund status: pending.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Refund status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00003",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00003:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00003",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-003",
+      "condition": "missing",
+      "field": "refund",
+      "clean": "The record does not show a refund status.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "The record does not show a refund status.",
+        "reasons": [],
+        "checks": []
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00003:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00003",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": null,
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-004",
+      "condition": "populated",
+      "field": "refund",
+      "clean": "Refund status: pending.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Refund status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00004",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00004:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00004",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-004",
+      "condition": "missing",
+      "field": "refund",
+      "clean": "The record does not show a refund status.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "The record does not show a refund status.",
+        "reasons": [],
+        "checks": []
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00004:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00004",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": null,
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-005",
+      "condition": "populated",
+      "field": "refund",
+      "clean": "Refund status: pending.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Refund status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00005",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00005:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00005",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-005",
+      "condition": "missing",
+      "field": "refund",
+      "clean": "The record does not show a refund status.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "The record does not show a refund status.",
+        "reasons": [],
+        "checks": []
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00005:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00005",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": null,
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-006",
+      "condition": "populated",
+      "field": "refund",
+      "clean": "Refund status: pending.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Refund status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00006",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00006:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00006",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-006",
+      "condition": "missing",
+      "field": "refund",
+      "clean": "The record does not show a refund status.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "The record does not show a refund status.",
+        "reasons": [],
+        "checks": []
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00006:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00006",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": null,
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-007",
+      "condition": "populated",
+      "field": "refund",
+      "clean": "Refund status: pending.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Refund status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00007",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00007:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00007",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-007",
+      "condition": "missing",
+      "field": "refund",
+      "clean": "The record does not show a refund status.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "The record does not show a refund status.",
+        "reasons": [],
+        "checks": []
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00007:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00007",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": null,
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-008",
+      "condition": "populated",
+      "field": "refund",
+      "clean": "Refund status: pending.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Refund status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00008",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00008:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00008",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-008",
+      "condition": "missing",
+      "field": "refund",
+      "clean": "The record does not show a refund status.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "The record does not show a refund status.",
+        "reasons": [],
+        "checks": []
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00008:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00008",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": null,
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-009",
+      "condition": "populated",
+      "field": "refund",
+      "clean": "Refund status: pending.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Refund status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00009",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00009:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00009",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-009",
+      "condition": "missing",
+      "field": "refund",
+      "clean": "The record does not show a refund status.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "The record does not show a refund status.",
+        "reasons": [],
+        "checks": []
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00009:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00009",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": null,
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-010",
+      "condition": "populated",
+      "field": "refund",
+      "clean": "Refund status: pending.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Refund status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00010",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00010:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00010",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-010",
+      "condition": "missing",
+      "field": "refund",
+      "clean": "The record does not show a refund status.",
+      "corrupted": "Refund status: succeeded.",
+      "clean_check": {
+        "action": "allow",
+        "text": "The record does not show a refund status.",
+        "reasons": [],
+        "checks": []
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00010:refund_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00010",
+            "field": "refund_status",
+            "path": "refund.status",
+            "text": "Refund status: succeeded",
+            "evidence_value": null,
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-011",
+      "condition": "populated",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00011",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00011:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00011",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-011",
+      "condition": "missing",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00011",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00011:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00011",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-012",
+      "condition": "populated",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00012",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00012:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00012",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-012",
+      "condition": "missing",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00012",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00012:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00012",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-013",
+      "condition": "populated",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00013",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00013:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00013",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-013",
+      "condition": "missing",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00013",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00013:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00013",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-014",
+      "condition": "populated",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00014",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00014:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00014",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-014",
+      "condition": "missing",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00014",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00014:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00014",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-015",
+      "condition": "populated",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00015",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00015:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00015",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-015",
+      "condition": "missing",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00015",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00015:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00015",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-016",
+      "condition": "populated",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00016",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00016:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00016",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-016",
+      "condition": "missing",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00016",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00016:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00016",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-017",
+      "condition": "populated",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00017",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00017:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00017",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-017",
+      "condition": "missing",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00017",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00017:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00017",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-018",
+      "condition": "populated",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00018",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00018:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00018",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-018",
+      "condition": "missing",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00018",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00018:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00018",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-019",
+      "condition": "populated",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00019",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00019:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00019",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-019",
+      "condition": "missing",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00019",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00019:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00019",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-020",
+      "condition": "populated",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00020",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00020:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00020",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-020",
+      "condition": "missing",
+      "field": "settlement",
+      "clean": "Settlement status: pending.",
+      "corrupted": "Settlement status: settled.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Settlement status: pending.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00020",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: pending",
+            "evidence_value": "pending",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00020:settlement_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00020",
+            "field": "settlement_status",
+            "path": "settlement.status",
+            "text": "Settlement status: settled",
+            "evidence_value": "pending",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-021",
+      "condition": "populated",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00021",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00021:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00021",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-021",
+      "condition": "missing",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00021",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00021:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00021",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-022",
+      "condition": "populated",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00022",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00022:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00022",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-022",
+      "condition": "missing",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00022",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00022:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00022",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-023",
+      "condition": "populated",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00023",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00023:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00023",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-023",
+      "condition": "missing",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00023",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00023:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00023",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-024",
+      "condition": "populated",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00024",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00024:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00024",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-024",
+      "condition": "missing",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00024",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00024:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00024",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-025",
+      "condition": "populated",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00025",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00025:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00025",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-025",
+      "condition": "missing",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00025",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00025:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00025",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-026",
+      "condition": "populated",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00026",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00026:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00026",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-026",
+      "condition": "missing",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00026",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00026:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00026",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-027",
+      "condition": "populated",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00027",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00027:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00027",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-027",
+      "condition": "missing",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00027",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00027:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00027",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-028",
+      "condition": "populated",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00028",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00028:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00028",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-028",
+      "condition": "missing",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00028",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00028:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00028",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-029",
+      "condition": "populated",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00029",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00029:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00029",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-029",
+      "condition": "missing",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00029",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00029:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00029",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-030",
+      "condition": "populated",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00030",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00030:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00030",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    },
+    {
+      "case": "public-030",
+      "condition": "missing",
+      "field": "payment",
+      "clean": "Payment status: declined.",
+      "corrupted": "Payment status: approved.",
+      "clean_check": {
+        "action": "allow",
+        "text": "Payment status: declined.",
+        "reasons": [],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00030",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: declined",
+            "evidence_value": "declined",
+            "verdict": "supported"
+          }
+        ]
+      },
+      "corrupted_check": {
+        "action": "block",
+        "text": "I couldn't verify an answer from our records, so I won't guess. Please share the reference ID or contact support.",
+        "reasons": [
+          "support_status_mismatch:txn_EXT00030:payment_status"
+        ],
+        "checks": [
+          {
+            "kind": "support_status",
+            "record_id": "txn_EXT00030",
+            "field": "payment_status",
+            "path": "status",
+            "text": "Payment status: approved",
+            "evidence_value": "declined",
+            "verdict": "unsupported"
+          }
+        ]
+      }
+    }
+  ]
+}
