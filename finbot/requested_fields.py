@@ -64,13 +64,18 @@ LABELS = {"refund_amount": "a refund amount", "expected_settlement_date": "an ex
 def requested_roles(question: str) -> tuple[str, ...]:
     """Fields the question explicitly asks about, in a fixed order (possibly none)."""
     q = question.casefold().replace("’", "'")
-    from .support_coverage import REFUND, PENDING, TIMING
+    from .support_coverage import REFUND, PENDING, WHY, DECLINE, ambiguous_return, timing_requests
     roles = [role for role, (trigger, _) in ROLES.items() if re.search(trigger, q)]
-    if REFUND.search(q) and not re.search(r"\bsettle\w*\b", q):
+    resolution_time, process_time = timing_requests(q)
+    if resolution_time and not process_time:
+        roles = [role for role in roles if role != "expected_settlement_date"]
+    if (REFUND.search(q) or ambiguous_return(q)) and not re.search(r"\bsettle\w*\b", q):
         roles = [role for role in roles if "settlement" not in role]
-    elif PENDING.search(q) and TIMING.search(q) and "actual_settlement_date" not in roles:
+    elif PENDING.search(q) and process_time and "actual_settlement_date" not in roles:
         if "expected_settlement_date" not in roles:
             roles.append("expected_settlement_date")
+    if WHY.search(q) and DECLINE.search(q) and "decline_reason" not in roles:
+        roles.append("decline_reason")
     return tuple(roles)
 
 

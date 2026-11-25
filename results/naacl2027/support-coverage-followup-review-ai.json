@@ -1,0 +1,101 @@
+{
+  "provenance": {
+    "reviewer": "Codex AI assistant",
+    "relationship": "Implementing assistant; not independent human review",
+    "blinding": "Unblinded development regression review",
+    "date": "2026-11-24",
+    "method": "Read all 12 changed question/answer pairs against their synthetic evidence and the previous review; the other 48 answers are byte-identical. Completeness is not inferred from gate acceptance."
+  },
+  "runs_sha256": "80f6b77dd7f673b7edd4c2e06438254cd1a7f7f265513de74a56e93a58b2841f",
+  "known_incomplete_followup": {
+    "complete_with_explicit_limits": 8,
+    "clarification_requested_unresolved": 2
+  },
+  "items": [
+    {
+      "key": "public-002/populated",
+      "answer_sha256": "7e9269fd6369762f45b2dee8d0b07b91c590df5b5d2dd7f6e83e6c52a20f761e",
+      "supported": true,
+      "judgement": "complete_with_access_limit",
+      "rationale": "Provides refund status or its absence, then explicitly explains that Finbot cannot access the statement or establish what it displays. It does not invent statement-navigation instructions."
+    },
+    {
+      "key": "public-002/missing",
+      "answer_sha256": "8663808abf3cfd788ad165c21a4f8939dafe1bb700fb345e49a9b06528b6dc2c",
+      "supported": true,
+      "judgement": "complete_with_access_limit",
+      "rationale": "Provides refund status or its absence, then explicitly explains that Finbot cannot access the statement or establish what it displays. It does not invent statement-navigation instructions."
+    },
+    {
+      "key": "public-004/populated",
+      "answer_sha256": "bed18e59015cbfac0beea05301f7882cef8f2b4a5dc9c406154f9090e03ba549",
+      "supported": true,
+      "judgement": "clarification_requested_unresolved",
+      "rationale": "Asks whether returned transaction means merchant refund or payment returned to sender. It no longer substitutes payment settlement timing. The arrival question remains unresolved pending a user reply; do not count this as a completed answer."
+    },
+    {
+      "key": "public-004/missing",
+      "answer_sha256": "2f4c9a2ba01b58dbe39b48f97f39db8d8ee5395d9b9233d4680ee895ec98d50c",
+      "supported": true,
+      "judgement": "clarification_requested_unresolved",
+      "rationale": "Asks whether returned transaction means merchant refund or payment returned to sender. It no longer substitutes payment settlement timing. The arrival question remains unresolved pending a user reply; do not count this as a completed answer."
+    },
+    {
+      "key": "public-006/populated",
+      "answer_sha256": "7a1340bee399885fe9cc03a2d1f5ed6d450d94b10ae69427942eba2d2b8432f8",
+      "supported": true,
+      "judgement": "complete_with_capability_limit",
+      "rationale": "Provides known refund information or its absence and explicitly says the assistant cannot move money or change the account. This addresses the requested resolution with a capability limit, not an executed refund."
+    },
+    {
+      "key": "public-006/missing",
+      "answer_sha256": "0b310b66aa89fb2821e7051bcf406451ceb96a841983469c88c4b7f6638f59d9",
+      "supported": true,
+      "judgement": "complete_with_capability_limit",
+      "rationale": "Provides known refund information or its absence and explicitly says the assistant cannot move money or change the account. This addresses the requested resolution with a capability limit, not an executed refund."
+    },
+    {
+      "key": "public-015/populated",
+      "answer_sha256": "24800dd8e5f9744ed48e74b624a2f62e5fa4a78b1129765e64a794409e10e585",
+      "supported": true,
+      "judgement": "complete_with_missing_reason",
+      "rationale": "States the pending settlement status and explicitly acknowledges that the record contains no settlement reason. The expected date where present is not used as a cause."
+    },
+    {
+      "key": "public-015/missing",
+      "answer_sha256": "f63cdeb15d98aa96f3bc99df95b4efa10ae0dc6405d48ec929309039e02210ea",
+      "supported": true,
+      "judgement": "complete_with_missing_reason",
+      "rationale": "States the pending settlement status and explicitly acknowledges that the record contains no settlement reason. The expected date where present is not used as a cause."
+    },
+    {
+      "key": "public-021/populated",
+      "answer_sha256": "766e1e9c9f6a5f71c4c69d5a87591b92efe54fa58927520714b303e04d72a6d8",
+      "supported": true,
+      "judgement": "complete_with_resolution_limit",
+      "rationale": "Reports decline information or missing reason, preserves recorded retry guidance, and states that a resolution time cannot be determined. Retry intervals are not presented as fix times."
+    },
+    {
+      "key": "public-021/missing",
+      "answer_sha256": "9b7bb07f14d2c34507a6695223d30b57e562be93c955b1a28eef3b57caf7df00",
+      "supported": true,
+      "judgement": "complete_with_resolution_limit",
+      "rationale": "Reports decline information or missing reason, preserves recorded retry guidance, and states that a resolution time cannot be determined. Retry intervals are not presented as fix times."
+    },
+    {
+      "key": "public-022/missing",
+      "answer_sha256": "3e4a5b06cc44b189362595873a50a08e06756cc0a464a03939851c7f6cfa8097",
+      "supported": true,
+      "judgement": "previously_complete_with_added_absence_notice",
+      "rationale": "The original evidence-limited decline guidance was already labelled complete. The revision adds an explicit missing-decline-reason sentence without altering other claims."
+    },
+    {
+      "key": "public-026/missing",
+      "answer_sha256": "508f445146374a16979dcf081d6a21e51f652f898313e07e35492aab86874d93",
+      "supported": true,
+      "judgement": "previously_complete_with_added_absence_notice",
+      "rationale": "The original evidence-limited decline guidance was already labelled complete. The revision adds an explicit missing-decline-reason sentence without altering other claims."
+    }
+  ],
+  "limits": "Inspected development questions, not a new held-out score or live-LLM study. Frozen labels and 23/60 to 50/60 result remain unchanged."
+}

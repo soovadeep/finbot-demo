@@ -16,12 +16,22 @@ PENDING = re.compile(r"\b(?:pending|processing|stuck|not (?:yet )?(?:cleared|com
                      r"(?:hasn['’]t|has not|didn['’]t|did not)\s+(?:(?:it|this|that|the payment|my payment)\s+)?"
                      r"(?:cleared|clear|gone through|go through|completed)|still[^.?!]{0,25}(?:clear\w*|through)|taking[^.?!]{0,20}long)\b", re.I)
 TIMING = re.compile(r"\b(?:when|how long|how many days|how much time|time frame|timeframe|date|eta)\b", re.I)
-WHY = re.compile(r"\b(?:why|reason|cause|explain|what(?:'s| is) (?:wrong|happening))\b", re.I)
+WHY = re.compile(r"\b(?:why|how come|reason|cause|explain|what(?:'s| is) (?:wrong|happening|going on))\b", re.I)
+DECLINE = re.compile(r"\b(?:declin\w*|fail\w*|reject\w*|refus\w*|bounc\w*)\b", re.I)
+RETURNED = re.compile(r"\breturned\s+(?:transaction|payment|transfer)\b|"
+                      r"\b(?:transaction|payment|transfer)\s+(?:(?:was|has been|is)\s+)?returned\b", re.I)
+RESOLUTION = re.compile(r"\b(?:fix\w*|resolv\w*|resolution|repair\w*|working again)\b", re.I)
 AMOUNT = re.compile(r"\b(?:how much|amount|total)\b", re.I)
 STATUS_QUERY = re.compile(r"\b(?:where|status|progress|await|waiting|still|yet)\b", re.I)
 MEANING = re.compile(r"\b(?:mean\w*|what (?:is|are)|explain|why)\b", re.I)
-NAVIGATION = re.compile(r"\bwhere\b[^.?!]{0,35}\b(?:see|find|view|locate|look)\b|\b(?:statement|app)\b[^.?!]{0,25}\bfind\b", re.I)
-HELP = re.compile(r"\b(?:help|what can you do|what (?:do|should|can) i do|how (?:do|can) (?:i|you) (?:fix|resolve))\b", re.I)
+_VIEW = r"(?:check|see|find|view|locate|look|access)"
+_INTERFACE = r"(?:statement|app|account history|transaction history)"
+NAVIGATION = re.compile(rf"\bwhere\b[^.?!]{{0,35}}\b{_VIEW}\b|"
+                        rf"\b{_VIEW}\b[^.?!]{{0,65}}\b{_INTERFACE}\b|"
+                        rf"\b{_INTERFACE}\b[^.?!]{{0,35}}\b{_VIEW}\b", re.I)
+HELP = re.compile(r"\b(?:help|what can you do|what (?:do|should|can) i do|how (?:do|can) (?:i|you) (?:fix|resolve))\b|"
+                  r"\b(?:can|could|would|will) you\b[^.?!]{0,25}\b(?:fix|resolve|sort out)\b|"
+                  r"\bplease\s+(?:fix|resolve|sort out)\b", re.I)
 
 PATHS = {"refund_status": "refund.status", "settlement_status": "settlement.status",
          "payment_status": "status", "refund_reason": "refund.reason", "settlement_reason": "settlement.reason",
@@ -30,13 +40,35 @@ LABELS = {"refund_status": "refund status", "settlement_status": "settlement sta
           "payment_status": "payment status", "refund_reason": "refund reason",
           "settlement_reason": "settlement reason", "expected_refund_date": "expected refund date"}
 MEANING_TEXT = "In these records, a pending status means completion is not confirmed."
-NAVIGATION_TEXT = "This record does not describe where to find it in your account interface."
+NAVIGATION_TEXT = ("I cannot access your account statement or app. "
+                   "This record does not describe what they display or where to find the payment.")
 CAPABILITY_TEXT = "I can explain the retrieved record, but I cannot move money or change your account."
+RESOLUTION_TEXT = "I cannot determine when this issue will be resolved from the available payment information."
+RETURN_TEXT = "Do you mean a merchant refund or a payment returned to its sender?"
 LIMITS = {"pending_meaning": MEANING_TEXT, "account_instructions": NAVIGATION_TEXT,
-          "assistant_capabilities": CAPABILITY_TEXT}
+          "assistant_capabilities": CAPABILITY_TEXT, "resolution_timing": RESOLUTION_TEXT,
+          "return_clarification": RETURN_TEXT}
 STATES = {"pending", "processing", "succeeded", "settled", "completed", "failed", "cancelled",
           "canceled", "unknown", "approved", "declined", "reversed", "refunded"}
 ALIASES = {"successful": "succeeded", "successfully processed": "succeeded", "canceled": "cancelled"}
+
+
+def ambiguous_return(question: str) -> bool:
+    # A returned transfer need not be a merchant refund. Do not choose a date
+    # role merely because one of those fields happens to be populated.
+    return bool(RETURNED.search(question) and not REFUND.search(question))
+
+
+def timing_requests(question: str) -> tuple[bool, bool]:
+    """Resolution timing and financial-process timing, separately by clause.
+
+    This finite grammar preserves both requests in e.g. 'When will it be fixed,
+    and when will my refund arrive?' A retry interval is not a resolution ETA.
+    """
+    clauses = re.split(r"[.!?;]|\band\b", question, flags=re.I)
+    timed = [clause for clause in clauses if TIMING.search(clause)]
+    return (any(RESOLUTION.search(clause) for clause in timed),
+            any(not RESOLUTION.search(clause) for clause in timed))
 
 
 def requirements(question: str, data: dict) -> tuple[str, ...]:
@@ -44,11 +76,12 @@ def requirements(question: str, data: dict) -> tuple[str, ...]:
     q = question.casefold().replace("’", "'")
     refund = bool(REFUND.search(q))
     pending = bool(PENDING.search(q))
+    resolution_time, process_time = timing_requests(q)
     fields = []
     if refund:
         if not AMOUNT.search(q) or STATUS_QUERY.search(q) or TIMING.search(q):
             fields.append("refund_status")
-        if TIMING.search(q):
+        if process_time:
             fields.append("expected_refund_date")
         if WHY.search(q):
             fields.append("refund_reason")
@@ -62,10 +95,14 @@ def requirements(question: str, data: dict) -> tuple[str, ...]:
             fields.append("pending_meaning")
         if WHY.search(q):
             fields.append("settlement_reason")
-    if refund and NAVIGATION.search(q):
+    if NAVIGATION.search(q):
         fields.append("account_instructions")
-    if (refund or pending) and HELP.search(q):
+    if HELP.search(q):
         fields.append("assistant_capabilities")
+    if resolution_time:
+        fields.append("resolution_timing")
+    if ambiguous_return(q):
+        fields.append("return_clarification")
     return tuple(dict.fromkeys(fields))
 
 
@@ -79,6 +116,8 @@ def instruction(question: str) -> str:
              "'Refund status: pending.' Use the actual value, never this example as evidence. "
              "If there is no settlement object and payment status is pending/processing, use payment status. "
              "A payment settlement date does not establish refund arrival. "
+             "A retry interval or settlement date does not predict when a problem will be fixed. "
+             "For return_clarification, ask which kind of return the customer means before assigning an arrival date. "
              "For an absent field, say 'The record does not show a refund status/reason' "
              "or 'The record does not show an expected refund date', selecting the actual absent field. "
              "Quote a recorded reason as 'Refund reason: ...' or 'Settlement reason: ...'; never infer a cause."]
@@ -113,7 +152,10 @@ def status_claims(text: str):
 
 def covered(answer: str, field: str, data: dict) -> bool:
     if field in LIMITS:
-        return LIMITS[field].casefold() in answer.casefold()
+        from .missing_information import clauses
+        # A quoted or negated fragment must not satisfy a capability statement.
+        actual = {clause.casefold() for clause in clauses(answer)}
+        return all(clause.casefold() in actual for clause in clauses(LIMITS[field]))
     value = value_for_field(data, field)
     if value is None:
         return states_absent(answer, field)

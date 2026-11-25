@@ -177,7 +177,9 @@ REPAIR_PROMPT = ("<verifier>Your previous answer was NOT shown to the user becau
                  "the record does not show it. Do not substitute a different field."
                  " For support_information_missing or support_status_mismatch, state the requested lifecycle "
                  "status, cause, timing or evidence limit; a payment amount is not refund progress, and "
-                 "a settlement date is not a reason or a refund date. Use the current scoped record."
+                 "a settlement date is not a reason or a refund date. A retry interval does not predict "
+                 "resolution time. State statement-access and action limits when requested; clarify an ambiguous "
+                 "returned payment rather than choosing a refund or settlement date. Use the current scoped record."
                  "</verifier>")
 
 

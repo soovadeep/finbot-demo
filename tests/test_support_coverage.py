@@ -2,8 +2,10 @@ import copy
 import unittest
 
 from finbot.demo import run_demo
+from finbot.clarification_conversation import run_conversation
 from finbot.requested_fields import RequestedInformationVerifier, complete_record_answer, requested_roles
-from finbot.support_coverage import MEANING_TEXT, instruction, requirements
+from finbot.support_coverage import (MEANING_TEXT, NAVIGATION_TEXT, CAPABILITY_TEXT,
+                                     RESOLUTION_TEXT, RETURN_TEXT, instruction, requirements)
 from finbot.verification import HallucinationGate, VerifierChain
 from scripts.naacl2027.evaluate_support import component_chain
 
@@ -113,6 +115,106 @@ class SupportCoverage(unittest.TestCase):
             # Auxiliaries with a subject between negation and completion verbs.
             self.assertIn("settlement_reason", requirements(question, RECORD))
             self.assertNotIn("settlement_reason", requirements(question, {**RECORD, "status": "declined"}))
+
+    def test_statement_question_requires_access_limit_with_or_without_refund(self):
+        for question in ("Can I check my refund in my statement?", "Where can I view the refund?",
+                         "In the app, can I find this payment?"):
+            for record in (RECORD, {k: v for k, v in RECORD.items() if k != "refund"}):
+                with self.subTest(question=question, refund="refund" in record):
+                    partial = ("Refund status: pending." if "refund" in record else
+                               "The record does not show a refund status.")
+                    checker = chain(question)
+                    self.assertEqual(checker.check(partial, log(record), None).action, "block")
+                    self.assertEqual(checker.check(partial + " " + NAVIGATION_TEXT, log(record), None).action, "allow")
+                    self.assertEqual(checker.check(partial + ' "' + NAVIGATION_TEXT + '"', log(record), None).action, "block")
+
+    def test_reason_variants_require_the_recorded_reason_or_explicit_absence(self):
+        known = copy.deepcopy(RECORD)
+        known["settlement"]["reason"] = "Merchant batch still open"
+        for question in ("How come my payment is still pending?", "What is going on with my pending payment?"):
+            for record in (RECORD, known):
+                checker = chain(question)
+                partial = "Settlement status: pending. Expected settlement date: 2026-12-02."
+                self.assertEqual(checker.check(partial, log(record), None).action, "block")
+                complete = complete_record_answer(log(record), RECORD["txn_id"], requested_roles(question), question)
+                self.assertEqual(checker.check(complete, log(record), None).action, "allow")
+                wanted = ("Settlement reason: Merchant batch still open." if record is known else
+                          "The record does not show a settlement reason.")
+                self.assertIn(wanted, complete)
+                self.assertIn("settlement_reason", instruction(question))
+
+    def test_resolution_request_requires_read_only_limit(self):
+        for question in ("My refund is delayed. Can you resolve this?", "Could you fix my pending payment?",
+                         "Please sort out the declined payment."):
+            result = run_demo(question + " The reference is txn_COVER123.", records=[RECORD])
+            self.assertIsNone(result["final"]["blocked_by"])
+            self.assertIn(CAPABILITY_TEXT, result["final"]["answer"])
+            partial = result["final"]["answer"].replace(CAPABILITY_TEXT, "")
+            self.assertEqual(chain(question).check(partial, log(RECORD), None).action, "block")
+
+    def test_fix_time_is_not_settlement_or_retry_time(self):
+        question = "My payment was declined, what is going on and when will it be fixed?"
+        self.assertNotIn("expected_settlement_date", requested_roles(question))
+        self.assertIn("decline_reason", requested_roles(question))
+        for has_reason in (True, False):
+            record = {k: v for k, v in RECORD.items() if k not in {"refund", "settlement"}}
+            record["status"] = "declined"
+            if has_reason:
+                record.update(decline_code="51", processor_response="Insufficient funds")
+            result = run_demo(question + " The reference is txn_COVER123.", records=[record])
+            self.assertIsNone(result["final"]["blocked_by"])
+            answer = result["final"]["answer"]
+            self.assertIn(RESOLUTION_TEXT, answer)
+            self.assertNotIn("settlement date", answer)
+            checker = RequestedInformationVerifier(question)
+            self.assertEqual(checker.check(answer.replace(RESOLUTION_TEXT, ""), result["evidence"], None).action, "block")
+        both = "When will it be fixed, and when will my payment settle?"
+        self.assertIn("expected_settlement_date", requested_roles(both))
+        self.assertIn("resolution_timing", requirements(both, RECORD))
+        refund = "When will it be fixed, and when will my refund arrive?"
+        self.assertIn("expected_refund_date", requirements(refund, RECORD))
+        self.assertNotIn("expected_refund_date", requirements("When will my refund issue be fixed?", RECORD))
+
+    def test_returned_payment_requires_clarification_without_assuming_refund(self):
+        for question in ("When will my returned transaction show up?", "My transfer was returned. When will it arrive?"):
+            self.assertNotIn("expected_settlement_date", requested_roles(question))
+            self.assertNotIn("expected_refund_date", requirements(question, RECORD))
+            for record in (RECORD, {k: v for k, v in RECORD.items() if k not in {"refund", "settlement"}}):
+                for fault in ("none", "amount_always"):
+                    result = run_demo(question + " The reference is txn_COVER123.", fault, records=[record])
+                    self.assertIsNone(result["final"]["blocked_by"], result["steps"])
+                    self.assertIn(RETURN_TEXT, result["final"]["answer"])
+                    self.assertEqual(result["outcome"], "passed" if fault == "none" else "record_fallback")
+        # Explicit refund wording resolves the process ambiguity.
+        explicit = "When will the refund for my returned transaction arrive?"
+        self.assertNotIn("return_clarification", requirements(explicit, RECORD))
+        self.assertIn("expected_refund_date", requirements(explicit, RECORD))
+        # The clarification exemption cannot hide an assertion without a refund record.
+        missing = {k: v for k, v in RECORD.items() if k != "refund"}
+        for answer in (RETURN_TEXT + " Your refund was processed.", "Your refund was processed? " + RETURN_TEXT):
+            self.assertEqual(chain("When will my returned payment arrive?").check(answer, log(missing), None).action, "block")
+
+    def test_statement_limit_survives_draft_repair_and_fallback(self):
+        question = "Can I check my recent refund in my statement?"
+        for fault, outcome in (("none", "passed"), ("amount_once", "repaired"), ("amount_always", "record_fallback")):
+            result = run_demo(question + " The reference is txn_COVER123.", fault, records=[RECORD])
+            self.assertEqual(result["outcome"], outcome)
+            self.assertIn(NAVIGATION_TEXT, result["final"]["answer"])
+
+    def test_conversation_answers_statement_request_and_return_clarification_followup(self):
+        identify = {"type": "message", "text": "My card payment to Harbor Books on November 15."}
+        confirm = {"type": "confirm", "record_id": "txn_EMIX0000"}
+        statement = {"type": "message", "text": "Can I check my refund in my statement?"}
+        result = run_conversation({"events": [identify, confirm, statement], "live": False})
+        self.assertIn(NAVIGATION_TEXT, result["financial"]["final"]["answer"])
+        returned = {"type": "message", "text": "When will my returned transaction show up?"}
+        result = run_conversation({"events": [identify, confirm, returned], "live": False})
+        self.assertIn(RETURN_TEXT, result["financial"]["final"]["answer"])
+        clarified = {"type": "message", "text": "I mean the refund. When will it arrive?"}
+        result = run_conversation({"events": [identify, confirm, returned, clarified], "live": False})
+        self.assertEqual(result["selected_id"], "txn_EMIX0000")
+        self.assertNotIn(RETURN_TEXT, result["financial"]["final"]["answer"])
+        self.assertIn("record does not show an expected refund date", result["financial"]["final"]["answer"])
 
 
 if __name__ == "__main__":

@@ -589,9 +589,14 @@ def evidence_check(answer: str, tool_log: list[dict], focus_txn: str | None,
     reasons += retry_advice_check(answer, tool_log)
     low_blob = blob.lower()
     # Missing information is a scoped, checked claim, not a wording-based exemption.
-    from .missing_information import check_absence
+    from .missing_information import check_absence, clauses
     claimed, absence_reasons, absence_checks = check_absence(answer, tool_log)
     reasons += absence_reasons
+    # This exact code-owned question asserts neither that a refund exists nor
+    # that a transfer was returned. Keep all surrounding claims checked; do not
+    # exempt arbitrary questions or text merely containing a safe fragment.
+    from .support_coverage import RETURN_TEXT
+    claimed = " ".join(c for c in clauses(claimed) if c.casefold() != RETURN_TEXT.casefold())
     for claim, needs in RECORD_CLAIMS:
         if claim.search(claimed) and needs not in low_blob:
             reasons.append(f"ungrounded_{needs}_claim")
