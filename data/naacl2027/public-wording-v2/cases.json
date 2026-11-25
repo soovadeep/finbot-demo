@@ -1,0 +1,3322 @@
+{
+  "source_sha256": "b06e26ac675513959a63135f11b94ea7786ed02da65db93a5650d8838cbc664b",
+  "source_url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/train.csv",
+  "source_rows": 10003,
+  "cases": [
+    {
+      "id": "public-001",
+      "category": "refund_not_showing_up",
+      "source_row": 5705,
+      "original": "I can't see my refund in my history.",
+      "normalized": "i can t see my refund in my history",
+      "question": "I can't see my refund in my history. The reference is txn_EXT00001.",
+      "populated": {
+        "txn_id": "txn_EXT00001",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00001",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-002",
+      "category": "refund_not_showing_up",
+      "source_row": 5778,
+      "original": "Can I check my recent refund in my statement?",
+      "normalized": "can i check my recent refund in my statement",
+      "question": "Can I check my recent refund in my statement? The reference is txn_EXT00002.",
+      "populated": {
+        "txn_id": "txn_EXT00002",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00002",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-003",
+      "category": "refund_not_showing_up",
+      "source_row": 5798,
+      "original": "My refund isn't showing up on my statement.",
+      "normalized": "my refund isn t showing up on my statement",
+      "question": "My refund isn't showing up on my statement. The reference is txn_EXT00003.",
+      "populated": {
+        "txn_id": "txn_EXT00003",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00003",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-004",
+      "category": "refund_not_showing_up",
+      "source_row": 5701,
+      "original": "When will my returned transaction show up on my account?",
+      "normalized": "when will my returned transaction show up on my account",
+      "question": "When will my returned transaction show up on my account? The reference is txn_EXT00004.",
+      "populated": {
+        "txn_id": "txn_EXT00004",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00004",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-005",
+      "category": "refund_not_showing_up",
+      "source_row": 5784,
+      "original": "I am still waiting to find out the status of my refund. I have made previous attempts to find out what the status is to no avail. Will you please look into this for me?",
+      "normalized": "i am still waiting to find out the status of my refund i have made previous attempts to find out what the status is to no avail will you please look into this for me",
+      "question": "I am still waiting to find out the status of my refund. I have made previous attempts to find out what the status is to no avail. Will you please look into this for me? The reference is txn_EXT00005.",
+      "populated": {
+        "txn_id": "txn_EXT00005",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00005",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-006",
+      "category": "refund_not_showing_up",
+      "source_row": 5830,
+      "original": "Im not sure if a seller is giving me my money back! I asked them to refund my money for the item but It's been a week now and still nothing has been given back to me. Can you resolve this for me?",
+      "normalized": "im not sure if a seller is giving me my money back i asked them to refund my money for the item but it s been a week now and still nothing has been given back to me can you resolve this for me",
+      "question": "Im not sure if a seller is giving me my money back! I asked them to refund my money for the item but It's been a week now and still nothing has been given back to me. Can you resolve this for me? The reference is txn_EXT00006.",
+      "populated": {
+        "txn_id": "txn_EXT00006",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00006",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-007",
+      "category": "refund_not_showing_up",
+      "source_row": 5759,
+      "original": "My refund is still pending",
+      "normalized": "my refund is still pending",
+      "question": "My refund is still pending The reference is txn_EXT00007.",
+      "populated": {
+        "txn_id": "txn_EXT00007",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00007",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-008",
+      "category": "refund_not_showing_up",
+      "source_row": 5833,
+      "original": "I made a big purchase that I regretted and cancelled, the merchant said that my refund was submitted. Can you confirm to me that all of my money was truly returned to me?",
+      "normalized": "i made a big purchase that i regretted and cancelled the merchant said that my refund was submitted can you confirm to me that all of my money was truly returned to me",
+      "question": "I made a big purchase that I regretted and cancelled, the merchant said that my refund was submitted. Can you confirm to me that all of my money was truly returned to me? The reference is txn_EXT00008.",
+      "populated": {
+        "txn_id": "txn_EXT00008",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00008",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-009",
+      "category": "refund_not_showing_up",
+      "source_row": 5802,
+      "original": "Three months ago I bought a new house for my cat, fluffy.  Unfortunately Fluffy was not a fan of the house and it had to be returned to Pet Smart last week.  They said they have sent a refund but it's not there, can you tell me where it is?",
+      "normalized": "three months ago i bought a new house for my cat fluffy unfortunately fluffy was not a fan of the house and it had to be returned to pet smart last week they said they have sent a refund but it s not there can you tell me where it is",
+      "question": "Three months ago I bought a new house for my cat, fluffy.  Unfortunately Fluffy was not a fan of the house and it had to be returned to Pet Smart last week.  They said they have sent a refund but it's not there, can you tell me where it is? The reference is txn_EXT00009.",
+      "populated": {
+        "txn_id": "txn_EXT00009",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00009",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-010",
+      "category": "refund_not_showing_up",
+      "source_row": 5737,
+      "original": "My account isn't showing the refund",
+      "normalized": "my account isn t showing the refund",
+      "question": "My account isn't showing the refund The reference is txn_EXT00010.",
+      "populated": {
+        "txn_id": "txn_EXT00010",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "refund": {
+          "status": "pending",
+          "amount": "23.40"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00010",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-011",
+      "category": "pending_card_payment",
+      "source_row": 5119,
+      "original": "Card payment is still pending, why is that the case?",
+      "normalized": "card payment is still pending why is that the case",
+      "question": "Card payment is still pending, why is that the case? The reference is txn_EXT00011.",
+      "populated": {
+        "txn_id": "txn_EXT00011",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00011",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-012",
+      "category": "pending_card_payment",
+      "source_row": 5104,
+      "original": "Why is the payment showing as pending from things I bought this morning?",
+      "normalized": "why is the payment showing as pending from things i bought this morning",
+      "question": "Why is the payment showing as pending from things I bought this morning? The reference is txn_EXT00012.",
+      "populated": {
+        "txn_id": "txn_EXT00012",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00012",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-013",
+      "category": "pending_card_payment",
+      "source_row": 5234,
+      "original": "How long does it take for a payment to change from pending?",
+      "normalized": "how long does it take for a payment to change from pending",
+      "question": "How long does it take for a payment to change from pending? The reference is txn_EXT00013.",
+      "populated": {
+        "txn_id": "txn_EXT00013",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00013",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-014",
+      "category": "pending_card_payment",
+      "source_row": 5094,
+      "original": "Could you please tell me why my purchases from this morning say payment is pending?",
+      "normalized": "could you please tell me why my purchases from this morning say payment is pending",
+      "question": "Could you please tell me why my purchases from this morning say payment is pending? The reference is txn_EXT00014.",
+      "populated": {
+        "txn_id": "txn_EXT00014",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00014",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-015",
+      "category": "pending_card_payment",
+      "source_row": 5121,
+      "original": "How come my card payment is still pending?",
+      "normalized": "how come my card payment is still pending",
+      "question": "How come my card payment is still pending? The reference is txn_EXT00015.",
+      "populated": {
+        "txn_id": "txn_EXT00015",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00015",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-016",
+      "category": "pending_card_payment",
+      "source_row": 5220,
+      "original": "I bought something this morning and the payment is still pending",
+      "normalized": "i bought something this morning and the payment is still pending",
+      "question": "I bought something this morning and the payment is still pending The reference is txn_EXT00016.",
+      "populated": {
+        "txn_id": "txn_EXT00016",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00016",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-017",
+      "category": "pending_card_payment",
+      "source_row": 5183,
+      "original": "I was wondering why my payment hasn't gone through yet, its been a while.",
+      "normalized": "i was wondering why my payment hasn t gone through yet its been a while",
+      "question": "I was wondering why my payment hasn't gone through yet, its been a while. The reference is txn_EXT00017.",
+      "populated": {
+        "txn_id": "txn_EXT00017",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00017",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-018",
+      "category": "pending_card_payment",
+      "source_row": 5158,
+      "original": "I don't understand why my card payment is pending.  It has been pending for too long.  Why is this and when might it go through?",
+      "normalized": "i don t understand why my card payment is pending it has been pending for too long why is this and when might it go through",
+      "question": "I don't understand why my card payment is pending.  It has been pending for too long.  Why is this and when might it go through? The reference is txn_EXT00018.",
+      "populated": {
+        "txn_id": "txn_EXT00018",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00018",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-019",
+      "category": "pending_card_payment",
+      "source_row": 5191,
+      "original": "How long does it actually take my card payment to make it to the account? I've made a payment a couple of days ago but it hasn't moved since.",
+      "normalized": "how long does it actually take my card payment to make it to the account i ve made a payment a couple of days ago but it hasn t moved since",
+      "question": "How long does it actually take my card payment to make it to the account? I've made a payment a couple of days ago but it hasn't moved since. The reference is txn_EXT00019.",
+      "populated": {
+        "txn_id": "txn_EXT00019",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00019",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-020",
+      "category": "pending_card_payment",
+      "source_row": 5242,
+      "original": "Why is it saying I have a pending payment?",
+      "normalized": "why is it saying i have a pending payment",
+      "question": "Why is it saying I have a pending payment? The reference is txn_EXT00020.",
+      "populated": {
+        "txn_id": "txn_EXT00020",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending",
+          "expected_date": "2026-12-01"
+        }
+      },
+      "missing": {
+        "txn_id": "txn_EXT00020",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "81.70",
+        "currency": "USD",
+        "settlement": {
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "public-021",
+      "category": "declined_card_payment",
+      "source_row": 5879,
+      "original": "I was just shopping and my payment was declined in a store!  It was very embarrassing, what is going on and when will it be fixed?",
+      "normalized": "i was just shopping and my payment was declined in a store it was very embarrassing what is going on and when will it be fixed",
+      "question": "I was just shopping and my payment was declined in a store!  It was very embarrassing, what is going on and when will it be fixed? The reference is txn_EXT00021.",
+      "populated": {
+        "txn_id": "txn_EXT00021",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00021",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-022",
+      "category": "declined_card_payment",
+      "source_row": 5889,
+      "original": "My payment card was declined - could you tell me why?",
+      "normalized": "my payment card was declined could you tell me why",
+      "question": "My payment card was declined - could you tell me why? The reference is txn_EXT00022.",
+      "populated": {
+        "txn_id": "txn_EXT00022",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00022",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-023",
+      "category": "declined_card_payment",
+      "source_row": 5881,
+      "original": "I tried to make a purchase in the store but my card was declined.",
+      "normalized": "i tried to make a purchase in the store but my card was declined",
+      "question": "I tried to make a purchase in the store but my card was declined. The reference is txn_EXT00023.",
+      "populated": {
+        "txn_id": "txn_EXT00023",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00023",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-024",
+      "category": "declined_card_payment",
+      "source_row": 5946,
+      "original": "Everything seems fine with my account, so why did it decline my payment?",
+      "normalized": "everything seems fine with my account so why did it decline my payment",
+      "question": "Everything seems fine with my account, so why did it decline my payment? The reference is txn_EXT00024.",
+      "populated": {
+        "txn_id": "txn_EXT00024",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00024",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-025",
+      "category": "declined_card_payment",
+      "source_row": 5929,
+      "original": "I don't understand why my payment was declined. I thought everything was ok.",
+      "normalized": "i don t understand why my payment was declined i thought everything was ok",
+      "question": "I don't understand why my payment was declined. I thought everything was ok. The reference is txn_EXT00025.",
+      "populated": {
+        "txn_id": "txn_EXT00025",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00025",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-026",
+      "category": "declined_card_payment",
+      "source_row": 5955,
+      "original": "I was out today looking forward to paying with my brand new card, turns out the payment just kept getting declined. This is pretty sad, what's going on?",
+      "normalized": "i was out today looking forward to paying with my brand new card turns out the payment just kept getting declined this is pretty sad what s going on",
+      "question": "I was out today looking forward to paying with my brand new card, turns out the payment just kept getting declined. This is pretty sad, what's going on? The reference is txn_EXT00026.",
+      "populated": {
+        "txn_id": "txn_EXT00026",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00026",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-027",
+      "category": "declined_card_payment",
+      "source_row": 5923,
+      "original": "Why do you keep declining my payment? I tried several times already with this card and it is just not working.",
+      "normalized": "why do you keep declining my payment i tried several times already with this card and it is just not working",
+      "question": "Why do you keep declining my payment? I tried several times already with this card and it is just not working. The reference is txn_EXT00027.",
+      "populated": {
+        "txn_id": "txn_EXT00027",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00027",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-028",
+      "category": "declined_card_payment",
+      "source_row": 5882,
+      "original": "My card payment wasn't accepted.",
+      "normalized": "my card payment wasn t accepted",
+      "question": "My card payment wasn't accepted. The reference is txn_EXT00028.",
+      "populated": {
+        "txn_id": "txn_EXT00028",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00028",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-029",
+      "category": "declined_card_payment",
+      "source_row": 5838,
+      "original": "My card is not working at stores.",
+      "normalized": "my card is not working at stores",
+      "question": "My card is not working at stores. The reference is txn_EXT00029.",
+      "populated": {
+        "txn_id": "txn_EXT00029",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00029",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "public-030",
+      "category": "declined_card_payment",
+      "source_row": 5875,
+      "original": "My card didn't go through.  It doesn't make sense.  You told me that everything was ok.",
+      "normalized": "my card didn t go through it doesn t make sense you told me that everything was ok",
+      "question": "My card didn't go through.  It doesn't make sense.  You told me that everything was ok. The reference is txn_EXT00030.",
+      "populated": {
+        "txn_id": "txn_EXT00030",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD",
+        "decline_code": "51",
+        "processor_response": "Insufficient funds"
+      },
+      "missing": {
+        "txn_id": "txn_EXT00030",
+        "tenant_id": "m_100",
+        "status": "declined",
+        "amount": "81.70",
+        "currency": "USD"
+      }
+    }
+  ],
+  "selection_audit": [
+    {
+      "row": 5705,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5778,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5801,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "i keep checking my statements but nothing shows up i requested a refund a long time ago but seems like it s not submitting my account for some reason can you please help me get the money back from the seller for me",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5798,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5701,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5784,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5830,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5759,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5833,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5802,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5737,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5815,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5720,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5688,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5702,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5797,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5767,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5683,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5821,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5800,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5781,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5724,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5682,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5722,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5832,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5810,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5746,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5690,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5694,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5733,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5782,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "hello please would you tell me if you have or have not received funds for a refund that i recently requested for a big purchase i ve contacted the merchant but i can t tell that they have taken any action on it",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5806,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5747,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5791,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5692,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "i keep checking my statements but nothing shows up i requested a refund a long time ago but seems like it s not submitting my account for some reason can you please help me get the money back from the seller for me",
+        "method": "token_jaccard"
+      }
+    },
+    {
+      "row": 5698,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5736,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5713,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5789,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5804,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5742,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5787,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5811,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "why hasn t my return cleared my account",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5761,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5695,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5819,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5814,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5829,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5735,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5679,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5785,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "i keep checking my statements but nothing shows up i requested a refund a long time ago but seems like it s not submitting my account for some reason can you please help me get the money back from the seller for me",
+        "method": "token_jaccard"
+      }
+    },
+    {
+      "row": 5750,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5749,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5779,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5769,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5825,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5768,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5706,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5708,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5712,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5799,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5677,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "please help me i am still waiting on a refund",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5685,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5754,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5760,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5730,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "hurry and refund me i am waiting",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5728,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5721,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5792,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5770,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5740,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5738,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5775,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5763,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5816,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5794,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5753,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5716,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5681,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5793,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5726,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5771,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "i am noticing that a refund of a large purchase still has not been credited to my account i contacted the merchant a few days ago and he assured me that he would submit it right away is there a status update",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5700,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5822,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5734,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5795,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5732,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5707,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5715,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5788,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5803,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5678,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5711,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5693,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5704,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5709,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5719,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5758,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5739,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5699,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5786,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "i contacted the seller for a direct refund last week but he still hasn t give me my money what should i do",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5689,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5813,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5741,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5827,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5687,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5817,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5717,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5757,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5766,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5808,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5780,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "my refund isn t showing up on my statement",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5764,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5828,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5703,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5805,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5824,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "why can t i see a recent refund in my statement",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5812,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5777,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5676,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5727,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "why can t i see a recent refund in my statement",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5691,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5820,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5834,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5774,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5765,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5680,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5675,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5745,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5755,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "why is my refund missing from my statement",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5790,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5773,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5748,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5835,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5762,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5729,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5783,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5836,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5723,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5809,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5744,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5772,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5718,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5751,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "can you tell me why my refund is not showing in my statement",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5826,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5743,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5818,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5823,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5731,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5831,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5684,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5752,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5756,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5796,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5686,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5725,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5710,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5714,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5807,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5697,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5776,
+      "category": "refund_not_showing_up",
+      "overlap": null
+    },
+    {
+      "row": 5696,
+      "category": "refund_not_showing_up",
+      "overlap": {
+        "match": "where is my recent refund in the my statement",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5119,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5104,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5210,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "i bought some stuff this morning but the payment shows as pending",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5234,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5094,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5121,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5220,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5183,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5126,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "why is my payment pending",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5158,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5191,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5242,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5205,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5138,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5189,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5131,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5188,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5240,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5106,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5149,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5146,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "my card payment is pending",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5174,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5206,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5239,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5163,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5184,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5200,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5228,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5134,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5219,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5150,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5232,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5190,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5110,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5128,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5136,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5251,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5196,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5153,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "my purchases from this morning are showing up as payment pending can you tell me why",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5159,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5123,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "how come my card payment is still pending",
+        "method": "token_jaccard"
+      }
+    },
+    {
+      "row": 5217,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5203,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5140,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5192,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5116,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5124,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5214,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5147,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5176,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5218,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5215,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5107,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5229,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5171,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5109,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5186,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5194,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5221,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5173,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5236,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5169,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5152,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5160,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5096,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5143,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5175,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5208,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5170,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5243,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5093,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5100,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5132,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "my card payment is showing pending",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5227,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "what is the meaning of a pending payment",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5193,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5212,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5133,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5213,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5168,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "what does a pending payment mean",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5235,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5162,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5237,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "why is my payment pending",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5179,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5142,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5197,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5248,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5178,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5112,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5202,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "how long does it take for a new purchase to stop being considered pending",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5245,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5172,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5231,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5156,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5244,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5097,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5155,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5099,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5199,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "why didn t my payment process",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5115,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5211,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5114,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5165,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5129,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "a card payment on my account is shown as pending",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5198,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5230,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5122,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5222,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5233,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5216,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5182,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5167,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5161,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5111,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5250,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5101,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5201,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5118,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5120,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5209,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5238,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5102,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5108,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5181,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5130,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5095,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5207,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5241,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "i tried to make a payment with my card and it was declined why is it pending",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5145,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5185,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "i did a card payment but its status is still coming as pending please check and inform when it would complete",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5135,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5157,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5187,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5125,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "what does a pending payment mean",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5180,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5151,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5166,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5141,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5117,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5249,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5164,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5226,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5247,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5204,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5103,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5225,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5137,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5148,
+      "category": "pending_card_payment",
+      "overlap": {
+        "match": "why is my payment pending",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5105,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5177,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5113,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5154,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5127,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5246,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5223,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5144,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5224,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5195,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5139,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5098,
+      "category": "pending_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5879,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5889,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5841,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "i could not use my card in a store",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5881,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5946,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5929,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5974,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "reason for my card to decline",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5955,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5923,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5931,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "why do you keep declining my payment i tried several times already with this card and it is just not working",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5909,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "why did my payment fail",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5882,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5838,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5919,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "my card is not working at stores",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5875,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5968,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5857,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5874,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5948,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5962,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "my card payment wasn t accepted",
+        "method": "token_jaccard"
+      }
+    },
+    {
+      "row": 5855,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5868,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5960,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5837,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5922,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "why do you keep declining my payment i tried several times already with this card and it is just not working",
+        "method": "token_jaccard"
+      }
+    },
+    {
+      "row": 5973,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5848,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5925,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5984,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5907,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5953,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5956,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "do you know the reason why my card payment was declined",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5938,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5893,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5852,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5883,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "is there a reason that my payment didnt go through",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5906,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5979,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5952,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5969,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5885,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5978,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5891,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5898,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5899,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5915,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5867,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5950,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5937,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5917,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5863,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5886,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5943,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5959,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5842,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5945,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5908,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5880,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5840,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5964,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5941,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5843,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5892,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5983,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5860,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "my card was declined in a shop",
+        "method": "token_jaccard"
+      }
+    },
+    {
+      "row": 5961,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5949,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5930,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5965,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5897,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5976,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5902,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5985,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "i was out today looking forward to paying with my brand new card turns out the payment just kept getting declined this is pretty sad what s going on",
+        "method": "token_jaccard"
+      }
+    },
+    {
+      "row": 5871,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "my card wasn t working in a shop",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5958,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5942,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5966,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5900,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5988,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5912,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5940,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5854,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5986,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5861,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5989,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5913,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "why has my card payment been declined",
+        "method": "token_jaccard"
+      }
+    },
+    {
+      "row": 5936,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5954,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5866,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5911,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5850,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5895,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5903,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5921,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5856,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5928,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5870,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5846,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5853,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5894,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5858,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5884,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5970,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5987,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5844,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5933,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "why has my card payment been declined",
+        "method": "token_jaccard"
+      }
+    },
+    {
+      "row": 5877,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5873,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5926,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5869,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5939,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5944,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5975,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5890,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5887,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5904,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5916,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5967,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5896,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5859,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5914,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5849,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "why has my card payment been declined",
+        "method": "token_jaccard"
+      }
+    },
+    {
+      "row": 5918,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5971,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "why are the payments being declined on my new card i tried several times to use my new card to pay for my gas at the shell station in my neighborhood i am very distressed about my new card not working",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5872,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5901,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5905,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5847,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5862,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5981,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5851,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "i was out today looking forward to paying with my brand new card turns out the payment just kept getting declined this is pretty sad what s going on",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5963,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5920,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5888,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5957,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5980,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "can you please advise if there is something wrong with my card i have had multiple rejections and do not know the reason thanks",
+        "method": "exact"
+      }
+    },
+    {
+      "row": 5878,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5864,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5924,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5876,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5972,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5910,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5977,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5839,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "do you know why my card payment is declined",
+        "method": "character_similarity"
+      }
+    },
+    {
+      "row": 5935,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5845,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5982,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5947,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5934,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5932,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5865,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5951,
+      "category": "declined_card_payment",
+      "overlap": null
+    },
+    {
+      "row": 5927,
+      "category": "declined_card_payment",
+      "overlap": {
+        "match": "i don t know why my payment didn t work",
+        "method": "character_similarity"
+      }
+    }
+  ]
+}
