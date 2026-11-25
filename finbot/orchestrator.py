@@ -439,10 +439,12 @@ class Chatbot:
     def _model_answer(self, cs: ChatSession, ctx: TurnContext) -> Reply:
         text = ctx.text
         from .policy_documents import EXTRACTIVE_INSTRUCTION
+        from .support_coverage import instruction
+        support_instruction = instruction(text)
         policy_instruction = {"extractive": EXTRACTIVE_INSTRUCTION,
                               "strict": STRICT_INSTRUCTION, "hybrid": HYBRID_INSTRUCTION}.get(
             self.settings.policy_verification)
-        notices = [n for n in (cs.pending_focus_notice, cs.pending_notice, policy_instruction) if n]
+        notices = [n for n in (cs.pending_focus_notice, cs.pending_notice, policy_instruction, support_instruction) if n]
 
         def request_messages():
             return [{"role": "user", "content": text},
@@ -481,6 +483,8 @@ class Chatbot:
         def regenerate(feedback: str):  # repair always runs on the strong tier
             if policy_instruction:
                 feedback += "\n" + policy_instruction
+            if support_instruction:
+                feedback += "\n" + support_instruction
             cs.history.append({"role": "user", "content": feedback})
             retry_log: list[dict] = []
             out = self._loop(cs, run_tool, retry_log, "strong" if tiered else None, route["models"])
@@ -493,7 +497,7 @@ class Chatbot:
         fallback = None
         if self.settings.record_fallback:
             fallback = (lambda log: comparison_record_answer(log, comparison.required_ids)) if comparison.required_ids else (
-                lambda log: complete_record_answer(log, cs.memory.focus, requested.roles) or policy_passage_answer(log, text))
+                lambda log: complete_record_answer(log, cs.memory.focus, requested.roles, text) or policy_passage_answer(log, text))
 
         def review_policy(payload: dict) -> str:
             # Isolated review: no conversation history, no tools, and the same turn deadline.

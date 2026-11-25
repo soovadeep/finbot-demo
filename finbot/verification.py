@@ -175,6 +175,9 @@ REPAIR_PROMPT = ("<verifier>Your previous answer was NOT shown to the user becau
                  " For requested_information_* failures, answer the customer's actual question: state each "
                  "requested field with its name (for example \"Refund amount: 50.00 USD.\"), or say plainly that "
                  "the record does not show it. Do not substitute a different field."
+                 " For support_information_missing or support_status_mismatch, state the requested lifecycle "
+                 "status, cause, timing or evidence limit; a payment amount is not refund progress, and "
+                 "a settlement date is not a reason or a refund date. Use the current scoped record."
                  "</verifier>")
 
 

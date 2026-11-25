@@ -5,8 +5,8 @@ claims bind to (record ID, financial role, value), with field paths exposed to
 the inspector. Only the latest transaction lookup can support a claim; policy
 prose, logs, and an expected date cannot establish an actual settlement date.
 
-Supported roles: payment amount, refund amount, expected settlement date and
-actual settlement date. Dates use ISO calendar format; arbitrary paraphrases,
+Supported roles: payment/refund amount, expected refund date, expected settlement
+date and actual settlement date. Dates use ISO calendar format; arbitrary paraphrases,
 implicit roles, omissions and other lifecycle facts are outside this parser.
 """
 from __future__ import annotations
@@ -22,6 +22,7 @@ from .provenance import trusted_log
 PATHS = {
     "payment_amount": "amount",
     "refund_amount": "refund.amount",
+    "expected_refund_date": "refund.expected_date",
     "expected_settlement_date": "settlement.expected_date",
     "actual_settlement_date": "settlement.actual_date",
 }
@@ -29,6 +30,8 @@ _DATE = r"(?P<value>\d{4}-\d{2}-\d{2})(?![\dT])"
 _MONEY = r"(?:[A-Z]{3}\s+|[$£€]\s*)?(?P<value>\d+(?:\.\d{2})?)(?!\d|[./-]\d)"
 _JOIN = r"\s*(?:(?:is|was|of|on|by|for|at)\s+|:\s*)*"
 _PATTERNS = [
+    ("expected_refund_date", re.compile(
+        r"\b(?:expected|estimated|scheduled)\s+refund(?:\s+date)?" + _JOIN + _DATE, re.I)),
     ("expected_settlement_date", re.compile(
         r"\b(?:(?:expected|estimated|scheduled)\s+settlement(?:\s+date)?|"
         r"settlement(?:\s+date)?\s+(?:(?:is|was)\s+)?(?:expected|estimated|scheduled)|"

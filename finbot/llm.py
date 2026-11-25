@@ -306,6 +306,10 @@ class FakeLLM:
                     from .requested_fields import missing_statements, requested_roles
                     if missing := missing_statements(d, requested_roles(getattr(self, "question", ""))):
                         parts.append(missing)
+                    from .support_coverage import supplement
+                    from .provenance import trusted_view
+                    if extra := supplement(getattr(self, "question", ""), trusted_view(d), " ".join(parts)):
+                        parts.append(extra)
             elif r["source"] == "routing" and r["status"] == "found":
                 parts.append(self._routing(r["data"]))
             elif r["source"] == "processor_health" and r["status"] == "found":

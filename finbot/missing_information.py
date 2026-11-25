@@ -15,10 +15,15 @@ _SOURCE = rf"(?:(?:the|this|that|our|current|retrieved|available|latest)\s+){{0,
 _TAIL = rf"(?:\s+(?:in|on|from)\s+{_SOURCE})?"
 _ARTICLE = r"(?:(?:the|a|an|any|its|your)\s+)?"
 _FIELDS = {
+    "expected_refund_date": r"(?:expected|estimated|scheduled)\s+refund\s+date",
     "expected_settlement_date": r"(?:expected|estimated|scheduled)\s+(?:settlement\s+)?date",
     "actual_settlement_date": r"(?:actual\s+)?settlement\s+date|actual\s+date",
     "refund_amount": r"refund\s+amount",
     "refund_status": r"refund\s+status",
+    "refund_reason": r"refund\s+reason",
+    "settlement_status": r"settlement\s+status",
+    "settlement_reason": r"settlement\s+reason",
+    "payment_status": r"payment\s+status",
     "refund": r"refund(?:\s+(?:details|information))?",
     "settlement": r"settlement(?:\s+(?:details|information))?",
     "dispute": r"(?:dispute|chargeback)(?:\s+(?:details|information))?",
@@ -35,8 +40,8 @@ _PATTERNS = [
     re.compile(rf"no\s+{_TARGET}\s+(?:(?:is|was|are|were)\s+)?{_RECORDED}{_TAIL}", re.I),
     re.compile(rf"there\s+(?:is|are)\s+no\s+{_TARGET}\s+(?:in|on)\s+{_SOURCE}", re.I),
 ]
-_COVERS = {"refund": {"refund_amount", "refund_status"},
-           "settlement": {"actual_settlement_date", "expected_settlement_date"}}
+_COVERS = {"refund": {"refund_amount", "refund_status", "expected_refund_date", "refund_reason"},
+           "settlement": {"actual_settlement_date", "expected_settlement_date", "settlement_status", "settlement_reason"}}
 
 
 def absence_field(clause: str) -> str | None:
@@ -71,7 +76,7 @@ def value_for_field(data: dict, field: str):
     # Lazy imports avoid a guardrails -> role parser -> guardrails import cycle.
     from .financial_roles import PATHS, _field, _normalized
     if field == "decline_reason":
-        return data.get("decline_code") or data.get("error")
+        return data.get("decline_code") or data.get("error") or data.get("processor_response")
     if field in PATHS:
         value = _field(data, PATHS[field])
         if _normalized(value, field) is None:
@@ -79,7 +84,8 @@ def value_for_field(data: dict, field: str):
         if field == "actual_settlement_date" and _field(data, "settlement.status") != "settled":
             return None
         return value
-    value = _field(data, "refund.status" if field == "refund_status" else field)
+    from .support_coverage import PATHS as SUPPORT_PATHS
+    value = _field(data, SUPPORT_PATHS.get(field, field))
     return value if value not in (None, "", {}, []) else None
 
 

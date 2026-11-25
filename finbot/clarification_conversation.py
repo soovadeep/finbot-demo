@@ -202,8 +202,9 @@ def support_question(text: str) -> dict | None:
     verifier requires each requested field (or an explicit "not recorded").
     """
     from .requested_fields import requested_roles
+    from .support_coverage import requirements
     cleaned = text.strip()
-    roles = requested_roles(cleaned)
+    roles = tuple(dict.fromkeys((*requested_roles(cleaned), *requirements(cleaned, {}))))
     action = bool(_ACTION.search(cleaned))
     if not (roles or action or _REQUEST.search(cleaned)):
         return None

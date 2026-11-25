@@ -64,7 +64,14 @@ LABELS = {"refund_amount": "a refund amount", "expected_settlement_date": "an ex
 def requested_roles(question: str) -> tuple[str, ...]:
     """Fields the question explicitly asks about, in a fixed order (possibly none)."""
     q = question.casefold().replace("’", "'")
-    return tuple(role for role, (trigger, _) in ROLES.items() if re.search(trigger, q))
+    from .support_coverage import REFUND, PENDING, TIMING
+    roles = [role for role, (trigger, _) in ROLES.items() if re.search(trigger, q)]
+    if REFUND.search(q) and not re.search(r"\bsettle\w*\b", q):
+        roles = [role for role in roles if "settlement" not in role]
+    elif PENDING.search(q) and TIMING.search(q) and "actual_settlement_date" not in roles:
+        if "expected_settlement_date" not in roles:
+            roles.append("expected_settlement_date")
+    return tuple(roles)
 
 
 def _states_absent(text: str, role: str) -> bool:
@@ -118,9 +125,11 @@ def missing_statements(data: dict, roles: tuple[str, ...]) -> str:
     """Fixed sentences for requested fields the record does not establish."""
     lines = []
     for role in roles:
-        if role in {"payment_amount", "decline_reason"} or _value(data, role) is not None:
+        if role == "payment_amount" or _value(data, role) is not None:
             continue
-        if role == "decline_reason" or (role == "actual_settlement_date" and _field(data, "settlement.expected_date")):
+        if role == "decline_reason" and data.get("status") not in {"declined", "failed"}:
+            continue
+        if role == "actual_settlement_date" and _field(data, "settlement.expected_date"):
             continue  # lifecycle_summary already says an actual date is not recorded
         lines.append(f"The record does not show {LABELS[role]}.")
     return " ".join(lines)
@@ -131,24 +140,27 @@ class RequestedInformationVerifier:
     name = "requested_information"
 
     def __init__(self, question: str):
+        self.question = question
         self.roles = requested_roles(question)
 
     def check(self, answer: str, tool_log: list[dict], focus: str | None) -> GuardResult:
+        from .support_coverage import check
+        support = check(answer, tool_log, self.question)
         if not self.roles:
-            return GuardResult("allow", answer)
+            return support
         latest: dict[str, dict] = {}
         for call in trusted_log(tool_log):
             rid = call.get("input", {}).get("txn_id")
             if call["name"] == "get_transaction" and isinstance(rid, str) and rid:
                 latest[rid] = call["result"]
         if len(latest) != 1:
-            return GuardResult("allow", answer)   # none read, or a comparison (own coverage check)
+            return support   # none read, or a comparison (own coverage check)
         rid, result = next(iter(latest.items()))
         if result.get("status") != "found" or not isinstance(result.get("data"), dict):
-            return GuardResult("allow", answer)   # a not-found answer has nothing to cover
+            return support   # a not-found answer has nothing to cover
         data = result["data"]
         about = " ".join(clause for clause, subject in segments(answer, {rid}) if subject in (rid, None)) or answer
-        reasons, checks = [], []
+        reasons, checks = list(support.reasons), list(support.checks)
         for role in self.roles:
             if role == "decline_reason" and str(data.get("status", "")).lower() not in {"declined", "failed"}:
                 continue   # nothing was declined; the status answers the question
@@ -172,15 +184,20 @@ class RequestedInformationVerifier:
                            reasons, checks)
 
 
-def complete_record_answer(tool_log: list[dict], focus: str | None, roles: tuple[str, ...]) -> str | None:
+def complete_record_answer(tool_log: list[dict], focus: str | None, roles: tuple[str, ...], question: str = "") -> str | None:
     """The record-built fallback plus explicit statements for requested fields it lacks."""
     from .recordanswer import record_answer
     built = record_answer(tool_log, focus)
-    if not built or not roles:
+    if not built or not (roles or question):
         return built
     calls = [c for c in tool_log if c["name"] == "get_transaction" and c["result"].get("status") == "found"
              and (focus is None or c["input"].get("txn_id") == focus)]
     if not calls:
         return built
-    extra = missing_statements(calls[-1]["result"]["data"], roles)
-    return f"{built} {extra}" if extra else built
+    from .support_coverage import supplement
+    from .provenance import trusted_view
+    data = trusted_view(calls[-1]["result"]["data"])
+    extra = missing_statements(data, roles)
+    completed = f"{built} {extra}" if extra else built
+    more = supplement(question, data, completed)
+    return f"{completed} {more}" if more else completed

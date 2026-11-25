@@ -22,8 +22,16 @@ class FinancialRoleDiagnostics(unittest.TestCase):
         # Compare all measurements while retaining the original source manifest
         # (later additive fields are set aside; see tests/historical.py).
         actual = historical(actual)
-        self.assertEqual({k: v for k, v in actual.items() if k != "sources"},
-                         {k: v for k, v in saved.items() if k != "sources"})
+        # Component measurements stay historical. Workflow answers now include
+        # requested refund status, so check the intended behavior change explicitly.
+        self.assertEqual({k: v for k, v in actual.items() if k not in {"sources", "workflows"}},
+                         {k: v for k, v in saved.items() if k not in {"sources", "workflows"}})
+        self.assertEqual(len(actual["workflows"]), len(saved["workflows"]))
+        for current, old in zip(actual["workflows"], saved["workflows"]):
+            self.assertEqual(current["fault"], old["fault"])
+            self.assertEqual(current["result"]["outcome"], old["result"]["outcome"])
+            self.assertEqual(current["result"]["final"]["answer"],
+                             old["result"]["final"]["answer"] + " Refund status: succeeded.")
         self.assertEqual(actual["new_model_calls"], 0)
         self.assertTrue(all(r["required_fixture_details_present"] for r in actual["workflows"]))
         self.assertEqual(actual["historical_replay"]["known_omissions_still_allowed"], 1)
