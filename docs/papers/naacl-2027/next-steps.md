@@ -1,6 +1,6 @@
 # Finbot: next steps for the demo submission
 
-Updated November 24, 2026 on `abose/evaluation-context-gaps`, based on main `1c866d9`.
+Updated November 24, 2026 on `abose/evaluation-context-gaps`, including the public-wording study.
 Boxes distinguish implemented software and authored evaluations from outstanding live
 validation or human review. Earlier frozen studies retain their original results.
 
@@ -30,16 +30,24 @@ validation or human review. Earlier frozen studies retain their original results
   [Historical results, fix and review form](evaluation/verification-challenge.md).
 - **Context and memory:** full-prompt admission, output reserve, rollover, bounded state,
   rollback and fresh-snapshot replacement; nine offline contracts pass. [Design](../../agent-design.md).
-- **Conversation evaluation prepared:** four paired short/long scenarios complete 160 actual
-  chatbot turns using the scripted writer. Frozen runtime, raw traces, independent-case
-  import and blind review forms are available. No paid calls or live reasoning results.
-  [Protocol and pending evaluation](evaluation/conversation-study.md).
+- **Live conversation evaluation complete:** eight Llama 3.3 70B arms complete 160 turns
+  for US$0.20394182. All eight final probes use current records; AI and co-author labels
+  agree on 13 distinct probe drafts/finals. Other turns were not semantically labelled.
+  This is authored-scenario evidence, not general long-conversation accuracy.
+  [Live results](evaluation/conversation-live.md).
+- **Shared absence verification:** evidence and requested-field checks now agree on
+  supported missing-information statements. Three of four saved correct missing-refund
+  drafts now pass in development replay; the 30-case study still rejects 16/29 correct drafts.
+- **External wording evaluated:** code and sampling were frozen before selecting 30 unused
+  BANKING77 questions. Sixty scripted runs release 57 answers; provisional unblinded AI
+  review judges 24 releases complete plus three refusals appropriate. Refund status and
+  pending explanations remain gaps. [Protocol, examples and limits](evaluation/public-wording.md).
 - **Hosted smoke:** scripted policy quotation and missing-document refusal checked on
   November 24 (`results/naacl2027/hosted-smoke-2026-11-24.json`). This does not attest the
   deployed Git revision; the new context branch has not been deployed. Video is unchanged.
-- **Still open:** independently authored wording and live long-conversation/full-controller
-  assessment, human review of the new challenge, broader semantic applicability, and
-  release/deployment identity. External participants remain optional.
+- **Still open:** shared coverage of refund status/pending explanations, fresh live answers
+  on external wording, broader full-controller assessment, semantic applicability and
+  release/deployment identity. AI-only labels are disclosed; external participants remain optional.
 
 ## 1. Preserve the actual support question (highest priority)
 
@@ -133,6 +141,8 @@ inspectable findings, and has real provider measurements distinct from mock-resp
   Report detections, false rejections, paired new rejections, remaining errors, unavailable cases,
   latency and measured cost; retain denominators and raw results.
 - [x] Retain the 60 authored controller replays and separately score record selection and answer fields.
+- [x] Freeze before selecting unused public wording; archive overlap screening, adaptations,
+  first-run failures and AI-label provenance. No additional human reviewer is required.
 - [ ] Add fresh live evaluation of the complete clarification-to-answer journey. The live
   writer studies name the record and bypass clarification/confirmation. Full success requires
   the intended record AND a supported, sufficiently complete final answer.

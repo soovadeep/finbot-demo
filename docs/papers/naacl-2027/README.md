@@ -12,6 +12,8 @@ and comparison scenarios are distinguished from the conversation's confirmed-rec
 - [Prioritized next steps](next-steps.md): remaining implementation, evaluation and submission work.
 - [Agent design](../../agent-design.md): context budgets, memory, tool-loop limits and recovery.
 - [Matched error challenge](evaluation/verification-challenge.md): 48 pairs, failure cases and scope.
+- [Public wording and absence checks](evaluation/public-wording.md): 30 unused BANKING77
+  questions, 60 scripted runs, provisional AI review, and remaining omissions.
 - [Paper (PDF)](finbot-naacl2027.pdf)
 - [Paper source](paper/main.tex): LaTeX in the official ACL style (see [TEMPLATE.md](paper/TEMPLATE.md)).
 - [Paper details](evaluation/paper-details.md): prompts, settings and extra results the
@@ -26,6 +28,7 @@ the added baseline comparison is cache-only and reports missing coverage explici
 
 | Result | Command | Output |
 |---|---|---|
+| Frozen public wording: 30 questions, 60 scripted runs | See [preserving/replaying the frozen results](evaluation/public-wording.md) | `results/naacl2027/public-wording-v1/` |
 | Actual conversation controller: 60 authored regressions | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |
 | Varied support: post-fix rerun of 40 inspector runs and 74 matched mutations | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support-roles.json` (earlier reports preserved) |
 | Financial-role ablation: 60 corruptions, 12 equal-value controls, 125 cached drafts | `python scripts/naacl2027/evaluate_financial_roles.py` | `results/naacl2027/financial-roles.json` |

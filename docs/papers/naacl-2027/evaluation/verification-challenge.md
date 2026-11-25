@@ -24,8 +24,10 @@ blank judgments and no mutation names, side labels or verifier decisions. A blin
 construction labels on 79/91 (support 84/91, completeness 84/91). All 12 differences are
 corrupted answers she accepted: reversed policy rules, dropped exceptions, off-code quotes,
 swapped payment/refund roles and a superseded refund (`label-agreement.json`). She rejected
-no clean answer. Adjudication resolved all 12 as labelling slips, giving 91/91
-(`labels-adjudicated.json`); her blind labels stay unchanged in `labels-second.json`. Do not substitute these expectations for the two labellers'
+no clean answer. Adjudication after revealing the construction labels resolved all
+12 disagreements (`labels-adjudicated.json`). The resulting 91/91 agreement is
+post-adjudication consensus, not independent agreement; the original blind labels
+stay unchanged in `labels-second.json`. Do not substitute these expectations for the two labellers'
 judgments on the separate live v2 study.
 
 ## Results on the frozen implementation

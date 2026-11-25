@@ -7,6 +7,9 @@ performance of the hosted conversation, or engineering checks as a human study.
 
 The current submission uses the following completed evaluations:
 
+- [Frozen public-question study](public-wording.md): 30 previously unused BANKING77
+  questions, paired populated/missing records, 60 scripted inspector runs. Provisional
+  AI review separates supported statements from complete answers and preserves failures.
 - Cached simulated-customer comparisons, including full-list, amount-first and most-distinct
   baselines. Report correct/wrong confirmations, unresolved cases and question count.
 - Authored replays through the deployed conversation controller. Report regression coverage,
