@@ -48,6 +48,7 @@ for the evidence inspector. The demo uses a scripted writer, and labels it as sc
 | Baselines, cached replies only | `python scripts/naacl2027/compare_baselines.py` | `results/naacl2027/strong-baselines/` |
 | Conversation controller replays | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |
 | Financial-role ablation | `python scripts/naacl2027/evaluate_financial_roles.py` | `results/naacl2027/financial-roles.json` |
+| Template mutations with matched controls | `python scripts/naacl2027/paired_verification.py` | `results/naacl2027/paired-verification/` |
 | Live policy answers, two labellers | `python scripts/naacl2027/paired_gate_study.py score --version fresh-llm-v3` | `results/naacl2027/fresh-llm-v3/` |
 | Public questions, pre/post-fix | [public-questions.md](docs/papers/naacl-2027/evaluation/public-questions.md) | `results/naacl2027/public-wording-v2/` |
 | Interface and accessibility checks | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |

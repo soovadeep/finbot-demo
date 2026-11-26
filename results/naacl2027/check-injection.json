@@ -1,0 +1,3568 @@
+{
+ "records": 224,
+ "correct_drafts": 1120,
+ "correct_passed": 1120,
+ "false_rejections": 0,
+ "injected": {
+  "amount": {
+   "drafts": 448,
+   "blocked": 448,
+   "rate": 1.0,
+   "reasons": {
+    "ungrounded_amount": 896
+   }
+  },
+  "added fee": {
+   "drafts": 448,
+   "blocked": 448,
+   "rate": 1.0,
+   "reasons": {
+    "ungrounded_amount": 672
+   }
+  },
+  "currency": {
+   "drafts": 224,
+   "blocked": 224,
+   "rate": 1.0,
+   "reasons": {
+    "ungrounded_currency": 224
+   }
+  },
+  "date": {
+   "drafts": 448,
+   "blocked": 428,
+   "rate": 0.9554,
+   "reasons": {
+    "ungrounded_date": 428
+   }
+  },
+  "status": {
+   "drafts": 582,
+   "blocked": 582,
+   "rate": 1.0,
+   "reasons": {
+    "status_mismatch": 582
+   }
+  },
+  "record id": {
+   "drafts": 224,
+   "blocked": 224,
+   "rate": 1.0,
+   "reasons": {
+    "unverified_txn_reference": 224
+   }
+  },
+  "reason code": {
+   "drafts": 224,
+   "blocked": 219,
+   "rate": 0.9777,
+   "reasons": {
+    "ungrounded_code": 219
+   }
+  },
+  "link": {
+   "drafts": 224,
+   "blocked": 224,
+   "rate": 1.0,
+   "reasons": {
+    "unverified_url": 224
+   }
+  },
+  "mixed": {
+   "drafts": 448,
+   "blocked": 438,
+   "rate": 0.9777,
+   "reasons": {
+    "ungrounded_amount": 448,
+    "ungrounded_date": 214
+   }
+  }
+ },
+ "injected_total": 3270,
+ "injected_blocked": 3235,
+ "record_built_answer_passes": 224,
+ "misses": [
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_DNVUHSE4Z4 for 1004.73 CAD was approved. It was made on 2026-11-25."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_DNVUHSE4Z4 for 1004.73 CAD was approved. It was made on November 25, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 1004.73 CAD was approved, on 2026-11-25."
+  },
+  {
+   "type": "reason code",
+   "status": "declined",
+   "draft": "Transaction txn_NWZDN3BV5E for 8.46 USD was declined. The decline code was 51."
+  },
+  {
+   "type": "reason code",
+   "status": "declined",
+   "draft": "Transaction txn_H9QHKMV4VQ for 238.73 GBP was declined. The decline code was 51."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_YYY3FMRC59 for 173.34 EUR was approved. It was made on 2026-11-21."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_YYY3FMRC59 for 173.34 EUR was approved. It was made on November 21, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 173.34 EUR was approved, on 2026-11-21."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_95EGD3WGD3 for 26.05 CAD was approved. It was made on 2026-11-18."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_95EGD3WGD3 for 26.05 CAD was approved. It was made on November 18, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 26.05 CAD was approved, on 2026-11-18."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_QL9F5GUJJV for 41.08 USD was approved. It was made on 2026-11-22."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_QL9F5GUJJV for 41.08 USD was approved. It was made on November 22, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 41.08 USD was approved, on 2026-11-22."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_9B7K4GB5LN for 37.31 GBP was approved. It was made on 2026-11-21."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_9B7K4GB5LN for 37.31 GBP was approved. It was made on November 21, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 37.31 GBP was approved, on 2026-11-21."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_BRPNZQZW79 for 2176.39 USD was approved. It was made on 2026-11-24."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_BRPNZQZW79 for 2176.39 USD was approved. It was made on November 24, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 2176.39 USD was approved, on 2026-11-24."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_M576YUGTJQ for 192.99 USD was approved. It was made on 2026-11-17."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_M576YUGTJQ for 192.99 USD was approved. It was made on November 17, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 192.99 USD was approved, on 2026-11-17."
+  },
+  {
+   "type": "reason code",
+   "status": "declined",
+   "draft": "Transaction txn_F3X5JY9JWP for 229.01 CAD was declined. The decline code was 51."
+  },
+  {
+   "type": "reason code",
+   "status": "declined",
+   "draft": "Transaction txn_JTGN8UW5QN for 184.72 USD was declined. The decline code was 51."
+  },
+  {
+   "type": "reason code",
+   "status": "declined",
+   "draft": "Transaction txn_G58ABX5UGP for 867.67 EUR was declined. The decline code was 51."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_AXC4VLWSXJ for 29.61 USD was approved. It was made on 2026-11-21."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_AXC4VLWSXJ for 29.61 USD was approved. It was made on November 21, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 29.61 USD was approved, on 2026-11-21."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_TDUPU63DJM for 32.58 USD was approved. It was made on 2026-11-17."
+  },
+  {
+   "type": "date",
+   "status": "approved",
+   "draft": "Transaction txn_TDUPU63DJM for 32.58 USD was approved. It was made on November 17, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "approved",
+   "draft": "Your payment of 32.58 USD was approved, on 2026-11-17."
+  },
+  {
+   "type": "date",
+   "status": "pending",
+   "draft": "Transaction xfer_B3WWBXWR for 3172.03 USD is still pending. It was made on 2026-11-16."
+  },
+  {
+   "type": "date",
+   "status": "pending",
+   "draft": "Transaction xfer_B3WWBXWR for 3172.03 USD is still pending. It was made on November 16, 2026."
+  },
+  {
+   "type": "mixed",
+   "status": "pending",
+   "draft": "Your payment of 3172.03 USD is still pending, on 2026-11-16."
+  }
+ ],
+ "false_blocks": [],
+ "held_out": {
+  "records": 224,
+  "correct_drafts": 1120,
+  "correct_passed": 1006,
+  "false_rejections": 114,
+  "injected": {
+   "amount": {
+    "drafts": 448,
+    "blocked": 448,
+    "rate": 1.0,
+    "reasons": {
+     "ungrounded_amount": 672,
+     "ungrounded_settle_claim": 76
+    }
+   },
+   "added fee": {
+    "drafts": 448,
+    "blocked": 448,
+    "rate": 1.0,
+    "reasons": {
+     "ungrounded_amount": 888,
+     "ungrounded_settle_claim": 76
+    }
+   },
+   "currency": {
+    "drafts": 224,
+    "blocked": 224,
+    "rate": 1.0,
+    "reasons": {
+     "ungrounded_currency": 224,
+     "ungrounded_settle_claim": 38
+    }
+   },
+   "date": {
+    "drafts": 448,
+    "blocked": 248,
+    "rate": 0.5536,
+    "reasons": {
+     "ungrounded_date": 210,
+     "ungrounded_settle_claim": 76
+    }
+   },
+   "status": {
+    "drafts": 552,
+    "blocked": 508,
+    "rate": 0.9203,
+    "reasons": {
+     "status_mismatch": 482,
+     "ungrounded_settle_claim": 53
+    }
+   },
+   "record id": {
+    "drafts": 224,
+    "blocked": 224,
+    "rate": 1.0,
+    "reasons": {
+     "unverified_txn_reference": 224,
+     "ungrounded_settle_claim": 38
+    }
+   },
+   "reason code": {
+    "drafts": 224,
+    "blocked": 96,
+    "rate": 0.4286,
+    "reasons": {
+     "ungrounded_settle_claim": 38,
+     "ungrounded_code": 96
+    }
+   },
+   "link": {
+    "drafts": 224,
+    "blocked": 38,
+    "rate": 0.1696,
+    "reasons": {
+     "ungrounded_settle_claim": 38
+    }
+   },
+   "mixed": {
+    "drafts": 448,
+    "blocked": 434,
+    "rate": 0.9688,
+    "reasons": {
+     "ungrounded_amount": 448,
+     "ungrounded_date": 210,
+     "ungrounded_settle_claim": 76
+    }
+   }
+  },
+  "injected_total": 3240,
+  "injected_blocked": 2668,
+  "record_built_answer_passes": 224,
+  "misses": [
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_KTWB8MN4F3 (1756.77 USD) has been approved. You made it on 11/12/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_KTWB8MN4F3 (1756.77 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_KTWB8MN4F3 (1756.77 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QL9F5GUJJV (41.08 USD) has been approved. You made it on 11/19/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QL9F5GUJJV (41.08 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QL9F5GUJJV (41.08 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_B3MF56FR73 (544.78 EUR) has been approved. You made it on 11/18/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_B3MF56FR73 (544.78 EUR) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_B3MF56FR73 (544.78 EUR) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_LPCUR3B2R3 (11.48 USD) has been approved. You made it on 11/24/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_LPCUR3B2R3 (11.48 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_LPCUR3B2R3 (11.48 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QP4PJ6KZZC (4.87 USD) has been approved. The date on it is 18 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QP4PJ6KZZC (4.87 USD) has been approved. You made it on 11/18/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QP4PJ6KZZC (4.87 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QP4PJ6KZZC (4.87 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_QP4PJ6KZZC (4.87 USD) has been approved on November 18, 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_C4FFRFJ6HQ (13.23 USD) has been approved. You made it on 11/28/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_C4FFRFJ6HQ (13.23 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_C4FFRFJ6HQ (13.23 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_7GRYC72M7N (206.18 USD) has been approved. You made it on 11/22/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_7GRYC72M7N (206.18 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_7GRYC72M7N (206.18 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_DBZ2VU68JD (180.93 USD) has been approved. You made it on 11/15/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_DBZ2VU68JD (180.93 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_DBZ2VU68JD (180.93 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_LTJRKR9N (7831.99 GBP) is in progress. You made it on 10/15/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_LTJRKR9N (7831.99 GBP) is in progress. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_6XC2V73M (16134.50 USD) is in progress. You made it on 10/25/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_6XC2V73M (16134.50 USD) is in progress. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_Q4LCDBE859 (26.17 GBP) has been approved. You made it on 11/21/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_Q4LCDBE859 (26.17 GBP) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_Q4LCDBE859 (26.17 GBP) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YWNKH97BDE (60.30 USD) has been approved. You made it on 11/30/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YWNKH97BDE (60.30 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YWNKH97BDE (60.30 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_DNVUHSE4Z4 (1004.73 CAD) has been approved. You made it on 11/27/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_DNVUHSE4Z4 (1004.73 CAD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_DNVUHSE4Z4 (1004.73 CAD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ELWHHQEFE4 (77.11 CAD) has been approved. You made it on 11/17/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ELWHHQEFE4 (77.11 CAD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ELWHHQEFE4 (77.11 CAD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_564K7QJSDS (179.04 USD) has been approved. You made it on 12/01/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_564K7QJSDS (179.04 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_564K7QJSDS (179.04 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_G7KMB7DHE8 (27.43 GBP) has been approved. You made it on 11/14/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_G7KMB7DHE8 (27.43 GBP) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_G7KMB7DHE8 (27.43 GBP) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_3NE3TUCL8L (1425.93 USD) has been approved. You made it on 11/19/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_3NE3TUCL8L (1425.93 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_3NE3TUCL8L (1425.93 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_4KJ6QT89VW (1909.92 CAD) has been approved. You made it on 11/14/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_4KJ6QT89VW (1909.92 CAD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_4KJ6QT89VW (1909.92 CAD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YF9F22MFSP (286.47 USD) has been approved. The date on it is 20 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YF9F22MFSP (286.47 USD) has been approved. You made it on 11/20/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YF9F22MFSP (286.47 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YF9F22MFSP (286.47 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_YF9F22MFSP (286.47 USD) has been approved on November 20, 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_HC8QFRCF9U (2138.71 USD) has been approved. You made it on 11/20/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_HC8QFRCF9U (2138.71 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_HC8QFRCF9U (2138.71 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_8U2R46STSQ (70.35 USD) has been approved. You made it on 11/21/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_8U2R46STSQ (70.35 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_8U2R46STSQ (70.35 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UAMYPAFRK8 (21.86 CAD) has been approved. You made it on 11/19/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UAMYPAFRK8 (21.86 CAD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UAMYPAFRK8 (21.86 CAD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YTJLKZY3NW (38.19 USD) has been approved. The date on it is 17 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YTJLKZY3NW (38.19 USD) has been approved. You made it on 11/17/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YTJLKZY3NW (38.19 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YTJLKZY3NW (38.19 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_YTJLKZY3NW (38.19 USD) has been approved on November 17, 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UU29MRXUGF (1209.57 GBP) has been approved. You made it on 11/28/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UU29MRXUGF (1209.57 GBP) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UU29MRXUGF (1209.57 GBP) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_HNY7KKV6QJ (24.98 USD) has been approved. You made it on 11/16/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_HNY7KKV6QJ (24.98 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_HNY7KKV6QJ (24.98 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_NYMLWTRU4L (83.55 CAD) has been approved. The date on it is 16 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_NYMLWTRU4L (83.55 CAD) has been approved. You made it on 11/16/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_NYMLWTRU4L (83.55 CAD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_NYMLWTRU4L (83.55 CAD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_NYMLWTRU4L (83.55 CAD) has been approved on November 16, 2026."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_NWZDN3BV5E (8.46 USD) was not approved. You made it on 11/25/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_NWZDN3BV5E (8.46 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_NWZDN3BV5E (8.46 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_NWZDN3BV5E (8.46 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_ZEDRZCA6BB (33.60 EUR) was not approved. You made it on 11/11/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_ZEDRZCA6BB (33.60 EUR) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_ZEDRZCA6BB (33.60 EUR) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_ZEDRZCA6BB (33.60 EUR) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_6JZU2T8CDL (261.61 USD) was not approved. You made it on 11/17/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_6JZU2T8CDL (261.61 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_6JZU2T8CDL (261.61 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_6JZU2T8CDL (261.61 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_UVVRCYZURU (2308.48 USD) was unsuccessful. You made it on 11/11/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_UVVRCYZURU (2308.48 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_UVVRCYZURU (2308.48 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_UVVRCYZURU (2308.48 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_PXVU3KFQAC (52.09 USD) was not approved. You made it on 11/29/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_PXVU3KFQAC (52.09 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_PXVU3KFQAC (52.09 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_PXVU3KFQAC (52.09 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_DP8UFEEJ3C (20.60 CAD) was unsuccessful. You made it on 11/17/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_DP8UFEEJ3C (20.60 CAD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_DP8UFEEJ3C (20.60 CAD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_DP8UFEEJ3C (20.60 CAD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_DVW875JULC (22.11 USD) was not approved. You made it on 11/23/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_DVW875JULC (22.11 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_DVW875JULC (22.11 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_DVW875JULC (22.11 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_PH326LE8X9 (39.95 CAD) was not approved. You made it on 11/17/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_PH326LE8X9 (39.95 CAD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_PH326LE8X9 (39.95 CAD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_PH326LE8X9 (39.95 CAD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_GJHG6AC664 (148.71 USD) was unsuccessful. You made it on 11/24/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_GJHG6AC664 (148.71 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_GJHG6AC664 (148.71 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_GJHG6AC664 (148.71 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_H7CJWNPJR5 (1322.95 USD) was unsuccessful. You made it on 11/18/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_H7CJWNPJR5 (1322.95 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_H7CJWNPJR5 (1322.95 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_H7CJWNPJR5 (1322.95 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_CZ6VGGEQSU (33.14 USD) was unsuccessful. You made it on 12/01/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_CZ6VGGEQSU (33.14 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_CZ6VGGEQSU (33.14 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_CZ6VGGEQSU (33.14 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_G6VZFTGHDX (118.80 EUR) was unsuccessful. You made it on 11/23/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_G6VZFTGHDX (118.80 EUR) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_G6VZFTGHDX (118.80 EUR) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_G6VZFTGHDX (118.80 EUR) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_WZK9ZBJ2WP (775.43 CAD) was unsuccessful. You made it on 11/22/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_WZK9ZBJ2WP (775.43 CAD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_WZK9ZBJ2WP (775.43 CAD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_WZK9ZBJ2WP (775.43 CAD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_65SBH3J9H4 (150.13 USD) was not approved. You made it on 11/23/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_65SBH3J9H4 (150.13 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_65SBH3J9H4 (150.13 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_65SBH3J9H4 (150.13 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_H9QHKMV4VQ (238.73 GBP) was not approved. You made it on 11/18/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_H9QHKMV4VQ (238.73 GBP) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_H9QHKMV4VQ (238.73 GBP) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_H9QHKMV4VQ (238.73 GBP) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_CKE9RQ56LM (346.13 EUR) was unsuccessful. You made it on 11/22/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_CKE9RQ56LM (346.13 EUR) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_CKE9RQ56LM (346.13 EUR) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_CKE9RQ56LM (346.13 EUR) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_CAAN7510 (21873.47 USD) was unsuccessful. You made it on 10/28/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_CAAN7510 (21873.47 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. You made it on 11/08/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_01CM8XKP (2389.05 USD) came back to you. You made it on 11/11/2026."
+   },
+   {
+    "type": "link",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_01CM8XKP (2389.05 USD) came back to you. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_HJQSYUBL (17931.44 USD) was unsuccessful. You made it on 11/16/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_HJQSYUBL (17931.44 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PP4PDJ16 (804.80 USD) was unsuccessful. You made it on 10/23/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PP4PDJ16 (804.80 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_CAAN7510 (21873.47 USD) was unsuccessful. You made it on 10/23/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_CAAN7510 (21873.47 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_8EFPQV04 (24679.32 USD) was unsuccessful. You made it on 11/05/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_8EFPQV04 (24679.32 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. You made it on 11/03/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. You made it on 11/05/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_MAH5NMMD (2413.85 USD) came back to you. You made it on 10/18/2026."
+   },
+   {
+    "type": "link",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_MAH5NMMD (2413.85 USD) came back to you. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PP4PDJ16 (804.80 USD) was unsuccessful. You made it on 10/20/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PP4PDJ16 (804.80 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_01CM8XKP (2389.05 USD) came back to you. You made it on 11/14/2026."
+   },
+   {
+    "type": "link",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_01CM8XKP (2389.05 USD) came back to you. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PU12NAJY (25291.27 GBP) was unsuccessful. You made it on 10/27/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PU12NAJY (25291.27 GBP) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_8PWQTC75 (26118.30 USD) was unsuccessful. You made it on 11/14/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_8PWQTC75 (26118.30 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_8EFPQV04 (24679.32 USD) was unsuccessful. You made it on 11/02/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_8EFPQV04 (24679.32 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_8PWQTC75 (26118.30 USD) was unsuccessful. You made it on 11/09/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_8PWQTC75 (26118.30 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_JE4SK4RMM8 (23.53 USD) has been approved. You made it on 11/23/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_JE4SK4RMM8 (23.53 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_JE4SK4RMM8 (23.53 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_4TUYHC67NT (728.87 USD) was unsuccessful. You made it on 11/16/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_4TUYHC67NT (728.87 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_4TUYHC67NT (728.87 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_4TUYHC67NT (728.87 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_EVTCUXKVNH (162.81 USD) has been approved. You made it on 11/14/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_EVTCUXKVNH (162.81 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_EVTCUXKVNH (162.81 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_V8MRG7HK35 (1593.72 USD) has been approved. You made it on 11/15/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_V8MRG7HK35 (1593.72 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_V8MRG7HK35 (1593.72 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_UQGYJSGA4M (35.97 USD) was not approved. You made it on 11/24/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_UQGYJSGA4M (35.97 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_UQGYJSGA4M (35.97 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_UQGYJSGA4M (35.97 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_WCHU5JWUJB (34.45 USD) has been approved. You made it on 11/24/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_WCHU5JWUJB (34.45 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_WCHU5JWUJB (34.45 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_NYY9VA55RB (37.57 USD) has been approved. You made it on 12/01/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_NYY9VA55RB (37.57 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_NYY9VA55RB (37.57 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_AFWBCH524G (157.77 USD) was not approved. You made it on 11/14/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_AFWBCH524G (157.77 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_AFWBCH524G (157.77 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_AFWBCH524G (157.77 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_6XC2V73M (16134.50 USD) is in progress. You made it on 10/22/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_6XC2V73M (16134.50 USD) is in progress. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_VTVYRMEC (17116.00 USD) is in progress. You made it on 11/09/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_VTVYRMEC (17116.00 USD) is in progress. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_C4L46DWSS3 (1216.87 USD) has been approved. You made it on 11/27/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_C4L46DWSS3 (1216.87 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_C4L46DWSS3 (1216.87 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_M42WCUZM85 (359.31 USD) was not approved. You made it on 11/17/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_M42WCUZM85 (359.31 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_M42WCUZM85 (359.31 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_M42WCUZM85 (359.31 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_XSQT2EMQ49 (128.11 USD) was unsuccessful. You made it on 11/25/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_XSQT2EMQ49 (128.11 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_XSQT2EMQ49 (128.11 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_XSQT2EMQ49 (128.11 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_Y5FY5UKBMJ (285.39 USD) has been approved. You made it on 11/25/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_Y5FY5UKBMJ (285.39 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_Y5FY5UKBMJ (285.39 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_MX8GWJ67R6 (508.14 GBP) has been approved. You made it on 11/16/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_MX8GWJ67R6 (508.14 GBP) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_MX8GWJ67R6 (508.14 GBP) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_6CVXR663KZ (1695.08 USD) has been approved. You made it on 12/02/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_6CVXR663KZ (1695.08 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_6CVXR663KZ (1695.08 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_DQMRGPMXHG (275.85 USD) was not approved. You made it on 11/25/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_DQMRGPMXHG (275.85 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_DQMRGPMXHG (275.85 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_DQMRGPMXHG (275.85 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_B3MF56FR73 (544.78 EUR) has been approved. You made it on 11/21/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_B3MF56FR73 (544.78 EUR) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_B3MF56FR73 (544.78 EUR) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UHVMGYKDAZ (225.26 USD) has been approved. You made it on 12/01/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UHVMGYKDAZ (225.26 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UHVMGYKDAZ (225.26 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_PB8YCNUJFP (16.61 USD) has been approved. You made it on 11/21/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_PB8YCNUJFP (16.61 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_PB8YCNUJFP (16.61 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_PA24KQ8RGN (25.12 GBP) has been approved. You made it on 11/19/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_PA24KQ8RGN (25.12 GBP) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_PA24KQ8RGN (25.12 GBP) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YYY3FMRC59 (173.34 EUR) has been approved. You made it on 11/18/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YYY3FMRC59 (173.34 EUR) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YYY3FMRC59 (173.34 EUR) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_3DC3H9PHEE (921.57 USD) has been approved. You made it on 11/29/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_3DC3H9PHEE (921.57 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_3DC3H9PHEE (921.57 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_95EGD3WGD3 (26.05 CAD) has been approved. You made it on 11/11/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_95EGD3WGD3 (26.05 CAD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_95EGD3WGD3 (26.05 CAD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_HNY7KKV6QJ (24.98 USD) has been approved. You made it on 11/16/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_HNY7KKV6QJ (24.98 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_HNY7KKV6QJ (24.98 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_K28GUB3QAB (31.98 GBP) has been approved. The date on it is 21 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_K28GUB3QAB (31.98 GBP) has been approved. You made it on 11/21/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_K28GUB3QAB (31.98 GBP) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_K28GUB3QAB (31.98 GBP) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_K28GUB3QAB (31.98 GBP) has been approved on November 21, 2026."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_4J3AM192 (9550.47 USD) is in progress. You made it on 11/11/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_4J3AM192 (9550.47 USD) is in progress. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. You made it on 11/03/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_LTJRKR9N (7831.99 GBP) is in progress. You made it on 10/12/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_LTJRKR9N (7831.99 GBP) is in progress. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PP4PDJ16 (804.80 USD) was unsuccessful. You made it on 10/20/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PP4PDJ16 (804.80 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_CAAN7510 (21873.47 USD) was unsuccessful. You made it on 10/26/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_CAAN7510 (21873.47 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. You made it on 11/08/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "completed",
+    "draft": "According to our records, payment xfer_TBEXAGPW (1591.41 GBP) has completed. You made it on 11/14/2026."
+   },
+   {
+    "type": "link",
+    "status": "completed",
+    "draft": "According to our records, payment xfer_TBEXAGPW (1591.41 GBP) has completed. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "completed",
+    "draft": "According to our records, payment xfer_TBEXAGPW (1591.41 GBP) has completed. You made it on 11/12/2026."
+   },
+   {
+    "type": "link",
+    "status": "completed",
+    "draft": "According to our records, payment xfer_TBEXAGPW (1591.41 GBP) has completed. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "completed",
+    "draft": "According to our records, payment xfer_SVFSR512 (1840.66 USD) has completed. You made it on 11/03/2026."
+   },
+   {
+    "type": "link",
+    "status": "completed",
+    "draft": "According to our records, payment xfer_SVFSR512 (1840.66 USD) has completed. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "completed",
+    "draft": "According to our records, payment xfer_B5MPQSXY (1410.37 USD) has completed. You made it on 10/25/2026."
+   },
+   {
+    "type": "link",
+    "status": "completed",
+    "draft": "According to our records, payment xfer_B5MPQSXY (1410.37 USD) has completed. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ZTTFBCESSG (2048.04 CAD) has been approved. You made it on 11/16/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ZTTFBCESSG (2048.04 CAD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ZTTFBCESSG (2048.04 CAD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_R2MBN4S2DC (240.90 USD) has been approved. You made it on 11/26/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_R2MBN4S2DC (240.90 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_R2MBN4S2DC (240.90 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_B3MF56FR73 (544.78 EUR) has been approved. You made it on 11/18/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_B3MF56FR73 (544.78 EUR) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_B3MF56FR73 (544.78 EUR) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_5KVWGL2NRJ (255.79 USD) has been approved. You made it on 11/24/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_5KVWGL2NRJ (255.79 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_5KVWGL2NRJ (255.79 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_XAQSE47XG7 (35.42 GBP) has been approved. The date on it is 19 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_XAQSE47XG7 (35.42 GBP) has been approved. You made it on 11/19/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_XAQSE47XG7 (35.42 GBP) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_XAQSE47XG7 (35.42 GBP) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_XAQSE47XG7 (35.42 GBP) has been approved on November 19, 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_4NW7SHJ6NC (1723.17 USD) has been approved. You made it on 11/25/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_4NW7SHJ6NC (1723.17 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_4NW7SHJ6NC (1723.17 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QL9F5GUJJV (41.08 USD) has been approved. You made it on 11/24/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QL9F5GUJJV (41.08 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QL9F5GUJJV (41.08 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_8BC2HEX8UR (7.83 USD) has been approved. You made it on 11/21/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_8BC2HEX8UR (7.83 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_8BC2HEX8UR (7.83 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_6XC2V73M (16134.50 USD) is in progress. You made it on 10/22/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_6XC2V73M (16134.50 USD) is in progress. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_98ZWLWHM (6160.56 USD) is in progress. You made it on 10/28/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_98ZWLWHM (6160.56 USD) is in progress. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_9B7K4GB5LN (37.31 GBP) has been approved. You made it on 11/15/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_9B7K4GB5LN (37.31 GBP) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_9B7K4GB5LN (37.31 GBP) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_P24UPWA9HE (2451.82 USD) has been approved. The date on it is 18 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_P24UPWA9HE (2451.82 USD) has been approved. You made it on 11/18/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_P24UPWA9HE (2451.82 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_P24UPWA9HE (2451.82 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_P24UPWA9HE (2451.82 USD) has been approved on November 18, 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_GGTBDAKRZJ (33.62 USD) has been approved. You made it on 11/26/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_GGTBDAKRZJ (33.62 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_GGTBDAKRZJ (33.62 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_BRPNZQZW79 (2176.39 USD) has been approved. You made it on 11/26/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_BRPNZQZW79 (2176.39 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_BRPNZQZW79 (2176.39 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_45SW2YD4MK (39.51 USD) has been approved. You made it on 11/27/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_45SW2YD4MK (39.51 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_45SW2YD4MK (39.51 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QL9F5GUJJV (41.08 USD) has been approved. You made it on 11/19/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QL9F5GUJJV (41.08 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_QL9F5GUJJV (41.08 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_FUSPWZV7PV (221.50 USD) has been approved. You made it on 11/13/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_FUSPWZV7PV (221.50 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_FUSPWZV7PV (221.50 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_8HR6D8RYAW (263.67 CAD) has been approved. You made it on 11/20/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_8HR6D8RYAW (263.67 CAD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_8HR6D8RYAW (263.67 CAD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_M576YUGTJQ (192.99 USD) has been approved. You made it on 11/14/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_M576YUGTJQ (192.99 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_M576YUGTJQ (192.99 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ZCBMFSDN53 (6.61 CAD) has been approved. The date on it is 25 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ZCBMFSDN53 (6.61 CAD) has been approved. You made it on 11/25/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ZCBMFSDN53 (6.61 CAD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ZCBMFSDN53 (6.61 CAD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_ZCBMFSDN53 (6.61 CAD) has been approved on November 25, 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_AQBR6VD2E6 (38.31 EUR) has been approved. You made it on 12/02/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_AQBR6VD2E6 (38.31 EUR) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_AQBR6VD2E6 (38.31 EUR) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_WCHU5JWUJB (34.45 USD) has been approved. The date on it is 29 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_WCHU5JWUJB (34.45 USD) has been approved. You made it on 11/29/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_WCHU5JWUJB (34.45 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_WCHU5JWUJB (34.45 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_WCHU5JWUJB (34.45 USD) has been approved on November 29, 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_4NW7SHJ6NC (1723.17 USD) has been approved. The date on it is 27 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_4NW7SHJ6NC (1723.17 USD) has been approved. You made it on 11/27/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_4NW7SHJ6NC (1723.17 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_4NW7SHJ6NC (1723.17 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_4NW7SHJ6NC (1723.17 USD) has been approved on November 27, 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_WQA23VKC4R (282.71 USD) has been approved. You made it on 11/21/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_WQA23VKC4R (282.71 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_WQA23VKC4R (282.71 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UYEWHA9KQA (1072.97 USD) has been approved. You made it on 11/22/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UYEWHA9KQA (1072.97 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UYEWHA9KQA (1072.97 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ML69ZD5BAH (34.50 CAD) has been approved. You made it on 11/23/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ML69ZD5BAH (34.50 CAD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ML69ZD5BAH (34.50 CAD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_M2BQZRUFB3 (3.15 USD) was unsuccessful. You made it on 11/19/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_M2BQZRUFB3 (3.15 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_M2BQZRUFB3 (3.15 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_M2BQZRUFB3 (3.15 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_F3X5JY9JWP (229.01 CAD) was not approved. You made it on 11/22/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_F3X5JY9JWP (229.01 CAD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_F3X5JY9JWP (229.01 CAD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_F3X5JY9JWP (229.01 CAD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_DQMRGPMXHG (275.85 USD) was not approved. You made it on 11/23/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_DQMRGPMXHG (275.85 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_DQMRGPMXHG (275.85 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_DQMRGPMXHG (275.85 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_JTGN8UW5QN (184.72 USD) was not approved. You made it on 12/01/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_JTGN8UW5QN (184.72 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_JTGN8UW5QN (184.72 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_JTGN8UW5QN (184.72 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_H7CJWNPJR5 (1322.95 USD) was unsuccessful. You made it on 11/26/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_H7CJWNPJR5 (1322.95 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_H7CJWNPJR5 (1322.95 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_H7CJWNPJR5 (1322.95 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_HVW6J6A5N3 (284.85 GBP) was unsuccessful. You made it on 11/24/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_HVW6J6A5N3 (284.85 GBP) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_HVW6J6A5N3 (284.85 GBP) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_HVW6J6A5N3 (284.85 GBP) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_W65JUTX628 (222.04 USD) was unsuccessful. You made it on 11/20/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_W65JUTX628 (222.04 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_W65JUTX628 (222.04 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_W65JUTX628 (222.04 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_YJB4CDY93P (102.58 CAD) was unsuccessful. You made it on 11/19/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_YJB4CDY93P (102.58 CAD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_YJB4CDY93P (102.58 CAD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_YJB4CDY93P (102.58 CAD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_J5B3JTNEZA (32.14 CAD) was unsuccessful. You made it on 11/22/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_J5B3JTNEZA (32.14 CAD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_J5B3JTNEZA (32.14 CAD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_J5B3JTNEZA (32.14 CAD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_YTC7LU86LL (65.14 USD) was unsuccessful. You made it on 11/13/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_YTC7LU86LL (65.14 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_YTC7LU86LL (65.14 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_YTC7LU86LL (65.14 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_KXB3KBQGZT (565.09 EUR) was unsuccessful. You made it on 11/14/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_KXB3KBQGZT (565.09 EUR) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_KXB3KBQGZT (565.09 EUR) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_KXB3KBQGZT (565.09 EUR) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_WZK9ZBJ2WP (775.43 CAD) was unsuccessful. You made it on 11/22/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_WZK9ZBJ2WP (775.43 CAD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_WZK9ZBJ2WP (775.43 CAD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_WZK9ZBJ2WP (775.43 CAD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_ED8N6PJMTM (74.64 USD) was unsuccessful. You made it on 11/19/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_ED8N6PJMTM (74.64 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_ED8N6PJMTM (74.64 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_ED8N6PJMTM (74.64 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_GPX3DPR5PB (836.30 USD) was unsuccessful. You made it on 11/24/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_GPX3DPR5PB (836.30 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_GPX3DPR5PB (836.30 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_GPX3DPR5PB (836.30 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_LLYRLJE5T3 (847.82 USD) was unsuccessful. You made it on 11/27/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_LLYRLJE5T3 (847.82 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_LLYRLJE5T3 (847.82 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_LLYRLJE5T3 (847.82 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_G58ABX5UGP (867.67 EUR) was not approved. You made it on 11/27/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_G58ABX5UGP (867.67 EUR) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_G58ABX5UGP (867.67 EUR) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_G58ABX5UGP (867.67 EUR) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_RW4D5MMD (2487.15 GBP) came back to you. You made it on 10/25/2026."
+   },
+   {
+    "type": "link",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_RW4D5MMD (2487.15 GBP) came back to you. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_RW4D5MMD (2487.15 GBP) came back to you. You made it on 10/25/2026."
+   },
+   {
+    "type": "link",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_RW4D5MMD (2487.15 GBP) came back to you. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_4L57QY6F (1889.59 USD) came back to you. You made it on 11/11/2026."
+   },
+   {
+    "type": "link",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_4L57QY6F (1889.59 USD) came back to you. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_8PWQTC75 (26118.30 USD) was unsuccessful. You made it on 11/11/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_8PWQTC75 (26118.30 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_4L57QY6F (1889.59 USD) came back to you. You made it on 11/06/2026."
+   },
+   {
+    "type": "link",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_4L57QY6F (1889.59 USD) came back to you. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_4L57QY6F (1889.59 USD) came back to you. You made it on 11/14/2026."
+   },
+   {
+    "type": "link",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_4L57QY6F (1889.59 USD) came back to you. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PU12NAJY (25291.27 GBP) was unsuccessful. You made it on 10/25/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PU12NAJY (25291.27 GBP) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_XY0FN4RM (2076.95 USD) came back to you. You made it on 11/09/2026."
+   },
+   {
+    "type": "link",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_XY0FN4RM (2076.95 USD) came back to you. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_8EFPQV04 (24679.32 USD) was unsuccessful. You made it on 11/05/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_8EFPQV04 (24679.32 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PU12NAJY (25291.27 GBP) was unsuccessful. You made it on 10/27/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PU12NAJY (25291.27 GBP) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_HY9Q4ZQ7 (187.08 USD) was unsuccessful. You made it on 11/14/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_HY9Q4ZQ7 (187.08 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. You made it on 11/05/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_CDACWU2S (15457.98 USD) was unsuccessful. You made it on 10/25/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_CDACWU2S (15457.98 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PP4PDJ16 (804.80 USD) was unsuccessful. You made it on 10/18/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_PP4PDJ16 (804.80 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. You made it on 11/08/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_D912D6NJ (26561.12 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_FEHMTF60 (1926.65 USD) came back to you. You made it on 11/02/2026."
+   },
+   {
+    "type": "link",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_FEHMTF60 (1926.65 USD) came back to you. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_AXC4VLWSXJ (29.61 USD) has been approved. You made it on 11/23/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_AXC4VLWSXJ (29.61 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_AXC4VLWSXJ (29.61 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_HCTLKAVFB9 (857.04 USD) was unsuccessful. You made it on 11/11/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_HCTLKAVFB9 (857.04 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_HCTLKAVFB9 (857.04 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_HCTLKAVFB9 (857.04 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ST9HGKB3A3 (191.70 USD) has been approved. You made it on 11/23/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ST9HGKB3A3 (191.70 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_ST9HGKB3A3 (191.70 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_FVRC98EB4U (7.55 CAD) was unsuccessful. You made it on 11/21/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_FVRC98EB4U (7.55 CAD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_FVRC98EB4U (7.55 CAD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_FVRC98EB4U (7.55 CAD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_NWC6M8ENSB (228.01 USD) has been approved. The date on it is 29 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_NWC6M8ENSB (228.01 USD) has been approved. You made it on 11/29/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_NWC6M8ENSB (228.01 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_NWC6M8ENSB (228.01 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_NWC6M8ENSB (228.01 USD) has been approved on November 29, 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_89KMQFBPVX (10.15 USD) has been approved. You made it on 11/19/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_89KMQFBPVX (10.15 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_89KMQFBPVX (10.15 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_XML8SGZ5LH (18.31 USD) was not approved. You made it on 11/15/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_XML8SGZ5LH (18.31 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_XML8SGZ5LH (18.31 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_XML8SGZ5LH (18.31 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_VA4Z5LEGH5 (158.62 CAD) has been approved. You made it on 11/21/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_VA4Z5LEGH5 (158.62 CAD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_VA4Z5LEGH5 (158.62 CAD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_9M1AU39R (13000.94 USD) is in progress. You made it on 10/23/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_9M1AU39R (13000.94 USD) is in progress. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_PC2EBG8ETU (24.10 USD) has been approved. You made it on 11/22/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_PC2EBG8ETU (24.10 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_PC2EBG8ETU (24.10 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_M5ADAM4DNQ (39.59 USD) has been approved. You made it on 11/18/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_M5ADAM4DNQ (39.59 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_M5ADAM4DNQ (39.59 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UYEWHA9KQA (1072.97 USD) has been approved. You made it on 11/14/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UYEWHA9KQA (1072.97 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UYEWHA9KQA (1072.97 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_MX8GWJ67R6 (508.14 GBP) has been approved. The date on it is 21 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_MX8GWJ67R6 (508.14 GBP) has been approved. You made it on 11/21/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_MX8GWJ67R6 (508.14 GBP) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_MX8GWJ67R6 (508.14 GBP) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_MX8GWJ67R6 (508.14 GBP) has been approved on November 21, 2026."
+   },
+   {
+    "type": "date",
+    "status": "declined",
+    "draft": "According to our records, payment txn_M42WCUZM85 (359.31 USD) was not approved. You made it on 11/14/2026."
+   },
+   {
+    "type": "status",
+    "status": "declined",
+    "draft": "According to our records, payment txn_M42WCUZM85 (359.31 USD) was paid."
+   },
+   {
+    "type": "reason code",
+    "status": "declined",
+    "draft": "According to our records, payment txn_M42WCUZM85 (359.31 USD) was not approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "declined",
+    "draft": "According to our records, payment txn_M42WCUZM85 (359.31 USD) was not approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_8BSWRPBH55 (19.34 USD) was unsuccessful. You made it on 11/21/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_8BSWRPBH55 (19.34 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_8BSWRPBH55 (19.34 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_8BSWRPBH55 (19.34 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_2CTRVK5LJY (1064.02 USD) has been approved. The date on it is 23 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_2CTRVK5LJY (1064.02 USD) has been approved. You made it on 11/23/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_2CTRVK5LJY (1064.02 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_2CTRVK5LJY (1064.02 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_2CTRVK5LJY (1064.02 USD) has been approved on November 23, 2026."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment txn_XSQT2EMQ49 (128.11 USD) was unsuccessful. You made it on 11/17/2026."
+   },
+   {
+    "type": "status",
+    "status": "failed",
+    "draft": "According to our records, payment txn_XSQT2EMQ49 (128.11 USD) has gone through."
+   },
+   {
+    "type": "reason code",
+    "status": "failed",
+    "draft": "According to our records, payment txn_XSQT2EMQ49 (128.11 USD) was unsuccessful. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment txn_XSQT2EMQ49 (128.11 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_TDUPU63DJM (32.58 USD) has been approved. You made it on 11/14/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_TDUPU63DJM (32.58 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_TDUPU63DJM (32.58 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_45SW2YD4MK (39.51 USD) has been approved. You made it on 12/02/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_45SW2YD4MK (39.51 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_45SW2YD4MK (39.51 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UHVMGYKDAZ (225.26 USD) has been approved. You made it on 11/23/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UHVMGYKDAZ (225.26 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UHVMGYKDAZ (225.26 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_GGTBDAKRZJ (33.62 USD) has been approved. You made it on 11/23/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_GGTBDAKRZJ (33.62 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_GGTBDAKRZJ (33.62 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UJCB6J3SSE (249.88 USD) has been approved. You made it on 11/19/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UJCB6J3SSE (249.88 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_UJCB6J3SSE (249.88 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YQNKY2WJXE (4.56 USD) has been approved. You made it on 11/18/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YQNKY2WJXE (4.56 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_YQNKY2WJXE (4.56 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_AH6G3USB7D (59.94 GBP) has been approved. You made it on 11/30/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_AH6G3USB7D (59.94 GBP) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_AH6G3USB7D (59.94 GBP) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_2KP58UGL69 (24.53 USD) has been approved. The date on it is 25 November 2026."
+   },
+   {
+    "type": "date",
+    "status": "approved",
+    "draft": "According to our records, payment txn_2KP58UGL69 (24.53 USD) has been approved. You made it on 11/25/2026."
+   },
+   {
+    "type": "reason code",
+    "status": "approved",
+    "draft": "According to our records, payment txn_2KP58UGL69 (24.53 USD) has been approved. The reason code on it is R01."
+   },
+   {
+    "type": "link",
+    "status": "approved",
+    "draft": "According to our records, payment txn_2KP58UGL69 (24.53 USD) has been approved. More at www.example.com/help."
+   },
+   {
+    "type": "mixed",
+    "status": "approved",
+    "draft": "txn_2KP58UGL69 (24.53 USD) has been approved on November 25, 2026."
+   },
+   {
+    "type": "date",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_FEHMTF60 (1926.65 USD) came back to you. You made it on 11/07/2026."
+   },
+   {
+    "type": "link",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_FEHMTF60 (1926.65 USD) came back to you. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_3RQ1LE0Q (3465.74 USD) came back to you. You made it on 11/08/2026."
+   },
+   {
+    "type": "link",
+    "status": "returned",
+    "draft": "According to our records, payment xfer_3RQ1LE0Q (3465.74 USD) came back to you. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_LTJRKR9N (7831.99 GBP) is in progress. You made it on 10/12/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_LTJRKR9N (7831.99 GBP) is in progress. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_98ZWLWHM (6160.56 USD) is in progress. You made it on 10/25/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_98ZWLWHM (6160.56 USD) is in progress. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_HY9Q4ZQ7 (187.08 USD) was unsuccessful. You made it on 11/14/2026."
+   },
+   {
+    "type": "link",
+    "status": "failed",
+    "draft": "According to our records, payment xfer_HY9Q4ZQ7 (187.08 USD) was unsuccessful. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "completed",
+    "draft": "According to our records, payment xfer_R1505W5T (838.09 USD) has completed. You made it on 11/02/2026."
+   },
+   {
+    "type": "link",
+    "status": "completed",
+    "draft": "According to our records, payment xfer_R1505W5T (838.09 USD) has completed. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_0LG40FBJ (6499.48 USD) is in progress. You made it on 11/14/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_0LG40FBJ (6499.48 USD) is in progress. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "completed",
+    "draft": "According to our records, payment xfer_N0FFK5CV (943.53 USD) has completed. You made it on 10/20/2026."
+   },
+   {
+    "type": "link",
+    "status": "completed",
+    "draft": "According to our records, payment xfer_N0FFK5CV (943.53 USD) has completed. More at www.example.com/help."
+   },
+   {
+    "type": "date",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_LTJRKR9N (7831.99 GBP) is in progress. You made it on 10/15/2026."
+   },
+   {
+    "type": "link",
+    "status": "processing",
+    "draft": "According to our records, payment xfer_LTJRKR9N (7831.99 GBP) is in progress. More at www.example.com/help."
+   }
+  ],
+  "false_blocks": [
+   {
+    "draft": "According to our records, payment xfer_GG6C4BJT (4828.79 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 4828.79 USD bank transfer you made on November 11, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_GG6C4BJT has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_B3WWBXWR (3172.03 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 3172.03 USD bank transfer you made on November 14, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_B3WWBXWR has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_EM1R9141 (1305.74 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 1305.74 USD bank transfer you made on October 23, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_EM1R9141 has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_XG6P898E (1199.64 GBP) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 1199.64 GBP bank transfer you made on October 16, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_XG6P898E has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_B3WWBXWR (3172.03 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 3172.03 USD bank transfer you made on November 14, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_B3WWBXWR has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_EV0Z943Q (2331.15 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 2331.15 USD bank transfer you made on October 18, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_EV0Z943Q has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_HHD0M7QE (1895.90 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 1895.90 USD bank transfer you made on October 30, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_HHD0M7QE has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_P4UJ2FBR (1017.68 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 1017.68 USD bank transfer you made on October 23, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_P4UJ2FBR has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_WRX08BY6 (2740.38 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 2740.38 USD bank transfer you made on October 19, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_WRX08BY6 has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_EM1R9141 (1305.74 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 1305.74 USD bank transfer you made on October 23, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_EM1R9141 has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_WRX08BY6 (2740.38 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 2740.38 USD bank transfer you made on October 19, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_WRX08BY6 has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_WRX08BY6 (2740.38 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 2740.38 USD bank transfer you made on October 19, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_WRX08BY6 has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_GG6C4BJT (4828.79 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 4828.79 USD bank transfer you made on November 11, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_GG6C4BJT has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_GG6C4BJT (4828.79 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 4828.79 USD bank transfer you made on November 11, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_GG6C4BJT has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_7NLXH4JG (2365.32 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 2365.32 USD bank transfer you made on October 18, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_7NLXH4JG has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_HHD0M7QE (1895.90 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 1895.90 USD bank transfer you made on October 30, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "Payment xfer_HHD0M7QE has not cleared yet; it has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "According to our records, payment xfer_13QMCJ18 (7103.84 USD) has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   },
+   {
+    "draft": "The 7103.84 USD bank transfer you made on October 21, 2026 has not settled yet.",
+    "status": "pending",
+    "reasons": [
+     "ungrounded_settle_claim"
+    ]
+   }
+  ]
+ }
+}

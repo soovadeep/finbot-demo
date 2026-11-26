@@ -162,7 +162,7 @@ The same plan supplies writer instructions, checks and fallback; missing informa
 explicit. Refund arrival and payment settlement use separate fields. Fixed text explains schema
 meaning and assistance limits. The latest record governs absence; known zero cannot be denied.
 Coverage is finite: unrecognized wording, date formats and bare web addresses can evade extraction
-(Section~\ref{sec:inject}); omissions remain possible. A passing gate does not establish correctness.
+(Appendix~\ref{app:inject}); omissions remain possible. A passing gate does not establish correctness.
 
 \paragraph{Financial roles.} A recognized claim $c=(h,r,v)$ identifies a record, role and value.
 The role maps to a schema path $\pi(r)$; support requires $v=D_h[\pi(r)]$ after normalization,
@@ -172,8 +172,8 @@ and verdict. Fallback states when actual dates are unavailable. Finite English p
 
 An optional LLM evidence review is off by default and not evaluated here.
 
-\paragraph{Agent context.} Full-prompt admission reserves output capacity; old turns roll into
-bounded state, while oversized current evidence stops the call. Offline contracts test admission and rollover (Appendix~\ref{app:context}).
+\paragraph{Agent context.} Prompt admission reserves output capacity and rolls old turns into bounded
+state; offline tests cover this (\texttt{docs/agent-design.md}).
 
 \subsection{What the inspector shows}
 
@@ -228,7 +228,7 @@ Fixed, 1 & 1 & 19 & 24 & 2.2 & 19 & 30 & 5.8 \\
 IG, 1 & 1 & 65 & 44 & 2.2 & 70 & 59 & 4.0 \\
 DV, 1 & 1 & 69 & 47 & 2.2 & 74 & 63 & 4.0 \\
 Amount-first, 1 & 1 & 63 & 42 & 2.2 & 75 & 63 & 4.0 \\
-\mbox{Most-distinct}, 1 & 1 & 72 & 50 & 2.2 & 77 & 66 & 4.0 \\
+Most distinct, 1 & 1 & 72 & 50 & 2.2 & 77 & 66 & 4.0 \\
 Fixed, 2 & 1.95 & 72 & 48 & 1.8 & 77 & 66 & 4.0 \\
 IG, 2 & 1.95 & 73 & 46 & 1.8 & 78 & 66 & 4.0 \\
 DV, 2 & 1.36 & 74 & 49 & 2.2 & 79 & 66 & 4.0 \\
@@ -253,6 +253,7 @@ Capability / demo & Evidence and boundary \\
 \midrule
 Clarification / conversation & 224 scenarios, two simulators and stronger baselines; component policy differs. \\
 Confirmation, corrections / conversation & 60 controller replays; unit and browser checks include conflicts. Not customer accuracy. \\
+Explanations, recovery / both views & 3,240 template mutation pairs with matched controls (Appendix~\ref{app:inject}); 128-draft live audit. Semantic errors remain. \\
 Financial roles / inspector & 60 corruption pairs, 12 equal-value controls, replayed cached drafts; finite claim formats. \\
 Requested fields / both & 30 unused public questions, paired pre/post-fix: 23/60 to 50/60 complete (AI); blind co-author 56/60 post-fix. \\
 Record comparison / inspector & Scripted presets only; not evaluated here. \\
@@ -344,6 +345,12 @@ versus 4.5\%/7.6\% for the full list. Confirmation limits, but cannot eliminate,
 60/60 with financial roles; all 60 clean and 12 equal-value controls pass. These development
 cases do not estimate accuracy; unrecognized date/refund phrasing still evades role extraction.
 
+\paragraph{Template mutations.} On held-out template wordings, 82.3\% (2,668/3,240) of corrupted
+drafts are rejected, but 570 clean controls already fail; among the 2,670 accepted controls,
+mutations cause 78.6\% new rejections (Appendix~\ref{app:inject}). An earlier AI-assisted author audit
+of 128 live Llama drafts found nine expected/actual-date errors, now blocked by role checks, and one
+omitted refund.
+
 \paragraph{Live policy answers.} Llama 3.3 70B drafted answers for 30 new frozen cases (10 policy);
 both configurations judge the same draft. Adding a cited-passage fallback after failed policy
 repairs reduces refusals from 13 to 4 (two appropriate); released answers rise from 17 to 26, none
@@ -359,7 +366,8 @@ live-writer or customer results.
 
 \paragraph{Lessons.} Confirmation, not question choice, drives safety: every selector, even
 no questions, stays at 2--6\% wrong once customers confirm, while acting on the top guess reaches 21--26\%, so a cheap
-heuristic suffices for asking. Conservative checks are safe only with a good fallback: they block
+heuristic suffices for question ordering, while the belief state handles hedged details,
+corrections and early stopping. Conservative checks are safe only with a good fallback: they block
 about half of correct live drafts, yet with record-built answers and quoted policy no released live answer
 was wrong, and refusals fall from 13 to 4. Requested-field coverage, not value matching, separates
 complete from merely true answers (23/60 to 50/60).
@@ -538,15 +546,41 @@ correct and wrong confirmations.}
 \label{tab:same}
 \end{table}
 
-\section{Context and execution contracts}
-\label{app:context}
+\section{Answer checks with matched controls}
+\label{app:inject}
 
-The default 131,072-token window reserves 16,000 for output and 1,024 for framing. UTF-8
-bytes plus overhead conservatively estimate input; deployments must configure their smallest
-model window. History rolls at 30 turns, 120,000 characters, or insufficient space. Focus and
-tool-derived state survive; snapshots over 4,000 characters are omitted whole and refetched.
-Current exchanges are never truncated. Nine tests cover these contracts, rollback and snapshot
-replacement; see \texttt{docs/agent-design.md}.
+\begin{table}[H]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Mutation & Pairs & Clean blocked & New rejection \\
+\midrule
+Amount & 448 & 76 & 372/372 \\
+Added fee & 448 & 76 & 372/372 \\
+Currency & 224 & 38 & 186/186 \\
+Record ID & 224 & 38 & 186/186 \\
+Status & 552 & 114 & 394/438 \\
+Date & 448 & 76 & 172/372 \\
+Reason code & 224 & 38 & 58/186 \\
+Bare link & 224 & 38 & 0/186 \\
+Mixed wording & 448 & 76 & 358/372 \\
+\midrule
+Total & 3,240 & 570 & 2,098/2,670 \\
+\bottomrule
+\end{tabular}
+\caption{Post-hoc paired analysis of the existing held-out wordings. New rejection: corrupted
+blocked / clean accepted, conditional on an accepted control. All 570 rejected controls remain
+rejected after mutation. Thus raw corrupted-draft rejection is 2,668/3,240 (82.3\%), while
+mutation-triggered rejection among accepted controls is 78.6\%. Controls repeat across mutation
+families; these are not independent samples. The separate 1,120-draft clean set has 114 false
+rejections, all from ``has not settled yet'' about pending transfers.}
+\label{tab:inject}
+\end{table}
+
+The paired report retains texts, verdicts and reasons. All 38 bare-link rejections predate
+the mutation; no added link changes an accepted control's verdict. Reporting control rejection
+alongside conditional sensitivity exposes false positives. These tests do not establish semantic completeness.
 
 \section{Interface checks}
 \label{app:ui}
