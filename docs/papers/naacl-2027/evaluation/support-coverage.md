@@ -68,6 +68,7 @@ All first outcomes are retained; there was no tuning after inspecting this new s
 |---|---:|---:|
 | Released answers | 57 | 60 |
 | Supported and complete outcomes, provisional AI review | 23 | 50 |
+| Supported and complete, blind co-author (post-fix only) | not labelled | 56 |
 | Released, supported and complete answers | 20 | 50 |
 | Appropriate evidence-limited refusals | 3 | 0 |
 | Incomplete outcomes | 37 | 10 |
@@ -175,3 +176,12 @@ pending because this checkout has no model key. The new instructions are wired
 into the live writer and repair path, but scripted improvements do not establish
 how a live writer will follow them. Deployment/video synchronisation and broader
 policy/paraphrase evaluation remain separate work.
+
+## Second labeller
+
+Apurba Bose labelled the 60 post-fix answers blind on 2026-11-25 (`results/naacl2027/public-wording-v2/labels-second.json`):
+answers were shuffled and deduplicated, with no arm names, AI labels or gate decisions. She judges 56/60
+supported and complete, against 50/60 for the AI review. They agree on support 60/60 and on the combined
+judgment 52/60 (kappa 0.37, `label-agreement.json`); in 7 of 8 differences she accepted an answer that
+explicitly says the record lacks a requested field. Pre-fix answers keep AI labels only, so the
+improvement itself still rests on one labeller.

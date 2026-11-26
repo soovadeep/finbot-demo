@@ -15,7 +15,7 @@ and comparison scenarios are distinguished from the conversation's confirmed-rec
 - [Public wording and absence checks](evaluation/public-wording.md): 30 unused BANKING77
   questions, 60 scripted runs, provisional AI review, and remaining omissions.
 - [Shared coverage and new paired evaluation](evaluation/support-coverage.md): different
-  unused questions, the same pre/post-fix tasks, 23/60 to 50/60 complete under provisional AI review.
+  unused questions, the same pre/post-fix tasks, 23/60 to 50/60 complete under provisional AI review; a blind co-author judges 56/60 post-fix answers complete.
   A separate development replay addresses eight omissions and requests clarification for two;
   it does not replace the frozen score.
 - [Paper (PDF)](finbot-naacl2027.pdf)

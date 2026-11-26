@@ -9,7 +9,8 @@ The current submission uses the following completed evaluations:
 
 - [Paired coverage study](support-coverage.md): 30 different unused public questions,
   60 tasks run against old and revised code. Provisional AI review finds 23/60 versus
-  50/60 complete; ten revised outcomes remain incomplete despite passing the gate.
+  50/60 complete; ten revised outcomes remain incomplete despite passing the gate. A blind
+  co-author labelled the 60 post-fix answers: 56/60 supported and complete (52/60 agree with AI).
   Later development replay addresses eight and asks clarification for two unresolved cases;
   it preserves the original frozen results and is not new generalisation evidence.
 - [Frozen public-question study](public-wording.md): 30 previously unused BANKING77

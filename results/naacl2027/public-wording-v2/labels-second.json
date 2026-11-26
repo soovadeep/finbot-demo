@@ -1,0 +1,489 @@
+{
+  "reviewer": "Apurba Bose",
+  "reviewer_relationship": "Co-author; did not implement the coverage changes or the AI review.",
+  "date": "2026-11-25",
+  "blinding": "Blind: answers shuffled, deduplicated, shown without arm names, AI labels or gate decisions. Only the 60 post-fix (current) answers were labelled.",
+  "instructions": "Supported: every financial assertion is entailed by the retrieved record/docs, without equating missing evidence with zero/nonoccurrence. Complete: addresses all parts of the original question or explicitly states what evidence cannot answer. A generic payment summary does not answer a refund question. Correct status does not answer why/how long/advice by itself. Never infer labels from gate decisions.",
+  "items": [
+    {
+      "key": "current/public-001/missing",
+      "answer_sha256": "cb6138b2be33e4cb6f13eed8e3370fdadec5a2898a46f8601a56b8c93dc60aae",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-001/populated",
+      "answer_sha256": "763b76a88d6f53aa2fea7706c690f5cea251b27f337a1a2c783241197f7d79a7",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-002/missing",
+      "answer_sha256": "ac1603e9c26cc47ada1f04338e7d8b8e3efa368fea322e2752ae9e097e7104e5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-002/populated",
+      "answer_sha256": "b81891878c97b95dd8a75cb14c2161ee662676da03b906e6182207a513967447",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-003/missing",
+      "answer_sha256": "bd82cc0eadcfb3c1b202f189d4ddcb25f261f31251079893c5b5d0c4c60f6539",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-003/populated",
+      "answer_sha256": "cddc26637758a6094dbe68f015af07fc71c5db40b423ec464692dfb526acdb42",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-004/missing",
+      "answer_sha256": "5fa469955ef0ca58527dc839e9763469adb56d86c0140c45a759eaa9b55a68bc",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-004/populated",
+      "answer_sha256": "14bee4f7f23a364c627c50e65e9e037339741dcd94185b3999579cb8a5111f63",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-005/missing",
+      "answer_sha256": "706b5bd8bb2adbb2bc6f3472835456d017eaa8cae5603ce9c1327e8ddb49bfb6",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-005/populated",
+      "answer_sha256": "7eddf60c1997db501fadb1194e6f9ad209c5ccae8255428649bab14bd246ff35",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-006/missing",
+      "answer_sha256": "c4c4a4e6a8df1cfc54304f0fab3c3b1ae782c8bc829dc639900ec5d3315baefa",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-006/populated",
+      "answer_sha256": "cf47b0425a8389ff76e65996415bb2013523fd55bccb90b30573e6ce87aa1c9c",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "doesn't say why pending"
+    },
+    {
+      "key": "current/public-007/missing",
+      "answer_sha256": "99ac4d272b8aaab337fab863c8e39a74603313156951cf009040ef81930c7df8",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-007/populated",
+      "answer_sha256": "ba5517fcb63a23c16afa8c24a1d8db10bcea8bb990313abffd666552e1f734e5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-008/missing",
+      "answer_sha256": "f2e5f145f6370d85e6a9a4885d9a563d06d3aedb65a97541157a12f2ab09d9fd",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-008/populated",
+      "answer_sha256": "5fefffae7101f9216b23e4bd67f3b9be6d596157ca2cb5d667b56562e4d26629",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-009/missing",
+      "answer_sha256": "1137908a2b2b4e652e3f5219036412691f53d29e199d92600a0a36c88b25790f",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-009/populated",
+      "answer_sha256": "cfbcef36fc67ae90ce441f36b0e23a0ea91758ee763a003bc93bce7d980e2a4c",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-010/missing",
+      "answer_sha256": "5c7e77f13b1d79590b78696f36b08378c91809514bdf889503d2d7a75248f963",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-010/populated",
+      "answer_sha256": "e12d4c6c4810b480cbaf1db001909008a423ad4bee5ea85ce1b55ea1bf5c74a1",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-011/missing",
+      "answer_sha256": "8eb7926d4bb7b40bf8c2ffa53ab17a8d5d75353bcbe9cc24bfb4e79e653e73c5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-011/populated",
+      "answer_sha256": "539cf42c3675d9d4cc187d9a463d8554e1e5fee8b754af352454e41b7a22c4db",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-012/missing",
+      "answer_sha256": "8dd78fc860bcfe8ad27ea8d367cdb2540134444f55bf0d2a07a7cba29274fb65",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-012/populated",
+      "answer_sha256": "4064413af840cca3c23c9df621c8ef3f056e73c41515d9ed543534ed61a573c5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-013/missing",
+      "answer_sha256": "a652ec212137654b06cd58e4584aa09e730be70730c1251c41c98f0b21d32b98",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-013/populated",
+      "answer_sha256": "8df01eb62a504778fbfb7748eb4f06f416c45cdeaa27ff4ff6424343a1bc8704",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-014/missing",
+      "answer_sha256": "8f846ce6a52f1b78eccbc06edabf80aab14908e04d014370b86b36280d51d3ef",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-014/populated",
+      "answer_sha256": "44a93b9352f653af4213105b4e3bd21858ebe8b06bda26b923d50df76ad0f140",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-015/missing",
+      "answer_sha256": "d363a72c6f73f180116efff1ea7ca6b3915b46dad630213eb5c04f8ffbd5c867",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-015/populated",
+      "answer_sha256": "0b40e85beb81524cc9d38577b27d12f7bbe9afd53cdd8c0c803da6d74b54fabb",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-016/missing",
+      "answer_sha256": "1ee9d14481603b6e5c7c79cb964c71e85e37f2a2004869143810c269db413167",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-016/populated",
+      "answer_sha256": "437a1f914db7e551dcf002dffa58d2ea427aa3215177002c0059553b732d8ffd",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-017/missing",
+      "answer_sha256": "3af3bf8c2eceab6fe49aed4981c014752049ce72a8e32f0913e7d1515902909f",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-017/populated",
+      "answer_sha256": "20d50b6d65d90ed31e432a89170758dac21824be781a2143bd77d4c908d28d0a",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-018/missing",
+      "answer_sha256": "564b2938de7751a9d8bbf56a73e35f63d8237d40fb571419839fc98bf25110f7",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-018/populated",
+      "answer_sha256": "efa5a5643b8caccaaa64b8110a05423726193336fa48ae4ff3a8437982145610",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-019/missing",
+      "answer_sha256": "f5832fae89d200e21b608f2beb7cd6d95ccad8505df37a0ab2855f4496039b9d",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-019/populated",
+      "answer_sha256": "c17930fec2159d9366b49c2f367d6e50f2a291b9c29675e8272f97dbbb6e90ee",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-020/missing",
+      "answer_sha256": "5249f40ac8118a2414de51fd8311103686e46e5d7eb8ecb9ad5190758abf6860",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-020/populated",
+      "answer_sha256": "6e675708505f6cc28ca0b32bc27efe7e12f09965600a5dec27f5c954a73e9165",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-021/missing",
+      "answer_sha256": "6c4883ced779115c9a44e40289aa8a9b04b33bf04ec6e9c21893534129f5de18",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-021/populated",
+      "answer_sha256": "fb701ffc239ffa24d5783a85a2dcf4c9da90642431dd79c18b3d3fc739c918d5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-022/missing",
+      "answer_sha256": "1a4beb765b5fcef21e91ec0954683c6f902409e9d0a018142709c93e642ce5bc",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-022/populated",
+      "answer_sha256": "3587107b782538fda682452f2ef74efebeb4cb0beb1d671fc2f16c0e688ae0af",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-023/missing",
+      "answer_sha256": "9730f65dc60dd94abf965ca70fe71c63c3e02e1544bb53299819bb9ba22cd224",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-023/populated",
+      "answer_sha256": "072811c954e5dcbede3461a535c78a01f4f44390ea8d21d5eafb7975cf18234b",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-024/missing",
+      "answer_sha256": "f5aa4d414aa1505b2ffc7f8cf3854062e4c5f4445d4e98c664f70ba01f59bcdb",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-024/populated",
+      "answer_sha256": "de5440e597b55aa58941356e18499bd789fda27b814258946bfbebe559cc4fd8",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-025/missing",
+      "answer_sha256": "773cda2183a66d9dba78a79e2b07cc5c77de7c630d3614ad4421302c731f17ba",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-025/populated",
+      "answer_sha256": "521fdaf286f21849b4110798c02f4e56130897f6e04dfa704583b2c585251963",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-026/missing",
+      "answer_sha256": "2901aceee39a0a2b8470a8af5215779a350f2eca7012aec4553ecb48df20a439",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-026/populated",
+      "answer_sha256": "fc03fb702775d75e994d0552fcf3dd03f48924e9028c8ae29e7a4e9bf06e0671",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-027/missing",
+      "answer_sha256": "523ce89b338b8a1f69e7eda6be766e4bd2c38c370457672b48bba0f2423467e4",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-027/populated",
+      "answer_sha256": "fc7d69d6f74542b7e8f870d5838412cdc8c449c8eb5a30904d1aa719fcc139ee",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-028/missing",
+      "answer_sha256": "d65de759e68ac3b373f7f37a6a577524e8684d26664413bbe2f16b478b7fed7d",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-028/populated",
+      "answer_sha256": "964d2c85feed69ec3618f37f574b844c9f0f51d1ba9ca1d51fb131e03d23c94d",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-029/missing",
+      "answer_sha256": "57109ad3543c00e08bb359e0a9e03558b90ac2dae2f35f235cd38c0ed89e8a08",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-029/populated",
+      "answer_sha256": "bfd56a4f54968e1de3a3bd66314b4f77e7b9a230016b2f8d38a1cf303cf3eea4",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-030/missing",
+      "answer_sha256": "8c4e83ab293109740cfd5b8d826aab4ee73862c0544d65bf4420f05d4f5e76a8",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    },
+    {
+      "key": "current/public-030/populated",
+      "answer_sha256": "2a580851edcd70f32d9e76ba71c44f33a8737cc49d2f193952450dcbd384698f",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": ""
+    }
+  ]
+}
