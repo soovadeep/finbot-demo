@@ -1,0 +1,32 @@
+{
+  "provenance": {
+    "reviewer": "Codex AI assistant",
+    "relationship": "Implementing assistant; not independent human review",
+    "date": "2026-11-24",
+    "blinding": "Unblinded; arm names and aggregate execution counts were visible.",
+    "method": "All 120 final question/record/answer pairs reviewed using the pre-frozen public-v1 rubric. Separate support/completeness judgments; no label inferred from gate acceptance.",
+    "scope": "The appended synthetic reference identifies the payment under discussion. Explanations of earlier attempts or account-wide status are not inferred from that record. Indirect complaints require subjective interpretation. Status definitions describe schema semantics, not verified external bank policy.",
+    "refusals": "The three baseline missing-reason refusals are supported and complete evidence-limited answers, although requesting an already supplied ID is a usability flaw."
+  },
+  "counts": {
+    "baseline": {
+      "cases": 60,
+      "supported": 60,
+      "complete": 23,
+      "supported_and_complete": 23
+    },
+    "current": {
+      "cases": 60,
+      "supported": 60,
+      "complete": 50,
+      "supported_and_complete": 50
+    }
+  },
+  "paired_transitions": {
+    "improved": 27,
+    "regressed": 0,
+    "unchanged": 33
+  },
+  "labels_sha256": "a526434d06d3aa1ddc837c5c27cc58174c45df9cdebb075b1c947fe8b955333c",
+  "note": "Paired scripted outputs on synthetic records; AI review is provisional, not independent human evidence."
+}

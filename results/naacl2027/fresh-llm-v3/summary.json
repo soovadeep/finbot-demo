@@ -1,0 +1,98 @@
+{
+  "cases": 30,
+  "by_labeller": {
+    "second": {
+      "before": {
+        "released_good": 17,
+        "released_bad": 0,
+        "withheld": 13,
+        "withheld_policy": 10,
+        "draft_good": 29,
+        "draft_good_blocked": 16,
+        "draft_bad": 1,
+        "draft_bad_blocked": 1,
+        "unlabelled": 0
+      },
+      "after": {
+        "released_good": 26,
+        "released_bad": 0,
+        "withheld": 4,
+        "withheld_policy": 1,
+        "draft_good": 29,
+        "draft_good_blocked": 16,
+        "draft_bad": 1,
+        "draft_bad_blocked": 1,
+        "unlabelled": 0
+      },
+      "after_review": {
+        "released_good": 26,
+        "released_bad": 0,
+        "withheld": 4,
+        "withheld_policy": 1,
+        "draft_good": 29,
+        "draft_good_blocked": 16,
+        "draft_bad": 1,
+        "draft_bad_blocked": 1,
+        "unlabelled": 0
+      }
+    },
+    "labels": {
+      "before": {
+        "released_good": 17,
+        "released_bad": 0,
+        "withheld": 13,
+        "withheld_policy": 10,
+        "draft_good": 29,
+        "draft_good_blocked": 16,
+        "draft_bad": 1,
+        "draft_bad_blocked": 1,
+        "unlabelled": 0
+      },
+      "after": {
+        "released_good": 26,
+        "released_bad": 0,
+        "withheld": 4,
+        "withheld_policy": 1,
+        "draft_good": 29,
+        "draft_good_blocked": 16,
+        "draft_bad": 1,
+        "draft_bad_blocked": 1,
+        "unlabelled": 0
+      },
+      "after_review": {
+        "released_good": 26,
+        "released_bad": 0,
+        "withheld": 4,
+        "withheld_policy": 1,
+        "draft_good": 29,
+        "draft_good_blocked": 16,
+        "draft_bad": 1,
+        "draft_bad_blocked": 1,
+        "unlabelled": 0
+      }
+    }
+  },
+  "outcomes": {
+    "before": {
+      "blocked": 13,
+      "passed": 13,
+      "repaired": 3,
+      "record_fallback": 1
+    },
+    "after": {
+      "policy_fallback": 9,
+      "blocked": 4,
+      "passed": 13,
+      "repaired": 3,
+      "record_fallback": 1
+    },
+    "after_review": {
+      "policy_fallback": 9,
+      "blocked": 4,
+      "passed": 13,
+      "repaired": 3,
+      "record_fallback": 1
+    }
+  },
+  "same_first_draft_all_configs": 30
+}

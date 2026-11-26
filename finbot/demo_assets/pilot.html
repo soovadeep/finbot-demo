@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Finbot usability pilot</title><link rel="stylesheet" href="/pilot.css"><script src="/pilot.js" defer></script></head>
+<body><main><h1>Payment-support usability pilot</h1>
+<p>Use fictional payment details only. This session uses scripted answers. Its record stays in this
+browser until you download it; closing or reloading the page discards it.</p>
+<form id="setup"><fieldset><legend>Researcher assignment</legend>
+<label>Participant code <input id="code" required pattern="P[0-9]{3,8}" value="P001"></label>
+<label>Mode <select id="mode"><option value="rehearsal">Rehearsal</option><option value="participant">Consented participant</option></select></label>
+<label>Interface <select id="arm"><option value="clarify">Clarification</option><option value="full_list">Show all records</option></select></label>
+<label>Task <select id="task"><option value="transfer">Transfer</option><option value="card">Card payment</option></select></label>
+<label><input id="consent" type="checkbox" required> I agree to the described task and to sharing the downloaded session record with the researcher. I can stop without exporting.</label>
+<button id="start" type="submit" disabled>Begin task</button></fieldset></form>
+<section id="session" hidden><h2>Your task</h2><p id="memory"></p><p>Use only the information in your task note. Say you are unsure when it does not give a detail.</p>
+<div id="dialogue" aria-live="polite"></div><div id="options"></div>
+<form id="reply-form"><label>Your message <input id="reply" maxlength="500"></label><button>Send</button></form>
+<section id="records"><h2>Identify your payment</h2><div id="matches"></div>
+<details id="other"><summary>Other records</summary><div id="others"></div></details></section>
+<button id="unresolved" type="button">I cannot identify the payment</button>
+<form id="finish" hidden><label>How much effort did this task require?
+<select id="effort" required><option value="">Choose</option><option value="1">1 — Very low</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7 — Very high</option></select></label>
+<button>Finish and download session</button></form></section><p id="status" role="status">Loading task instructions…</p>
+</main></body></html>

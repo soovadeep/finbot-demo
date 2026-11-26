@@ -1,0 +1,36 @@
+{
+  "page": "/study",
+  "standard": "WCAG 2.1 A and AA rules in axe-core 4.10.3",
+  "states": [
+    {
+      "state": "start",
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "state": "question asked",
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "state": "confirmation",
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "state": "checked answer with rejected drafts",
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    }
+  ],
+  "violations": 0,
+  "browser_errors": []
+}

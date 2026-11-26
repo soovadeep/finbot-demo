@@ -1,0 +1,1084 @@
+{
+  "draft_pairs": [
+    {
+      "id": "actual_settlement_date/1",
+      "role": "actual_settlement_date",
+      "source_field": "settlement.actual_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The actual settlement date recorded for this payment was 2027-02-12.",
+      "corrupted": "txn_FRESH901: The actual settlement date recorded for this payment was 2027-02-10.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts actual_settlement_date; settlement.actual_date is 2027-02-12, not 2027-02-10."
+    },
+    {
+      "id": "actual_settlement_date/2",
+      "role": "actual_settlement_date",
+      "source_field": "settlement.actual_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: This payment finished settling on 2027-02-12.",
+      "corrupted": "txn_FRESH901: This payment finished settling on 2027-02-10.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts actual_settlement_date; settlement.actual_date is 2027-02-12, not 2027-02-10."
+    },
+    {
+      "id": "actual_settlement_date/3",
+      "role": "actual_settlement_date",
+      "source_field": "settlement.actual_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The settlement took place on 2027-02-12.",
+      "corrupted": "txn_FRESH901: The settlement took place on 2027-02-10.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts actual_settlement_date; settlement.actual_date is 2027-02-12, not 2027-02-10."
+    },
+    {
+      "id": "actual_settlement_date/4",
+      "role": "actual_settlement_date",
+      "source_field": "settlement.actual_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The payment's settlement date is 2027-02-12, according to the record.",
+      "corrupted": "txn_FRESH901: The payment's settlement date is 2027-02-10, according to the record.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts actual_settlement_date; settlement.actual_date is 2027-02-12, not 2027-02-10."
+    },
+    {
+      "id": "actual_settlement_date/5",
+      "role": "actual_settlement_date",
+      "source_field": "settlement.actual_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: On 2027-02-12, settlement of this payment completed.",
+      "corrupted": "txn_FRESH901: On 2027-02-10, settlement of this payment completed.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts actual_settlement_date; settlement.actual_date is 2027-02-12, not 2027-02-10."
+    },
+    {
+      "id": "actual_settlement_date/6",
+      "role": "actual_settlement_date",
+      "source_field": "settlement.actual_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The funds settled on 2027-02-12; that is the date of the completed settlement.",
+      "corrupted": "txn_FRESH901: The funds settled on 2027-02-10; that is the date of the completed settlement.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts actual_settlement_date; settlement.actual_date is 2027-02-12, not 2027-02-10."
+    },
+    {
+      "id": "actual_settlement_date/7",
+      "role": "actual_settlement_date",
+      "source_field": "settlement.actual_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The date on which this payment settled was 2027-02-12.",
+      "corrupted": "txn_FRESH901: The date on which this payment settled was 2027-02-10.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts actual_settlement_date; settlement.actual_date is 2027-02-12, not 2027-02-10."
+    },
+    {
+      "id": "actual_settlement_date/8",
+      "role": "actual_settlement_date",
+      "source_field": "settlement.actual_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: Settlement actually happened on 2027-02-12.",
+      "corrupted": "txn_FRESH901: Settlement actually happened on 2027-02-10.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts actual_settlement_date; settlement.actual_date is 2027-02-12, not 2027-02-10."
+    },
+    {
+      "id": "expected_settlement_date/1",
+      "role": "expected_settlement_date",
+      "source_field": "settlement.expected_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The expected settlement date was 2027-02-10 for this payment.",
+      "corrupted": "txn_FRESH901: The expected settlement date was 2027-02-12 for this payment.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts expected_settlement_date; settlement.expected_date is 2027-02-10, not 2027-02-12."
+    },
+    {
+      "id": "expected_settlement_date/2",
+      "role": "expected_settlement_date",
+      "source_field": "settlement.expected_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The payment was expected to settle on 2027-02-10.",
+      "corrupted": "txn_FRESH901: The payment was expected to settle on 2027-02-12.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts expected_settlement_date; settlement.expected_date is 2027-02-10, not 2027-02-12."
+    },
+    {
+      "id": "expected_settlement_date/3",
+      "role": "expected_settlement_date",
+      "source_field": "settlement.expected_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: Settlement had been scheduled for 2027-02-10.",
+      "corrupted": "txn_FRESH901: Settlement had been scheduled for 2027-02-12.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts expected_settlement_date; settlement.expected_date is 2027-02-10, not 2027-02-12."
+    },
+    {
+      "id": "expected_settlement_date/4",
+      "role": "expected_settlement_date",
+      "source_field": "settlement.expected_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The forecast settlement date on this record is 2027-02-10.",
+      "corrupted": "txn_FRESH901: The forecast settlement date on this record is 2027-02-12.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts expected_settlement_date; settlement.expected_date is 2027-02-10, not 2027-02-12."
+    },
+    {
+      "id": "expected_settlement_date/5",
+      "role": "expected_settlement_date",
+      "source_field": "settlement.expected_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The record's settlement estimate points to 2027-02-10.",
+      "corrupted": "txn_FRESH901: The record's settlement estimate points to 2027-02-12.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts expected_settlement_date; settlement.expected_date is 2027-02-10, not 2027-02-12."
+    },
+    {
+      "id": "expected_settlement_date/6",
+      "role": "expected_settlement_date",
+      "source_field": "settlement.expected_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The settlement was expected on 2027-02-10, as an estimate.",
+      "corrupted": "txn_FRESH901: The settlement was expected on 2027-02-12, as an estimate.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts expected_settlement_date; settlement.expected_date is 2027-02-10, not 2027-02-12."
+    },
+    {
+      "id": "expected_settlement_date/7",
+      "role": "expected_settlement_date",
+      "source_field": "settlement.expected_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: For settlement, the originally anticipated date was 2027-02-10.",
+      "corrupted": "txn_FRESH901: For settlement, the originally anticipated date was 2027-02-12.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts expected_settlement_date; settlement.expected_date is 2027-02-10, not 2027-02-12."
+    },
+    {
+      "id": "expected_settlement_date/8",
+      "role": "expected_settlement_date",
+      "source_field": "settlement.expected_date",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The estimated settlement date was 2027-02-10, rather than a completion timestamp.",
+      "corrupted": "txn_FRESH901: The estimated settlement date was 2027-02-12, rather than a completion timestamp.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts expected_settlement_date; settlement.expected_date is 2027-02-10, not 2027-02-12."
+    },
+    {
+      "id": "refund_amount/1",
+      "role": "refund_amount",
+      "source_field": "refund.amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The refund amount was 42.15 USD on this record.",
+      "corrupted": "txn_FRESH901: The refund amount was 187.60 USD on this record.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts refund_amount; refund.amount is 42.15, not 187.60."
+    },
+    {
+      "id": "refund_amount/2",
+      "role": "refund_amount",
+      "source_field": "refund.amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: A refund of 42.15 USD has been processed for this payment.",
+      "corrupted": "txn_FRESH901: A refund of 187.60 USD has been processed for this payment.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts refund_amount; refund.amount is 42.15, not 187.60."
+    },
+    {
+      "id": "refund_amount/3",
+      "role": "refund_amount",
+      "source_field": "refund.amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: You received 42.15 USD as a refund for this payment.",
+      "corrupted": "txn_FRESH901: You received 187.60 USD as a refund for this payment.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts refund_amount; refund.amount is 42.15, not 187.60."
+    },
+    {
+      "id": "refund_amount/4",
+      "role": "refund_amount",
+      "source_field": "refund.amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The amount returned to you was 42.15 USD.",
+      "corrupted": "txn_FRESH901: The amount returned to you was 187.60 USD.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts refund_amount; refund.amount is 42.15, not 187.60."
+    },
+    {
+      "id": "refund_amount/5",
+      "role": "refund_amount",
+      "source_field": "refund.amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: Of the original payment, 42.15 USD was refunded.",
+      "corrupted": "txn_FRESH901: Of the original payment, 187.60 USD was refunded.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts refund_amount; refund.amount is 42.15, not 187.60."
+    },
+    {
+      "id": "refund_amount/6",
+      "role": "refund_amount",
+      "source_field": "refund.amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: For this payment, the refund totals 42.15 USD.",
+      "corrupted": "txn_FRESH901: For this payment, the refund totals 187.60 USD.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts refund_amount; refund.amount is 42.15, not 187.60."
+    },
+    {
+      "id": "refund_amount/7",
+      "role": "refund_amount",
+      "source_field": "refund.amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The sum refunded was 42.15 USD.",
+      "corrupted": "txn_FRESH901: The sum refunded was 187.60 USD.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts refund_amount; refund.amount is 42.15, not 187.60."
+    },
+    {
+      "id": "refund_amount/8",
+      "role": "refund_amount",
+      "source_field": "refund.amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: Your refund came to 42.15 USD.",
+      "corrupted": "txn_FRESH901: Your refund came to 187.60 USD.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts refund_amount; refund.amount is 42.15, not 187.60."
+    },
+    {
+      "id": "payment_amount/1",
+      "role": "payment_amount",
+      "source_field": "amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The original payment amount was 187.60 USD on this record.",
+      "corrupted": "txn_FRESH901: The original payment amount was 42.15 USD on this record.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts payment_amount; amount is 187.60, not 42.15."
+    },
+    {
+      "id": "payment_amount/2",
+      "role": "payment_amount",
+      "source_field": "amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The transaction amount is 187.60 USD before considering its refund.",
+      "corrupted": "txn_FRESH901: The transaction amount is 42.15 USD before considering its refund.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts payment_amount; amount is 187.60, not 42.15."
+    },
+    {
+      "id": "payment_amount/3",
+      "role": "payment_amount",
+      "source_field": "amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: You originally paid 187.60 USD for this transaction.",
+      "corrupted": "txn_FRESH901: You originally paid 42.15 USD for this transaction.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts payment_amount; amount is 187.60, not 42.15."
+    },
+    {
+      "id": "payment_amount/4",
+      "role": "payment_amount",
+      "source_field": "amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The original charge came to 187.60 USD.",
+      "corrupted": "txn_FRESH901: The original charge came to 42.15 USD.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts payment_amount; amount is 187.60, not 42.15."
+    },
+    {
+      "id": "payment_amount/5",
+      "role": "payment_amount",
+      "source_field": "amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: Before the refund, this payment was for 187.60 USD.",
+      "corrupted": "txn_FRESH901: Before the refund, this payment was for 42.15 USD.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts payment_amount; amount is 187.60, not 42.15."
+    },
+    {
+      "id": "payment_amount/6",
+      "role": "payment_amount",
+      "source_field": "amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The amount of the original purchase was 187.60 USD.",
+      "corrupted": "txn_FRESH901: The amount of the original purchase was 42.15 USD.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts payment_amount; amount is 187.60, not 42.15."
+    },
+    {
+      "id": "payment_amount/7",
+      "role": "payment_amount",
+      "source_field": "amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: This record concerns an original payment of 187.60 USD.",
+      "corrupted": "txn_FRESH901: This record concerns an original payment of 42.15 USD.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts payment_amount; amount is 187.60, not 42.15."
+    },
+    {
+      "id": "payment_amount/8",
+      "role": "payment_amount",
+      "source_field": "amount",
+      "record": {
+        "txn_id": "txn_FRESH901",
+        "tenant_id": "m_100",
+        "status": "approved",
+        "amount": "187.60",
+        "currency": "USD",
+        "refund": {
+          "amount": "42.15",
+          "status": "succeeded"
+        },
+        "settlement": {
+          "status": "settled",
+          "expected_date": "2027-02-10",
+          "actual_date": "2027-02-12"
+        }
+      },
+      "clean": "txn_FRESH901: The payment initially charged you 187.60 USD.",
+      "corrupted": "txn_FRESH901: The payment initially charged you 42.15 USD.",
+      "expected_clean_supported": true,
+      "expected_corrupted_supported": false,
+      "label_basis": "The sentence asserts payment_amount; amount is 187.60, not 42.15."
+    }
+  ],
+  "conversation_cases": [
+    {
+      "id": "complete/card-harbor/1",
+      "events": [
+        {
+          "type": "message",
+          "text": "Please look into the USD 200 card payment made to Harbor Books, dated 2026-11-15."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0000"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "complete/card-harbor/2",
+      "events": [
+        {
+          "type": "message",
+          "text": "The charge on my card was two hundred dollars at Harbor Books on 15 November 2026; can you check it?"
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0000"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "complete/transfer-willow/1",
+      "events": [
+        {
+          "type": "message",
+          "text": "I need help with the transfer from my bank account to Willow Repairs, USD 200, dated 2026-11-15."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0001"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "complete/transfer-willow/2",
+      "events": [
+        {
+          "type": "message",
+          "text": "Willow Repairs is still waiting for the two hundred dollars I sent by bank transfer on 15 Nov 2026."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0001"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "complete/card-willow/1",
+      "events": [
+        {
+          "type": "message",
+          "text": "For Willow Repairs, the payment was by card, USD 200; the receipt date reads 2026-11-16."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0002"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "complete/card-willow/2",
+      "events": [
+        {
+          "type": "message",
+          "text": "On the sixteenth of November 2026 I paid Willow Repairs with my card, for two hundred dollars."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0002"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "complete/transfer-harbor/1",
+      "events": [
+        {
+          "type": "message",
+          "text": "The payment to Harbor Books went by bank transfer on 2026-11-16, in the amount of USD 200."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0003"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "complete/transfer-harbor/2",
+      "events": [
+        {
+          "type": "message",
+          "text": "The two-hundred-dollar bank transfer was to Harbor Books, on November 16th, 2026."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0003"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "correction/transfer-to-card",
+      "events": [
+        {
+          "type": "message",
+          "text": "Please investigate the USD 200 bank transfer I made to Willow Repairs on 2026-11-15."
+        },
+        {
+          "type": "message",
+          "text": "I checked the receipt: change that to a card payment on 2026-11-16; Willow Repairs is still the recipient."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0002"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "correction/card-to-transfer",
+      "events": [
+        {
+          "type": "message",
+          "text": "I need an explanation for the USD 200 card payment to Willow Repairs dated 2026-11-16."
+        },
+        {
+          "type": "message",
+          "text": "I mixed up the receipts. The right one is a bank transfer to Willow Repairs, dated 2026-11-15."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0001"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "correction/recipient",
+      "events": [
+        {
+          "type": "message",
+          "text": "Please inspect my USD 200 card payment to Harbor Books dated 2026-11-15."
+        },
+        {
+          "type": "message",
+          "text": "Replace Harbor Books with Willow Repairs and replace the date with 2026-11-16; the card payment is the one I mean."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0002"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "correction/transfer-recipient",
+      "events": [
+        {
+          "type": "message",
+          "text": "The USD 200 bank transfer to Willow Repairs dated 2026-11-15 is what I need checked."
+        },
+        {
+          "type": "message",
+          "text": "That recipient was a mistake: I mean the bank transfer to Harbor Books on 2026-11-16."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0003"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "uncertain/type",
+      "events": [
+        {
+          "type": "message",
+          "text": "Willow Repairs was the recipient; whether I used a card or a bank transfer escapes me."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0001",
+        "txn_EMIX0002"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "uncertain/recipient",
+      "events": [
+        {
+          "type": "message",
+          "text": "It may have gone to Harbor Books. I am certain it was a card payment."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0000",
+        "txn_EMIX0002"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "uncertain/two-recipients",
+      "events": [
+        {
+          "type": "message",
+          "text": "It was a bank transfer, although the recipient could have been either Willow Repairs or Harbor Books."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0001",
+        "txn_EMIX0003"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    },
+    {
+      "id": "uncertain/all",
+      "events": [
+        {
+          "type": "message",
+          "text": "I cannot remember the type or recipient; all I recall is USD 200."
+        }
+      ],
+      "expected_matching_ids": [
+        "txn_EMIX0000",
+        "txn_EMIX0001",
+        "txn_EMIX0002",
+        "txn_EMIX0003"
+      ],
+      "expected_no_answer": true,
+      "label_basis": "Explicit or tentative attributes applied to the documented four-record catalogue; no confirmation event."
+    }
+  ]
+}

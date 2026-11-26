@@ -1,0 +1,259 @@
+"""Hallucination gate: verify -> (bounded repair) -> verify, as one component.
+
+    Verifier          strategy: check(answer, tool_log, focus) -> GuardResult
+    VerifierChain     runs every verifier, merges reasons (chain of responsibility;
+                      a block from any verifier blocks the answer)
+    HallucinationGate owns the repair policy: on block, ask the model ONCE to
+                      rewrite using only tool facts, re-verify against the repair's
+                      own tool results, then allow or fall back.
+
+The orchestrator only calls gate.run(...). Adding a check (e.g. a Claude-as-judge
+verifier for free-text policy answers, or a numeric reconciliation check) is a
+new Verifier class, with no change to the turn pipeline.
+"""
+from __future__ import annotations
+
+import copy
+import re
+from collections.abc import Callable
+from dataclasses import dataclass, field
+from typing import Protocol
+
+from .adaptive.policy import GuardPolicy
+from .guardrails import BLOCKED_OUTPUT_MSG, GuardResult, evidence_check
+from .provenance import trusted_log
+
+
+class Verifier(Protocol):
+    name: str
+
+    def check(self, answer: str, tool_log: list[dict], focus: str | None) -> GuardResult: ...
+
+
+class EvidenceVerifier:
+    """Deterministic grounding: amounts, codes, ids, URLs, status polarity,
+    unknown-outcome and lifecycle claims, retry advice vs policy, processor routing claims."""
+    name = "evidence"
+
+    def __init__(self, known_processors: set[str] | None = None):
+        self.known_processors = known_processors
+
+    def check(self, answer, tool_log, focus):
+        return evidence_check(answer, tool_log, focus, self.known_processors)
+
+
+class RecordIdentityVerifier:
+    """A successful record lookup must return the identifier that was requested.
+
+    This detects adapter/result mix-ups. It does not authenticate data or replace the
+    gateway's tenant authorization and identifier provenance checks.
+    """
+    name = "record_identity"
+
+    def check(self, answer, tool_log, focus):
+        from .domains import by_tool, record_tools
+        reasons = []
+        for call in tool_log:
+            if call["name"] not in record_tools() or call["result"]["status"] != "found":
+                continue
+            domain = by_tool(call["name"])
+            key = domain.id_arg if domain is not None else "txn_id"
+            requested, data = call.get("input", {}).get(key), call["result"].get("data")
+            if (not isinstance(requested, str) or not requested or not isinstance(data, dict)
+                    or data.get(key) != requested):
+                reasons.append(f"record_identity_mismatch:{call['name']}")
+        return GuardResult("block", BLOCKED_OUTPUT_MSG, reasons) if reasons else GuardResult("allow", answer)
+
+
+class ReasonVerifier:
+    """A cause stated in plain words must be the cause the record carries (finbot/reasons.py)."""
+    name = "reason"
+
+    def check(self, answer, tool_log, focus):
+        from .reasons import cause_clause_check, reason_check
+        reasons = reason_check(answer, tool_log)
+        reasons += [r for r in cause_clause_check(answer, tool_log) if not reasons]   # one reason per cause
+        return GuardResult("block", BLOCKED_OUTPUT_MSG, reasons) if reasons else GuardResult("allow", answer)
+
+
+class DomainVerifier:
+    """Records from domain plug-ins (accounts, transfers, KYC, lending): the status, the cause
+    and the reason keys an answer states must be the ones on the record (finbot/domains/checks.py)."""
+    name = "domain"
+
+    def check(self, answer, tool_log, focus):
+        from .domains.checks import domain_check
+        reasons = domain_check(answer, tool_log)
+        return GuardResult("block", BLOCKED_OUTPUT_MSG, reasons) if reasons else GuardResult("allow", answer)
+
+
+class BindingVerifier:
+    """With several records in a turn, each amount, date, code and payment status an answer
+    states must come from the record its clause is about, not from another one (finbot/binding.py)."""
+    name = "binding"
+
+    def check(self, answer, tool_log, focus):
+        from .binding import binding_check
+        reasons = binding_check(answer, tool_log)
+        return GuardResult("block", BLOCKED_OUTPUT_MSG, reasons) if reasons else GuardResult("allow", answer)
+
+
+class LanguageVerifier:
+    """Answers are in English, the only language the other verifiers can read."""
+    name = "language"
+
+    def check(self, answer, tool_log, focus):
+        from .language import detect
+        lang = detect(answer, min_hits=3)
+        return GuardResult("allow", answer) if lang == "en" else \
+            GuardResult("block", BLOCKED_OUTPUT_MSG, [f"non_english_answer:{lang}"])
+
+
+class PolicyVerifier:
+    """The learned commitment rules of the guard policy serving this turn: promises
+    the bot can't keep ("you'll get a refund", "guaranteed"). A violation gets the
+    same one repair as an ungrounded fact."""
+    name = "policy"
+
+    def __init__(self, policy: Callable[[], GuardPolicy]):
+        self.policy = policy
+
+    def check(self, answer, tool_log, focus):
+        reasons = self.policy().answer_violations(answer)
+        return GuardResult("block", BLOCKED_OUTPUT_MSG, reasons) if reasons else GuardResult("allow", answer)
+
+
+TICKET_ID = re.compile(r"\bTCK-[A-Z0-9]{6,}\b")
+TICKET_CLAIM = re.compile(r"\b(i|we)(\s+have|'ve|\s+just)?\s+(raised|created|opened|logged|filed|submitted)\b[^.]{0,40}"
+                          r"\b(ticket|case|request)\b", re.I)
+
+
+class TicketVerifier:
+    """Only code opens tickets. An answer may mention a ticket id only if this session
+    has it, and may say "I've raised a ticket" only if one exists."""
+    name = "tickets"
+
+    def __init__(self, known: Callable[[], set[str]]):
+        self.known = known
+
+    def check(self, answer, tool_log, focus):
+        known = self.known()
+        reasons = [f"ungrounded_ticket:{t}" for t in sorted(set(TICKET_ID.findall(answer)) - known)]
+        if not known and TICKET_CLAIM.search(answer):
+            reasons.append("claims_ticket_created")
+        return GuardResult("block", BLOCKED_OUTPUT_MSG, reasons) if reasons else GuardResult("allow", answer)
+
+
+class VerifierChain:
+    def __init__(self, verifiers: list[Verifier]):
+        self.verifiers = verifiers
+
+    def check(self, answer, tool_log, focus) -> GuardResult:
+        reasons: list[str] = []
+        checks: list[dict] = []
+        evidence = trusted_log(tool_log)
+        for v in self.verifiers:
+            r = v.check(answer, evidence, focus)
+            checks.extend(r.checks)
+            if r.action == "block":
+                reasons += r.reasons
+        return GuardResult("block" if reasons else "allow", BLOCKED_OUTPUT_MSG if reasons else answer,
+                           reasons, checks)
+
+
+REPAIR_PROMPT = ("<verifier>Your previous answer was NOT shown to the user because these checks failed: "
+                 "{reasons}. Rewrite the answer using only facts from tool results (call tools again if "
+                 "needed), and don't promise outcomes the records don't show. For policy_* failures, search "
+                 "the approved knowledge base again if needed; use complete supporting source passages "
+                 "with their source URL, preserving neighboring conditions and exceptions. A citation alone is not "
+                 "support. If the data is missing, say so."
+                 " For comparison_* failures, fetch every requested record again, and include each record's "
+                 "requested fields or explicitly state that it was not found. Do not silently omit a record."
+                 " For financial_role_mismatch, match each value to its named field: an expected settlement "
+                 "date is not an actual settlement date, and a payment amount is not a refund amount. "
+                 "State when an actual date is not recorded."
+                 " For requested_information_* failures, answer the customer's actual question: state each "
+                 "requested field with its name (for example \"Refund amount: 50.00 USD.\"), or say plainly that "
+                 "the record does not show it. Do not substitute a different field."
+                 " For support_information_missing or support_status_mismatch, state the requested lifecycle "
+                 "status, cause, timing or evidence limit; a payment amount is not refund progress, and "
+                 "a settlement date is not a reason or a refund date. A retry interval does not predict "
+                 "resolution time. State statement-access and action limits when requested; clarify an ambiguous "
+                 "returned payment rather than choosing a refund or settlement date. Use the current scoped record."
+                 "</verifier>")
+
+
+@dataclass
+class VerificationStep:
+    """Opt-in diagnostic snapshot; contains rejected drafts, never hidden model reasoning.
+
+    Consumers must restrict access and redact before displaying or persisting it. Normal
+    API responses and audit logs do not include these snapshots.
+    """
+    stage: str                 # draft | repair | fallback
+    attempt: int
+    answer: str
+    action: str
+    reasons: list[str]
+    focus: str | None
+    evidence: list[dict]        # screened tool snapshot before the evidence trust filter
+    trusted_evidence: list[dict] = field(default_factory=list)
+    checks: list[dict] = field(default_factory=list)
+
+
+@dataclass
+class GateResult:
+    action: str                 # allow | block
+    answer: str                 # verified answer, or the fallback message
+    reasons: list[str]
+    repaired: bool = False
+    records_only: bool = False  # the model's answer failed; this one was built by code from the record
+    tool_log: list[dict] = field(default_factory=list)  # all tool calls incl. the repair's
+
+
+class HallucinationGate:
+    def __init__(self, chain: VerifierChain | None = None, repair_attempts: int = 1,
+                 observer: Callable[[VerificationStep], None] | None = None):
+        self.chain = chain or VerifierChain([EvidenceVerifier()])
+        self.repair_attempts = repair_attempts
+        self.observer = observer
+
+    def _check(self, stage: str, attempt: int, answer: str, log: list[dict], focus: str | None,
+               chain: VerifierChain | None = None) -> GuardResult:
+        result = (chain or self.chain).check(answer, log, focus)
+        if self.observer is not None:
+            # Copy mutable data: observers cannot change verification or later evidence.
+            self.observer(VerificationStep(stage, attempt, answer, result.action,
+                                           list(result.reasons), focus, copy.deepcopy(log),
+                                           copy.deepcopy(trusted_log(log)), copy.deepcopy(result.checks)))
+        return result
+
+    def run(self, answer: str, tool_log: list[dict], focus: Callable[[], str | None],
+            regenerate: Callable[[str], tuple[str, list[dict]]],
+            fallback: Callable[[list[dict]], str | None] | None = None,
+            extra_verifiers: tuple[Verifier, ...] = ()) -> GateResult:
+        """regenerate(feedback) -> (new_answer, new_tool_log); it runs the model loop
+        on the strong tier with the feedback appended to the history.
+
+        fallback(tool_log) -> an answer built by code from the records, or None. It is
+        tried when the model's answer still fails, and is verified like any other answer.
+        With repair_attempts=0 a failed draft goes straight to it: no second model call."""
+        log = list(tool_log)
+        chain = VerifierChain([*self.chain.verifiers, *extra_verifiers])
+        g = self._check("draft", 0, answer, log, focus(), chain)
+        if g.action == "allow":
+            return GateResult("allow", answer, g.reasons, tool_log=log)
+        first = g.reasons
+        for attempt in range(1, self.repair_attempts + 1):
+            answer, retry_log = regenerate(REPAIR_PROMPT.format(reasons=", ".join(g.reasons)))
+            log += retry_log
+            # Verify against the repair's own tool results when it re-fetched, so a stale
+            # earlier result cannot vouch for a claim the repair made.
+            g = self._check("repair", attempt, answer, retry_log or log, focus(), chain)
+            if g.action == "allow":
+                return GateResult("allow", answer, [f"repaired:{r}" for r in first], repaired=True, tool_log=log)
+        built = fallback(log) if fallback else None
+        if built and self._check("fallback", 0, built, log, focus(), chain).action == "allow":
+            return GateResult("allow", built, [f"records_only:{r}" for r in g.reasons],
+                              records_only=True, tool_log=log)
+        return GateResult("block", g.text, g.reasons, tool_log=log)

@@ -1,0 +1,34 @@
+[hidden] { display: none !important; }
+main { max-width: 1260px; }
+input:not([type="checkbox"]) { width: 100%; min-height: 41px; font: inherit; border: 1px solid #bac9c8; padding: 10px; border-radius: 5px; background: #f9faf8; }
+input:focus-visible { outline: 3px solid #4389b9; outline-offset: 3px; }
+.consent-row { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 16px; }
+.consent-row label { font-weight: 500; }
+#study-status { color: var(--muted); font-size: 13px; min-height: 22px; }
+.progress-line { display: flex; justify-content: space-between; gap: 12px; padding: 16px 0; font-size: 12px; color: var(--muted); }
+.progress-line span:first-child { color: var(--green); font-weight: 700; }
+.study-grid { display: grid; grid-template-columns: .85fr 1.4fr; gap: 24px; align-items: start; }
+.task-card { border-radius: 10px; border: 1px solid #c8d9d1; padding: 28px; background: #eaf1e9; }
+.task-card h2 { font-size: 23px; line-height: 1.45; letter-spacing: -.5px; margin: 18px 0; }
+.task-card p { font-size: 13px; }
+.task-note { margin-top: 30px; padding-top: 18px; border-top: 1px solid #c8d9d1; color: var(--muted); font-size: 12px; }
+.conversation-panel { min-height: 380px; padding: 26px; }
+.conversation-panel h3 { font-size: 21px; letter-spacing: -.4px; margin: 26px 0 18px; }
+.study-choices { display: flex; flex-direction: column; gap: 10px; }
+.study-choices button { background: white; color: var(--ink); text-align: left; padding: 14px 18px; border: 1px solid #bdcdca; overflow-wrap: anywhere; line-height: 1.5; }
+.study-choices button:hover, .study-choices button[aria-pressed="true"] { background: #eaf3ed; border-color: var(--green); }
+#study-dialogue p { border-left: 2px solid #ccded6; padding-left: 12px; font-size: 13px; }
+#study-dialogue strong { display: block; font-weight: 500; color: var(--muted); }
+#study-selection { font-size: 13px; color: var(--green); }
+.review-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 26px 0; }
+.review-heading h2 { font-size: 27px; }
+#review-provenance { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.review-note { padding: 14px 18px; background: #eaf1e9; border-radius: 6px; font-size: 13px; }
+.result-card { padding: 22px; border: 1px solid var(--line); border-radius: 9px; background: white; margin: 16px 0; }
+.result-card h3 { margin: 0 0 12px; font-size: 17px; }
+.result-card p { font-size: 13px; }
+.belief-row { display: grid; grid-template-columns: minmax(130px, 1fr) 2fr 55px; align-items: center; gap: 12px; font-size: 12px; margin: 8px 0; }
+progress { width: 100%; height: 9px; accent-color: var(--green); }
+.belief-step { padding: 10px 14px; background: #f5f7f3; margin: 12px 0; border-radius: 6px; }
+.belief-step h4 { font-size: 12px; margin: 4px 0 12px; }
+@media (max-width: 750px) { .study-grid { grid-template-columns: 1fr; } .review-heading { align-items: start; flex-direction: column; } .task-card, .conversation-panel { padding: 20px; } .progress-line { flex-wrap: wrap; } .belief-row { grid-template-columns: 1fr 1fr 45px; gap: 6px; font-size: 10px; } }

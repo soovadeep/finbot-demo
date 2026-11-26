@@ -1,0 +1,9 @@
+:root { color-scheme: light; font: 16px/1.5 system-ui, sans-serif; color: #172b37; background: #f6f8f9; }
+body { margin: 0; } main { max-width: 720px; margin: 2rem auto; padding: 1.25rem; }
+fieldset { border: 1px solid #b8c3ca; padding: 1rem; } label { display: block; margin: .8rem 0; }
+button, input, select { font: inherit; padding: .6rem; max-width: 100%; box-sizing: border-box; }
+button { cursor: pointer; margin: .3rem; border: 1px solid #677e8b; border-radius: 4px; background: white; color: inherit; }
+button:disabled { opacity: .6; cursor: wait; } button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #007d76; outline-offset: 2px; }
+#dialogue p { padding: .7rem; background: white; border-left: 3px solid #b8c3ca; }
+#matches button, #others button { display: block; width: 100%; text-align: left; }
+#memory { padding: 1rem; background: #e5f2f0; } #reply { width: 100%; } [hidden] { display: none !important; }

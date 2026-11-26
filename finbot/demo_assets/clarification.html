@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finbot · Clarification experiments</title>
+  <link rel="stylesheet" href="/style.css"><script src="/clarification.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="/inspector">finbot<span> / clarification experiments</span></a><a href="/study">Participant study</a></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">RESOLVE THE RECORD · VERIFY THE ANSWER</p>
+      <h1>Ask a useful question.</h1><p class="lede">Compare question selectors, inspect uncertainty, and correct the selected record.</p></div>
+      <aside class="mode"><strong>Offline · synthetic records</strong><p>Real Finbot verification. Assumed reply probabilities.<br>No live model calls or measured human accuracy.</p></aside></section>
+    <form id="clarify-start" class="controls">
+      <div><label for="case">Scenario</label><select id="case" disabled></select></div>
+      <div><label for="strategy">Question selector</label><select id="strategy">
+        <option value="information_gain">Expected information gain</option><option value="decision_value">Expected error reduction minus cost</option>
+        <option value="fixed">Fixed template order</option><option value="none">No clarification questions</option></select>
+        <p>Every strategy still requires an explicit record selection before an answer.</p></div>
+      <div><label for="clarify-fault">Answer fault</label><select id="clarify-fault">
+        <option value="none">No injected fault</option><option value="amount_once">Invented fee in first draft</option>
+        <option value="amount_always">Invented fee in draft and repair</option></select>
+        <button type="submit" id="start" disabled>Start a new conversation</button></div>
+    </form>
+    <div class="run-status"><p id="clarify-status" role="status" aria-live="polite">Loading cases…</p>
+      <button id="clarify-download" class="secondary" disabled>Export trace ↓</button></div>
+    <section class="workspace clarification-workspace" aria-label="Clarification results">
+      <article class="panel"><h2>Conversation</h2><div id="conversation"></div>
+        <div id="reply-buttons" class="clarify-buttons"></div>
+        <h3>Confirm or correct the record</h3><p class="hint">A selection resolves the reference. It does not establish the payment’s status.</p>
+        <div id="record-buttons" class="clarify-buttons"></div></article>
+      <article class="panel"><h2>Question selection</h2><div id="beliefs"></div><div id="rankings"></div>
+        <details><summary>Assumed response model</summary><pre id="response-model"></pre></details>
+        <p class="hint">Accuracy is conditional on giving a definite reply. Reply errors are assumed independent. These are uncalibrated simulation assumptions.</p>
+        <details><summary>Dialogue events and invalidations</summary><pre id="dialogue-trace"></pre></details></article>
+      <article class="panel answer-panel"><h2>Verified-answer pipeline</h2><div id="clarify-answer"></div>
+        <details><summary>Current record evidence and verifier trace</summary><pre id="financial-trace"></pre></details>
+        <p class="hint">Each confirmation refetches the selected record in a fresh Finbot session. Earlier drafts and record evidence are excluded.</p></article>
+    </section>
+    <footer>Candidate discovery and unrestricted language understanding are not implemented here. The server supplies a fixed authorized synthetic catalogue.
+      Information gain is a model prediction, not measured task success. Passing the verifier is not proof of factual correctness.</footer>
+  </main>
+</body>
+</html>

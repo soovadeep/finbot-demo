@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finbot · Clarification study</title>
+  <link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/study.css">
+  <script src="/study.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="/inspector">finbot<span> / clarification study</span></a>
+    <span class="badge">FICTIONAL BANKING TASKS</span></header>
+  <main>
+    <p class="review-note">Original structured probes: this checks collection and calibration plumbing, not realistic customer clarification.
+      <a href="/study">Open the message-driven conversation demo →</a></p>
+    <section class="intro"><div><p class="eyebrow">ASK · UPDATE · CONFIRM · VERIFY</p>
+      <h1>Find the payment you mean.</h1>
+      <p class="lede">Try a short banking task. Finbot asks for details before you choose a record.</p></div>
+      <aside class="mode"><strong id="mode-label">Rehearsal · not human study data</strong>
+        <p>Fictional records. No bank connection.<br>Offline scripted writer; real Finbot checks.</p></aside></section>
+
+    <form id="study-setup" class="controls">
+      <div><label for="study-mode">Session type</label><select id="study-mode">
+        <option value="rehearsal">Rehearsal — try the workflow</option>
+        <option value="participant">Participant — researcher supervised</option></select>
+        <p>Use rehearsal for demonstrations and automated checks.</p></div>
+      <div><label for="study-phase">Study phase</label><select id="study-phase">
+        <option value="evaluation">Evaluation tasks · 4 tasks</option>
+        <option value="development">Development probes · 6 tasks</option></select>
+        <p id="model-note">Checking model configuration…</p></div>
+      <div><label for="participant-code">Assigned participant code</label>
+        <input id="participant-code" value="P001" pattern="P[0-9]{3,8}" maxlength="9" required autocomplete="off">
+        <p>Use a code such as P001. Do not enter your name, email, or bank details.</p></div>
+      <div class="consent-row"><label><input id="study-consent" type="checkbox">
+        I agree to the researcher saving my coded choices for this pilot. I can stop before exporting.</label>
+        <p>Replies stay in this page until you download a completed session. The local server does not save them.
+          Refreshing discards progress. The researcher explains retention and withdrawal before participant sessions.</p></div>
+      <button id="study-start" type="submit" disabled>Start rehearsal →</button>
+    </form>
+    <p id="study-status" role="status" aria-live="polite">Loading…</p>
+
+    <section id="study-work" hidden>
+      <div class="progress-line"><span id="study-progress"></span><span>Structured choices · take your time</span></div>
+      <div class="study-grid">
+        <aside class="task-card"><p class="eyebrow">YOUR FICTIONAL TASK</p><h2 id="task-prompt"></h2>
+          <p>Use only these details. If you cannot tell, choose “I'm not sure”. If no record fits, leave the task unresolved.</p>
+          <div class="task-note">A payment being “pending” or “declined” will be checked from its record after the study.
+            Choosing a record does not decide its status.</div></aside>
+        <article class="panel conversation-panel"><div class="panel-title"><span class="pill">FINBOT</span><h2>Let's identify your payment</h2></div>
+          <div id="study-dialogue"></div><h3 id="study-question"></h3><div id="study-replies" class="study-choices"></div>
+          <div id="study-record-section" hidden><h3>Choose the matching record</h3>
+            <p class="hint">You can change your selection before saving this task.</p>
+            <div id="study-records" class="study-choices"></div>
+            <p id="study-selection"></p><button id="study-next" disabled>Save task & continue →</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="study-review" hidden>
+      <div class="review-heading"><div><p class="eyebrow">SESSION COMPLETE · RESEARCHER VIEW</p>
+        <h2>What we expected, and what happened.</h2><p id="review-provenance"></p></div>
+        <button id="study-download">Download session JSON ↓</button></div>
+      <p class="review-note">Expected outcomes are defined by the fictional tasks. They are not predictions of human performance.
+        Belief bars use this session's response model; they are not observed accuracy.
+        A supported financial answer can still describe the wrong record.</p>
+      <div id="study-results"></div>
+      <p class="hint">A real study needs new participants and a frozen development model. This screen does not establish an accuracy improvement.</p>
+      <button id="study-reset" class="secondary">Start another session</button>
+    </section>
+    <footer>Local structured-response pilot. No live LLM or natural customer conversations. Rehearsal exports are excluded from participant analysis by default.</footer>
+  </main>
+</body>
+</html>

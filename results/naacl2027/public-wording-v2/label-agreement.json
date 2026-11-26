@@ -1,0 +1,109 @@
+{
+  "scope": "60 post-fix answers of public-wording-v2; pre-fix answers have AI labels only.",
+  "labels_sha256": {
+    "second": "3d1bba64cc40caba299372c0b90d50e4e8b2bd36ef109af821c9021d5b549b68",
+    "ai": "a526434d06d3aa1ddc837c5c27cc58174c45df9cdebb075b1c947fe8b955333c"
+  },
+  "supported_and_complete": {
+    "second": 56,
+    "ai": 50
+  },
+  "agreement": {
+    "supported": "60/60",
+    "complete": "52/60",
+    "premise_mismatch": "60/60",
+    "supported_and_complete": "52/60"
+  },
+  "kappa_supported_and_complete": 0.37,
+  "disagreements": [
+    {
+      "key": "current/public-002/missing",
+      "second": {
+        "supported": true,
+        "complete": true
+      },
+      "ai": {
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "key": "current/public-002/populated",
+      "second": {
+        "supported": true,
+        "complete": true
+      },
+      "ai": {
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "key": "current/public-004/populated",
+      "second": {
+        "supported": true,
+        "complete": true
+      },
+      "ai": {
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "key": "current/public-006/missing",
+      "second": {
+        "supported": true,
+        "complete": true
+      },
+      "ai": {
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "key": "current/public-015/populated",
+      "second": {
+        "supported": true,
+        "complete": true
+      },
+      "ai": {
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "key": "current/public-016/missing",
+      "second": {
+        "supported": true,
+        "complete": false
+      },
+      "ai": {
+        "supported": true,
+        "complete": true
+      }
+    },
+    {
+      "key": "current/public-021/missing",
+      "second": {
+        "supported": true,
+        "complete": true
+      },
+      "ai": {
+        "supported": true,
+        "complete": false
+      }
+    },
+    {
+      "key": "current/public-021/populated",
+      "second": {
+        "supported": true,
+        "complete": true
+      },
+      "ai": {
+        "supported": true,
+        "complete": false
+      }
+    }
+  ],
+  "note": "7 of 8 disagreements: the co-author judged complete an answer the AI review judged incomplete (mostly an explicit \"the record does not show ...\" for a requested field)."
+}

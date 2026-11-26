@@ -1,0 +1,15 @@
+audit.jsonl
+review_queue.jsonl
+kb_index.json
+sessions.db*
+__pycache__/
+kb_vectors.json*
+.venv/
+.venv-demo/
+.mypy_cache/
+.ruff_cache/
+# Private participant exports, fitted models and analysis; never commit study data.
+.study/
+# Local provider credentials; never commit keys.
+.env
+.env.local

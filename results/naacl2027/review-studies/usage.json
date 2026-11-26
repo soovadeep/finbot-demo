@@ -1,0 +1,88 @@
+{
+ "sensitivity-llama": [
+  {
+   "simulator_calls": 1,
+   "simulator_tokens": [
+    231,
+    7
+   ]
+  },
+  {
+   "simulator_calls": 49,
+   "simulator_tokens": [
+    10964,
+    467
+   ]
+  }
+ ],
+ "sensitivity-haiku": [
+  {
+   "simulator_calls": 49,
+   "simulator_tokens": [
+    13933,
+    647
+   ]
+  }
+ ],
+ "llm_question-llama": [
+  {
+   "simulator_calls": 0,
+   "simulator_tokens": [
+    0,
+    0
+   ],
+   "chooser": "claude-sonnet-5-5",
+   "chooser_calls": 225,
+   "chooser_tokens": [
+    130671,
+    13260
+   ]
+  },
+  {
+   "simulator_calls": 0,
+   "simulator_tokens": [
+    0,
+    0
+   ],
+   "chooser": "claude-sonnet-5-5",
+   "chooser_calls": 436,
+   "chooser_tokens": [
+    247475,
+    40231
+   ]
+  }
+ ],
+ "llm_question-haiku": [
+  {
+   "simulator_calls": 0,
+   "simulator_tokens": [
+    0,
+    0
+   ],
+   "chooser": "claude-sonnet-5-5",
+   "chooser_calls": 23,
+   "chooser_tokens": [
+    13151,
+    2565
+   ]
+  }
+ ],
+ "free_text-llama": [
+  {
+   "simulator_calls": 332,
+   "simulator_tokens": [
+    62225,
+    6085
+   ]
+  }
+ ],
+ "free_text-haiku": [
+  {
+   "simulator_calls": 338,
+   "simulator_tokens": [
+    83215,
+    16048
+   ]
+  }
+ ]
+}
