@@ -23,8 +23,8 @@ points to. Everything here can be recomputed from the scripts and cached results
 - Every simulator reply is cached with the prompt that produced it
   (`results/naacl2027/clarification-sim/cache-*.jsonl`, `results/naacl2027/review-studies/`).
 - Scripts in `scripts/naacl2027/`: `simulate_customers.py` (main study and same-amount slice),
-  `review_studies.py` (sensitivity, chooser, free text), `check_injection.py` (development and
-  held-out template tests), `live_writer_run.py` (live writer).
+  `review_studies.py` (sensitivity, chooser, free text), `live_writer_run.py` (live writer
+  drafts replayed by the role ablation).
 - The live-writer audit is in `results/naacl2027/live-writer/audit.json`.
 - Intervals are 95% Wilson score intervals (z = 1.96). The follow-up studies made about 3,500 model
   calls and cost under US$5.

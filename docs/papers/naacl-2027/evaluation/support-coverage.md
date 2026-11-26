@@ -31,19 +31,10 @@ require the code-owned schema sentence; equivalent LLM paraphrases may still tri
 repair/fallback. This change does not establish a general semantic verifier, add NeMo,
 or change the optional Bedrock/LLM checker configuration.
 
-Eleven new tests cover status omissions and contradictions, latest evidence, record
-binding, refund-vs-settlement timing, missing causes, live hints and all recovery stages.
-The complete suite passes **285 tests**. Earlier financial-role component measurements
-remain identical; the workflow tests explicitly check the added refund-status sentence.
-
 ## Development and frozen evaluation are separate
 
-The already-inspected public-v1 cases are development data. Two development reports
-retain the initial and final implementation outcomes (`support-coverage-development*.json`).
-The first revealed a remaining auxiliary/negation parsing gap; the shared grammar was
-extended before freezing. Neither report replaces the original v1 experiment.
-Replaying the earlier cached 30-case LLM study still rejects **16/29 correct initial
-drafts** and its one incorrect draft; policy-paraphrase false rejections remain.
+The already-inspected public-v1 cases are development data. The shared grammar was extended
+before freezing.
 
 Implementation commit: `1400816`. Protocol/sampler freeze: `632bc34`. Selected questions
 committed before execution: `d3fe7ca`. Exact source hashes are in the frozen protocol.
@@ -121,29 +112,12 @@ After inspecting and reporting the frozen results, revision `e75a046` extends th
 
 The same rules guide the scripted/live writer, verifier, repair and record fallback.
 Seven added test methods cover these paths, present/absent fields, positive and negative
-controls, and an actual conversation clarification/follow-up. **All 292 tests pass.**
+controls, and an actual conversation clarification/follow-up.
 The finite parser and strict wording requirements remain limitations.
 
-`support-coverage-followup.json` separately replays all 60 already-inspected tasks.
-All 60 produce a response; 48 are byte-identical and 12 change. The revised coverage
-check rejects all ten original incomplete answers. Provisional unblinded review of
-the changed answers finds eight of those omissions answered with the required facts
-or limits; the other two ask the return-type clarification and **remain unresolved**
-pending the customer reply. The two additional changed answers add missing-decline-reason
-notices to previously accepted evidence-limited guidance. See
-`support-coverage-followup-review-ai.json` for answer-bound rationales.
-
-This is development regression evidence, **not a new generalisation score**. The frozen
-23/60 to 50/60 comparison, raw outputs and original labels are unchanged. No fresh LLM
-calls were made. A separate conversation test verifies that an explicit follow-up about
-the refund keeps the confirmed record and answers with refund timing or its absence;
-that authored test is not a completed customer interaction in the frozen study.
-
-Reproduce this development replay with an unused output path:
-
-```sh
-python scripts/naacl2027/replay_support_coverage.py --output /tmp/finbot-coverage-followup.json
-```
+A development replay of these fixes on the already-inspected tasks is not part of this
+release; it is not a new generalisation score, and the frozen 23/60 to 50/60 comparison,
+raw outputs and original labels are unchanged.
 
 ## Frozen study artifacts and reproduction
 

@@ -116,8 +116,5 @@ still causes a fresh lookup. If the backend now says USD 39.20, the old amount i
 superseded; if the refund field is gone, it is no longer an active fact. The model's
 ability to use that state correctly still needs live evaluation.
 
-The [paired conversation protocol](papers/naacl-2027/evaluation/conversation-study.md)
-now exercises actual multi-turn sessions, with matched short/long probes, backend changes,
-source/runtime freezing, provider usage traces, and blind review forms. Its committed
-run uses the scripted model without network calls. Independent cases and live long-chat
-accuracy remain pending; neither the rehearsal nor the nine software tests supplies them.
+Paired short/long conversation rehearsals and a live long-chat run were developed separately
+and are not part of this release.

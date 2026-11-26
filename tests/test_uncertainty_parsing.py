@@ -1,4 +1,4 @@
-"""A hedge qualifies only the detail in its own clause (next-steps item 3).
+"""A hedge qualifies only the detail in its own clause.
 
 The fresh-wording challenge (results/naacl2027/fresh-wording-v1.json) found that
 "It may have gone to Harbor Books. I am certain it was a card payment." treated Harbor

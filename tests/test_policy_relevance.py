@@ -3,7 +3,21 @@ from datetime import date
 
 from finbot.policy_documents import PolicyDocumentVerifier, policy_passage_answer
 from finbot.policy_relevance import policy_codes
-from scripts.naacl2027.verification_challenge import doc_log, page, quoted
+
+
+def page(text, slug, score=2.0):
+    return {"text": text, "source_url": f"https://kb.example.test/{slug}",
+            "chunk_id": f"{slug}:v1:0", "version": 1, "updated": "2026-11-24", "score": score}
+
+
+def doc_log(*pages):
+    return [{"name": "search_knowledge_base", "input": {"query": "policy"},
+             "result": {"status": "found", "source": "knowledge_base", "data": list(pages)}}]
+
+
+def quoted(p):
+    return f"{p['text']} (source: {p['source_url']})"
+
 
 
 class PolicyRelevance(unittest.TestCase):

@@ -19,5 +19,4 @@ that transaction references are removed.
 `support-policies.json` contains six newly authored fictional policies, task questions,
 supported paraphrases and intentionally corrupted/incomplete answers. It is separate from
 the Banking77-derived ambiguity data and uses the repository's MIT license. The comparison
-records are generated in `scripts/naacl2027/evaluate_support.py`. See the
-[protocol and observed failures](../../docs/papers/naacl-2027/evaluation/varied-support.md).
+records are generated in `scripts/naacl2027/evaluate_support.py`.

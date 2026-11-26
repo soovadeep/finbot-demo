@@ -85,7 +85,3 @@ Finbot contributes a reproducible payment-support demonstration linking ambiguit
 record ownership, explicit financial roles and visible recovery. Value-preserving interventions
 show why field roles add information beyond record binding. This strengthens a demo's systems
 contribution; it does not establish a new general reasoning algorithm or superiority over those systems.
-
-The [subsequent fresh-wording challenge](fresh-wording.md) freezes the implementation and
-precommits new labels before running it. It rejects 12/32 new corruptions while accepting 32/32
-correct counterparts, exposing substantial wording sensitivity beyond the original ablation.

@@ -44,23 +44,16 @@ for the evidence inspector. The demo uses a scripted writer, and labels it as sc
 |---|---|---|
 | Tests | `python -m unittest discover -s tests` | |
 | Ambiguity benchmark (224 Banking77 questions, 2 to 8 candidates) | `python scripts/naacl2027/build_ambiguity_set.py` (and `--size 8`) | `data/naacl2027/` |
-| Simulated customers (two model families) | `python scripts/naacl2027/simulate_customers.py --simulator haiku` (and `llama`), then `--report` | `results/naacl2027/clarification-sim/` |
-| Baselines, cached replies only | `python scripts/naacl2027/compare_baselines.py` | stdout |
-| Conversation controller replays | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/` |
-| Answer checks on injected errors | `python scripts/naacl2027/check_injection.py` | `results/naacl2027/check-injection.json` |
-| Matched clean/corrupted checks | `python scripts/naacl2027/paired_verification.py` | `results/naacl2027/` |
-| Policy and comparison workflows | `python scripts/naacl2027/evaluate_support.py` | `results/naacl2027/varied-support-roles.json` |
+| Simulated customers (two model families) | `python scripts/naacl2027/simulate_customers.py --report` | `results/naacl2027/clarification-sim/` |
+| Baselines, cached replies only | `python scripts/naacl2027/compare_baselines.py` | `results/naacl2027/strong-baselines/` |
+| Conversation controller replays | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |
 | Financial-role ablation | `python scripts/naacl2027/evaluate_financial_roles.py` | `results/naacl2027/financial-roles.json` |
-| Fresh wording, frozen runtime (revision `af5cb8a`) | `PYTHONHASHSEED=0 python scripts/naacl2027/evaluate_fresh_wording.py` | `results/naacl2027/fresh-wording-v1.json` |
-| Fresh Llama answers, two labellers | `python scripts/naacl2027/fresh_llm_agreement.py` | `results/naacl2027/fresh-llm-v1/` |
-| Paired policy-quote study, two labellers | `python scripts/naacl2027/paired_gate_study.py score` | `results/naacl2027/fresh-llm-v2/` |
-| Matched error challenge, 48 pairs / 12 families | `python scripts/naacl2027/verification_challenge.py run --output /tmp/finbot-challenge-replay.json` | [Scope and results](docs/papers/naacl-2027/evaluation/verification-challenge.md) |
-| Context and memory contracts | `python -m unittest discover -s tests -p test_context_budget.py -v` | Nine offline runtime checks |
+| Live policy answers, two labellers | `python scripts/naacl2027/paired_gate_study.py score --version fresh-llm-v3` | `results/naacl2027/fresh-llm-v3/` |
+| Public questions, pre/post-fix | [support-coverage.md](docs/papers/naacl-2027/evaluation/support-coverage.md) | `results/naacl2027/public-wording-v2/` |
 | Interface and accessibility checks | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |
 
 The [evaluation guide](docs/papers/naacl-2027/evaluation/README.md) explains what each result
-measures and where it stops. [Claim boundaries](docs/papers/naacl-2027/evaluation/claim-boundaries.md)
-lists the failures that remain. None of these results comes from real customers or a user study.
+measures and where it stops. None of these results comes from real customers or a user study.
 
 ## Where things are
 

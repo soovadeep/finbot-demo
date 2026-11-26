@@ -17,7 +17,7 @@ Eight focused tests exercise missing fields, contradictory known values, failed 
 superseded lookups, multiple record IDs, mixed assertions and questions. The full
 suite passes 274 tests after adding the external-study integrity tests.
 
-`results/naacl2027/missing-information-development.json` rechecks cached live text:
+A development recheck of cached live text found:
 three of four correct missing-refund drafts now pass. One still fails because
 “Let me check again for the refund details” triggers the broad refund-mention rule.
 The original 30-case paired study still has 16/29 correct drafts rejected and its

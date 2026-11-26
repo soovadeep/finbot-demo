@@ -37,9 +37,11 @@ Financial-role checks distinguish expected/actual settlement dates and payment/r
 even when values occur on the correct record. In simulations with eight candidate records,
 confirmation keeps wrong-record selections at 2--4\%, versus 21--26\% when acting on the top
 guess. Role checks catch 60/60 value-preserving corruptions, versus 12/60 with record binding
-alone, while accepting every clean control. A scripted writer supports reproducibility; labelled
-live answers are optional. Untuned question heuristics match decision value, and half of correct
-fresh LLM drafts need repair or fallback. We release code, traces and cached responses.
+alone. On 30 new live Llama cases, quoting the cited policy after a failed repair cuts refusals
+from 13 to 4, with no wrong answer under either of two labellers. On 30 unused public questions,
+coverage fixes raise complete answers from 23/60 to 50/60 (blind co-author: 56/60). The checks
+remain conservative: half of correct live drafts need repair or fallback. We release code,
+traces and cached responses.
 \end{abstract}
 
 \section{Introduction}
@@ -63,8 +65,8 @@ release. We contribute:
   confirmation and conflict resolution govern retrieval for explanation.
 \item Shared evidence requirements guide writer instructions, verification and bounded
   recovery; traces show source fields, missing information and scripted/live writer labels.
-\item Reproducible simulations, controller replays and value-preserving ablations distinguish
-  record ownership from financial meaning; they do not establish customer accuracy.
+\item Reproducible simulations, controller replays, value-preserving ablations and two-labeller
+  live and public-question studies; they do not establish customer accuracy.
 \end{itemize}
 The demo uses synthetic records and policies and executes no payments, refunds or disputes.
 The hosted demo is at \url{https://finbot-demo-20852907589.us-central1.run.app}.
@@ -168,12 +170,10 @@ using the latest lookup $D_h$. Roles cover amounts and refund/settlement dates; 
 dates require settled status. The inspector exposes the phrase, role, field
 and verdict. Fallback states when actual dates are unavailable. Finite English patterns limit coverage.
 
-An optional LLM evidence review (\S\ref{sec:inject}) can join the gate; it is off by default, and provider failures withhold answers without counting as detections.
+An optional LLM evidence review is off by default and not evaluated here.
 
 \paragraph{Agent context.} Full-prompt admission reserves output capacity; old turns roll into
-bounded state, while oversized current evidence stops the call. Offline contracts and paired
-4-/36-turn rehearsals exercise rollover (Appendix~\ref{app:context}); live, all 8 runs answer from
-the current record at all eight final probes (two labellers agree).
+bounded state, while oversized current evidence stops the call. Offline contracts test admission and rollover (Appendix~\ref{app:context}).
 
 \subsection{What the inspector shows}
 
@@ -253,11 +253,10 @@ Capability / demo & Evidence and boundary \\
 \midrule
 Clarification / conversation & 224 scenarios, two simulators and stronger baselines; component policy differs. \\
 Confirmation, corrections / conversation & 60 controller replays; unit and browser checks include conflicts. Not customer accuracy. \\
-Explanations, recovery / both views & Paired mutations and live-writer audit (\S\ref{sec:inject}); semantic errors remain. \\
 Financial roles / inspector & 60 corruption pairs, 12 equal-value controls, replayed cached drafts; finite claim formats. \\
-Requested fields / both & Live study plus paired scripted public questions: 23/60 to 50/60 complete (AI); blind co-author 56/60 post-fix. \\
-Record comparison / inspector & 28 workflow runs; 38 mutation pairs reused to verify fixes. \\
-Policy, recovery / inspector & Paired 30-case live follow-up; two labellers. Known off-topic quotes blocked in development replay. \\
+Requested fields / both & 30 unused public questions, paired pre/post-fix: 23/60 to 50/60 complete (AI); blind co-author 56/60 post-fix. \\
+Record comparison / inspector & Scripted presets only; not evaluated here. \\
+Policy, recovery / inspector & 30 new live Llama cases, paired configurations; two labellers. \\
 Trace inspection / both views & Browser and accessibility checks (Appendix~\ref{app:ui}); no comprehension study. \\
 \bottomrule
 \end{tabularx}
@@ -340,48 +339,23 @@ versus 4.5\%/7.6\% for the full list. Confirmation limits, but cannot eliminate,
 \subsection{Answer checks}
 \label{sec:inject}
 
-\paragraph{Varied support cases.} Authored inspector runs initially pass 28/28 comparison and
-10/12 policy checks; component pairs reject 50/74 mutations. After fixing currency binding,
-record coverage, complete passages and plural normalization, 40/40 runs pass and 74/74 mutations
-are rejected with clean controls accepted; six supported paraphrases are still rejected.
-
 \paragraph{Role ablation.} Six records and two wordings yield 60 value-preserving substitutions:
 48 within-record, 12 cross-record. Detection is 0/60 without binding, 12/60 with record binding,
 60/60 with financial roles; all 60 clean and 12 equal-value controls pass. These development
 cases do not estimate accuracy; unrecognized date/refund phrasing still evades role extraction.
 
-\paragraph{Fresh LLM answers.} With runtime and Gemini 2.5 Flash Lite reviewer frozen, Llama
-3.3 70B answered 30 new supplied-record cases. An unblinded AI assistant and blind co-author
-labelled 57 answers (89\% agreement, $\kappa{=}0.20$), marking 2 and 4 drafts wrong.
-Checks block 1/2 (2/4) wrong and 14/28 (13/26) correct drafts. Final answers are 23 correct/1 wrong
-(22/2); with review, 21/2 (23/0), with 12/59 reviews unavailable. Separate drafts and
-labeller-dependent effects prevent attributing improvement to review; it stays off.
-
-\paragraph{Paired follow-up.} Adding cited-passage fallback after failed policy repairs reduces
-refusals from 13 to 4 (two appropriate) on 30 new frozen cases, with configurations judging the same Llama draft;
-released answers rose from 17 to 26, none wrong for either labeller (41/43 agree);
-checks still block 16/29 correct drafts, also in our current development replay.
+\paragraph{Live policy answers.} Llama 3.3 70B drafted answers for 30 new frozen cases (10 policy);
+both configurations judge the same draft. Adding a cited-passage fallback after failed policy
+repairs reduces refusals from 13 to 4 (two appropriate); released answers rise from 17 to 26, none
+wrong for an AI labeller or a blind co-author (41/43 agree); checks still block 16/29 correct drafts. A re-run on the final code gives identical answers.
 
 \paragraph{Public questions.} After a development set exposes omissions, we freeze code and sampling
 before selecting 30 unused Banking77 train questions with prior-overlap screening. Two synthetic
 record conditions yield 60 paired pre/post-fix tasks. Unblinded AI review judges
 23/60 versus 50/60 supported and complete (27 improved, none regressed); a blind co-author
-judges 56/60 post-fix answers so (52/60 agree, $\kappa$=0.37); all revised answers pass
-the gate. Later development replay addresses eight omissions and requests clarification in two
-ambiguous-return cases, still unresolved. Frozen outcomes are preserved; this replay is not new
-generalisation evidence. These are scripted post-identification answers, not live-writer or customer results.
-
-\paragraph{Matched error challenge.} Originally, 44/48 corruptions and five clean controls fail.
-Requested-code coverage now blocks all four off-topic quotes: 48/48 corruptions and 43/43 new
-rejections, with unchanged false rejections. This is development replay; a blind co-author
-matches construction labels on 79/91 answers before adjudication (Appendix~\ref{app:challenge}).
-
-\paragraph{Template tests and matched controls.} On held-out template wordings, 82.3\%
-(2,668/3,240) of mutations are rejected, but 570 clean controls already fail; among the 2,670
-accepted controls, mutations cause 78.6\% rejection (Appendix~\ref{app:inject}).
-
-\paragraph{Earlier live audit.} AI-assisted author review of 128 Llama drafts finds nine
-expected/actual-date errors, later blocked by role checks, and one omitted refund.
+judges 56/60 post-fix answers so (52/60 agree, $\kappa$=0.37); the remaining incomplete
+answers all pass the gate. These are scripted post-identification answers, not
+live-writer or customer results.
 
 \section{Related work}
 
@@ -403,10 +377,9 @@ Simulators and synthetic records do not establish user performance. Banking77 qu
 written for these records; assumed reliabilities and unique amounts favor amount questions.
 Candidates are capped at eight; stronger heuristics challenge DV. Component and controller
 policies differ: confident-detail filters can exclude the target, and conflict checks cannot
-infer intent. Public wording is adapted to synthetic records; pre-fix labels are AI-only; authored
-workflow tests do not establish generalization. Finite English checks
+infer intent. Public wording is adapted to synthetic records, and pre-fix labels are AI-only. Finite English checks
 miss semantic errors; quotation does not prove relevance, nor context budgets long-chat recall.
-The live audit covers one writer and card payments. No external annotator, user, voice or
+Live answers come from one writer. No external annotator, user, voice or
 deployed-customer study is complete; Finbot is not validated for production financial support.
 
 \section*{Ethics and broader impact}
@@ -558,53 +531,6 @@ correct and wrong confirmations.}
 \label{tab:same}
 \end{table}
 
-\section{Answer checks with matched controls}
-\label{app:inject}
-
-With runtime frozen, an earlier fresh-wording test committed 32 authored draft pairs and 16
-message sequences before evaluation. Role checks reject 12/32 corruptions (0/32 without them)
-and pass all clean counterparts; 15/16 sequences give the expected candidates.
-
-\begin{table}[H]
-\centering\small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}lrrr@{}}
-\toprule
-Mutation & Pairs & Clean blocked & New rejection \\
-\midrule
-Amount & 448 & 76 & 372/372 \\
-Added fee & 448 & 76 & 372/372 \\
-Currency & 224 & 38 & 186/186 \\
-Record ID & 224 & 38 & 186/186 \\
-Status & 552 & 114 & 394/438 \\
-Date & 448 & 76 & 172/372 \\
-Reason code & 224 & 38 & 58/186 \\
-Bare link & 224 & 38 & 0/186 \\
-Mixed wording & 448 & 76 & 358/372 \\
-\midrule
-Total & 3,240 & 570 & 2,098/2,670 \\
-\bottomrule
-\end{tabular}
-\caption{Post-hoc paired analysis of the existing held-out wordings. New rejection: corrupted
-blocked / clean accepted, conditional on an accepted control. All 570 rejected controls remain
-rejected after mutation. Thus raw corrupted-draft rejection is 2,668/3,240 (82.3\%), while
-mutation-triggered rejection among accepted controls is 78.6\%. Controls repeat across mutation
-families; these are not independent samples. The separate 1,120-draft clean set has 114 false
-rejections, all from ``has not settled yet'' about pending transfers.}
-\label{tab:inject}
-\end{table}
-
-The paired report retains texts, verdicts and reasons. All 38 bare-link rejections predate
-the mutation; no added link changes an accepted control's verdict. Reporting control rejection
-alongside conditional sensitivity exposes false positives. These tests do not establish semantic completeness.
-
-\paragraph{New challenge.}\label{app:challenge} The 48 pairs cover roles, record binding, missing/stale facts and
-policy errors. Requested-code coverage fixes four off-topic quotes; five correct paraphrases
-still fail. These inspected-case replays share templates and are not independent generalisation.
-The 12 disagreements involve corrupted answers accepted by the co-author. Adjudication after
-revealing construction labels resolves them; 91/91 post-adjudication agreement is not independent
-agreement. Blind labels remain available. Code coverage does not establish general applicability.
-
 \section{Context and execution contracts}
 \label{app:context}
 
@@ -614,13 +540,6 @@ model window. History rolls at 30 turns, 120,000 characters, or insufficient spa
 tool-derived state survive; snapshots over 4,000 characters are omitted whole and refetched.
 Current exchanges are never truncated. Nine tests cover these contracts, rollback and snapshot
 replacement; see \texttt{docs/agent-design.md}.
-
-A frozen harness pairs 4-/36-turn sessions with identical final questions and records:
-changed refunds, missing fields, settlement and corrected focus. A live Llama 3.3 70B run
-(US\$0.20) completes all eight arms (160 turns); each long arm rolls over once, and all
-final probes use the current record (AI and blind co-author labels agree on 13 distinct probe
-drafts/finals; other turns are not semantically labelled). Both removed-refund
-arms fall back to the record-built answer. These are developer-authored rehearsals.
 
 \section{Interface checks}
 \label{app:ui}

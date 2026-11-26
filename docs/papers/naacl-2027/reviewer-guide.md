@@ -188,17 +188,6 @@ python -m json.tool finbot-policy-trace.json
 Expect `outcome` to be `repaired`, two verification steps and an applied `policy_once` fault.
 Delete the downloaded JSON when no longer needed.
 
-## Reproduce varied policy and comparison checks
-
-On current `main`, run `python scripts/naacl2027/evaluate_support.py` without
-starting a server. It saves `results/naacl2027/varied-support-fixed.json`, including full local
-inspector traces, six additional synthetic policy fixtures, matched drafts and expected fields.
-See [the results and concrete examples](evaluation/varied-support.md): after fixes, 28/28 comparison
-and 12/12 policy checks pass; all 74 actual mutations are rejected and their clean controls pass.
-The original failures remain in `varied-support.json`; the rerun is on those same development cases.
-The records supplied by the evaluator are internal fixtures, not new hosted presets. There are
-no model calls or participants, and a branch push does not redeploy the hosted service or video.
-
 ## 5. Troubleshooting and limits
 
 | Symptom | Action / explanation |
