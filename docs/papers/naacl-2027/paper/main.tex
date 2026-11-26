@@ -39,9 +39,10 @@ selections at 2--4\%, versus 21--26\% when acting on the top guess. In 60 author
 tests, financial-role checks flag every value-preserving corruption, versus 12 with record
 binding alone. In two small controlled audits, quoting the cited policy after a failed repair
 cuts refusals on 30 live Llama cases from 13 to 4 with no wrong answer under two labellers, and
-requested-field coverage raises complete answers to public questions from 23/60 to 50/60. The
-checks remain conservative: half of correct live drafts need repair or fallback. We release
-code, traces and cached responses.
+on 60 public-question tasks, unblinded AI labels rise from 23/60 to 50/60 complete after
+requested-field coverage (blind co-author, post-fix: 56/60). The
+checks remain conservative: half of correct live drafts need repair or fallback. Code, traces and
+cached responses are released.
 \end{abstract}
 
 \section{Introduction}
@@ -58,9 +59,9 @@ guardrails \citep{chua-etal-2025-banking}.
 Finbot's central systems contribution is an inspectable architecture that preserves record
 identity and claim roles across clarification, confirmation, scoped retrieval, verification and
 recovery (Figure~\ref{fig:architecture}). Decision-value scoring over a belief state is the demo's
-default question selector, not a claimed algorithmic advance: simpler orderings do as well, and
-the belief state earns its place by weighing hedged details, carrying corrections and stopping
-early. We contribute:
+default question selector, not a claimed algorithmic advance: a most-distinct ordering beats it
+with one question and matches it with two. The belief state earns its place by weighing hedged
+details, carrying corrections and stopping early on expected selection error. We contribute:
 \begin{itemize}\itemsep0pt
 \item A controller whose belief state guides clarification, while explicit confirmation and
   conflict resolution govern retrieval for explanation.
@@ -370,7 +371,7 @@ answer is wrong, and checks block 16 of 29 correct first drafts.
 \paragraph{Public questions.} After a development set exposes omissions, we freeze code and sampling
 before selecting 30 unused Banking77 train questions with prior-overlap screening. Two synthetic
 record conditions yield 60 paired pre/post-fix tasks. Unblinded AI review (Codex) judges
-23/60 versus 50/60 supported and complete (27 improved, none regressed); a blind co-author
+23/60 versus 50/60 supported and complete (none regressed); a blind co-author
 judges 56/60 post-fix answers so (52/60 agree, $\kappa$=0.37); the remaining incomplete
 answers all pass the gate. These are scripted post-identification answers, not
 live-writer or customer results. Both studies are small controlled audits, not external
@@ -380,9 +381,9 @@ validation; rubrics and label files are in Appendix~\ref{app:repro}.
 no questions, stays at 2--6\% wrong once customers confirm, while acting on the top guess reaches 21--26\%, so a cheap
 heuristic suffices for question ordering, while the belief state handles hedged details,
 corrections and early stopping. Conservative checks are safe only with a good fallback: they block
-about half of correct live drafts, yet with record-built answers and quoted policy no released live answer
-was wrong, and refusals fall from 13 to 4. Requested-field coverage, not value matching, separates
-complete from merely true answers (23/60 to 50/60).
+about half of correct live drafts, yet record-built answers and quoted policy release no wrong
+live answer and cut refusals from 13 to 4. Requested-field coverage, not value matching, separates
+complete from merely true answers.
 
 \section{Related work}
 
@@ -393,7 +394,8 @@ Finbot targets authorized-record ambiguity and runtime checking of typed fields,
 attribution and atomic-fact metrics \citep{rashkin-etal-2023-measuring,min-etal-2023-factscore}.
 Evidence-based revision \citep{gao-etal-2023-rarr}, programmable rails \citep{rebedea-etal-2023-nemo}
 and control/data separation \citep{debenedetti2025camel} motivate its answering step.
-Ryt AI already combines financial guardrails and customer confirmation \citep{chua-etal-2025-banking}.
+Ryt AI executes banking operations with guardrails and confirmation
+\citep{chua-etal-2025-banking}; Finbot is read-only and preserves record identity and claim roles.
 Certainty distortions and omissions are also studied by \citet{nnamdi-etal-2026-epistemic}.
 Finbot connects record confirmation to inspectable financial-role checks and recovery;
 it introduces neither a Bayesian method nor a general semantic verifier.
@@ -402,7 +404,7 @@ it introduces neither a Bayesian method nor a general semantic verifier.
 
 Simulators and synthetic records do not establish user performance. Banking77 questions were not
 written for these records; assumed reliabilities and unique amounts favor amount questions.
-Candidates are capped at eight; stronger heuristics challenge DV. Component and controller
+Candidates are capped at eight. Component and controller
 policies differ: confident-detail filters can exclude the target, and conflict checks cannot
 infer intent. Public wording is adapted to synthetic records, and pre-fix labels are AI-only. Finite English checks
 miss semantic errors; quotation does not prove relevance, nor context budgets long-chat recall.
@@ -412,17 +414,14 @@ deployed-customer study is complete; Finbot is not validated for production fina
 \section*{Ethics and broader impact}
 
 Wrong-record answers and unsupported financial claims can cause fees, repeated charges or missed
-disputes. The demo
-uses synthetic records and policies, involves no participants and executes no payments. Deployment
-would need independent validation, consent and access controls.
+disputes. The demo uses synthetic data, involves no participants and executes no payments.
+Deployment would need independent validation, consent and access controls.
 
 \section*{Acknowledgements}
 
-Generative AI use: Claude Haiku 5.5 and Llama 3.3 70B simulate customers; Claude Sonnet 5.5 is
-a question-selection baseline; Llama 3.3 70B writes live answers. Claude labelled the live policy
-study and Codex the public-question study, both unblinded; a co-author labelled both blind. All
-other results are computed by code. Claude Code and OpenAI Codex assisted coding, writing and the
-video.
+Claude Haiku 5.5 and Llama 3.3 70B simulate customers, Claude Sonnet 5.5 is a baseline question
+chooser and Llama 3.3 70B writes live answers. Claude and Codex labelled the audits unblinded (a
+co-author blind); Claude Code and OpenAI Codex assisted coding, writing and the video.
 
 \clearpage
 \bibliography{references}
