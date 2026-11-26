@@ -28,7 +28,7 @@ returned payment, so the assistant asks which process is meant. Exact code-owned
 limit sentences must be present as whole sentences, not quoted or negated fragments.
 
 This remains finite English parsing and can both miss a request and reject an
-equivalent paraphrase. The [paired public-wording study](papers/naacl-2027/evaluation/support-coverage.md)
+equivalent paraphrase. The [paired public-wording study](papers/naacl-2027/evaluation/public-questions.md)
 documents 50/60 complete revised outcomes versus 23/60 before the change under
 provisional AI review. It is scripted evidence, not fresh live-model validation.
 Later development replay addresses eight of its ten omissions and asks clarification

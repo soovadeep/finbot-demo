@@ -9,7 +9,7 @@ these results comes from real customers or a user study. Records and policies ar
 | Controller replays (Appendix F) | 15 authored event sequences × 4 fault settings through the deployed conversation controller | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |
 | Financial-role ablation (Sec. 4.4) | 60 value-preserving corruptions and 72 controls, with and without role checks | `python scripts/naacl2027/evaluate_financial_roles.py` | `results/naacl2027/financial-roles.json` |
 | Live policy answers (Sec. 4.4) | 30 new frozen cases, the same Llama draft judged with and without the cited-passage fallback; two labellers | `python scripts/naacl2027/paired_gate_study.py score --version fresh-llm-v3` | `results/naacl2027/fresh-llm-v2/`, `fresh-llm-v3/` |
-| Public questions (Sec. 4.4) | 30 unused Banking77 questions × 2 record conditions, pre-fix vs post-fix; AI review plus a blind co-author on post-fix answers | see [support-coverage.md](support-coverage.md) | `results/naacl2027/public-wording-v2/` |
+| Public questions (Sec. 4.4) | 30 unused Banking77 questions × 2 record conditions, pre-fix vs post-fix; AI review plus a blind co-author on post-fix answers | see [public-questions.md](public-questions.md) | `results/naacl2027/public-wording-v2/` |
 | Interface checks (Appendix F) | Browser layouts and axe-core scans | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/interface-after.json`, `conversation-axe.json` |
 | Context contracts (Appendix E) | Prompt admission, rollover and snapshot replacement | `python -m unittest tests.test_context_budget` | test output |
 
@@ -20,8 +20,7 @@ under `data/naacl2027/`. Simulator replies are cached, so replays make no model 
 
 - [Financial roles](financial-roles.md): the role checker, the ablation and its limits.
 - [Live policy answers](fresh-llm.md): the paired fallback study, both label sets and the re-run.
-- [Public questions](support-coverage.md): the frozen protocol, both label sets and remaining
-  omissions. [public-wording.md](public-wording.md) describes the earlier development set.
+- [Public questions](public-questions.md): setup, both label sets and remaining omissions.
 - [Paper details](paper-details.md): prompts, settings and extra tables the appendix cites.
 
 ## What these results do not show

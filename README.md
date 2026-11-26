@@ -49,7 +49,7 @@ for the evidence inspector. The demo uses a scripted writer, and labels it as sc
 | Conversation controller replays | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |
 | Financial-role ablation | `python scripts/naacl2027/evaluate_financial_roles.py` | `results/naacl2027/financial-roles.json` |
 | Live policy answers, two labellers | `python scripts/naacl2027/paired_gate_study.py score --version fresh-llm-v3` | `results/naacl2027/fresh-llm-v3/` |
-| Public questions, pre/post-fix | [support-coverage.md](docs/papers/naacl-2027/evaluation/support-coverage.md) | `results/naacl2027/public-wording-v2/` |
+| Public questions, pre/post-fix | [public-questions.md](docs/papers/naacl-2027/evaluation/public-questions.md) | `results/naacl2027/public-wording-v2/` |
 | Interface and accessibility checks | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |
 
 The [evaluation guide](docs/papers/naacl-2027/evaluation/README.md) explains what each result
