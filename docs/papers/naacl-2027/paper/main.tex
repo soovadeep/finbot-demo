@@ -29,19 +29,19 @@
 \begin{abstract}
 Payment-support conversations combine incomplete descriptions with questions about payment
 outcomes, decline reasons and policies. We present Finbot, an open-source, read-only assistant
-combining clarification, scoped retrieval, checked explanations and recovery from unsupported
-drafts. Its conversation view handles uncertain details, conflicting selections and corrections; a
-complementary inspector covers declines, unknown outcomes, record comparisons and cited policies.
-Reviewers inspect claim-to-field traces and inject faults to observe repair, fallback or refusal.
-Financial-role checks distinguish expected/actual settlement dates and payment/refund amounts,
-even when values occur on the correct record. In simulations with eight candidate records,
-confirmation keeps wrong-record selections at 2--4\%, versus 21--26\% when acting on the top
-guess. Role checks catch 60/60 value-preserving corruptions, versus 12/60 with record binding
-alone. On 30 new live Llama cases, quoting the cited policy after a failed repair cuts refusals
-from 13 to 4, with no wrong answer under either of two labellers. On 30 unused public questions,
-coverage fixes raise complete answers from 23/60 to 50/60 (blind co-author: 56/60). The checks
-remain conservative: half of correct live drafts need repair or fallback. We release code,
-traces and cached responses.
+whose architecture preserves record identity and the financial role of each claim across
+clarification, retrieval, explanation, verification and recovery. Its conversation view handles
+uncertain details, conflicting selections and corrections; a complementary inspector covers
+declines, unknown outcomes, record comparisons and cited policies. Reviewers inspect
+claim-to-field traces and inject faults to observe repair, fallback or refusal. In a simulated
+clarification component study with eight candidate records, confirmation keeps wrong-record
+selections at 2--4\%, versus 21--26\% when acting on the top guess. In 60 authored development
+tests, financial-role checks flag every value-preserving corruption, versus 12 with record
+binding alone. In two small controlled audits, quoting the cited policy after a failed repair
+cuts refusals on 30 live Llama cases from 13 to 4 with no wrong answer under two labellers, and
+requested-field coverage raises complete answers to public questions from 23/60 to 50/60. The
+checks remain conservative: half of correct live drafts need repair or fallback. We release
+code, traces and cached responses.
 \end{abstract}
 
 \section{Introduction}
@@ -55,20 +55,24 @@ the customer asked about.
 Bayesian question selection \citep{lindley1956measure} and evidence-based revision
 \citep{gao-etal-2023-rarr} address parts of this; financial agents already use confirmation and
 guardrails \citep{chua-etal-2025-banking}.
-Finbot's central systems contribution is an inspectable software architecture integrating
-Bayesian belief updating and decision-value question selection with explicit conversation state,
-confirmation, scoped retrieval and evidence verification (Figure~\ref{fig:architecture}).
-Beliefs guide questions; state transitions govern record access, corrections and answer
-release. We contribute:
+Finbot's central systems contribution is an inspectable architecture that preserves record
+identity and claim roles across clarification, confirmation, scoped retrieval, verification and
+recovery (Figure~\ref{fig:architecture}). Decision-value scoring over a belief state is the demo's
+default question selector, not a claimed algorithmic advance: simpler orderings do as well, and
+the belief state earns its place by weighing hedged details, carrying corrections and stopping
+early. We contribute:
 \begin{itemize}\itemsep0pt
-\item A controller linking belief updates and question scores to clarification; explicit
-  confirmation and conflict resolution govern retrieval for explanation.
-\item Shared evidence requirements guide writer instructions, verification and bounded
-  recovery; traces show source fields, missing information and scripted/live writer labels.
-\item Reproducible simulations, controller replays, value-preserving ablations and two-labeller
-  live and public-question studies; they do not establish customer accuracy.
+\item A controller whose belief state guides clarification, while explicit confirmation and
+  conflict resolution govern retrieval for explanation.
+\item Financial-role claim checks and shared evidence requirements that guide writer
+  instructions, verification and bounded recovery; traces show source fields, roles, missing
+  information and scripted/live writer labels.
+\item Reproducible component simulations, controller replays, authored ablations and two small
+  two-labeller audits; they do not establish customer accuracy.
 \end{itemize}
-The demo uses synthetic records and policies and executes no payments, refunds or disputes.
+Finbot is intended for developers and researchers building inspectable natural-language
+interfaces over structured financial and customer-support records. The demo uses synthetic
+records and policies and executes no payments, refunds or disputes.
 The hosted demo is at \url{https://finbot-demo-20852907589.us-central1.run.app}.
 Run \texttt{python -m finbot.demo} locally without a model account. Code, data, results and a 2.5-minute video are at
 \url{https://github.com/soovadeep/finbot-demo} (MIT license).
@@ -125,8 +129,9 @@ selection error, minus cost $c=0.02$:
 \label{eq:dv}
 \end{equation}
 Sums include unsure replies. This hypothetical choice scores questions; it never selects a
-record for answering. The component compares IG and DV with fixed order, amount-first and
-most-distinct options (fixed-order ties). It stops at its question budget or 95\% belief;
+record for answering. The component compares IG and DV with fixed order (kind, payee, date, amount),
+amount-first and most-distinct, which asks the attribute offering the most distinct values among
+the candidates (ties keep the fixed order). It stops at its question budget or 95\% belief;
 IG and DV additionally require a positive score. The demo uses DV after renormalizing beliefs
 over matching records, stopping at two questions, a single match, indistinguishable matches,
 or no useful question.
@@ -306,7 +311,9 @@ Against fixed order, DV reaches similar two-question correctness with fewer ques
 
 Stronger untuned heuristics qualify this comparison. One most-distinct question yields
 49.6\%/66.1\% correct confirmations (Haiku/Llama), versus 46.9\%/62.5\% for one DV question;
-amount-first yields 41.5\%/63.4\%. Most-distinct also matches or exceeds two-question DV and
+amount-first yields 41.5\%/63.4\%. The paired one-question gap favours most-distinct by
+2.7/3.6 points (cluster-bootstrap 95\% intervals 0.5--5.2 and 0.9--7.0); with two questions
+each, the two differ by at most 1.3 points and the intervals include zero. Most-distinct also
 wins on the same-amount set (32.6\%/46.9\% versus 29.9\%/43.3\%, one question).
 We keep the belief state because the controller needs more than an order: it weighs hedged
 details, carries evidence through corrections, stops early and exposes inspectable probabilities.
@@ -351,18 +358,23 @@ mutations cause 78.6\% new rejections (Appendix~\ref{app:inject}). An earlier AI
 of 128 live Llama drafts found nine expected/actual-date errors, now blocked by role checks, and one
 omitted refund.
 
-\paragraph{Live policy answers.} Llama 3.3 70B drafted answers for 30 new frozen cases (10 policy);
-both configurations judge the same draft. Adding a cited-passage fallback after failed policy
-repairs reduces refusals from 13 to 4 (two appropriate); released answers rise from 17 to 26, none
-wrong for an AI labeller or a blind co-author (41/43 agree); checks still block 16/29 correct drafts. A re-run on the final code gives identical answers.
+\paragraph{Live policy answers.} Llama 3.3 70B drafted answers for 30 new frozen cases (10 policy).
+A request cache gives two configurations byte-identical drafts and repairs; they differ only in
+a fallback that, after a policy-only draft and its repair both fail, quotes the best retrieved
+passage, which must cover any requested code. It cuts refusals from 13 to 4 (two appropriate);
+released answers rise from 17 to 26. Two labellers judged each of the 43 distinct answers
+(drafts, repairs and fallbacks) for support and completeness: Claude, unblinded, and a co-author
+blind to gate outcomes and to Claude's labels. They agree on 41/43; under either set no released
+answer is wrong, and checks block 16 of 29 correct first drafts.
 
 \paragraph{Public questions.} After a development set exposes omissions, we freeze code and sampling
 before selecting 30 unused Banking77 train questions with prior-overlap screening. Two synthetic
-record conditions yield 60 paired pre/post-fix tasks. Unblinded AI review judges
+record conditions yield 60 paired pre/post-fix tasks. Unblinded AI review (Codex) judges
 23/60 versus 50/60 supported and complete (27 improved, none regressed); a blind co-author
 judges 56/60 post-fix answers so (52/60 agree, $\kappa$=0.37); the remaining incomplete
 answers all pass the gate. These are scripted post-identification answers, not
-live-writer or customer results.
+live-writer or customer results. Both studies are small controlled audits, not external
+validation; rubrics and label files are in Appendix~\ref{app:repro}.
 
 \paragraph{Lessons.} Confirmation, not question choice, drives safety: every selector, even
 no questions, stays at 2--6\% wrong once customers confirm, while acting on the top guess reaches 21--26\%, so a cheap
@@ -406,7 +418,11 @@ would need independent validation, consent and access controls.
 
 \section*{Acknowledgements}
 
-Claude Code and OpenAI Codex assisted coding, writing and the video. Label provenance is disclosed with each evaluation.
+Generative AI use: Claude Haiku 5.5 and Llama 3.3 70B simulate customers; Claude Sonnet 5.5 is
+a question-selection baseline; Llama 3.3 70B writes live answers. Claude labelled the live policy
+study and Codex the public-question study, both unblinded; a co-author labelled both blind. All
+other results are computed by code. Claude Code and OpenAI Codex assisted coding, writing and the
+video.
 
 \clearpage
 \bibliography{references}
@@ -426,6 +442,12 @@ Simulator responses are cached; prompt templates remain in the scripts. The adde
 replay makes no model calls and reports missing coverage explicitly
 (\texttt{scripts/naacl2027/}). Prompts, settings, the 192-episode comparison and the live-writer
 audit are in \url{docs/papers/naacl-2027/evaluation/paper-details.md} in the repository.
+
+\paragraph{Audit labels.} Both audits use one rubric: \emph{supported} means every claim agrees
+with the record or policy in the right role; \emph{complete} means the answer gives what was asked
+that the evidence contains, or says it is missing. Labels are never inferred from checker
+verdicts. Blank forms, both label sets with provenance and agreement are in
+\texttt{results/naacl2027/fresh-llm-v3/} and \texttt{public-wording-v2/}.
 
 \paragraph{Response model.} In Eq.~\ref{eq:bayes}, attribute $k$ assigns likelihood $u_k$ to
 uncertainty, $(1-u_k)a_k$ to the matching option, and divides the remainder uniformly among
