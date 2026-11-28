@@ -44,3 +44,6 @@ Under `results/naacl2027/public-wording-v2/`:
 
 Questions, records and the frozen protocol are in `data/naacl2027/public-wording-v2/`;
 `scripts/naacl2027/support_coverage_study.py` produced the runs and the AI score.
+The runs are pinned to the code that produced them: post-fix at tag `public-wording-v2-freeze`
+(`d1a8afc`) and pre-fix at tag `public-wording-v2-baseline` (`59a1d2f`). Both reproduce 60/60
+identical answers. [frozen-studies.md](frozen-studies.md) gives the commands.

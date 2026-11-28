@@ -37,7 +37,7 @@ correct (questions the knowledge base does not cover), 1 is a retrieval miss and
 record-and-policy question. The review again adds no benefit.
 
 ```sh
-rm results/naacl2027/fresh-llm-v2/replay.json          # replay refuses to overwrite it
+# v2 replays only on the code it was frozen with; see frozen-studies.md for the tagged v3 replay
 python scripts/naacl2027/paired_gate_study.py replay   # offline, from responses.json
 python scripts/naacl2027/paired_gate_study.py score
 ```
@@ -54,6 +54,9 @@ label sets carry over unchanged (no relabelling). Counts are identical for `befo
 now matches `after` (one comparison case is repaired instead of withheld).
 
 ```sh
-python scripts/naacl2027/paired_gate_study.py replay --version fresh-llm-v3   # 90/90 identical
-python scripts/naacl2027/paired_gate_study.py score --version fresh-llm-v3
+python scripts/naacl2027/paired_gate_study.py score --version fresh-llm-v3   # runs on main
 ```
+
+`replay` checks the runtime against the freeze, so on `main` (which has later fixes) it
+refuses by design. Run it at the tag `fresh-llm-v3-freeze` (commit `75a720f`), where it
+gives 90/90 identical answers. See [frozen-studies.md](frozen-studies.md).

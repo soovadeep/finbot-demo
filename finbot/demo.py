@@ -256,6 +256,11 @@ def run_demo(question: str, fault: str = "none", *, records: list[dict] | None =
             try:
                 result = _run_demo(question, fault, records=records, live=True)
             except Exception:  # noqa: BLE001 - a provider outage must not break the page
+                result = None
+            if result is None or result["final"]["blocked_by"] == "unavailable":
+                # The orchestrator turns a provider timeout into an ordinary "unavailable" turn.
+                # That is a transient outage, not a model answer: never cache it or label it as
+                # live, and let the scripted writer answer instead.
                 note = "The live model did not answer; the scripted writer answered instead."
                 source = "scripted_after_provider_error"
             else:

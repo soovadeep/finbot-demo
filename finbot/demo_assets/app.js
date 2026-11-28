@@ -116,6 +116,21 @@ function selectStage(index) {
       draft.append(detail);
       return;
     }
+    if (!Array.isArray(check.evidence)) {
+      // Record-field checks (requested information, stated absences, support fields) carry no
+      // policy quotes; show the field and verdict rather than failing the whole render.
+      const field = (check.role || check.field || "field").replaceAll("_", " ");
+      const label = {requested_information: "Requested information", missing_information: "Stated absence",
+        support_status: "Support field", support_coverage: "Support coverage"}[check.kind] || "Record check";
+      detail.append(node("summary", `${label}, ${field}: ${String(check.verdict).replaceAll("_", " ")}`));
+      if (check.text) detail.append(node("p", check.text, "answer-text"));
+      detail.append(node("p", `Record: ${check.record_id || "unresolved"}.` +
+        (check.path ? ` Field: ${check.path}.` : "") +
+        ("evidence_value" in check ? ` Recorded: ${check.evidence_value ?? "unavailable"}.` : "") +
+        ("record_has_value" in check ? ` Record has a value: ${check.record_has_value ? "yes" : "no"}.` : ""), "check-note"));
+      draft.append(detail);
+      return;
+    }
     detail.append(node("summary", `Policy statement ${check.id + 1}: ${check.verdict} (${check.method})`),
       node("p", check.text, "answer-text"));
     check.evidence.forEach((evidence) => {

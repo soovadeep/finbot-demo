@@ -17,6 +17,11 @@ class Broken:
         raise RuntimeError("provider down")
 
 
+class TimesOut:
+    def create(self, *_):
+        raise TimeoutError("provider timed out")
+
+
 class WriterLabels(unittest.TestCase):
     def setUp(self):
         demo.LIVE_CACHE.clear()
@@ -45,6 +50,17 @@ class WriterLabels(unittest.TestCase):
             result = demo.run_demo("Why was txn_A1B2C3D4 declined?", live=True, client="b")
         self.assertEqual(result["writer_source"], "scripted_after_provider_error")
         self.assertEqual(result["mode"], "offline_scripted")
+
+    def test_provider_timeout_falls_back_and_is_not_cached(self):
+        # A timeout reaches run_demo as a normal "unavailable" turn, not as an exception.
+        with mock.patch.dict(os.environ, LIVE_ENV), mock.patch("finbot.llm.make_client", lambda *_: TimesOut()):
+            for _ in range(2):
+                result = demo.run_demo("Why was txn_A1B2C3D4 declined?", live=True, client="c")
+                self.assertEqual(result["writer_source"], "scripted_after_provider_error")
+                self.assertEqual(result["mode"], "offline_scripted")
+                self.assertNotEqual(result["final"]["blocked_by"], "unavailable")
+                self.assertIn("did not answer", result["writer_note"])
+        self.assertEqual(len(demo.LIVE_CACHE), 0)
 
     def test_conversation_answers_carry_the_label(self):
         from finbot.clarification_conversation import run_conversation

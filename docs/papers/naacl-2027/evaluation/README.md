@@ -12,7 +12,7 @@ these results comes from real customers or a user study. Records and policies ar
 | Earlier live audit (Sec. 4.4) | 128 saved Llama drafts, AI-assisted author review | `python scripts/naacl2027/evaluate_financial_roles.py` replays them | `results/naacl2027/live-writer/audit.json` |
 | Live policy answers (Sec. 4.4) | 30 new frozen cases, the same Llama draft judged with and without the cited-passage fallback; two labellers | `python scripts/naacl2027/paired_gate_study.py score --version fresh-llm-v3` | `results/naacl2027/fresh-llm-v2/`, `fresh-llm-v3/` |
 | Public questions (Sec. 4.4) | 30 unused Banking77 questions × 2 record conditions, pre-fix vs post-fix; AI review plus a blind co-author on post-fix answers | see [public-questions.md](public-questions.md) | `results/naacl2027/public-wording-v2/` |
-| Interface checks (Appendix F) | Browser layouts and axe-core scans | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/interface-after.json`, `conversation-axe.json` |
+| Interface checks (Appendix F) | Browser layouts and axe-core scans | `python -m finbot.demo --port 18765` in one shell, then `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/interface-after.json`, `conversation-axe.json` |
 | Context contracts (Sec. 2.2) | Prompt admission, rollover and snapshot replacement | `python -m unittest tests.test_context_budget` | test output |
 
 Benchmark files are built by `build_ambiguity_set.py` (`--size 8`) and `build_same_amount_set.py`
@@ -23,6 +23,7 @@ under `data/naacl2027/`. Simulator replies are cached, so replays make no model 
 - [Financial roles](financial-roles.md): the role checker, the ablation and its limits.
 - [Live policy answers](fresh-llm.md): the paired fallback study, both label sets and the re-run.
 - [Public questions](public-questions.md): setup, both label sets and remaining omissions.
+- [Frozen studies](frozen-studies.md): replaying the two hash-frozen studies at their tagged commits.
 - [Paper details](paper-details.md): prompts, settings and extra tables the appendix cites.
 
 ## What these results do not show

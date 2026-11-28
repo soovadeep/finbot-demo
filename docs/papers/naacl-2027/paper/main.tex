@@ -63,11 +63,11 @@ default question selector, not a claimed algorithmic advance: a most-distinct or
 with one question and matches it with two. The belief state earns its place by weighing hedged
 details, carrying corrections and stopping early on expected selection error. We contribute:
 \begin{itemize}\itemsep0pt
-\item A controller whose belief state guides clarification, while explicit confirmation and
-  conflict resolution govern retrieval for explanation.
 \item Financial-role claim checks and shared evidence requirements that guide writer
   instructions, verification and bounded recovery; traces show source fields, roles, missing
   information and scripted/live writer labels.
+\item A controller whose belief state guides clarification, while explicit confirmation and
+  conflict resolution govern retrieval for explanation.
 \item Reproducible component simulations, controller replays, authored ablations and two small
   two-labeller audits; they do not establish customer accuracy.
 \end{itemize}
@@ -440,7 +440,9 @@ uses seed 2027 and personas are seeded by episode ID, so every selector meets th
 Simulator responses are cached; prompt templates remain in the scripts. The added baseline
 replay makes no model calls and reports missing coverage explicitly
 (\texttt{scripts/naacl2027/}). Prompts, settings, the 192-episode comparison and the live-writer
-audit are in \url{docs/papers/naacl-2027/evaluation/paper-details.md} in the repository.
+audit are in \url{docs/papers/naacl-2027/evaluation/paper-details.md} in the repository. The two audits are
+hash-frozen to the code that produced them; their replays run at the commits listed in
+\url{evaluation/frozen-studies.md}.
 
 \paragraph{Audit labels.} Both audits use one rubric: \emph{supported} means every claim agrees
 with the record or policy in the right role; \emph{complete} means the answer gives what was asked

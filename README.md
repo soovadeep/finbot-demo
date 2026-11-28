@@ -49,9 +49,9 @@ for the evidence inspector. The demo uses a scripted writer, and labels it as sc
 | Conversation controller replays | `python scripts/naacl2027/evaluate_conversation.py` | `results/naacl2027/conversation-replay.json` |
 | Financial-role ablation | `python scripts/naacl2027/evaluate_financial_roles.py` | `results/naacl2027/financial-roles.json` |
 | Template mutations with matched controls | `python scripts/naacl2027/paired_verification.py` | `results/naacl2027/paired-verification/` |
-| Live policy answers, two labellers | `python scripts/naacl2027/paired_gate_study.py score --version fresh-llm-v3` | `results/naacl2027/fresh-llm-v3/` |
+| Live policy answers, two labellers | `python scripts/naacl2027/paired_gate_study.py score --version fresh-llm-v3` (offline replay: [frozen-studies.md](docs/papers/naacl-2027/evaluation/frozen-studies.md)) | `results/naacl2027/fresh-llm-v3/` |
 | Public questions, pre/post-fix | [public-questions.md](docs/papers/naacl-2027/evaluation/public-questions.md) | `results/naacl2027/public-wording-v2/` |
-| Interface and accessibility checks | `node scripts/naacl2027/interface.cjs`, `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |
+| Interface and accessibility checks | `python -m finbot.demo --port 18765`, then `node scripts/naacl2027/interface.cjs` and `node scripts/naacl2027/conversation_axe.cjs` | `results/naacl2027/` |
 
 The [evaluation guide](docs/papers/naacl-2027/evaluation/README.md) explains what each result
 measures and where it stops. None of these results comes from real customers or a user study.

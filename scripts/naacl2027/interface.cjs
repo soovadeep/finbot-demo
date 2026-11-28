@@ -39,7 +39,7 @@ async function check(name, action) {
         externalRequests.push(request.url());
       }
     });
-    await page.goto(base);
+    await page.goto(new URL("/inspector", base).href);
     await page.waitForFunction(() => !document.getElementById("run").disabled);
     async function inspect(id, fault) {
       await page.selectOption("#scenario", id);
@@ -94,9 +94,9 @@ async function check(name, action) {
     });
     await check("policy-mode-and-coverage-limits-visible",async()=>{
       await inspect("policy");
-      assert.match(await page.locator("#policy-mode").textContent(),/sentence reuse/);
+      assert.match(await page.locator("#policy-mode").textContent(),/complete supporting passage/);
       assert.match(await page.locator("#policy-mode").textContent(),/paraphrase/);
-      assert.match(await page.locator("#policy-mode").textContent(),/context/);
+      assert.match(await page.locator("#policy-mode").textContent(),/applies to your case/);
     });
     await check("completed-question-remains-visible-after-edit",async()=>{
       await inspect("policy");
