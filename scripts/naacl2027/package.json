@@ -1,0 +1,8 @@
+{
+  "name": "finbot-demo-interface-evaluation",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Local, automated interface evaluation; no model or participant calls",
+  "scripts": {"evaluate": "node interface.cjs"},
+  "devDependencies": {"axe-core": "4.10.3", "playwright": "1.62.1"}
+}

@@ -1,0 +1,6 @@
+{
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "calls": 4150,
+  "input_tokens": 1046402,
+  "output_tokens": 33465
+}

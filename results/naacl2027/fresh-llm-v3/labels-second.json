@@ -1,0 +1,312 @@
+{
+ "provenance": {
+  "labeller": "Apurba Bose (second author), using a blind web form; she did not write the cases, the fallback or the provisional labels",
+  "independence": "Independent of the provisional labeller and blind to gate outcomes and to the provisional labels. Not external: she is a co-author.",
+  "date": "2026-11-24",
+  "rubric": "Judge each answer against its records and the policy pages only. supported: every claim agrees with the evidence, in the right role. complete: it gives what was asked that the evidence contains, or says it is not there. Do not look at checker verdicts while labelling.",
+  "carried_over": "Copied from results/naacl2027/fresh-llm-v2/labels-second.json: every fresh-llm-v3 answer is byte-identical to a v2 answer this labeller already judged; none was relabelled."
+ },
+ "items": [
+  {
+   "key": "cmp-amounts:96826d6622a4",
+   "case": "cmp-amounts",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "cmp-declines:c8100e0e6421",
+   "case": "cmp-declines",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "cmp-refunds:e80abdbec0d2",
+   "case": "cmp-refunds",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "cmp-refunds:fdafc76f77e2",
+   "case": "cmp-refunds",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "cmp-settled:6faccac82320",
+   "case": "cmp-settled",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "nodoc-chargeback:e461a5ba051a",
+   "case": "nodoc-chargeback",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "nodoc-fx:e461a5ba051a",
+   "case": "nodoc-fx",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-05-fix:4971c8afcdf9",
+   "case": "pol-05-fix",
+   "supported": false,
+   "complete": true,
+   "rationale": "it says merchant should not retry, but actually cardholder should not retry?"
+  },
+  {
+   "key": "pol-05-fix:62fccfd9200a",
+   "case": "pol-05-fix",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-05-meaning:62fccfd9200a",
+   "case": "pol-05-meaning",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-05-meaning:8c4a0c7b1003",
+   "case": "pol-05-meaning",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-05-retry-24h:62fccfd9200a",
+   "case": "pol-05-retry-24h",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-05-retry-24h:aed13b133039",
+   "case": "pol-05-retry-24h",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-51-what:ad2ca4a553be",
+   "case": "pol-51-what",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-51-what:cfe6bc9a6133",
+   "case": "pol-51-what",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-cap-pct:37b1ba2a55a1",
+   "case": "pol-cap-pct",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-cap-pct:4286e1bfdd57",
+   "case": "pol-cap-pct",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-disclose:e461a5ba051a",
+   "case": "pol-disclose",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-how-send:2965580a9f5e",
+   "case": "pol-how-send",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-how-send:37b1ba2a55a1",
+   "case": "pol-how-send",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-prepaid:37b1ba2a55a1",
+   "case": "pol-prepaid",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-prepaid:c5960c9caff4",
+   "case": "pol-prepaid",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-surcharge-debit-cap:37b1ba2a55a1",
+   "case": "pol-surcharge-debit-cap",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-surcharge-debit-cap:d0e4a664fbd0",
+   "case": "pol-surcharge-debit-cap",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-which-cards:37b1ba2a55a1",
+   "case": "pol-which-cards",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "pol-which-cards:815905873eab",
+   "case": "pol-which-cards",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-actual-date:e865cd864137",
+   "case": "rec-actual-date",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-actual-missing:793153928d65",
+   "case": "rec-actual-missing",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-actual-missing:943908b2cdd4",
+   "case": "rec-actual-missing",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-approver:e461a5ba051a",
+   "case": "rec-approver",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-card-pending:9f6d1810fe86",
+   "case": "rec-card-pending",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-currency:dde7baf4b9ee",
+   "case": "rec-currency",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-decline-05-next:d4eeceb8e912",
+   "case": "rec-decline-05-next",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-decline-51:7c8a46fcb495",
+   "case": "rec-decline-51",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-decline-51:db02d00a7f1b",
+   "case": "rec-decline-51",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-not-found:bd8a9d2a4ec1",
+   "case": "rec-not-found",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-refund-amt:9408b987ab8d",
+   "case": "rec-refund-amt",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-refund-none:07c127ddc65c",
+   "case": "rec-refund-none",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-refund-none:541863957feb",
+   "case": "rec-refund-none",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-refund-pending:36ae389f9b4c",
+   "case": "rec-refund-pending",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-refunded-status:537dc61b3bbd",
+   "case": "rec-refunded-status",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-timeout:3ef6324ade45",
+   "case": "rec-timeout",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  },
+  {
+   "key": "rec-transfer-when:87b8b6a0bcdd",
+   "case": "rec-transfer-when",
+   "supported": true,
+   "complete": true,
+   "rationale": ""
+  }
+ ]
+}

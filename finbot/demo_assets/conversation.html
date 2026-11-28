@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finbot · Conversation demo</title>
+  <link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/conversation.css">
+  <script src="/conversation.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="/study">finbot<span> / conversation demo</span></a>
+    <a href="/clarification">Researcher view: compare question strategies</a>
+    <a href="/inspector">Evidence inspector</a></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">CLARIFY WHAT IS MISSING</p>
+      <h1>“Which payment did you mean?” is where a better answer begins.</h1>
+      <p class="lede">Start with what you remember. Finbot uses your message, asks about remaining ambiguity, and checks the record you confirm.</p></div>
+      <aside class="mode"><strong>Offline · fictional account</strong><p>Rule-based message interpretation.<br>Scripted writer; real Finbot verification.</p></aside></section>
+    <div class="scenario-bar"><div><label for="conversation-scenario">Starting situation</label>
+      <select id="conversation-scenario" disabled></select></div>
+      <div><label for="conversation-fault">Injected model fault</label>
+      <select id="conversation-fault" disabled></select></div>
+      <label id="live-toggle" class="live-toggle" hidden><input type="checkbox" id="conversation-live"> <span id="live-label">Live model</span></label>
+      <button id="conversation-reset" class="secondary" disabled>Start over</button>
+      <span>Try the sample message or write your own.</span></div>
+    <details id="private-notes"><summary>Optional role-play notes · for you, not sent to Finbot</summary>
+      <p id="scenario-memory"></p><p class="hint">The conversation uses only messages you send and the account's records. These notes do not set Finbot's beliefs.</p></details>
+    <p id="conversation-status" role="status" aria-live="polite">Loading…</p>
+    <div class="conversation-layout">
+      <section class="panel chat-panel" aria-label="Conversation">
+        <div class="panel-title"><span class="pill">CONVERSATION</span><h2>You and Finbot</h2></div>
+        <div id="chat-messages" aria-live="polite"></div>
+        <div id="conversation-options" class="conversation-options"></div>
+        <section id="selection-conflict" hidden aria-labelledby="conflict-title">
+          <h3 id="conflict-title" tabindex="-1">This record conflicts with your details</h3>
+          <p id="conflict-record"></p><ul id="conflict-details"></ul>
+          <p>Choose which details to use before Finbot checks the record. You can also type a correction or leave this unresolved.</p>
+          <div id="conflict-actions" class="conversation-options"></div>
+        </section>
+        <section id="confirmation" hidden><h3 id="confirmation-title">Confirm a record</h3>
+          <p class="hint">Your confirmation selects the record for retrieval. If it conflicts with your earlier details, Finbot asks you to resolve the difference first.</p>
+          <div id="matching-records" class="conversation-options"></div>
+          <details id="other-records"><summary>Other records in this fictional account</summary><div id="other-record-buttons" class="conversation-options"></div></details>
+        </section>
+        <form id="message-form"><label for="customer-message">Your message</label>
+          <textarea id="customer-message" rows="3" maxlength="500" required placeholder="Tell Finbot what happened…"></textarea>
+          <div class="composer-footer"><span>Names, card/transfer, dates, amounts and “I'm not sure” are supported.</span>
+            <button id="message-send" disabled>Send message →</button></div></form>
+        <button id="leave-unresolved" class="secondary" hidden>I cannot identify it / none of these</button>
+      </section>
+      <aside class="panel reasoning-panel" aria-label="Finbot working view">
+        <p class="eyebrow">ASSISTANT'S WORKING VIEW</p><h2>What Finbot has learned</h2>
+        <p class="hint">From your messages, not the role-play notes.</p><div id="recognized-details"></div>
+        <div id="selection-reason"></div>
+        <details id="belief-inspector"><summary>Inspect record beliefs and question scores</summary>
+          <p class="hint">These are model beliefs using assumed reply reliability, not measured accuracy. Explicit details determine matching suggestions; beliefs guide clarification.</p>
+          <div id="conversation-beliefs"></div><div id="conversation-scores"></div>
+          <p class="hint">Tentative recollections use an assumed 65% definite-reply accuracy. Repeated details are counted once. November dates without a year use the fictional account year, 2026.</p></details>
+        <section id="answer-check" hidden><h3>Current financial answer</h3><p id="answer-result"></p>
+          <h4>How the answer was checked</h4><ol id="answer-steps" class="answer-steps"></ol>
+          <details><summary>Full retrieved evidence and verification trace</summary><pre id="answer-evidence"></pre></details></section>
+        <section id="scenario-reference" hidden><button id="reveal-reference" class="secondary">Show scenario reference</button><div id="reference-content"></div></section>
+        <button id="conversation-export" class="secondary" disabled>Download demo trace ↓</button>
+      </aside>
+    </div>
+    <footer>This is an interactive demonstration, not a human study result. No bank connection. With the live-model switch off, a scripted writer answers and messages stay in this page unless you download a trace. With it on, your question and the confirmed synthetic record are sent to the model provider (OpenRouter on the hosted demo), and the server keeps recent live answers in a short in-memory cache. Do not enter real financial or personal information.
+      <a href="/study/probes">Research tools: original structured probes</a></footer>
+  </main>
+</body>
+</html>

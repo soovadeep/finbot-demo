@@ -1,0 +1,51 @@
+[hidden] { display: none !important; }
+main { max-width: 1340px; }
+.scenario-bar { display: flex; align-items: end; gap: 16px; padding: 18px 22px; background: white; border: 1px solid var(--line); border-radius: 9px; }
+.scenario-bar > div { min-width: 280px; }
+.scenario-bar label { margin-bottom: 6px; }
+.scenario-bar > span { color: var(--muted); font-size: 12px; align-self: center; margin-left: auto; }
+#private-notes { margin: 14px 0 0; background: #edf2e9; }
+#private-notes p { font-size: 13px; }
+#conversation-status { min-height: 22px; color: var(--muted); font-size: 12px; }
+.conversation-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 22px; align-items: start; }
+.chat-panel, .reasoning-panel { padding: 26px; min-height: 0; }
+#chat-messages { display: flex; flex-direction: column; gap: 14px; margin: 22px 0; }
+.chat-bubble { border: 1px solid var(--line); background: #f5f7f2; border-radius: 9px; padding: 14px 17px; max-width: 95%; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 14px; line-height: 1.65; }
+.chat-bubble.user { background: #e5f0ea; align-self: end; border-color: #c8dad1; }
+.chat-bubble .speaker { display: block; font-size: 10px; letter-spacing: 1px; color: var(--green); font-weight: 750; margin-bottom: 5px; }
+.chat-bubble.superseded { color: var(--muted); border-style: dashed; background: #f5f5f3; }
+.conversation-options { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+.conversation-options button { background: white; color: var(--green); border-color: #b7cbc2; text-align: left; overflow-wrap: anywhere; line-height: 1.5; }
+.conversation-options button:hover { background: #eaf3ed; }
+#message-form { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 18px; }
+#message-form textarea { font-size: 14px; min-height: 92px; }
+.composer-footer { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 10px; }
+.composer-footer span { color: var(--muted); font-size: 11px; max-width: 320px; }
+.composer-footer button { flex-shrink: 0; }
+#confirmation { margin-top: 25px; border-top: 1px solid var(--line); padding-top: 18px; }
+#selection-conflict { border: 2px solid var(--green); border-radius: 9px; padding: 16px; margin-top: 18px; overflow-wrap: anywhere; }
+#conflict-details { padding-left: 20px; }
+#confirmation h3, .reasoning-panel h3 { font-size: 15px; margin: 10px 0; }
+#matching-records, #other-record-buttons { flex-direction: column; }
+.detail-row { border-bottom: 1px solid var(--line); padding: 10px 0; }
+.detail-row strong { display: block; font-size: 13px; }
+.detail-row span { color: var(--muted); font-size: 12px; }
+.detail-row .tentative { color: #856116; }
+#selection-reason { background: #edf3ed; padding: 13px; border-radius: 6px; margin: 20px 0; font-size: 13px; }
+.belief-line { font-size: 11px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.belief-line progress { display: block; width: 100%; height: 8px; margin-top: 8px; accent-color: var(--green); }
+#conversation-scores p { font-size: 12px; }
+#answer-result { font-size: 13px; line-height: 1.6; }
+#scenario-reference { margin-top: 20px; }
+#reference-content { font-size: 12px; overflow-wrap: anywhere; }
+#conversation-export { margin-top: 18px; }
+@media (max-width: 850px) { .conversation-layout { grid-template-columns: 1fr; } .scenario-bar { flex-wrap: wrap; } .scenario-bar > span { margin-left: 0; } .scenario-bar > div { min-width: 0; flex: 1; } }
+@media (max-width: 450px) { .scenario-bar { padding: 15px; } .scenario-bar > div { flex-basis: 100%; } .chat-panel, .reasoning-panel { padding: 18px; } .composer-footer { flex-direction: column; align-items: stretch; } .chat-bubble { max-width: 100%; } header { gap: 12px; } header > a:last-child { font-size: 12px; } }
+
+.answer-steps{padding-left:1.25rem;margin:.5rem 0}
+.answer-steps li{margin:.35rem 0}
+.answer-steps .step-block{color:var(--block,#9b2c2c)}
+.answer-steps blockquote{margin:.25rem 0 .25rem .5rem;padding-left:.5rem;border-left:3px solid currentColor;color:inherit;opacity:.85;font-size:.9em}
+.live-toggle { display: flex; align-items: center; gap: 6px; font-size: 13px; margin-bottom: 10px; max-width: 260px; }
+.live-toggle[hidden] { display: none; }
+.writer-tag { display: block; margin-top: 6px; font-size: 12px; opacity: .75; }

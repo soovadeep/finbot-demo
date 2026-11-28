@@ -1,0 +1,973 @@
+{
+  "provenance": {
+    "reviewer": "Codex AI assistant",
+    "relationship": "Implementing assistant; not independent human review",
+    "date": "2026-11-24",
+    "blinding": "Unblinded; arm names and aggregate execution counts were visible.",
+    "method": "All 120 final question/record/answer pairs reviewed using the pre-frozen public-v1 rubric. Separate support/completeness judgments; no label inferred from gate acceptance.",
+    "scope": "The appended synthetic reference identifies the payment under discussion. Explanations of earlier attempts or account-wide status are not inferred from that record. Indirect complaints require subjective interpretation. Status definitions describe schema semantics, not verified external bank policy.",
+    "refusals": "The three baseline missing-reason refusals are supported and complete evidence-limited answers, although requesting an already supplied ID is a usability flaw."
+  },
+  "items": [
+    {
+      "key": "baseline/public-001/populated",
+      "answer_sha256": "fc8c78a144bb982920570e20c23ee92d2ce5b623fa998d34ccbd744e72102fec",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer cannot see a refund. Current status or explicit absence addresses that concern; a payment/refund amount alone does not. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-001/populated",
+      "answer_sha256": "763b76a88d6f53aa2fea7706c690f5cea251b27f337a1a2c783241197f7d79a7",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The customer cannot see a refund. Current status or explicit absence addresses that concern; a payment/refund amount alone does not. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-001/missing",
+      "answer_sha256": "4745f4b9df9fbea3d8bbeb57f83bec2dab2ffa1537bdfdb6a8e402fa8bb66eb5",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer cannot see a refund. Current status or explicit absence addresses that concern; a payment/refund amount alone does not. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-001/missing",
+      "answer_sha256": "cb6138b2be33e4cb6f13eed8e3370fdadec5a2898a46f8601a56b8c93dc60aae",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The customer cannot see a refund. Current status or explicit absence addresses that concern; a payment/refund amount alone does not. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-002/populated",
+      "answer_sha256": "82c32baac0b8749c713e79f33411de5cc9ef55261c5d63272baaf4951227b950",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks whether the refund can be checked in the statement. Neither answer gives statement-access guidance or explicitly limits that capability; status alone leaves this request unanswered. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-002/populated",
+      "answer_sha256": "b81891878c97b95dd8a75cb14c2161ee662676da03b906e6182207a513967447",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks whether the refund can be checked in the statement. Neither answer gives statement-access guidance or explicitly limits that capability; status alone leaves this request unanswered. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-002/missing",
+      "answer_sha256": "f335bdf4dc9071759f249a6d890a864b33153113c94a1a65989ee51511050bed",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks whether the refund can be checked in the statement. Neither answer gives statement-access guidance or explicitly limits that capability; status alone leaves this request unanswered. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-002/missing",
+      "answer_sha256": "ac1603e9c26cc47ada1f04338e7d8b8e3efa368fea322e2752ae9e097e7104e5",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks whether the refund can be checked in the statement. Neither answer gives statement-access guidance or explicitly limits that capability; status alone leaves this request unanswered. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-003/populated",
+      "answer_sha256": "115be8a80b8fa16536787689ac42b5225dcb8659dd512cb7365fc956d8388218",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer reports a refund absent from the statement; current refund status or missing-status information addresses the reported progress issue. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-003/populated",
+      "answer_sha256": "cddc26637758a6094dbe68f015af07fc71c5db40b423ec464692dfb526acdb42",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The customer reports a refund absent from the statement; current refund status or missing-status information addresses the reported progress issue. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-003/missing",
+      "answer_sha256": "c781ff70bc77e53c623ab6c3eefd0773558abcbedc686a053a0dae649b53edbc",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer reports a refund absent from the statement; current refund status or missing-status information addresses the reported progress issue. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-003/missing",
+      "answer_sha256": "bd82cc0eadcfb3c1b202f189d4ddcb25f261f31251079893c5b5d0c4c60f6539",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The customer reports a refund absent from the statement; current refund status or missing-status information addresses the reported progress issue. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-004/populated",
+      "answer_sha256": "14bee4f7f23a364c627c50e65e9e037339741dcd94185b3999579cb8a5111f63",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Returned transaction denotes the refund in this context. Both answers discuss missing payment settlement timing, not refund arrival/status, so the requested process is not addressed. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-004/populated",
+      "answer_sha256": "14bee4f7f23a364c627c50e65e9e037339741dcd94185b3999579cb8a5111f63",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Returned transaction denotes the refund in this context. Both answers discuss missing payment settlement timing, not refund arrival/status, so the requested process is not addressed. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-004/missing",
+      "answer_sha256": "5fa469955ef0ca58527dc839e9763469adb56d86c0140c45a759eaa9b55a68bc",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Returned transaction denotes the refund in this context. Both answers discuss missing payment settlement timing, not refund arrival/status, so the requested process is not addressed. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-004/missing",
+      "answer_sha256": "5fa469955ef0ca58527dc839e9763469adb56d86c0140c45a759eaa9b55a68bc",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Returned transaction denotes the refund in this context. Both answers discuss missing payment settlement timing, not refund arrival/status, so the requested process is not addressed. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-005/populated",
+      "answer_sha256": "9f7c6fe952b2389a5836f3f6d956b6db89504d3e3369d0eb1e2ff25896a2d45e",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "An explicit refund-status request requires the pending status or its absence, not merely an amount. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-005/populated",
+      "answer_sha256": "7eddf60c1997db501fadb1194e6f9ad209c5ccae8255428649bab14bd246ff35",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "An explicit refund-status request requires the pending status or its absence, not merely an amount. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-005/missing",
+      "answer_sha256": "be0af9e11e7e3842b1a5a1d7052b631c031f7f9415c77995b9064064181d550d",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "An explicit refund-status request requires the pending status or its absence, not merely an amount. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-005/missing",
+      "answer_sha256": "706b5bd8bb2adbb2bc6f3472835456d017eaa8cae5603ce9c1327e8ddb49bfb6",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "An explicit refund-status request requires the pending status or its absence, not merely an amount. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-006/populated",
+      "answer_sha256": "d6349c054c0f01cc2c2ae9374f4eb24ea63c3e4a1ce8bf2c8d5c5047407302fc",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer asks the assistant to resolve a delayed seller refund. Status alone is partial; neither answer explains the read-only limit or an available resolution path. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-006/populated",
+      "answer_sha256": "cf47b0425a8389ff76e65996415bb2013523fd55bccb90b30573e6ce87aa1c9c",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer asks the assistant to resolve a delayed seller refund. Status alone is partial; neither answer explains the read-only limit or an available resolution path. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-006/missing",
+      "answer_sha256": "9dbc85ac246a15f9905f677931f73eaf8306be4e00de1ced0b87f2a37dd398a0",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer asks the assistant to resolve a delayed seller refund. Status alone is partial; neither answer explains the read-only limit or an available resolution path. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-006/missing",
+      "answer_sha256": "c4c4a4e6a8df1cfc54304f0fab3c3b1ae782c8bc829dc639900ec5d3315baefa",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer asks the assistant to resolve a delayed seller refund. Status alone is partial; neither answer explains the read-only limit or an available resolution path. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-007/populated",
+      "answer_sha256": "57a02d26162c737122015ab95f5526a4273d8d01f4aa1249cbe8b0872e3054f6",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The pending-refund report calls for current status. The revised answer gives it, or states that the record lacks it without inferring no refund occurred. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-007/populated",
+      "answer_sha256": "ba5517fcb63a23c16afa8c24a1d8db10bcea8bb990313abffd666552e1f734e5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The pending-refund report calls for current status. The revised answer gives it, or states that the record lacks it without inferring no refund occurred. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-007/missing",
+      "answer_sha256": "4a16c3c35e663f37f487c09a10c88c11c78ab4c87ae0e6f486a35eaa68661362",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The pending-refund report calls for current status. The revised answer gives it, or states that the record lacks it without inferring no refund occurred. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-007/missing",
+      "answer_sha256": "99ac4d272b8aaab337fab863c8e39a74603313156951cf009040ef81930c7df8",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The pending-refund report calls for current status. The revised answer gives it, or states that the record lacks it without inferring no refund occurred. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-008/populated",
+      "answer_sha256": "6a8e34d915440737d91f72202727a436ff099ebe36a787a430e9cdb472b0d2f2",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer asks whether all money was returned. A pending USD 23.40 refund on an USD 81.70 payment cannot establish that; the current populated answer supplies the decisive pending state and both amounts. Explicit absence in the missing condition states the evidence limit. Baseline amounts alone do not establish completion. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-008/populated",
+      "answer_sha256": "5fefffae7101f9216b23e4bd67f3b9be6d596157ca2cb5d667b56562e4d26629",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The customer asks whether all money was returned. A pending USD 23.40 refund on an USD 81.70 payment cannot establish that; the current populated answer supplies the decisive pending state and both amounts. Explicit absence in the missing condition states the evidence limit. Baseline amounts alone do not establish completion. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-008/missing",
+      "answer_sha256": "ce05866b07947d11fb09908670b1712548fa9197d6c72a787f2163e3e0b8a8ca",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer asks whether all money was returned. A pending USD 23.40 refund on an USD 81.70 payment cannot establish that; the current populated answer supplies the decisive pending state and both amounts. Explicit absence in the missing condition states the evidence limit. Baseline amounts alone do not establish completion. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-008/missing",
+      "answer_sha256": "f2e5f145f6370d85e6a9a4885d9a563d06d3aedb65a97541157a12f2ab09d9fd",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The customer asks whether all money was returned. A pending USD 23.40 refund on an USD 81.70 payment cannot establish that; the current populated answer supplies the decisive pending state and both amounts. Explicit absence in the missing condition states the evidence limit. Baseline amounts alone do not establish completion. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-009/populated",
+      "answer_sha256": "410378b7d1cc5fa25172e8c97b367e0662e097c8d8e91bcffd775a8e6bc138f5",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The location/progress question is answered by the refund status or its absence. The record does not prove the merchant history, but neither answer claims that it does. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-009/populated",
+      "answer_sha256": "cfbcef36fc67ae90ce441f36b0e23a0ea91758ee763a003bc93bce7d980e2a4c",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The location/progress question is answered by the refund status or its absence. The record does not prove the merchant history, but neither answer claims that it does. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-009/missing",
+      "answer_sha256": "7b206071d83072ac1b9f6c32b878b9a33f8f875946863b989e83337ec0ff7e1a",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The location/progress question is answered by the refund status or its absence. The record does not prove the merchant history, but neither answer claims that it does. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-009/missing",
+      "answer_sha256": "1137908a2b2b4e652e3f5219036412691f53d29e199d92600a0a36c88b25790f",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The location/progress question is answered by the refund status or its absence. The record does not prove the merchant history, but neither answer claims that it does. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-010/populated",
+      "answer_sha256": "66aba083d6f4c1659e0cbb5945eb63de44fe7c8d579c4ee84208befbb2afcebe",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer cannot see a refund; current status or its absence addresses progress. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-010/populated",
+      "answer_sha256": "e12d4c6c4810b480cbaf1db001909008a423ad4bee5ea85ce1b55ea1bf5c74a1",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The customer cannot see a refund; current status or its absence addresses progress. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-010/missing",
+      "answer_sha256": "508e70f3556f2980bd274d44f140c54b47d4564a706516fb268f27c69ee12fcd",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The customer cannot see a refund; current status or its absence addresses progress. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-010/missing",
+      "answer_sha256": "5c7e77f13b1d79590b78696f36b08378c91809514bdf889503d2d7a75248f963",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The customer cannot see a refund; current status or its absence addresses progress. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-011/populated",
+      "answer_sha256": "031f2481670f33a22be55268f6a452910606bad036c10c9f5564ecc0ce494a50",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Why pending requires a cause or explicit lack of cause evidence. Current answers explain the schema meaning and say a settlement reason is not recorded; baseline dates alone do not answer why. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-011/populated",
+      "answer_sha256": "539cf42c3675d9d4cc187d9a463d8554e1e5fee8b754af352454e41b7a22c4db",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Why pending requires a cause or explicit lack of cause evidence. Current answers explain the schema meaning and say a settlement reason is not recorded; baseline dates alone do not answer why. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-011/missing",
+      "answer_sha256": "67b621f2fdee56bc506cf3cfb5a82aad6a0393df6f29a01833696c930b660a7a",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Why pending requires a cause or explicit lack of cause evidence. Current answers explain the schema meaning and say a settlement reason is not recorded; baseline dates alone do not answer why. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-011/missing",
+      "answer_sha256": "8eb7926d4bb7b40bf8c2ffa53ab17a8d5d75353bcbe9cc24bfb4e79e653e73c5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Why pending requires a cause or explicit lack of cause evidence. Current answers explain the schema meaning and say a settlement reason is not recorded; baseline dates alone do not answer why. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-012/populated",
+      "answer_sha256": "8bc38577f19c97fc90f13ccdf973cc10f986b1e90925fd6ebd3816e61ba38883",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The current answers give pending meaning and explicit missing cause. Baseline amounts/dates omit the requested explanation. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-012/populated",
+      "answer_sha256": "4064413af840cca3c23c9df621c8ef3f056e73c41515d9ed543534ed61a573c5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The current answers give pending meaning and explicit missing cause. Baseline amounts/dates omit the requested explanation. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-012/missing",
+      "answer_sha256": "ae8fc818462e56587a804253851bd9f75e2bbebf6ffccfc7c076df14d06b49f1",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The current answers give pending meaning and explicit missing cause. Baseline amounts/dates omit the requested explanation. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-012/missing",
+      "answer_sha256": "8dd78fc860bcfe8ad27ea8d367cdb2540134444f55bf0d2a07a7cba29274fb65",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The current answers give pending meaning and explicit missing cause. Baseline amounts/dates omit the requested explanation. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-013/populated",
+      "answer_sha256": "9f6f976fadd242a4f7ccbae16cfdafbfaa563eac3154ecf718e55d44fe4a02ac",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question asks for timing. Both versions give a qualified expected date when available, or explicitly state that it is absent. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-013/populated",
+      "answer_sha256": "8df01eb62a504778fbfb7748eb4f06f416c45cdeaa27ff4ff6424343a1bc8704",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question asks for timing. Both versions give a qualified expected date when available, or explicitly state that it is absent. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-013/missing",
+      "answer_sha256": "58aed92e614684287b95bc4b73afd8789f1f2a0d1cfd408d91ca417a63d4a883",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question asks for timing. Both versions give a qualified expected date when available, or explicitly state that it is absent. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-013/missing",
+      "answer_sha256": "a652ec212137654b06cd58e4584aa09e730be70730c1251c41c98f0b21d32b98",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question asks for timing. Both versions give a qualified expected date when available, or explicitly state that it is absent. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-014/populated",
+      "answer_sha256": "619cd0a42bfd387e408140f2fb1840edd230507e4bc5d2237bfbc2390cb1b19b",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Why pending requires a cause or evidence limitation, which only the revised answers provide. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-014/populated",
+      "answer_sha256": "44a93b9352f653af4213105b4e3bd21858ebe8b06bda26b923d50df76ad0f140",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Why pending requires a cause or evidence limitation, which only the revised answers provide. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-014/missing",
+      "answer_sha256": "7f3f6baaa7828d590bf27eafda77a39c985a27ea830b719ca4b435f6fd9f1a48",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Why pending requires a cause or evidence limitation, which only the revised answers provide. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-014/missing",
+      "answer_sha256": "8f846ce6a52f1b78eccbc06edabf80aab14908e04d014370b86b36280d51d3ef",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Why pending requires a cause or evidence limitation, which only the revised answers provide. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-015/populated",
+      "answer_sha256": "f66bdcd93f83f7de4aacda4fbdc4c13b086bdc8b49e85cc61345881b8fddcfcf",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "How come asks for a cause. Current status and a date do not supply one or acknowledge absent cause evidence. Both versions remain incomplete. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-015/populated",
+      "answer_sha256": "0b40e85beb81524cc9d38577b27d12f7bbe9afd53cdd8c0c803da6d74b54fabb",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "How come asks for a cause. Current status and a date do not supply one or acknowledge absent cause evidence. Both versions remain incomplete. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-015/missing",
+      "answer_sha256": "f88f44c3ddb5fd7e58b878f45cca9ad6335ab8ca816a37921987ecb3513d96cc",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "How come asks for a cause. Current status and a date do not supply one or acknowledge absent cause evidence. Both versions remain incomplete. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-015/missing",
+      "answer_sha256": "d363a72c6f73f180116efff1ea7ca6b3915b46dad630213eb5c04f8ffbd5c867",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "How come asks for a cause. Current status and a date do not supply one or acknowledge absent cause evidence. Both versions remain incomplete. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-016/populated",
+      "answer_sha256": "7f2884d17211014455aa9b5bb50e822e4cea4ee0adaabf288bfbaeb042657e87",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "For the reported pending payment, the baseline populated answer provides a qualified expected date and no actual date, a useful bounded update; its missing-condition answer gives only payment approval. Current answers explicitly supply settlement status in both conditions. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-016/populated",
+      "answer_sha256": "437a1f914db7e551dcf002dffa58d2ea427aa3215177002c0059553b732d8ffd",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "For the reported pending payment, the baseline populated answer provides a qualified expected date and no actual date, a useful bounded update; its missing-condition answer gives only payment approval. Current answers explicitly supply settlement status in both conditions. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-016/missing",
+      "answer_sha256": "b5731779b150d4cb9f8b3565c6db73872198eb3069628a375c7889ec66ed78d0",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "For the reported pending payment, the baseline populated answer provides a qualified expected date and no actual date, a useful bounded update; its missing-condition answer gives only payment approval. Current answers explicitly supply settlement status in both conditions. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-016/missing",
+      "answer_sha256": "1ee9d14481603b6e5c7c79cb964c71e85e37f2a2004869143810c269db413167",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "For the reported pending payment, the baseline populated answer provides a qualified expected date and no actual date, a useful bounded update; its missing-condition answer gives only payment approval. Current answers explicitly supply settlement status in both conditions. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-017/populated",
+      "answer_sha256": "26f49eda9f41d0a41c32c2acf812fd0c346bd4462e4539d3fcdc3d94335083e3",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Why not gone through requires a cause or explicit limitation. The revised answers supply pending meaning and the absence of a cause, while the baseline omits this. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-017/populated",
+      "answer_sha256": "20d50b6d65d90ed31e432a89170758dac21824be781a2143bd77d4c908d28d0a",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Why not gone through requires a cause or explicit limitation. The revised answers supply pending meaning and the absence of a cause, while the baseline omits this. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-017/missing",
+      "answer_sha256": "7443119319a5559564a7800500874f09ea1cd1d8af95238dee470a7431eaf414",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Why not gone through requires a cause or explicit limitation. The revised answers supply pending meaning and the absence of a cause, while the baseline omits this. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-017/missing",
+      "answer_sha256": "3af3bf8c2eceab6fe49aed4981c014752049ce72a8e32f0913e7d1515902909f",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Why not gone through requires a cause or explicit limitation. The revised answers supply pending meaning and the absence of a cause, while the baseline omits this. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-018/populated",
+      "answer_sha256": "2519f304cc8a7dbc01d9de12d1978a6d1dea94e6a0e6f82e5ac830ebb3a4bf0f",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks both why and when. Revised answers give meaning, missing cause and either an expected date or its absence. Baseline omits the cause and, in the missing condition, the timing limit. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-018/populated",
+      "answer_sha256": "efa5a5643b8caccaaa64b8110a05423726193336fa48ae4ff3a8437982145610",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question asks both why and when. Revised answers give meaning, missing cause and either an expected date or its absence. Baseline omits the cause and, in the missing condition, the timing limit. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-018/missing",
+      "answer_sha256": "fcd6ecd68a869f3295058237fdd3e2ff4e4ba9d86d50be049ac1bf84ed970d06",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The question asks both why and when. Revised answers give meaning, missing cause and either an expected date or its absence. Baseline omits the cause and, in the missing condition, the timing limit. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-018/missing",
+      "answer_sha256": "564b2938de7751a9d8bbf56a73e35f63d8237d40fb571419839fc98bf25110f7",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question asks both why and when. Revised answers give meaning, missing cause and either an expected date or its absence. Baseline omits the cause and, in the missing condition, the timing limit. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-019/populated",
+      "answer_sha256": "c17930fec2159d9366b49c2f367d6e50f2a291b9c29675e8272f97dbbb6e90ee",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Both versions address the explicit timing request with an expected date or its absence. They do not invent a processing duration. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-019/populated",
+      "answer_sha256": "c17930fec2159d9366b49c2f367d6e50f2a291b9c29675e8272f97dbbb6e90ee",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Both versions address the explicit timing request with an expected date or its absence. They do not invent a processing duration. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-019/missing",
+      "answer_sha256": "f5832fae89d200e21b608f2beb7cd6d95ccad8505df37a0ab2855f4496039b9d",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Both versions address the explicit timing request with an expected date or its absence. They do not invent a processing duration. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-019/missing",
+      "answer_sha256": "f5832fae89d200e21b608f2beb7cd6d95ccad8505df37a0ab2855f4496039b9d",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Both versions address the explicit timing request with an expected date or its absence. They do not invent a processing duration. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-020/populated",
+      "answer_sha256": "a7a656f51f98ef0180f90a50d54ee8c207971b72f8a805ff94292d2b784967e4",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Revised answers explain pending and explicitly lack a recorded cause. Baseline gives only transaction facts. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-020/populated",
+      "answer_sha256": "6e675708505f6cc28ca0b32bc27efe7e12f09965600a5dec27f5c954a73e9165",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Revised answers explain pending and explicitly lack a recorded cause. Baseline gives only transaction facts. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-020/missing",
+      "answer_sha256": "c864bc56ffbcaeefcccccaeac0d21ac80cb2847e7baa91f3038a7b0821f4ca7a",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "Revised answers explain pending and explicitly lack a recorded cause. Baseline gives only transaction facts. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-020/missing",
+      "answer_sha256": "5249f40ac8118a2414de51fd8311103686e46e5d7eb8ecb9ad5190758abf6860",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Revised answers explain pending and explicitly lack a recorded cause. Baseline gives only transaction facts. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-021/populated",
+      "answer_sha256": "fb701ffc239ffa24d5783a85a2dcf4c9da90642431dd79c18b3d3fc739c918d5",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The user asks what is going on AND when the problem will be fixed. Decline facts/guidance address the first part, but an absent settlement date does not explain that a fix time is unknown. Both versions remain incomplete. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-021/populated",
+      "answer_sha256": "fb701ffc239ffa24d5783a85a2dcf4c9da90642431dd79c18b3d3fc739c918d5",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The user asks what is going on AND when the problem will be fixed. Decline facts/guidance address the first part, but an absent settlement date does not explain that a fix time is unknown. Both versions remain incomplete. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-021/missing",
+      "answer_sha256": "6c4883ced779115c9a44e40289aa8a9b04b33bf04ec6e9c21893534129f5de18",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The user asks what is going on AND when the problem will be fixed. Decline facts/guidance address the first part, but an absent settlement date does not explain that a fix time is unknown. Both versions remain incomplete. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-021/missing",
+      "answer_sha256": "6c4883ced779115c9a44e40289aa8a9b04b33bf04ec6e9c21893534129f5de18",
+      "supported": true,
+      "complete": false,
+      "premise_mismatch": false,
+      "rationale": "The user asks what is going on AND when the problem will be fixed. Decline facts/guidance address the first part, but an absent settlement date does not explain that a fix time is unknown. Both versions remain incomplete. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-022/populated",
+      "answer_sha256": "3587107b782538fda682452f2ef74efebeb4cb0beb1d671fc2f16c0e688ae0af",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Recorded decline code/reason addresses why when present. In the missing condition, unmapped failure and do-not-retry guidance explicitly delimit current knowledge. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-022/populated",
+      "answer_sha256": "3587107b782538fda682452f2ef74efebeb4cb0beb1d671fc2f16c0e688ae0af",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Recorded decline code/reason addresses why when present. In the missing condition, unmapped failure and do-not-retry guidance explicitly delimit current knowledge. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-022/missing",
+      "answer_sha256": "1a4beb765b5fcef21e91ec0954683c6f902409e9d0a018142709c93e642ce5bc",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Recorded decline code/reason addresses why when present. In the missing condition, unmapped failure and do-not-retry guidance explicitly delimit current knowledge. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-022/missing",
+      "answer_sha256": "1a4beb765b5fcef21e91ec0954683c6f902409e9d0a018142709c93e642ce5bc",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Recorded decline code/reason addresses why when present. In the missing condition, unmapped failure and do-not-retry guidance explicitly delimit current knowledge. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-023/populated",
+      "answer_sha256": "072811c954e5dcbede3461a535c78a01f4f44390ea8d21d5eafb7975cf18234b",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The decline report is addressed with its recorded cause/guidance or explicit unmapped failure. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-023/populated",
+      "answer_sha256": "072811c954e5dcbede3461a535c78a01f4f44390ea8d21d5eafb7975cf18234b",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The decline report is addressed with its recorded cause/guidance or explicit unmapped failure. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-023/missing",
+      "answer_sha256": "9730f65dc60dd94abf965ca70fe71c63c3e02e1544bb53299819bb9ba22cd224",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The decline report is addressed with its recorded cause/guidance or explicit unmapped failure. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-023/missing",
+      "answer_sha256": "9730f65dc60dd94abf965ca70fe71c63c3e02e1544bb53299819bb9ba22cd224",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The decline report is addressed with its recorded cause/guidance or explicit unmapped failure. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-024/populated",
+      "answer_sha256": "de5440e597b55aa58941356e18499bd789fda27b814258946bfbebe559cc4fd8",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The populated answer gives the recorded decline reason. Baseline missing-data refusal appropriately avoids guessing; the current answer instead reports the decline and explicit absent reason. Neither establishes the whole account state. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-024/populated",
+      "answer_sha256": "de5440e597b55aa58941356e18499bd789fda27b814258946bfbebe559cc4fd8",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The populated answer gives the recorded decline reason. Baseline missing-data refusal appropriately avoids guessing; the current answer instead reports the decline and explicit absent reason. Neither establishes the whole account state. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-024/missing",
+      "answer_sha256": "d1a81b6eff07e61e35c2fdfc38c34c08fb1edc19b420ad3e2cad93eb54e810f5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The populated answer gives the recorded decline reason. Baseline missing-data refusal appropriately avoids guessing; the current answer instead reports the decline and explicit absent reason. Neither establishes the whole account state. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-024/missing",
+      "answer_sha256": "f5aa4d414aa1505b2ffc7f8cf3854062e4c5f4445d4e98c664f70ba01f59bcdb",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The populated answer gives the recorded decline reason. Baseline missing-data refusal appropriately avoids guessing; the current answer instead reports the decline and explicit absent reason. Neither establishes the whole account state. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-025/populated",
+      "answer_sha256": "521fdaf286f21849b4110798c02f4e56130897f6e04dfa704583b2c585251963",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The recorded reason addresses the question when present. In the missing condition, baseline appropriately refuses an unverifiable explanation; current explicitly states missing cause and available guidance. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-025/populated",
+      "answer_sha256": "521fdaf286f21849b4110798c02f4e56130897f6e04dfa704583b2c585251963",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The recorded reason addresses the question when present. In the missing condition, baseline appropriately refuses an unverifiable explanation; current explicitly states missing cause and available guidance. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-025/missing",
+      "answer_sha256": "d1a81b6eff07e61e35c2fdfc38c34c08fb1edc19b420ad3e2cad93eb54e810f5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The recorded reason addresses the question when present. In the missing condition, baseline appropriately refuses an unverifiable explanation; current explicitly states missing cause and available guidance. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-025/missing",
+      "answer_sha256": "773cda2183a66d9dba78a79e2b07cc5c77de7c630d3614ad4421302c731f17ba",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The recorded reason addresses the question when present. In the missing condition, baseline appropriately refuses an unverifiable explanation; current explicitly states missing cause and available guidance. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-026/populated",
+      "answer_sha256": "fc03fb702775d75e994d0552fcf3dd03f48924e9028c8ae29e7a4e9bf06e0671",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question is adapted to this identified payment; both answers give its recorded cause or explicit unmapped failure and guidance. Neither establishes the cause of every other attempt. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-026/populated",
+      "answer_sha256": "fc03fb702775d75e994d0552fcf3dd03f48924e9028c8ae29e7a4e9bf06e0671",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question is adapted to this identified payment; both answers give its recorded cause or explicit unmapped failure and guidance. Neither establishes the cause of every other attempt. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-026/missing",
+      "answer_sha256": "2901aceee39a0a2b8470a8af5215779a350f2eca7012aec4553ecb48df20a439",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question is adapted to this identified payment; both answers give its recorded cause or explicit unmapped failure and guidance. Neither establishes the cause of every other attempt. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-026/missing",
+      "answer_sha256": "2901aceee39a0a2b8470a8af5215779a350f2eca7012aec4553ecb48df20a439",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The question is adapted to this identified payment; both answers give its recorded cause or explicit unmapped failure and guidance. Neither establishes the cause of every other attempt. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-027/populated",
+      "answer_sha256": "fc7d69d6f74542b7e8f870d5838412cdc8c449c8eb5a30904d1aa719fcc139ee",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "For the identified payment, the known cause is given; when absent, baseline refuses an unverifiable explanation and current states missing cause. No claim about the cause of every earlier attempt is made. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-027/populated",
+      "answer_sha256": "fc7d69d6f74542b7e8f870d5838412cdc8c449c8eb5a30904d1aa719fcc139ee",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "For the identified payment, the known cause is given; when absent, baseline refuses an unverifiable explanation and current states missing cause. No claim about the cause of every earlier attempt is made. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-027/missing",
+      "answer_sha256": "d1a81b6eff07e61e35c2fdfc38c34c08fb1edc19b420ad3e2cad93eb54e810f5",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "For the identified payment, the known cause is given; when absent, baseline refuses an unverifiable explanation and current states missing cause. No claim about the cause of every earlier attempt is made. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-027/missing",
+      "answer_sha256": "523ce89b338b8a1f69e7eda6be766e4bd2c38c370457672b48bba0f2423467e4",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "For the identified payment, the known cause is given; when absent, baseline refuses an unverifiable explanation and current states missing cause. No claim about the cause of every earlier attempt is made. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-028/populated",
+      "answer_sha256": "964d2c85feed69ec3618f37f574b844c9f0f51d1ba9ca1d51fb131e03d23c94d",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The failure report is answered by the recorded decline and cause/guidance or unmapped failure. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-028/populated",
+      "answer_sha256": "964d2c85feed69ec3618f37f574b844c9f0f51d1ba9ca1d51fb131e03d23c94d",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The failure report is answered by the recorded decline and cause/guidance or unmapped failure. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-028/missing",
+      "answer_sha256": "d65de759e68ac3b373f7f37a6a577524e8684d26664413bbe2f16b478b7fed7d",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The failure report is answered by the recorded decline and cause/guidance or unmapped failure. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-028/missing",
+      "answer_sha256": "d65de759e68ac3b373f7f37a6a577524e8684d26664413bbe2f16b478b7fed7d",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "The failure report is answered by the recorded decline and cause/guidance or unmapped failure. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-029/populated",
+      "answer_sha256": "bfd56a4f54968e1de3a3bd66314b4f77e7b9a230016b2f8d38a1cf303cf3eea4",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Given the added transaction reference, both answers explain that payment through its recorded decline facts/guidance. They do not diagnose the entire card across stores. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-029/populated",
+      "answer_sha256": "bfd56a4f54968e1de3a3bd66314b4f77e7b9a230016b2f8d38a1cf303cf3eea4",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Given the added transaction reference, both answers explain that payment through its recorded decline facts/guidance. They do not diagnose the entire card across stores. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-029/missing",
+      "answer_sha256": "57109ad3543c00e08bb359e0a9e03558b90ac2dae2f35f235cd38c0ed89e8a08",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Given the added transaction reference, both answers explain that payment through its recorded decline facts/guidance. They do not diagnose the entire card across stores. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-029/missing",
+      "answer_sha256": "57109ad3543c00e08bb359e0a9e03558b90ac2dae2f35f235cd38c0ed89e8a08",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Given the added transaction reference, both answers explain that payment through its recorded decline facts/guidance. They do not diagnose the entire card across stores. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-030/populated",
+      "answer_sha256": "2a580851edcd70f32d9e76ba71c44f33a8737cc49d2f193952450dcbd384698f",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Both answers give current decline evidence and guidance. They neither confirm nor fabricate the alleged earlier assurance. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-030/populated",
+      "answer_sha256": "2a580851edcd70f32d9e76ba71c44f33a8737cc49d2f193952450dcbd384698f",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Both answers give current decline evidence and guidance. They neither confirm nor fabricate the alleged earlier assurance. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "baseline/public-030/missing",
+      "answer_sha256": "8c4e83ab293109740cfd5b8d826aab4ee73862c0544d65bf4420f05d4f5e76a8",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Both answers give current decline evidence and guidance. They neither confirm nor fabricate the alleged earlier assurance. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    },
+    {
+      "key": "current/public-030/missing",
+      "answer_sha256": "8c4e83ab293109740cfd5b8d826aab4ee73862c0544d65bf4420f05d4f5e76a8",
+      "supported": true,
+      "complete": true,
+      "premise_mismatch": false,
+      "rationale": "Both answers give current decline evidence and guidance. They neither confirm nor fabricate the alleged earlier assurance. All stated financial fields and guidance agree with the retrieved evidence; support is distinct from completeness."
+    }
+  ]
+}

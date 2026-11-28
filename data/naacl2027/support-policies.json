@@ -1,0 +1,62 @@
+[
+  {
+    "id": "surcharge",
+    "question": "Which cards can carry a surcharge, and what is the cap?",
+    "source": "Credit cards may carry a surcharge of at most 3 percent. Debit and prepaid cards are excluded.",
+    "paraphrase": "A credit-card surcharge is limited to 3 percent. Debit and prepaid cards are not eligible.",
+    "rule_reversal": "Credit cards may carry a surcharge of at most 3 percent. Debit and prepaid cards are included.",
+    "changed_condition": "Credit cards may carry a surcharge of at most 5 percent. Debit and prepaid cards are excluded.",
+    "missing_exception": "Credit cards may carry a surcharge of at most 3 percent.",
+    "unsupported_conclusion": "Your debit card qualifies for this surcharge."
+  },
+  {
+    "id": "refund-timing",
+    "question": "When do refunds arrive, and does that timing cover pending disputes?",
+    "source": "Refunds normally arrive within 5 business days. Pending disputes are excluded from this timing.",
+    "paraphrase": "The usual refund arrival time is 5 business days. That estimate does not cover pending disputes.",
+    "rule_reversal": "Refunds normally arrive within 5 business days. Pending disputes are included in this timing.",
+    "changed_condition": "Refunds normally arrive within 5 calendar days. Pending disputes are excluded from this timing.",
+    "missing_exception": "Refunds normally arrive within 5 business days.",
+    "unsupported_conclusion": "Your disputed payment qualifies for this timing."
+  },
+  {
+    "id": "retry",
+    "question": "When can I retry a soft decline, and can I retry a hard decline unchanged?",
+    "source": "A soft decline permits one retry after 1 hour. Hard declines must not be retried with unchanged card details.",
+    "paraphrase": "After a soft decline, wait 1 hour before the single permitted retry. Do not retry a hard decline using the same card details.",
+    "rule_reversal": "A soft decline permits one retry after 1 hour. Hard declines may be retried with unchanged card details.",
+    "changed_condition": "A soft decline permits one retry immediately. Hard declines must not be retried with unchanged card details.",
+    "missing_exception": "A soft decline permits one retry after 1 hour.",
+    "unsupported_conclusion": "Your hard decline qualifies for the delayed retry."
+  },
+  {
+    "id": "cancellation",
+    "question": "When can scheduled transfers be cancelled, including transfers already processing?",
+    "source": "Scheduled transfers can be cancelled before processing begins. Transfers already processing cannot be cancelled.",
+    "paraphrase": "Cancellation is available for a scheduled transfer until processing starts. Once processing has started, cancellation is unavailable.",
+    "rule_reversal": "Scheduled transfers can be cancelled before processing begins. Transfers already processing can be cancelled.",
+    "changed_condition": "Scheduled transfers can be cancelled after processing begins. Transfers already processing cannot be cancelled.",
+    "missing_exception": "Scheduled transfers can be cancelled before processing begins.",
+    "unsupported_conclusion": "Your processing transfer is eligible for cancellation."
+  },
+  {
+    "id": "fee-waiver",
+    "question": "What balance is needed for a fee waiver, and are business accounts eligible?",
+    "source": "A monthly fee waiver requires an average balance of at least 1000.00 USD. Business accounts are excluded.",
+    "paraphrase": "To qualify for the monthly fee waiver, the average balance must be at least 1000.00 USD. Business accounts do not qualify.",
+    "rule_reversal": "A monthly fee waiver requires an average balance of at least 1000.00 USD. Business accounts are included.",
+    "changed_condition": "A monthly fee waiver requires an average balance of at least 100.00 USD. Business accounts are excluded.",
+    "missing_exception": "A monthly fee waiver requires an average balance of at least 1000.00 USD.",
+    "unsupported_conclusion": "Your business account qualifies for the waiver."
+  },
+  {
+    "id": "disputes",
+    "question": "What is the dispute deadline, and does it include cash withdrawals?",
+    "source": "A dispute must be submitted within 60 days of the statement date. Cash withdrawals are excluded.",
+    "paraphrase": "Submit the dispute no later than 60 days after the statement date. Cash withdrawals are not covered.",
+    "rule_reversal": "A dispute must be submitted within 60 days of the statement date. Cash withdrawals are included.",
+    "changed_condition": "A dispute must be submitted within 90 days of the statement date. Cash withdrawals are excluded.",
+    "missing_exception": "A dispute must be submitted within 60 days of the statement date.",
+    "unsupported_conclusion": "Your cash withdrawal qualifies for this dispute process."
+  }
+]
